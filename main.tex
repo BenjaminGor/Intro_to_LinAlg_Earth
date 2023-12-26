@@ -1,0 +1,129 @@
+\documentclass[paper=b5, fontsize=12pt, pagesize=auto, chapterprefix, headsepline=true, parskip=half, DIV=12]{scrbook}
+\usepackage{scrlayer-scrpage}
+\setkomafont{pagehead}{\textcolor{Mahogany}}
+
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+
+\usepackage[svgnames, dvipsnames]{xcolor}
+\usepackage[many]{tcolorbox}
+
+\usepackage{amsmath,amssymb,amsthm}
+\allowdisplaybreaks
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\addtokomafont{disposition}{\rmfamily}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{proper}[defn]{Properties}
+\tcbset{common/.style={
+  colback=blue!8,
+  boxrule=1pt,
+  boxsep=1pt,
+  left=3pt,right=3pt,top=6pt,bottom=6pt,
+  oversize=0pt,
+  sharp corners,
+  breakable,
+  before skip=\topsep,
+  after skip=\topsep}
+}
+\tcolorboxenvironment{defn}{common}
+\tcolorboxenvironment{thm}{common}
+\tcolorboxenvironment{proper}{common}
+\newtheorem{exmp}{Example}[section]
+\tcolorboxenvironment{exmp}{
+  colback=green!8,
+  boxrule=1pt,
+  boxsep=1pt,
+  left=3pt,right=3pt,top=6pt,bottom=6pt,
+  oversize=0pt,
+  sharp corners,
+  breakable,
+  before skip=\topsep,
+  after skip=\topsep,
+}
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+\usepackage{listings}
+\lstdefinestyle{mystyle}{
+    language=Python, 
+    basicstyle=\footnotesize\ttfamily,
+    backgroundcolor=\color{gray!20},
+    keywordstyle=\color{blue!80}\bfseries,
+    commentstyle=\color{Green},
+    breaklines=true,
+    showstringspaces=false
+}
+\lstset{style=mystyle}
+
+\renewcommand{\chapterformat}{\raggedleft \colorbox{Mahogany}{%
+\centering\textit{\textcolor{white}{{\Large Chapter} {\Huge \thechapter}}}}}
+\renewcommand{\chapterheadendvskip}{\vspace{3mm}\hrule\par\vspace{6mm}}
+\renewcommand{\footnoterule}{\hrule\vspace{2mm}}
+
+\usepackage[lastexercise,answerdelayed]{exercise}
+\renewcounter{Exercise}[chapter]
+\renewcommand{\theExercise}{\thechapter.\arabic{Exercise}}
+\renewcommand{\ExerciseHeader}{\noindent \textbf{Exercise \theExercise} }
+\renewcommand{\AnswerHeader}{\noindent \textbf{Exercise \theExercise} }
+\usepackage{imakeidx}
+\makeindex[intoc]
+\newcommand{\keywordhl}[1]{\textbf{\textit{#1}}}
+\usepackage{biblatex}
+\addbibresource{reference.bib}
+\nocite{*}
+
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{bm,esint}
+\usepackage{siunitx}
+\DeclareSIPrePower\quartic{4}
+\usepackage{physics}
+\usepackage[open,openlevel=2,atend,numbered]{bookmark}
+
+\usepackage{hyperref} % hyper reference
+\hypersetup{
+    colorlinks,
+    allcolors = blue!70!green,
+    pdfauthor = Benjamin Loi,
+    pdftitle = Intro. to Linear Algebra for Earth Sci. Students,
+    pdfsubject = Draft Version,
+    pdfkeywords = {Mathematics, Earth Science}
+}
+
+\usepackage{pgfplots} % plots
+\pgfplotsset{ % plots option
+  compat=1.18,
+  samples=100
+}
+
+\usetikzlibrary{calc, matrix,angles,quotes,arrows.meta}
+\tikzset{>=latex}
+
+\includeonly{chapter0, chapter1_Intro_to_Matrix, chapter2_Inv_Det, chapter3_Sol_LinSys, answers, reference}
+
+\begin{document}
+
+\include{chapter0}
+\include{chapter1_Intro_to_Matrix}
+\include{chapter2_Inv_Det}
+\include{chapter3_Sol_LinSys}
+\include{chapter4}
+\include{chapter5}
+\include{chapter6}
+\include{chapter7}
+\include{chapter8}
+\include{chapter9}
+\include{chapter10}
+\include{chapter11}
+\include{chapter12}
+\include{chapter13}
+\include{chapter14}
+\include{chapter15}
+\include{chapter16}
+\include{answers}
+\include{reference}
+
+\end{document}

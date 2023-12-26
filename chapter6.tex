@@ -1,0 +1,615 @@
+\chapter{Vector Spaces and Coordinate Bases}
+\label{chap:6}
+
+The previous chapters have provided a basic understanding of matrices and vectors respectively. What bridges these two quantities together is the concept of space and linear independence. They also lead to an essential geometric and physical idea about coordinate systems.
+
+\section{Making of the Real $n$-Space $\mathbb{R}^n$}
+
+\subsection{Spans by Linear Combination of Vectors}
+
+\subsection{Linear Independence and Direct Sum}
+
+\subsection{Forming Coordinate Bases for $\mathbb{R}^n$}
+
+\subsection{Subspaces of $\mathbb{R}^n$}
+
+\subsection*{Linear Combination and Linear Independence}
+\label{6.1.1}
+
+Linear combination of vectors $\vec{u_1}, \vec{u_2}, \vec{u_3}, \cdots$ is any expression in the form of $\vec{h} = c_1\vec{u_1} + c_2\vec{u_2} + c_3\vec{u_3} + \cdots$ where $c_j$ are some constants. 
+\begin{defn}
+A linear combination of vectors $\vec{u_1}, \vec{u_2}, \vec{u_3}, \cdots, \vec{u_n}$ has the form of
+\begin{align*}
+\sum_{j=1}^n c_j\vec{u_j} = c_1\vec{u_1} + c_2\vec{u_2} + c_3\vec{u_3} + \cdots + c_n\vec{u_n}
+\end{align*}
+where $c_j$ are some constants.
+\end{defn}
+An example would be, if there are two vectors $\vec{u} = (1,2)^T$ and $\vec{v} = (3,4)^T$, then $\vec{h} = (5,6)^T$ will be a linear combination of $\vec{u}$ and $\vec{v}$, since $\vec{h} = (5,6)^T = -(1,2)^T + 2(3,4)^T = -\vec{u} + 2\vec{v}$.\\
+Short Exercise: If $\vec{h} = (1,4)^T$ instead, express $\vec{h}$ as a linear combination of $\vec{u}$ and $\vec{v}$.\\
+\\
+Attentive readers may realize that from the demonstration above, to decide if a vector $\vec{h}$ can be written as the linear combination of a set of other vectors $\vec{u_j}$ is equivalent to determining whether the linear system $A\vec{x} = \vec{h}$ has a solution, where $A$ equals to $[\vec{u_1}|\vec{u_2}|\vec{u_3}|\cdots]$ (writing out $\vec{u_j}$ in columns). The matrix product $A\vec{x}$ is a compact way to represent a linear combination.
+\begin{proper}
+\label{linearcombmatrix}
+A linear combination $c_1\vec{u_1} + c_2\vec{u_2} + c_3\vec{u_3} + \cdots + c_n\vec{u_n}$ made by a set of vectors $\vec{u_1}, \vec{u_2}, \vec{u_3}, \cdots, \vec{u_n}$, can be expressed by the matrix product $A\vec{x}$, where
+\begin{align*}
+&A = [\vec{u_1}|\vec{u_2}|\vec{u_3}|\cdots|\vec{u_n}]
+&\vec{x} =
+\begin{bmatrix}
+c_1 \\
+c_2 \\
+c_3 \\
+\cdots \\
+c_n
+\end{bmatrix}
+\end{align*}
+with $c_j$ being some constants.
+\end{proper}
+Thus the short exercise at the beginning can be considered as a task to find out the solution for the system
+\begin{align*}
+\begin{bmatrix}
+1 & 3 \\
+2 & 4 \\
+\end{bmatrix}
+\begin{bmatrix}
+c_1 \\
+c_2
+\end{bmatrix} =
+\begin{bmatrix}
+1 \\
+4
+\end{bmatrix}
+\end{align*}
+
+Now we are going to tackle the idea of linear independence, which has profound implications in linear algebra. Given a set of vectors that are all $m$-dimensional, if every one of them can not be expressed as the linear combination of other members, or in other words, they are not dependent on other vectors, then such set of vectors is said to be linearly independent. \\
+\\
+To check linear independence, one may try to show that for every vector it cannot be written as the linear combination of other vectors in the set. However, it is not plausible if the amount of vectors is large. Fortunately, we have a theorem which significantly simplfies our work.
+\begin{thm}
+\label{linearindep}
+For a set of vectors $\vec{u_1}, \vec{u_2}, \vec{u_3}, \cdots, \vec{u_n}$, they are linearly independent if and only if, the linear system, $c_1\vec{u_1} + c_2\vec{u_2} + c_3\vec{u_3} + \cdots + c_n\vec{u_n} = \textbf{0}$ has $c_j = \textbf{0}$ as the unique solution. Using the matrix notation in Properties \ref{linearcombmatrix}, it means that the homogeneous system $A\vec{x} = \textbf{0}$ only has the trivial solution $c_j = \vec{x} = \textbf{0}$.
+\end{thm}
+\begin{exmp}
+\label{exmplinearindep}
+Determine if $\vec{u} = (1,2,1)^T$, $\vec{v} = (3,4,2)^T$, $\vec{w} = (6,8,1)^T$ are linearly independent.\\
+\\
+By Theorem \ref{linearindep}, this is equivalent to decide if $A\vec{x} = \textbf{0}$, where $A = [\vec{u}|\vec{v}|\vec{w}]$ has the trivial solution as the only solution. With the help of Theorem \ref{LinSysUnique}, we know that it is equivalent to check if $\text{det}(A)$ is zero or not. Since
+\begin{align*}
+|A| &=
+\begin{vmatrix}
+1 & 3 & 6\\
+2 & 4 & 8 \\
+1 & 2 & 1
+\end{vmatrix} \\
+&= 6 \neq 0
+\end{align*}
+We conclude that $A\vec{x} = \textbf{0}$ only has the trivial solution $\vec{x} = \textbf{0}$ and these three vectors are linearly independent.
+\end{exmp}
+Short Exercise: Repeat the above for $\vec{u} = (1,1,3)^T$, $\vec{v} = (1,3,2)^T$, $\vec{w} = (2,8,3)^T$.\\
+\\
+Including our earlier discussion in \autoref{chap:SolLinSys}, Theorem \ref{linearindep} gives some interesting results.
+\begin{enumerate}
+\item If the amount of vectors are greater than their dimension, i.e. 
+$A = [\vec{u_1}|\vec{u_2}|\vec{u_3}|\cdots|\vec{u_n}]$ is an $m \times n$ matrix which has more columns ($n$) than rows ($m$), then $A\vec{x} = \textbf{0}$ must have at least one free variables and thus infinitely many solutions. Hence they must be linearly dependent.
+\item Otherwise, we either find the solution of $A\vec{x} = \textbf{0}$ by Gaussian Elimination to see if it only has the trivial solution. Or if $A$ is a square matrix, then check if its determinant is non-zero (non-zero determinant implies only one solution, which in this case the trivial solution, just like Example \ref{exmplinearindep}). Gaussian Elimination still works for any square matrix, and in case of linear independence, $A$ will be reduced to an identity matrix.
+\end{enumerate}
+The above arguments also lead to an observation extending Theorem \ref{equiv2}.
+\begin{thm}
+\label{equiv3}
+Invertibility of a square matrix $A$, Non-zero determinant $|A|$, Uniqueness of solution for the linear system $A\vec{x} = \vec{h}$, and linear independence for the column vectors $\vec{u_1}, \vec{u_2}, \vec{u_3}, \cdots, \vec{u_n}$ in $A = [\vec{u_1}|\vec{u_2}|\vec{u_3}|\cdots|\vec{u_n}]$, are all equivalent.
+\end{thm}
+This also completes our previous proof mentioned in Definition \ref{inverseidentity}.
+\begin{thm}
+If $AP = A$, and $A$ is a invertible square matrix, then $P$ must be $I$.
+\paragraph{Proof}
+The assumption implies that $A$ has linearly independent column vectors. As a result, they cannot be expressed by other vectors. Consider any one of the column vector, like $\vec{u_i}$, then the linear system
+\begin{align*}
+A\vec{x} &= ([\vec{u_1}|...|\vec{u_i}|...|\vec{u_n}])\vec{x} = x_1\vec{u_1} + \cdots + x_i\vec{u_i} + \cdots + x_n\vec{u_n} \\
+&= \vec{u_i}
+\end{align*}
+will only have the solution
+\begin{align*}
+x_j &= 1 & \text{if $j = i$} \\
+x_j &= 0 & \text{if $j \neq i$}
+\end{align*}
+This means that $\vec{x} = \hat{e_i}$. Now if we expand $P = [\vec{p_1}|\cdots|\vec{p_i}|\cdots|\vec{p_n}]$, then we can write $AP = A$ as
+\begin{align*}
+AP &= [A\vec{p_1}|\cdots|A\vec{p_i}|\cdots|A\vec{p_n}] \\
+&= A = [\vec{u_1}|...|\vec{u_i}|...|\vec{u_n}]
+\end{align*}
+The readers are encouraged to verify the expression of $AP = [A\vec{p_1}|\cdots|A\vec{p_i}|\cdots|A\vec{p_n}]$ as a mental exercise, as from time to time we will partition such matrix product into columns. We have just found that for $A\vec{p_i} = \vec{u_i}$ to hold, $\vec{p_i}$ must be $\hat{e_i}$. This implies $P = [\hat{e_1}|...|\hat{e_i}|...|\hat{e_n}] = I$.
+\end{thm}
+
+\section{The Four Fundamental Subspaces Induced by Matrices}
+
+\subsection{Row Space, Column Space, Null Space}
+
+\subsection{Rank-Nullity Theorem}
+
+As we have briefly mentioned in the last chapter, the solution of a linear system $A\vec{x} = \vec{h}$ can be viewed as a solution space. Complementing this idea is the related concept of column space, formed by the column vectors of the associated matrix $A$. We are not going to investigate the definition of a vector space in details, and will only talk about some basic aspects.
+\begin{defn}
+\label{columnspace}
+Given a linear system $A\vec{x} = \vec{h}$, its column space includes all vectors that can be written as the linear combination of the column vectors in $A = [\vec{u_1}|\vec{u_2}|\vec{u_3}|\cdots|\vec{u_n}]$, or alternatively, all possible $A\vec{x}$ for every $\vec{x}$. Its solution space is the family of $\vec{x}$ that satisfies $A\vec{x} = \vec{h}$, inferred together by the particular solution and general solution.
+\end{defn}
+Solution space can be derived from the process of Gaussian Elimination, such as demonstrated in Example \ref{MulSol}. The dimension of solution space, sometimes referred to as its span, is the number of free variables. On the other hand, the span of the column space, is revealed by the amount of leading $1$ remained after Gaussian Elimination. Also, we have the following important theorem.
+\begin{thm}
+\label{span}
+For a linear system $A\vec{x} = \vec{h}$, the span of the solution space is the number of columns in $A$ minus the span of the column space of $A$.
+\end{thm}
+\begin{exmp}
+For the homogeneous system
+\begin{align*}
+\begin{bmatrix}
+1 & 3 & 2\\
+1 & 0 & 1\\
+2 & -3 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\
+0\\
+0
+\end{bmatrix}
+\end{align*}
+Gaussian Elimination leads to
+\begin{align*}
+\left[\begin{array}{@{}ccc|c@{}}
+1 & 0 & 1 & 0 \\
+0 & 1 & 1/3 & 0 \\
+0 & 0 & 0 & 0
+\end{array}\right] 
+\end{align*}
+Two leading $1$ means that the column space is two-dimensional. Despite there are three column vectors to start with, one of them can be expressed with the other two column vectors. Also, the solution space includes all vectors in the form of $\vec{x} = t(-1, -1/3, 1)^T$, $-\infty < t < \infty$, which is one-dimensional. Theorem \ref{span} holds, as the number of columns minus the span of the column space is $3 - 2 = 1$ which is the span of the solution space.
+\end{exmp}
+
+Finally, we finish this section by linking linear independence (and thus invertibility), to the span of column space of a matrix $A$.
+\begin{proper}
+\label{invspan}
+If $A$ is an invertible $n \times n$ square matrix, and thus has linearly independent column vectors, then Gaussian Elimination will turn $A$ into an identity matrix, which has $n$ leading $1$. By Theorem \ref{span}, the span of the column space will also be $n$.
+\end{proper}
+
+\section{More on Coordinate Bases}
+
+\subsection*{Requirements for a Coordinate Basis, Standard Basis}
+For a set of $m$-dimensional vectors to be the axes of a coordinate system in an $n$-dimensional vector space, it is intuitive that $m$ has to be equal to $n$. Apart from this, it is easy to see that the amount of vectors must also be greater than or equal to $n$, so that the column space may span the entire vector space. Another condition is that the vectors themselves are linearly independent, which needs the amount of vectors to be less than or equal to $n$. This ensures that any vector in the vector space can be uniquely determined by the coordinate basis, by the use of Theorem \ref{equiv3}. Taking all these requirements into account, we have the following conclusion.
+\begin{proper}
+In an $n$-dimensional vector space, any coordinate basis must be composed of $m$ linearly independent $m$-dimensional vectors, $m = n$. The matrix described in Properties \ref{invspan} satisfies the conditions.
+\end{proper}
+It is not difficult to see that the three vectors $\vec{u}$, $\vec{v}$ and $\vec{w}$ in Example \ref{exmplinearindep} are eligible to be a coordinate basis in a three-dimensional space.
+A counter example would be $\vec{u} = (1,3)^T$, $\vec{v} = (-2,-6)^T$, where
+\begin{align*}
+\begin{vmatrix}
+1 & -2 \\
+3 & -6
+\end{vmatrix}
+= 0
+\end{align*}
+So they are linearly dependent. Any vector that is not a multiple of $(1,3)^T$ cannot be expressed by $\vec{u}$ and $\vec{v}$, and they are not a suitable coordinate basis for a two-dimensional space.
+\begin{center}
+\begin{tikzpicture}[scale = 0.3]
+\draw[->] (-8,0)--(8,0) node[right]{$x$};
+\draw[->] (0,-8)--(0,8) node[above]{$y$};
+\draw[red,-stealth] (0,0)--(1,3) node[above right]{$\vec{u} = (1,3)^T$};
+\draw[blue,-stealth] (0,0)--(-2,-6) node[below left]{$\vec{v} = (-2,-6)^T$};
+\draw[Green,-stealth] (0,0)--(5,2) node[right]{$\vec{w} = (5,2)^T$};
+\node[below left]{$O$}; 
+\end{tikzpicture}\\
+It is clear that $\vec{w}$ cannot be written as a linear combination of $\vec{u}$, $\vec{v}$ in this case.
+\end{center}
+In most of the time, the standard basis is used, i.e. 
+$\hat{e_1} = (1, 0, 0, \cdots)^T$, $\hat{e_2} = (0, 1, 0, \cdots)^T$, $\hat{e_3} = (0, 0, 1, \cdots)^T$, etc. In three-dimensional Cartesian coordinates, it reduces to $\hat{i} = (1, 0, 0)^T, \hat{j} = (0, 1, 0)^T, \hat{k} = (0, 0, 1)^T$. It is used throughout previous parts. The standard basis is simple and natural.
+More importantly, the standard basis vectors are of unit length and orthogonal to each other, making it an orthogonal basis. This means that the coordinate values for a vector relative to the basis is simply the projection of the vector onto the standard basis vectors, e.g. the projection of $\vec{v} = (3,4,5)^T$ onto the $x$-axis is simply $3$. It seems trivial, but actually it is not.
+
+\subsection{Linear Coordinate Transformation}
+\label{seccoordinatetrans}
+Now we know what constitutes a coordinate basis, and there are many possible coordinate bases, we are tempted to transform the coordinate of a vector from one basis to another. We will first consider the transformation of any vector from the standard basis to an alternative basis, which can be done by finding the linear combination of the new basis vectors that reconstructs the targeted vector. Notice that physically the vector after transformation is still the same vector, but the coordinate values will be changed.\\
+\\
+It is equivalent to finding the solution for the system $A\vec{v_n} = \vec{v_0}$, where $\vec{v_n}$ and $\vec{v_0}$ are the coordinates in new basis and old basis respectively, $A$ is the transition matrix holding the vectors in the new basis in columns. We have $\vec{v_n} = A^{-1}\vec{v_0}$ if we multiply $A^{-1}$ at both sides. An example is supplied below to demonstrate the principle.
+\begin{proper}
+\label{coordinatetrans}
+Coordinate transformation from a basis $B_u$ with $\vec{u_1}, \vec{u_2}, \cdots$, to the standard basis $B_s$, is done by
+\begin{align*}
+A\vec{v_n} &= \vec{v_0} \\
+\vec{v_n} &= A^{-1}\vec{v_0}
+\end{align*}
+where $\vec{v_0}$ and $\vec{v_n}$ are the old and new coordinates respectively, $A = [\vec{u_1}|\vec{u_2}|\cdots]$.
+\end{proper}
+\begin{exmp}
+Given a new basis $B_u$ that is consisted of $\vec{u_1} = (1,2)^T$ and $\vec{u_2} = (1,-1)^T$, transform a vector has the coordinate values $\vec{v_0} = (2,1)^T$ in the standard basis $B_s$ to $B_u$.\\
+\\
+Let $A = [\vec{u_1}|\vec{u_2}]$, then it can be seen that
+\begin{align*}
+&A =
+\begin{bmatrix}
+1 & 1 \\
+2 & -1
+\end{bmatrix}
+&A^{-1} =
+\begin{bmatrix}
+1/3 & 1/3 \\
+2/3 & -1/3
+\end{bmatrix}
+\end{align*}
+Hence the new coordinates $\vec{v_n}$ is
+\begin{align*}
+\vec{v_n} = A^{-1}\vec{v_0} = 
+\begin{bmatrix}
+1/3 & 1/3 \\
+2/3 & -1/3
+\end{bmatrix}
+\begin{bmatrix}
+2 \\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1\\
+1
+\end{bmatrix}
+\end{align*}
+\begin{center}
+\begin{tikzpicture}[scale = 0.5]
+\draw[->] (-5,0)--(5,0) node[right]{$x$};
+\draw[->] (0,-5)--(0,5) node[above]{$y$};
+\draw[red,-stealth] (0,0)--(2,4) node[above right]{$u_1$};
+\draw[red,-stealth] (0,0)--(4,-4) node[below left]{$u_2$};
+\draw[red, thick, dotted] (2,1)--(1,2) node[left]{$u_1 = 1$};
+\draw[red, thick, dotted] (2,1)--(1,-1) node[right]{$u_2 = 1$};
+\draw[blue,-stealth] (0,0)--(2,1) node[right]{$\vec{v_0} = (2,1)^T$, $\vec{v_n} = (1,1)^T$};
+\node[below left]{$O$}; 
+\end{tikzpicture}
+\end{center}
+Short Exercise: Recover $\vec{v_0}$ from $\vec{v_n}$.
+\end{exmp}
+To convert between two coordinate basis $B_u$ and $B_w$, we can first do the transformation from $B_u$ to the standard basis $B_s$, by $\vec{v_0} = A_u\vec{v_u}$, and then carry out another from $B_s$ to $B_w$, with $\vec{v_w} = A_w^{-1}\vec{v_0}$.
+
+\begin{exmp}
+A vector has the coordinates values $\vec{v_u} = (2,3)^T$ in the basis $B_u$ where $\vec{u_1} = (2,1)^T$, $\vec{u_2} = (-1,2)^T$. Convert its coordinates to the basis $B_w$ where $\vec{w_1} = (1,3)^T$, $\vec{w_2} = (-2,1)^T$.\\
+\\
+We first transform $\vec{v_u}$ to $\vec{v_0}$ using the standard basis.
+\begin{align*}
+\vec{v_0} &= A_u\vec{v_u} \\
+&=
+\begin{bmatrix}
+2 & -1\\
+1 & 2
+\end{bmatrix}
+\begin{bmatrix}
+2 \\
+3
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\
+8
+\end{bmatrix}
+\end{align*}
+Subsequently, we do another transformation to the basis $B_w$.
+\begin{align*}
+\vec{v_w} &= A_w^{-1}\vec{v_0} \\
+&=
+\begin{bmatrix}
+1 & -2\\
+3 & 1
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+1 \\
+8
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+1/7 & 2/7\\
+-3/7 & 1/7
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+8
+\end{bmatrix}
+=
+\begin{bmatrix}
+17/7 \\
+5/7
+\end{bmatrix}
+\end{align*}
+\end{exmp}
+
+\subsection{Gram-Schmidt Orthogonalization, QR Decomposition}
+
+Sometimes the coordinate basis consists of vectors that are linearly independent but not orthogonal to each other, unlike the standard basis. A common way to create an orthogonal basis from the set is to apply the so-called Gram-Schmidt Orthogonalization.\\
+\\
+Basically, it is an iterative method. At each step it constructs a vector that are orthogonal to all the previously processed vectors by removing the parallel components projected onto them, extracting the orthogonal components.
+\begin{center}
+\begin{tikzpicture}[scale=1.3]
+\coordinate (0) at (0,0);
+\draw[->](0)--(4,1) node[right](vecu){$\vec{u_1}$, $\vec{v_1}$};
+\draw[->](0)--(1,2) node[above](vecv){$\vec{u_2}$};
+\draw[red, dotted, thick, ->] (24/17, 6/17)--(1,2) node[midway, right]{$\vec{v_2}$};
+\draw[red] (24/17+0.2, 6/17+0.05)--(24/17+0.15, 6/17+0.25)--(24/17-0.05, 6/17+0.2);
+\pic[draw, ->, "$\theta$",angle eccentricity=1.5] {angle = vecu--0--vecv};
+\draw[blue, very thick] (0,0)--(24/17, 6/17) node[below, shift={(0mm, -2mm)}]{$\text{proj}_{v_1}\vec{u_2}$};
+\end{tikzpicture}
+\end{center}
+For a set of vectors $\vec{u_1}, \vec{u_2}, \vec{u_3}, \cdots$ the orthogonal basis $\vec{v_1}, \vec{v_2}, \vec{v_3}, \cdots$ is generated by
+\begin{defn}
+Given a coordinate basis $\vec{u_1}, \vec{u_2}, \vec{u_3}, \cdots$, Gram-Schmidt Orthogonalization transforms them into $\vec{v_1}, \vec{v_2}, \vec{v_3}, \cdots$ according to the following formula.
+\begin{align*}
+\vec{v_1} &= \vec{u_1} \\
+\vec{v_2} &= \vec{u_2} - \text{proj}_{v_1}\vec{u_2} = \vec{u_2} - \frac{\vec{v_1} \cdot \vec{u_2}}{\norm{\vec{v_1}}^2} \vec{v_1}\\
+\vec{v_3} &= \vec{u_3} - \text{proj}_{v_1}\vec{u_3} - \text{proj}_{v_2}\vec{u_3} = \vec{u_3} - \frac{\vec{v_1} \cdot \vec{u_3}}{\norm{\vec{v_1}}^2} \vec{v_1} - \frac{\vec{v_2} \cdot \vec{u_3}}{\norm{\vec{v_2}}^2} \vec{v_2}\\
+\vec{v_j} &= \vec{u_j} - \sum_{k=1}^{j-1}\text{proj}_{v_k}\vec{u_j}  = \vec{u_3} - \sum_{k=1}^{j-1}\frac{\vec{v_k} \cdot \vec{u_j}}{\norm{\vec{v_k}}^2} \vec{v_k}
+\end{align*}
+where the expression of projection, Properties \ref{proj}, is used.
+\end{defn}
+A variant of Gram-Schmidt Orthogonalization is to normalize every vector at each step immediately, such that $\norm{\hat{v_j}} = 1$ for all $j$, and the resulted basis is said to be orthonormal. The formula are then reduced to
+\begin{defn}
+\label{GSorth_norm}
+Gram-Schmidt Orthogonalization with normalization at every iteration is given by
+\begin{align*}
+\hat{v_1} &= \frac{\vec{u_1}}{\norm{\vec{u_1}}} \\
+\hat{v_2} &= \frac{\vec{u_2} - (\hat{v_1} \cdot \vec{u_2})\hat{v_1}}{\norm{\vec{u_2} - (\hat{v_1} \cdot \vec{u_2})\hat{v_1}}} \\
+\hat{v_3} &= \frac{\vec{u_3} - (\hat{v_1} \cdot \vec{u_3})\hat{v_1} - (\hat{v_2} \cdot \vec{u_3})\hat{v_2}}{\norm{\vec{u_3} - (\hat{v_1} \cdot \vec{u_3})\hat{v_1} - (\hat{v_2} \cdot \vec{u_3})\hat{v_2}}} \\
+\hat{v_j} &= \frac{\vec{u_j} - \sum_{k=1}^{j-1}(\hat{v_k} \cdot \vec{u_j})\hat{v_k}}{\norm{\vec{u_j} - \sum_{k=1}^{j-1}(\hat{v_k} \cdot \vec{u_j})\hat{v_k}}}
+\end{align*}
+\end{defn}
+\begin{exmp}
+\label{GSex}
+Perform Gram-Schmidt Orthogonalization on the coordinate basis $\vec{u_1} = (1,3,5)^T$, $\vec{u_2} = (2,4,6)^T$, $\vec{u_3} = (8,3,2)^T$, using the formula in Definition \ref{GSorth_norm}.
+\begin{align*}
+\hat{v_1} &= \frac{1}{\sqrt{1^2+3^2+5^2}}
+\begin{bmatrix}
+1 \\
+3 \\
+5
+\end{bmatrix} 
+= 
+\frac{1}{\sqrt{35}}
+\begin{bmatrix}
+1 \\
+3 \\
+5
+\end{bmatrix} \\
+\vec{u_2} - (\hat{v_1} \cdot \vec{u_2})\hat{v_1} &= 
+\begin{bmatrix}
+2 \\
+4 \\
+6
+\end{bmatrix} 
+-
+((\frac{1}{\sqrt{35}})(2) + (\frac{3}{\sqrt{35}})(4) + (\frac{5}{\sqrt{35}})(6))
+(\frac{1}{\sqrt{35}}
+\begin{bmatrix}
+1 \\
+3 \\
+5
+\end{bmatrix}) \\
+&= 
+\begin{bmatrix}
+2 \\
+4 \\
+6
+\end{bmatrix} 
+-
+\textcolor{red}{\frac{44}{\sqrt{35}}}
+(\frac{1}{\sqrt{35}}
+\begin{bmatrix}
+1 \\
+3 \\
+5
+\end{bmatrix})
+=
+\frac{1}{35}
+\begin{bmatrix}
+26 \\
+8 \\
+-10
+\end{bmatrix} \\
+\hat{v_2} &= \frac{1}{\sqrt{26^2+8^2+(-10)^2}}
+\begin{bmatrix}
+26 \\
+8 \\
+-10
+\end{bmatrix}
+=
+\frac{1}{2\sqrt{210}}
+\begin{bmatrix}
+26 \\
+8 \\
+-10
+\end{bmatrix}
+\end{align*}
+In the calculation for the unit vector $\hat{v_2} = (\vec{u_2} - (\hat{v_1} \cdot \vec{u_2})\hat{v_1})/\norm{\vec{u_2} - (\hat{v_1} \cdot \vec{u_2})\hat{v_1}}$, the factor $1/35$ can be neglected, as it is just a scaling factor which does not affect the final normalization. Eventually, we have
+\begin{align*}
+\vec{u_3} - (\hat{v_1} \cdot \vec{u_3})\hat{v_1} - (\hat{v_2} \cdot \vec{u_3})\hat{v_2} &=
+\begin{bmatrix}
+8 \\
+3 \\
+2
+\end{bmatrix}
+-
+\frac{27}{35}
+\begin{bmatrix}
+1 \\
+3 \\
+5
+\end{bmatrix}
+-
+\frac{53}{210}
+\begin{bmatrix}
+26 \\
+8 \\
+-10
+\end{bmatrix}
+=
+\frac{2}{3}
+\begin{bmatrix}
+1 \\
+-2 \\
+1
+\end{bmatrix} \\
+\hat{v_3} &= \frac{1}{\sqrt{1^2 + (-2)^2 + 1^2}}
+\begin{bmatrix}
+1 \\
+-2 \\
+1
+\end{bmatrix}
+= 
+\frac{1}{\sqrt{6}}
+\begin{bmatrix}
+1 \\
+-2 \\
+1
+\end{bmatrix}
+\end{align*}
+\end{exmp}
+Short Exercise: Verify that $\hat{v_1}, \hat{v_2}, \hat{v_3}$ are orthogonal to each other.\\
+\\
+An major application of the Gram-Schmidt process is the QR Decomposition, which factors a matrix into two matrices, one as its orthogonal basis and another one as a upper triangular matrix (non-zero elements only found along or above the main diagonal). This is very useful in the processing of large matrices and least-square error fitting.
+\begin{proper}
+For a matrix $A = [\vec{u_1}|\vec{u_2}|\vec{u_3}|\cdots|\vec{u_n}]$, and the matrix $Q =  [\hat{v_1}|\hat{v_2}|\hat{v_3}|\cdots|\hat{v_n}]$, where $\hat{v_j}$ come from carrying out Gram-Schmidt orthogonalization on $\vec{u_j}$ from the Definition \ref{GSorth_norm}, for all $1 \leq j \leq n$, we have $A = QR$, where
+\begin{align*}
+R &= 
+\begin{bmatrix}
+\vec{u_1} \cdot \hat{v_1} & \vec{u_2} \cdot \hat{v_1} & \vec{u_3} \cdot \hat{v_1} & \cdots & \vec{u_n} \cdot \hat{v_1} \\
+0 & \vec{u_2} \cdot \hat{v_2} & \vec{u_3} \cdot \hat{v_2} & \cdots & \vec{u_n} \cdot \hat{v_2} \\
+0 & 0 & \vec{u_3} \cdot \hat{v_3} & \cdots & \vec{u_n} \cdot \hat{v_3} \\
+\vdots & \vdots & \vdots &  & \vdots\\
+0 & 0 & 0 & \cdots & \vec{u_n} \cdot \hat{v_n}\\
+\end{bmatrix}
+\end{align*}
+is an upper triangular $n \times n$ invertible matrix.
+\paragraph{Proof}
+We will prove the last column of $A$ and $QR$ are equal, and the equality of other columns will follow similarly. The last column of the matrix product $QR$ can be readily seen as
+\begin{align*}
+(\vec{u_n} \cdot \hat{v_1}) \hat{v_1} + (\vec{u_n} \cdot \hat{v_2}) \hat{v_2} + \cdots + (\vec{u_n} \cdot \hat{v_n}) \hat{v_n}
+\end{align*}
+and from Definition \ref{GSorth_norm}, the last column vector $\vec{u_n}$ from A after rearrangement, is
+\begin{align*}
+\vec{u_n} = (\vec{u_n} \cdot \hat{v_1}) \hat{v_1} + (\vec{u_n} \cdot \hat{v_2}) \hat{v_2} + \cdots + \hat{v_n} \norm{\vec{u_n} - \sum_{k=1}^{n-1}(\hat{v_k} \cdot \vec{u_n})\hat{v_k}}
+\end{align*}
+But we know that
+\begin{align*}
+(\vec{u_n} - \sum_{k=1}^{n-1}(\hat{v_k} \cdot \vec{u_n})\hat{v_k}) \cdot \hat{v_n} &= \vec{u_n} \cdot \hat{v_n} - \sum_{k=1}^{n-1}((\hat{v_k} \cdot \vec{u_n})(\hat{v_k} \cdot \hat{v_n}))\\
+&= \vec{u_n} \cdot \hat{v_n} \\
+\end{align*}
+as $\vec{v_k} \cdot \hat{v_n} = 0$ for $k \neq n$ due to the orthogonality of the Gram-Schmidt process. Geometrically, $\vec{u_n}$ is just the parallel projection of $\vec{u_n} - \sum_{k=1}^{n-1}(\hat{v_k} \cdot \vec{u_n})\hat{v_k}$ onto $\hat{v_n}$. Therefore, 
+\begin{align*}
+\vec{u_n} \cdot \hat{v_n} &= (\vec{u_n} - \sum_{k=1}^{n-1}(\hat{v_k} \cdot \vec{u_n})\hat{v_k}) \cdot \hat{v_n} \\
+&= (\norm{\vec{u_n} - \sum_{k=1}^{n-1}(\hat{v_k} \cdot \vec{u_n})\hat{v_k}} \hat{v_n}) \cdot \hat{v_n} \\
+&= \norm{\vec{u_n} - \sum_{k=1}^{n-1}(\hat{v_k} \cdot \vec{u_n})\hat{v_k}} 
+\end{align*}
+as $\hat{v_n} \cdot \hat{v_n} = \norm{\hat{v_n}}^2 = 1$. The equality is established and the proof is completed.
+\end{proper}
+
+\begin{exmp}
+Construct a QR decomposition for the case shown in Example \ref{GSex}.\\
+\\
+Plugging the corresponding values (which can be readily inferred from the steps when doing Gram-Schmidt Orthogonalization) into the expression shown above, we have
+\begin{align*}
+Q &= 
+\begin{bmatrix}
+1/\sqrt{35} & 13/\sqrt{210} & 1/\sqrt{6} \\
+3/\sqrt{35} & 4/\sqrt{210} & -2/\sqrt{6} \\
+5/\sqrt{35} & -5/\sqrt{210} & 1/\sqrt{6}
+\end{bmatrix} \\
+R &= 
+\begin{bmatrix}
+\vec{u_1} \cdot \hat{v_1} & \vec{u_2} \cdot \hat{v_1} & \vec{u_3} \cdot \hat{v_1} \\
+0 & \vec{u_2} \cdot \hat{v_2} & \vec{u_3} \cdot \hat{v_2}  \\
+0 & 0 & \vec{u_3} \cdot \hat{v_3} \\
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+\sqrt{35} & \textcolor{red}{44/\sqrt{35}} & 27/\sqrt{35} \\
+0 & 12/\sqrt{210} & 106/\sqrt{210}  \\
+0 & 0 & 4/\sqrt{6} \\
+\end{bmatrix} 
+\end{align*}
+Short Exercise: Compute the matrix product $QR$ to see if the original vectors are recovered.
+\end{exmp}
+
+\paragraph{Remark}
+Dot product on a vector by a square matrix can be viewed as a mapping of the vector from one coordinate basis to another basis. Also, the determinant of the transition matrix $A$ formed by column vectors of a basis, is the scaling factor by which the magnitude of area/volume for any shape, is multiplied after the coordinate transformation. Using the convention that the new coordinates $\vec{v_n} = A^{-1} \vec{v_0}$ is produced by multiplying $A^{-1}$ to the old coordinates, then the area/volume will change by a factor of $|A^{-1}|$. 
+
+\section{About Linear Mapping}
+
+\subsection{Linear Maps between Vector Spaces}
+
+\subsection{Vector Space Isomorphism to $\mathbb{R}^n$}
+
+\section{Exercises}
+
+\begin{Exercise}
+For $\vec{u_1} =
+\begin{bmatrix}
+1\\
+1\\
+0
+\end{bmatrix}$,
+$\vec{u_2} =
+\begin{bmatrix}
+1\\
+0\\
+1
+\end{bmatrix}$,
+$\vec{u_3} =
+\begin{bmatrix}
+0\\
+1\\
+1
+\end{bmatrix}$,
+find the constants $a$, $b$, $c$ such that their linear combination $a\vec{u_1} + b\vec{u_2} + c\vec{u_3}$ equals to 
+\begin{enumerate}[label=(\alph*)]
+\item $(3,2,9)^T$, 
+\item $(9,1,5)^T$.
+\end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+Determine if the following sets of vectors are linearly independent.
+\begin{enumerate}[label=(\alph*)]
+\item $\vec{u} = (2,-1)^T$, $\vec{v} = (-4,2)^T$,
+\item $\vec{u} = (1,2,3)^T$, $\vec{v} = (6,7,9)^T$, $\vec{w} = (4,8,5)^T$, and
+\item $\vec{u} = (1,3,3)^T$, $\vec{v}=(3,2,9)^T$, $\vec{w} = (1,-4,3)^T$.
+\end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+For the basis $B_u$: $\vec{u_1} = 
+\begin{bmatrix}
+6\\
+1\\
+2
+\end{bmatrix}$,
+$\vec{u_2} = 
+\begin{bmatrix}
+1\\
+0\\
+1
+\end{bmatrix}$,
+$\vec{u_3} = 
+\begin{bmatrix}
+2\\
+3\\
+3
+\end{bmatrix}$
+(relative to the standard basis $B_s$), do the following conversion.
+\begin{enumerate}[label=(\alph*)]
+\item convert $(5, 2, 3)^T_s$ from the standard basis to $B_u$,
+\item convert $(1, -1, 1)^T_u$ from $B_u$ back to the the standard basis.
+\end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+Given two basis $B_u$, $B_w$, such that $\vec{u_1} = (1,2,1)^T$, $\vec{u_2} = (2,0,-1)^T$, $\vec{u_3} = (1,3,1)^T$, and $\vec{w_1} = (0,1,1)^T$, $\vec{w_2} = (3,0,1)^T$, $\vec{w_3} = (0,-1,2)^T$, convert a vector in $B_u$ that has the coordinate values $\vec{v}_u = (1,2,3)^T$ to the basis $B_w$.
+\end{Exercise}
+
+\begin{Exercise}
+Apply Gram-Schmidt orthogonalization on the following set of vectors, and then write their QR Decomposition.
+\begin{enumerate}[label=(\alph*)]
+\item $\vec{u_1} = (1,2)^T, \vec{u_2} = (3,8)^T$,
+\item $\vec{u_1} = (1,2,1)^T, \vec{u_2} = (1,4,4)^T, \vec{u_3} = (2,2,5)^T$.
+\end{enumerate}
+\end{Exercise}

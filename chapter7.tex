@@ -1,0 +1,482 @@
+\chapter{Complex Vectors and Matrices}
+
+\section{Definition and Operations of Complex Numbers}
+\label{section:complexno}
+
+\subsection{Basic Structure of Complex Numbers} The idea of complex numbers comes from the solution of quadratic equation when the value of the discriminant is negative. The square root of the negative discriminant is originally not defined for real numbers, but we can deal with it by introducing the imaginary number $\imath = \sqrt{-1}$. As a result, $\imath^2 = -1$. For any positive number $b$, $\sqrt{-b^2} = \sqrt{b^2}\sqrt{-1} = b\imath$. Quantities in the form of $a + b\imath$, where $a$ and $b$ are some real constants, are called complex numbers, and $a$ and $b$ is called the real and imaginary part respectively. For example, the solutions to the quadratic equation $(x+2)^2 = -1$, is then $-2 \pm \imath$.
+\begin{defn}
+Complex numbers are any quantities in the form of $z = a + b\imath$, where $a$ and $b$ are some real scalars. $\Re{z} = a$ is called the real part and $\Im{z} = b$ is called the imaginary part.
+\end{defn}
+Also, there is a simple but powerful statement regarding the equality of two complex numbers.
+\begin{proper}
+Two complex numbers $a + b\imath$, and $c + d\imath$, where $a, b, c, d$ are real numbers, are equal if and only if, $a = c$ and $b = d$.
+\end{proper}
+For every complex number, there also exist an associated complex number, which is called the conjugate.
+\begin{defn}
+For a complex number $z = a + b\imath$, its complex conjugate is constructed by flipping the sign of the imaginary part, which is denoted as $\overline{z} = a - b\imath$.
+\end{defn}
+
+\subsection{Complex Number Operations}
+Below are some rules about usual operations on two complex numbers.
+\subsubsection{Addition and Subtraction}
+\begin{defn}
+For two complex numbers $a + b\imath$, and $c + d\imath$, addition and subtraction is done via first individually adding up or subtracting the real part by real part, and the imaginary part by imaginary part, and then combining the two results. $(a + b\imath) \pm (c + d\imath) = (a \pm c) + (b \pm d)\imath$.
+\end{defn}
+For instance, adding $1 + 3\imath$ to $2 - 4\imath$ results in $(1+2) + (3-4)\imath = 3 - \imath$.
+
+\subsubsection{Multiplication and Division}
+Multiplication of two complex numbers resembles the distributive law learnt in high school algebra.
+\begin{defn}
+Given two complex numbers $a + b\imath$, and $c + d\imath$, their product is
+\begin{align*}
+(a + b\imath)(c + d\imath) &= a(c + d\imath) + b\imath(c + d\imath)\\
+&= ac + ad\imath + bc\imath + bd\imath^2 \\
+&= (ac - bd) + (ad + bc)\imath
+\end{align*}
+\end{defn}
+
+\begin{exmp}
+Evaluate $(1+2\imath)(3-4\imath)$.
+\begin{align*}
+(1+2\imath)(3-4\imath) &= ((1)(3) - (2)(-4)) + ((1)(-4) + (2)(3))\imath \\
+&= 11 + 2\imath
+\end{align*}
+\end{exmp}
+
+Dividing by a complex number can be viewed as multiplication by its complex conjugate, as
+\begin{align*}
+\frac{1}{a+b\imath} &= \frac{1}{a+b\imath}\frac{a-b\imath}{a-b\imath} \\
+&= \frac{a-b\imath}{a^2 + b^2}
+\end{align*}
+It is interesting that multiplying a complex number by its conjugate results in some a number that looks like the Pythagoras' Theorem. Later on we will see more when we discuss the geometric meaning of complex numbers.
+
+\subsection{Geometric Meaning of Complex Numbers}
+A complex number can be visualized as a two-dimensional vector, in the so-called complex plane, where the $x$-axis represents the real part and the $y$-axis represents the imaginary part. These two axes are referred to as the real axis and imaginary axis respectively.
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\draw[->] (-5,0)--(5,0) node[right](x){Real Axis};
+\draw[->] (0,-5)--(0,5) node[above]{Imaginary Axis};
+\draw[blue,-stealth] (0,0)--(3,4) node[anchor=south west](z){$z = 3+4\imath$};
+\draw[blue,dotted] (3,4)--(3,0) node[below]{$\Re{z} = 3$};
+\draw[blue,dotted] (3,4)--(0,4) node[left]{$\Im{z} = 4$};
+\pic[draw, ->, "$\theta$",angle eccentricity=1.5] {angle = x--0--z};
+\node[below left]{$O$}; 
+\end{tikzpicture}\\
+A complex number $z = 3+4\imath$ in the complex plane.
+\end{center}
+It is obvious that the length of such vector is $\sqrt{\Re{z}^2 + \Im{z}^2}$, which is called the modulus of the corresponding complex number. In the diagram above, the modulus of $z$ is easily seen as $\abs{z} = 5$. \\
+\\
+The angle between the real axis and the complex number is called the argument, shown as $\theta = \arctan(\Im{z}/\Re{z})$ in the same diagram. Since the complex conjugate $\overline{z}$ has the sign of the imaginary part flipped while the real part remains the same, the argument of the complex conjugate is simply the negative of the original complex number $z$. Also, the modulus will be unchanged.\\
+\\
+From trigonometry, we know that $\Re{z} = \abs{z} \cos{\theta}$ and $\Im{z} = \abs{z} \sin{\theta}$. Hence $z$ can be represented as $z = \Re{z} + \Im{z} = \abs{z} (\cos \theta + \imath \sin \theta)$. Furthermore, we have the famous Euler's formula, relating the geometry of complex number to an exponential with imaginary power.
+\begin{defn}
+\label{Euler}
+Euler's formula states that
+\begin{align*}
+e^{\imath \theta} = \cos \theta + \imath \sin \theta
+\end{align*}
+\end{defn}
+Hence $z$ can be further simplified into $z = \abs{z} e^{\imath \theta}$, and $\overline{z} = \abs{z} e^{-\imath \theta}$. Conversely, the quantity $e^{\imath \theta}$ can be regarded as a complex number that has a modulus of $1$ and an argument of $\theta$. Additionally, there are formula to express sines and cosines with complex exponentials.
+\begin{proper}
+\label{sincoscomplex}
+For any real $\theta$,
+\begin{align*}
+\cos \theta &= \frac{e^{\imath\theta} + e^{-\imath\theta}}{2} \\
+\sin \theta &= \frac{e^{\imath\theta} - e^{-\imath\theta}}{2\imath}
+\end{align*}
+\end{proper}
+Now we can go back to investigate complex multiplication and division. Multiplication of a complex number $z_1$ by another complex number $z_2$, can be viewed as $z_1z_2 = \abs{z_1}e^{\imath \theta_1} \abs{z_2} e^{\imath \theta_2} = \abs{z_1}\abs{z_2}e^{\imath (\theta_1+\theta_2)}$. This can be interpreted as, starting with the complex number $z_1 = \abs{z_1}e^{\imath \theta_1}$ on the complex plane, rotating it anti-clockwise by an angle of $\theta_2$, and scaling its modulus by a factor of $\abs{z_2}$. \\
+\\
+Similarly, division of $z_1$ by $z_2$, is $z_1/z_2 = (\abs{z_1}/\abs{z_2})e^{\imath (\theta_1-\theta_2)}$. Notice that for a fraction like $1/z = 1/(a+b\imath)$, it can be rewritten as
+\begin{align*}
+\frac{1}{z} = \frac{1}{\abs{z}e^{\imath \theta}} &= \frac{1}{\abs{z}} e^{-\imath \theta} \\
+&= \frac{1}{\abs{z}^2} (\abs{z} e^{-\imath \theta}) \\
+&= \frac{1}{\abs{z}^2} \overline{z}
+\end{align*}
+which is consistent with what we have discussed in the last section. In addition, we can observe that $\abs{z}^2 = z\overline{z}$. This is not coincidence, as
+\begin{align*}
+z\overline{z} &= \abs{z} e^{\imath \theta} \abs{z} e^{-\imath \theta} \\
+&= \abs{z}^2 e^{0} = \abs{z}^2
+\end{align*}
+Geometrically, we can think of it as starting with $1$ along the real axis in the complex plane, then we scale it by $\abs{z}$ and rotate it by $\theta$, and finally scale it again by $\abs{z}$ but rotate it by $-\theta$. The results will be a real number $\abs{z}^2$, since the two rotations cancel out each other.\\
+\\
+Below are some properties of modulus and complex conjugate to be remembered.
+\begin{proper}
+\label{complexnum}
+For two complex numbers $z_1$ and $z_2$, we have
+\begin{enumerate}[label=(\alph*)]
+\item $\overline{z_1 \pm z_2} = \overline{z_1} \pm \overline{z_2}$, 
+\item $\overline{z_1z_2} = \overline{z_1}\overline{z_2}$,
+\item $\overline{z_1/z_2} = \overline{z_1}/\overline{z_2}$,
+\item $\overline{\overline{z}} = z$,
+\item $\overline{\overline{z_1}z_2} = z_1\overline{z_2}$,
+\item $\abs{\overline{z}} = \abs{z}$,
+\item $\abs{z_1z_2} = \abs{z_1}\abs{z_2}$,
+\item $\abs{z_1/z_2} = \abs{z_1}/\abs{z_2}$.
+\end{enumerate}
+\end{proper}
+Another very useful theorem is the De Moivre's Formula that builds up on the Euler's formula, expressing $e^{\imath \theta}$ raised to an integer power $n$.
+\begin{thm}
+Given $n$ as an integer, then
+\begin{align*}
+(e^{\imath \theta})^n &= e^{\imath (n\theta)} \\
+(\cos\theta + \imath \sin\theta)^n &= \cos(n\theta) + \imath \sin(n\theta)
+\end{align*}
+\end{thm}
+
+\section{Complex Vectors and Complex Matrices}
+
+Our previous discussion is limited to vectors and matrices with real entries. However, we can extend the ideas to include complex elements. A complex vector is simply a vector that is consisted complex number. However, note that a real vector is also a complex vector, as all real numbers are simply complex numbers that have a zero imaginary part. An $m$-dimensional complex vector can be view as a real vector that is $2m$-dimensional, as each complex entry can be expressed in two parts, real and imaginary, but we will treat it as $m$-dimensional in most of the time. A complex matrix is similarly a matrix with complex elements, or in other words, formed by complex column vectors.
+
+\subsection{Operations and Properties of Complex Vectors}
+Addition and Subtraction for complex vectors are the same as the real counterpart, carried out element-wise. Multiplication by a scalar is similar too. However, the complex dot product is slightly different, as defined below.
+\begin{defn}
+\label{complexdotproduct}
+Complex dot product of two vectors $\vec{u}$ and $\vec{v}$ is computed as the sum of products between each pair of elements, but with the conjugate operation applied on the second complex vector beforehand.
+\begin{align*}
+\vec{u} \cdot \vec{v} &= \textbf{u}^T \overline{\textbf{v}} \\
+&= u_1\overline{v_1} + u_2\overline{v_2} + \cdots + u_n\overline{v_n}
+\end{align*}
+The bar on $\overline{\textbf{v}}$ means doing conjugate on every entry of $\textbf{v}$. If $\textbf{v} = \Re{\textbf{v}} + \imath \Im{\textbf{v}}$, where $\Re{\textbf{v}}$ and $\Im{\textbf{v}}$ are the vectors constructed from the real and imaginary parts of elements in $\textbf{v}$. Then $\overline{\textbf{v}} = \Re{\textbf{v}} - \imath \Im{\textbf{v}}$.
+\end{defn}
+The Euclidean norm, or length, is defined similar by
+\begin{defn}
+The Euclidean norm $\norm{\vec{v}}$ of a complex vector is calculated as
+\begin{align*}
+\norm{\vec{v}} &= \sqrt{\vec{v} \cdot \vec{v}} \\
+&= \sqrt{v_1\overline{v_1} + v_2\overline{v_2} + \cdots + v_n\overline{v_n}} \\
+&= \sqrt{\abs{v_1}^2 + \abs{v_2}^2 + \cdots + \abs{v_n}^2}
+\end{align*}
+\end{defn}
+Properties of complex dot product is also a bit different from its real counterpart, Properties \ref{dotproper}.
+\begin{proper}
+For two complex vectors $\vec{u}$ and $\vec{v}$, we have
+\begin{align*}
+\vec{u} \cdot \vec{v} &= \textcolor{red}{\overline{\vec{v} \cdot \vec{u}}} &\text{Anti-commutative Property} \\
+\vec{u} \cdot (\vec{v} \pm \vec{w}) &= \vec{u} \cdot \vec{v} \pm \vec{u} \cdot \vec{w} &\text{Distributive Property} \\
+(\vec{u} \pm \vec{v}) \cdot \vec{w} &= \vec{u} \cdot \vec{w} \pm \vec{v} \cdot \vec{w} &\text{Distributive Property} \\
+(a\vec{u}) \cdot (b\vec{v}) &= a\textcolor{red}{\bar{b}}(\vec{u} \cdot \vec{v}) &\text{where $a$, $b$ are some complex constants}    
+\end{align*}
+\end{proper}
+There is no cross product analogous for complex vectors.
+\begin{exmp}
+Prove the anti-commutative property for $\vec{u} = (1+2\imath, 3+1\imath)^T$, $\vec{v} = (2-5\imath, 1+4\imath)^T$.
+\begin{align*}
+\vec{u} \cdot \vec{v} &= (1+2\imath)(\overline{2-5\imath}) + (3+1\imath)(\overline{1+4\imath}) \\
+&= (1+2\imath)(2+5\imath) + (3+1\imath)(1-4\imath) \\
+&= (-8+9\imath) + (7-11\imath) \\
+&= -1-2\imath 
+\end{align*}
+\begin{align*}
+\vec{v} \cdot \vec{u} &= (2-5\imath)(\overline{1+2\imath}) + (1+4\imath)(\overline{3+1\imath}) \\
+&= (2-5\imath)(1-2\imath) + (1+4\imath)(3-1\imath) \\
+&= (-8-9\imath) + (7+11\imath) \\
+&= -1+2\imath 
+\end{align*}
+Hence $\vec{u} \cdot \vec{v} = \overline{\vec{v} \cdot \vec{u}}$.
+\end{exmp}
+Short Exercise: Find the norm $\norm{\vec{u}}$ and $\norm{\vec{v}}$ respectively.
+
+\subsection{Operations and Properties of Complex Matrices}
+Matrix multiplication between two complex matrices is carried out in the same way as we have been always doing, according to Definition \ref{matmuldef}. However, due to the difference in definition of dot product for real and complex vectors, we can no longer claim like in Definition \ref{dotreal} that the elements of a complex matrix product are complex vector dot products between appropriate rows and columns. Nevertheless, we can still describe the elements as a sum of products between those rows and columns.
+
+\subsubsection{Conjugate Transpose}
+Transpose can be similar defined for complex matrices. However, there exists a more useful operation that combines transpose and conjugate.
+\begin{defn}
+The conjugate transpose of a matrix $A$, denoted as $A^* = \overline{A}^T$, has elements $A^*_{pq} = \overline{A}_{qp}$, where $\overline{A}$ is produced by changing every element in $A$ to its complex conjugate. Sometimes it is called the adjoint or Hermitian of $A$, and denoted as $A^H$. 
+\end{defn}
+It means that complex conjugate requires flipping the elements about the main diagonal, then subsequently conjugate on all of them. Properties of conjugate transpose are alike to those for real transpose, stated in Properties \ref{transposeproper}.
+\begin{proper}
+For two complex matrices $A$ and $B$, we have
+\begin{enumerate}
+\item $(cA)^* = \overline{c}A^*$, where $c$ is any complex scalar,
+\item $(A^*)^* = A$,
+\item $(A \pm B)^* = A^* \pm B^*$, if $A$ and $B$ have the same shape,
+\item $(AB)^* = B^*A^*$, if their matrix products is possible.
+\end{enumerate}
+\end{proper}
+
+\begin{exmp}
+For two complex matrices
+\begin{align*}
+& A =
+\begin{bmatrix}
+1 & \imath \\
+-\imath & 0
+\end{bmatrix} 
+& B =
+\begin{bmatrix}
+1+\imath & 2 \\
+0 & 1-\imath
+\end{bmatrix}
+\end{align*}
+Verify that $(AB)^* = B^*A^*$.
+\begin{align*}
+A^* &=
+\begin{bmatrix}
+1 & \imath \\
+-\imath & 0
+\end{bmatrix} \\
+B^* &=
+\begin{bmatrix}
+1-\imath & 0 \\
+2 & 1+\imath
+\end{bmatrix} \\
+B^*A^* &= 
+\begin{bmatrix}
+1-\imath & 0 \\
+2 & 1+\imath
+\end{bmatrix} 
+\begin{bmatrix}
+1 & \imath \\
+-\imath & 0
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+(1-\imath)(1) + (0)(-\imath) & (1-\imath)(\imath) + (0)(0)  \\
+(2)(1) + (1+\imath)(-\imath) & (2)(\imath) + (1+\imath)(0)
+\end{bmatrix} 
+=
+\begin{bmatrix}
+1-\imath & 1+\imath \\
+3-\imath & 2\imath
+\end{bmatrix} 
+\end{align*}
+\begin{align*}
+AB &= 
+\begin{bmatrix}
+1 & \imath \\
+-\imath & 0
+\end{bmatrix} 
+\begin{bmatrix}
+1+\imath & 2 \\
+0 & 1-\imath
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+(1)(1+\imath)+(\imath)(0) & (1)(2) + (\imath)(1-\imath) \\
+(-\imath)(1+\imath)+(0)(0) & (-\imath)(2) + (0)(1-\imath)
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+1+\imath & 3+\imath \\
+1-\imath & -2\imath
+\end{bmatrix} \\
+(AB)^* &= 
+\begin{bmatrix}
+1-\imath & 1+\imath \\
+3-\imath & 2\imath
+\end{bmatrix}
+\end{align*}
+\end{exmp}
+
+\subsubsection{Determinant and Inverse for complex matrices}
+Complex matrices also have determinants and inverses, and are calculated nearly in the same ways outlined in Sections \ref{section:det} and \ref{section:inv}. We highlight the difference and provide some examples here.
+
+\begin{exmp}
+Calculate the determinant for
+\begin{align*}
+A = 
+\begin{bmatrix}
+1-\imath & 3 & 2 \\
+1+\imath & 0 & \imath \\
+2 & -2\imath & 1
+\end{bmatrix}
+\end{align*}
+We apply Cofactor Expansion along the middle row in the way outlined in Properties \ref{cofactorex}, the result is
+\begin{align*}
+&\quad -(1+\imath)
+\begin{vmatrix}
+3 & 2 \\
+-2\imath & 1
+\end{vmatrix}
++ (0)
+\begin{vmatrix}
+1-\imath & 2 \\
+2 & 1
+\end{vmatrix}
+- (\imath)
+\begin{vmatrix}
+1-\imath & 3 \\
+2 & -2\imath
+\end{vmatrix} \\
+&= -(1+\imath)(3+4\imath) - (\imath)(-8-2\imath) \\
+&= -1 + \imath
+\end{align*}
+\end{exmp}
+The computation of inverse is the same as Properties \ref{properinvadj}.
+\begin{exmp}
+Find the inverse of the matrix $A$ in the last example.\\
+\\
+First, we note that
+\begin{align*}
+\frac{1}{\det(A)} &= \frac{1}{-1+\imath} \\
+&= \frac{1}{-1+\imath} \frac{-1-\imath}{-1-\imath} \\
+&= \frac{-1-\imath}{1+1} = -\frac{1+\imath}{2}
+\end{align*}
+Then, we proceed to compute the cofactor matrix for $A$, which is
+\begin{align*}
+C &=
+\begin{bmatrix}
+\begin{vmatrix}
+0 & \imath \\
+-2\imath & 1
+\end{vmatrix} &
+-\begin{vmatrix}
+1+\imath & \imath \\
+2 & 1
+\end{vmatrix} &
+\begin{vmatrix}
+1+\imath & 0 \\
+2 & -2\imath
+\end{vmatrix} \\
+-\begin{vmatrix}
+3 & 2 \\
+-2\imath & 1
+\end{vmatrix} &
+\begin{vmatrix}
+1-\imath & 2 \\
+2 & 1
+\end{vmatrix} &
+-\begin{vmatrix}
+1-\imath & 3 \\
+2 & -2\imath
+\end{vmatrix} \\
+\begin{vmatrix}
+3 & 2 \\
+0 & \imath
+\end{vmatrix} &
+-\begin{vmatrix}
+1-\imath & 2 \\
+1+\imath & \imath
+\end{vmatrix} &
+\begin{vmatrix}
+1-\imath & 3 \\
+1+\imath & 0
+\end{vmatrix}
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+-2 & -1+\imath & 2-2\imath \\
+-3-4\imath & -3-\imath & 8+2\imath \\
+3\imath & 1+\imath & -3-3\imath
+\end{bmatrix}
+\end{align*}
+Thus, by Properties \ref{properinvadj}, the inverse of $A$ is
+\begin{align*}
+A^{-1} &= \frac{1}{\det(A)} \text{adj}(A) = \frac{1}{\det(A)} C^T \\
+&= -\frac{1+\imath}{2} 
+\begin{bmatrix}
+-2 & -3-4\imath & 3\imath \\
+-1+\imath & -3-\imath & 1+\imath \\
+2-2\imath & 8+2\imath & -3-3\imath
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+1+\imath & -\frac{1}{2}+\frac{7}{2}\imath & \frac{3}{2}-\frac{3}{2}\imath \\
+1 & 1+2\imath & -\imath \\
+-2 & -3-5\imath & 3\imath
+\end{bmatrix} 
+\end{align*}
+Short Exercise: Find $A^{-1}$ via Gaussian Elimination.
+\end{exmp}
+
+Below are some useful properties of determinant and transpose for complex matrices, that can be compared to Properties \ref{inverseprop} and \ref{properdet}.
+\begin{proper}
+If $A$ is a complex matrix, then
+\begin{enumerate}
+\item $\text{det}(A^T) = \text{det}(A)$,
+\item $\text{det}(A^*) = \overline{\text{det}(A)}$,
+\item $\text{det}(kA) = k^n \text{det}(A)$, for any complex constant $k$,
+\item $\text{det}(AB) = \text{det}(A)\text{det}(B)$, and
+\item $\text{det}(A^{-1}) = \frac{1}{\text{det}(A)}$, given $A$ is invertible.
+\end{enumerate}
+Additionally, if $A$ is non-singular, then
+\begin{enumerate}
+\item $(cA)^{-1} = \frac{1}{c}A^{-1}$, for any complex scalar $c \neq 0$,
+\item $(A^{-1})^{-1} = A$,
+\item $(A^n)^{-1} = (A^{-1})^n$, for any positive integer $n$,
+\item $(AB)^{-1} = B^{-1}A^{-1}$, provided that $B$ is invertible too,
+\item $(A^T)^{-1} = (A^{-1})^T$,
+\item $(A^*)^{-1} = (A^{-1})^*$.
+\end{enumerate}
+\end{proper}
+
+\section{Exercises}
+
+\begin{Exercise}
+By considering Euler's formula stated in Definition \ref{Euler}, we have for any $\theta$, $\phi$
+\begin{align*}
+e^{\imath \theta} &= \cos \theta + \imath \sin \theta \\
+e^{\imath \phi} &= \cos \phi + \imath \sin \phi \\
+e^{\imath (\theta+\phi)} &= \cos (\theta+\phi) + \imath \sin (\theta+\phi)
+\end{align*}
+If we take the product of the first two equations, we also have
+\begin{align*}
+e^{\imath (\theta+\phi)} &= (\cos \theta + \imath \sin \theta)(\cos \phi + \imath \sin \phi)
+\end{align*}
+By equating the two expressions of $e^{\imath (\theta+\phi)}$, expand and compare the real and imaginary parts, prove the famous angle sum identities, which are
+\begin{align*}
+\cos(\theta+\phi) &= \cos\theta \cos\phi - \sin\theta \sin\phi \\
+\sin(\theta+\phi) &= \sin\theta \cos\phi + \cos\theta \sin\phi 
+\end{align*}
+\end{Exercise}
+
+\begin{Exercise}
+By either using the results above, or the De Moivre's Formula, prove the double angle formula below
+\begin{align*}
+\cos(2\theta) &= \cos^2\theta - \sin^2\theta \\
+\sin(2\theta) &= 2\sin\theta \cos\theta  
+\end{align*}
+\end{Exercise}
+
+\begin{Exercise}
+Evaluate
+\begin{enumerate}[label=(\alph*)]
+\item $(1+\imath)(3-2\imath)$,
+\item $\overline{(2-\imath)/(4+\imath)}$,
+\item $(3+5\imath)\overline{(1+\imath)/(2-3\imath)}$
+\end{enumerate}
+as well as their modulus and argument.
+\end{Exercise}
+
+\begin{Exercise}
+For $\vec{u} = (1+\imath, 2-\imath, 3)^T$, $\vec{v} = (2+\imath, 1-2\imath, \imath)^T$, and $\vec{w} = (-\imath, 3, 1-\imath)^T$, find
+\begin{enumerate}[label=(\alph*)]
+\item $\vec{u} \cdot \vec{v}$,
+\item $(\vec{u} + \vec{v}) \cdot (\vec{u} - \vec{w})$,
+\item $\norm{\vec{u}} \vec{v} - \norm{\vec{v}} \vec{w}$.
+\end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+For the two complex matrices below,
+\begin{align*}
+& A=
+\begin{bmatrix}
+1+\imath & -\imath & 3 \\
+0 & 2-\imath & 1 \\
+-1 & \imath & 2
+\end{bmatrix}
+& B=
+\begin{bmatrix}
+1 & 2-\imath & \imath \\
+-\imath & 3+\imath & 1-\imath \\
+0 & 1 & 2\imath
+\end{bmatrix}
+\end{align*}
+compute $AB$, and verify $(AB^*)^* = BA^*$.
+\end{Exercise}
+
+\begin{Exercise}
+For the matrix
+\begin{align*}
+A=
+\begin{bmatrix}
+1-4\imath & -3\imath & 2+\imath \\
+1-\imath & 0 & 3\imath \\
+-2 & 1 & 3+\imath
+\end{bmatrix}    
+\end{align*}
+find its determinant and inverse.
+\end{Exercise}

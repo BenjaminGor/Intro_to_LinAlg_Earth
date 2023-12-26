@@ -1,0 +1,207 @@
+\chapter{Numerical Integration}
+
+Sometimes, the integral of a function may have an analytical solution. However, for more complicated functions, closed-form solution is often unavailable or very difficult to obtain. In Earth Science or other Science fields, integrals that are hard to evaluate are not rare. The most common example is the integral of a Gaussian function
+\begin{align*}
+\int_{-\infty}^{t} e^{-\tau^2/(2\sigma^2)} d\tau
+\end{align*}
+that frequently appears as the cumulative distribution function of Normal Distribution. Sometimes we also need to calculate an integral from limited measurements. This forces us to apply \textit{Numerical Integration} methods to do the integration in a discrete manner. In the age of computers, this approach is feasible in many cases, as it can usually give an accurate estimate on the actual value of the integral.\\
+\\
+While integration methods themselves are not directly related to linear algebra, vectors and matrices provide a compact description to some of them, Therefore, they are worth to be mentioned, accounting for their importance in Earth Science.
+
+\section{One-dimensional Numerical Integration}
+We start from the simplest case, numerical integration for single integrals.
+
+\subsection{Trapezoidal Rule}
+The most straight-forward method is to go back to the definition of integral itself. Since integral can be regarded to be the sum of infinitely many small rectangles, we can approximate any integral by partitioning the area into some finite amount of rectangles, hoping the accuracy is not too bad. This method has the name \textit{Rectangle Rule}.\\
+\\
+We will not talk about the Rectangle Rule in details. Instead, we jump to an improved version which is a natural generalization of the Rectangle Rule. Often while using Rectangle Rule, we craft the rectangle with a height that is either the value of the function at the left (or right) interval. So, the approximation by rectangles will introduce substantial errors due to the difference between their heights and the right (left) intervals. We naturally amend this by using a trapezoid that touches the function at both intervals. This is called the \textit{Trapezoidal Rule}.\\
+\begin{defn}
+\label{1301}
+The Trapezoidal Rule approximates an integral by
+\begin{align*}
+\int_a^b f(x) dx \approx \sum_{k=0}^{n-1} \frac{h}{2} (f(x_k) + f(x_{k+1}))  
+\end{align*}
+where we partition the interval $[a,b]$ into $n$ intervals evenly at $x_0, x_1, \cdots, x_n$ with a width of $h$. Expanding the summation gives
+\begin{align*}
+&\quad \sum_{k=0}^{n-1} \frac{h}{2} (f(x_k) + f(x_{k+1})) \\
+&= \frac{h}{2} (f(x_0) + 2f(x_1) + 2f(x_2) + \cdots + 2f(x_{n-2}) + 2f(x_{n-1}) + f(x_n))
+\end{align*}
+\end{defn}
+
+\begin{exmp}
+Integrate $\cos(0.7\pi x)$ numerically by Trapezoidal Rule over $x = [0,2]$.\\
+\\
+We divide the interval into $5$ sub-intervals with a spacing of $h = 0.4$, $x_0 = 0, x_1 = 0.4, x_2 = 0.8, \cdots, x_5 = 2$. By definition \ref{1301}, we obtain an estimate of
+\begin{align*}
+&\quad \int_0^2 \cos(0.7\pi x) dx \\
+&\approx \frac{0.4}{2} [\cos(0.7\pi (0)) + 2\cos(0.7\pi (0.4)) + 2\cos(0.7\pi (0.8))\\
+&\quad + 2\cos(0.7\pi (1.2)) + 2\cos(0.7\pi (1.6)) + \cos(0.7\pi (2))] \\
+&\approx -0.404
+\end{align*}
+The exact value is around $-0.432$.
+\end{exmp}
+
+\subsection{Simpson's Rule}
+An even more powerful numerical integration method is to used quadratic curves to approximate the area under the curve. Different from Trapezoidal Rule, each quadratic curve used span two sub-intervals, so the total number of sub-intervals must be even. (If it is odd, then we can use Trapezoidal Rule for the last sub-interval.) This is known as the \textit{Simpson's Rule}.
+\begin{defn}
+\label{1302}
+The Simpson's Rule approximates an integral by
+\begin{align*}
+\int_a^b f(x) dx \approx \sum_{l=0}^{m-1} \frac{2h}{6} (f(x_{2l}) + 4f(x_{2l+1}) + f(x_{2l+2}))  
+\end{align*}
+assuming the number of sub-interval over $[a,b]$ is even, $n = 2m$. Again each of them has a even spacing of $h$. Alternatively, we have
+\begin{align*}
+&\quad \sum_{l=0}^{m-1} \frac{2h}{6} (f(x_{2l}) + 4f(x_{2l+1}) + f(x_{2l+2})) \\
+&= \frac{2h}{6} (f(x_0) + 4f(x_1) + 2f(x_2) + 4f(x_3) + \cdots + 2f(x_{n-2}) + 4f(x_{n-1}) + f(x_n))
+\end{align*}
+\end{defn}
+
+\begin{exmp}
+Integrate $f(x) = e^{-x}$ between $[0,1]$ using Simpson's Rule.\\
+\\
+We demonstrate by dividing the interval into $10$ sub-intervals with a width of $h=0.1$ and there are $5$ quadratic curves used for the estimation. From the $(1, 4, 2, 4, 1)$ pattern in definition \ref{1302}, we have
+\begin{align*}
+&\quad \int_0^1 e^{-x} dx \\
+&\approx \frac{2(0.1)}{6}(e^0 + 4e^{-0.1} + 2e^{-0.2} + 4e^{-0.3} + 2e^{-0.4} \\
+&\quad + 4e^{-0.5} + 2e^{-0.6} + 4e^{-0.7} + 2e^{-0.8} + 4e^{-0.9} + e^{-1}) \\
+&\approx 0.63212
+\end{align*}
+The answer is very close to the exact value, with the first difference occurs at the $7$-th decimal place.\\ 
+Short Exercise: Repeat the approximation with Trapezoidal Rule.
+\end{exmp}
+
+\section{Generalization and Discussion}
+\subsection{Multi-dimensional Numerical Integration}
+It can be inferred from the previous example that the two numerical integration methods above can be written in the form of dot product for single integrals. For Trapezoidal Rule, it is 
+\begin{align*}
+\frac{h}{2}
+\begin{bmatrix}
+f(x_0) & f(x_1) & f(x_2) & \cdots & f(x_{n-1}) & f(x_n)
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+2 \\
+2 \\
+\vdots \\
+2 \\
+1
+\end{bmatrix}
+\end{align*}
+While for Simpson's Rule, it is
+\begin{align*}
+\frac{2h}{6}
+\begin{bmatrix}
+f(x_0) & f(x_1) & f(x_2) & f(x_3) & f(x_4) & \cdots & f(x_{n-2}) & f(x_{n-1}) & f(x_n)
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+4 \\
+2 \\
+4 \\
+2 \\
+\vdots \\
+2 \\
+4 \\
+1
+\end{bmatrix}
+\end{align*}
+Generalizing for the double integral of a function $f(x,y)$, the expression becomes a quadratic form. the Trapezoidal Rule has a form of
+\begin{align*}
+(\frac{h_x}{2})(\frac{h_y}{2})
+\begin{bmatrix}
+1 & 2 & 2 & \cdots & 1
+\end{bmatrix}
+\begin{bmatrix}
+f(x_0,y_0) & f(x_1, y_0) & f(x_2, y_0) & \cdots & f(x_n, y_0) \\
+f(x_0,y_1) & f(x_1, y_1) & f(x_2, y_1) & \cdots & \\
+f(x_0,y_2) & f(x_1, y_2) & f(x_2, y_2) & \cdots & \\
+\vdots & & & \ddots & \\
+f(x_0,y_m) & & & & f(x_n,y_m)
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+2 \\
+2 \\
+\vdots \\
+1
+\end{bmatrix}   
+\end{align*}
+where $m$ and $n$ are the amounts of sub-intervals along $y$ and $x$-directions. Simpson's Rule for double integrals reads
+\begin{align*}
+(\frac{2h_x}{6})(\frac{2h_y}{6})
+\begin{bmatrix}
+1 & 4 & 2 & \cdots & 1
+\end{bmatrix}
+\begin{bmatrix}
+f(x_0,y_0) & f(x_1, y_0) & f(x_2, y_0) & \cdots & f(x_n, y_0) \\
+f(x_0,y_1) & f(x_1, y_1) & f(x_2, y_1) & \cdots & \\
+f(x_0,y_2) & f(x_1, y_2) & f(x_2, y_2) & \cdots & \\
+\vdots & & & \ddots & \\
+f(x_0,y_m) & & & & f(x_n,y_m)
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+4 \\
+2 \\
+\vdots \\
+1
+\end{bmatrix}   
+\end{align*}
+assuming the step width $h_x$ and $h_y$ along the $x$ and $y$-direction. This is effectively equivalent to first apply the method in $x$/$y$-direction and then apply it again in $y$/$x$-direction.
+
+\begin{exmp}
+Numerically integrate the double integral $\int_1^4 \int_0^3 e^{-x}\cos(y) dxdy$ over the rectangular region $0 \leq x \leq 3$, $1 \leq y \leq 4$.\\
+\\
+We employ the Trapezoidal Rule with a step size of $h = 1$ along both $x$ and $y$-directions. From the formula above, we know that the approximation is given by
+\begin{align*}
+(\frac{1}{2})^2
+\begin{bmatrix}
+1 & 2 & 2 & 1
+\end{bmatrix}
+\begin{bmatrix}
+e^{-0}\cos(1) & e^{-1}\cos(1) & e^{-2}\cos(1) & e^{-3}\cos(1) \\
+e^{-0}\cos(2) & e^{-1}\cos(2) & e^{-2}\cos(2) & e^{-3}\cos(2) \\
+e^{-0}\cos(3) & e^{-1}\cos(3) & e^{-2}\cos(3) & e^{-3}\cos(3) \\
+e^{-0}\cos(4) & e^{-1}\cos(4) & e^{-2}\cos(4) & e^{-3}\cos(4) 
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+2 \\
+2 \\
+1
+\end{bmatrix}       
+\end{align*}
+\end{exmp}
+The value of this quadratic form is $-1.5039$, compared to the exact value of $-1.5187$.\\
+Short Exercise: Use two-dimensional Simpson's Rule to compute this double integral again.\\
+\\
+The ideas for extending these two rules for triple integrals are similar. The integration methods are applied in the three directions, one after another. The formula can be expressed using tensors, which will be taught in the last chapter.
+
+\subsection{Error Estimates}
+Errors of Trapezoidal Rule is proportional to the square of step size, while Simpson’s Rule has an error proportional to the fourth power of step size. In general, Simpson’s Rule is more accurate. Below listed the detailed error estimates for these two methods in one-dimensional cases.
+\begin{proper}
+Given a definite, single integral of a function $f(x)$ to be numerically integrated over the region $[a,b]$, the maximum error incurred by Trapezoidal Rule is
+\begin{align*}
+\abs{E_T} \leq \frac{Q_2(b-a)}{12}h^2
+\end{align*}
+where $h$ is the step size, $Q_2$ is the absolute value of the maximum second derivative of the function, $\abs{f''(x)}$, in the range. Error of Simpson's Rule is bounded by
+\begin{align*}
+\abs{E_S} \leq \frac{Q_4(b-a)}{180}h^4
+\end{align*}
+$Q_4$ is similarly the absolute value of the maximum fourth derivative of the function, $\abs{f^{(4)}(x)}$.
+\end{proper}
+The actual error is usually much smaller than the theoretical bound. As a final note, Trapezoidal Rule and Simpson’s Rule belong to a wider class of integration formula called \textit{Newton-Cotes Quadrature Rule}.
+
+\section{Exercise}
+
+\begin{Exercise}
+Use Trapezoidal Rule and Simpson's Rule to numerically integrate $\int_0^{8} \exp(-\frac{x^2}{8^2}) dx$. The spacing between each sampling point should be less than $1$. It is given that the value of the integral is about $5.97459306$, estimate the percentage errors of these two numerical integration methods.
+\end{Exercise}
+
+\begin{Exercise}
+Use Trapezoidal Rule and Simpson's Rule to numerically integrate $\int_2^{10}\int_2^{10} \ln(x)\sqrt{y} dxdy$. The spacing between each grid point should be less than $1$.
+\end{Exercise}
+
+\begin{Exercise}
+What is the error of Simpson's Rule if we integrate $f(x) = x^3 + 2x^2 + 3x + 4$ between $[0, 10]$?
+\end{Exercise}

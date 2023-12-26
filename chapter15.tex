@@ -1,0 +1,734 @@
+\chapter{Matrix Factorization Methods}
+
+In this chapter, we are going to discuss some matrix factorization methods. We have introduced one of them (QR Decomposition) in \autoref{chap:6}. In the past, matrix factorization is not a hot topic in Earth Science. However, as Machine Learning gains popularity in different Scientific fields, many Earth Science research starts to involve matrix factorization, which has been a main instrument in Machine Learning. Apart from this, a less visible usage of matrix factorization is embedded in the implementation of linear algebra package in programming languages (e.g. LAPACK, for Fortran). Those matrix factorization enables a much faster and stable computation of linear algebra problems, such as finding inverses or solving linear systems. Other potential applications include image processing, data compression, and more.
+
+\section{Square Matrix Factorization}
+\subsection{Cholesky Factorization}
+
+\textit{Cholesky Decomposition} is for a special class of matrices which are symmetric and positive-definite. We have talked about how a matrix is positive-definite in section \ref{Conic}. For a symmetric and positive-definite matrix $A$, Cholesky Decomposition factorizes it into $U^TU$, where $U$ is an upper triangular matrix, $U^T$ is hence a lower triangular matrix. (Upper/lower triangular implies non-zero entries only present along or above/below the main diagonal) An example would be
+\begin{align*}
+A = 
+\begin{bmatrix}
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 1 & 6
+\end{bmatrix}
+&=
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+1 & 1 & 2
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+0 & 0 & 2
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+0 & 0 & 2
+\end{bmatrix}^T
+\begin{bmatrix}
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+0 & 0 & 2
+\end{bmatrix} \\
+&= U^TU 
+\end{align*}
+
+We can compute Cholesky Decomposition step by step, first rewriting the $n \times n$ matrix $A$ into the proposed factorized form of
+\begin{align*}
+A = U^T U = 
+\begin{bmatrix}
+u_{11} & \vec{r_1}^T \\
+\vec{0} & U_b 
+\end{bmatrix}^T
+\begin{bmatrix}
+u_{11} & \vec{r_1}^T \\
+\vec{0} & U_b 
+\end{bmatrix} = 
+\begin{bmatrix}
+u_{11} & \vec{0}^T \\
+\vec{r_1} & U_b^T
+\end{bmatrix}
+\begin{bmatrix}
+u_{11} & \vec{r_1}^T \\
+\vec{0} & U_b 
+\end{bmatrix}
+\end{align*}
+where $u_{11}$ is the first diagonal element of $U$, $\vec{r_1}$ is a column vector of length $n-1$ and $U_b$ is a block matrix with size $(n-1, n-1)$. The matrix dot product at R.H.S. gives
+\begin{align*}
+A = 
+\begin{bmatrix}
+\alpha_{11} & \vec{a_1}^T \\
+\vec{a_1} & A_b 
+\end{bmatrix}
+=
+\begin{bmatrix}
+u_{11}^2 & u_{11}\vec{r_1}^T \\
+u_{11}\vec{r_1} & \vec{r_1}\vec{r_1}^T + U_b^T U_b
+\end{bmatrix}
+= U^TU
+\end{align*}
+where $\alpha_{11}$ is the first diagonal element of $A$, $\vec{a_1}$ and $A_b$ is also a column vector just like $\vec{r_1}$ and $U_b$. The dot product involving block matrices is carried out just like usual matrix dot product. Comparing the both sides, we have
+\begin{align*}
+\alpha_{11} &= u_{11}^2 \\
+\vec{a_1} &= u_{11}\vec{r_1} \\
+A_b &= \vec{r_1}\vec{r_1}^T + U_b^T U_b
+\end{align*}
+\begin{align*}
+u_{11} &= \sqrt{\alpha_{11}} \\
+\vec{r_1} &= \frac{\vec{a_1}}{\sqrt{\alpha_{11}}} \\
+U_b^T U_b &= A_b - \vec{r_1}\vec{r_1}^T
+\end{align*}
+By the relations above, we determine the first row and column of $U$. Subsequently, the remaining block $U_b$ is constructed by applying the same procedure on $A_2 = U_b^T U_b$ which has been obtained from the last relation, and then keep repeating the method to reduce the resulted block matrix on until the last entry is processed.
+\begin{defn}
+The Cholesky Factorization $U^TU$ of a symmetric, positive-definite matrix $A$, is constructed by the recursive relations
+\begin{align*}
+u_{mm} &= \sqrt{\alpha_{mm}} \\
+\vec{r_m} &= \frac{\vec{a_m}}{\sqrt{\alpha_{mm}}} \\
+U_b^T U_b &= A_b - \vec{r_m}\vec{r_m}^T
+\end{align*}
+where the subscript $m$ implies the $m$-th step. The formula are applied iteratively on $A_m = U_b^T U_b$ acquired at every step.
+\end{defn}
+
+\begin{exmp}
+Perform Cholesky Factorization on the symmetric, positive-definite matrox
+\begin{align*}
+A &=
+\begin{bmatrix}
+4 & 2 & 0 \\
+2 & 2 & 2 \\
+0 & 2 & 5 
+\end{bmatrix}
+\end{align*}
+The first step results in
+\begin{align*}
+u_{11} &= \sqrt{4} = \textcolor{red}{2} \\
+\vec{r_1} &= \frac{1}{\sqrt{4}}
+\begin{bmatrix}
+2 \\
+0
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\textcolor{blue}{1} \\
+\textcolor{blue}{0}
+\end{bmatrix} \\
+A_2 = U_b^T U_b &= 
+\begin{bmatrix}
+2 & 2 \\
+2 & 5
+\end{bmatrix}
+-
+\begin{bmatrix}
+1 \\
+0
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0
+\end{bmatrix} \\
+&= \begin{bmatrix}
+1 & 2 \\
+2 & 5 
+\end{bmatrix}
+\end{align*}
+So we know that
+\begin{align*}
+U &=
+\begin{bmatrix}
+\textcolor{red}{2} & \textcolor{blue}{1} & \textcolor{blue}{0} \\
+0 & ? & ? \\
+0 & ? & ? \\
+\end{bmatrix}
+\end{align*}
+The next iteration $A_2$ on gives
+\begin{align*}
+u_{22} &= \sqrt{1} = \textcolor{red}{1} \\  
+\vec{r_2} &= \frac{1}{\sqrt{1}}
+\begin{bmatrix}
+2
+\end{bmatrix}
+=
+\begin{bmatrix}
+\textcolor{blue}{2}
+\end{bmatrix} \\
+U_b^T U_b &=
+5 - 
+\begin{bmatrix}
+2
+\end{bmatrix}
+\begin{bmatrix}
+2
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+1
+\end{bmatrix}
+\end{align*}
+We still need to deal with the $1 \times 1$ matrix that is left. At the third step, we simply take
+\begin{align*}
+u_{33} = \sqrt{1} = \textcolor{Green}{1}
+\end{align*}
+So the final expression of $U$ is given by
+\begin{align*}
+U = 
+\begin{bmatrix}
+2 & 1 & 0 \\
+0 & \textcolor{red}{1} & \textcolor{blue}{2} \\
+0 & 0 & \textcolor{Green}{1}
+\end{bmatrix}
+\end{align*}
+Short Exercise: Check if $A = U^T U$.
+\end{exmp}
+
+\subsection{LU/LDU Factorization}
+
+\textit{LU Factorization} is similar to Cholesky Factorization. It decomposes any matrix into one upper and one lower triangular matrix, but the original matrix needs not to be symmetric or positive-definite. The key to LU factorization is the method of Gaussian Elimination discussed in sections \ref{Echelon} and \ref{subsection:invGauss}. By Gaussian Elimination we can always reduce a given matrix to an upper triangular matrix (row echelon form), through a sequence of elementary row operations, or equivalently taking the dot product with a sequence of elementary matrices to the left. \\
+\\
+Denote such operations with $E_1', E_2', \cdots, E_n'$, in the spirit similar to theorem \ref{GaussElimPrinciple}, we have $E_n'\cdots E_2'E_1'A = U$, where $U$ is an upper triangular matrix produced from the forward phase of Gaussian Elimination. Rearrangement gives
+\begin{align*}
+A = (E_1'^{-1}E_2'^{-1}\cdots E_n'^{-1})U    
+\end{align*}
+If all $E_i'$ involves no row interchanges, then they would be all lower triangular matrices as required by the forward stage of Gaussian Elimination (if there is row interchange, then $E_i'$ will not be a lower triangular matrix.). As a result, $(E_1'^{-1}E_2'^{-1}\cdots E_n'^{-1})$ will be a lower triangular matrix $L$, and the LU Factorization $A = LU$ is constructed.
+\begin{thm}
+LU Factorization of a matrix $A$ is possible if it can be reduced to a row echelon form $U$, which will be an upper triangular matrix, by forward Gaussian Elimination. The steps and elementary matrices used to produce $U$ can be grouped together, and inverted to give a lower triangular matrix $L$. The LU Factorization will then be $A = LU$.
+\end{thm}
+
+\begin{exmp}
+Compute a LU Factorization for
+\begin{align*}
+A = 
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 1 & 1 \\
+2 & 0 & 4
+\end{bmatrix}
+\end{align*}
+By Gaussian Elimination, we have
+\begin{align*}
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 1 & 1 \\
+2 & 0 & 4
+\end{bmatrix}
+&\rightarrow 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 1 \\
+2 & 0 & 4 
+\end{bmatrix}
+& E_1' =
+\begin{bmatrix}
+\frac{1}{2} & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+\\
+&\rightarrow 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 1 \\
+0 & 0 & 4 
+\end{bmatrix}
+&
+E_2' =
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+-2 & 0 & 1 
+\end{bmatrix}
+\\
+&\rightarrow 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 1 \\
+0 & 0 & 1
+\end{bmatrix}
+&
+E_3' = 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & \frac{1}{4}
+\end{bmatrix}
+\end{align*}
+Therefore, we can take
+\begin{align*}
+U &= 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 1 \\
+0 & 0 & 1 
+\end{bmatrix}
+\\
+L &= E_3'^{-1}E_2'^{-1}E_1'^{-1} \\
+&=
+\begin{bmatrix}
+\frac{1}{2} & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+-2 & 0 & 1 
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & \frac{1}{4} 
+\end{bmatrix}
+^{-1} \\
+&= \begin{bmatrix}
+2 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+2 & 0 & 1 
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 4 
+\end{bmatrix}
+\end{align*}
+This sequence amounts to a series of elementary row operations. Doing them starting from the right to the left, it is easy to arrive at
+\begin{align*}
+L &=
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 1 & 0 \\
+2 & 0 & 4
+\end{bmatrix}
+\end{align*}
+\end{exmp}
+
+Note that LU Factorization is not unique. However, one can derive \textit{LDU Factorization} that is unique given it has one, where $D$ is a diagonal matrix, while $L$ and $U$ have all the diagonal entries being one. Using the above example, we observe that
+\begin{align*}
+L &=
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 1 & 0 \\
+2 & 0 & 4
+\end{bmatrix} = 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+1 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 4
+\end{bmatrix}
+\end{align*}
+where we factor out a diagonal matrix from $L$ to force all the entries along the main diagonal to be $1$. So the corresponding LDU Factorization is
+\begin{align*}
+A =
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+1 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 4
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 1 \\
+0 & 0 & 1 
+\end{bmatrix}
+\end{align*}
+
+There is another variant of LU Factorization which is called \textit{PLU Factorization}, applicable to any matrix $A$. The idea is to first interchange the rows in $A$ so that LU Factorization becomes possible. After obtaining the LU Factorization, we collect all the elementary row matrices involved in the initial row interchanges as a matrix $P$ to be added at the left.
+
+\subsection{Solving Linear Systems with LU Decomposition}
+As mentioned in the start of the chapter, matrix factorization helps a lot when it comes to electronic calculation. For instance, $LU$ factorization is widely applied in solving linear systems in computer, preferred over direct Gaussian Elimination or using inverse, due to the reasons we are going to discuss later.\\
+\\
+Basically, it involves a two step procedure. For a linear system $A\vec{x} = \vec{h}$, if we have the LU Decomposition, then it can be rewritten as $LU\vec{x} = \vec{h}$. It then becomes a two step process to solve the system, where we let $U\vec{x} = \vec{y}$, and solve $L\vec{y} = \vec{h}$ first, and then come back to solve $U\vec{x} = \vec{y}$. Due to the nature of $L$ and $U$, we can do the forward and backward substitution to solve the two systems with relative ease.
+
+\begin{exmp}
+Given a linear system $A\vec{x} = \vec{h}$, where
+\begin{align*}
+A &= 
+\begin{bmatrix}
+1 & 1 & 0 \\
+0 & 2 & 2 \\
+1 & 2 & 4 
+\end{bmatrix}
+& \vec{h} = 
+\begin{bmatrix}
+3 \\
+2 \\
+4
+\end{bmatrix}
+\end{align*}
+and we are given the LU factorization of A as
+\begin{align*}
+A &= LU = 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 2 & 0 \\
+1 & 1 & 3 
+\end{bmatrix}
+\begin{bmatrix}
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+0 & 0 & 1 
+\end{bmatrix}
+\end{align*}
+We can solve the equivalent problem $LU\vec{x} = \vec{h}$, where $U\vec{x} = \vec{y}$ and thus $L\vec{y} = \vec{h}$. The latter one leads to
+\begin{align*}
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 2 & 0 \\
+1 & 1 & 3 
+\end{bmatrix}
+\begin{bmatrix}
+y_1 \\
+y_2 \\
+y_3
+\end{bmatrix}
+&=
+\begin{bmatrix}
+3 \\
+2 \\
+4
+\end{bmatrix} \\
+\vec{y} = 
+\begin{bmatrix}
+y_1 \\
+y_2 \\
+y_3
+\end{bmatrix}
+&=
+\begin{bmatrix}
+3 \\
+1 \\
+0
+\end{bmatrix}
+\end{align*}
+We leave the last step of solving $U\vec{x} = \vec{y}$ to the readers, the solution of which is $\vec{x} = (2,1,0)^T$.
+\end{exmp}
+
+\paragraph{Remark} To solve a family of linear systems $A\vec{x} = \vec{h_i}$, where $\vec{h_i}$ are many different column vectors, can be very time-consuming if we use Gaussian Elimination every time. LU Decomposition extracts and encapsulates the information from Gaussian Elimination, and saves the effort needed to compute Gaussian Elimination for different $\vec{h_i}$ every time. While it is also possible to achieve similar effects by utilizing the inverse $A^{-1}$, calculating the inverse for large-scale systems can be unstable and expensive.
+
+\section{Non-Square Matrix Factorization}
+
+\subsection{Singular Value Decomposition}
+
+LU Factorization can also be applied on a non-square matrix. However, there is another factorization method called \textit{Singular Value Decomposition} that is very useful in data compression. This method is not simple, and the readers may need some time to digest the instructions below. First, let's define what are singular values.
+\begin{defn}
+For a $m \times n$ matrix $A$, its singular values $\sigma_i$ are the square roots of the eigenvalues $\lambda_i$ of $A^TA$ (an $n \times n$ symmetric matrix, guaranteed to have $n$ eigenvalue-eigenvector pairs by theorem \ref{symdiag}). So
+\begin{align*}
+\sigma_i = \sqrt{\lambda_i}
+\end{align*}
+for $i = 1, 2, \cdots, n$.
+\end{defn}
+Attentive readers may notice a potential pitfall if $\lambda_i$ is negative. However, it cannot be the case. Consider the norm/length of the vector $A\hat{v_i}$ where $\hat{v_i}$ is the $i$-th unit eigenvector of $A^TA$. Then
+\begin{align*}
+\norm{A\hat{v_i}}^2 &= A\hat{v_i} \cdot A\hat{v_i}\\
+&= \hat{v_i} \cdot (A^TA\hat{v_i}) \\
+&= \hat{v_i} \cdot (\lambda_i\hat{v_i}) \\
+&= \lambda_i (\hat{v_i} \cdot \hat{v_i}) = \lambda_i \norm{\hat{v_i}}^2 = \lambda_i
+\end{align*}
+where properties \ref{dotproper} and the definition \ref{eigen} of eigenvector are used. Since $\norm{A\vec{v_i}}^2$ must be non-negative, $\lambda_i$ will be non-negative as well. For example, the matrix
+\begin{align*}
+A &= 
+\begin{bmatrix}
+1 & 0 & 1\\
+2 & 1 & 0
+\end{bmatrix}
+\end{align*}
+leads to
+\begin{align*}
+A^TA &= 
+\begin{bmatrix}
+1 & 2\\
+0 & 1 \\
+1 & 0
+\end{bmatrix} 
+\begin{bmatrix}
+1 & 0 & 1\\
+2 & 1 & 0
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+5 & 2 & 1 \\
+2 & 1 & 0 \\
+1 & 0 & 1
+\end{bmatrix}
+\end{align*}
+as a symmetric matrix that has eigenvalues of $\lambda = 6, 1, 0$, and hence $A$ has a sequence of singular values of $\sigma = \sqrt{6}, 1, 0$. The readers are invited to confirm the computation. We also note a key observation, that we are not going to prove. (It requires some fundamental concepts that we have chosen not to be included in the book)
+\begin{thm}
+For a $m \times n$ matrix $A$, where $m < n$, so that $A$ has more columns than rows, then there must be at least $n-m$ zero eigenvalues for $A^TA$, and hence the same number of zero singular values for $A$.
+\end{thm}
+If $m > n$, it is obvious that there are only at most $n$ eigenvalues for $A^TA$. Collectively, it implies that for a $m \times n$ matrix $A$, it will have at most $\min(m,n)$ (the smaller of $m$ and $n$) non-zero singular values. This is consistent with the example we have seen above. Now we are prepared to see how Singular Value Decomposition is done.
+\begin{defn}
+The Singular Value Decomposition for a $m \times n$ matrix $A$ is
+\begin{align*}
+A = U\Sigma V^T
+\end{align*}
+where $U$, $\Sigma$, $V$ is a $m \times m$, $m \times n$ and $n \times n$ matrix. $V$ is constructed by
+\begin{align*}
+V = 
+\begin{bmatrix}
+\hat{v_1} | \hat{v_2} | \cdots | \hat{v_n}
+\end{bmatrix}
+\end{align*}
+where the unit column vectors $\hat{v_1}, \hat{v_2}, \cdots, \hat{v_n}$ are the orthonormal eigenvectors of the symmetric matrix $A^TA$ (refers to the notes for theorem \ref{symdiag}), ordered by decreasing eigenvalues. $\Sigma$ consists of the non-zero singular values $\sigma_j$ (also in decreasing order) of the corresponding column vectors $\hat{v_j}$ in $V$ along the main diagonal, and has a value of zero elsewhere. $U$ is made up of the unit column vectors (that are also orthogonal to each other) that satisfies
+\begin{align*}
+\hat{u_j} = \frac{1}{\sigma_j} A\hat{v_j}
+\end{align*}
+for all $j$ that represents a non-zero singular value $\sigma_j \neq 0$. In the case where there are not enough column vectors to construct $U$ by the relation above, use Gram-Schmidt Orthogonalization (or other feasible methods) to create orthonormal vectors that extend the basis of $\hat{u_j}$ up to $j = m$.
+\end{defn}
+
+\begin{exmp}
+Again, for the $2 \times 3$ matrix
+\begin{align*}
+A &= 
+\begin{bmatrix}
+1 & 0 & 1\\
+2 & 1 & 0
+\end{bmatrix}
+\end{align*}    
+We have show that the eigenvalues of $A^TA$ are $\lambda = 6,1,0$, and the singular values of $A$ are $\sigma = \sqrt{6}, 1, 0$. The corresponding unit eigenvectors for $A^TA$ are $(\frac{\sqrt{5}}{\sqrt{6}}, \frac{\sqrt{2}}{\sqrt{15}}, \frac{1}{\sqrt{30}})^T$, $(0, -\frac{1}{\sqrt{5}}, \frac{2}{\sqrt{5}})^T$, and $(-\frac{1}{\sqrt{6}}, \frac{2}{\sqrt{6}}, \frac{1}{\sqrt{6}})^T$. So we have
+\begin{align*}
+&V =
+\begin{bmatrix}
+\frac{\sqrt{5}}{\sqrt{6}} & 0 & -\frac{1}{\sqrt{6}}\\
+\frac{\sqrt{2}}{\sqrt{15}} & -\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{6}}\\
+\frac{1}{\sqrt{30}} & \frac{2}{\sqrt{5}} & \frac{1}{\sqrt{6}}
+\end{bmatrix}
+&\Sigma =
+\begin{bmatrix}
+\sqrt{6} & 0 & 0 \\
+0 & 1 & 0
+\end{bmatrix}
+\end{align*}
+The two column vectors for $U$ are found by
+\begin{align*}
+\hat{u_1} &= \frac{1}{\sigma_1} A\hat{v_1} \\
+&= \frac{1}{\sqrt{6}}
+\begin{bmatrix}
+1 & 0 & 1\\
+2 & 1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+\frac{\sqrt{5}}{\sqrt{6}} \\
+\frac{\sqrt{2}}{\sqrt{15}} \\
+\frac{1}{\sqrt{30}}
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+\frac{1}{\sqrt{5}} \\
+\frac{2}{\sqrt{5}}
+\end{bmatrix}
+\end{align*}
+and
+\begin{align*}
+\hat{u_2} &= \frac{1}{1}
+\begin{bmatrix}
+1 & 0 & 1\\
+2 & 1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+0 \\
+-\frac{1}{\sqrt{5}} \\
+\frac{2}{\sqrt{5}}
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+\frac{2}{\sqrt{5}} \\
+-\frac{1}{\sqrt{5}}
+\end{bmatrix}
+\end{align*}
+\end{exmp}
+Therefore, we conclude that
+\begin{align*}
+U &=
+\begin{bmatrix}
+\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}} \\
+\frac{2}{\sqrt{5}} & -\frac{1}{\sqrt{5}}
+\end{bmatrix} \\
+A &= U\Sigma V^T \\
+&= 
+\begin{bmatrix}
+\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}} \\
+\frac{2}{\sqrt{5}} & -\frac{1}{\sqrt{5}}
+\end{bmatrix}
+\begin{bmatrix}
+\sqrt{6} & 0 & 0 \\
+0 & 1 & 0
+\end{bmatrix}
+\begin{bmatrix}
+\frac{\sqrt{5}}{\sqrt{6}} & \frac{\sqrt{2}}{\sqrt{15}} & \frac{1}{\sqrt{30}} \\
+0 & -\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}} \\
+-\frac{1}{\sqrt{6}} & \frac{2}{\sqrt{6}} & \frac{1}{\sqrt{6}}
+\end{bmatrix}
+\end{align*}
+
+\begin{exmp}
+Carry out Singular Value Decomposition for the $3 \times 2$ matrix
+\begin{align*}
+A =
+\begin{bmatrix}
+1 & 1 \\
+0 & 1 \\
+1 & 0
+\end{bmatrix}
+\end{align*}
+We leave to the readers to check that the orthonormal eigenvectors of 
+\begin{align*}
+A^TA = 
+\begin{bmatrix}
+2 & 1 \\
+1 & 2
+\end{bmatrix}
+\end{align*}
+are 
+\begin{align*}
+& \hat{v_1} =
+\begin{bmatrix}
+\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{bmatrix}
+& \hat{v_2} =
+\begin{bmatrix}
+-\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{bmatrix}
+\end{align*}
+for $\lambda_1 = 3$, $\lambda_2 = 1$, so $\sigma_1 = \sqrt{3}$, $\sigma_2 = 1$, and
+\begin{align*}
+\Sigma =
+\begin{bmatrix}
+\sqrt{3} & 0 \\
+0 & 1 \\
+0 & 0
+\end{bmatrix}   
+\end{align*}
+$\hat{u_1}$, $\hat{u_2}$ are then given by
+\begin{align*}
+\hat{u_1} &= \frac{1}{\sqrt{3}}A
+\begin{bmatrix}
+\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{2}{\sqrt{6}} \\
+\frac{1}{\sqrt{6}} \\
+\frac{1}{\sqrt{6}} 
+\end{bmatrix} \\
+\hat{u_1} &= \frac{1}{1}A
+\begin{bmatrix}
+-\frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}}
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+\frac{1}{\sqrt{2}} \\
+-\frac{1}{\sqrt{2}} 
+\end{bmatrix}
+\end{align*}
+We need another unit vector $\hat{u_3}$ that is orthogonal to both $\hat{u_1}$, $\hat{u_2}$. A quick way for the special case of three-dimensional vector is to find the cross product $\hat{u_1} \times \hat{u_2}$, that is
+\begin{align*}
+\hat{u_3} &= \hat{u_1} \times \hat{u_2} \\
+&=
+\begin{vmatrix}
+\hat{i} & \hat{j} & \hat{k} \\
+\frac{2}{\sqrt{6}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{6}}  \\
+0 & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+\end{vmatrix}
+= -\frac{1}{\sqrt{3}} \hat{i} + \frac{1}{\sqrt{3}} \hat{j} + \frac{1}{\sqrt{3}} \hat{k}
+\end{align*}
+\end{exmp}
+As a result,
+\begin{align*}
+U &=
+\begin{bmatrix}
+\frac{2}{\sqrt{6}} & 0 & -\frac{1}{\sqrt{3}} \\
+\frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}}\\
+\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}}
+\end{bmatrix} \\
+A &= U\Sigma V^T \\
+&= 
+\begin{bmatrix}
+\frac{2}{\sqrt{6}} & 0 & -\frac{1}{\sqrt{3}} \\
+\frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}}\\
+\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}}
+\end{bmatrix}
+\begin{bmatrix}
+\sqrt{3} & 0 \\
+0 & 1 \\
+0 & 0
+\end{bmatrix} 
+\begin{bmatrix}
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}\\
+-\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+\end{bmatrix}
+\end{align*}
+
+\subsection{Truncated Singular Value Decomposition}
+The Singular Value Decomposition of a matrix $A$
+\begin{align*}
+A = U\Sigma V^T = \begin{bmatrix}
+\hat{u_1}|\hat{u_2}|\cdots|\hat{u_m}
+\end{bmatrix}
+\begin{bmatrix}
+\sigma_1 & 0 & \cdots \\
+0 & \sigma_2 & \\
+\vdots & & \ddots
+\end{bmatrix}
+\left[
+\begin{array}{c}
+\hat{v_1}^T \\
+\hline
+\hat{v_2}^T \\
+\hline
+\cdots \\
+\hline
+\hat{v_n}^T
+\end{array}
+\right]
+\end{align*}
+can be reduced to the so-called \textit{Compact SVD}, by only keeping entries corresponds up to the last ($k$-th) non-zero singular value, where $U_k$ and $V_k$ only keeps the first $k$ columns, with $\Sigma_k$ being a diagonal $k \times k$ matrix that preserves the first $k$ non-zero singular values along the main diagonal. This results in
+\begin{align*}
+A = U\Sigma V^T = \begin{bmatrix}
+\hat{u_1}|\hat{u_2}|\cdots|\hat{u_k}
+\end{bmatrix}
+\begin{bmatrix}
+\sigma_1 & 0 & \cdots & 0 \\
+0 & \sigma_2 & & \\
+\vdots & & \ddots & \\
+0 & & & \sigma_k
+\end{bmatrix}
+\left[
+\begin{array}{c}
+\hat{v_1}^T \\
+\hline
+\hat{v_2}^T \\
+\hline
+\cdots \\
+\hline
+\hat{v_k}^T
+\end{array}
+\right]
+\end{align*}
+It can also be expanded in a manner similar to Spectral Decomposition suggested at the end of section \ref{orthogonaldiagreal}, which gives
+\begin{align*}
+
+\end{align*}
+
+
+\subsection{Relations to Principal Component Analysis}
