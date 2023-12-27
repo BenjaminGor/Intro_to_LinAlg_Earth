@@ -197,7 +197,7 @@ Note that we have successfully converted the coefficient matrix to the identity 
 \end{solution}
 
 \begin{exmp}
-\label{ex:nosol}
+\label{exmp:nosol}
 Solve the linear system of
 \begin{align*}
 \begin{bmatrix}
@@ -259,7 +259,7 @@ The last row corresponds to $0 = 1$ which is contradictory. As a consequence, th
 
 
 \begin{exmp}
-\label{ex:mulsol}
+\label{exmp:mulsol}
 Find the solution for the following linear system.
 \begin{align*}
 \begin{bmatrix}
@@ -435,8 +435,46 @@ t'
 1
 \end{bmatrix}
 \end{align*}
-where we "extract" $\tilde{x}$ from generating a shifted free parameter $t' = t-1$ and according to this relation, it represents the same set of general solution as the original expression.}\par
-The general solution encompasses all possible solutions to the linear system. For broader situations, it can contain more than one pairs of free parameter and column vector (or none, for the rather trivial cases of zero or a unique solution). The amount of free variables can be seen to be the number of columns in the coefficient matrix, minus the number of pivots in the reduced row echelon form. In case of multiple free variables, we assign the corresponding amount of free parameters to the non-pivots and apply the same procedure to get a set of general solution. \\
+where we "extract" $\tilde{x}$ from generating a shifted free parameter $t' = t-1$ and according to this relation, it represents the same set of general solution as the original expression.}\\
+\par
+The general solution encompasses all possible solutions to the linear system. For broader situations, it can contain more than one pairs of free parameter and column vector (or none, for the rather trivial cases of zero or a unique solution). The amount of free variables can be seen to be the number of columns in the coefficient matrix, minus the number of pivots in the reduced row echelon form. In case of multiple free variables, we assign the corresponding amount of free parameters to the non-pivots and apply the same procedure to get a set of general solution. Any column vector of a free parameter can be scaled as we desire.\footnote{Using the last example, 
+\begin{align*}
+\begin{bmatrix}
+1 \\
+0 \\
+0
+\end{bmatrix}
++ t
+\begin{bmatrix}
+1 \\
+-1 \\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\
+0 \\
+0
+\end{bmatrix}
++ \frac{t}{2}
+\begin{bmatrix}
+2 \\
+-2 \\
+2
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\
+0 \\
+0
+\end{bmatrix}
++ s
+\begin{bmatrix}
+2 \\
+-2 \\
+2
+\end{bmatrix}
+\end{align*} where we use $s = \frac{t}{2}$ as a new free parameter and the column vector is now scaled by a factor of $2$.} \\
 \\
 Meanwhile, the particular solution can be set to any valid solution to the system (the choice does not affect the structure of any column vector that comes along with a free parameter, see the footnote to the short exercise above). If the linear system is homogeneous, then the zero vector will always be a possible particular solution. \\
 \\
@@ -444,8 +482,8 @@ We have seen in the previous two examples that if the reduced row echelon form o
 \\
 For non-square coefficient matrices, two cases occur.
 \begin{enumerate}
-\item There are more equations (rows) than unknowns (columns). The system is \index{Overdetermined}\keywordhl{Overdetermined}. The reduced row echelon form then must have at least one row of full zeros. If any one of them is inconsistent, then contradiction will arise just like in Example \ref{ex:nosol} and there will be no solution. However, if all zero rows are consistent (i.e. $0=0$), then there still can be a unique solution or infintely many of them.
-\item There are fewer equations (rows) than unknowns (columns). The system is said to be \index{Underdetermined}\keywordhl{Underdetermined}. There must be unknowns that are non-pivots in the reduced row echelon form of the coefficient matrix. Hence free variables, and infinitely many solutions ensue if there is no \textit{inconsistent} row of full zeros (then there is no solution). The calculation is similar to that in Example \ref{ex:mulsol}.
+\item There are more equations (rows) than unknowns (columns). The system is \index{Overdetermined}\keywordhl{Overdetermined}. The reduced row echelon form then must have at least one row of full zeros. If any one of them is inconsistent, then contradiction will arise just like in Example \ref{exmp:nosol} and there will be no solution. However, if all zero rows are consistent (i.e. $0=0$), then there still can be a unique solution or infintely many of them.
+\item There are fewer equations (rows) than unknowns (columns). The system is said to be \index{Underdetermined}\keywordhl{Underdetermined}. There must be unknowns that are non-pivots in the reduced row echelon form of the coefficient matrix. Hence free variables, and infinitely many solutions ensue if there is no \textit{inconsistent} row of full zeros (then there is no solution). The calculation is similar to that in Example \ref{exmp:mulsol}.
 \end{enumerate}
 Let's see some examples for non-square linear systems.\
 \subsubsection{Overdetermined Systems}
@@ -583,7 +621,7 @@ R_4 - R_1 \to R_4
 \end{array}\right] 
 & R_1- R_2 \to R_1 
 \end{align*}
-Two out of the four equations are redundant and there are effectively two constraints only, over the three variables. We can let the non-pivot unknown $z = t$ be a free variable like in Example \ref{ex:mulsol}, and derive $x = 1+t$, $y = 1-3t$ from the first two rows. Thus the general solution is
+Two out of the four equations are redundant and there are effectively two constraints only, over the three variables. We can let the non-pivot unknown $z = t$ be a free variable like in Example \ref{exmp:mulsol}, and derive $x = 1+t$, $y = 1-3t$ from the first two rows. Thus the general solution is
 \begin{align*}
 \vec{x} = 
 \begin{bmatrix}
@@ -800,7 +838,7 @@ z
 \end{bmatrix}
 \end{align*}
 \end{exmp}
-Doing Gaussian Elimination to find the inverse and then compute the solution by $\vec{x} = A^{-1}\vec{h}$ in Section \ref{subsection:SolLinSysInv} is somehow the same as using Gaussian Elimination directly to solve the linear system suggested by Section \ref{subsection:SolLinSysGauss}. Hypothetically, if there are a large amount of linear systems which all share the same coefficient matrix $A$, but different $\vec{h}_k$ to be solved, then the former approach maybe more efficient. However, in computer, calculation of inverse can be unstable (see Section \ref{section:ch2python}). Besides, Theorem \ref{thm:equiv1} can be extended as below by incorporating Theorem \ref{thm:sqlinsysunique}:
+Doing Gaussian Elimination to find the inverse and then compute the solution by $\vec{x} = A^{-1}\vec{h}$ in Section \ref{subsection:SolLinSysInv} is somehow the same as using Gaussian Elimination directly to solve the linear system suggested by Section \ref{subsection:SolLinSysGauss}. Hypothetically, if there are a large amount of linear systems which all share the same coefficient matrix $A$, but different $\vec{h}_k$ to be solved, then the former approach may be more efficient at first sight. However, in computer, calculation of inverse can be unstable (see Section \ref{section:ch2python}) and there are some other practical reasons not to do so, as we shall see in Section \ref{section:ch3python}. Besides, Theorem \ref{thm:equiv1} can be extended as below by incorporating Theorem \ref{thm:sqlinsysunique}:
 \begin{thm}
 \label{thm:equiv2}[Equivalence Statement, ver.\ 2]
 For a square matrix $A$, the followings are equivalent:
@@ -835,7 +873,7 @@ y
 800\sqrt{3}
 \end{bmatrix}
 \end{align*}
-Since it is just a $2 \times 2$ coefficient matrix, we can directly use the expression in Example \ref{ex:2x2} to find its inverse, which is
+Since it is just a $2 \times 2$ coefficient matrix, we can directly use the expression in Example \ref{exmp:2x2} to find its inverse, which is
 \begin{align*}
 \frac{1}{\sqrt{3}-1}
 \begin{bmatrix}
@@ -875,7 +913,7 @@ Therefore the required horizontal displacement and depth of top layer are about 
 \end{solution}
 
 \begin{exmp}
-Find the radiative loss $R_j$ and hence temperature $T_j$ in each layer of the multi-layer model in Example \ref{exmp:multilayer1}. In particular, what is the temperature at the surface ($j = N+1$)?
+Find the radiative loss $E_j$ and hence temperature $T_j$ in each layer of the multi-layer model in Example \ref{exmp:multilayer1}. In particular, what is the temperature at the surface ($j = N+1$)?
 \end{exmp}
 \begin{solution}
 The linear system is
@@ -890,13 +928,13 @@ The linear system is
 0 & 0 & 0 & \cdots & 0 & 1 & -1
 \end{bmatrix}
 \begin{bmatrix}
-R_1 \\
-R_2 \\
-R_3 \\
+E_1 \\
+E_2 \\
+E_3 \\
 \vdots \\
-R_{N-1} \\
-R_N \\
-R_{N+1}
+E_{N-1} \\
+E_N \\
+E_{N+1}
 \end{bmatrix}
 =
 \begin{bmatrix}
@@ -906,7 +944,7 @@ R_{N+1}
 \vdots \\
 0 \\
 0 \\
--R_{in}
+-E_{in}
 \end{bmatrix}
 \end{align*}
 where $N$ is any positive integer. Since $N$ can be arbitrarily large, we may wish to avoid the direct computation of a massive inverse. Instead, we resort to a tactful way of row reduction to reveal the pattern of $R_j$. Rather than starting the reduction at the top as usual, we build up at the bottom, subtracting the lower row from the row directly above it and then moving up a row, repeated until we reach the top. 
@@ -918,7 +956,7 @@ where $N$ is any positive integer. Since $N$ can be arbitrarily large, we may wi
 \vdots & & & \ddots & & & \vdots & \vdots\\
 0 & 0 & 0 & & -2 & 1 & 0 & 0\\
 0 & 0 & 0 & & 1 & -2 & 1 & 0\\
-0 & 0 & 0 & \cdots & 0 & 1 & -1 & -R_{in}
+0 & 0 & 0 & \cdots & 0 & 1 & -1 & -E_{in}
 \end{array}\right] \\
 \to &
 \left[\begin{array}{@{}ccccccc|c@{}}
@@ -927,8 +965,8 @@ where $N$ is any positive integer. Since $N$ can be arbitrarily large, we may wi
 0 & 1 & -2 & & 0 & 0 & 0 & 0\\
 \vdots & & & \ddots & & & \vdots & \vdots\\
 0 & 0 & 0 & & -2 & 1 & 0 & 0\\
-0 & 0 & 0 & & 1 & -1 & 0 & -R_{in}\\
-0 & 0 & 0 & \cdots & 0 & 1 & -1 & -R_{in}
+0 & 0 & 0 & & 1 & -1 & 0 & -E_{in}\\
+0 & 0 & 0 & \cdots & 0 & 1 & -1 & -E_{in}
 \end{array}\right] & R_N + R_{N+1} \to R_N \\
 \to &
 \left[\begin{array}{@{}ccccccc|c@{}}
@@ -936,46 +974,124 @@ where $N$ is any positive integer. Since $N$ can be arbitrarily large, we may wi
 1 & -2 & 1 & & 0 & 0 & 0 & 0\\
 0 & 1 & -2 & & 0 & 0 & 0 & 0\\
 \vdots & & & \ddots & & & \vdots & \vdots\\
-0 & 0 & 0 & & -1 & 0 & 0 & -R_{in}\\
-0 & 0 & 0 & & 1 & -1 & 0 & -R_{in}\\
-0 & 0 & 0 & \cdots & 0 & 1 & -1 & -R_{in}
+0 & 0 & 0 & & -1 & 0 & 0 & -E_{in}\\
+0 & 0 & 0 & & 1 & -1 & 0 & -E_{in}\\
+0 & 0 & 0 & \cdots & 0 & 1 & -1 & -E_{in}
 \end{array}\right] & R_{N-1} + R_{N} \to R_{N-1} \\
-\to & \quad\vdots & \text{(Keep moving up)} \\
+\to & \quad\vdots & \text{(Keep going up)} \\
 \to &
 \left[\begin{array}{@{}ccccccc|c@{}}
 -2 & 1 & 0 & \cdots & 0 & 0 & 0 & 0\\
 1 & -2 & 1 & & 0 & 0 & 0 & 0\\
-0 & 1 & -1 & & 0 & 0 & 0 & -R_{in}\\
+0 & 1 & -1 & & 0 & 0 & 0 & -E_{in}\\
 \vdots & & & \ddots & & & \vdots & \vdots\\
-0 & 0 & 0 & & -1 & 0 & 0 & -R_{in}\\
-0 & 0 & 0 & & 1 & -1 & 0 & -R_{in}\\
+0 & 0 & 0 & & -1 & 0 & 0 & -E_{in}\\
+0 & 0 & 0 & & 1 & -1 & 0 & -E_{in}\\
 0 & 0 & 0 & \cdots & 0 & 1 & -1 & -R_{in}
 \end{array}\right] \\
 \to &
 \left[\begin{array}{@{}ccccccc|c@{}}
 -2 & 1 & 0 & \cdots & 0 & 0 & 0 & 0\\
-1 & -1 & 0 & & 0 & 0 & 0 & -R_{in}\\
-0 & 1 & -1 & & 0 & 0 & 0 & -R_{in}\\
+1 & -1 & 0 & & 0 & 0 & 0 & -E_{in}\\
+0 & 1 & -1 & & 0 & 0 & 0 & -E_{in}\\
 \vdots & & & \ddots & & & \vdots & \vdots\\
-0 & 0 & 0 & & -1 & 0 & 0 & -R_{in}\\
-0 & 0 & 0 & & 1 & -1 & 0 & -R_{in}\\
-0 & 0 & 0 & \cdots & 0 & 1 & -1 & -R_{in}
+0 & 0 & 0 & & -1 & 0 & 0 & -E_{in}\\
+0 & 0 & 0 & & 1 & -1 & 0 & -E_{in}\\
+0 & 0 & 0 & \cdots & 0 & 1 & -1 & -E_{in}
 \end{array}\right] & R_2 + R_3 \to R_2 \\
 \to &
 \left[\begin{array}{@{}ccccccc|c@{}}
--1 & 0 & 0 & \cdots & 0 & 0 & 0 & -R_{in}\\
-1 & -1 & 0 & & 0 & 0 & 0 & -R_{in}\\
-0 & 1 & -1 & & 0 & 0 & 0 & -R_{in}\\
+-1 & 0 & 0 & \cdots & 0 & 0 & 0 & -E_{in}\\
+1 & -1 & 0 & & 0 & 0 & 0 & -E_{in}\\
+0 & 1 & -1 & & 0 & 0 & 0 & -E_{in}\\
 \vdots & & & \ddots & & & \vdots & \vdots\\
-0 & 0 & 0 & & -1 & 0 & 0 & -R_{in}\\
-0 & 0 & 0 & & 1 & -1 & 0 & -R_{in}\\
-0 & 0 & 0 & \cdots & 0 & 1 & -1 & -R_{in}
+0 & 0 & 0 & & -1 & 0 & 0 & -E_{in}\\
+0 & 0 & 0 & & 1 & -1 & 0 & -E_{in}\\
+0 & 0 & 0 & \cdots & 0 & 1 & -1 & -E_{in}
 \end{array}\right] & R_1 + R_2 \to R_1
 \end{align*}
+From the first row, we readily obtain $E_1 = E_{in}$. The second row yields the equation
+\begin{align*}
+E_1 - E_2 &= -E_{in} \\
+E_2 &= E_1 + E_{in} = E_{in} + E_{in} = 2E_{in}
+\end{align*}
+Similarly, the subsequent rows are all in the form of $E_{j+1} = E_j + E_{in}$, and inductively we have $E_{j} = jE_{in}$. $E_1 = E_{in}$ is the emission of radiation from Earth as a whole as viewed from the space, and the \textit{emission temperature} is $T_1 = \sqrt[4]{E_1/\sigma} = \sqrt[4]{E_{in}/\sigma}$ by the Stefan–Boltzmann Law. The surface releases terrestrial radiation at the rate of $E_{N+1} = (N+1)E_{in}$ and has a temperature of $T_{N+1} = \sqrt[4]{E_{N+1}/\sigma} = \sqrt[4]{(N+1)E_{in}/\sigma} = (N+1)^{1/4}\sqrt[4]{E_{in}/\sigma} = (N+1)^{1/4}T_1$, i.e. the surface temperature is $(N+1)^{1/4}$ times the emission temperature. Our earth has an emission temperature of \SI{255}{\K} and a surface temperature of \SI{288}{\K} on average (notice that we have to use Kelvin instead of degree Celsius!), which leads to an effective number of layers $N = (288/255)^4 - 1 = 0.627$.
 \end{solution}
 
 \section{Python Programming}
+\label{section:ch3python}
+For solving square linear systems in the form of $A\vec{x} = \vec{h}$, we can again import the \verb|scipy.linalg| library and call the \verb|solve| function with the coefficient matrix $A$ as the first argument and $\vec{h}$ placed in the second one.
+\begin{lstlisting}
+import numpy as np
+from scipy import linalg
 
+A = np.array([[1., 0., 1.],
+              [2., 2., 3.],
+              [1., 2., 0.]])
+h = np.array([0., -1., 1.])
+x = linalg.solve(A,h)
+\end{lstlisting}
+This corresponds to the linear system
+\begin{align*}
+\begin{bmatrix}
+1 & 0 & 1 \\
+2 & 2 & 3 \\
+1 & 2 & 0
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\ 
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+-1 \\ 
+1
+\end{bmatrix}
+\end{align*}
+which has a solution of
+\begin{align*}
+\vec{x}
+=
+\begin{bmatrix}
+x \\
+y \\ 
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\
+0 \\
+-1
+\end{bmatrix}    
+\end{align*}
+\verb|print(x)| then gives the correct output of \verb|[ 1. -0. -1.]|. However, if $A$ is a singular matrix like the one shown in Section \ref{section:ch2python}
+\begin{lstlisting}
+A = np.array([[3., 1., 3., 2.],
+              [0., -1., -3., 1.],
+              [1., -1., -2., 0.],
+              [2., 0., 1., 0.]]) # "myMatrix3" in the last chapter
+h = np.array([0., 1., 1., -1.])
+x = linalg.solve(A,h)      
+print(x)
+\end{lstlisting}
+raises a warning and an unreasonable output of
+\begin{lstlisting}
+LinAlgWarning: Ill-conditioned matrix 
+(rcond=3.42661e-18): result may not be accurate.
+  x = linalg.solve(A,h)
+[ 4.803839e+15  2.401919e+16 -9.607679e+15 -4.803839e+15]   
+\end{lstlisting}
+Again, we can use the \verb|sympy| package for the rescue as follows.
+\begin{lstlisting}
+import sympy
+
+A_sympy = sympy.Matrix(A)
+h_sympy = sympy.Matrix(h)
+A_sympy.solve(h_sympy)
+\end{lstlisting}
+which raises the same "not invertible" error as in Section \ref{section:ch2python}. We note that, unfortunately, there is no simple way to deal with over/under-determined systems using either \verb|scipy| or \verb|sympy|. Moreover, there are two questions that may come to the curious readers when reading the programming sections of these two chapters. First, which of \verb|scipy| and \verb|sympy| should we choose over another? Second, why we don't compute the inverse of $A$ and solve the system by something along the line of \verb|x = linalg.inv(A) @ h|? For the first question, we note that \verb|scipy| is numerical while \verb|sympy| is symbolic, which means that if we are dealing with real data we may find \verb|scipy| adequate and more efficient, while if we are focusing on the theoretical part of Mathematics we can obtain a more analytical solution with \verb|sympy|. To the second question, we refer the readers to \href{https://stackoverflow.com/questions/31256252/why-does-numpy-linalg-solve-offer-more-precise-matrix-inversions-than-numpy-li}{this excellent Stack Overflow post} (31256252).
 \section{Exercises}
 
 \begin{Exercise}
@@ -988,6 +1104,98 @@ Solve the following linear system.
 \end{cases}
 \end{align*}
 \end{Exercise}
+\begin{Answer}
+\begin{align*}
+A^{-1} &=
+\begin{bmatrix}
+\frac{1}{21} & \frac{5}{21} & \frac{2}{21}\\
+\frac{11}{42} & -\frac{29}{42} & \frac{1}{42}\\
+\frac{1}{6} & -\frac{1}{6} & -\frac{1}{6}
+\end{bmatrix} \\
+\vec{x} =
+A^{-1}\vec{h}
+&=
+\begin{bmatrix}
+\frac{1}{21} & \frac{5}{21} & \frac{2}{21}\\
+\frac{11}{42} & -\frac{29}{42} & \frac{1}{42}\\
+\frac{1}{6} & -\frac{1}{6} & -\frac{1}{6}
+\end{bmatrix}
+\begin{bmatrix}
+6\\
+\frac{7}{2}\\
+-\frac{13}{2}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{1}{2}\\
+-1\\
+\frac{3}{2}
+\end{bmatrix} 
+\end{align*}
+or
+\begin{align*}
+&\left[
+\begin{array}{@{}ccc|c@{}}
+5 & 1 & 3 & 6\\
+2 & -1 & 1 & \frac{7}{2}\\
+3 & 2 & -4 & -\frac{13}{2}
+\end{array}
+\right]\\
+\to &
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & \frac{1}{5} & \frac{3}{5} & \frac{6}{5}\\
+2 & -1 & 1 & \frac{7}{2}\\
+3 & 2 & -4 & -\frac{13}{2}
+\end{array}
+\right] & \frac{1}{5}R_1 \rightarrow R_1
+\\
+\to &
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & \frac{1}{5} & \frac{3}{5} & \frac{6}{5}\\
+0 & -\frac{7}{5} & -\frac{1}{5} & \frac{11}{10}\\
+0 & \frac{7}{5} & -\frac{29}{5} & -\frac{101}{10}
+\end{array}
+\right] & R_2 - 2R_1 \to R_2, R_3 - 3R_1 \to R_3
+\\
+\to &
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & \frac{1}{5} & \frac{3}{5} & \frac{6}{5}\\
+0 & -\frac{7}{5} & -\frac{1}{5} & \frac{11}{10}\\
+0 & 0 & -6 & -9
+\end{array}
+\right] & R_3 + R_2 \to R_3
+\\
+\to &
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & \frac{1}{5} & \frac{3}{5} & \frac{6}{5}\\
+0 & 1 & \frac{1}{7} & -\frac{11}{14}\\
+0 & 0 & 1 & \frac{3}{2}
+\end{array}
+\right] & -\frac{5}{7}R_2 \to R_2, -\frac{1}{6}R_3 \to R_3
+\\
+\to &
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & \frac{1}{5} & 0 & \frac{3}{10}\\
+0 & 1 & 0 & -1\\
+0 & 0 & 1 & \frac{3}{2}
+\end{array}
+\right] & R_1 - \frac{3}{5}R_3 \to R_1, R_2 - \frac{1}{7}R_3 \to R_2
+\\
+\to &
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & 0 & 0 & \frac{1}{2}\\
+0 & 1 & 0 & -1\\
+0 & 0 & 1 & \frac{3}{2}
+\end{array}
+\right] & R_1 - \frac{1}{5}R_2 \rightarrow R_1
+\end{align*}
+\end{Answer}
 
 \begin{Exercise}
 Solve $A\vec{x} = \vec{h}_k$, where
@@ -1018,6 +1226,63 @@ z
 \end{bmatrix}
 \end{align*}
 \end{Exercise}
+\begin{Answer}
+\begin{align*}
+A^{-1}&=
+\begin{bmatrix}
+-\frac{1}{8} & 0 & \frac{7}{8}\\
+\frac{3}{16} & -\frac{1}{2} & -\frac{5}{16}\\
+\frac{1}{16} & \frac{1}{2} & -\frac{7}{16}
+\end{bmatrix} & & \\
+\vec{x}_1 &= A^{-1}\vec{h}_1 & \vec{x}_2 &= A^{-1}\vec{h}_2 \\
+&=
+\begin{bmatrix}
+-\frac{1}{8} & 0 & \frac{7}{8}\\
+\frac{3}{16} & -\frac{1}{2} & -\frac{5}{16}\\
+\frac{1}{16} & \frac{1}{2} & -\frac{7}{16}    
+\end{bmatrix}
+\begin{bmatrix}
+-1 \\
+5 \\
+1
+\end{bmatrix}
+&
+&=
+\begin{bmatrix}
+-\frac{1}{8} & 0 & \frac{7}{8}\\
+\frac{3}{16} & -\frac{1}{2} & -\frac{5}{16}\\
+\frac{1}{16} & \frac{1}{2} & -\frac{7}{16}    
+\end{bmatrix}
+\begin{bmatrix}
+\frac{19}{4} \\
+1 \\
+\frac{5}{4}
+\end{bmatrix} \\
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}
+&=
+\begin{bmatrix}
+1\\
+-3\\
+2    
+\end{bmatrix}
+&
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}
+&=
+\begin{bmatrix}
+\frac{1}{2}\\
+0\\
+\frac{1}{4}    
+\end{bmatrix}
+\end{align*}
+\end{Answer}
 
 \begin{Exercise}
 Derive the solution to the following linear system.
@@ -1029,6 +1294,53 @@ x - 2y &= 0
 \end{cases}
 \end{align*}
 \end{Exercise}
+\begin{Answer}
+\begin{align*}
+\left[
+\begin{array}{@{}ccc|c@{}}
+3 & 0 & 4 & 2\\
+1 & 1 & 2 & -1\\
+1 & -2 & 0 & 0
+\end{array}
+\right]
+\to &
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & -2 & 0 & 0\\
+1 & 1 & 2 & -1\\
+3 & 0 & 4 & 2\\
+\end{array}
+\right]
+& R_1 \leftrightarrow R_3\\
+\to &
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & -2 & 0 & 0\\
+0 & 3 & 2 & -1\\
+0 & 6 & 4 & 2
+\end{array}
+\right]
+& R_2 - R_1 \to R_2, R_3 - 3R_1 \to R_3 \\
+\to &
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & -2 & 0 & 0\\
+0 & 1 & \frac{2}{3} & -\frac{1}{3}\\
+0 & 6 & 4 & 2
+\end{array}
+\right] & \frac{1}{3}R_2 \to R_2 \\
+\to &
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & -2 & 0 & 0\\
+0 & 1 & \frac{2}{3} & -\frac{1}{3}\\
+0 & 0 & 0 & 4
+\end{array}
+\right] & R_3 - 6R_2 \to R_3
+\end{align*}
+The last row is inconsistent and the system has no solution.\\ 
+Note: You may get, to the right of the last row, some number other than $4$, but this is possible and not wrong. (Why?)    
+\end{Answer}
 
 \begin{Exercise}
 Solve the following linear system.
@@ -1039,7 +1351,81 @@ m - q &= 5\\
 3m + 2n - 2p - 7q &= 9
 \end{cases}
 \end{align*}
+How about if the R.H.S. of the third equation is equal to $3$ instead?
 \end{Exercise}
+\begin{Answer}
+\begin{align*}
+&\left[
+\begin{array}{@{}cccc|c@{}}
+1 & 1 & -1 & -3 & 2\\
+1 & 0 & 0 & -1 & 5\\
+3 & 2 & -2 & -7 & 9
+\end{array}
+\right]\\
+\to &
+\left[
+\begin{array}{@{}cccc|c@{}}
+1 & 0 & 0 & -1 & 5\\
+1 & 1 & -1 & -3 & 2\\
+3 & 2 & -2 & -7 & 9
+\end{array}
+\right] & R_1 \leftrightarrow R_2 \\
+\to &
+\left[
+\begin{array}{@{}cccc|c@{}}
+1 & 0 & 0 & -1 & 5\\
+0 & 1 & -1 & -2 & -3\\
+0 & 2 & -2 & -4 & -6
+\end{array}
+\right] & R_2 - R_1 \to R_2, R_3 - 3R_1 \to R_3
+\\
+\to &
+\left[
+\begin{array}{@{}cccc|c@{}}
+1 & 0 & 0 & -1 & 5\\
+0 & 1 & -1 & -2 & -3\\
+0 & 0 & 0 & 0 & 0
+\end{array}
+\right] & R_3 - 2R_2 \to R_3
+\end{align*}
+Let $p = s$, $q = t$ as the two free variables. Substituting them back into the equations, we have $m-t=5$ and $n-s-2t=-3$, hence $m=5+t$ and $n=-3+s+2t$, and
+\begin{equation*}
+\begin{bmatrix}
+m\\
+n\\
+p\\
+q\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+5+t\\
+-3+s+2t\\
+s\\
+t\\    
+\end{bmatrix}
+=
+\begin{bmatrix}
+5\\
+-3\\
+0\\
+0\\
+\end{bmatrix}
++s
+\begin{bmatrix}
+0\\
+1\\
+1\\
+0\\
+\end{bmatrix}
++t
+\begin{bmatrix}
+1\\
+2\\
+0\\
+1\\
+\end{bmatrix}
+\end{equation*}
+\end{Answer}
 
 \begin{Exercise}
 For the following linear system,
@@ -1063,9 +1449,104 @@ z
 \end{align*}
 Find the values of $\alpha$ so that the system has no solution, or infinitely many solutions.
 \end{Exercise}
+\begin{Answer}
+The determinant of the coefficient matrix can be found to be
+\begin{align*}
+\begin{vmatrix}
+1 & 0 & \alpha \\
+0 & \alpha & 0 \\
+\alpha & 0 & 1
+\end{vmatrix}
+&= -\alpha^3 + \alpha \\
+&= -\alpha(\alpha-1)(\alpha+1)
+\end{align*}
+The system will have no solution or infinitely many of them only when the determinant equals to zero, which gives us three possible values of $\alpha = -1$, $0$, $1$. When $\alpha = -1$, the system is
+\begin{align*}
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & 0 & -1 & -1\\
+0 & -1 & 0 & 0 \\
+-1 & 0 & 1 & -1
+\end{array}
+\right]
+&\to
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & 0 & -1 & -1\\
+0 & -1 & 0 & 0 \\
+0 & 0 & 0 & -2
+\end{array}
+\right] & R_3 + R_1 \to R_3
+\end{align*}
+where the last row is inconsistent and there is no solution. When $\alpha = 0$, it becomes
+\begin{align*}
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{array}
+\right]
+\end{align*}
+It is obvious that $x = z = 0$, and $y = t$ is a free variable, so the solution is infinitely many and is in the form of
+\begin{align*}
+\begin{bmatrix}
+x \\
+y \\
+z 
+\end{bmatrix}
+=
+\textbf{0} +
+t
+\begin{bmatrix}
+0 \\
+1 \\
+0
+\end{bmatrix}
+\end{align*}
+The last case, $\alpha = 1$, gives rise to the system of
+\begin{align*}
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & 0 & 1 & 1\\
+0 & 1 & 0 & 0 \\
+1 & 0 & 1 & 1
+\end{array}
+\right]
+&\to
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & 0 & 1 & 1\\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{array}
+\right] & R_3 - R_1 \to R_3
+\end{align*}
+such that $y = 0$ and $z = t$ can be set to be a free variable and there are infinitely many solutions in the form of 
+\begin{align*}
+\begin{bmatrix}
+x \\
+y \\
+z 
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\
+0 \\
+0
+\end{bmatrix}
++
+t
+\begin{bmatrix}
+-1 \\
+0 \\
+1
+\end{bmatrix}
+\end{align*}
+\end{Answer}
 
 \begin{Exercise}
-In a geology field trip, an outcrop is examined. It is observed that the rock mainly consists of crystals of three distinct colors (gray/pink/black). Assume that crystal of each color corresponds to exactly one type of mineral. Three samples are gathered, have their densities measured and percentage volumes of the three types of crystal analyzed. The data are as follows:
+In a geology field trip, an outcrop is examined. It is observed that the rock mainly consists of crystals of three distinct colors (gray/pink/black). Assume that crystal of each color corresponds to exactly one type of mineral. Three samples are gathered, have their densities measured and composition percentages of the three types of crystal analyzed. The data are as follows:
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -1081,15 +1562,235 @@ Sample C & 45\% & 45\% & 10\% & 2.65\\
 \end{center}
 From the data, infer the densities of the constituent minerals.
 \end{Exercise}
+\begin{Answer}
+The system can be written as
+\begin{align*}
+\begin{bmatrix}
+0.4 & 0.5 & 0.1 \\
+0.55 & 0.4 & 0.05 \\
+0.45 & 0.45 & 0.1
+\end{bmatrix}
+\begin{bmatrix}
+gy \\
+pk \\
+bk
+\end{bmatrix}
+=
+\begin{bmatrix}
+2.645 \\
+2.6325 \\
+2.65
+\end{bmatrix}
+\end{align*}
+and has a unique solution of $gy = 2.65$ (quartz), $pk = 2.55$ (feldspar), $bk = 3.1$ (biotite).
+\end{Answer}
 
 \begin{Exercise}
-Ohm's law relates voltage change to current and resistance by $V=IR$. In addition, Kirchhoff’s Second Law states that: The voltage gain balances the voltage drop around any closed loop. The clockwise convention is adopted, i.e. around a loop, a battery with its positive terminal pointing in clockwise direction is considered a voltage gain, and clockwise current passing through a resistor is deemed as a voltage drop. Together with the knowledge that current at a junction must conserve, as stated by Kirchhoff's First Law, find $I_1$, $I_2$, $I_3$ (assumed flowing in the direction as indicated in the figure) for the following circuit.
-\begin{center}
+\label{ex:circuitsys}
+\textit{Ohm's law} relates voltage drop of a current due to resistance by $V=IR$. In addition, \textit{Kirchhoff’s Second Law} states that: The voltage gain balances the voltage drop around any closed loop (net voltage change must be zero). The clockwise convention is adopted, i.e. around a loop, a battery with its positive terminal facing the clockwise direction is considered a voltage gain, and clockwise current passing through a resistor is deemed as a voltage drop. Together with the knowledge that current at a junction must conserve (\textit{Kirchhoff's First Law}), find $I_1$, $I_2$, $I_3$ (assumed flowing in the direction as indicated) for the circuit in Figure \ref{fig:circuitsys}.
+\begin{figure}[h!]
+\centering
 \fbox{\includegraphics[scale = 0.4]{circuit.jpg}}
-\end{center}
-\end{Exercise}
+\caption{The circuit for Exercise \ref{ex:circuitsys}}
+\label{fig:circuitsys}
+\end{figure}\\
 You will obtain two equations by considering any two loops with Kirchhoff’s Second Law, and one from Kirchhoff's First Law. So, there are three equations, for the three unknown currents.
+\end{Exercise}
+\begin{Answer}
+The first two equations below come from the left inner loop and right inner loop, but one of them can be replaced by the outer loop as well.
+\begin{align*}
+-4I_1 + 6I_2 &= 6\\
+-6I_2 + 9I_3 &= -12\\
+I_1 + I_2 + I_3 &= 0
+\end{align*}
+and the solution is $I_1 = -\frac{3}{19}$, $I_2 = \frac{17}{19}$, $I_3 = -\frac{14}{19}$ (in Amperes).
+\end{Answer}
 
 \begin{Exercise}
-Dispersion Relation. (In Construction)
+\label{ex:shallowwater}
+The \textit{shallow water equations} (see Figure \ref{fig:shallowwater}) describe the evolution of gravity wave under some approximations such as \textit{hydrostatic balance} and a sufficiently shallow fluid depth, and has the form of
+\begin{align*}
+\begin{dcases}
+\frac{\partial \eta}{\partial t} + H(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y}) &= 0 \\
+\frac{\partial u}{\partial t} &= -g\frac{\partial \eta}{\partial x} \\
+\frac{\partial v}{\partial t} &= -g\frac{\partial \eta}{\partial y} 
+\end{dcases}
+\end{align*}
+when the Coriolis effect is ignored. By assuming a travelling wave solution
+\begin{align*}
+u &= \tilde{U} \cos(kx + ly - \omega t) \\
+v &= \tilde{V} \cos(kx + ly - \omega t) \\
+\eta &= \tilde{\eta} \cos(kx + ly - \omega t)
+\end{align*}
+where $\tilde{U}$, $\tilde{V}$, $\tilde{\eta}$ are some constants to be determined, show that the equations become
+\begin{align*}
+\begin{dcases}
+\omega \tilde{\eta} - kH \tilde{U} - lH \tilde{V} &= 0 \\
+\omega \tilde{U} - kg \tilde{\eta} &= 0 \\
+\omega \tilde{V} - lg \tilde{\eta} &= 0
+\end{dcases}
+\end{align*}
+By requiring that $\tilde{U}$, $\tilde{V}$, $\tilde{\eta}$ have a non-trivial solution so that they are not all zeros, derive the dispersion relation of gravity wave, which is
+\begin{align*}
+\omega^2 &= gH(k^2 + l^2) \\
+\omega &= c\kappa
+\end{align*}
+where $c = \sqrt{gH}$ is the wave speed, and $\kappa = \sqrt{k^2 + l^2}$ is the total wavenumber.
 \end{Exercise}
+\begin{figure}
+\centering
+\begin{tikzpicture}
+    \draw [thick,color=black,domain=0:3*pi,samples=500] plot (\x, {5+0.5*sin(deg(4*\x))});
+    \fill [blue!30] (3*pi,0) -- (0,0) -- plot[domain=0:3*pi,samples=500]  (\x, {5+0.5*sin(deg(4*\x))});
+    \draw [thick,color=black] (0,0) -- (3*pi, 0);
+    \fill [Brown!50!Orange] (0,0) rectangle (3*pi, -1) node[above left, black]{Bottom};
+    \draw [<->] (3*pi+0.2, 0) -- (3*pi+0.2, 5) node[below, midway, sloped]{H};
+    \draw [<->,red] (0.575*pi, 5.6) -- (0.575*pi, 4.9) node[midway, xshift=-8]{$\eta$};
+    \draw [thick, Green] (0.575*pi, 4.7) -- (0.575*pi, 0) node[midway, xshift=-8]{$u$};
+    \draw [thick, Green, ->] (0.575*pi, 4) -- (0.575*pi+1, 4);
+    \draw [thick, Green, ->] (0.575*pi, 3) -- (0.575*pi+1, 3);
+    \draw [thick, Green, ->] (0.575*pi, 2) -- (0.575*pi+1, 2);
+    \draw [thick, Green, ->] (0.575*pi, 1) -- (0.575*pi+1, 1);
+\end{tikzpicture}
+\caption{The $x$-$z$ cross-section of shallow water system in Exercise \ref{ex:shallowwater}. $\eta$ is the height of free surface, $H$ is the mean depth of the fluid, and $u$ is the fluid velocity along $x$-axis.}
+\label{fig:shallowwater}
+\end{figure}
+\begin{Answer}
+Substituting the given wave solution forms into the equation, we have
+\begin{align*}
+\begin{split}
+&\omega\tilde{\eta}\sin(kx+ly-\omega t) + H(-k\tilde{U}\sin(kx+ly-\omega t) \\
+& -l\tilde{V}\sin(kx+ly-\omega t)) = 0 \\    
+\end{split} \\
+& \omega\tilde{U}\sin(kx+ly-\omega t) = gk\tilde{\eta}\sin(kx+ly-\omega t) \\
+& \omega\tilde{V}\sin(kx+ly-\omega t) = gl\tilde{\eta}\sin(kx+ly-\omega t)
+\end{align*}
+Cancelling out all the sine factors, we arrive at the linear system displayed in the question
+\begin{align*}
+\begin{dcases}
+\omega \tilde{\eta} - kH \tilde{U} - lH \tilde{V} &= 0 \\
+\omega \tilde{U} - kg \tilde{\eta} &= 0 \\
+\omega \tilde{V} - lg \tilde{\eta} &= 0
+\end{dcases}
+\end{align*}
+For $\tilde{U}$, $\tilde{V}$, $\tilde{\eta}$ to have a non-trivial solution other than all zeros, we require the determinant of the corresponding coefficient matrix to be zero according to Theorem \ref{thm:sqlinsysunique}, which leads to
+\begin{align*}
+\begin{vmatrix}
+\omega & -kH & -lH \\
+-kg & \omega & 0 \\
+-lg & 0 & \omega
+\end{vmatrix} &= 0 \\
+\omega^3 - gHk^2\omega - gHl^2\omega &= 0 \\
+\omega^2 - gH(k^2 + l^2) &= 0 
+\end{align*}
+as the dispersion relation of gravity wave.
+\end{Answer}
+
+\begin{Exercise}
+Solve for the condensation height and temperature $z_{cd}$ and $T_{cd}$ in Exercise \ref{ex:lapse}.
+\end{Exercise}
+\begin{Answer}
+$T_{cd} \approx \SI{15.9}{\celsius}$, $z_{cd} \approx \SI{0.97}{\km}$.
+\end{Answer}
+
+\begin{Exercise}
+Solve the \textit{Chickens and Rabbits in the Same Cage} problem in Exercise \ref{ex:animals}. If we now introduce a new type of mystical creature who has one head and three legs, and put them in another cage along with some chickens and rabbits, find all possible numbers of the three species if the cage now has $48$ heads and $122$ legs.
+\end{Exercise}
+\begin{Answer}
+$x = 23$, $y = 12$. For the extra part, the new system of equations become (denote the number of third species as $z$)
+\begin{align*}
+\begin{bmatrix}
+1 & 1 & 1 \\
+2 & 4 & 3
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+48 \\
+122
+\end{bmatrix}
+\end{align*}
+By Gaussian Elimination, we have
+\begin{align*}
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & 1 & 1 & 48 \\
+2 & 4 & 3 & 122
+\end{array}
+\right]
+&\to
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & 1 & 1 & 48 \\
+0 & 2 & 1 & 26
+\end{array}
+\right] & R_2 - 2R_1 \to R_2 \\
+&\to
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & 1 & 1 & 48 \\
+0 & 1 & \frac{1}{2} & 13
+\end{array}
+\right] & \frac{1}{2}R_2 \to R_2 \\
+&\to
+\left[
+\begin{array}{@{}ccc|c@{}}
+1 & 0 & \frac{1}{2} & 35 \\
+0 & 1 & \frac{1}{2} & 13
+\end{array}
+\right] & R_1 - R_2 \to R_1
+\end{align*}
+Let $z = t$ as the free variable, then we have $y = 13 - \frac{1}{2}t$ and $x = 35-\frac{1}{2}t$, and hence
+\begin{align*}
+\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+35-\frac{1}{2}t \\
+13-\frac{1}{2}t \\
+t
+\end{bmatrix}
+=
+\begin{bmatrix}
+35 \\
+13 \\
+0
+\end{bmatrix}
++
+t
+\begin{bmatrix}
+-\frac{1}{2} \\
+-\frac{1}{2} \\
+1
+\end{bmatrix}
+\end{align*}
+Since the numbers of species must be a non-negative integer, the solution can be expressed in a more good-looking form of
+\begin{align*}
+\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+35 \\
+13 \\
+0
+\end{bmatrix}
++
+s
+\begin{bmatrix}
+-1 \\
+-1 \\
+2
+\end{bmatrix}
+\end{align*}
+where $s = \frac{t}{2}$, and the range of $s$ is $0, 1, \ldots, 13$ (when $s$ reaches $13$ there is no chicken remained).
+\end{Answer}
