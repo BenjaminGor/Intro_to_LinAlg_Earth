@@ -74,7 +74,7 @@ It goes similarly for any linear system of three unknowns in which equations rep
 Naturally, the next question is about how to find out which case the linear system belongs to. The following theorem reveals the relation between the number of solutions for a \textit{square} linear system and the determinant of its coefficient matrix.
 \begin{thm}
 \label{thm:sqlinsysunique}
-For a square linear system $A\vec{x} = \vec{h}$, if the coefficient matrix $A$ is invertible, i.e. $\det(A) \neq 0$, there is always only one unique solution. However, if $A$ is singular, $\det(A) = 0$, then it has either no solution, or infinitely many solutions.
+For a square linear system $A\vec{x} = \vec{h}$, if the coefficient matrix $A$ is invertible, i.e.\ $\det(A) \neq 0$, there is always only one unique solution. However, if $A$ is singular, $\det(A) = 0$, then it has either no solution, or infinitely many solutions.
 \end{thm}
 As a consequence, if the homogeneous linear system $A\vec{x} = \textbf{0}$ is singular with $\det(A) = 0$, since it always has a trivial solution of $\vec{x} = \textbf{0}$, the above theorem implies that the homogeneous system must have infinitely many solutions (since it does not have no solution). We defer the proof of Theorem \ref{thm:sqlinsysunique}, as well as the discussion about non-square systems, until we start actually solving linear systems in the next subsection. \\
 Short Exercise: By inspection, determine the number of solutions for the following linear systems.\footnote{These two homogeneous linear system has a determinant of $-1$ and $0$, and hence by Theorem \ref{thm:sqlinsysunique} the first system has a unique solution and the second one has infinitely many solutions.}
@@ -482,7 +482,7 @@ We have seen in the previous two examples that if the reduced row echelon form o
 \\
 For non-square coefficient matrices, two cases occur.
 \begin{enumerate}
-\item There are more equations (rows) than unknowns (columns). The system is \index{Overdetermined}\keywordhl{Overdetermined}. The reduced row echelon form then must have at least one row of full zeros. If any one of them is inconsistent, then contradiction will arise just like in Example \ref{exmp:nosol} and there will be no solution. However, if all zero rows are consistent (i.e. $0=0$), then there still can be a unique solution or infintely many of them.
+\item There are more equations (rows) than unknowns (columns). The system is \index{Overdetermined}\keywordhl{Overdetermined}. The reduced row echelon form then must have at least one row of full zeros. If any one of them is inconsistent, then contradiction will arise just like in Example \ref{exmp:nosol} and there will be no solution. However, if all zero rows are consistent (i.e.\ $0=0$), then there still can be a unique solution or infintely many of them.
 \item There are fewer equations (rows) than unknowns (columns). The system is said to be \index{Underdetermined}\keywordhl{Underdetermined}. There must be unknowns that are non-pivots in the reduced row echelon form of the coefficient matrix. Hence free variables, and infinitely many solutions ensue if there is no \textit{inconsistent} row of full zeros (then there is no solution). The calculation is similar to that in Example \ref{exmp:mulsol}.
 \end{enumerate}
 Let's see some examples for non-square linear systems.\
@@ -843,7 +843,7 @@ Doing Gaussian Elimination to find the inverse and then compute the solution by 
 \label{thm:equiv2}[Equivalence Statement, ver.\ 2]
 For a square matrix $A$, the followings are equivalent:
 \begin{enumerate}[label=(\alph*)]
-\item $A$ is invertible, i.e. $A^{-1}$ exists,
+\item $A$ is invertible, i.e.\ $A^{-1}$ exists,
 \item $\det(A) \neq 0$,
 \item The reduced row echelon form of $A$ is $I$,
 \item The linear system $A\vec{x} = \vec{h}$ has a unique solution, particularly $A\vec{x} = \textbf{0}$ has only the trivial solution $\vec{x} = \textbf{0}$.
@@ -1015,7 +1015,7 @@ From the first row, we readily obtain $E_1 = E_{in}$. The second row yields the 
 E_1 - E_2 &= -E_{in} \\
 E_2 &= E_1 + E_{in} = E_{in} + E_{in} = 2E_{in}
 \end{align*}
-Similarly, the subsequent rows are all in the form of $E_{j+1} = E_j + E_{in}$, and inductively we have $E_{j} = jE_{in}$. $E_1 = E_{in}$ is the emission of radiation from Earth as a whole as viewed from the space, and the \textit{emission temperature} is $T_1 = \sqrt[4]{E_1/\sigma} = \sqrt[4]{E_{in}/\sigma}$ by the Stefan–Boltzmann Law. The surface releases terrestrial radiation at the rate of $E_{N+1} = (N+1)E_{in}$ and has a temperature of $T_{N+1} = \sqrt[4]{E_{N+1}/\sigma} = \sqrt[4]{(N+1)E_{in}/\sigma} = (N+1)^{1/4}\sqrt[4]{E_{in}/\sigma} = (N+1)^{1/4}T_1$, i.e. the surface temperature is $(N+1)^{1/4}$ times the emission temperature. Our earth has an emission temperature of \SI{255}{\K} and a surface temperature of \SI{288}{\K} on average (notice that we have to use Kelvin instead of degree Celsius!), which leads to an effective number of layers $N = (288/255)^4 - 1 = 0.627$.
+Similarly, the subsequent rows are all in the form of $E_{j+1} = E_j + E_{in}$, and inductively we have $E_{j} = jE_{in}$. $E_1 = E_{in}$ is the emission of radiation from Earth as a whole as viewed from the space, and the \textit{emission temperature} is $T_1 = \sqrt[4]{E_1/\sigma} = \sqrt[4]{E_{in}/\sigma}$ by the Stefan–Boltzmann Law. The surface releases terrestrial radiation at the rate of $E_{N+1} = (N+1)E_{in}$ and has a temperature of $T_{N+1} = \sqrt[4]{E_{N+1}/\sigma} = \sqrt[4]{(N+1)E_{in}/\sigma} = (N+1)^{1/4}\sqrt[4]{E_{in}/\sigma} = (N+1)^{1/4}T_1$, i.e.\ the surface temperature is $(N+1)^{1/4}$ times the emission temperature. Our earth has an emission temperature of \SI{255}{\K} and a surface temperature of \SI{288}{\K} on average (notice that we have to use Kelvin instead of degree Celsius!), which leads to an effective number of absorbing layers $N = (288/255)^4 - 1 = 0.627$.
 \end{solution}
 
 \section{Python Programming}
@@ -1587,7 +1587,7 @@ and has a unique solution of $gy = 2.65$ (quartz), $pk = 2.55$ (feldspar), $bk =
 
 \begin{Exercise}
 \label{ex:circuitsys}
-\textit{Ohm's law} relates voltage drop of a current due to resistance by $V=IR$. In addition, \textit{Kirchhoff’s Second Law} states that: The voltage gain balances the voltage drop around any closed loop (net voltage change must be zero). The clockwise convention is adopted, i.e. around a loop, a battery with its positive terminal facing the clockwise direction is considered a voltage gain, and clockwise current passing through a resistor is deemed as a voltage drop. Together with the knowledge that current at a junction must conserve (\textit{Kirchhoff's First Law}), find $I_1$, $I_2$, $I_3$ (assumed flowing in the direction as indicated) for the circuit in Figure \ref{fig:circuitsys}.
+\textit{Ohm's law} relates voltage drop of a current due to resistance by $V=IR$. In addition, \textit{Kirchhoff’s Second Law} states that: The voltage gain balances the voltage drop around any closed loop (net voltage change must be zero). The clockwise convention is adopted, i.e.\ around a loop, a battery with its positive terminal facing the clockwise direction is considered a voltage gain, and clockwise current passing through a resistor is deemed as a voltage drop. Together with the knowledge that current at a junction must conserve (\textit{Kirchhoff's First Law}), find $I_1$, $I_2$, $I_3$ (assumed flowing in the direction as indicated) for the circuit in Figure \ref{fig:circuitsys}.
 \begin{figure}[h!]
 \centering
 \fbox{\includegraphics[scale = 0.4]{circuit.jpg}}
@@ -1644,13 +1644,15 @@ where $c = \sqrt{gH}$ is the wave speed, and $\kappa = \sqrt{k^2 + l^2}$ is the 
     \fill [blue!30] (3*pi,0) -- (0,0) -- plot[domain=0:3*pi,samples=500]  (\x, {5+0.5*sin(deg(4*\x))});
     \draw [thick,color=black] (0,0) -- (3*pi, 0);
     \fill [Brown!50!Orange] (0,0) rectangle (3*pi, -1) node[above left, black]{Bottom};
-    \draw [<->] (3*pi+0.2, 0) -- (3*pi+0.2, 5) node[below, midway, sloped]{H};
-    \draw [<->,red] (0.575*pi, 5.6) -- (0.575*pi, 4.9) node[midway, xshift=-8]{$\eta$};
-    \draw [thick, Green] (0.575*pi, 4.7) -- (0.575*pi, 0) node[midway, xshift=-8]{$u$};
+    \draw [<->] (3*pi+0.2, 0) -- (3*pi+0.2, 5) node[midway, xshift=8]{$H$};
+    \draw [<->,red] (0.575*pi, 5.6) -- (0.575*pi, 5) node[midway, xshift=-8]{$\eta$};
+    \draw [dashed, black] (0, 5) -- (3*pi, 5);
+    \draw [thick, Green] (0.575*pi, 5) -- (0.575*pi, 0) node[midway, xshift=-8]{$u$};
     \draw [thick, Green, ->] (0.575*pi, 4) -- (0.575*pi+1, 4);
     \draw [thick, Green, ->] (0.575*pi, 3) -- (0.575*pi+1, 3);
     \draw [thick, Green, ->] (0.575*pi, 2) -- (0.575*pi+1, 2);
     \draw [thick, Green, ->] (0.575*pi, 1) -- (0.575*pi+1, 1);
+    \node at (8.75, 2.5) {Fluid};
 \end{tikzpicture}
 \caption{The $x$-$z$ cross-section of shallow water system in Exercise \ref{ex:shallowwater}. $\eta$ is the height of free surface, $H$ is the mean depth of the fluid, and $u$ is the fluid velocity along $x$-axis.}
 \label{fig:shallowwater}
@@ -1694,7 +1696,7 @@ $T_{cd} \approx \SI{15.9}{\celsius}$, $z_{cd} \approx \SI{0.97}{\km}$.
 \end{Answer}
 
 \begin{Exercise}
-Solve the \textit{Chickens and Rabbits in the Same Cage} problem in Exercise \ref{ex:animals}. If we now introduce a new type of mystical creature who has one head and three legs, and put them in another cage along with some chickens and rabbits, find all possible numbers of the three species if the cage now has $48$ heads and $122$ legs.
+Solve the \textit{Chickens and Rabbits in the Same Cage} problem in Exercise \ref{ex:animals}. If we now introduce a new type of mystical creature who has one head and three legs, and throw them in another cage along with some chickens and rabbits, find all possible numbers of the three species if the cage now has $48$ heads and $122$ legs.
 \end{Exercise}
 \begin{Answer}
 $x = 23$, $y = 12$. For the extra part, the new system of equations become (denote the number of third species as $z$)
