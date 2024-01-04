@@ -110,7 +110,7 @@ Short Exercise: Show that $(ABC)^T = C^TB^TA^T$ if the matrices have compatible 
 \subsection{Symmetric Matrices}
 A \index{Symmetric Matrix}\keywordhl{Symmetric Matrix} has its elements mirrored about the main diagonal. Taking transpose of such a matrix will leave it unchanged. Implicitly, it is required to be a square matrix.
 \begin{defn}[Symmetric Matrix]
-If an $n \times n$ square matrix $A$ and its transpose $A^T$ are the same, i.e. $A_{pq} = A^T_{pq} = A_{qp}$ for all $1 \leq p, q \leq n$, or simply $A = A^T$, then $A$, and also $A^T$, are symmetric.
+If an $n \times n$ square matrix $A$ and its transpose $A^T$ are the same, i.e.\ $A_{pq} = A^T_{pq} = A_{qp}$ for all $1 \leq p, q \leq n$, or simply $A = A^T$, then $A$, and also $A^T$, are symmetric.
 \end{defn}
 As an example,
 \begin{flalign*}
@@ -706,7 +706,7 @@ Now we are ready to see why finding inverses by Gaussian Elimination works.
 \label{thm:Gausselimprincip}
 If a matrix $A$ can be converted to an identity matrix $I$ as its reduced row echelon form by Gaussian Elimination, then it is invertible since the same steps can in turn be applied on $I$, producing its inverse $A^{-1}$. 
 \end{thm}
-Using the language of Properties \ref{proper:rowequivreduce}, the matrix $A$ has to be row equivalent to $I$ for $A^{-1}$ to exist. This also means if Gaussian Elimination fails to reduce $A$ to $I$ (i.e. the reduced row echelon form of $A$ is some matrix other than the identity), then $A^{-1}$ does not exist.
+Using the language of Properties \ref{proper:rowequivreduce}, the matrix $A$ has to be row equivalent to $I$ for $A^{-1}$ to exist. This also means if Gaussian Elimination fails to reduce $A$ to $I$ (i.e.\ the reduced row echelon form of $A$ is some matrix other than the identity), then $A^{-1}$ does not exist.
 \begin{proof}
 Assume $A$ is invertible and hence $AA^{-1} = I$ (Definition \ref{defn:inverse}). From Theorem \ref{thm:elementarymat}, When doing Gaussian Elimination over $A$, the $i$-th elementary row operation executed can be represented by an elementary row matrix, denoted as $E_{i}$, $i = 1,2,\ldots,n$ where $n$ is the total number of steps. If we multiply these $E_{i}$ successively to the left on both sides of the equation $AA^{-1} = I$, we have
 \begin{align*}
@@ -744,6 +744,7 @@ a_2 & b_2
 Its determinant is computed by
 \begin{center}
 \begin{tikzpicture}
+% https://tex.stackexchange.com/questions/32978/typesetting-a-matrix-with-crossing-arrows-on-it
 \matrix[matrix of math nodes, inner sep=5pt, outer sep=-5pt] (sarrus) 
 {a_{11} & a_{12} \\
 a_{21} & a_{22} \\ };
@@ -1095,7 +1096,7 @@ Finally, it is the time to show the following properties about determinants.
 An invertible matrix has a non-zero determinant. Otherwise, a singular matrix has a determinant of zero.
 \end{proper}
 \begin{proof}
-Let's denote the matrix in question as $A$. Assume that $A$ is invertible and hence by Properties \ref{proper:invseqelement} it can be written as the product of some elementary matrices $E_1$, $E_2$, $\ldots$, $E_{n-1}$, $E_n$, i.e.
+Let's denote the matrix in question as $A$. Assume that $A$ is invertible and hence by Properties \ref{proper:invseqelement} it can be written as the product of some elementary matrices $E_1$, $E_2$, $\ldots$, $E_{n-1}$, $E_n$, i.e.\
 \begin{align*}
 A = E_{1}E_{2} \cdots E_{n-1}E_n
 \end{align*}
@@ -1324,7 +1325,7 @@ A summarizing point to be emphasized is that
 \label{thm:equiv1}
 For a square matrix $A$, the followings are equivalent:
 \begin{enumerate}[label=(\alph*)]
-\item $A$ is invertible, i.e. $A^{-1}$ exists,
+\item $A$ is invertible, i.e.\ $A^{-1}$ exists,
 \item $\det(A) \neq 0$,
 \item The reduced row echelon form of $A$ is $I$.
 \end{enumerate}
