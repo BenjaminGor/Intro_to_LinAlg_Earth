@@ -141,7 +141,7 @@ A $3 \times 3$ skew-symmetric matrix.
 \label{defn:inverse}
 An $n \times n$ square matrix $B$ is said to be the inverse of another $n \times n$ square matrix $A$ if $AB = BA = I_n$. Henceforth, we write $B = A^{-1}$, and $AA^{-1} = A^{-1}A = I$. The opposite direction also holds, i.e.\ $A$ is the inverse of $B = A^{-1}$. We say that $A=B^{-1}$ and $B=A^{-1}$ are the inverse of each other.
 \end{defn}
-If there exists an inverse $A^{-1}$ for the square matrix $A$, then both $A$ and $A^{-1}$ are called \index{Invertible}\keywordhl{invertible}. Otherwise, $A$ is said to be \index{Singular}\keywordhl{singular}. This is another situation in which a matrix product $AB = BA$ (if $B=A^{-1}$) can commute. We can show why $AA^{-1} = I$ implies $A^{-1}A = I$, or vice versa.
+If there exists an inverse $A^{-1}$ for the square matrix $A$, then both $A$ and $A^{-1}$ are called \index{Invertible}\keywordhl{Invertible}. Otherwise, $A$ is said to be \index{Singular}\keywordhl{Singular}. This is another situation in which a matrix product $AB = BA$ (if $B=A^{-1}$) can commute. We can show why $AA^{-1} = I$ implies $A^{-1}A = I$, or vice versa.
 \begin{proof}
 Assume only $AA^{-1} = I$ is true, then multiplying $A$ to the right on both sides of the equation leads to
 \begin{align*}
@@ -335,7 +335,7 @@ X &=
 0 & 0 & 1 
 \end{bmatrix}
 \end{align*}
-The next goal is to transform the matrix in question to reduced row echelon form by elementary row operations, whose importance will be demonstrated soon. The procedure is comprised of two major parts, \textit{Forward Elimination}, converting the matrix into row echelon form, and \textit{Backward Elimination}, further converting it into reduced row echelon form. The first phase is also named \index{Gaussian Elimination}\keywordhl{Gaussian Elimination}, and together they are called \index{Gaussian Elimination!Gauss-Jordan Elimination}\keywordhl{Gauss-Jordan Elimination}. We demonstrate the entire procedure using an example.
+The next goal is to transform the matrix in question to reduced row echelon form by elementary row operations, whose importance will be demonstrated soon. The procedure is comprised of two major parts, \textit{Forward Elimination}, converting the matrix to row echelon form, and \textit{Backward Elimination}, further converting it to reduced row echelon form. The first phase is also named \index{Gaussian Elimination}\keywordhl{Gaussian Elimination}, and together they are called \index{Gaussian Elimination!Gauss-Jordan Elimination}\keywordhl{Gauss-Jordan Elimination}. We demonstrate the entire procedure using an example.
 \begin{exmp}
 Carry out Gauss-Jordan Elimination on the following matrix.
 \begin{align*}
@@ -609,7 +609,7 @@ A^{-1} =
 \end{bmatrix}    
 \end{align*}
 \end{solution}
-Short Exercise: Find the inverse of $A^{-1}$ above by the same elimination method but in an opposite fashion. \footnote{You should be able to retrieve the matrix $A$ back.}\\
+Short Exercise: Find the inverse of $A^{-1}$ above by the same elimination method. \footnote{You should be able to retrieve the matrix $A$ back.}\\
 \\
 The underlying reason why the above procedure can produce the inverse matrix is the equivalence between elementary row operations and multiplication by appropriate \index{Elementary Matrix}\keywordhl{Elementary Matrices}.
 \begin{thm}[Elementary Matrices]

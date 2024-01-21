@@ -5,7 +5,7 @@ Although the Earth System is well-known to be filled with non-linear processes, 
 \section{Definition and Operations of Matrices}
 
 \subsection{Basic Structure of Matrices}
-\index{Matrix}\keywordhl{Matrices} are rectangular arrays of numbers, which can be real or complex. For now we will work with real numbers, and defer the treatment about complex matrices to later chapters. A matrix having $m$ rows and $n$ columns is called an $m \times n$ matrix. A matrix with the same number of rows and columns, i.e.\ $m = n$, is called a \index{Matrix!Square Matrix}\keywordhl{square matrix}. Below shows some examples of matrices.
+\index{Matrix}\keywordhl{Matrices} are rectangular arrays of numbers, which can be real or complex. For now we will work with real numbers, and defer the treatment about complex matrices to later chapters. A matrix having $m$ rows and $n$ columns is called an $m \times n$ matrix. A matrix with the same number of rows and columns, i.e.\ $m = n$, is called a \index{Matrix!Square Matrix}\keywordhl{Square Matrix}. Below shows some examples of matrices.
 
 \begin{minipage}{0.5\textwidth}
 $\begin{bmatrix}
@@ -99,7 +99,7 @@ Short Exercise: Find $A-B$.\footnote{$A-B = \begin{bmatrix}
 4 & -1
 \end{bmatrix}$}
 
-\subsubsection{Scalar Multiplication} Multiplying a matrix by a constant constitutes a \index{Scalar Multiplication}\keywordhl{scalar multiplication}, in which all entries are multiplied by the scalar. It is illustrated in the example below.
+\subsubsection{Scalar Multiplication} Multiplying a matrix by a constant constitutes a \index{Scalar Multiplication}\keywordhl{Scalar Multiplication}, in which all entries are multiplied by the scalar. It is illustrated in the example below.
 \begin{align*}
 A &= 
 \begin{bmatrix}
@@ -127,7 +127,7 @@ Short Exercise: Find $\frac{1}{4}A$.\footnote{$A/4 = \begin{bmatrix}
 -1/4 & 1 & -3/4
 \end{bmatrix}$}
 
-\subsubsection{Matrix Multiplication/Matrix Product} Meanwhile, multiplication between two matrices, commonly referred to as \index{Matrix Product (Matrix Multiplication)}\keywordhl{matrix multiplication/matrix product}, is not element-wise. It can be only carried out if the number of columns of the first matrix equals to the number of rows of the second matrix, let's say $r$, in other words, they are of the shape $m \times r$ and $r \times n$ respectively. The resulting matrix is of the shape $m \times n$, which means that the number of rows/columns of the output matrix follows the first/second input matrix respectively. The following two examples explain this requirement.
+\subsubsection{Matrix Multiplication/Matrix Product} Meanwhile, multiplication between two matrices, commonly referred to as \index{Matrix Product (Matrix Multiplication)}\keywordhl{Matrix Multiplication/Matrix Product}, is not element-wise. It can be only carried out if the number of columns of the first matrix equals to the number of rows of the second matrix, let's say $r$, in other words, they are of the shape $m \times r$ and $r \times n$ respectively. The resulting matrix is of the shape $m \times n$, which means that the number of rows/columns of the output matrix follows the first/second input matrix respectively. The following two examples explain this requirement.
 \begin{align*}
 & A = 
 \begin{bmatrix}
@@ -401,13 +401,13 @@ However, be careful that cancellation at both sides may not be correct. If $AB =
 
 \section{Definition of Linear Systems of Equations}
 \label{section:deflinsys}
-The prime application of matrices is to deal with \index{Linear System of Equations}\keywordhl{linear systems (of equations)}. To understand what a linear system is, we first have to know the definition of a \index{Linear Equation}\keywordhl{linear equation} (possibly in multiple variables, let's say $x_1$, $x_2$, $\ldots$). For a linear equation, in any additive term, there is at most one variable or unknown, with a power of one, like $3x_1$, $-x_2$. This means that there are no cross-product terms such as $2x_1x_2$, variables with a power that is not one, like $x_1^3$, or non-linear functions, including $\sin{x_1}, e^{x_2}$. For $n$ variables, a linear equation has the following definition.
+The prime application of matrices is to deal with \index{Linear System of Equations}\keywordhl{Linear Systems (of Equations)}. To understand what a linear system is, we first have to know the definition of a \index{Linear Equation}\keywordhl{Linear Equation} (possibly in multiple variables, let's say $x_1$, $x_2$, $\ldots$). For a linear equation, in any additive term, there is at most one variable or unknown, with a power of one, like $3x_1$, $-x_2$. This means that there are no cross-product terms such as $2x_1x_2$, variables with a power that is not one, like $x_1^3$, or non-linear functions, including $\sin{x_1}, e^{x_2}$. For $n$ variables, a linear equation has the following definition.
 \begin{defn}[Linear Equation]
 A linear equation has the form of
 \begin{align*}
 \sum_{j=1}^n a_jx_j = a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_nx_n = h
 \end{align*}
-where $x_1, x_2, \ldots$ are the unknowns, while $a_1, a_2, \ldots$ and $h$ are some constants. If $h = 0$, then it is known as a \index{Linear Equation!Homogeneous Linear Equation}\keywordhl{homogeneous linear equation}.
+where $x_1, x_2, \ldots$ are the unknowns, while $a_1, a_2, \ldots$ and $h$ are some constants. If $h = 0$, then it is known as a \index{Linear Equation!Homogeneous Linear Equation}\keywordhl{Homogeneous Linear Equation}.
 \end{defn}
 Short Exercise: Determine whether the equations below are (a) linear, and if they are linear, then (b) homogeneous or not.\footnote{Linear/Inhomogeneous, Non-linear, Linear/Inhomogeneous, Non-linear, Linear/Homogeneous, Non-linear.}
 \begin{enumerate}
@@ -430,7 +430,7 @@ A linear system of size $m \times n$ has the form of
 \sum_{j=1}^n a_j^{(m)}x_j = a_1^{(m)}x_1 + a_2^{(m)}x_2 + a_3^{(m)}x_3 + \cdots + a_n^{(m)}x_n &= h^{(m)} \\
 \end{cases}   
 \end{equation*}
-If $h^{(1)}, h^{(2)}, \ldots$ at the right hand side are all zeros, then the system is called a \index{Linear System of Equations!Homogeneous Linear System of Equations}\keywordhl{homogeneous linear system (of equations)}. It is not hard to see that for any homogeneous linear system, it always has a trivial solution of $x_j = 0$ for $j = 1, \ldots, n$, or expressed as $\vec{x} = \textbf{0}$. However, such trivial solution may not be the only solution to the system, as we shall see in !???.
+If $h^{(1)}, h^{(2)}, \ldots$ at the right hand side are all zeros, then the system is called a \index{Linear System of Equations!Homogeneous Linear System of Equations}\keywordhl{Homogeneous Linear System (of Equations)}. It is not hard to see that for any homogeneous linear system, it always has a trivial solution of $x_j = 0$ for $j = 1, \ldots, n$, or expressed as $\vec{x} = \textbf{0}$. However, such trivial solution may not be the only solution to the system, as we shall see in !???.
 \end{defn}
 Below shows some examples of linear systems.
 \begin{flalign*}
@@ -485,7 +485,7 @@ z
 -4
 \end{bmatrix}
 \end{align*}
-An even simpler representation is the \index{Matrix!Augmented Matrix}\keywordhl{augmented matrix} which omits the unknowns and concatenates the remaining matrices.
+An even simpler representation is the \index{Matrix!Augmented Matrix}\keywordhl{Augmented Matrix} which omits the unknowns and concatenates the remaining matrices.
 \begin{equation*}
 \left[\begin{array}{@{}ccc|c@{}}
 1 & 2 & -4 & 3\\
@@ -494,7 +494,7 @@ An even simpler representation is the \index{Matrix!Augmented Matrix}\keywordhl{
 \end{equation*}
 
 \section{Elementary Row Operations}
-When we construct a matrix, it is natural to think about how to utilize its structure. \index{Elementary Row Operations}\keywordhl{Elementary row operations} provide such possibility in three ways, outlined in the following definition.
+When we construct a matrix, it is natural to think about how to utilize its structure. \index{Elementary Row Operations}\keywordhl{Elementary Row Operations} provide such possibility in three ways, outlined in the following definition.
 \begin{defn}[Elementary Row Operations]
 \label{defn:elerowop}
 The three types of elementary row operations are
@@ -533,7 +533,7 @@ $\begin{bmatrix}
 Attentive readers may have noticed that these three operations are what we have been always doing to equations when solving a linear system, as taught in high school. We re-introduce them as elementary row operations here first as they are fundamental to the treatment of later chapters.
 
 \section{Earth Science Applications}
-\label{sec:ch1earth}
+\label{section:ch1earth}
 \begin{exmp}
 \label{exmp:seismic1}
 Seismic wave follows \textit{Snell's Law} like a light ray when it comes to refraction. Assuming the ground can be modelled as a two-layer system (see Figure \ref{fig:seismic1}), and we know a particular train of seismic wave generated from an underground source that reaches the ground receiver travels at an angle of $\theta_1 = \SI{45}{\degree}$/$\theta_2 = \SI{60}{\degree}$ to the vertical at the top/bottom layer. Given that the horizontal and vertical distance between the seismic source and the surface receiver are $d = \SI{1200}{\m}$ and $h = \SI{800}{\m}$. Construct a linear system for this situation in two unknowns: the depth of the top layer $y$ and the horizontal displacement $x$ (in meters) where the wave reaches at the interface relative to the source.
@@ -732,7 +732,7 @@ E_5
 \end{bmatrix}
 \end{align*}
 \end{solution}
-We will talk about how to solve the linear systems in these two examples in Section \ref{sec:ch3earth}.
+We will talk about how to solve the linear systems in these two examples in Section \ref{section:ch3earth}.
 
 \section{Python Programming}
 We will use the package \texttt{numpy} and \texttt{scipy} throughout the book to solve linear algebra problems via \textit{Python} programming. First, we can define a 2D \texttt{numpy} array that works as a matrix.
@@ -1064,7 +1064,7 @@ AB = BA = \begin{bmatrix}
 \end{Answer}
 
 \begin{Exercise}
-Rewrite the following system of linear equations into matrix form.
+Rewrite the following system of linear equations in matrix form.
 \begin{equation*}
 \begin{cases}
 3y - 4z &= 6\\

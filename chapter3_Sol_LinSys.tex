@@ -437,7 +437,7 @@ t'
 \end{align*}
 where we "extract" $\tilde{x}$ from generating a shifted free parameter $t' = t-1$ and according to this relation, it represents the same set of general solution as the original expression.}\\
 \par
-The general solution encompasses all possible solutions to the linear system. For broader situations, it can contain more than one pairs of free parameter and column vector (or none, for the rather trivial cases of zero or a unique solution). The amount of free variables can be seen to be the number of columns in the coefficient matrix, minus the number of pivots in the reduced row echelon form. In case of multiple free variables, we assign the corresponding amount of free parameters to the non-pivots and apply the same procedure to get a set of general solution. Any column vector of a free parameter can be scaled as we desire.\footnote{Using the last example, 
+The general solution encompasses all possible solutions to the linear system. For broader situations, it can contain more than one pairs of free parameter and column vector (or none, for the rather trivial cases of zero or a unique solution). The amount of free variables can be seen to be the number of columns in the coefficient matrix, minus the number of pivots in the reduced row echelon form. In case of multiple free variables, we assign the corresponding amount of free parameters to the non-pivots and apply the same procedure to get a set of general solution. Any column vector of a free parameter can be scaled as we desire.\footnote{Using the last example as a demonstration, 
 \begin{align*}
 \begin{bmatrix}
 1 \\
@@ -474,7 +474,7 @@ The general solution encompasses all possible solutions to the linear system. Fo
 -2 \\
 2
 \end{bmatrix}
-\end{align*} where we use $s = \frac{t}{2}$ as a new free parameter and the column vector is now scaled by a factor of $2$.} \\
+\end{align*} where we use $s = \frac{t}{2}$ as a new free parameter and the column vector associated to that free parameter is now scaled by a factor of $2$.} \\
 \\
 Meanwhile, the particular solution can be set to any valid solution to the system (the choice does not affect the structure of any column vector that comes along with a free parameter, see the footnote to the short exercise above). If the linear system is homogeneous, then the zero vector will always be a possible particular solution. \\
 \\
@@ -771,34 +771,33 @@ $\begin{bmatrix}
 
 \subsection{Solving Linear Systems by Inverse}
 \label{subsection:SolLinSysInv}
-For a square linear system $A\vec{x} = \vec{h}$, if $A$ has a non-zero determinant and is invertible, then we can utilize its inverse to recover the solution. Remember that multiplying the inverse to a matrix returns an identity matrix, it is possible to multiply the inverse $A^{-1}$ to the left on both sides of the equation $A\vec{x} = \vec{h}$ to cancel out the $A$ at the L.H.S., which leads to
+For a square linear system $A\vec{x} = \vec{h}$, if $A$ has a non-zero determinant and is invertible, then we can utilize its inverse to recover the solution. Remember that multiplying the inverse to a matrix returns an identity matrix, it is possible to multiply the inverse $A^{-1}$ to the left on both sides of the equation $A\vec{x} = \vec{h}$ to cancel out the $A$ on the L.H.S., which leads to
 \begin{align*}
 A^{-1}A\vec{x}= (A^{-1}A)\vec{x} &= A^{-1}\vec{h} \\
 \vec{x} = I\vec{x} &= A^{-1}\vec{h} &\text{(Definition \ref{defn:inverse} and Properties \ref{proper:identity})}
 \end{align*}
 This solution is unique, guaranteed by Theorem \ref{thm:sqlinsysunique}.
 \begin{exmp}
-Given a linear system $A\vec{x} = \vec{h}$
+Solve the linear system $A\vec{x} = \vec{h}$ by the inverse method, where
 \begin{align*}
+A &=
 \begin{bmatrix}
 1 & -1 & -2 \\
 0 & 3 & 1 \\
 1 & 0 & -1
 \end{bmatrix}
-\begin{bmatrix}
-x \\
-y \\
-z
-\end{bmatrix}
-=
+& \vec{h} &=
 \begin{bmatrix}
 3 \\
 2 \\
 3
 \end{bmatrix}
 \end{align*}
+\end{exmp}
+\begin{solution}
 It can be checked that the inverse of the coefficient matrix is
 \begin{align*}
+A^{-1} =
 \begin{bmatrix}
 1 & -1 & -2 \\
 0 & 3 & 1 \\
@@ -811,7 +810,7 @@ It can be checked that the inverse of the coefficient matrix is
 -\frac{3}{2} & -\frac{1}{2} & \frac{3}{2}
 \end{bmatrix}
 \end{align*}
-The readers are encouraged to verify the inverse. Subsequently, we have the solution to the linear system as $\vec{x} = A^{-1}\vec{h}$
+The readers are encouraged to verify the inverse. Subsequently, we have the solution to the linear system as
 \begin{align*}
 \vec{x} = 
 \begin{bmatrix}
@@ -819,7 +818,7 @@ x \\
 y \\
 z
 \end{bmatrix}
-=    
+= A^{-1}\vec{h} =  
 \begin{bmatrix}
 -\frac{3}{2} & -\frac{1}{2} & \frac{5}{2} \\
 \frac{1}{2} & \frac{1}{2} & -\frac{1}{2} \\
@@ -837,7 +836,8 @@ z
 -1
 \end{bmatrix}
 \end{align*}
-\end{exmp}
+\end{solution}
+
 Doing Gaussian Elimination to find the inverse and then compute the solution by $\vec{x} = A^{-1}\vec{h}$ in Section \ref{subsection:SolLinSysInv} is somehow the same as using Gaussian Elimination directly to solve the linear system suggested by Section \ref{subsection:SolLinSysGauss}. Hypothetically, if there are a large amount of linear systems which all share the same coefficient matrix $A$, but different $\vec{h}_k$ to be solved, then the former approach may be more efficient at first sight. However, in computer, calculation of inverse can be unstable (see Section \ref{section:ch2python}) and there are some other practical reasons not to do so, as we shall see in Section \ref{section:ch3python}. Besides, Theorem \ref{thm:equiv1} can be extended as below by incorporating Theorem \ref{thm:sqlinsysunique}:
 \begin{thm}
 \label{thm:equiv2}[Equivalence Statement, ver.\ 2]
@@ -851,8 +851,8 @@ For a square matrix $A$, the followings are equivalent:
 \end{thm}
 
 \section{Earth Science Applications}
-\label{sec:ch3earth}
-Now we are going to revisit and find the solutions to the two linear system problems in Section \ref{sec:ch1earth}.
+\label{section:ch3earth}
+Now we are going to revisit and find the solutions to the two linear system problems in Section \ref{section:ch1earth}.
 \begin{exmp}
 Solve for the horizontal displacement $x$ and depth of top layer $y$ in the seismic ray problem of Example \ref{exmp:seismic1}.
 \end{exmp}
@@ -1015,7 +1015,7 @@ From the first row, we readily obtain $E_1 = E_{in}$. The second row yields the 
 E_1 - E_2 &= -E_{in} \\
 E_2 &= E_1 + E_{in} = E_{in} + E_{in} = 2E_{in}
 \end{align*}
-Similarly, the subsequent rows are all in the form of $E_{j+1} = E_j + E_{in}$, and inductively we have $E_{j} = jE_{in}$. $E_1 = E_{in}$ is the emission of radiation from Earth as a whole as viewed from the space, and the \textit{emission temperature} is $T_1 = \sqrt[4]{E_1/\sigma} = \sqrt[4]{E_{in}/\sigma}$ by the Stefan–Boltzmann Law. The surface releases terrestrial radiation at the rate of $E_{N+1} = (N+1)E_{in}$ and has a temperature of $T_{N+1} = \sqrt[4]{E_{N+1}/\sigma} = \sqrt[4]{(N+1)E_{in}/\sigma} = (N+1)^{1/4}\sqrt[4]{E_{in}/\sigma} = (N+1)^{1/4}T_1$, i.e.\ the surface temperature is $(N+1)^{1/4}$ times the emission temperature. Our earth has an emission temperature of \SI{255}{\K} and a surface temperature of \SI{288}{\K} on average (notice that we have to use Kelvin instead of degree Celsius!), which leads to an effective number of absorbing layers $N = (288/255)^4 - 1 = 0.627$.
+Similarly, the subsequent rows are all in the form of $E_{j+1} = E_j + E_{in}$, and inductively we have $E_{j} = jE_{in}$. $E_1 = E_{in}$ is the emission of radiation from Earth as a whole as viewed from the space, and the \textit{emission temperature} is $T_1 = \sqrt[4]{E_1/\sigma} = \sqrt[4]{E_{in}/\sigma}$ by Stefan–Boltzmann Law. The surface releases terrestrial radiation at the rate of $E_{N+1} = (N+1)E_{in}$ and has a temperature of $T_{N+1} = \sqrt[4]{E_{N+1}/\sigma} = \sqrt[4]{(N+1)E_{in}/\sigma} = (N+1)^{1/4}\sqrt[4]{E_{in}/\sigma} = (N+1)^{1/4}T_1$, i.e.\ the surface temperature is $(N+1)^{1/4}$ times the emission temperature. Our earth has an emission temperature of \SI{255}{\K} and a surface temperature of \SI{288}{\K} on average (notice that we have to use Kelvin instead of degree Celsius!), which leads to an effective number of absorbing layers $N = (288/255)^4 - 1 = 0.627$.
 \end{solution}
 
 \section{Python Programming}
