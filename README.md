@@ -5,4 +5,4 @@ Hello I am Benjamin Loi. This is the repository for the tex files for my textboo
 The textbook pdf is located at [here](Linear_Algebra_Notes_New.pdf).
 
 <h2>Update Schedule</h2>
-This project is still alive and being constantly updated as of Jan 2024.
+This project is still alive and being constantly updated as of Jul 2024.
