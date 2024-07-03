@@ -1,11 +1,11 @@
 \chapter{Introduction to Matrices and Linear Systems}
 
-Although the Earth System is well-known to be filled with non-linear processes, we still benefit from learning how to work with linear systems, as which many Earth Science problems can be approximated. This actually works well in a number of cases. For example, in Atmosphere Sciences, we often consider what is called a \textit{perturbation equation}, which assumes that variations from the mean state are small enough to neglect quadratic perturbed terms. \textit{Matrices} are one of the most fundamental objects in Linear Algebra, and we are going to address the basic aspects related to them in the first chapter.
+Although the Earth System is well-known to be filled with non-linear processes, we still benefit from learning how to work with linear systems, as which many Earth Science problems can be approximated. This actually works well in a number of cases. For example, in Atmosphere Sciences, we often consider what is called a \textit{perturbation equation}, which assumes that deviations from the mean state are small enough to neglect quadratic terms. \textit{Matrices} are one of the most fundamental objects in Linear Algebra, and we are going to address the basic aspects related to them in the first chapter.
 
 \section{Definition and Operations of Matrices}
 
 \subsection{Basic Structure of Matrices}
-\index{Matrix}\keywordhl{Matrices} are rectangular arrays of numbers, which can be real or complex. For now we will work with real numbers, and defer the treatment about complex matrices to later chapters. A matrix having $m$ rows and $n$ columns is called an $m \times n$ matrix. A matrix with the same number of rows and columns, i.e.\ $m = n$, is called a \index{Matrix!Square Matrix}\keywordhl{Square Matrix}. Below shows some examples of matrices.
+\index{Matrix}\keywordhl{Matrices} are rectangular arrays of numbers, which can be real or complex. For now we will work with real matrices, and defer the treatment about complex matrices to later chapters. A matrix having $m$ rows and $n$ columns is called an $m \times n$ matrix. A matrix with the same number of rows and columns, i.e.\ $m = n$, is called a \index{Matrix!Square Matrix}\keywordhl{Square Matrix}. Below shows some examples of matrices.
 
 \begin{minipage}{0.5\textwidth}
 $\begin{bmatrix}
@@ -16,7 +16,7 @@ A $2 \times 4$ real matrix.
 \end{minipage}%
 \begin{minipage}{0.5\textwidth}
 $\begin{bmatrix}
-2 - \imath \\
+2 - \frac{4}{5}\imath \\
 0 \\
 1 \\
 3 \imath
@@ -26,8 +26,8 @@ A $4 \times 1$ complex matrix.
 \begin{minipage}{0.5\textwidth}
 $\begin{bmatrix}
 3 & 2 & 9 \\
--4 & 0 & 4 \\
-5 & 2 & -3
+-4 & 0 & \frac{1}{6} \\
+5 & 2 & -1
 \end{bmatrix}$\par\vspace{4pt}
 A $3 \times 3$ real, square matrix.
 \end{minipage}
@@ -37,17 +37,18 @@ Given any matrix $A$, its entry at row $i$ and column $j$ will be denoted as $A_
 & A =
 \begin{tikzpicture}[baseline=-\the\dimexpr\fontdimen22\textfont2\relax]
 \matrix(mymatrix)[matrix of math nodes, left delimiter={[}, 
-right delimiter={]}, inner sep=3pt, ampersand replacement=\&]
-{2 \& 1 \& 9 \\
-\textcolor{red}{5} \& -3 \& 7 \\};
-\node at (mymatrix-1-1)[above, font=\scriptsize, yshift=5, Green] {Col 1};
-\node at (mymatrix-2-3)[right, font=\scriptsize, xshift=15, Green] {Row 2};
-\draw [Green, dotted, fill=blue!50, fill opacity=0.2] (mymatrix-1-1.north west) rectangle (mymatrix-2-1.south east);
-\draw [Green, dotted, fill=blue!50, fill opacity=0.2] (mymatrix-2-1.north west) rectangle (mymatrix-2-3.south east);
+right delimiter={]}, anchor=center, inner sep=3pt, nodes={text width=12pt, align=center}, ampersand replacement=\&]
+{2 \& 1 \& 9 \& 8 \\
+\textcolor{red}{5} \& -3 \& 7 \& 0 \\
+-3 \& 4 \& 6 \& -1 \\};
+\node at (mymatrix-1-1)[above, font=\footnotesize, yshift=8, Green] {Col 1};
+\node at (mymatrix-2-4)[right, font=\footnotesize, xshift=18, Green] {Row 2};
+\draw [Green, dotted, fill=blue!50, fill opacity=0.2] (mymatrix-1-1.north west) rectangle (mymatrix-3-1.south east);
+\draw [Green, dotted, fill=blue!50, fill opacity=0.2] (mymatrix-2-1.north west) rectangle (mymatrix-2-4.south east);
 \end{tikzpicture}
 & \textcolor{red}{A_{21} = 5}
 \end{align*}
-Short Exercise: Find $A_{13}$ and $A_{22}$.\footnote{$A_{13} = 9$, $A_{22} = -3$.}
+Short Exercise: Find $A_{13}$, $A_{22}$, $A_{34}$ and $A_{42}$ .\footnote{$A_{13} = 9$, $A_{22} = -3$, $A_{34} = -1$, $A_{42}$ does not exist.}
 
 \subsection{Matrix Operations} 
 \subsubsection{Addition and Subtraction}
@@ -63,7 +64,7 @@ B &=
 \begin{bmatrix}
 1 & 1 \\
 0 & 8 \\
-1 & 7
+1 & -7
 \end{bmatrix}
 \end{align*}
 Then
@@ -78,28 +79,28 @@ A+B &=
 \begin{bmatrix}
 1 & 1 \\
 0 & 8 \\
-1 & 7
+1 & -7
 \end{bmatrix} \\
 &= 
 \begin{bmatrix}
 1+1 & 2+1 \\
 3+0 & 4+8 \\
-5+1 & 6+7
+5+1 & 6+(-7)
 \end{bmatrix} \\
 &= 
 \begin{bmatrix}
 2 & 3 \\
 3 & 12 \\
-6 & 13
+6 & -1
 \end{bmatrix}
 \end{align*}
 Short Exercise: Find $A-B$.\footnote{$A-B = \begin{bmatrix}
 0 & 1 \\
 3 & -4 \\
-4 & -1
-\end{bmatrix}$}
+4 & 13
+\end{bmatrix}$\\}
 
-\subsubsection{Scalar Multiplication} Multiplying a matrix by a constant constitutes a \index{Scalar Multiplication}\keywordhl{Scalar Multiplication}, in which all entries are multiplied by the scalar. It is illustrated in the example below.
+\subsubsection{Scalar Multiplication} Multiplying a matrix by a number constitutes a \index{Scalar Multiplication}\keywordhl{Scalar Multiplication}, in which all entries are multiplied by that scalar. It is illustrated in the example below.
 \begin{align*}
 A &= 
 \begin{bmatrix}
@@ -113,8 +114,8 @@ A &=
 \end{bmatrix} \\
 &=
 \begin{bmatrix}
-3 \times 2 & 3 \times (-5) & 3 \times 6 \\
-3 \times (-1) & 3 \times 4 & 3 \times (-3)
+3(2) & 3(-5) & 3(6) \\
+3(-1) & 3(4) & 3(-3)
 \end{bmatrix} \\
 &=
 \begin{bmatrix}
@@ -122,12 +123,12 @@ A &=
 -3 & 12 & -9
 \end{bmatrix}
 \end{align*}
-Short Exercise: Find $\frac{1}{4}A$.\footnote{$A/4 = \begin{bmatrix}
-1/2 & -5/4 & 3/2 \\
--1/4 & 1 & -3/4
+Short Exercise: Find $\frac{1}{4}A$.\footnote{$\frac{1}{4}A = \begin{bmatrix}
+\frac{1}{2} & -\frac{5}{4} & \frac{3}{2} \\
+-\frac{1}{4} & 1 & -\frac{3}{4}
 \end{bmatrix}$}
 
-\subsubsection{Matrix Multiplication/Matrix Product} Meanwhile, multiplication between two matrices, commonly referred to as \index{Matrix Product (Matrix Multiplication)}\keywordhl{Matrix Multiplication/Matrix Product}, is not element-wise. It can be only carried out if the number of columns of the first matrix equals to the number of rows of the second matrix, let's say $r$, in other words, they are of the shape $m \times r$ and $r \times n$ respectively. The resulting matrix is of the shape $m \times n$, which means that the number of rows/columns of the output matrix follows the first/second input matrix respectively. The following two examples explain this requirement.
+\subsubsection{Matrix Multiplication/Matrix Product} Meanwhile, multiplication between two matrices, commonly referred to as \index{Matrix Product (Matrix Multiplication)}\keywordhl{Matrix Multiplication/Matrix Product}, is not element-wise. It can be only carried out if the number of columns of the first matrix $A$ equals to the number of rows of the second matrix $B$, let's say $r$. In other words, they are of the shape $m \times r$ and $r \times n$ respectively. The resulting matrix $AB$ has the shape $m \times n$, which means that the number of rows/columns of the output matrix follows the first/second input matrix respectively. The following two examples explain this requirement.
 \begin{align*}
 & A = 
 \begin{bmatrix}
@@ -141,7 +142,7 @@ Short Exercise: Find $\frac{1}{4}A$.\footnote{$A/4 = \begin{bmatrix}
 7 
 \end{bmatrix}
 \end{align*}
-Since the shapes of $A$ and $B$ are $2 \times 3$ and $3 \times 1$, the number of columns in $A$ and the number of rows in $B$ are both $3$, and hence matrix product between them is possible. The resulting matrix will be of size $2 \times 1$.
+Since the shapes of $A$ and $B$ are $2 \times 3$ and $3 \times 1$, the number of columns in $A$ and the number of rows in $B$ are both $3$, and hence the matrix product $AB$ is possible. The resulting matrix will be of size $2 \times 1$. On the other hand, after reversing the order of multiplication, $BA$ is not defined. Meanwhile, for
 \begin{align*}
 & C = 
 \begin{bmatrix}
@@ -155,13 +156,13 @@ Since the shapes of $A$ and $B$ are $2 \times 3$ and $3 \times 1$, the number of
 3 & 2
 \end{bmatrix}
 \end{align*}
-As the number of columns in $C$ is 4, which is not equal to the number of rows in $D$, 3, matrix product is undefined in this case. Now we are ready to see how the entries in matrix product is exactly computed.
+as the number of columns in $C$ is $4$, which is not equal to the number of rows in $D$: $3$, the matrix product $CD$ is undefined in this case. (However, $DC$ is just valid, and what will be its shape?\footnote{$DC$ will be a $3 \times 4$ matrix.}) Now we are ready to see how the entries in matrix product is exactly computed.
 
 \begin{defn}[Matrix Product]
 \label{defn:matprod}
-Given an $m \times r$ matrix $A$ and an $r \times n$ matrix $B$, if we denote the matrix product between $A$ and $B$ as $C = AB$, then to calculate any entry in $C$ at row $i$ and column $j$, we select row $i$ from the first matrix $A$ and column $j$ from the second matrix $B$. Subsequently, take the products between the $r$ pairs of numbers from that row and column. Their sum will then be the required value of the entry, i.e.\
+Given an $m \times r$ matrix $A$ and an $r \times n$ matrix $B$, we denote the matrix product between $A$ and $B$ as $AB$. To calculate any entry in $AB$ at row $i$ and column $j$, we select row $i$ from the first matrix $A$ and column $j$ from the second matrix $B$. Subsequently, take the products between the $r$ pairs of numbers from that row and column. Their sum will then be the required value of the element, i.e.\
 \begin{align*}
-C_{ij} = (AB)_{ij} &= A_{i1}B_{ij} + A_{i2}B_{2j} + A_{i3}B_{3j} + ... + A_{ir}B_{rj} \\
+(AB)_{ij} &= A_{i1}B_{1j} + A_{i2}B_{2j} + A_{i3}B_{3j} + ... + A_{ir}B_{rj} \\
 &= \sum_{k=1}^{r} A_{ik}B_{kj}
 \end{align*}
 again, $r$ is the number of columns/rows in the first/second matrix.
@@ -183,14 +184,14 @@ Calculate the matrix product $C = AB$, where
 \end{align*}
 \end{exmp}
 \begin{solution}
-The output will be a $2 \times 2$ matrix. Using the definition, we have
+The output will be a $2 \times 2$ matrix. Using the definition above, we have
 \begin{align*}
 C_{11} = (AB)_{11} &= A_{11}B_{11} + A_{12}B_{21} + A_{13}B_{31} \\
 &= (1)(1) + (3)(2) + (5)(3) = 22 \\
 C_{12} = (AB)_{12} &= \textcolor{red}{A_{11}}\textcolor{blue}{B_{12}} + \textcolor{red}{A_{12}}\textcolor{blue}{B_{22}} + \textcolor{red}{A_{13}}\textcolor{blue}{B_{32}} \\
 &= \textcolor{red}{(1)}\textcolor{blue}{(4)} + \textcolor{red}{(3)}\textcolor{blue}{(5)} + \textcolor{red}{(5)}\textcolor{blue}{(6)} = 49
 \end{align*}
-Hence the entries along the first row of $C$ will be 22 and 49. The remaining entries at the second row are found in a similar way, and the readers are encouraged to do this themselves. You should be able to get
+Hence the entries along the first row of $C$ will be 22 and 49. The remaining entries at the second row can be found in a similar way, and the readers are encouraged to do this themselves. You should be able to get
 \begin{align*}
 C = 
 \begin{bmatrix}
@@ -203,7 +204,7 @@ C =
 Matrix product has some important properties, listed as follows.
 \begin{proper}
 \label{proper:matmul}
-If $A$, $B$, $C$ are some matrices having compatible shapes so that the matrix multiplication operations below are valid, then
+If $A$, $B$, $C$ are some matrices having compatible shapes (\textit{conformable}) so that the matrix multiplication operations below are valid, then
 \begin{align*}
 \underbrace{A\cdots A}_{k \text{ times}} &= A^k &\text{$k$-th power of a (square) matrix} \\
 (AB)C &= A(BC) = ABC &\text{Associative Property} \\
@@ -269,7 +270,7 @@ Compute $(A+3B)(2A-B)$, where
 \end{align*}
 \end{exmp}
 \begin{solution}
-Using distributive property in Properties \ref{proper:matmul}, the expression is equivalent to
+Using the distributive property in Properties \ref{proper:matmul}, the expression can be expanded to
 \begin{align*}
 (A+3B)(2A-B) &= A(2A-B) + (3B)(2A-B)\\
 &= A(2A) + A(-B) + (3B)(2A) + (3B)(-B) \\
@@ -374,14 +375,14 @@ Hence the final answer will be
 \end{bmatrix}
 \end{align*}
 \end{solution}
-Alternatively, one can evaluate $C = A+3B$ and $D = 2A-B$ first, and subsequently calculate the matrix dot product $CD$. (This is actually somehow easier.) The readers should try this as an exercise.
+Alternatively, one can evaluate $C = A+3B$ and $D = 2A-B$ first, and subsequently calculate the matrix dot product $CD$. (This is actually easier and more efficient.) The readers should try this as an exercise.
 
 \subsubsection{Matrix Equation Manipulation}
-For any matrix equation, one can do addition, subtraction and multiplication on both sides of the equation. However, one important note is that multiplying a matrix to an equation requires the matrix to be inserted to the left (or right) on both sides, respecting the order. So, for a matrix equation like (assuming the shapes are compatible),
+For any matrix equation, one can do addition, subtraction and multiplication on both sides of the equation. However, one important note is that multiplying a matrix to an equation requires that matrix to be inserted to the left (or right) on both sides, respecting the order. So, for a matrix equation like (assuming the shapes are compatible),
 \begin{align*}
 AB-C = DE+F
 \end{align*}
-if we want to take the product with a matrix $G$, then it can be
+if we want to take a matrix product with some matrix $G$, then it can be
 \begin{align*}
 G(AB-C) &= G(DE+F) \\
 (AB-C)G &= (DE+F)G
@@ -391,23 +392,25 @@ but we have, in general
 G(AB-C) &\neq (DE+F)G \\
 (AB-C)G &\neq G(DE+F)
 \end{align*}
-Taking successive matrix products follows the same principle, step by step. Using the example above, for another matrix $H$, we note some possible outcomes.
+Taking successive matrix products follows the same principle, each by each. Using the example above, for another matrix $H$, we note some possible outcomes.
 \begin{align*}
 HG(AB-C) &= HG(DE+F) \\
 (AB-C)GH &= (DE+F)GH \\
+GH(AB-C) &= GH(DE+F) \\
+H(AB-C)G &= H(DE+F)G \\
 G(AB-C)H &= G(DE+F)H 
 \end{align*}
 However, be careful that cancellation at both sides may not be correct. If $AB = AC$, then we cannot conclude that $B = C$ for sure, although it is not impossible (and happens quite often).
 
 \section{Definition of Linear Systems of Equations}
 \label{section:deflinsys}
-The prime application of matrices is to deal with \index{Linear System of Equations}\keywordhl{Linear Systems (of Equations)}. To understand what a linear system is, we first have to know the definition of a \index{Linear Equation}\keywordhl{Linear Equation} (possibly in multiple variables, let's say $x_1$, $x_2$, $\ldots$). For a linear equation, in any additive term, there is at most one variable or unknown, with a power of one, like $3x_1$, $-x_2$. This means that there are no cross-product terms such as $2x_1x_2$, variables with a power that is not one, like $x_1^3$, or non-linear functions, including $\sin{x_1}, e^{x_2}$. For $n$ variables, a linear equation has the following definition.
+The prime application of matrices is to deal with \index{Linear System of Equations}\keywordhl{Linear Systems (of Equations)}. To understand what a linear system is, we first have to know the definition of a \index{Linear Equation}\keywordhl{Linear Equation} (in multiple variables, let's say $x_1$, $x_2$, $\ldots$). In a linear equation, for any additive term, there is at most one variable or unknown, with a power of one (times some coefficient), like $3x_1$, $-x_2$. This means that there are no cross-product terms such as $2x_1x_2$, variables with a power that is not one, like $x_1^3$, or non-linear functions, including $\sin{x_1}, e^{x_2}$. For $n$ variables, a linear equation has the following definition.
 \begin{defn}[Linear Equation]
 A linear equation has the form of
 \begin{align*}
 \sum_{j=1}^n a_jx_j = a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_nx_n = h
 \end{align*}
-where $x_1, x_2, \ldots$ are the unknowns, while $a_1, a_2, \ldots$ and $h$ are some constants. If $h = 0$, then it is known as a \index{Linear Equation!Homogeneous Linear Equation}\keywordhl{Homogeneous Linear Equation}.
+where $x_1, x_2, \ldots, x_n$ are the unknowns, while $a_1, a_2, \ldots, a_n$ and $h$ are some constants. If $h = 0$, then it is known as a \index{Linear Equation!Homogeneous Linear Equation}\keywordhl{Homogeneous Linear Equation}.
 \end{defn}
 Short Exercise: Determine whether the equations below are (a) linear, and if they are linear, then (b) homogeneous or not.\footnote{Linear/Inhomogeneous, Non-linear, Linear/Inhomogeneous, Non-linear, Linear/Homogeneous, Non-linear.}
 \begin{enumerate}
@@ -418,10 +421,10 @@ Short Exercise: Determine whether the equations below are (a) linear, and if the
     \item $x + 3y + 6z = 0$
     \item $xyz = 8$ 
 \end{enumerate}
-A system of linear equations are then simply a family of $m$ linear equations, $m \geq 1$.
+A system of linear equations are then simply a family of $m$ linear equations in some set of unknowns, $m \geq 1$.
 \begin{defn}[Linear System of Equations]
 \label{defn:linsys}
-A linear system of size $m \times n$ has the form of
+A linear system of size $m \times n$, i.e. $m$ linear equations in $n$ unknowns ($x_1, x_2, \ldots, x_n$), has the form of
 \begin{equation*}
 \begin{cases}
 \sum_{j=1}^n a_j^{(1)}x_j = a_1^{(1)}x_1 + a_2^{(1)}x_2 + a_3^{(1)}x_3 + \cdots + a_n^{(1)}x_n &= h^{(1)} \\
@@ -430,7 +433,7 @@ A linear system of size $m \times n$ has the form of
 \sum_{j=1}^n a_j^{(m)}x_j = a_1^{(m)}x_1 + a_2^{(m)}x_2 + a_3^{(m)}x_3 + \cdots + a_n^{(m)}x_n &= h^{(m)} \\
 \end{cases}   
 \end{equation*}
-If $h^{(1)}, h^{(2)}, \ldots$ at the right hand side are all zeros, then the system is called a \index{Linear System of Equations!Homogeneous Linear System of Equations}\keywordhl{Homogeneous Linear System (of Equations)}. It is not hard to see that for any homogeneous linear system, it always has a trivial solution of $x_j = 0$ for $j = 1, \ldots, n$, or expressed as $\vec{x} = \textbf{0}$. However, such trivial solution may not be the only solution to the system, as we shall see in !???.
+If $h^{(1)}, h^{(2)}, \ldots, h^{(m)}$ on the R.H.S. are all zeros, then the system is called a \index{Linear System of Equations!Homogeneous Linear System of Equations}\keywordhl{Homogeneous Linear System (of Equations)}. It is not hard to see that for any homogeneous linear system, it always has a trivial solution of $x_j = 0$ for $j = 1, 2 \ldots, n$, or expressed as $\vec{x} = \textbf{0}$. However, such trivial solution may not be the only solution to the system, as we shall see in Section \ref{section:NoSolLinSys}.
 \end{defn}
 Below shows some examples of linear systems.
 \begin{flalign*}
@@ -454,9 +457,9 @@ x + 2y + 3z &= 0 \\
 4x - 5y &= 0
 \end{cases}&  
 \end{flalign*}
-A $3 \times 3$ homogeneous linear system (homogeneous as the R.H.S. are all zeros), notice the coefficients for some unknowns in some equations are zeros as well, e.g.\ in the second equation $y$ has a coefficient of zero and does not appear.\\
+A $3 \times 3$ homogeneous linear system (homogeneous as the constants on the R.H.S. are all zeros), notice the coefficients for some unknowns in some equations are zeros as well, e.g.\ in the second equation $y$ has a coefficient of zero and does not appear.\\
 
-The above formulation of a linear system closely resembles a tabular structure. Therefore, we are motivated to represent such systems with the language of matrices. Indeed, it is possible to rewrite an $m \times n$ linear system as $A\vec{x} = \vec{h}$, where $A$ is an $m \times n$ matrix with entries copied from the coefficients in front of the variables arranged like those in Definition \ref{defn:linsys}. In this book sometimes we will call it a \index{Matrix!Coefficient Matrix}\textit{coefficient matrix}. Meanwhile, $\vec{x}$ is a column vector (an $n \times 1$ matrix) holding the $n$ unknowns, and $\vec{h}$ is another column vector (an $m \times 1$ matrix) that contains the $m$ constants at the right hand side of the linear system.
+The above formulation of a linear system closely resembles a tabular structure. Therefore, we are motivated to represent such systems with the language of matrices. Indeed, it is possible to rewrite an $m \times n$ linear system as $A\vec{x} = \vec{h}$, where $A$ is an $m \times n$ matrix with entries copied from the coefficients in front of the variables arranged like in Definition \ref{defn:linsys}. In this book sometimes we will call it a \index{Matrix!Coefficient Matrix}\textit{coefficient matrix}. Meanwhile, $\vec{x}$ is a column vector (an $n \times 1$ matrix) holding the $n$ unknowns, and $\vec{h}$ is another column vector (an $m \times 1$ matrix) that contains the $m$ constants on the R.H.S. of the linear system.
 \begin{proper}
 \label{proper:linsysmat}
 For a linear system like that in Definition \ref{defn:linsys}, it can be rewritten as $A\vec{x} = \vec{h}$, where $A_{ij} = a_{j}^{(i)}$, $\vec{x} = x_j$, and $\vec{h} = h^{(i)}$.
@@ -487,20 +490,21 @@ z
 \end{align*}
 An even simpler representation is the \index{Matrix!Augmented Matrix}\keywordhl{Augmented Matrix} which omits the unknowns and concatenates the remaining matrices.
 \begin{equation*}
-\left[\begin{array}{@{}ccc|c@{}}
+\left[\begin{array}{@{\;}ccc|c@{\;}}
 1 & 2 & -4 & 3\\
 1 & -1 & 3 & -4
 \end{array}\right]
 \end{equation*}
 
+
 \section{Elementary Row Operations}
-When we construct a matrix, it is natural to think about how to utilize its structure. \index{Elementary Row Operations}\keywordhl{Elementary Row Operations} provide such possibility in three ways, outlined in the following definition.
+When we construct a matrix, it is natural to think about how to manipulate its structure. \index{Elementary Row Operations}\keywordhl{Elementary Row Operations} provide such possibility in three ways, outlined in the following definition.
 \begin{defn}[Elementary Row Operations]
 \label{defn:elerowop}
-The three types of elementary row operations are
+Denote the $p$-th row of a matrix as $R_{p}$. The three types of elementary row operations are
 \begin{enumerate}
-\item Multiplying a row $R_{p}$ by any constant $c \neq 0$.
-\item Adding a row $R_{q}$ times any constant $c \neq 0$, to another row $R_{p}$, such that the new row becomes $R_{p} + cR_{q}$
+\item Multiplying a row $R_{p}$ by any non-zero constant $c \neq 0$.
+\item Adding a row $R_{q}$ times any non-zero constant $c \neq 0$, to another row $R_{p}$, such that the new $p$-th row becomes $R_{p} + cR_{q}$
 \item Swapping a row $R_{p}$ with another row $R_{q}$.
 \end{enumerate}
 To facilitate the operations, we mark these three actions using the following notations.
@@ -536,7 +540,7 @@ Attentive readers may have noticed that these three operations are what we have 
 \label{section:ch1earth}
 \begin{exmp}
 \label{exmp:seismic1}
-Seismic wave follows \textit{Snell's Law} like a light ray when it comes to refraction. Assuming the ground can be modelled as a two-layer system (see Figure \ref{fig:seismic1}), and we know a particular train of seismic wave generated from an underground source that reaches the ground receiver travels at an angle of $\theta_1 = \SI{45}{\degree}$/$\theta_2 = \SI{60}{\degree}$ to the vertical at the top/bottom layer. Given that the horizontal and vertical distance between the seismic source and the surface receiver are $d = \SI{1200}{\m}$ and $h = \SI{800}{\m}$. Construct a linear system for this situation in two unknowns: the depth of the top layer $y$ and the horizontal displacement $x$ (in meters) where the wave reaches at the interface relative to the source.
+Seismic wave follows \textit{Snell's Law} like a light ray when it comes to refraction. Assuming the ground can be modelled as a two-layer system (see Figure \ref{fig:seismic1}), and we know a particular train of seismic wave generated from an underground source that reaches the ground receiver travels at an angle of $\theta_1 = \SI{45}{\degree}$/$\theta_2 = \SI{60}{\degree}$ to the vertical at the top/bottom layer. Given that the horizontal and vertical distance between the seismic source and the surface receiver are $d = \SI{1200}{\m}$ and $h = \SI{800}{\m}$, construct a linear system for this situation in two unknowns: the depth of the top layer $y$ and the horizontal displacement $x$ (in meters) where the wave reaches at the interface relative to the source.
 \end{exmp}
 \begin{figure}
 \centering
@@ -620,7 +624,7 @@ y
 
 \begin{exmp}
 \label{exmp:multilayer1}
-The radiation transfer across the atmosphere of any planet (including the Earth) in the Solar system can be compared to a \textit{multi-layer model} with fully absorbing layers (note that it is just a simplistic approach). Assume there are $N$ such layers and the total rate of incident Solar radiation reaching the surface is $E_{in}$. Each of the layers also emits radiation to the other layers directly above/below itself. The rate of emission for the $j$-th layer that has a temperature $T_j$ is $E_j = \sigma T_j^4$ according to the \textit{Stefan–Boltzmann Law}, with $\sigma = \SI{5.67e-8}{\W \per \square\m \per \quartic\K}$. The overall scenario can be seen in Figure \ref{fig:multilayer1}. Formulate a linear system that represents the energy equilibrium (incoming radiation = outgoing radiation) of all layers and the surface, with $E_j$ being the unknowns, over $j = 1, 2, \ldots, N, N+1$.
+The radiation transfer across the atmosphere of any planet (including the Earth) in the Solar system can be compared to a \textit{multi-layer model} with fully absorbing layers (note that it is just a simplistic approach). Assume there are $N$ such layers and the total rate of incident Solar radiation reaching the surface is $E_{in}$. Each of the layers also emits radiation to the other layers directly above/below itself. The rate of radiative emission for the $j$-th layer that has a temperature $T_j$ is $E_j = \sigma T_j^4$ according to the \textit{Stefan–Boltzmann Law}, with $\sigma = \SI{5.67e-8}{\W \per \square\m \per \quartic\K}$. The overall scenario can be seen in Figure \ref{fig:multilayer1}. Formulate a linear system that represents the energy equilibrium (incoming radiation = outgoing radiation) of all layers and the surface, with $E_j$ being the unknowns, over $j = 1, 2, \ldots, N, N+1$.
 \end{exmp}
 \begin{figure}
 \centering
@@ -753,7 +757,7 @@ representing the matrix
 5 & 3
 \end{bmatrix}
 \end{align*}
-We can similarly define another matrix
+We can similarly define another matrix:
 \begin{lstlisting}
 myMatrix2 = np.array([[1, 3], [5, 6]])    
 \end{lstlisting}
@@ -827,7 +831,7 @@ when printed out via \verb|print(myMatrix1)| it gives
 [[1. 4.]
  [5. 3.]]    
 \end{lstlisting}
-Notice the newly appeared decimal points after the original integers. Alternatively, we can add decimal points to the integer entries during the array declaration, as
+Notice the newly appeared decimal points after the original integers. Alternatively, we can add decimal points to the integer entries during the array initialization, as
 \begin{lstlisting}
 myMatrix1 = np.array([[1., 4.], [5., 3.]]) 
 \end{lstlisting}

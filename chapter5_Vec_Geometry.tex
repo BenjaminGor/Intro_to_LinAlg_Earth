@@ -49,7 +49,7 @@ t
 1
 \end{bmatrix}
 \end{align*}
-This is one possible vector form of the line. The ideas behind can be borrowed from Example \ref{exmp:mulsol}, with $(\frac{h}{a}, 0)^T$ being the particular solution/initial position, and $(-\frac{b}{a}, 1)^T$ as the direction of that line, multiplied by a free parameter to complete the general solution. For example, if we have $3x - 2y = 5$, then by the same method, we get
+This is one possible vector form (parameterization) of the line. The ideas behind can be borrowed from Example \ref{exmp:mulsol}, with $(\frac{h}{a}, 0)^T$ being the particular solution/initial position, and $(-\frac{b}{a}, 1)^T$ as the direction of that line, multiplied by a free parameter to complete the general solution. For example, if we have $3x - 2y = 5$, then by the same method, we get
 \begin{align*}
 \begin{bmatrix}
 x \\
@@ -213,7 +213,8 @@ Notice that the coefficients of the equation are the same as the components of t
 Short Exercise: Verify that $(a, b)$ is always orthogonal to $(b, -a)$, and vice versa.\footnote{$(a, b)^T \cdot (b, -a)^T = (a)(b) + (b)(-a) = 0$}
 
 \subsection{Generalizing to Higher Dimension}
-Similar concepts can be applied on the equation and vector form for planes. General form of equation of a plane in 3D space is $ax + by + cz = h$, which is a linear system of one equation with three unknowns, from the demonstration in Section \ref{subsection:SolLinSysGauss} we know there are two free variables and two direction vectors for such a plane. By assigning the free variables to non-pivots, we obtain the vector form of the plane. \\
+\label{section:vecgeohighdim}
+Similar concepts can be applied on the equation and vector form for planes. General form of equation of a plane in three-dimensional space is $ax + by + cz = h$, which is a linear system of one equation with three unknowns, from the demonstration in Section \ref{subsection:SolLinSysGauss} we know there are two free variables and two direction vectors for such a plane. By assigning the free variables to non-pivots, we obtain the vector form of the plane. \\
 \\
 Recall from Section \ref{section:crossprod}, cross product of any two non-parallel vectors on the plane will give a third vector normal to the plane. Subsequently, we can take the dot product with this newly obtained normal vector to convert the vector form back to a plane equation. Again, the coefficients of the plane equation match the components of the normal vector, differed at most by a multiplicative factor.
 \begin{center}
@@ -608,8 +609,37 @@ By Properties \ref{proper:parallelpiped}, the triple scalar product of the three
 and the volume is $\abs{-3} = 3$.
 \end{solution}
 
+\subsubsection{Generalization to other dimensions}
+Given that the volume of parallelepiped formed by three vectors is equal to the absolute value of the corresponding matrix determinant as derived above, it is natural to ask if similar results hold for other numbers of dimension. In fact, Properties \ref{proper:parallelpiped} can be generalized to include length, area and the so-called \textit{$n$-volume} (Volume equivalent of $n$ vectors in $n$-dimensional space).
+\begin{proper}
+\label{proper:nvolume}
+For $n$ vectors of $\mathbb{R}^n$, their $n$-volume is the absolute value of the determinant of matrix formed by these column (or row) vectors. When $n=1,2,3$, the $n$-volume corresponds to the usual notions of length, area and volume.
+\end{proper}
+We can check the legitimacy of the last sentence in Properties \ref{proper:nvolume} that it is consistent with Properties \ref{proper:areaparallelogram} about area of two vectors on the $x$-$y$ plane. Given $\vec{u} = (u_1, u_2)^T$ and $\vec{v} = (v_1, v_2)^T$, by Properties \ref{proper:nvolume} the area of the parallelogram formed by them is
+\begin{align*}
+\begin{vmatrix}
+u_1 & u_2 \\
+v_1 & v_2
+\end{vmatrix} = u_1v_2 - v_1u_2
+\end{align*}
+Alternatively, we can treat $\vec{u}$ and $\vec{v}$ as two three-dimensional vectors $(u_1, u_2, 0)^T$ and $(v_1, v_2, 0)^T$ such that they have a zero $z$-component and remain lying on the $x$-$y$ plane. Then according to the previous Properties \ref{proper:areaparallelogram}, the area is computed by $\norm{\vec{u} \times \vec{v}}$, where by Properties \ref{proper:crossdet},
+\begin{align*}
+\vec{u} \times \vec{v} &= 
+\begin{vmatrix}
+\hat{i} & \hat{j} & \hat{k} \\
+u_1 & u_2 & 0 \\
+v_1 & v_2 & 0
+\end{vmatrix} \\
+&= \hat{k}\begin{vmatrix}
+u_1 & u_2 \\
+v_1 & v_2
+\end{vmatrix} & \text{(Cofactor Expansion along the third row)}\\
+&= (u_1v_2 - v_1u_2)\hat{k}
+\end{align*}
+Hence $\norm{\vec{u} \times \vec{v}} = u_1v_2 - v_1u_2$, which coincides with the expression derived from Properties \ref{proper:nvolume}.
+
 \subsubsection{Remarks}
-The solution of a linear system can be considered as a point/line/plane/hyperplane, depending on the number of free variables ($0$/$1$/$2$ or more). We may also like to call it a \textit{solution space}. However, while such shapes surely occupy space geometrically, we have been shying away from defining what really constitutes a \textit{vector (sub)space} mathematically, which will be the main point of discussion in the next chapter.
+The solution of a linear system can be considered as a point/line/plane/hyperplane, depending on the number of free variables ($0$/$1$/$2$ or more). We may also like to call it a \textit{solution space}. However, while such shapes surely occupy space geometrically, we have been shying away from defining what really constitutes a \textit{vector space} mathematically, which will be the main point of discussion in the next chapter.
 
 \section{Useful Vector Identities}
 In this section, we will prove some key vector identities that may be of utilities to some readers.
@@ -842,7 +872,7 @@ def volume_parallelepiped(u, v, w):
 w = np.array([1., 2., -3.])
 print(volume_parallelepiped(u, v, w))
 \end{lstlisting}
-(\verb|np.c_[]| is a short hand of combining arrays column by column) produces \texttt{14.00000...04} due to numerical round-off error (the analytical anawer would be just $14$). Finally, let's conclude this section by defining the Haversine Formula in Example \ref{exmp:Haversine}.
+(\verb|np.c_[]| is a short hand of combining arrays column by column) produces \texttt{14.00000...04} due to numerical round-off error (the true answer would be just $14$). Finally, let's conclude this section by defining the Haversine Formula in Example \ref{exmp:Haversine}.
 \begin{lstlisting}
 def Haversine_dist(latlon1, latlon2):
     """ Haversine Formula for computing the great-circle 
@@ -1195,7 +1225,7 @@ By extending Properties \ref{proper:parallelpiped}, derive a vector formula for 
 \end{center}
 \end{Exercise}
 \begin{Answer}
-It is just $\frac{1}{6}(\vec{u} \times \vec{v}) \cdot \vec{w}$.
+It is just $\frac{1}{6}\abs{(\vec{u} \times \vec{v}) \cdot \vec{w}}$.
 \end{Answer}
 
 \begin{Exercise}

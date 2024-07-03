@@ -38,12 +38,13 @@ Forecast for \textit{Typhoon Higos}. (taken from \href{http://www.hkww.org/weath
 Implicit in the definition of $n$-dimensional vectors is the $n$-dimensional space they are residing in. Assume the components of those vectors are all real, then the set of all such vectors constitutes the \index{Real $n$-space}\keywordhl{Real $n$-space $\mathbb{R}^n$}.
 \begin{defn}[The Real $n$-space $\mathbb{R}^n$]
 \label{defn:real_nspace}
-The Real $n$-space $\mathbb{R}^n$ is defined as the set of all possible vectors (or "points") $\vec{v} = (v_1, v_2, v_3, \ldots, v_n)^T$ as defined in Definition \ref{defn:geometvec}, where $v_i$ can take any \textit{real} value, for $i = 1,2,3,\ldots,n$. The member vectors in $\mathbb{R}^n$ are known as $n$-dimensional \textit{real} vectors.
+The Real $n$-space $\mathbb{R}^n$ is defined as the set of all possible vectors (or "points") $\vec{v} = (v_1, v_2, v_3, \ldots, v_n)^T$ as defined in Definition \ref{defn:geometvec}, where $v_i$ can take any \textit{real} value, for $i = 1,2,3,\ldots,n$. The elements in $\mathbb{R}^n$ are known as $n$-dimensional \textit{real} vectors.
 \end{defn}
-While we have not clearly defined what a vector space is, we note that $\mathbb{R}^n$ fulfills the requirements of being a vector space. The detailed discussion of this aspect will be deferred to Chapter ??. Meanwhile, the complex counterpart will be explored in Chapter ??.\\
+While we have not clearly defined what a vector space is, we note that $\mathbb{R}^n$ fulfills the requirements of being a vector space. The detailed discussion of this aspect will be deferred to Chapter \ref{chap:vec_space}. Meanwhile, the complex counterpart will be explored in Chapter ??.\\
 \\
-An $n$-dimensional real geometric vectors as in Definition \ref{defn:geometvec} and \ref{defn:real_nspace} can be written as the sum of $n$ \index{Standard Unit Vector}\keywordhl{Standard Unit Vectors} that have a magnitude of $1$, denoted by $\hat{e}_p$, oriented in the positive direction along the $p$-th coordinates axes, $p = 1,2,\ldots,n$. Particularly in the three-dimensional (real) space $\mathbb{R}^3$, $\hat{e}_1 = \hat{i} = (1,0,0)^T$, $\hat{e}_2 = \hat{j} = (0,1,0)^T$, $\hat{e}_3 = \hat{k} = (0,0,1)^T$ corresponding to $x$, $y$, $z$ axes respectively.
+An $n$-dimensional real geometric vectors as in Definition \ref{defn:geometvec} and \ref{defn:real_nspace} can be written as the sum of $n$ \index{Standard Unit Vector}\keywordhl{Standard Unit Vectors} that have a magnitude of $1$, denoted by $\hat{e}_p$, oriented in the positive direction along the $p$-th coordinates axes, $p = 1,2,\ldots,n$. The coordinate axes are perpendicular (or more accurately orthogonal, introduced later in this chapter) to each other and such coordinate system is known as the \index{Cartesian Coordinate System}\keywordhl{Cartesian Coordinate System}. Particularly in the three-dimensional (real) space $\mathbb{R}^3$, $\hat{e}_1 = \hat{i} = (1,0,0)^T$, $\hat{e}_2 = \hat{j} = (0,1,0)^T$, $\hat{e}_3 = \hat{k} = (0,0,1)^T$ correspond to $x$, $y$, $z$ axes respectively. 
 \begin{defn}[Standard Unit Vector]
+\label{defn:standardunitvec}
 A standard unit vector $\hat{e}_p$ consists of $1$ at the $p$-th entry and $0$ elsewhere. Mathematically, $[\hat{e}_p]_q = 1$ when $q=p$ and $[\hat{e}_p]_q = 0$ when $q\neq p$.
 \end{defn}
 Below is an example of a vector in 3D $x$-$y$-$z$ space ($\mathbb{R}^3$).
@@ -91,7 +92,8 @@ Below is an example of a vector in 3D $x$-$y$-$z$ space ($\mathbb{R}^3$).
 \end{center}
 where we have written $\vec{v}$ in two forms, as a tuple and sum of the standard unit vectors $\hat{i}, \hat{j}, \hat{k}$.
 
-\subsection{Fundamental Vector Operations} 
+\subsection{Fundamental Vector Operations}
+\label{section:vectoraddmul}
 \subsubsection{Addition and Subtraction}
 Same as their matrix counterpart, addition and subtraction between vectors is element-wise. Again, they are only valid for vectors of the same dimension. For $\vec{w} = \vec{u} \pm \vec{v}$, we have $w_i = u_i \pm v_i$. If
 \begin{align*}
@@ -518,7 +520,7 @@ By Properties \ref{proper:dotgeo}, if the absolute value of the dot product $|\v
 \label{proper:dotorth}
 If the dot product between two vectors $\vec{u}$ and $\vec{v}$ is zero ($\vec{u} \cdot \vec{v} = \vec{v} \cdot \vec{u} = 0$), then by Properties \ref{proper:dotgeo}, $\cos\theta = 0$ and the angle $\theta$ between $\vec{u}$ and $\vec{v}$ is $\frac{\pi}{2}$. In this case, $\vec{u}$ and $\vec{v}$ are said to be perpendicular, or \textit{orthogonal}. The converse is also true. 
 \end{proper}
-From this, the concept of "\index{Orthogonal}\keywordhl{Orthogonal}" becomes an extension of "perpendicular" in higher dimensions. Note that \textit{the zero vector is regarded to be orthogonal to any vector}, so even if $\vec{u}$ or $\vec{v}$ is a zero vector, this properties still hold. \par
+From this, the concept of "\index{Orthogonal}\keywordhl{Orthogonal}" becomes an extension of "perpendicular" in higher dimensions. It is easy to see that the standard unit vectors of $\mathbb{R}^n$ are orthogonal. Note that \textit{the zero vector is regarded to be orthogonal to any vector}, so even if $\vec{u}$ or $\vec{v}$ is a zero vector, this properties still hold. \par
 Some may notice that as $-1 \leq \cos\theta \leq 1$, if $|\vec{u} \cdot \vec{v}| > \norm{\vec{u}}\norm{\vec{v}}$, then $\theta$ will be undefined in Properties \ref{proper:dotgeo}. However, the \index{Cauchy–Schwarz Inequality}\keywordhl{Cauchy–Schwarz Inequality} ensures this will not happen.
 \begin{thm}[Cauchy–Schwarz Inequality]
 \label{thm:CauchySch}
