@@ -1,17 +1,22 @@
-\chapter{Complex Vectors and Matrices}
+\chapter{Complex Vectors/Matrices and Block Form}
+\label{chap:complex}
+
+In this chapter, we will take a detour to talk about two auxiliary topics. The first one is the generalization of vectors and matrices to having complex numbers as entries. Eventually, we will mention about the \textit{complex vector space}, and compare it to the real vector space that we just learnt in the previous chapters. The second one is about \textit{block form} of a matrix (or simply referred to as a \textit{block matrix}) that is composed of smaller \textit{submatrices} as the building blocks. Writing a matrix in block form enables efficient manipulation for many situations that we will encounter in the remaining parts of this book.
 
 \section{Definition and Operations of Complex Numbers}
 \label{section:complexno}
 
-\subsection{Basic Structure of Complex Numbers} The idea of complex numbers comes from the solution of quadratic equation when the value of the discriminant is negative. The square root of the negative discriminant is originally not defined for real numbers, but we can deal with it by introducing the imaginary number $\imath = \sqrt{-1}$. As a result, $\imath^2 = -1$. For any positive number $b$, $\sqrt{-b^2} = \sqrt{b^2}\sqrt{-1} = b\imath$. Quantities in the form of $a + b\imath$, where $a$ and $b$ are some real constants, are called complex numbers, and $a$ and $b$ is called the real and imaginary part respectively. For example, the solutions to the quadratic equation $(x+2)^2 = -1$, is then $-2 \pm \imath$.
+\subsection{Basic Structure of Complex Numbers} 
+
+The idea of complex numbers initially came from some algebra problems that lead to the square root of negative quantities, which was not defined back in the days. Later, mathematicians addressed this issue by introducing the \index{Imaginary Number}\keywordhl{imaginary number} $\imath = \sqrt{-1}$, and $\imath^2 = -1$. For any positive number $b$, we have $\sqrt{-b^2} = \sqrt{b^2}\sqrt{-1} = b\imath$. \index{Complex Number}\keywordhl{Complex numbers} are then quantities in the form of $a + b\imath$, where $a$ and $b$ themselves are real. Here $a$ and $b$ are called the \index{Real Part}\keywordhl{real} and \index{Imaginary Part}\keywordhl{imaginary part} respectively. As a small example of how complex numbers arise, note that the solutions to the quadratic equation $(x+2)^2 = -1$, are $-2 \pm \imath$.
 \begin{defn}
-Complex numbers are any quantities in the form of $z = a + b\imath$, where $a$ and $b$ are some real scalars. $\Re{z} = a$ is called the real part and $\Im{z} = b$ is called the imaginary part.
+Complex numbers are scalars in the form of $z = a + b\imath$, where $a$ and $b$ are some real numbers. The real and imaginary part are denoted by $\Re{z} = a$ and $\Im{z} = b$.
 \end{defn}
-Also, there is a simple but powerful statement regarding the equality of two complex numbers.
+We also need to consider when two complex numbers are equal. This happens when their real parts, as well as imaginary parts, are equal to each other respectively.
 \begin{proper}
-Two complex numbers $a + b\imath$, and $c + d\imath$, where $a, b, c, d$ are real numbers, are equal if and only if, $a = c$ and $b = d$.
+Two complex numbers $z_1 = a + b\imath$, and $z_2 = c + d\imath$, where $a, b, c, d$ are real numbers, are equal if and only if, $\Re{z_1} = a = c = \Re{z_2}$ and $\Im{z_1} = b = d = \Im{z_2}$.
 \end{proper}
-For every complex number, there also exist an associated complex number, which is called the conjugate.
+For every complex number, there exists a notable complex number associated to it, known as the \index{Complex Conjugate}\keywordhl{(complex) conjugate}.
 \begin{defn}
 For a complex number $z = a + b\imath$, its complex conjugate is constructed by flipping the sign of the imaginary part, which is denoted as $\overline{z} = a - b\imath$.
 \end{defn}
@@ -20,12 +25,12 @@ For a complex number $z = a + b\imath$, its complex conjugate is constructed by 
 Below are some rules about usual operations on two complex numbers.
 \subsubsection{Addition and Subtraction}
 \begin{defn}
-For two complex numbers $a + b\imath$, and $c + d\imath$, addition and subtraction is done via first individually adding up or subtracting the real part by real part, and the imaginary part by imaginary part, and then combining the two results. $(a + b\imath) \pm (c + d\imath) = (a \pm c) + (b \pm d)\imath$.
+For two complex numbers $z_1 = a + b\imath$, and $z_2 = c + d\imath$, addition and subtraction is carried out over the real parts and the imaginary parts separately, i.e.\ $z_1 \pm z_2 = (a + b\imath) \pm (c + d\imath) = (a \pm c) + (b \pm d)\imath = (\Re{z_1} \pm \Re{z_2}) + (\Im{z_1} \pm \Im{z_2})\imath$.
 \end{defn}
 For instance, adding $1 + 3\imath$ to $2 - 4\imath$ results in $(1+2) + (3-4)\imath = 3 - \imath$.
 
 \subsubsection{Multiplication and Division}
-Multiplication of two complex numbers resembles the distributive law learnt in high school algebra.
+Multiplication of two complex numbers simply follows the usual distributive law.
 \begin{defn}
 Given two complex numbers $a + b\imath$, and $c + d\imath$, their product is
 \begin{align*}
@@ -37,55 +42,80 @@ Given two complex numbers $a + b\imath$, and $c + d\imath$, their product is
 
 \begin{exmp}
 Evaluate $(1+2\imath)(3-4\imath)$.
+\end{exmp}
+\begin{solution}
 \begin{align*}
 (1+2\imath)(3-4\imath) &= ((1)(3) - (2)(-4)) + ((1)(-4) + (2)(3))\imath \\
 &= 11 + 2\imath
 \end{align*}
-\end{exmp}
+\end{solution}
 
-Dividing by a complex number can be viewed as multiplication by its complex conjugate, as
+Dividing something by a complex number $a+b\imath$ can be viewed as multiplication by its complex conjugate $a-b\imath$, as
 \begin{align*}
 \frac{1}{a+b\imath} &= \frac{1}{a+b\imath}\frac{a-b\imath}{a-b\imath} \\
+&= \frac{a-b\imath}{a^2 - (-b^2) - ab\imath + ba\imath} \\
 &= \frac{a-b\imath}{a^2 + b^2}
 \end{align*}
-It is interesting that multiplying a complex number by its conjugate results in some a number that looks like the Pythagoras' Theorem. Later on we will see more when we discuss the geometric meaning of complex numbers.
+with an additional factor of $\frac{1}{a^2+b^2}$. It is interesting that this $a^2+b^2$ term coming from multiplying the complex number by its conjugate over the denominators looks like the square of hypotenuse as in the \textit{Pythagoras' Theorem}. Later on we will see more when we discuss the geometric meaning of complex numbers.
+
+\begin{exmp}
+Compute $\frac{1+4\imath}{2+3\imath}$.
+\end{exmp}
+\begin{solution}
+Following the idea outlined above, we have
+\begin{align*}
+\frac{1+4\imath}{2+3\imath} &= \frac{1+4\imath}{2+3\imath}\frac{2-3\imath}{2-3\imath} \\
+&= \frac{(1+4\imath)(2-3\imath)}{2^2+3^2} \\
+&= \frac{((1)(2) - (4)(-3)) + ((1)(-3) + (4)(2))\imath}{13} = \frac{14}{13}+\frac{5}{13}\imath
+\end{align*}
+\end{solution}
 
 \subsection{Geometric Meaning of Complex Numbers}
-A complex number can be visualized as a two-dimensional vector, in the so-called complex plane, where the $x$-axis represents the real part and the $y$-axis represents the imaginary part. These two axes are referred to as the real axis and imaginary axis respectively.
+A complex number can be visualized as a two-dimensional vector, in the so-called \index{Complex Plane}\keywordhl{complex plane} (or sometimes referred to as the \index{Argand Plane}\keywordhl{Argand plane}), where the $x$-axis represents the real part and the $y$-axis represents the imaginary part. These two axes are referred to as the \index{Real Axis}\keywordhl{real axis} and \index{Imaginary Axis}\keywordhl{imaginary axis} respectively.
 \begin{center}
 \begin{tikzpicture}[scale=0.5]
 \draw[->] (-5,0)--(5,0) node[right](x){Real Axis};
 \draw[->] (0,-5)--(0,5) node[above]{Imaginary Axis};
-\draw[blue,-stealth] (0,0)--(3,4) node[anchor=south west](z){$z = 3+4\imath$};
-\draw[blue,dotted] (3,4)--(3,0) node[below]{$\Re{z} = 3$};
-\draw[blue,dotted] (3,4)--(0,4) node[left]{$\Im{z} = 4$};
+\draw[blue,-stealth] (0,0)--(3,4) node[anchor=south](z){$z = 3+4\imath$};
+\draw[gray,dashed] (3,4)--(3,0) node[below]{$\Re{z} = 3$};
+\draw[gray,dashed] (3,4)--(0,4) node[left]{$\Im{z} = 4$};
 \pic[draw, ->, "$\theta$",angle eccentricity=1.5] {angle = x--0--z};
 \node[below left]{$O$}; 
 \end{tikzpicture}\\
-A complex number $z = 3+4\imath$ in the complex plane.
+A complex number $z = 3+4\imath$ represented in the complex plane.
 \end{center}
-It is obvious that the length of such vector is $\sqrt{\Re{z}^2 + \Im{z}^2}$, which is called the modulus of the corresponding complex number. In the diagram above, the modulus of $z$ is easily seen as $\abs{z} = 5$. \\
+It is obvious that the length of such vector is $\abs{z} = \sqrt{\Re{z}^2 + \Im{z}^2}$, which is called the \index{Modulus}\keywordhl{modulus} of the corresponding complex number. In the diagram above, the modulus of $z$ is easily seen to be $\abs{z} = 5$. \\
 \\
-The angle between the real axis and the complex number is called the argument, shown as $\theta = \arctan(\Im{z}/\Re{z})$ in the same diagram. Since the complex conjugate $\overline{z}$ has the sign of the imaginary part flipped while the real part remains the same, the argument of the complex conjugate is simply the negative of the original complex number $z$. Also, the modulus will be unchanged.\\
+The angle between the real axis and the complex number is called the \index{Argument}\keywordhl{argument}, shown as $\theta = \arctan(\Im{z}/\Re{z})$ in the same figure. Since its complex conjugate $\overline{z}$ has the sign of the imaginary part flipped while the real part remains the same, the argument of the complex conjugate is simply the negative of that of the original complex number $z$. Also, the modulus will be unchanged.\\
 \\
-From trigonometry, we know that $\Re{z} = \abs{z} \cos{\theta}$ and $\Im{z} = \abs{z} \sin{\theta}$. Hence $z$ can be represented as $z = \Re{z} + \Im{z} = \abs{z} (\cos \theta + \imath \sin \theta)$. Furthermore, we have the famous Euler's formula, relating the geometry of complex number to an exponential with imaginary power.
-\begin{defn}
-\label{Euler}
-Euler's formula states that
+Moreover, from elementary trigonometry, we know that $\Re{z} = \abs{z} \cos{\theta}$ and $\Im{z} = \abs{z} \sin{\theta}$. Hence $z$ can be represented as $z = \Re{z} + \imath\Im{z} = \abs{z} (\cos \theta + \imath \sin \theta)$. We also have the famous \index{Euler's Formula}\keywordhl{Euler's Formula}, relating the geometry of any complex number with an exponential raised to an imaginary power.
+\begin{defn}[Euler's Formula]
+\label{defn:Euler}
+An exponential raised to an imaginary power is a complex number such that
 \begin{align*}
 e^{\imath \theta} = \cos \theta + \imath \sin \theta
 \end{align*}
+where $\theta$ is taken to be real.
 \end{defn}
-Hence $z$ can be further simplified into $z = \abs{z} e^{\imath \theta}$, and $\overline{z} = \abs{z} e^{-\imath \theta}$. Conversely, the quantity $e^{\imath \theta}$ can be regarded as a complex number that has a modulus of $1$ and an argument of $\theta$. Additionally, there are formula to express sines and cosines with complex exponentials.
+Hence $z$ can be further written as $z = \abs{z} e^{\imath \theta}$, and $\overline{z} = \Re{z} - \imath\Im{z} = \abs{z} (\cos \theta - \imath \sin \theta) = \abs{z} (\cos (-\theta) + \imath \sin (-\theta)) = \abs{z} e^{-\imath \theta}$. Conversely, the quantity $e^{\imath \theta}$ can be regarded as a complex number that has a modulus of $1$ and an argument of $\theta$. Additionally, this provides formulae to express sines and cosines with complex exponentials.
 \begin{proper}
-\label{sincoscomplex}
-For any real $\theta$,
+\label{proper:sincoscomplex}
+For any $\theta$ which is confined to be real,
 \begin{align*}
 \cos \theta &= \frac{e^{\imath\theta} + e^{-\imath\theta}}{2} \\
 \sin \theta &= \frac{e^{\imath\theta} - e^{-\imath\theta}}{2\imath}
 \end{align*}
 \end{proper}
-Now we can go back to investigate complex multiplication and division. Multiplication of a complex number $z_1$ by another complex number $z_2$, can be viewed as $z_1z_2 = \abs{z_1}e^{\imath \theta_1} \abs{z_2} e^{\imath \theta_2} = \abs{z_1}\abs{z_2}e^{\imath (\theta_1+\theta_2)}$. This can be interpreted as, starting with the complex number $z_1 = \abs{z_1}e^{\imath \theta_1}$ on the complex plane, rotating it anti-clockwise by an angle of $\theta_2$, and scaling its modulus by a factor of $\abs{z_2}$. \\
+\begin{proof}
+By Definition \ref{defn:Euler},
+\begin{align*}
+\frac{e^{\imath\theta} + e^{-\imath\theta}}{2} &= \frac{1}{2}((\cos \theta + \imath \sin \theta) + (\cos (-\theta) + \imath \sin (-\theta))) \\
+&= \frac{1}{2}((\cos \theta + \imath \sin \theta) + (\cos \theta - \imath \sin \theta)) \\
+&= \cos \theta
+\end{align*}  
+The derivation for $\sin \theta$ is left as an exercise.
+\end{proof}
+Now we can go back to investigate complex multiplication and division. Multiplication of a complex number $z_1$ by another complex number $z_2$, can be viewed as $z_1z_2 = (\abs{z_1}e^{\imath \theta_1}) (\abs{z_2} e^{\imath \theta_2}) = \abs{z_1}\abs{z_2}e^{\imath (\theta_1+\theta_2)}$.\footnote{We take it for granted that $e^{\imath \theta_1}e^{\imath \theta_2} = e^{\imath (\theta_1+\theta_2)}$.} This can be interpreted as, starting with the complex number $z_1 = \abs{z_1}e^{\imath \theta_1}$ on the complex plane, rotating it anti-clockwise by an angle of $\theta_2$, and scaling its modulus by a factor of $\abs{z_2}$. \\
 \\
 Similarly, division of $z_1$ by $z_2$, is $z_1/z_2 = (\abs{z_1}/\abs{z_2})e^{\imath (\theta_1-\theta_2)}$. Notice that for a fraction like $1/z = 1/(a+b\imath)$, it can be rewritten as
 \begin{align*}
@@ -93,20 +123,20 @@ Similarly, division of $z_1$ by $z_2$, is $z_1/z_2 = (\abs{z_1}/\abs{z_2})e^{\im
 &= \frac{1}{\abs{z}^2} (\abs{z} e^{-\imath \theta}) \\
 &= \frac{1}{\abs{z}^2} \overline{z}
 \end{align*}
-which is consistent with what we have discussed in the last section. In addition, we can observe that $\abs{z}^2 = z\overline{z}$. This is not coincidence, as
+which is consistent with the discussion about complex division in the last section. In addition, we can observe that $\abs{z}^2 = z\overline{z}$. This is not coincidence, as
 \begin{align*}
 z\overline{z} &= \abs{z} e^{\imath \theta} \abs{z} e^{-\imath \theta} \\
-&= \abs{z}^2 e^{0} = \abs{z}^2
+&= \abs{z}^2 e^{\imath(\theta-\theta)} = \abs{z}^2e^{0} = \abs{z}^2
 \end{align*}
-Geometrically, we can think of it as starting with $1$ along the real axis in the complex plane, then we scale it by $\abs{z}$ and rotate it by $\theta$, and finally scale it again by $\abs{z}$ but rotate it by $-\theta$. The results will be a real number $\abs{z}^2$, since the two rotations cancel out each other.\\
+Geometrically, we can think of it as starting with $1$ along the real axis in the complex plane, then we scale it by $\abs{z}$ and rotate it by $\theta$, and finally scale it again by $\abs{z}$ but rotate it by $-\theta$, same angle but in opposite direction. The results will be a real number $\abs{z}^2$, since the two opposite rotations cancel out each other.\\
 \\
 Below are some properties of modulus and complex conjugate to be remembered.
 \begin{proper}
-\label{complexnum}
+\label{proper:complexnum}
 For two complex numbers $z_1$ and $z_2$, we have
 \begin{enumerate}[label=(\alph*)]
 \item $\overline{z_1 \pm z_2} = \overline{z_1} \pm \overline{z_2}$, 
-\item $\overline{z_1z_2} = \overline{z_1}\overline{z_2}$,
+\item $\overline{z_1z_2} = \overline{z_1}\;\overline{z_2}$,
 \item $\overline{z_1/z_2} = \overline{z_1}/\overline{z_2}$,
 \item $\overline{\overline{z}} = z$,
 \item $\overline{\overline{z_1}z_2} = z_1\overline{z_2}$,
@@ -115,8 +145,8 @@ For two complex numbers $z_1$ and $z_2$, we have
 \item $\abs{z_1/z_2} = \abs{z_1}/\abs{z_2}$.
 \end{enumerate}
 \end{proper}
-Another very useful theorem is the De Moivre's Formula that builds up on the Euler's formula, expressing $e^{\imath \theta}$ raised to an integer power $n$.
-\begin{thm}
+Another very useful result is the \index{De Moivre's Formula}\keywordhl{De Moivre's Formula} that builds up on the Euler's formula, expressing $e^{\imath \theta}$ raised to an integer power $n$.
+\begin{thm}[De Moivre's Formula]
 Given $n$ as an integer, then
 \begin{align*}
 (e^{\imath \theta})^n &= e^{\imath (n\theta)} \\
@@ -126,33 +156,33 @@ Given $n$ as an integer, then
 
 \section{Complex Vectors and Complex Matrices}
 
-Our previous discussion is limited to vectors and matrices with real entries. However, we can extend the ideas to include complex elements. A complex vector is simply a vector that is consisted complex number. However, note that a real vector is also a complex vector, as all real numbers are simply complex numbers that have a zero imaginary part. An $m$-dimensional complex vector can be view as a real vector that is $2m$-dimensional, as each complex entry can be expressed in two parts, real and imaginary, but we will treat it as $m$-dimensional in most of the time. A complex matrix is similarly a matrix with complex elements, or in other words, formed by complex column vectors.
+Our discussion about vectors and matrices in previous chapters is limited to those with real entries. However, we can extend the ideas to include complex elements. A complex vector is simply a vector that have complex number as components. An $n$-dimensional complex vector can be somehow viewed as a real vector that is $2n$-dimensional, as each complex entry can be expressed in two parts, real and imaginary. This equivalence will be further clarified in the end of this section. A complex matrix is similarly a matrix with complex elements, or from another perspective, formed by complex column vectors.
 
 \subsection{Operations and Properties of Complex Vectors}
-Addition and Subtraction for complex vectors are the same as the real counterpart, carried out element-wise. Multiplication by a scalar is similar too. However, the complex dot product is slightly different, as defined below.
+Addition and Subtraction for complex vectors are the same as the real counterpart, carried out element-wise. Multiplication by a scalar is also similar, applied to all elements. However, the form of complex dot product is slightly different, as defined below.
 \begin{defn}
-\label{complexdotproduct}
-Complex dot product of two vectors $\vec{u}$ and $\vec{v}$ is computed as the sum of products between each pair of elements, but with the conjugate operation applied on the second complex vector beforehand.
+\label{defn:complexdotproduct}
+The dot product of two complex vectors $\vec{u}$ and $\vec{v}$ is computed as the sum of products between each pair of elements, but additionally with the conjugate operation applied on the second complex vector beforehand.
 \begin{align*}
 \vec{u} \cdot \vec{v} &= \textbf{u}^T \overline{\textbf{v}} \\
-&= u_1\overline{v_1} + u_2\overline{v_2} + \cdots + u_n\overline{v_n}
+&= u_1\overline{v_1} + u_2\overline{v_2} + \cdots + u_n\overline{v_n} = \sum_{k=1}^{n} u_k\overline{v_k}
 \end{align*}
-The bar on $\overline{\textbf{v}}$ means doing conjugate on every entry of $\textbf{v}$. If $\textbf{v} = \Re{\textbf{v}} + \imath \Im{\textbf{v}}$, where $\Re{\textbf{v}}$ and $\Im{\textbf{v}}$ are the vectors constructed from the real and imaginary parts of elements in $\textbf{v}$. Then $\overline{\textbf{v}} = \Re{\textbf{v}} - \imath \Im{\textbf{v}}$.
+The bar on $\overline{\textbf{v}}$ means carrying out conjugate on every entry of $\textbf{v}$. If $\textbf{v} = \Re{\textbf{v}} + \imath \Im{\textbf{v}}$, where $\Re{\textbf{v}}$ and $\Im{\textbf{v}}$ are the vectors consisted of the real/imaginary part of every element in $\textbf{v}$, then $\overline{\textbf{v}} = \Re{\textbf{v}} - \imath \Im{\textbf{v}}$.
 \end{defn}
-The Euclidean norm, or length, is defined similar by
+The Euclidean norm, or length, is defined similarly by
 \begin{defn}
-The Euclidean norm $\norm{\vec{v}}$ of a complex vector is calculated as
+The length $\norm{\vec{v}}$ of a complex vector $\vec{v}$ is calculated as
 \begin{align*}
-\norm{\vec{v}} &= \sqrt{\vec{v} \cdot \vec{v}} \\
+\norm{\vec{v}} &= \sqrt{\vec{v} \cdot \vec{v}} = \sqrt{\textbf{v}^T \overline{\textbf{v}}}\\
 &= \sqrt{v_1\overline{v_1} + v_2\overline{v_2} + \cdots + v_n\overline{v_n}} \\
-&= \sqrt{\abs{v_1}^2 + \abs{v_2}^2 + \cdots + \abs{v_n}^2}
+&= \sqrt{\abs{v_1}^2 + \abs{v_2}^2 + \cdots + \abs{v_n}^2} = \sqrt{\sum_{k=1}^{n} \abs{v_k}^2}
 \end{align*}
 \end{defn}
-Properties of complex dot product is also a bit different from its real counterpart, Properties \ref{dotproper}.
+Properties of complex dot product is hence also varies slightly from its real counterpart, Properties \ref{proper:dotproper}.
 \begin{proper}
 For two complex vectors $\vec{u}$ and $\vec{v}$, we have
 \begin{align*}
-\vec{u} \cdot \vec{v} &= \textcolor{red}{\overline{\vec{v} \cdot \vec{u}}} &\text{Anti-commutative Property} \\
+\vec{u} \cdot \vec{v} &= \textcolor{red}{\overline{\vec{v} \cdot \vec{u}}} &\text{Anti-symmetric Property} \\
 \vec{u} \cdot (\vec{v} \pm \vec{w}) &= \vec{u} \cdot \vec{v} \pm \vec{u} \cdot \vec{w} &\text{Distributive Property} \\
 (\vec{u} \pm \vec{v}) \cdot \vec{w} &= \vec{u} \cdot \vec{w} \pm \vec{v} \cdot \vec{w} &\text{Distributive Property} \\
 (a\vec{u}) \cdot (b\vec{v}) &= a\textcolor{red}{\bar{b}}(\vec{u} \cdot \vec{v}) &\text{where $a$, $b$ are some complex constants}    
@@ -160,42 +190,45 @@ For two complex vectors $\vec{u}$ and $\vec{v}$, we have
 \end{proper}
 There is no cross product analogous for complex vectors.
 \begin{exmp}
-Prove the anti-commutative property for $\vec{u} = (1+2\imath, 3+1\imath)^T$, $\vec{v} = (2-5\imath, 1+4\imath)^T$.
+Show the anti-symmetric property holds for $\vec{u} = (1+2\imath, 3+\imath)^T$, $\vec{v} = (2-5\imath, 1+4\imath)^T$.
+\end{exmp}
+\begin{solution}
 \begin{align*}
-\vec{u} \cdot \vec{v} &= (1+2\imath)(\overline{2-5\imath}) + (3+1\imath)(\overline{1+4\imath}) \\
-&= (1+2\imath)(2+5\imath) + (3+1\imath)(1-4\imath) \\
+\vec{u} \cdot \vec{v} &= (1+2\imath)(\overline{2-5\imath}) + (3+\imath)(\overline{1+4\imath}) \\
+&= (1+2\imath)(2+5\imath) + (3+\imath)(1-4\imath) \\
 &= (-8+9\imath) + (7-11\imath) \\
 &= -1-2\imath 
 \end{align*}
 \begin{align*}
-\vec{v} \cdot \vec{u} &= (2-5\imath)(\overline{1+2\imath}) + (1+4\imath)(\overline{3+1\imath}) \\
-&= (2-5\imath)(1-2\imath) + (1+4\imath)(3-1\imath) \\
+\vec{v} \cdot \vec{u} &= (2-5\imath)(\overline{1+2\imath}) + (1+4\imath)(\overline{3+\imath}) \\
+&= (2-5\imath)(1-2\imath) + (1+4\imath)(3-\imath) \\
 &= (-8-9\imath) + (7+11\imath) \\
 &= -1+2\imath 
 \end{align*}
 Hence $\vec{u} \cdot \vec{v} = \overline{\vec{v} \cdot \vec{u}}$.
-\end{exmp}
-Short Exercise: Find the norm $\norm{\vec{u}}$ and $\norm{\vec{v}}$ respectively.
+\end{solution}
+
+Short Exercise: Find the norm $\norm{\vec{u}}$ and $\norm{\vec{v}}$ respectively.\footnote{$\norm{\vec{u}} = \sqrt{(1+2\imath)(1-2\imath) + (3+\imath)(3-\imath)} = \sqrt{(1^2 + 2^2) + (3^2 + 1^2)} = \sqrt{15}$. Similarly, $\norm{\vec{v}} = \sqrt{46}$.}
 
 \subsection{Operations and Properties of Complex Matrices}
-Matrix multiplication between two complex matrices is carried out in the same way as we have been always doing, according to Definition \ref{matmuldef}. However, due to the difference in definition of dot product for real and complex vectors, we can no longer claim like in Definition \ref{dotreal} that the elements of a complex matrix product are complex vector dot products between appropriate rows and columns. Nevertheless, we can still describe the elements as a sum of products between those rows and columns.
+Matrix multiplication between two complex matrices is carried out in the same way as we have been always doing, according to Definition \ref{defn:matprod}. However, due to the difference in definition of dot product for real and complex vectors, we can no longer claim like in the discussion of Definition \ref{defn:dotreal} that the elements of a complex matrix product are complex vector dot products between appropriate rows and columns, which needs a minor modification soon we will see. 
 
 \subsubsection{Conjugate Transpose}
-Transpose can be similar defined for complex matrices. However, there exists a more useful operation that combines transpose and conjugate.
+Transpose can be similarly defined for complex matrices. However, there exists a more useful operation that combines transpose and conjugate.
 \begin{defn}
-The conjugate transpose of a matrix $A$, denoted as $A^* = \overline{A}^T$, has elements $A^*_{pq} = \overline{A}_{qp}$, where $\overline{A}$ is produced by changing every element in $A$ to its complex conjugate. Sometimes it is called the adjoint or Hermitian of $A$, and denoted as $A^H$. 
+The \index{Conjugate Transpose}\keywordhl{conjugate transpose} of a matrix $A$, denoted as $A^* = \overline{A^T}$, has elements $A^*_{pq} = \overline{A}_{qp}$, where the conjugate of the matrix $\overline{A}$ is produced by changing every element in $A$ to its complex conjugate. Sometimes it is called the \textit{adjoint} or \index{Hermitian transpose}\keywordhl{Hermitian transpose} of $A$, and denoted as $A^H$. 
 \end{defn}
-It means that complex conjugate requires flipping the elements about the main diagonal, then subsequently conjugate on all of them. Properties of conjugate transpose are alike to those for real transpose, stated in Properties \ref{transposeproper}.
+It means that conjugate transpose is formed by flipping the elements of the matrix about its main diagonal, then subsequently conjugate on all of them. Properties of conjugate transpose are alike to those for real transpose, stated in Properties \ref{proper:transp}.
 \begin{proper}
 For two complex matrices $A$ and $B$, we have
 \begin{enumerate}
 \item $(cA)^* = \overline{c}A^*$, where $c$ is any complex scalar,
 \item $(A^*)^* = A$,
 \item $(A \pm B)^* = A^* \pm B^*$, if $A$ and $B$ have the same shape,
-\item $(AB)^* = B^*A^*$, if their matrix products is possible.
+\item $(AB)^* = B^*A^*$, if $A$ and $B$ have compatible shapes.
 \end{enumerate}
 \end{proper}
-
+With complex conjugate of a matrix defined alongside, we can now say that the elements of the complex matrix product $A\overline{B}$, that is, a conjugate has been applied on the latter matrix, are the complex vector dot products between row and column vectors of $A$ and the original $B$ matrix.
 \begin{exmp}
 For two complex matrices
 \begin{align*}
@@ -211,6 +244,8 @@ For two complex matrices
 \end{bmatrix}
 \end{align*}
 Verify that $(AB)^* = B^*A^*$.
+\end{exmp}
+\begin{solution}
 \begin{align*}
 A^* &=
 \begin{bmatrix}
@@ -268,10 +303,10 @@ AB &=
 3-\imath & 2\imath
 \end{bmatrix}
 \end{align*}
-\end{exmp}
+\end{solution}
 
-\subsubsection{Determinant and Inverse for complex matrices}
-Complex matrices also have determinants and inverses, and are calculated nearly in the same ways outlined in Sections \ref{section:det} and \ref{section:inv}. We highlight the difference and provide some examples here.
+\subsubsection{Determinants and Inverses for complex matrices}
+Complex matrices also have determinants and inverses, and are calculated in the exact same ways outlined in Sections \ref{section:det} and \ref{section:inv}. We provide a few examples here.
 
 \begin{exmp}
 Calculate the determinant for
@@ -283,7 +318,9 @@ A =
 2 & -2\imath & 1
 \end{bmatrix}
 \end{align*}
-We apply Cofactor Expansion along the middle row in the way outlined in Properties \ref{cofactorex}, the result is
+\end{exmp}
+\begin{solution}
+We apply Cofactor Expansion along the middle row in the way outlined in Properties \ref{proper:cofactorex}, the result is
 \begin{align*}
 &\quad -(1+\imath)
 \begin{vmatrix}
@@ -302,13 +339,15 @@ We apply Cofactor Expansion along the middle row in the way outlined in Properti
 \end{vmatrix} \\
 &= -(1+\imath)(3+4\imath) - (\imath)(-8-2\imath) \\
 &= -1 + \imath
-\end{align*}
-\end{exmp}
-The computation of inverse is the same as Properties \ref{properinvadj}.
+\end{align*}  
+\end{solution}
+
 \begin{exmp}
-Find the inverse of the matrix $A$ in the last example.\\
-\\
-First, we note that
+Find the inverse of the matrix $A$ in the last example.
+\end{exmp}
+
+\begin{solution}
+The computation of inverse follows Properties \ref{proper:invadj}. First, we note that
 \begin{align*}
 \frac{1}{\det(A)} &= \frac{1}{-1+\imath} \\
 &= \frac{1}{-1+\imath} \frac{-1-\imath}{-1-\imath} \\
@@ -330,6 +369,7 @@ C &=
 1+\imath & 0 \\
 2 & -2\imath
 \end{vmatrix} \\
+\vspace{3pt}
 -\begin{vmatrix}
 3 & 2 \\
 -2\imath & 1
@@ -342,6 +382,7 @@ C &=
 1-\imath & 3 \\
 2 & -2\imath
 \end{vmatrix} \\
+\vspace{3pt}
 \begin{vmatrix}
 3 & 2 \\
 0 & \imath
@@ -362,7 +403,7 @@ C &=
 3\imath & 1+\imath & -3-3\imath
 \end{bmatrix}
 \end{align*}
-Thus, by Properties \ref{properinvadj}, the inverse of $A$ is
+Thus, by Properties \ref{proper:invadj}, the inverse of $A$ is
 \begin{align*}
 A^{-1} &= \frac{1}{\det(A)} \text{adj}(A) = \frac{1}{\det(A)} C^T \\
 &= -\frac{1+\imath}{2} 
@@ -378,10 +419,11 @@ A^{-1} &= \frac{1}{\det(A)} \text{adj}(A) = \frac{1}{\det(A)} C^T \\
 -2 & -3-5\imath & 3\imath
 \end{bmatrix} 
 \end{align*}
-Short Exercise: Find $A^{-1}$ via Gaussian Elimination.
-\end{exmp}
+\end{solution}
 
-Below are some useful properties of determinant and transpose for complex matrices, that can be compared to Properties \ref{inverseprop} and \ref{properdet}.
+Short Exercise: Find $A^{-1}$ via Gaussian Elimination.\footnote{Notice that we will now need to multiply rows with complex constants instead when doing elementary row operations. You should be able to get the same answer.}
+
+Below are some useful properties of determinant and inverse for complex matrices, that can be compared to Properties \ref{proper:properdet} and \ref{proper:inverse}.
 \begin{proper}
 If $A$ is a complex matrix, then
 \begin{enumerate}
@@ -402,10 +444,1246 @@ Additionally, if $A$ is non-singular, then
 \end{enumerate}
 \end{proper}
 
+\subsection{The Complex $n$-space $\mathbb{C}^n$}
+
+Similar to the real $n$-space $\mathbb{R}^n$ brought up in Definition \ref{defn:real_nspace}, the set of all complex vectors, now with $n$ complex components, forms the \index{Complex $n$-space}\keywordhl{complex $n$-space} $\mathbb{C}^n$ as follows.
+\begin{defn}[The Complex $n$-space $\mathbb{C}^n$]
+\label{defn:complex_nspace}
+The complex $n$-space $\mathbb{C}^n$ is defined as the set of all possible $n$-tuples in the form of $\vec{v} = (v_1, v_2, v_3, \ldots, v_n)^T$, where $v_i$ can be any complex numbers, for $i = 1,2,3,\ldots,n$. They are known as $n$-dimensional complex vectors.
+\end{defn}
+A very interesting (and perhaps quite confusing) fact about the complex $n$-space $\mathbb{C}^n$, or an $n$-dimensional complex vector, is that it can be considered as $2n$-dimensional when put in the frame of a real vector space. The key lies in Definition \ref{defn:realvecspaceaxiom} where if the underlying scalar is set to $\mathbb{R}$ or $\mathbb{C}$ so that it becomes a real/complex vector space. Notice the subtle difference between a real/complex vector (that is indicative of its components being real/complex) and real/complex vector space (concerning the underlying scalar used in scalar multiplication). We take $\mathbb{C}$ as a vector space here for illustration. If $\mathbb{C}$ is treated as a complex vector space, i.e.\ over $\mathbb{C}$ itself, then $\{1\}$ is a basis for $\mathbb{C}$ since the scalar multiplication of $1$ by any arbitrary complex scalar can generate all complex numbers. Hence, the dimension of $\mathbb{C}$ is $1$ over $\mathbb{C}$ (Properties \ref{proper:samenvecsbases} still holds for complex vector spaces). Otherwise, if $\mathbb{C}$ is taken as a real vector space, then $\{1\}$ is not sufficient to be a basis for $\mathbb{C}$ since multiplication by any real scalar $a$ can never produce complex numbers with a non-zero imaginary part. Instead, $\{1, \imath\}$ can be a basis for $\mathbb{C}$ over $\mathbb{R}$ as linear combinations of $1$ and $\imath$ with real coefficients can produce all complex numbers. So by Properties \ref{proper:samenvecsbases}, the dimension of $\mathbb{C}$ over $\mathbb{R}$ is $2$, and with Theorem \ref{thm:isomorphism} it is isomorphic to $\mathbb{R}^2$ in this situation. An explicit isomorphism between $\mathbb{C}$ and $\mathbb{R}^2$ over $\mathbb{R}$ is simply
+\begin{align*}
+T(a+b\imath) = (a,b)^T
+\end{align*}
+Extending this observation, $\mathbb{C}^n$ can either be treated as $n$-dimensional over $\mathbb{C}$ or $2n$-dimensional over $\mathbb{R}$ (and is isomorphic to $\mathbb{R}^{2n}$). However, unless mentioned otherwise, we consider any $\mathbb{C}^n$ vector is taken over $\mathbb{C}$ (the former case) onwards.
+
+\section{Manipulating Block Matrices}
+
+Moving to our second topic, a \keywordhl{block matrix} is a matrix written in smaller \textit{submatrices} as if they are usual entries. For example, a $2 \times 2$ block matrix has the form of
+\begin{align*}
+M =
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}
+\end{align*}
+where $A$, $B$, $C$, $D$ are themselves matrices having the shapes of $m \times r$, $m \times q$, $n \times r$, $n \times q$, and $m, n, p, q$ can be any positive integer. As a more concrete example, we have
+\begin{align*}
+M = 
+\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}}
+1 & 0 & 3 & 0 & 4 \\
+0 & 1 & 1 & 2 & -1 \\
+\hline
+2 & -1 & 0 & 1 & -2 \\
+\end{array}\right]
+\end{align*}
+being a $3 \times 5$ matrix at the same time a $2 \times 2$ block matrix where
+\begin{align*}
+A &= \begin{bmatrix}
+1 & 0 & 3 \\
+0 & 1 & 1
+\end{bmatrix}
+& 
+B &= \begin{bmatrix}
+0 & 4 \\
+2 & -1
+\end{bmatrix} \\
+C &= \begin{bmatrix}
+2 & -1 & 0 \\
+\end{bmatrix}
+& 
+D &= \begin{bmatrix}
+1 & -2
+\end{bmatrix}
+\end{align*}
+are of the shapes $2 \times 3$, $2 \times 2$, $1 \times 3$ and $1 \times 2$. We can extend this for block matrices of any partition. For instance, a $3 \times 4$ block matrix will be in the form of
+\begin{align*}
+M =
+\begin{bmatrix}
+M_{11} & M_{12} & M_{13} & M_{14} \\
+M_{21} & M_{22} & M_{23} & M_{24} \\
+M_{31} & M_{32} & M_{33} & M_{34} \\
+\end{bmatrix}
+\end{align*}
+where the $M_{ij}$s are submatrices, and for a fixed $i$ ($j$), $M_{ij}$ has the same number of rows (columns).
+
+\subsection{Block Matrix Multiplication}
+
+With the structure of a block matrix explained, we can now examine how matrix multiplication between two block matrices is done. Let's take a look at the easiest case of two $2 \times 2$ block matrices:
+\begin{align*}
+M &=
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix} 
+& &
+N =
+\begin{bmatrix}
+X & Y \\
+Z & W
+\end{bmatrix} 
+\end{align*}
+Of course, from the very beginning (Section \ref{section:matrixdefn}), we know that $M$ and $N$ themselves have to be of the shapes $m \times r$ and $r \times n$ as an ordinary matrix, but how about the submatrices? In fact, we just carry out the multiplication as if each of them are a single entry, such that
+\begin{align*}
+MN = 
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix} 
+\begin{bmatrix}
+X & Y \\
+Z & W
+\end{bmatrix} 
+=
+\begin{bmatrix}
+AX + BZ & AY + BW \\
+CX + DZ & CY + DW
+\end{bmatrix}
+\end{align*}
+Then, for each resulting block to be valid, the number of columns in $A$ and $C$ ($B$ and $D$) must be the same as that of rows in $X$ and $Y$ ($Z$ and $W$). So that $A$ and $C$ will have the shapes of $m_1 \times r_1$, $m_2 \times r_1$, $X$ and $Y$ will have the shapes of $r_1 \times n_1$, $r_1 \times n_2$, $m_1 + m_2 = m$, $n_1 + n_2 = n$. Similarly, $B$ and $D$ need to have the shapes of $m_1 \times r_2$, $m_2 \times r_2$, $Z$ and $W$ need to have the shapes of $r_2 \times n_1$, $r_2 \times n_2$, and $r = r_1 + r_2$. In short, the position of cut along the column direction of $M$ must coincide with that along the row direction of $N$. Below is a walk-through example.
+
+\begin{exmp}
+Given 
+\begin{align*}
+M &=
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix} 
+& &
+N =
+\begin{bmatrix}
+X & Y \\
+Z & W
+\end{bmatrix} 
+\end{align*}
+as a $3 \times 3$ and $3 \times 2$ matrix respectively, with
+\begin{align*}
+A &= 
+\begin{bmatrix}
+1 & 2 \\
+0 & 1
+\end{bmatrix}
+& 
+B &=
+\begin{bmatrix}
+1 \\
+-2
+\end{bmatrix} \\
+C &= 
+\begin{bmatrix}
+0 & -1 
+\end{bmatrix}
+&
+D &=
+\begin{bmatrix}
+1
+\end{bmatrix} \\
+X &= 
+\begin{bmatrix}
+0 \\
+2 
+\end{bmatrix}
+&
+Y &=
+\begin{bmatrix}
+1 \\
+-1
+\end{bmatrix} \\
+Z &= 
+\begin{bmatrix}
+-1
+\end{bmatrix}
+&
+W &=
+\begin{bmatrix}
+1
+\end{bmatrix} 
+\end{align*}
+such that the partitions look like
+\begin{align*}
+M &=
+\left[\begin{array}{@{\;}wc{10pt}wc{10pt}|wc{10pt}}
+1 & 2 & 1 \\
+0 & 1 & -2 \\
+\hline
+0 & -1 & 1
+\end{array}\right]
+& &
+N =
+\left[\begin{array}{@{\;}wc{10pt}|wc{10pt}}
+0 & 1 \\
+2 & -1 \\
+\hline
+-1 & 1
+\end{array}\right]   
+\end{align*}
+Use block matrix multiplication to compute $MN$.
+\end{exmp}
+\begin{solution}
+Note that the cuts along the column/row direction in $M$ and $N$ are both located in-between the $2$nd/$3$rd index. Consequentially, we can use the formula above:
+\begin{align*}
+MN = 
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix} 
+\begin{bmatrix}
+X & Y \\
+Z & W
+\end{bmatrix} 
+=
+\begin{bmatrix}
+AX + BZ & AY + BW \\
+CX + DZ & CY + DW
+\end{bmatrix}
+\end{align*}
+which requires us to compute
+\begin{align*}
+AX &=
+\begin{bmatrix}
+1 & 2 \\
+0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+0 \\
+2 
+\end{bmatrix}
+=
+\begin{bmatrix}
+4 \\
+2
+\end{bmatrix}
+&
+BZ &=
+\begin{bmatrix}
+1 \\
+-2
+\end{bmatrix}
+\begin{bmatrix}
+-1
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1 \\
+2
+\end{bmatrix} \\
+AY &=
+\begin{bmatrix}
+1 & 2 \\
+0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+-1
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1 \\
+-1
+\end{bmatrix}
+&
+BW &=
+\begin{bmatrix}
+1 \\
+-2
+\end{bmatrix}
+\begin{bmatrix}
+1
+\end{bmatrix} 
+=
+\begin{bmatrix}
+1 \\
+-2
+\end{bmatrix} \\
+CX &=
+\begin{bmatrix}
+0 & -1 
+\end{bmatrix}
+\begin{bmatrix}
+0 \\
+2 
+\end{bmatrix}
+=
+\begin{bmatrix}
+-2
+\end{bmatrix}
+&
+DZ &=
+\begin{bmatrix}
+1
+\end{bmatrix}
+\begin{bmatrix}
+-1
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1
+\end{bmatrix} \\
+CY &=
+\begin{bmatrix}
+0 & -1 
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+-1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1
+\end{bmatrix}
+&
+DW &=
+\begin{bmatrix}
+1
+\end{bmatrix}
+\begin{bmatrix}
+1
+\end{bmatrix} 
+=
+\begin{bmatrix}
+1
+\end{bmatrix}
+\end{align*}
+Hence
+\begin{align*}
+MN &= \begin{bmatrix}
+AX + BZ & AY + BW \\
+CX + DZ & CY + DW
+\end{bmatrix} \\
+&=
+\left[\begin{array}{@{\;}wc{55pt}|wc{55pt}}
+\begin{bmatrix}
+4 \\
+2
+\end{bmatrix}+
+\begin{bmatrix}
+-1 \\
+2
+\end{bmatrix}
+&
+\begin{bmatrix}
+-1 \\
+-1
+\end{bmatrix}+
+\begin{bmatrix}
+1 \\
+-2
+\end{bmatrix}\\[9pt]
+\hline
+\begin{bmatrix}
+-2
+\end{bmatrix}+
+\begin{bmatrix}
+-1 
+\end{bmatrix}
+&
+\begin{bmatrix}
+1
+\end{bmatrix}+
+\begin{bmatrix}
+1 
+\end{bmatrix}
+\end{array}\right]
+=
+\left[\begin{array}{@{\;}wc{10pt}|wc{10pt}}
+3 & 0 \\
+4 & -3 \\
+\hline
+-3 & 2
+\end{array}\right]
+\end{align*}
+The readers can check the answer by computing the matrix product in the usual way.
+\end{solution}
+
+For multiplication involving block matrices with more blocks, the two block matrices $M$ and $N$ must have a partition of $m \times r$ and $r \times n$ blocks and the block multiplication is carried out as if they are individual entries in usual matrix multiplication as well. Particularly, the positions where the $r$ column/row partition of $M$/$N$ occurs must align exactly. Given
+\begin{align*}
+M &=
+\begin{bmatrix}
+M_{11} & M_{12} & M_{13} & \cdots & M_{1r} \\
+M_{21} & M_{22} & M_{23} &  & M_{2r} \\
+M_{31} & M_{32} & M_{33} &  & M_{3r} \\
+\vdots & & & \ddots & \vdots \\
+M_{m1} & M_{m2} & M_{m3} &  & M_{mr} 
+\end{bmatrix} & \text{ and }
+N &=
+\begin{bmatrix}
+N_{11} & N_{12} & N_{13} & \cdots & N_{1n} \\
+N_{21} & N_{22} & N_{23} &  & N_{2n} \\
+N_{31} & N_{32} & N_{33} &  & N_{3n} \\
+\vdots & & & \ddots & \vdots \\
+N_{r1} & N_{r2} & N_{r3} &  & N_{rn} 
+\end{bmatrix}
+\end{align*}
+this means that the numbers of columns and rows in $M_{ik}$ and $N_{kj}$ for any fixed $k$ should be equal, such that $M_{ik}$ and $N_{kj}$ are of the shapes $m_i \times r_k$ and $r_k \times n_j$. 
+
+\subsection{Inverse and Determinant of a Block Matrix}
+To properly utilize block matrices, we also need to know how to compute some basic quantities related to them, like inverse and determinant. Since most of the situations involve $2 \times 2$ block matrices only, we will handle them exclusively. Specifically, we consider $2 \times 2$ block matrices in the form of
+\begin{align*}
+M = \begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}
+\end{align*}
+where $A$, $B$, $C$, $D$ are submatrices of the shapes $p \times p$, $p \times q$, $q \times p$ and $q \times q$, such that $A$, $D$ and thus $M$ are square. To proceed, we need the following observations.
+\begin{proper}
+\label{proper:blockmatinv}
+Denote the $p \times p$ and $q \times q$ identity matrices by $I_p$ and $I_q$. Then the matrix
+\begin{align*}
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+-C & I_q
+\end{bmatrix}
+\end{align*}
+is invertible, particularly having a determinant of $1$. If furthermore, $A$ is invertible, then
+\begin{align*}
+\begin{bmatrix}
+A^{-1} & 0_{p\times q} \\
+0_{q\times p} & I_q
+\end{bmatrix}
+\end{align*}
+is also invertible with a determinant of $\det(A^{-1}) = (\det(A))^{-1}$.
+\end{proper}
+\begin{proof}
+For the first matrix, simply note that it is a lower-triangular matrix with all diagonal elements being $1$ and therefore it has a determinant of $1$. Therefore, by Properties \ref{proper:invnonzerodet}, it is invertible. Similarly, by repeated cofactor expansions along the bottommost row for $q$ times, the determinant of the second matrix can be seen to be $\det(A^{-1}) = (\det(A))^{-1}$ (Properties \ref{proper:properdet}). If $A$ is invertible, then $\det(A^{-1}) = (\det(A))^{-1}$ is nonzero by Properties \ref{proper:invnonzerodet} again, and 
+\begin{align*}
+\begin{bmatrix}
+A^{-1} & 0_{p\times q} \\
+0_{q\times p} & I_q
+\end{bmatrix}    
+\end{align*}
+will also be invertible.
+\end{proof}
+The above properties imply that these two matrices are the results from elementary row operations (Properties \ref{proper:invseqelement}), and therefore, their product
+\begin{align*}
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+-C & I_q
+\end{bmatrix}
+\begin{bmatrix}
+A^{-1} & 0_{p\times q} \\
+0_{q\times p} & I_q
+\end{bmatrix}
+&=
+\begin{bmatrix}
+I_pA^{-1} + 0_{p\times q}0_{q\times p} & I_p0_{p\times q} + 0_{p\times q}I_q \\
+(-C)A^{-1} + I_q0_{q \times p} & -C0_{p \times q} + I_qI_q
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+A^{-1} & 0_{p\times q} \\
+-CA^{-1} & I_q
+\end{bmatrix}
+\end{align*}
+can also be arrived via elementary row operations and is invertible as well. By multiplying this matrix to $M$, we have
+\begin{align*}
+\begin{bmatrix}
+A^{-1} & 0_{p\times q} \\
+-CA^{-1} & I_q
+\end{bmatrix}
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix} &= 
+\begin{bmatrix}
+A^{-1}A + 0_{p\times q}C & A^{-1}B + 0_{p \times q}D \\
+-CA^{-1}A + I_qC & - CA^{-1}B + I_qD  
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+I_p & A^{-1}B \\
+-C + C & - CA^{-1}B + D  
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+I_p & A^{-1}B \\
+0_{q\times p} & D - CA^{-1}B 
+\end{bmatrix}
+\end{align*}
+The bottom right block, $D - CA^{-1}B$, is known as the \index{Schur complement}\keywordhl{Schur complement} of block $A$ in $M$, denoted as $M/A$ and has the same shape $q \times q$ as $D$. The above block multiplication constitutes a \textit{block Gaussian Elimination} over the matrix $M$ to make it \textit{block upper-triangular}. It is not hard to see that
+\begin{align*}
+\begin{bmatrix}
+I_p & A^{-1}B \\
+0_{q\times p} & D - CA^{-1}B 
+\end{bmatrix}
+\begin{bmatrix}
+I_p & -A^{-1}B \\
+0_{q \times p} & I_q
+\end{bmatrix}
+=
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+0_{q\times p} & D - CA^{-1}B 
+\end{bmatrix}
+\end{align*}
+Therefore,
+\begin{align*}
+&\quad \begin{bmatrix}
+A^{-1} & 0_{p\times q} \\
+-CA^{-1} & I_q
+\end{bmatrix}
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}
+\begin{bmatrix}
+I_p & -A^{-1}B \\
+0_{q \times p} & I_q
+\end{bmatrix} \\
+&= \begin{bmatrix}
+I_p & A^{-1}B \\
+0_{q\times p} & D - CA^{-1}B 
+\end{bmatrix}
+\begin{bmatrix}
+I_p & -A^{-1}B \\
+0_{q \times p} & I_q
+\end{bmatrix}
+=
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+0_{q\times p} & D - CA^{-1}B 
+\end{bmatrix}
+\end{align*}
+According to the above equation, if the Schur complement $M/A = D-CA^{-1}B$ is also invertible, then the inverse of $M$ will exist, because
+\begin{align*}
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}
+&= 
+\left(\begin{bmatrix}
+A^{-1} & 0_{p\times q} \\
+-CA^{-1} & I_q
+\end{bmatrix}\right)^{-1}
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+0_{q\times p} & D - CA^{-1}B 
+\end{bmatrix}
+\left(\begin{bmatrix}
+I_p & -A^{-1}B \\
+0_{q \times p} & I_q
+\end{bmatrix}\right)^{-1}
+\end{align*}
+where the three matrices on R.H.S. are all invertible.\footnote{The invertibility of the first and last matrix follows the same arguments in Properties \ref{proper:blockmatinv}, while for the matrix in the middle we have required that $D-CA^{-1}B$ has to be invertible, and its inverse can be readily seen to be
+\begin{align*}
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+0_{q\times p} & D - CA^{-1}B 
+\end{bmatrix}^{-1}
+=
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+0_{q\times p} & (D - CA^{-1}B)^{-1}
+\end{bmatrix}
+\end{align*}} By Properties \ref{proper:inverse}, we arrive at
+\begin{align*}
+M^{-1} &=
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}^{-1} \\
+&= \left(\begin{bmatrix}
+A^{-1} & 0_{p\times q} \\
+-CA^{-1} & I_q
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+0_{q\times p} & D - CA^{-1}B 
+\end{bmatrix}
+\begin{bmatrix}
+I_p & -A^{-1}B \\
+0_{q \times p} & I_q
+\end{bmatrix}^{-1} \right)^{-1} \\
+&=
+\begin{bmatrix}
+I_p & -A^{-1}B \\
+0_{q \times p} & I_q
+\end{bmatrix} 
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+0_{q\times p} & (D - CA^{-1}B)^{-1}
+\end{bmatrix}
+\begin{bmatrix}
+A^{-1} & 0_{p\times q} \\
+-CA^{-1} & I_q
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+I_p & -A^{-1}B (D - CA^{-1}B)^{-1} \\
+0_{q \times p} & (D - CA^{-1}B)^{-1}
+\end{bmatrix}
+\begin{bmatrix}
+A^{-1} & 0_{p\times q} \\
+-CA^{-1} & I_q
+\end{bmatrix} \\
+&= \begin{bmatrix}
+A^{-1} + A^{-1}B (D - CA^{-1}B)^{-1} CA^{-1} & -A^{-1}B (D - CA^{-1}B)^{-1} \\
+-(D - CA^{-1}B)^{-1}CA^{-1} & (D - CA^{-1}B)^{-1}
+\end{bmatrix} \\
+&= \begin{bmatrix}
+A^{-1} + A^{-1}B (M/A)^{-1} CA^{-1} & -A^{-1}B (M/A)^{-1} \\
+-(M/A)^{-1}CA^{-1} & (M/A)^{-1}
+\end{bmatrix}
+\end{align*}
+To summarize, we have the following statements.
+\begin{proper}
+\label{proper:schurinv}
+For the $2 \times 2$ block matrix
+\begin{align*}
+M = 
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}
+\end{align*}
+where $A$ and $D$ are square submatrices, if $A$ and its Schur complement $M/A = D - CA^{-1}B$ of block $A$ are both invertible, then $M$ is invertible with
+\begin{align*}
+M^{-1} = \begin{bmatrix}
+A^{-1} + A^{-1}B (M/A)^{-1} CA^{-1} & -A^{-1}B (M/A)^{-1} \\
+-(M/A)^{-1}CA^{-1} & (M/A)^{-1}
+\end{bmatrix}
+\end{align*}
+\end{proper}
+\begin{proper}
+\label{proper:schurdet}
+The determinant of the $2 \times 2$ block matrix in Properties \ref{proper:schurinv} is
+\begin{align*}
+\det(M) = \det(A)\det(D-CA^{-1}B) = \det(A)\det(M/A)
+\end{align*}
+if $A^{-1}$ is well-defined.
+\end{proper}
+\begin{proof}
+From the derivation above, we have
+\begin{align*}
+\begin{bmatrix}
+A^{-1} & 0_{p\times q} \\
+-CA^{-1} & I_q
+\end{bmatrix}
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}
+\begin{bmatrix}
+I_p & -A^{-1}B \\
+0_{q \times p} & I_q
+\end{bmatrix} 
+=
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+0_{q\times p} & D - CA^{-1}B 
+\end{bmatrix}
+\end{align*}
+Evaluating the determinants of both sides leads to
+\begin{align*}
+&\quad \det(\begin{bmatrix}
+A^{-1} & 0_{p\times q} \\
+-CA^{-1} & I_q
+\end{bmatrix})
+\det(M)
+\det(\begin{bmatrix}
+I_p & -A^{-1}B \\
+0_{q \times p} & I_q
+\end{bmatrix}) \\
+&=
+\det(\begin{bmatrix}
+I_p & 0_{p \times q} \\
+0_{q\times p} & D - CA^{-1}B 
+\end{bmatrix})
+\end{align*}
+In the same vein of Properties \ref{proper:blockmatinv}, we then have
+\begin{align*}
+(\det(A))^{-1}\det(M)(1) &= \det(D-CA^{-1}B) \\
+\det(M) &= \det(A)\det(D-CA^{-1}B) = \det(A)\det(M/A)
+\end{align*}
+\end{proof}
+
+\begin{exmp}
+Use Properties \ref{proper:schurinv} and \ref{proper:schurdet} to compute the inverse and determinant of the following matrix
+\begin{align*}
+M = 
+\left[\begin{array}{@{\;}wc{10pt}wc{10pt}|wc{10pt}}
+1 & 2 & 0 \\
+0 & 1 & 1 \\
+\hline
+-2 & -1 & 2
+\end{array}\right]
+\end{align*}
+via the partition above.
+\end{exmp}
+\begin{solution}
+To use Properties \ref{proper:schurinv}, we need to first compute $A^{-1}$ and $M/A = D - CA^{-1}B$. We leave to the readers for verifying that
+\begin{align*}
+A^{-1} &= 
+\begin{bmatrix}
+1 & -2 \\
+0 & 1
+\end{bmatrix} \\
+M/A = D - CA^{-1}B &=
+\begin{bmatrix}
+2
+\end{bmatrix}
+-
+\begin{bmatrix}
+-2 & -1
+\end{bmatrix}
+\begin{bmatrix}
+1 & -2 \\
+0 & 1    
+\end{bmatrix}
+\begin{bmatrix}
+0 \\
+1
+\end{bmatrix}
+= \begin{bmatrix}
+-1
+\end{bmatrix}
+\end{align*}
+Then by Properties \ref{proper:schurinv}, we have
+\begin{align*}
+M^{-1} &= \begin{bmatrix}
+A^{-1} + A^{-1}B (M/A)^{-1} CA^{-1} & -A^{-1}B (M/A)^{-1} \\
+-(M/A)^{-1}CA^{-1} & (M/A)^{-1}
+\end{bmatrix} \\
+&= \left[\begin{array}{@{\;}wc{224pt}|wc{90pt}}
+\begin{bmatrix}
+1 & -2 \\
+0 & 1
+\end{bmatrix}
++
+\begin{bmatrix}
+1 & -2 \\
+0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+0 \\
+1
+\end{bmatrix}
+\begin{bmatrix}
+-1
+\end{bmatrix}
+\begin{bmatrix}
+-2 & -1
+\end{bmatrix} 
+\begin{bmatrix}
+1 & -2 \\
+0 & 1
+\end{bmatrix}
+&
+-\begin{bmatrix}
+1 & -2 \\
+0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+0 \\
+1
+\end{bmatrix}
+\begin{bmatrix}
+-1
+\end{bmatrix}
+\\[9pt]
+\hline
+-
+\begin{bmatrix}
+-1
+\end{bmatrix}
+\begin{bmatrix}
+-2 & -1
+\end{bmatrix}
+\begin{bmatrix}
+1 & -2 \\
+0 & 1
+\end{bmatrix}
+&
+\begin{bmatrix}
+-1
+\end{bmatrix}
+\end{array}\right] \\
+&=
+\left[\begin{array}{@{\;}wc{10pt}wc{10pt}|wc{10pt}}
+-3 & 4 & -2 \\
+2 & -2 & 1 \\
+\hline
+-2 & 3 & -1
+\end{array}\right]
+\end{align*}
+Meanwhile, by Properties \ref{proper:schurdet},
+\begin{align*}
+\det(M) &= \det(A)\det(M/A) \\
+&= \det(\begin{bmatrix}
+1 & -2 \\
+0 & 1
+\end{bmatrix})
+\det([-1]) = (1)(-1) = -1
+\end{align*}
+\end{solution}
+
+Similar results are also available in terms of the Schur complement using block $D$ instead of $A$.
+\begin{proper}
+\label{proper:schurinvD}
+For the $2 \times 2$ block matrix
+\begin{align*}
+M = 
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}
+\end{align*}
+where $A$ and $D$ are square submatrices, if $D$ and its Schur complement $M/D = A - BD^{-1}C$ of block $D$ are both invertible, then $M$ is invertible with
+\begin{align*}
+M^{-1} = \begin{bmatrix}
+(M/D)^{-1} & -(M/D)^{-1}BD^{-1}  \\
+-D^{-1}C (M/D)^{-1} & D^{-1} + D^{-1}C (M/D)^{-1} BD^{-1}
+\end{bmatrix}
+\end{align*}
+and its determinant can be computed by
+\begin{align*}
+\det(M) = \det(D)\det(A - BD^{-1}C) = \det(D)\det(M/D)
+\end{align*}
+\end{proper}
+\begin{proof}
+See Exercise \ref{ex:schurinvD}.
+\end{proof}
+
+\subsection{Restriction of a Linear Transformation, Direct Sum of a Matrix}
+In the last chapter we have discussed about linear transformations between two vector spaces, let's say, from $\mathcal{U}$ to $\mathcal{V}$. Sometimes we only care about how the linear transformation works on some specific subspace $\mathcal{W}$ of $\mathcal{U}$. This leads to the idea of \index{Restriction of a Linear Transformation}\keywordhl{restriction} of a linear transformation as follows.
+\begin{defn}
+Given a linear transformation $T: \mathcal{U} \to \mathcal{V}$ and a proper subspace $\mathcal{W} \subset \mathcal{U}$, the restriction of $T$ to $\mathcal{W}$ is defined as
+\begin{align*}
+T|_W: \mathcal{W} \to \mathcal{V}, T|_W(\vec{w}) = T(\vec{w}) \text{ for any $\vec{w} \in \mathcal{W}$.}
+\end{align*}
+\end{defn}
+In simpler terms, $T|_W$ works exactly as $T$ but only defined on $\mathcal{W}$. Assume the vector spaces involved are all finite-dimensional, and $\dim(\mathcal{W}) = r < n = \dim(\mathcal{U})$. $\mathcal{W}$ then has a basis $\mathcal{B}_W$ with $r$ generating vectors, which by part (c) of Properties \ref{proper:linindspanbasisnewver} can be extended to a new basis $\mathcal{B}' = \mathcal{B}_W \cup \mathcal{G}$ for $\mathcal{U}$, where $\mathcal{G}$ contains $n - r$  vectors and $\mathcal{B}' = \mathcal{B}_W \cup \mathcal{G}$ has exactly $n$ linearly independent vectors by construction. Some may wonder why we suddenly talk about the restriction of a linear transformation here and the reason is that its related principles can be viewed from the stand point of a block matrix.\\
+\\
+To see this, let $\mathcal{B}_W = \{\vec{u}_1, \vec{u}_2, \ldots, \vec{u}_r\}$ and $\mathcal{G} = \{\vec{u}_{r+1}, \ldots, \vec{u}_n\}$, and thus $\mathcal{B}' = \{\vec{u}_1, \vec{u}_2, \ldots, \vec{u}_r, \vec{u}_{r+1}, \ldots, \vec{u}_n\}$. By Definition \ref{defn:directsum}, since the vectors in $\mathcal{B}' = \mathcal{B}_W \cup \mathcal{G}$ are designed to be linear independent, the subspace $\mathcal{W}^C$ generated by $\mathcal{G}$ will be the complement of $\mathcal{W}$ as a result of $\mathcal{W} \oplus \mathcal{W}^C$ being a direct sum that produces $\mathcal{U}$. Any $\vec{w} \in \mathcal{W} \subset \mathcal{U}$ will then have a coordinate representation of
+\begin{align*}
+(w_1, w_2, \ldots, w_r, 0, \ldots, 0)^T
+\end{align*}
+in the $\mathcal{B}$' basis where components beyond the $r$-th index are all zeros. From the perspective of direct sum, it is the same as $\vec{w} \oplus \textbf{0}_{n-r} = (w_1, w_2, \ldots, w_r)_{B_W}^T \oplus (0, \ldots, 0)_{G}^T$, i.e. $\vec{w}$ has no components in $\mathcal{W}^C$. By Definition \ref{defn:matrixrepoflintrans}, writing out the matrix representation of $[T]_{B'}^H$ where $H$ is an arbitrary basis for $\mathcal{V}$ results in
+\begin{align*}
+[T]_{B'}^H = \begin{bmatrix}
+a_1^{(1)} & a_1^{(2)} & \cdots & a_1^{(r)} & a_1^{(r+1)} & \cdots & a_1^{(n)} \\
+a_2^{(1)} & a_2^{(2)} & & a_2^{(r)} & a_2^{(r+1)} & & a_2^{(n)} \\
+\vdots & & & \vdots & \vdots & & \vdots \\
+a_m^{(1)} & a_m^{(2)} & \cdots & a_m^{(r)} & a_m^{(r+1)} & \cdots & a_m^{(n)}
+\end{bmatrix}
+\end{align*}
+Since we are only concerned about $\vec{w} \in \mathcal{W} \subset \mathcal{U}$ (or $\vec{w} \oplus \textbf{0} \in \mathcal{W} \oplus \mathcal{W}^C$) when dealing with $T|_W$, when we apply $T$ on $\vec{w}$, which is
+\begin{align*}
+[T]_{B'}^H[\vec{w}]_{B'}
+&=
+\left[\begin{array}{@{\;}wc{15pt}wc{15pt}wc{15pt}wc{15pt}|@{\quad}wc{15pt}wc{15pt}wc{15pt}}
+a_1^{(1)} & a_1^{(2)} & \cdots & a_1^{(r)} & a_1^{(r+1)} & \cdots & a_1^{(n)} \\
+a_2^{(1)} & a_2^{(2)} & & a_2^{(r)} & a_2^{(r+1)} & & a_2^{(n)} \\
+\vdots & & & \vdots & \vdots & & \vdots \\
+a_m^{(1)} & a_m^{(2)} & \cdots & a_m^{(r)} & a_m^{(r+1)} & \cdots & a_m^{(n)}
+\end{array}\right]_{B_W+G}^H
+\begin{bmatrix}
+w_1 \\
+w_2 \\
+\vdots \\
+w_r \\
+\hline
+0 \\
+\vdots \\
+0
+\end{bmatrix}_{B_W+G} \\
+&= [T|_W\,|\,T|_{W^C}]_{B_W+G}^H[\vec{w} \oplus \textbf{0}]_{B_W+G} \\
+\end{align*}
+We can simply ignore $[T|_{W^C}]_G^H$, the block at the right of the $[T]_{B'}^H$ partition as well as discard the all-zero components of $[\vec{w}]_{B'}$ starting from the $(r+1)$-th index, and keep only the other block $[T|_{W}]_{B_W}^H$ at the left and the $[\vec{w}]_{B_W}$ part. The output of the truncated multiplication
+\begin{align*}
+[T|_{W}]_{B_W}^H [\vec{w}]_{B_W} = 
+\left[\begin{array}{@{\;}wc{15pt}wc{15pt}wc{15pt}wc{15pt}}
+a_1^{(1)} & a_1^{(2)} & \cdots & a_1^{(r)} \\
+a_2^{(1)} & a_2^{(2)} & & a_2^{(r)} \\
+\vdots & & & \vdots \\
+a_m^{(1)} & a_m^{(2)} & \cdots & a_m^{(r)} 
+\end{array}\right]
+\begin{bmatrix}
+w_1 \\
+w_2 \\
+\vdots \\
+w_r \\
+\end{bmatrix}
+\end{align*}
+will be the same as that coming from the full form above.
+\begin{proper}
+\label{proper:restrictmat}
+For a linear transformation $T: \mathcal{U} \to \mathcal{V}$ between two finite-dimensional spaces, if a proper subspace $\mathcal{W}$ of $\mathcal{U}$ is generated by a basis $\mathcal{B}_W = \{\vec{w}_1, \vec{w}_2, \ldots, \vec{w}_r\}$, then the matrix representation of the restriction of $T$ to $\mathcal{W}$ with respect to $\mathcal{B}_W$ and $\mathcal{H}$ will be given by
+\begin{align*}
+[T|_{W}]_{B_W}^H = \begin{bmatrix}
+[T(\vec{w}_1)]_H | [T(\vec{w}_2)]_H | \cdots | [T(\vec{w}_r)]_H
+\end{bmatrix}    
+\end{align*}
+where $\mathcal{H}$ is any basis for $\mathcal{V}$. (This can be compared to Definition \ref{defn:matrixrepoflintrans}.)
+\end{proper}
+In general, the effect of a linear transformation $T: \mathcal{U} \to \mathcal{V}$ applied to $\vec{u} \in \mathcal{U}$ is equivalent to the sum of responses from the restrictions of $T$ to a set of subspaces $\mathcal{W}_1, \mathcal{W}_2, \cdots, \mathcal{W}_s$ where they constitute a direct sum $\mathcal{W}_1 \oplus \mathcal{W}_2 \oplus \cdots \oplus \mathcal{W}_s = \mathcal{U}$, applied on the corresponding components $\vec{w}_1 \in \mathcal{W}_1, \vec{w}_2 \in \mathcal{W}_2, \cdots, \vec{w}_s \in \mathcal{W}_s$ of $\vec{u} = \vec{w}_1 \oplus \vec{w}_2 \oplus \cdots \oplus \vec{w}_s$ in these smaller subspaces: $T(\vec{u}) = T(\vec{w}_1) \oplus T(\vec{w}_2) \oplus \cdots \oplus T(\vec{w}_s)$.
+\begin{exmp}
+Given a linear transformation $T: \mathcal{U} \to \mathcal{V}$ that has a matrix representation of
+\begin{align*}
+[T]_B^H = 
+\begin{bmatrix}
+1 & 1 & 2 \\
+2 & 0 & 1 \\
+1 & -1 & 1
+\end{bmatrix}
+\end{align*}
+with respect to some bases $\mathcal{B} = \{\vec{u}_1, \vec{u}_2, \vec{u}_3\}$ and $\mathcal{H} = \{\vec{v}_1, \vec{v}_2, \vec{v}_3\}$ for $\mathcal{U}$ and $\mathcal{V}$, find the restriction of $T$ to $\mathcal{W}$, where $\mathcal{W} \subset \mathcal{U}$ has a basis of $B_W = \{\vec{w}_1, \vec{w}_2\}$, with $\vec{w}_1 = \vec{u}_1+\vec{u}_2$ and $\vec{w}_2 = \vec{u}_1+\vec{u}_2+\vec{u}_3$.
+\end{exmp}
+\begin{solution}
+We will take an indirect approach of reconstructing the basis first by finding a third vector generating $\mathcal{W}^C$ and producing the direct sum $\mathcal{W} \oplus \mathcal{W}^C = \mathcal{U}$. The change of coordinates matrix $P_{B_W}^{B}$ from $B_W$ to $B$ as devised in Theorem \ref{thm:bijectivechincoord} appropriate in this situation is a $3 \times 2$ matrix instead since there are only two basis vectors in $\mathcal{B}_W$, and it can be easily seen to be
+\begin{align*}
+P_{B_W}^{B} &= \begin{bmatrix}
+[\vec{w}_1]_B | [\vec{w}_2]_B
+\end{bmatrix} \\
+&= \begin{bmatrix}
+[\vec{u}_1+\vec{u}_2]_B | [\vec{u}_1+\vec{u}_2+\vec{u}_3]_B
+\end{bmatrix} \\
+&= \begin{bmatrix}
+1 & 1 \\
+1 & 1 \\
+0 & 1
+\end{bmatrix}
+\end{align*}
+and we are to find $[\vec{w}_3]_B$ to complete a basis $\mathcal{B}' = \mathcal{B}_W \cup \{\vec{w}_3\}$ and hence $P_{B'}^{B}$. An algorithm to do so, motivated by Footnote \ref{foot:inconsth} in Chapter \ref{chap:vec_space}, is to apply Gaussian Elimination to $P_{B_W}^{B}$ and then append 
+$\begin{bmatrix}
+0 \\
+0 \\
+1 \end{bmatrix}$ to the right of it to make an identity matrix, and reverse the entire reduction procedure as follows.
+\begin{align*}
+\left[\begin{array}{@{\;}wc{10pt}wc{10pt}}
+1 & 1 \\
+1 & 1 \\
+0 & 1
+\end{array}\right] &\to
+\left[\begin{array}{@{\;}wc{10pt}wc{10pt}}
+1 & 1 \\
+0 & 0 \\
+0 & 1
+\end{array}\right] 
+& R_2 - R_1 \to R_2 \\
+&\to \left[\begin{array}{@{\;}wc{10pt}wc{10pt}}
+1 & 1 \\
+0 & 1 \\
+0 & 0
+\end{array}\right]
+& R_2 \leftrightarrow R_3 \\
+&\to \left[\begin{array}{@{\;}wc{10pt}wc{10pt}}
+1 & 0 \\
+0 & 1 \\
+0 & 0
+\end{array}\right]
+& R_1 - R_2 \to R_1
+\end{align*}
+\begin{align*}
+\left[\begin{array}{@{\;}wc{10pt}wc{10pt}|wc{10pt}}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}\right] &\to
+\left[\begin{array}{@{\;}wc{10pt}wc{10pt}|wc{10pt}}
+1 & 1 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}\right]
+& R_1 + R_2 \to R_1 \\
+&\to \left[\begin{array}{@{\;}wc{10pt}wc{10pt}|wc{10pt}}
+1 & 1 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0
+\end{array}\right]
+& R_2 \leftrightarrow R_3 \\
+&\to \left[\begin{array}{@{\;}wc{10pt}wc{10pt}|wc{10pt}}
+1 & 1 & 0 \\
+1 & 1 & 1 \\
+0 & 1 & 0
+\end{array}\right]
+& R_2 + R_1 \to R_2
+\end{align*}
+So $[\vec{w}_3]_B = (0,1,0)_B^T$ is a possible choice. While in this case the algorithm looks like an overkill, it can be very powerful when the number of dimensions and vectors to be appended become much larger.\footnote{In fact, we only need to keep track of the row swapping operations with full-zero rows.} Now
+\begin{align*}
+P_{B'}^B = 
+\begin{bmatrix}
+1 & 1 & 0 \\
+1 & 1 & 1 \\
+0 & 1 & 0
+\end{bmatrix}
+\end{align*}
+and by Properties \ref{proper:chcoordsmat}
+\begin{align*}
+[T]_{B'}^H &= [T]_B^H P_{B'}^B \\
+&= \begin{bmatrix}
+1 & 1 & 2 \\
+2 & 0 & 1 \\
+1 & -1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 1 & 0 \\
+1 & 1 & 1 \\
+0 & 1 & 0
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+2 & 4 & 1 \\
+2 & 3 & 0 \\
+0 & 1 & -1
+\end{bmatrix}
+\end{align*}
+The matrix representation of the restriction of $T$ to $\mathcal{W}$ with respect to $\mathcal{B}_W$ agrees with the first two columns of $[T]_{B'}^H$. The third column of $[T]_{B'}^H$ that characterizes the action of $T|_{W_C}$, is removed. These lead to
+\begin{align*}
+[T|_W]_{B_W}^H =
+\begin{bmatrix}
+2 & 4 \\
+2 & 3 \\
+0 & 1 
+\end{bmatrix}
+\end{align*}
+\end{solution}
+Short Exercise: Directly apply Properties \ref{proper:restrictmat} to redo the example above.\footnote{$[T(\vec{w}_1)]_H = [T(\vec{u}_1+\vec{u}_2)]_H = [T]_B^H(1,1,0)_B^T =
+\begin{bmatrix}
+1 & 1 & 2 \\
+2 & 0 & 1 \\
+1 & -1 & 1
+\end{bmatrix}_B^H
+\begin{bmatrix}
+1 \\
+1 \\
+0
+\end{bmatrix}_B
+= \begin{bmatrix}
+2 \\
+2 \\
+0
+\end{bmatrix}_H
+$ and this will be the first column of $[T|_W]_{B_W}^H$. The second column is derived similarly by evaluating $[T(\vec{w}_2)]_H$.}\\
+\\
+With the concept of restriction, we can now introduce the matrix analogous of a direct sum. For a linear transformation $T: \mathcal{U} \to \mathcal{V}$, if the vector spaces (finite-dimensional) involved are direct sums such that $\mathcal{U} = \mathcal{W} \oplus \mathcal{W}_C$ and $\mathcal{V} = \mathcal{Y} \oplus \mathcal{Y}^C$, and the ranges
+\begin{align*}
+R(T|_W) \in \mathcal{Y} & & R(T|_{W^C}) \in \mathcal{Y}^C
+\end{align*}
+of the two restrictions are such that vectors in $\mathcal{W}$ and $\mathcal{W}^C$ are mapped by $T$ to vectors in $\mathcal{Y}$ and $\mathcal{Y}^C$ respectively, $T = T|_W \oplus T|_{W^C}$ is a \index{Direct Sum!Matrix Direct Sum}\keywordhl{matrix direct sum} in the sense that the linear transformation $T$ maps each of the complement subspaces of $\mathcal{U}$ into complement subspaces of $\mathcal{V}$. If we write the input vector $\vec{u} = \vec{w} \oplus \vec{w}^C$ as a direct sum where $\vec{w} \in \mathcal{W}$ and $\vec{w}^C \in \mathcal{W}^C$, then the output vector will also become a direct sum $\vec{v} = \vec{y} \oplus \vec{y}^C$ where $\vec{y} = T(\vec{w})$ and $\vec{y}^C = T(\vec{w}^C)$, which can be obtained by first computing $T(\vec{w})$ and $T(\vec{w}^C)$ individually, and then directly concatenating them together.
+\begin{defn}[Matrix Direct Sum]
+\label{defn:matdirectsum}
+The direct sum of two matrices acting as linear transformations $T_1: \mathcal{U}_1 \to \mathcal{V}_1$ and $T_2: \mathcal{U}_2 \to \mathcal{V}_2$ is $T = T_1 \oplus T_2$ such that for any vector direct sum $\vec{u} = \vec{u}_1 \oplus \vec{u}_2$ in $\mathcal{U} = \mathcal{U}_1 \oplus \mathcal{U}_2$, applying $T$ on $\vec{u}$ will yield an output of a vector direct sum $T(\vec{u}) = \vec{v} = \vec{v}_1 \oplus \vec{v}_2$ in $\mathcal{V}_1 \oplus \mathcal{V}_2$ as well, where $\vec{v}_1 = T_1(\vec{u}_1) = T|_{U_1}(\vec{u}_1) \in \mathcal{V}_1$ and $\vec{v}_2 = T_2(\vec{u}_2) = T|_{U_2}(\vec{u}_2) \in \mathcal{V}_2$. The matrix direct sum is then the matrix representation of $T = T_1 \oplus T_2$ with respect to the direct sum bases for $\mathcal{U}_1 \oplus \mathcal{U}_2$ and $\mathcal{V}_1 \oplus \mathcal{V}_2$.
+\end{defn}
+Using the above definition, if $\mathcal{U}_1$ and $\mathcal{U}_2$ has a basis $\mathcal{B}_1 = \{\vec{w}_1, \vec{w}_2, \ldots, \vec{w}_r\}$ and $\mathcal{B}_2 = \{\vec{w}_{r+1}, \vec{w}_{r+2}, \ldots, \vec{w}_n\}$, and $\mathcal{V}_1$ and $\mathcal{V}_2$ has a basis $\mathcal{H}_1 = \{\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_s\}$ and $\mathcal{H}_2 = \{\vec{v}_{s+1}, \vec{v}_{s+2}, \ldots, \vec{v}_m\}$, where $r, n, s, m$ are some integers, then $T = T_1 \oplus T_2$ will have a \textit{block diagonal} matrix representation of
+\begin{align*}
+[T]_{B_1 + B_2}^{H_1 + H_2}
+=
+\begin{bmatrix}
+([T_1]_{B_1}^{H_1})_{s \times r} & 0_{s \times (n-r)} \\
+0_{(m-s) \times r} & ([T_2]_{B_2}^{H_2})_{(m-s) \times (n-r)}
+\end{bmatrix}_{B_1 + B_2}^{H_1 + H_2}
+\end{align*}
+with respect to $\mathcal{B}_1 \oplus \mathcal{B}_2$ and $\mathcal{H}_1 \oplus \mathcal{H}_2$. To see this, let $\vec{u} = \vec{u}_1 \oplus \vec{u}_2$, $\vec{u}_1 \in \mathcal{U}_1$ and $\vec{u}_2 \in \mathcal{U}_2$, then
+\begin{align*}
+T(\vec{u}) &= [T]_{B_1 + B_2}^{H_1 + H_2}[\vec{u}]_{B_1 + B_2} \\ 
+&= \begin{bmatrix}
+([T_1]_{B_1}^{H_1})_{s \times r} & 0_{s \times (n-r)} \\
+0_{(m-s) \times r} & ([T_2]_{B_2}^{H_2})_{(m-s) \times (n-r)}
+\end{bmatrix}_{B_1 + B_2}^{H_1 + H_2}
+\begin{bmatrix}
+[\vec{u}_1]_{B_1, r} \\
+[\vec{u}_2]_{B_2, n-r}
+\end{bmatrix}_{H_1 + H_2} \\
+&= 
+\begin{bmatrix}
+([T_1]_{B_1}^{H_1})_{s \times r}[\vec{u}_1]_{B_1, r} + 0_{s \times (n-r)}[\vec{u}_2]_{B_2, n-r} \\
+0_{(m-s) \times r}[\vec{u}_1]_{B_1, r} + ([T_2]_{B_2}^{H_2})_{(m-s) \times (n-r)}[\vec{u}_2]_{B_2, n-r} 
+\end{bmatrix}_{H_1 + H_2} \\
+&= 
+\begin{bmatrix}
+([T_1]_{B_1}^{H_1}[\vec{u}_1]_{B_1})_s \\
+([T_2]_{B_2}^{H_2}[\vec{u}_2]_{B_2})_{m-s}
+\end{bmatrix}_{H_1 + H_2} \\
+&= 
+T_1(\vec{u}_1) \oplus T_2(\vec{u}_2)
+\end{align*}
+where the image is a direct sum composed of $T_1(\vec{u}_1): [T_1]_{B_1}^{H_1}[\vec{u}_1]_{B_1} \in \mathcal{V}_1$ and $T_2(\vec{u}_2): [T_2]_{B_2}^{H_2}[\vec{u}_2]_{B_2} \in \mathcal{V}_2$ from applying $T_1$ and $T_2$ separately to the preimages $\vec{u}_1 \in \mathcal{U}_1$ and $\vec{u}_2 \in \mathcal{U}_2$ in the two subspaces.
+% we will consider linear operators such that $T: \mathcal{V} \to \mathcal{V}$ is a linear transformation within the vector space $\mathcal{V}$ itself. A special case for the restriction of a linear operator, originally $T|_W: \mathcal{W} \to \mathcal{V}$ with $\mathcal{W} \subset \mathcal{V}$, is that the range of $T|_W$ is a subspace of $\mathcal{W}$ so that it can be reduced to $T|_W: \mathcal{W} \to \mathcal{W}$. $\mathcal{W}$ is then referred to as an \index{Invariant Subspace}\keywordhl{invariant subspace} under $T$, since the mapping $T|_W$ and hence $T$ does not alter the subspace in the sense that any vector in $\mathcal{W}$ is never mapped to other vectors outside $\mathcal{W}$ via $T$, i.e. $T(\vec{w}) \notin \mathcal{W}^C$ except the zero vector. In this case, we can replace $T|_W$ by $T$.
+%\begin{defn}[Invariant Subspaces]
+%A subspace $\mathcal{W}$ of $\mathcal{V}$ is known as an invariant subspace under the linear transformation $T$ if for any $\vec{w} \in \mathcal{W}$, $T(\vec{w}) \in \mathcal{W}$.
+%\end{defn}
+%If $\dim(\mathcal{V}) = n$, $\dim(\mathcal{W}) = r$ are both finite-dimensional, then the matrix representation of $T: \mathcal{V} \to \mathcal{V}$, with respect to the basis $\mathcal{B}' = \mathcal{B}_W \cup \mathcal{G}$ as put during the derivation for Properties \ref{proper:restrictmat}, can be expressed as a block matrix:
+%\begin{align*}
+%[T]_{B'} = \begin{bmatrix}
+%A_{W,{r \times r}} & *_{r\times(n-r)} \\
+%0_{(n-r) \times r} & *_{r\times(n-r)}
+%\end{bmatrix}
+%=
+%\begin{bmatrix}
+%[T|_W]_{B_W} \; |\;*_{n\times(n-r)}
+%\end{bmatrix}
+%\end{align*}
+%where the $r$ bottommost rows of $[T|_W]_{B_W} = \begin{bmatrix}
+%A_{W,{r \times r}} \\
+%0_{(n-r) \times r}
+%\end{bmatrix}$ are all zeros and $A_W$ is an $r \times r$ matrix. Note that for any $\vec{w} \in \mathcal{W}$, its mapped image $T(\vec{w})$
+%\begin{align*}
+%[T]_{B'}[\vec{w}]_{B'} &= \begin{bmatrix}
+%A_{W,{r \times r}} & *_{r\times(n-r)} \\
+%0_{(n-r) \times r} & *_{r\times(n-r)}
+%\end{bmatrix}_{B'}
+%\begin{bmatrix}
+%w_1 \\
+%w_2 \\
+%\vdots \\
+%w_r \\
+%0 \\
+%\vdots \\
+%0
+%\end{bmatrix}_{B'}
+%=
+%\begin{bmatrix}
+%\sum_{j=1}^r (A_W)_{1j} w_j \\
+%\sum_{j=1}^r (A_W)_{2j} w_j \\
+%\vdots \\
+%\sum_{j=1}^r (A_W)_{rj} w_j \\
+%0 \\
+%\vdots \\
+%0
+%\end{bmatrix}_{B'}
+%\in \mathcal{W}
+%\end{align*}
+%is still in $\mathcal{W}$ so that the block matrix representation above is consistent. If the complement $\mathcal{W}^C$ generated by $\mathcal{G}$ itself is also a invariant subspace under $T$, then by a similar logic, we have
+%\begin{align*}
+%[T]_{B'} = \begin{bmatrix}
+%A_{W,{r \times r}} & 0_{r\times(n-r)} \\
+%0_{(n-r) \times r} & A_{W^C,{r \times r}}
+%\end{bmatrix}
+%\end{align*}
+For example, the matrix direct sum of $A \oplus B$ given
+\begin{align*}
+A &= 
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6
+\end{bmatrix}
+& 
+B &=
+\begin{bmatrix}
+1 & 8 \\
+1 & 1 \\
+4 & 0
+\end{bmatrix}
+\end{align*}
+is
+\begin{align*}
+A \oplus B =
+\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}}
+1 & 2 & 3 & 0 & 0 \\
+4 & 5 & 6 & 0 & 0 \\
+\hline
+0 & 0 & 0 & 1 & 8 \\
+0 & 0 & 0 & 1 & 1 \\
+0 & 0 & 0 & 4 & 0
+\end{array}\right]
+\end{align*}
+in which $A$ and $B$ are matrices representing linear transformations of $\mathcal{U}_1 \to \mathcal{V}_1$ and $\mathcal{U}_2 \to \mathcal{V}_2$, where $\mathcal{U}_1$, $\mathcal{U}_2$, $\mathcal{V}_1$, $\mathcal{V}_2$ have dimensions of $3,2,2,3$. Subsequently, $A \oplus B$ is a matrix corresponding to a mapping from $\mathcal{U} = \mathcal{U}_1 \oplus \mathcal{U}_2$ to $\mathcal{V} = \mathcal{V}_1 \oplus \mathcal{V}_2$. Finally, the matrix direct sum of more than two matrices $A_1, A_2, A_3, \ldots, A_{n-1}, A_n$ are defined recursively just like a vector direct sum as
+\begin{align*}
+&\quad A_1 \oplus A_2 \oplus A_3 \oplus \cdots A_{n-1} \oplus A_n \\
+&= (\cdots ((A_1 \oplus A_2) \oplus A_3) \oplus \cdots A_{n-1}) \oplus A_n
+\end{align*}
+As another example, sometimes we may regard a matrix that does not look like a direct sum to be effectively one with respect to appropriate coordinate systems in a broader sense.
+\begin{exmp}
+For a linear transformation $T: \mathcal{U} \to \mathcal{V}$ that has a matrix representation of
+\begin{align*}
+[T]_B^H =
+\begin{bmatrix}
+1 & 0 & 2 & -2 \\
+0 & 0 & 1 & 0 \\
+1 & -2 & 1 & 0
+\end{bmatrix} 
+\end{align*}
+with respect to the bases $\mathcal{B} = \{\vec{u}_1, \vec{u}_2, \vec{u}_3, \vec{u}_4\}$, $\mathcal{H} = \{\vec{v}_1, \vec{v}_2, \vec{v}_3\}$, show that it can turn into a direct sum if the coordinate systems are changed according to $\mathcal{B}' = \{\vec{u}'_1, \vec{u}'_2, \vec{u}'_3, \vec{u}'_4\}$, $\mathcal{H}' = \{\vec{v}'_1, \vec{v}'_2, \vec{v}'_3\}$, where
+\begin{align*}
+\vec{u}'_1 &= \vec{u}_1 & \vec{v}'_1 &= \vec{v}_1 + \vec{v}_2 \\
+\vec{u}'_2 &= \vec{u}_3 & \vec{v}'_2 &= -\vec{v}_2 + \vec{v}_3 \\
+\vec{u}'_3 &= \vec{u}_1 + \vec{u}_2 & \vec{v}'_3 &= \vec{v}_1 - \vec{v}_3 \\
+\vec{u}'_4 &= \vec{u}_1 + \vec{u}_4
+\end{align*}
+\end{exmp}
+\begin{solution}
+The change of coordinate matrices for Properties \ref{proper:chcoordsmat} are
+\begin{align*}
+P_{B'}^B &= 
+\begin{bmatrix}
+1 & 0 & 1 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}_{B'}^B
+&
+Q_{H'}^H &= 
+\begin{bmatrix}
+1 & 0 & 1 \\
+1 & -1 & 0 \\
+0 & 1 & -1
+\end{bmatrix}_{H'}^H
+\end{align*}
+and the new matrix representation of $T$ is
+\begin{align*}
+[T]_{B'}^{H'} &= (Q_{H'}^H)^{-1} [T]_B^H P_{B'}^B \\
+&= \left(\begin{bmatrix}
+1 & 0 & 1 \\
+1 & -1 & 0 \\
+0 & 1 & -1
+\end{bmatrix}_{H'}^H\right)^{-1}
+\begin{bmatrix}
+1 & 0 & 2 & -2 \\
+0 & 0 & 1 & 0 \\
+1 & -2 & 1 & 0
+\end{bmatrix}_B^H
+\begin{bmatrix}
+1 & 0 & 1 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}_{B'}^B \\
+&= \begin{bmatrix}
+\frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\
+\frac{1}{2} & -\frac{1}{2} & \frac{1}{2} \\
+\frac{1}{2} & -\frac{1}{2} & -\frac{1}{2}
+\end{bmatrix}_{H}^{H'}
+\begin{bmatrix}
+1 & 0 & 2 & -2 \\
+0 & 0 & 1 & 0 \\
+1 & -2 & 1 & 0
+\end{bmatrix}_B^H
+\begin{bmatrix}
+1 & 0 & 1 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}_{B'}^B \\
+&=
+\begin{bmatrix}
+1 & 2 & 0 & 0 \\
+1 & 1 & 0 & 0 \\
+0 & 0 & 1 & -1
+\end{bmatrix}_{B'}^{H'}
+\end{align*}
+where
+\begin{align*}
+\begin{bmatrix}
+1 & 2 & 0 & 0 \\
+1 & 1 & 0 & 0 \\
+0 & 0 & 1 & -1
+\end{bmatrix} =
+\begin{bmatrix}
+1 & 2 \\
+1 & 1
+\end{bmatrix}
+\oplus 
+\begin{bmatrix}
+1 & -1
+\end{bmatrix}
+\end{align*}
+\end{solution}
+
 \section{Exercises}
 
 \begin{Exercise}
-By considering Euler's formula stated in Definition \ref{Euler}, we have for any $\theta$, $\phi$
+By considering Euler's formula stated in Definition \ref{defn:Euler}, we have for any $\theta$, $\phi$
 \begin{align*}
 e^{\imath \theta} &= \cos \theta + \imath \sin \theta \\
 e^{\imath \phi} &= \cos \phi + \imath \sin \phi \\
@@ -420,10 +1698,7 @@ By equating the two expressions of $e^{\imath (\theta+\phi)}$, expand and compar
 \cos(\theta+\phi) &= \cos\theta \cos\phi - \sin\theta \sin\phi \\
 \sin(\theta+\phi) &= \sin\theta \cos\phi + \cos\theta \sin\phi 
 \end{align*}
-\end{Exercise}
-
-\begin{Exercise}
-By either using the results above, or the De Moivre's Formula, prove the double angle formula below
+Hence, by either using the results above, or the De Moivre's Formula, prove the double angle formula shown below.
 \begin{align*}
 \cos(2\theta) &= \cos^2\theta - \sin^2\theta \\
 \sin(2\theta) &= 2\sin\theta \cos\theta  
@@ -479,4 +1754,63 @@ A=
 \end{bmatrix}    
 \end{align*}
 find its determinant and inverse.
+\end{Exercise}
+
+\begin{Exercise}
+\label{ex:schurinvD}
+Prove the formulae in Properties \ref{proper:schurinvD}, by noting that
+\begin{align*}
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+-D^{-1}C & D^{-1}
+\end{bmatrix}  
+=
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+0_{q \times p} & D^{-1}
+\end{bmatrix} 
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+-C & I_q
+\end{bmatrix} 
+\end{align*}
+and
+\begin{align*}
+\begin{bmatrix}
+A & B \\
+C & D
+\end{bmatrix}
+\begin{bmatrix}
+I_p & 0_{p \times q} \\
+-D^{-1}C & D^{-1}
+\end{bmatrix} =
+\begin{bmatrix}
+A - BD^{-1}C & BD^{-1} \\
+0_{q \times p} & I_q
+\end{bmatrix}
+\end{align*}
+\end{Exercise}
+
+\begin{Exercise}
+Write down the direct sum of the following three matrices.
+\begin{align*}
+A &= 
+\begin{bmatrix}
+2 & 1 \\
+0 & 4 \\
+-1 & 3
+\end{bmatrix} &
+C &= 
+\begin{bmatrix}
+1 & 4 & 0 & -3 \\
+0 & 2 & -1 & 1
+\end{bmatrix} \\
+B &= \begin{bmatrix}
+1
+\end{bmatrix}
+\end{align*}
+\end{Exercise}
+
+\begin{Exercise}
+Show that given bases $\mathcal{B} = \{\cos x, \sin x, x, 1\}$ and $\mathcal{H} = \{\cos x, \sin x, 1\}$, the differentiation operator $T(f(x)) = f'(x): \mathcal{B} \to \mathcal{H}$ has a matrix direct sum representation formed with two diagonal blocks.
 \end{Exercise}

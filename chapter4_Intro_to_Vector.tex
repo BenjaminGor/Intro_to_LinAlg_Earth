@@ -8,7 +8,7 @@ After three chapters of discussion about matrices, it is the time to talk about 
 A \index{Vector}\index{Vector!Geometric Vector}\keywordhl{(Geometric) Vector} is a physical quantity represented by an ordered tuple of components (numbers), e.g. $(1, 8, 7, 4)$, $(1-\imath, 1+3\imath, 2)$. It has a \textit{magnitude (length)} and \textit{direction}, resembling an arrow. Some real-life examples are: two-dimensional flow velocity $(u, v)$, relative position of an airplane to a ground radar $(x, y, z)$.
 \begin{defn}[$n$-dimensional Vector]
 \label{defn:geometvec}
-A $n$-dimensional vector consists of $n$ ordered elements called \index{Components}\keywordhl{Components} and are denoted by either an arrow or boldface, like $\vec{v}$ or $\textbf{v}$. It is expressed as
+A $n$-dimensional vector (for now, as an $n$-tuple) consists of $n$ ordered elements called \index{Components}\keywordhl{components} and are denoted by either an arrow or boldface, like $\vec{v}$ or $\textbf{v}$. It is expressed as
 \begin{align*}
 \vec{v} &=
 \begin{bmatrix}
@@ -35,12 +35,12 @@ A 2D vector drawn in an x-y plane.\par
 {\fbox{\includegraphics[scale = 0.5]{higos.jpg}}\\
 Forecast for \textit{Typhoon Higos}. (taken from \href{http://www.hkww.org/weather/tcarchive.html}{Hong Kong Weather Watch}) Its horiztonal movement is a two-dimensional vector, even though the speed and direction are given instead of the velocities in $x$ and $y$-direction (they can be converted to each other).\par}
 
-Implicit in the definition of $n$-dimensional vectors is the $n$-dimensional space they are residing in. Assume the components of those vectors are all real, then the set of all such vectors constitutes the \index{Real $n$-space}\keywordhl{Real $n$-space $\mathbb{R}^n$}.
+Implicit in the definition of $n$-dimensional vectors is the $n$-dimensional space they are residing in. Assume the components of those vectors are all real, then the set of all such vectors constitutes the \index{Real $n$-space}\keywordhl{real $n$-space $\mathbb{R}^n$}.
 \begin{defn}[The Real $n$-space $\mathbb{R}^n$]
 \label{defn:real_nspace}
-The Real $n$-space $\mathbb{R}^n$ is defined as the set of all possible vectors (or "points") $\vec{v} = (v_1, v_2, v_3, \ldots, v_n)^T$ as defined in Definition \ref{defn:geometvec}, where $v_i$ can take any \textit{real} value, for $i = 1,2,3,\ldots,n$. The elements in $\mathbb{R}^n$ are known as $n$-dimensional \textit{real} vectors.
+The real $n$-space $\mathbb{R}^n$ is defined as the set of all possible $n$-tuples $\vec{v} = (v_1, v_2, v_3, \ldots, v_n)^T$ as defined in Definition \ref{defn:geometvec}, where $v_i$ can take any \textit{real} value, for $i = 1,2,3,\ldots,n$. The objects in $\mathbb{R}^n$ are known as $n$-dimensional \textit{real} vectors.
 \end{defn}
-While we have not clearly defined what a vector space is, we note that $\mathbb{R}^n$ fulfills the requirements of being a vector space. The detailed discussion of this aspect will be deferred to Chapter \ref{chap:vec_space}. Meanwhile, the complex counterpart will be explored in Chapter ??.\\
+While we have not clearly defined what a vector space is, we note that $\mathbb{R}^n$ fulfills the requirements of being a vector space. The detailed discussion of this aspect will be deferred to Chapter \ref{chap:vec_space}. Meanwhile, the complex counterpart will be explored in Chapter \ref{chap:complex}.\\
 \\
 An $n$-dimensional real geometric vectors as in Definition \ref{defn:geometvec} and \ref{defn:real_nspace} can be written as the sum of $n$ \index{Standard Unit Vector}\keywordhl{Standard Unit Vectors} that have a magnitude of $1$, denoted by $\hat{e}_p$, oriented in the positive direction along the $p$-th coordinates axes, $p = 1,2,\ldots,n$. The coordinate axes are perpendicular (or more accurately orthogonal, introduced later in this chapter) to each other and such coordinate system is known as the \index{Cartesian Coordinate System}\keywordhl{Cartesian Coordinate System}. Particularly in the three-dimensional (real) space $\mathbb{R}^3$, $\hat{e}_1 = \hat{i} = (1,0,0)^T$, $\hat{e}_2 = \hat{j} = (0,1,0)^T$, $\hat{e}_3 = \hat{k} = (0,0,1)^T$ correspond to $x$, $y$, $z$ axes respectively. 
 \begin{defn}[Standard Unit Vector]
@@ -367,7 +367,7 @@ Here are some properties of dot product.
 \label{proper:dotproper}
 For three $n$-dimensional vectors $\vec{u}$, $\vec{v}$ and $\vec{w}$, the following establishes.
 \begin{align*}
-\vec{u} \cdot \vec{v} &= \vec{v} \cdot \vec{u} &\text{Commutative Property} \\
+\vec{u} \cdot \vec{v} &= \vec{v} \cdot \vec{u} &\text{Symmetry Property} \\
 \vec{u} \cdot (\vec{v} \pm \vec{w}) &= \vec{u} \cdot \vec{v} \pm \vec{u} \cdot \vec{w} &\text{Distributive Property} \\
 (\vec{u} \pm \vec{v}) \cdot \vec{w} &= \vec{u} \cdot \vec{w} \pm \vec{v} \cdot \vec{w} &\text{Distributive Property} \\
 (a\vec{u}) \cdot (b\vec{v}) &= ab(\vec{u} \cdot \vec{v}) &\text{where $a$, $b$ are some constants}
@@ -692,12 +692,12 @@ Demonstration of the right hand rule.
 \end{center}
 \end{minipage}
 \par
-Cross product shares pretty much the same properties with dot product (compared to Properties \ref{proper:dotproper}), except the (anti-)commutative part as the right hand rule specifically requires chirality that is compatible with Definition \ref{defn:crossijk}. Also, be aware of the difference that cross product produces another three-dimensional vector, but dot product yields a scalar.
+The properties of cross product are noted below. One major difference of cross product from the dot product is its anti-symmetric property.
 \begin{proper}
 \label{proper:crossproper}
 For two three-dimensional vectors $\vec{u}$ and $\vec{v}$, we have
 \begin{align*}
-\vec{u} \times \vec{v} &= -\vec{v} \times \vec{u} &\text{Anti-commutative Property} \\
+\vec{u} \times \vec{v} &= -\vec{v} \times \vec{u} &\text{Anti-symmetry Property} \\
 \vec{u} \times (\vec{v} \pm \vec{w}) &= \vec{u} \times \vec{v} \pm \vec{u} \times \vec{w} &\text{Distributive Property} \\
 (\vec{u} \pm \vec{v}) \times \vec{w} &= \vec{u} \times \vec{w} \pm \vec{v} \times \vec{w} &\text{Distributive Property} \\
 (a\vec{u}) \times (b\vec{v}) &= ab(\vec{u} \times \vec{v}) &\text{where $a$, $b$ are some constants}
@@ -817,7 +817,7 @@ Given two vectors $\vec{u}$ and $\vec{v}$ which are both three-dimensional, the 
 \norm{\vec{u} \times \vec{v}} = \norm{\vec{u}}\norm{\vec{v}}\sin\theta
 \end{align*}
 \end{proper}
-Immediately, we know that if $\vec{u}$ and $\vec{v} = k\vec{u}$, where $k$ is some constant, are parallel, their cross product will be a zero vector as $\theta = 0$ (or $\pi$) and $\sin \theta = 0$. This is equivalent to the statement of $\vec{u} \times \vec{u} = \textbf{0}$. (You can also arrive at this conclusion with Properties \ref{proper:crossproper}.\footnote{The anti-commutative property requires $\vec{u}\times\vec{u} = -\vec{u}\times\vec{u}$ and hence $2(\vec{u}\times\vec{u}) = \textbf{0}$.})
+Immediately, we know that if $\vec{u}$ and $\vec{v} = k\vec{u}$, where $k$ is some constant, are parallel, their cross product will be a zero vector as $\theta = 0$ (or $\pi$) and $\sin \theta = 0$. This is equivalent to the statement of $\vec{u} \times \vec{u} = \textbf{0}$. (You can also arrive at this conclusion with Properties \ref{proper:crossproper}.\footnote{The anti-symmetric property requires $\vec{u}\times\vec{u} = -\vec{u}\times\vec{u}$ and hence $2(\vec{u}\times\vec{u}) = \textbf{0}$.})
 
 \begin{exmp}
 If $\vec{u} = (1,2,3)^T$, and $\vec{v} = (-1,1,0)^T$, find $(\vec{u} + 2\vec{v}) \times (\vec{u} - \vec{v}) $.
@@ -866,9 +866,9 @@ Finally, cancellation of dot product or cross product at both sides of an equati
 \hline
  & Input & Output \\
 \hline
-Dot Product, or Scalar Product ($\cdot$) & Two vectors of the same dimension, the order does not matter (commutative) & A scalar\\
+Dot Product, or Scalar Product ($\cdot$) & Two vectors of the same dimension, the order does not matter (symmetric) & A scalar\\
 \hline
-Cross Product, or Vector Product ($\times$) & Two three-dimensional vectors ($\mathbb{R}^3$), the order is important (anti-commutative) & Another three-dimensional vector
+Cross Product, or Vector Product ($\times$) & Two three-dimensional vectors ($\mathbb{R}^3$), the order is important (anti-symmetric) & Another three-dimensional vector
 \\
 \hline
 \end{tabular}
