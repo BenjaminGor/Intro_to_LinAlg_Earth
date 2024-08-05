@@ -1,65 +1,133 @@
 \chapter{Eigenvalues and Eigenvectors}
 
-\section{Eigenvalues and Eigenvectors of a Square Matrix}
-\label{eigensection}
+In this section we will discuss a very important topic in Linear Algebra, the \textit{eigenvalue-eigenvector} problem. By finding the eigenvectors of a square matrix which span subspaces that are \textit{invariant} under the corresponding linear operator, it is sometimes possible to obtain a coordinate basis such that the matrix can be \textit{diagonalized}, i.e. become a diagonal matrix under that particular change of coordinates. One of the practical usages of \textit{diagonalization} is to solve systems of linear ordinary differential equations (ODEs) which is also commonly seen in many areas of Earth Science. In the end of this chapter, we will build up from the idea of invariant subspaces and introduce the concept of \textit{cyclic subspaces}, leading to a famous related result called the \textit{Cayley-Hamilton Theorem}.
 
-An interesting question about linear algebra is about the possibility for a vector to be unaltered after being multiplied by a square matrix. We know that the dot product between any vector $\vec{u}$ and the identity matrix $I$ will results in the same vector $\vec{u}$. We can further extend this concept, and ask, for any matrix $A$, if there are some $\vec{v}$, such that the dot product $A\vec{v}$ will produce a vector $\vec{w} = \lambda\vec{v}$, where $\lambda$ is any constant, that is parallel to and a scalar multiple of $\vec{v}$. This is called the eigenvalue problem and has very wide applications in Mathematics and Physics.
+\section{Eigenvalues and Eigenvectors of a Square Matrix}
+\label{section:eigensection}
 
 \subsection{Definition of Eigenvalues and Eigenvectors}
-We introduce the eigenvalue problem formally now. For a square matrix $A$, its eigenvalues $\lambda$ and the corresponding eigenvectors $\vec{v}_\lambda$ are those who satisfy the relation below.
+
+Consider a linear operator/endomorphism $T: \mathcal{V} \to \mathcal{V}$, an interesting question is about if a vector $\vec{v} \in \mathcal{V}$ under this mapping will remain stationary in direction such that the image $T(\vec{v}) = \lambda v$ is a scalar multiple of the original vector, or in other words, the effect of $T$ on $\vec{v}$ is simply a rescaling. In this situation, the vector $\vec{v}$ is known as an \keywordhl{eigenvector} of $T$ and the factor $\lambda$ is the corresponding \keywordhl{eigenvalue}. Since a linear operator is a mapping between a vector space itself, it has a square matrix representation under any basis. This fact extends the ideas of eigenvalues and eigenvectors to square matrices.
+
 \begin{defn}
-\label{eigen}
-Given a $n \times n$ square matrix $A$, we call $\lambda$ and $\vec{v}_\lambda$ its eigenvalues and eigenvectors if
+\label{defn:eigen}
+Given a linear operator $T: \mathcal{V} \to \mathcal{V}$, we call $\lambda$ and $\vec{v}_\lambda$ its eigenvalue and eigenvector if
+\begin{align*}
+T(\vec{v}_\lambda) = \lambda\vec{v}_\lambda
+\end{align*}
+Similarly, given an $n \times n$ square matrix $A$, $\lambda$ and $\vec{v}_\lambda$ will be an eigenvalue and eigenvector for it when
 \begin{align*}
 A\vec{v}_\lambda = \lambda\vec{v}_\lambda
 \end{align*}
-There can be more than one eigenvalues and eigenvectors.
+This is a special case in which a vector space $\mathcal{V}$ is finite-dimensional, $\dim(\mathcal{V}) = n$, and $A = [T]_B$ is just the matrix representation of $T$ with respect to some basis $\mathcal{B}$.
 \end{defn}
-A simple example is the matrix
+Notice that there can be more than one eigenvalues and eigenvectors.
+An example is given by the matrix
 \begin{align*}
 A =
 \begin{bmatrix}
-1 & 2 \\
-3 & 6
+1 & \frac{1}{2} \\
+2 & 1
 \end{bmatrix}
 \end{align*}
-and it can be seen that the vector $\vec{v}_\lambda = (1,3)^T$ is an eigenvector, as
+It can be seen that the vector $\vec{v}_1 = (1,2)^T$ is an eigenvector of $A$, as
 \begin{align*}
 \begin{bmatrix}
-1 & 2 \\
-3 & 6
+1 & \frac{1}{2} \\
+2 & 1
 \end{bmatrix}
 \begin{bmatrix}
 1 \\
-3 
+2
 \end{bmatrix}
 =
 \begin{bmatrix}
-7 \\
-21
+2 \\
+4
 \end{bmatrix}
 =
-7
+2
 \begin{bmatrix}
 1 \\
-3 
+2 
 \end{bmatrix}
 \end{align*}
-that corresponds to an eigenvalue of $\lambda = 7$.\\
-Short Exercise: Prove that all vectors in form of $s(1,3)^T$, where $s$ is any number, are eigenvectors for $A$, $\lambda = 7$.
+that corresponds to an eigenvalue of $\lambda = 2$. Meanwhile, $\vec{v}_2 = (1,-2)^T$ is another eigenvector that has an eigenvalue of $\lambda = 0$, since
+\begin{align*}
+\begin{bmatrix}
+1 & \frac{1}{2} \\
+2 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+-2
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+0
+\end{bmatrix}
+=
+0
+\begin{bmatrix}
+1 \\
+-2
+\end{bmatrix}
+\end{align*}
+We emphasize that a zero eigenvalue is perfectly valid. \par
+Short Exercise: Prove that all vectors in form of $s(1,2)^T$, where $s$ is any number, are eigenvectors for the matrix $A$ above with $\lambda = 2$.\footnote{
+$
+\begin{bmatrix}
+1 & \frac{1}{2} \\
+2 & 1
+\end{bmatrix}
+\left(s
+\begin{bmatrix}
+1 \\
+2 
+\end{bmatrix}\right)
+=
+s\begin{bmatrix}
+1 & \frac{1}{2} \\
+2 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+2 
+\end{bmatrix}
+=
+s
+\begin{bmatrix}
+2 \\
+4
+\end{bmatrix}
+=
+2\left(s
+\begin{bmatrix}
+1 \\
+2 
+\end{bmatrix}\right)
+$. In general, if $A\vec{v}_\lambda = \lambda\vec{v}_\lambda$ so that $\vec{v}_\lambda$ is some non-zero eigenvector, then $A(s\vec{v}_\lambda) = sA\vec{v}_\lambda = s\lambda\vec{v}_\lambda = \lambda(s\vec{v}_\lambda)$ and therefore all of its non-zero scalar multiples $s\vec{v}_\lambda$ is also an eigenvector.}
 \begin{center}
 \begin{tikzpicture}
-\draw[->] (0,0)--(3,0) node[right]{$x$};
-\draw[->] (0,0)--(0,3) node[above]{$y$};
-\draw[blue,-stealth] (0,0)--(1,3) node[anchor=south west]{$\lambda\vec{v}_\lambda = 7(1,3)^T$};
-\draw[red,-stealth] (0,0)--(1/7,3/7) node[anchor=west]{$\vec{v}_\lambda = (1,3)^T$};
+\draw[->] (-2,0)--(2,0) node[right]{$x$};
+\draw[->] (0,-2)--(0,2) node[above]{$y$};
+\draw[blue,-stealth,line width=1.5] (0,0)--(1,2) node[align=left, right]{$A\vec{v}_\lambda = \lambda\vec{v}_\lambda$\\ $= 2(1,2)^T = (2,4)^T$};
+\draw[red,-stealth,line width=1.5] (0,0)--(1/2,1) node[anchor=west]{$\vec{v}_\lambda = (1,2)^T$};
+\node[below left]{$O$}; 
+\end{tikzpicture}
+\begin{tikzpicture}
+\draw[->] (-2,0)--(2,0) node[right]{$x$};
+\draw[->] (0,-2)--(0,2) node[above]{$y$};
+\draw[red,-stealth,line width=1.5] (0,0)--(1/2,-1) node[anchor=west]{$\vec{v}_\lambda = (1,-2)^T$};
+\draw[blue, fill=blue] (0,0) circle[radius=2pt] node[align=left, above]{$A\vec{v}_\lambda = \lambda\vec{v}_\lambda$\\ $= 0(1,-2)^T = (0,0)^T$};
 \node[below left]{$O$}; 
 \end{tikzpicture}\\
-An illustration for the example above.
+Illustrations for the example above with $\lambda = 2 > 1$ (Extension), and $\lambda = 0$ (Vanished).
 \end{center}
-There are infinitely many eigenvectors who all share the same orientation for a single eigenvalue as seen in the previous short exercise. Along one direction, only one of them is needed for representation. However, note that there can be multiple eigenvectors that are linearly independent and point in different, non-parallel directions for one eigenvalue. In addition, the zero vector, technically, can be the eigenvectors of any matrix since $A\vec{0} = \vec{0}$ for any matrix $A$. However, it is a trivial solution and not included in the answer.\\
+There are infinitely many eigenvectors which are oriented in the same direction for a single eigenvalue as seen in the remark of the last short exercise. Particularly, they are actually the span of any one of these eigenvectors that is non-zero. Thus, along a single direction, only one of them is needed for representation, and its span is at the same time a subspace by Properties \ref{proper:subspace_n_span}. This subspace is known as the \keywordhl{eigenspace} corresponding to that eigenvalue. Moreover, there may be more than one linearly independent eigenvectors for the same eigenvalue, and the dimension of eigenspace generated by them will be greater than one as well. In addition, the zero vector, technically, can be the eigenvectors of any matrix since $A\vec{0} = \vec{0} = \lambda\vec{0}$ for any matrix $A$ and scalar $\lambda$. However, it is a trivial solution, plus more importantly the zero vector is always linearly dependent by definition, and will not be taken into consideration (unlike the totally fine eigenvalue of zero).\\
 \\
-Below is the visualization of some other possibilities of eigenvector scaling.
+Below is the visualization of some other possibilities of eigenvector rescaling.
 \begin{center}
 \begin{tikzpicture}
 \draw[->] (-1.5,0)--(1.5,0) node[right]{$x$};
@@ -92,7 +160,9 @@ Contraction ($0 < \lambda < 1$), Reversal ($\lambda < 0$). \\
 Unchanged ($\lambda = 1$), Vanished ($\lambda = 0$). 
 \end{center}
 
-\subsection{Finding Eigenvalues and Eigenvectors}
+The eigenspace actually belongs to a broader class of subspaces known as the invariant subspaces.
+
+\subsection{Finding Eigenvalues and Eigenvectors with Characteristic Polynomials}
 
 To find eigenvalues, rearrange the equation in Definition \ref{eigen} relating eigenvalues and eigenvectors to obtain
 \begin{align*}
@@ -211,7 +281,7 @@ For a square matrix $A$,
 \end{enumerate}
 \end{proper}
 
-\subsection{Cayley-Hamilton Theorem}
+\subsection*{Cayley-Hamilton Theorem}
 Here we introduce an important theorem, Cayley-Hamilton Theorem, stating that, for every square matrix, it satisfies its own characteristic equation, which means that substituting the matrix into the characteristic polynomial as the variable results in a zero matrix.
 \begin{thm}
 By Cayley-Hamilton Theorem, for any $n \times n$ square matrix $A$, if the characteristic polynomial is
@@ -939,7 +1009,13 @@ where $C_1, C_2$ are to be decided by initial condition.
 \end{exmp}
 This will be the same solution basis we will obtain if we consider only one eigenvalue $\lambda_0$ out of the conjugate pair and compute $\vec{y} = \vec{v}_{\lambda_0}e^{\lambda_0 x}$. 
 
+\section{Invariant Subspaces, Cayley-Hamilton Theorem}
+
 \paragraph{Remark} If the coefficient matrix for a system of ordinary differential equation is not diagonalizable, then we need to employ other methods to solve the system. The most common method, generalized from diagonalization, is the Jordan Normal Form. Interested readers are invited to search about it.
+
+\section{Earth Science Applications}
+
+\section{Python Programming}
 
 \section{Exercises}
 

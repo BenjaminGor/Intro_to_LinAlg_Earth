@@ -1,7 +1,7 @@
 \chapter{Solutions for Linear Systems}
 \label{chap:SolLinSys}
 
-The last chapter has introduced the necessary machinery for solving linear systems and now we are going to see how to apply them under suitable circumstances. Remember, in the first chapter, we have formulated some problems about linear systems of equations appearing in the Earth System, and they will be solved accordingly.
+The last chapter has introduced the necessary machinery for solving linear systems of equations and now we are going to see how to apply them under suitable circumstances. Remember, in the first chapter, we have formulated some problems about linear systems of equations appearing in Earth Science, and they will be solved accordingly.
 
 \section{Number of Solutions for Linear Systems}
 \label{section:NoSolLinSys}
@@ -30,9 +30,9 @@ xlabel=$x$,ylabel=$y$,
 enlargelimits=0.2,
 xmin=-5,xmax=5,
 ymin=-5,ymax=5,ticks=none]
-\addplot[mark=none, color=blue] {x+1} node[below, yshift=-20]{$x-y=-1$};
-\addplot[mark=none, color=red] {-2*x+3} node[above left, xshift=-10]{$2x+y=3$};
-\addplot[mark=*, color=Green, mark size=1.5pt] coordinates {(2/3, 5/3)} node[left, xshift=-10]{($\frac{2}{3}, \frac{5}{3}$)};
+\addplot[mark=none, color=blue, line width=1] {x+1} node[below, yshift=-20]{$x-y=-1$};
+\addplot[mark=none, color=red, line width=1, domain=-1.5:4.5] {-2*x+3} node[left, xshift=-4]{$2x+y=3$};
+\addplot[mark=*, color=Green, mark size=1.8pt] coordinates {(2/3, 5/3)} node[left, xshift=-10]{\large$(\frac{2}{3}, \frac{5}{3})$};
 \end{axis}
 \end{tikzpicture} \\
 One solution: Two non-parallel lines (red/blue) intersecting at one point (green). \vspace{10pt}\\
@@ -44,8 +44,8 @@ xlabel=$x$,ylabel=$y$,
 enlargelimits=0.2,
 xmin=-5,xmax=5,
 ymin=-5,ymax=5,ticks=none]
-\addplot[mark=none, color=blue] {1/2*x+1} node[above, xshift=-10]{$x - 2y = -2$};
-\addplot[mark=none, color=red] {1/2*x-2} node[below, yshift=-10]{$x - 2y = 4$};
+\addplot[mark=none, color=blue , line width=1] {1/2*x+1} node[above, xshift=-10]{$x - 2y = -2$};
+\addplot[mark=none, color=red , line width=1] {1/2*x-2} node[below, yshift=-10]{$x - 2y = 4$};
 \end{axis}
 \end{tikzpicture} \\
 No solution: Two parallel lines never touch each other. \\
@@ -58,14 +58,14 @@ xlabel=$x$,ylabel=$y$,
 enlargelimits=0.2,
 xmin=-5,xmax=5,
 ymin=-5,ymax=5,ticks=none]
-\addplot[mark=none, color=Green] {-4*x-3};
+\addplot[mark=none, color=Green, line width=1, domain=-2.25:0.875] {-4*x-3};
 \node[blue] at (-4,2) {$4x+y=-3$};
 \node[red] at (3,-3) {$8x+2y=-6$};
 \end{axis}
 \end{tikzpicture} \\
 Infinitely many solutions: Two parallel lines overlap each other. \\
 \\
-It goes similarly for any linear system of three unknowns in which equations represent planes instead, and the intersection of two non-parallel planes will be a line. We show three possible scenario below. The readers can try to imagine and visualize the remaining possibilities. \\
+It goes similarly for any linear system of three unknowns in which equations represent planes instead, and the intersection of two non-parallel planes will be a line. We show three possible scenarios below. The readers can try to imagine and drawing out other possibilities. \\
 \\
     \hspace*{\fill} 
     \begin{minipage}{0.3\textwidth}
@@ -110,14 +110,14 @@ It goes similarly for any linear system of three unknowns in which equations rep
     \hspace*{\fill}\\
 One solution (left): Three planes (red/yellow/blue) intersecting at one point (green). Infinitely many solutions (middle): Two planes intersecting along a straight line. No solution (right): Three planes intersecting pair-wise along three non-intersecting parallel lines. \\
 \\
-In fact, this theorem about the existence of solutions is true for any number of variables and equations. If there is any solution, then the system is called \index{Consistent}\keywordhl{consistent}. Otherwise, if no solution exists, then it is known as \index{Inconsistent}\keywordhl{inconsistent}. Some readers may think if there can be finitely many solutions only. Unfortunately, it is impossible. Assume there are two distinct solutions $\vec{x}_1$, $\vec{x}_2$ to the system $A\vec{x} = \vec{h}$, then it is easy to show by construction all $\vec{x}_t = t\vec{x}_1 + (1-t)\vec{x}_2$ for any $t$ will be valid solutions which are infinitely many. \\ 
-\\
-Naturally, the next question is about how to find out which case the linear system belongs to. The following theorem reveals the relationship between the number of solutions for a \textit{square} linear system and the determinant of its coefficient matrix.
+In fact, this theorem about the existence of solutions is true for any number of variables and equations.\footnote{Some readers may think if there can be finitely many solutions only. Unfortunately, it is impossible. Assume there are two distinct solutions $\vec{x}_1$, $\vec{x}_2$ to the system $A\vec{x} = \vec{h}$, then it is easy to show by construction all $\vec{x}_t = t\vec{x}_1 + (1-t)\vec{x}_2$ for any $t$ will be valid solutions which are infinitely many.} If there is any solution, then the system is called \index{Consistent}\keywordhl{consistent}. Otherwise, if no solution exists, then it is known as \index{Inconsistent}\keywordhl{inconsistent}. \par
+
+Clearly, the next task is about how to find out which case the linear system belongs to. The following theorem reveals the relationship between the number of solutions for a \textit{square} linear system and the determinant of its coefficient matrix.
 \begin{thm}
 \label{thm:sqlinsysunique}
 For a square linear system $A\vec{x} = \vec{h}$, if the coefficient matrix $A$ is invertible, i.e.\ $\det(A) \neq 0$, then there is always only one unique solution. However, if $A$ is singular, $\det(A) = 0$, then it has either no solution, or infinitely many solutions.
 \end{thm}
-As a consequence, if the homogeneous linear system $A\vec{x} = \textbf{0}$ has as singular coefficient matrix with $\det(A) = 0$, since it always has a trivial solution of $\vec{x} = \textbf{0}$, the above theorem implies that the homogeneous system must have infinitely many solutions (since it will not have no solution). We defer the proof of Theorem \ref{thm:sqlinsysunique}, as well as the discussion about non-square systems, until we start actually solving linear systems in the next subsection. \\
+As a consequence, if the homogeneous linear system $A\vec{x} = \textbf{0}$ has as singular coefficient matrix with $\det(A) = 0$, since it always has a trivial solution of $\vec{x} = \textbf{0}$, the above theorem implies that the homogeneous system must have infinitely many solutions (since it will not have no solution). We defer the arguments for Theorem \ref{thm:sqlinsysunique}, as well as the discussion about non-square systems, until we start actually solving linear systems in the next subsection. \\
 \\
 Short Exercise: By inspection, determine the number of solutions for the following linear systems.\footnote{These two homogeneous linear system has a determinant of $-1$ and $0$, and hence by Theorem \ref{thm:sqlinsysunique} the first system has a unique solution and the second one has infinitely many solutions.}
 \begin{align*}
@@ -159,7 +159,7 @@ z
 
 \section{Solving Linear Systems}
 \label{section:SolveLinSys}
-Now it is the time to get down to solving linear systems (preferably written in matrix form), and we have two methods to choose.
+Now it is the time to get down to solving linear systems (preferably written in matrix form), and we have two methods to choose:
 \begin{enumerate}
 \item By Gaussian Elimination, for linear system in any shape, or
 \item By Inverse, which is apparently only applicable for square, invertible coefficient matrices.
@@ -168,12 +168,12 @@ Now it is the time to get down to solving linear systems (preferably written in 
 \subsection{Solving Linear Systems by Gaussian Elimination}
 \label{subsection:SolLinSysGauss}
 
-Like in Section \ref{subsection:invGauss}, applying Gaussian Elimination on the augmented matrix (introduced at the end of Section \ref{section:deflinsys}) of a linear system can yield the solution to the right. The principles involving elementary row operations are the same as in Properties \ref{proper:elementarymat} and Theorem \ref{thm:Gausselimprincip}, but with $A\vec{x} = \vec{h}$ instead of $AA^{-1} = I$: Let $A_{\text{rref}}$ be the reduced row echelon form of $A$, and $E_1, E_2, \ldots, E_n$ be the elementary matrices used during Gaussian Elimination. For any solution $\vec{x}$ to the system $A\vec{x} = \vec{h}$, we have
+Like in Section \ref{subsection:invGauss}, applying Gaussian Elimination on the augmented matrix (introduced at the end of Section \ref{section:deflinsys}) of a linear system can yield the solution to the right. The principle involving elementary row operations is the same as that in Properties \ref{proper:elementarymat} and Theorem \ref{thm:Gausselimprincip}, but with $A\vec{x} = \vec{h}$ instead of $AA^{-1} = I$. Let $A_{\text{rref}}$ be the reduced row echelon form of $A$, and $E_1, E_2, \ldots, E_n$ be the elementary matrices used in the Gaussian Elimination process to arrive at the rref. For any solution $\vec{x}$ to the system $A\vec{x} = \vec{h}$, we multiply the elementary matrices one by one to the left on both sides of the equation, leading to
 \begin{align*}
 (E_n\cdots E_2E_1)A\vec{x} &= (E_n\cdots E_2E_1)\vec{h} \\
 (E_n\cdots E_2E_1A)\vec{x} = A_{\text{rref}}\vec{x} &= (E_n\cdots E_2E_1)\vec{h} 
 \end{align*}
-hence $\vec{x}$ will be the solution to $A_{\text{rref}}\vec{x} = \tilde{h}$ too where $\tilde{h} = E_n\cdots E_2E_1\vec{h}$, and the solutions of $A\vec{x} = \vec{h}$ and $A_{\text{rref}}\vec{x} = \tilde{h}$ coincide. In addition, the coefficient matrix $A$ can be non-square, but we will look at the easier case of a square coefficient matrix first.
+hence $\vec{x}$ will be the solution to $A_{\text{rref}}\vec{x} = \tilde{h}$ at the same time where $\tilde{h} = E_n\cdots E_2E_1\vec{h}$. Therefore, the solutions of $A\vec{x} = \vec{h}$ and $A_{\text{rref}}\vec{x} = \tilde{h}$ coincide, which can be inferred more directly from the latter system. In addition, the coefficient matrix $A$ can be non-square, but we will look at the easier case of a square coefficient matrix first.
 
 \subsubsection{Square Systems}
 \begin{exmp}
@@ -200,13 +200,13 @@ z
 \begin{solution}
 We rewrite the system in augmented form and then apply Gaussian Elimination, with the aim to reduce the coefficient matrix on the left to the identity matrix.
 \begin{align*}
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 0 & 1 & 3 \\
 1 & 1 & 4 & 10 \\
 2 & 0 & 3 & 8
 \end{array}\right] 
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 0 & 1 & 3 \\
 0 & 1 & 3 & 7 \\
 0 & 0 & 1 & 2
@@ -216,7 +216,7 @@ R_2-R_1 &\to R_2 \\
 R_3-2R_1 &\to R_3 
 \end{aligned} \\
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 0 & 0 & 1 \\
 0 & 1 & 0 & 1 \\
 0 & 0 & 1 & 2
@@ -249,7 +249,7 @@ z
 2
 \end{bmatrix}
 \end{align*}
-Note that we have successfully converted the coefficient matrix to the identity along the way, which by Theorem \ref{thm:equiv1} implies that the coefficient matrix is invertible. This explains the first part of Theorem \ref{thm:sqlinsysunique} as every unknown is associated to a single leading 1 in the corresponding column of the identity matrix acquired from reduction and a unique solution can be derived.
+Note that we have successfully converted the coefficient matrix to the identity along the way, which by Theorem \ref{thm:equiv1} (c) to (a) implies that the coefficient matrix is invertible. This explains the first part of Theorem \ref{thm:sqlinsysunique} as every unknown is now associated to a single leading 1 in the corresponding column of the identity matrix acquired from the reduction process and a unique solution can be derived.
 \end{solution}
 
 \begin{exmp}
@@ -277,34 +277,34 @@ if possible.
 \end{exmp}
 \begin{solution} Again, we apply Gaussian Elimination on the augmented matrix to obtain
 \begin{align*}
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 3 & 7 & 2 & 8 \\
 1 & 1 & 0 & 2 \\
 0 & 2 & 1 & 2
 \end{array}\right] 
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 1 & 0 & 2 \\
 3 & 7 & 2 & 8 \\
 0 & 2 & 1 & 2
 \end{array}\right] 
 & R_1 \leftrightarrow R_2 \\
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 1 & 0 & 2 \\
 0 & 4 & 2 & 2 \\
 0 & 2 & 1 & 2
 \end{array}\right] 
 & R_2-3R_1 \to R_2 \\
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 1 & 0 & 2 \\
 0 & 1 & \frac{1}{2} & \frac{1}{2} \\
 0 & 2 & 1 & 2
 \end{array}\right] 
 & \frac{1}{4}R_2 \to R_2 \\
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 1 & 0 & 2 \\
 0 & 1 & \frac{1}{2} & \frac{1}{2} \\
 0 & 0 & 0 & 1
@@ -316,7 +316,7 @@ The last row corresponds to $0 = 1$ which is contradictory. As a consequence, th
 
 \begin{exmp}
 \label{exmp:mulsol}
-Find all solution for the following linear system.
+Find all solutions for the following linear system.
 \begin{align*}
 \begin{bmatrix}
 1 & 2 & 1 \\
@@ -339,20 +339,20 @@ z
 \begin{solution} 
 Gaussian Elimination leads to
 \begin{align*}
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 2 & 1 & 1 \\
 2 & 5 & 3 & 2 \\
 0 & 1 & 1 & 0
 \end{array}\right] 
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 2 & 1 & 1 \\
 0 & 1 & 1 & 0 \\
 0 & 1 & 1 & 0
 \end{array}\right] 
 & R_2 - 2R_1 \to R_2 \\
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 0 & -1 & 1 \\
 0 & 1 & 1 & 0 \\
 0 & 0 & 0 & 0
@@ -397,7 +397,7 @@ with $-\infty < t < \infty$. The first column vector appearing alone
 0
 \end{bmatrix}    
 \end{align*}
-is the so-called \index{Particular Solution}\keywordhl{particular solution}, which can be any vector that satisfies the inhomogeneous part $A\vec{x} = \vec{h}$. Meanwhile, the second column vector multiplied by the free parameter $t$
+is the so-called \index{Particular Solution}\keywordhl{particular solution}, which can be any vector $\vec{x} = \vec{x}_p$ that satisfies the inhomogeneous part of the system $A\vec{x} = \vec{h}$. Meanwhile, the second column vector multiplied by the free parameter $t$
 \begin{align*}
 t
 \begin{bmatrix}
@@ -406,7 +406,7 @@ t
 1
 \end{bmatrix}    
 \end{align*}
-is known as the \index{Complementary Solution}\keywordhl{complementary solution}, the family of all vectors that satisfy the homogeneous part $A\vec{x} = \textbf{0}$. Combined together, they form the \index{General Solution}\keywordhl{general solution} as the complete set of solutions to the linear system. 
+is known as the \index{Complementary Solution}\keywordhl{complementary solution}, the family of all vectors $\vec{x} = \vec{x}_c$ that satisfy the homogeneous part $A\vec{x} = \textbf{0}$. Combined together, they form the \index{General Solution}\keywordhl{general solution} $\vec{x}_g = \vec{x}_p + \vec{x}_c$ as the complete set of solutions to the linear system. 
 \end{solution}
 Short Exercise: Try plugging in any number $t$ to the general solution and verify the consistency.\footnote{Let's say $t=1$ and $\tilde{x} = 
 \begin{bmatrix}
@@ -441,7 +441,7 @@ Short Exercise: Try plugging in any number $t$ to the general solution and verif
 1 \\
 2 \\
 0
-\end{bmatrix}$. It can become a new particular solution by noting that the original solution can be rewritten as
+\end{bmatrix}$.\vspace{3pt} $\tilde{x}$ can become a new particular solution by noting that the original solution form can be rewritten as
 \begin{align*}
 \vec{x} =
 \begin{bmatrix}
@@ -494,9 +494,9 @@ t'
 1
 \end{bmatrix}
 \end{align*}
-where we "extract" $\tilde{x}$ from shifting the free parameter by $t' = t-1$, and according to this relation, it represents the same set of general solution as the original expression.}\\
+where we "extract" $\tilde{x}$ from shifting the free parameter via $t' = t-1$, and it represents the same general solution as the original expression.}\\
 \par
-The complementary solution encompasses all possible solutions to the homogeneous part of the linear system. For broader situations, it can contain more than one pairs of free parameter and column vector (or none, if the homogeneous part only permits the trivial solution of all zeros), and the complementary solution becomes a \textit{linear combination} (see Section \ref{section:span}) of multiple column vectors. The amount of free variables is decided by the number of columns in the coefficient matrix, minus the number of pivots in its reduced row echelon form. This quantity is called \textit{nullity} and in the last example it equals to $1$. In case of multiple free variables, we assign the corresponding number of free parameters to non-pivotal unknowns and apply the same procedure as in the example above to acquire a set of complementary solution. Any column vector followed by a free parameter can be scaled by any non-zero factor as we desire.\footnote{Using the last example as a demonstration, 
+The complementary solution encompasses all possible solutions to the homogeneous part $A\vec{x} = \textbf{0}$ of the linear system $A\vec{x} = \vec{h}$. For broader situations, it can contain more than one pairs of free parameter and column vector (or none, if the homogeneous part only permits the trivial solution of all zeros), and the complementary solution becomes a \textit{linear combination} of multiple \textit{linearly independent} column vectors who satisfy $A\vec{x} = \textbf{0}$ on their own. (We will clarify about these concepts in Chapter \ref{chap:vec_space}.) The amount of free variables is decided by the number of columns in the coefficient matrix (unknowns), minus the number of pivots (constraints) in its reduced row echelon form. This quantity is called \textit{nullity} and in the last example it equals to $1$. In case of multiple free variables, we assign the corresponding number of free parameters to non-pivotal unknowns and apply the same procedure as in the example above to acquire a set of complementary solution. Any column vector that constitutes the complementary solution (followed by a free parameter) can be scaled by any non-zero factor as we desire.\footnote{Using the last example as a demonstration, 
 \begin{align*}
 \begin{bmatrix}
 1 \\
@@ -533,16 +533,23 @@ The complementary solution encompasses all possible solutions to the homogeneous
 -2 \\
 2
 \end{bmatrix}
-\end{align*} where we use $s = \frac{t}{2}$ as a new free parameter and the column vector associated to that free parameter is now scaled by a factor of $2$.} \\
-\\
-Meanwhile, the particular solution can be set to any valid solution to the linear system (the choice does not affect the structure of its complementary part, see the footnote to the short exercise above). If the linear system is itself homogeneous, then the zero vector $\textbf{0}$ can always be chosen as a particular solution which does not appear explicitly.\\
+\end{align*} where we use $s = \frac{t}{2}$ as a new free parameter. Notice that the old column vector $\begin{bmatrix}
+1 \\
+-1 \\
+1
+\end{bmatrix}$ in the original expression of complementary solution, and the newly generated column vector $\begin{bmatrix}
+2 \\
+-2 \\
+2
+\end{bmatrix}$ that is double in length, both satisfy the homogeneous part $A\vec{x} = 0$.} \par
+Meanwhile, the particular solution can be set to any valid solution to the linear system (the choice does not affect the structure of its complementary part, see the footnote to the last short exercise). If the linear system is itself homogeneous, then the zero vector $\textbf{0}$ can always be chosen as a particular solution which does not appear explicitly.\\
 \\
 We have seen in the previous two examples that if the reduced row echelon form of the square coefficient matrix has some row of full zeros, then it either leads to no solution (if inconsistent) or infinitely many solutions (if consistent). Since such a matrix at the same time has a determinant of zero (by Properties \ref{proper:zerodet}) and is singular, this establishes the second part of Theorem \ref{thm:sqlinsysunique}. \\
 \\
 For non-square coefficient matrices, two cases occur.
 \begin{enumerate}
-\item There are more equations (rows) than unknowns (columns). The system is \index{Overdetermined}\keywordhl{overdetermined}. The reduced row echelon form then must have at least one row of full zeros. If any one of them is inconsistent, then contradiction will arise just like in Example \ref{exmp:nosol} and there will be no solution. However, if all zero rows are consistent (i.e.\ $0=0$), then there still can be a unique solution or infintely many of them.
-\item There are fewer equations (rows) than unknowns (columns). The system is said to be \index{Underdetermined}\keywordhl{underdetermined}. There must be unknown(s) that is/are non-pivot(s) in the reduced row echelon form of the coefficient matrix. Hence free variables, and infinitely many solutions ensue if there is no inconsistent row ($0 = k$ where $k$ is a non-zero constant, then there is no solution). The calculation is similar to that in Example \ref{exmp:mulsol}.
+\item There are more equations (rows) than unknowns (columns). The system is \index{Overdetermined}\keywordhl{overdetermined}. The rref of coefficient matrix then must have at least one row of full zeros. If any one of them is inconsistent, then contradiction will arise just like in Example \ref{exmp:nosol} and there will be no solution. However, if all zero rows are consistent (i.e.\ $0=0$), then there still can be a unique solution or infintely many of them.
+\item There are fewer equations (rows) than unknowns (columns). The system is said to be \index{Underdetermined}\keywordhl{underdetermined}. There must be unknown(s) that is/are non-pivot(s) in the reduced row echelon form of the coefficient matrix. Hence free variables, and infinitely many solutions ensue if there is no inconsistent row (if there is at least one row of $0 = k$ where $k$ is a non-zero constant, then there is no solution). The calculation is similar to that in Example \ref{exmp:mulsol}.
 \end{enumerate}
 Let's see some examples for non-square linear systems.\
 \subsubsection{Overdetermined Systems}
@@ -571,14 +578,14 @@ z
 \end{exmp}
 \begin{solution}
 \begin{align*}
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 4 & 0 & 4\\
 2 & 2 & 3 & 8\\
 1 & 1 & 2 & 3\\
 0 & 3 & 1 & 5\\
 \end{array}\right] 
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 4 & 0 & 4\\
 0 & -6 & 3 & 0\\
 0 & -3 & 2 & -1\\
@@ -589,7 +596,7 @@ R_2 - 2R_1 &\to R_2 \\
 R_3 - R_1 &\to R_3 \\    
 \end{aligned} \\
 & \to
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 4 & 0 & 4\\
 0 & 1 & -\frac{1}{2} & 0\\
 0 & -3 & 2 & -1\\
@@ -597,7 +604,7 @@ R_3 - R_1 &\to R_3 \\
 \end{array}\right] 
 & -\frac{1}{6}R_2 \to R_2  \\    
 & \to
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 4 & 0 & 4\\
 0 & 1 & -\frac{1}{2} & 0\\
 0 & 0 & \frac{1}{2} & -1\\
@@ -608,7 +615,7 @@ R_3 + 3R_2 &\to R_3\\
 R_4 - 3R_2 &\to R_4     
 \end{aligned} \\   
 & \to
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 4 & 0 & 4\\
 0 & 1 & -\frac{1}{2} & 0\\
 0 & 0 & 1 & -2\\
@@ -616,7 +623,7 @@ R_4 - 3R_2 &\to R_4
 \end{array}\right] 
 & 2R_3 \to R_3 \\ 
 & \to
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 4 & 0 & 4\\
 0 & 1 & -\frac{1}{2} & 0\\
 0 & 0 & 1 & -2\\
@@ -652,14 +659,14 @@ z
 \end{exmp}
 \begin{solution}
 \begin{align*}
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 1 & 2 & 2 \\
 1 & 2 & 5 & 3 \\
 2 & 1 & 1 & 3 \\
 1 & 0 & -1 & 1
 \end{array}\right] 
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 1 & 2 & 2 \\
 0 & 1 & 3 & 1 \\
 0 & -1 & -3 & -1\\
@@ -671,7 +678,7 @@ R_3 - 2R_1 &\to R_3 \\
 R_4 - R_1 &\to R_4
 \end{aligned}\\ 
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 1 & 2 & 2 \\
 0 & 1 & 3 & 1 \\
 0 & 0 & 0 & 0 \\
@@ -682,7 +689,7 @@ R_3 + R_2 &\to R_3\\
 R_4 + R_2 &\to R_4    
 \end{aligned} \\
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 0 & -1 & 1 \\
 0 & 1 & 3 & 1 \\
 0 & 0 & 0 & 0 \\
@@ -690,7 +697,7 @@ R_4 + R_2 &\to R_4
 \end{array}\right] 
 & R_1- R_2 \to R_1 
 \end{align*}
-The two rows of full zero indicate that two out of the four equations are redundant and there are effectively two constraints only, over the three variables. We can let the non-pivot unknown $z = t$ be a free variable like in Example \ref{exmp:mulsol}, and derive $x = 1+t$, $y = 1-3t$ from the first two rows. Thus the general solution is
+The two rows of full zeros indicate that two out of the four equations are redundant and there are effectively two constraints only, over the three variables. We can let the non-pivotal unknown $z = t$ be a free variable like in Example \ref{exmp:mulsol}, and obtain $x = 1+t$, $y = 1-3t$ from the first two rows. Thus the general solution is
 \begin{align*}
 \vec{x} = 
 \begin{bmatrix}
@@ -727,12 +734,13 @@ is a particular solution and the nullity is $1$.
 
 \subsubsection{Underdetermined Systems}
 \begin{exmp}
+\label{exmp:underdetsys}
 Solve the following underdetermined system.
 \begin{align*}
 \begin{bmatrix}
 1 & 1 & 2 & 1 \\
-2 & 1 & 3 & 2 \\
-0 & 1 & 1 & 2 
+1 & 2 & 1 & 0 \\
+1 & 0 & 3 & 2 
 \end{bmatrix}
 \begin{bmatrix}
 x \\
@@ -744,64 +752,43 @@ v
 \begin{bmatrix}
 0 \\
 1 \\
-1
+-1
 \end{bmatrix}
 \end{align*}
 \end{exmp}
 \begin{solution}
 \begin{align*}
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
-1 & 1 & 2 & 1 & 0\\
-2 & 1 & 3 & 2 & 1\\
-0 & 1 & 1 & 2 & 1
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
+1 & 1 & 2 & 1 & 0 \\
+1 & 2 & 1 & 0 & 1 \\
+1 & 0 & 3 & 2 & -1
 \end{array}\right] 
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
-1 & 1 & 2 & 1 & 0\\
-0 & -1 & -1 & 0 & 1\\
-0 & 1 & 1 & 2 & 1
-\end{array}\right] 
-& R_2 - 2R_1 \to R_2 \\
-& \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
-1 & 1 & 2 & 1 & 0\\
-0 & 1 & 1 & 2 & 1\\
-0 & -1 & -1 & 0 & 1
-\end{array}\right] 
-& R_2 \leftrightarrow R_3 \\
-& \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
-1 & 1 & 2 & 1 & 0\\
-0 & 1 & 1 & 2 & 1\\
-0 & 0 & 0 & 2 & 2
-\end{array}\right] 
-& R_3+R_2 \to R_3 \\
-& \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
-1 & 1 & 2 & 1 & 0\\
-0 & 1 & 1 & 2 & 1\\
-0 & 0 & 0 & 1 & 1
-\end{array}\right] 
-& \frac{1}{2}R_3 \to R_3 \\
-& \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
-1 & 1 & 2 & 0 & -1\\
-0 & 1 & 1 & 0 & -1\\
-0 & 0 & 0 & 1 & 1
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
+1 & 1 & 2 & 1 & 0 \\
+0 & 1 & -1 & -1 & 1 \\
+0 & -1 & 1 & 1 & -1
 \end{array}\right] 
 & \begin{aligned}
-R_2-2R_3 &\to R_2 \\
-R_1-R_3 &\to R_1     
+R_2 - R_1 &\to R_2 \\
+R_3 - R_1 &\to R_3
 \end{aligned} \\
 & \to 
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\;}}
-1 & 0 & 1 & 0 & 0\\
-0 & 1 & 1 & 0 & -1\\
-0 & 0 & 0 & 1 & 1
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
+1 & 1 & 2 & 1 & 0 \\
+0 & 1 & -1 & -1 & 1 \\
+0 & 0 & 0 & 0 & 0
 \end{array}\right] 
-& R_1-R_2 \to R_1
+& R_3 + R_2 \to R_3 \\
+& \to 
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
+1 & 0 & 3 & 2 & -1 \\
+0 & 1 & -1 & -1 & 1 \\
+0 & 0 & 0 & 0 & 0
+\end{array}\right] 
+& R_1 - R_2 \to R_1
 \end{align*} 
-From the third row, we have $v = 1$ immediately. The only unknown that is not associated to a leading 1 is $u$ and we can let $u = t$ be a free variable. From the first two equations, we retrieve $y = -1-t$ and $x = -t$, and therefore the general solution is
+The last zero row is consistent. The first two columns are pivotal and we can let the remaining two unknowns that are not associated to any leading 1, $u=s$ and $v=t$ be free variables. From the first two equations, we retrieve $x = -1 - 3s - 2t$ and $y = 1 + s + t$, and therefore the general solution is
 \begin{align*}
 \vec{x} = 
 \begin{bmatrix}
@@ -812,42 +799,50 @@ v
 \end{bmatrix} 
 =
 \begin{bmatrix}
--t \\
--1-t \\
-t \\
-1
+-1 - 3s - 2t \\
+1 + s + t \\
+s \\
+t
 \end{bmatrix}
 =
 \begin{bmatrix}
-0 \\
--1 \\
-0 \\
-1
-\end{bmatrix}
-+ t
-\begin{bmatrix}
--1 \\
 -1 \\
 1 \\
+0 \\
 0
+\end{bmatrix}
++ s
+\begin{bmatrix}
+-3 \\
+1 \\
+1 \\
+0
+\end{bmatrix}
++
+t
+\begin{bmatrix}
+-2 \\
+1 \\
+0 \\
+1
 \end{bmatrix}
 \end{align*}
 with 
 $\begin{bmatrix}
-0 \\
 -1 \\
+1 \\
 0 \\
-1    
-\end{bmatrix}$ as a particular solution.
+0
+\end{bmatrix}$ as a particular solution and the nullity being $2$.
 \end{solution}
 
 \subsection{Solving Linear Systems by Inverse}
 \label{subsection:SolLinSysInv}
-For a square linear system $A\vec{x} = \vec{h}$, if $A$ has a non-zero determinant and is invertible, then we can apply its inverse to recover the solution. Remember that multiplying the inverse to a matrix returns an identity matrix, hence it is possible to multiply the inverse $A^{-1}$ to the left on both sides of the equation $A\vec{x} = \vec{h}$ to cancel out the $A$ on the L.H.S., which leads to
-\begin{align*}
-A^{-1}A\vec{x}= (A^{-1}A)\vec{x} &= A^{-1}\vec{h} \\
-\vec{x} = I\vec{x} &= A^{-1}\vec{h} &\text{(Definition \ref{defn:inverse} and Properties \ref{proper:identity})}
-\end{align*}
+For a square linear system $A\vec{x} = \vec{h}$, if $A$ has a non-zero determinant and is invertible, then we can apply its inverse to recover the solution. Remember that multiplying a matrix by its inverse returns an identity matrix, hence it is possible to multiply the inverse $A^{-1}$ (or heuristically, "dividing" by $A$) to the left on both sides of the equation $A\vec{x} = \vec{h}$ to cancel out the $A$ on L.H.S., which reads
+\begin{align}
+A^{-1}A\vec{x}= (A^{-1}A)\vec{x} &= A^{-1}\vec{h} \nonumber \\
+\vec{x} = \textcolor{gray}{I\vec{x}} &= A^{-1}\vec{h} &\text{(Definition \ref{defn:inverse} and Properties \ref{proper:identity})} \label{eqn:inversesol}
+\end{align}
 This solution is unique, guaranteed by Theorem \ref{thm:sqlinsysunique}.
 \begin{exmp}
 Solve the linear system $A\vec{x} = \vec{h}$ by the inverse method, where
@@ -882,7 +877,7 @@ A^{-1} =
 -\frac{3}{2} & -\frac{1}{2} & \frac{3}{2}
 \end{bmatrix}
 \end{align*}
-The readers are encouraged to verify the inverse. Subsequently, we have the solution to the linear system as
+The readers are encouraged to derive the inverse by themselves. Subsequently, we have the solution to the linear system as
 \begin{align*}
 \vec{x} = 
 \begin{bmatrix}
@@ -910,11 +905,11 @@ z
 \end{align*}
 \end{solution}
 
-Doing Gaussian Elimination to find the inverse and then compute the solution by $\vec{x} = A^{-1}\vec{h}$ in Section \ref{subsection:SolLinSysInv} is somehow the same as using Gaussian Elimination directly to solve the linear system suggested by Section \ref{subsection:SolLinSysGauss}. Hypothetically, if there are a lot of linear systems which all share the same coefficient matrix $A$, but different $\vec{h}$ to be solved, then the former approach may be more efficient at first sight. However, in computer, calculation of inverse can be unstable (see Section \ref{section:ch2python}) and there are some other practical reasons not to do so, as we shall see in Section \ref{section:ch3python}. \\
+Doing Gaussian Elimination to find the inverse and then compute the solution by $\vec{x} = A^{-1}\vec{h}$ (Equation (\ref{eqn:inversesol})) is, at first sight somehow the same as using Gaussian Elimination directly to solve the linear system as sketched in Section \ref{subsection:SolLinSysGauss}. However, in computer, calculation of inverse can be unstable (see Section \ref{section:ch2python}) and there are some other practical reasons not to take the first approach, which will be discussed in Section \ref{section:ch3python}. \\
 \\
 Besides, Theorem \ref{thm:equiv1} can be extended as below by incorporating Theorem \ref{thm:sqlinsysunique}:
-\begin{thm}
-\label{thm:equiv2}[Equivalence Statement, ver.\ 2]
+\begin{thm}[Equivalence Statement, ver.\ 2]
+\label{thm:equiv2}
 For a square matrix $A$, the followings are equivalent:
 \begin{enumerate}[label=(\alph*)]
 \item $A$ is invertible, i.e.\ $A^{-1}$ exists,
@@ -945,8 +940,8 @@ y
 \end{bmatrix}
 =
 \begin{bmatrix}
-1200 \\
-800\sqrt{3}
+120 \\
+80\sqrt{3}
 \end{bmatrix}
 \end{align*}
 Since it is just a $2 \times 2$ coefficient matrix, we can directly use the expression in Example \ref{exmp:2x2} to find its inverse, which is
@@ -976,16 +971,16 @@ y
 -1 & 1
 \end{bmatrix}
 \begin{bmatrix}
-1200 \\
-800\sqrt{3}
+120 \\
+80\sqrt{3}
 \end{bmatrix}
 =
 \begin{bmatrix}
-600+200\sqrt{3}\\
-600-200\sqrt{3}
+60+20\sqrt{3}\\
+60-20\sqrt{3}
 \end{bmatrix}
 \end{align*}
-Therefore the required horizontal displacement and depth of top layer are about $\SI{946.4}{\m}$ and $\SI{253.6}{\m}$ respectively.
+Therefore the required horizontal displacement and depth of top layer are about $\SI{94.6}{\m}$ and $\SI{25.4}{\m}$ respectively.
 \end{solution}
 
 \begin{exmp}
@@ -1091,7 +1086,7 @@ From the first row, we readily obtain $E_1 = E_{in}$. The second row yields the 
 E_1 - E_2 &= -E_{in} \\
 E_2 &= E_1 + E_{in} = E_{in} + E_{in} = 2E_{in}
 \end{align*}
-Similarly, the subsequent rows are all in the form of $E_{j} = E_{j-1} + E_{in}$, and inductively we have $E_{j} = jE_{in}$. $E_1 = E_{in}$ is the emission of radiation from Earth as a whole as viewed from the space, and the \textit{emission temperature} is $T_e = T_1 = \sqrt[4]{E_1/\sigma} = \sqrt[4]{E_{in}/\sigma}$ by Stefan–Boltzmann Law. The surface releases terrestrial radiation at the rate of $E_{N+1} = (N+1)E_{in}$ and has a temperature of $T_{N+1} = \sqrt[4]{E_{N+1}/\sigma} = \sqrt[4]{(N+1)E_{in}/\sigma} = (N+1)^{1/4}\sqrt[4]{E_{in}/\sigma} = (N+1)^{1/4}T_e$, i.e.\ the surface temperature is $(N+1)^{1/4}$ times the emission temperature. Our earth has an emission temperature of \SI{255}{\K} and a surface temperature of \SI{288}{\K} on average (notice that we have to use Kelvin instead of degree Celsius!), which leads to an effective number of absorbing layers $N = (288/255)^4 - 1 = 0.627$.
+Similarly, the subsequent rows are all in the form of $E_{j} = E_{j-1} + E_{in}$, and inductively we have $E_{j} = jE_{in}$. $E_1 = E_{in}$ is the emission of radiation from the Earth as a whole as viewed from the space, and the corresponding \textit{emission temperature} is $T_e = T_1 = \sqrt[4]{E_1/\sigma} = \sqrt[4]{E_{in}/\sigma}$ by Stefan–Boltzmann Law. The surface releases terrestrial radiation at the rate of $E_{N+1} = (N+1)E_{in}$ and has a temperature of $T_{N+1} = \sqrt[4]{E_{N+1}/\sigma} = \sqrt[4]{(N+1)E_{in}/\sigma} = (N+1)^{1/4}\sqrt[4]{E_{in}/\sigma} = (N+1)^{1/4}T_e$, i.e.\ the surface temperature is $(N+1)^{1/4}$ times the emission temperature. Our earth has an emission temperature of \SI{255}{\K} and a surface temperature of \SI{288}{\K} on average (notice that we have to use Kelvin instead of degree Celsius!), which leads to an effective number of absorbing layers $N = (288/255)^4 - 1 = 0.627$.
 \end{solution}
 
 \section{Python Programming}
@@ -1276,25 +1271,25 @@ or
 \begin{Exercise}
 Solve $A\vec{x} = \vec{h}_k$, where
 \begin{align*}
-&A =
+A &=
 \begin{bmatrix}
 6 & 7 & 7\\
 1 & 0 & 2\\
 2 & 1 & 1
 \end{bmatrix}
-&\vec{x} =
+&\vec{x} &=
 \begin{bmatrix}
 x\\
 y\\
 z
 \end{bmatrix} \\
-& \vec{h}_1 =
+\vec{h}_1 &=
 \begin{bmatrix}
 -1 \\
 5 \\
 1
 \end{bmatrix}
-& \vec{h}_2 =
+& \vec{h}_2 &=
 \begin{bmatrix}
 19/4 \\
 1 \\
@@ -1619,46 +1614,6 @@ t
 1
 \end{bmatrix}
 \end{align*}
-\end{Answer}
-
-\begin{Exercise}
-In a geology field trip, an outcrop is examined. It is observed that the rock mainly consists of crystals of three distinct colors (gray/pink/black). Assume that crystal of each color corresponds to exactly one type of mineral. Three samples are gathered, have their densities measured and composition percentages of the three types of crystal analyzed. The data are as follows:
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|}
-\hline
- & gray & pink & black & density (g/cm$^3$) \\
-\hline
-Sample A & 40\% & 50\% & 10\% & 2.645\\
-\hline
-Sample B & 55\% & 40\% & 5\% & 2.6325\\
-\hline
-Sample C & 45\% & 45\% & 10\% & 2.65\\
-\hline
-\end{tabular}
-\end{center}
-From the data, infer the densities of the constituent minerals.
-\end{Exercise}
-\begin{Answer}
-The system can be written as
-\begin{align*}
-\begin{bmatrix}
-0.4 & 0.5 & 0.1 \\
-0.55 & 0.4 & 0.05 \\
-0.45 & 0.45 & 0.1
-\end{bmatrix}
-\begin{bmatrix}
-gy \\
-pk \\
-bk
-\end{bmatrix}
-=
-\begin{bmatrix}
-2.645 \\
-2.6325 \\
-2.65
-\end{bmatrix}
-\end{align*}
-and has a unique solution of $gy = 2.65$ (quartz), $pk = 2.55$ (feldspar), $bk = 3.1$ (biotite).
 \end{Answer}
 
 \begin{Exercise}

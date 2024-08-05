@@ -3,9 +3,9 @@
 Vectors provides valuable assistance when it comes to describing geometric objects. In this chapter we are going to exploit the knowledge learnt in the previous chapters to solve geometry problems and inspect more deeply the intimate relationship between vectors, dot/cross products, and geometry.
 
 \section{Lines and Planes}
-\textit{(Straight) lines} and \textit{planes} are geometric shapes of importance in two/three-dimensional spaces ($\mathbb{R}^2$ and $\mathbb{R}^3$) and due to their simplicity they will be the first to be discussed. They can be expressed either in terms of (a) an equation, and (b) vectors. We will start from the easier case of a line.\\
+\textit{(Straight) lines} and \textit{planes} are geometric shapes of importance in two/three-dimensional real spaces ($\mathbb{R}^2$ and $\mathbb{R}^3$) and due to their simplicity they will be frequently seen. They can be expressed either in terms of (a) an equation, and (b) vectors. We will start from the easier case of a line.\\
 \\
-Since a straight line is a one-dimensional object, the vector form of such a line can be expressed by a fixed vector that points to its initial position, plus another vector oriented along the line's direction, times an arbitrary parameter which controls its extension or contraction, so that it traces out the line when changed continuously.
+Since a straight line is a one-dimensional object, the vector form of such a line can be expressed by a fixed vector that points to its initial position, plus another vector oriented along the line's direction, times an arbitrary parameter which controls its extension or contraction, so that it traces out the line when the parameter changed continuously.
 \begin{center}
 \begin{tikzpicture}
 \draw[->] (-1,0)--(4,0) node[right]{$x$};
@@ -49,7 +49,7 @@ t
 1
 \end{bmatrix}
 \end{align*}
-This is one possible vector form (parameterization) of the line. The ideas behind can be borrowed from Example \ref{exmp:mulsol}, with $(\frac{h}{a}, 0)^T$ being the particular solution/initial position, and $(-\frac{b}{a}, 1)^T$ as the direction of that line, multiplied by a free parameter to complete the general solution. For example, if we have $3x - 2y = 5$, then by the same method, we get
+This is one possible vector form (\textit{parameterization}) of the line. Its idea can be borrowed from Example \ref{exmp:mulsol}, with $(\frac{h}{a}, 0)^T$ being the initial position/particular solution, and $(-\frac{b}{a}, 1)^T$ as the direction of that line, multiplied by a free parameter (complementary solution) to complete the general solution. For example, if we have $3x - 2y = 5$, then by the same method, we get
 \begin{align*}
 \begin{bmatrix}
 x \\
@@ -71,7 +71,7 @@ t
 1
 \end{bmatrix}    
 \end{align*}
-Bear in mind that the direction vector from the general solution can be scaled freely. In addition, any initial position vector (particular solution) can be chosen as long as it links to a point on the line and satisfies the equation. (Refer to the discussion about particular/general solution in Section \ref{subsection:SolLinSysGauss}) Hence there is no unique vector form for a line. For instance,
+Bear in mind that the direction vector (representing complementary solution) can be scaled freely. In addition, any initial position vector (particular solution) can be chosen as long as it links to a point on the line and satisfies the equation. (You may refer to the discussion about particular/complementary solution in Section \ref{subsection:SolLinSysGauss}.) Hence there is no unique vector form for a line. For instance,
 \begin{align*}
 \begin{bmatrix}
 1\\
@@ -96,7 +96,8 @@ is equivalent to
 \end{bmatrix}     
 \end{align*}
 for the line equation $2x - y = -1$.\\
-Short Exercise: Check the equivalence of the two vector forms above by choosing a value for $t_1$ and finding the corresponding $t_2$ so that the vector points to the same position.\footnote{For $t_1 = 1$, we have $(1, 3)^T + (1)(2, 4)^T = (3 ,7)^T$ as a point on the line, and for the another vector form $(-1,-1)^T + t_2(1, 2)^T = (3 ,7)^T$ to coincide we have $t_2 = 4$. In this case, it can be shown that the general relation between the two forms is $t_2 = 2t_1 + 2$, as
+\\
+Short Exercise: Check the equivalence of the two vector forms above by choosing a value for $t_1$ and finding the corresponding $t_2$ so that the vector points to the same position.\footnote{For example, if $t_1 = 1$, we have $(1, 3)^T + (1)(2, 4)^T = (3 ,7)^T$ as a point on the line, and for the another vector form $(-1,-1)^T + t_2(1, 2)^T = (3 ,7)^T$ to coincide we will have $t_2 = 4$. In this case, it can be shown that the general relation between the two forms is determined by $t_2 = 2t_1 + 2$, as
 \begin{align*}
 \begin{bmatrix}
 1\\
@@ -159,7 +160,7 @@ t
 
 \subsection{Recovering Equation Form from Vector Form} On the other hand, inferring line equation from the vector form is not straight-forward at first sight. Since the vector form of a line always contains an arbitrary parameter, which is absent in the equation form, the motivation is to remove the parameter through some manipulation.\\
 \\
-Remember that from Properties \ref{proper:dotorth} the dot product between orthogonal (perpendicular) vectors returns zero. This means that by carrying out dot product with the \index{Normal Vector}\keywordhl{Normal Vector} which is orthogonal to the direction vector, on both sides of the vector form will eliminate the parameter and recover the line equation. For example, given that
+Remember that from Properties \ref{proper:dotorth} the dot product between orthogonal (perpendicular) vectors returns zero. This means that by carrying out dot product with the \index{Normal Vector}\keywordhl{normal vector} of the line which is orthogonal to the direction vector, on both sides of the vector form will eliminate the parameter and recover the line equation. For example, given that
 \begin{align*}
 \begin{bmatrix}
 x\\
@@ -176,7 +177,7 @@ y
 4
 \end{bmatrix} 
 \end{align*}
-We know that $(4, -1)^T$ is a normal vector orthogonal to the direction vector (see the short exercise below). So, by taking dot product with $(4, -1)^T$ on both sides, we have
+We know that $(4, -1)^T$ is a normal vector orthogonal to the direction vector (see the next short exercise). So, by taking dot product with $(4, -1)^T$ on both sides, we have
 \begin{align*}
 \begin{bmatrix}
 x\\
@@ -188,6 +189,21 @@ y
 -1
 \end{bmatrix}
 &=
+\left(\begin{bmatrix}
+1\\
+3
+\end{bmatrix}
++ t
+\begin{bmatrix}
+1 \\
+4
+\end{bmatrix}\right)
+\cdot
+\begin{bmatrix}
+4\\
+-1
+\end{bmatrix}
+=
 \begin{bmatrix}
 1\\
 3
@@ -207,16 +223,18 @@ y
 4\\
 -1
 \end{bmatrix}\\
-4x - y &= 1 + (0)t = 1
+4x - y &= ((1)(4) + (3)(-1)) + ((1)(4)+(4)(-1))t = 1 + 0t = 1 \\
+\Rightarrow 4x - y &= 1
 \end{align*}
 Notice that the coefficients of the equation are the same as the components of the normal vector.\\
+\\
 Short Exercise: Verify that $(a, b)$ is always orthogonal to $(b, -a)$, and vice versa.\footnote{$(a, b)^T \cdot (b, -a)^T = (a)(b) + (b)(-a) = 0$}
 
 \subsection{Generalizing to Higher Dimensions}
 \label{section:vecgeohighdim}
-Similar concepts can be applied on the equation and vector form for planes. General form of equation of a plane in three-dimensional space is $ax + by + cz = h$, which is a linear system of one equation with three unknowns, from the demonstration in Section \ref{subsection:SolLinSysGauss} we know there are two free variables and two direction vectors for such a plane. By assigning the free variables to non-pivots, we obtain the vector form of the plane. \\
-\\
-Recall from Section \ref{section:crossprod}, cross product of any two non-parallel vectors on the plane will give a third vector normal to the plane. Subsequently, we can take the dot product with this newly obtained normal vector to convert the vector form back to a plane equation. Again, the coefficients of the plane equation match the components of the normal vector, differed at most by a multiplicative factor.
+Similar concepts can be applied on the equation and vector form for planes. General form of equation of a plane in three-dimensional space is $ax + by + cz = h$, which is a linear system of one equation with three unknowns. From the analysis in Section \ref{subsection:SolLinSysGauss} we know there are two free variables and two (non-parallel) direction vectors for such a plane. By assigning any two (non-pivotal) unknowns as the free variables, we then obtain the vector form of the plane. 
+\par
+Recall from Section \ref{section:crossprod}, the cross product of any two non-parallel vectors on the plane will give a third vector normal to the plane. Subsequently, we can take the dot product with this newly obtained normal vector to convert the vector form back to a plane equation just like what we have done for lines in the last subsection. Again, the coefficients of the plane equation match the components of the normal vector, differed at most by a multiplicative factor.
 \begin{center}
 \begin{tikzpicture}[x={(-0.4cm, -0.7cm)}, y={(0.7cm, -0.2cm)}, z={(0cm, 0.8cm)}]
 \node[below right]{$O$}; 
@@ -229,9 +247,9 @@ Recall from Section \ref{section:crossprod}, cross product of any two non-parall
 \draw[very thick,->,blue] (0,0,1) -- (1,0,2/3) node[below left]{$(1, 0, -\frac{1}{3})^T$};
 \draw[very thick,->,blue] (0,0,1) -- (0,1,1/3) node[above right]{$(0, 1, -\frac{2}{3})^T$};
 \draw[very thick,->,red] (0,0,1) -- (1,2,4) node[above right]{Normal Vector $= (\frac{1}{3}, \frac{2}{3}, 1)^T$};
-\end{tikzpicture} \\
-The plane represented by the equation $x + 2y + 3z = 3$. Notice that the normal vector can be found via computing $(1, 0, -\frac{1}{3})^T \times (0, 1, -\frac{2}{3})^T = (\frac{1}{3}, \frac{2}{3}, 1)^T$. The normal vector is magnified for the purpose of illustration.
+\end{tikzpicture} 
 \end{center}
+The plane represented by the equation $x + 2y + 3z = 3$. Notice that the normal vector can be found via computing $(1, 0, -\frac{1}{3})^T \times (0, 1, -\frac{2}{3})^T = (\frac{1}{3}, \frac{2}{3}, 1)^T$. The normal vector is magnified for the purpose of illustration.
 
 \begin{exmp}
 Transform the plane equation $2x+3y+z = 4$ to vector form and convert the acquired vector form back to the starting equation to check consistency.
@@ -269,7 +287,7 @@ t
 1
 \end{bmatrix}
 \end{align*}
-where $-\infty < s < \infty$, $-\infty < t < \infty$ are some free parameters. To recover the original equation, we can find the normal vector by doing cross product on the two direction vectors obtained above. By Properties \ref{proper:crossdet}, it is
+where $-\infty < s < \infty$, $-\infty < t < \infty$ are the two free parameters. To recover the original equation, we can find the normal vector by doing cross product on the two direction vectors obtained above. By Properties \ref{proper:crossdet}, we can acquire a normal vector of
 \begin{align*}
 \begin{bmatrix}
 -\frac{3}{2} \\
@@ -290,7 +308,7 @@ where $-\infty < s < \infty$, $-\infty < t < \infty$ are some free parameters. T
 \end{vmatrix}
 = \hat{i} + \frac{3}{2}\hat{j} + \frac{1}{2}\hat{k}
 \end{align*}
-The next step is to take the dot product with the normal vector just retrieved.
+The next step is to take the dot product on both sides of the vector equation with the normal vector just retrieved.
 \begin{align*}
 \begin{bmatrix}
 x \\
@@ -366,14 +384,14 @@ x + \frac{3}{2}y + \frac{1}{2}z &= 2 + s(0) + t(0) = 2 \\
 \rightarrow 2x+3y+z &= 4
 \end{align*}
 \end{solution}
-The correspondence between the coefficients of a linear equation and components of its normal vector is not a coincidence. In fact, even for higher dimensional cases, where there is no intuitive geometric interpretation, we still have the following results.
+The correspondence between the coefficients of a linear equation and components of its normal vector is not a coincidence. In fact, even for higher dimensional cases, where there is no intuitive geometric interpretation, it is still true.
 \begin{proper}
 \label{proper:normalhyperplane}
-For an equation in the form of $a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_nx_n = h$, it has a normal vector of $(a_1, a_2, a_3, \ldots, a_n)^T$.
+An equation of the form $a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_nx_n = h$ in $\mathbb{R}^n$ has a normal vector of $(a_1, a_2, a_3, \ldots, a_n)^T$.
 \end{proper}
-The procedures carried in the last example can be similarly applied to higher dimensional situations where the equation now represents a \index{Hyperplane}\keywordhl{Hyperplane}.
+The procedures carried in the last example can be similarly applied to higher dimensional situations where the equation now represents a \index{Hyperplane}\keywordhl{hyperplane}\footnote{A hyperplane in the $n$-dimensional real space $\mathbb{R}^n$ can be think of as an "$(n-1)$-dimensional flat surface".}.
 
-\section{More on Geometric Applications of Dot Product}
+\section{Further Geometric Applications of Dot Product}
 \subsection{Projection}
 We have mentioned in Properties \ref{proper:dotgeo} that dot product between two vectors is related to the projection of one vector onto another. By rearranging the formula of Properties \ref{proper:dotgeo}, we can derive the length of projection as follows.
 \begin{center}
@@ -391,38 +409,38 @@ We have mentioned in Properties \ref{proper:dotgeo} that dot product between two
 \end{center}
 \begin{proper}
 \label{proper:proj}
-For two vectors $\vec{u}$ and $\vec{v}$ having the same dimension, denote the \index{Scalar Projection}\keywordhl{(signed) Scalar Projection} of $\vec{v}$ onto $\vec{u}$ by $\widetilde{\text{proj}}_u v$. It is computed according to
+For two real vectors $\vec{u}$ and $\vec{v}$ having the same dimension, the \index{Scalar Projection}\keywordhl{(signed) scalar projection} of $\vec{v}$ onto $\vec{u}$ is computed according to
 \begin{align*}
-\widetilde{\text{proj}}_u v = \norm{\vec{v}} \cos\theta = \frac{\vec{u} \cdot \vec{v}}{\norm{\vec{u}}}    
+\text{proj}_u v = \norm{\vec{v}} \cos\theta = \frac{\vec{u} \cdot \vec{v}}{\norm{\vec{u}}}    
 \end{align*}
-If we want to supply the projection along $\vec{u}$ with directionality, then we can utilize its unit vector $\hat{u}$ to make it a \index{Vector Projection}\keywordhl{Vector Projection}:
+If we want to give directionality to the projection, then we can supply its unit vector $\hat{u}$ to make it a \index{Vector Projection}\keywordhl{vector projection}:
 \begin{align*}
-\overrightarrow{\text{proj}}_u v &= (\widetilde{\text{proj}}_u v) \hat{u} = \frac{\vec{u} \cdot \vec{v}} {\norm{\vec{u}}} \hat{u} = \frac{\vec{u} \cdot \vec{v}}{\norm{\vec{u}}^2} \vec{u} \\
-&= (\widetilde{\text{proj}}_u v) \frac{\vec{u}}{\norm{\vec{u}}}
+\overrightarrow{\text{proj}}_u v &= (\text{proj}_u v) \hat{u} = \frac{\vec{u} \cdot \vec{v}} {\norm{\vec{u}}} \hat{u} = \frac{\vec{u} \cdot \vec{v}}{\norm{\vec{u}}^2} \vec{u} \\
+&= (\text{proj}_u v) \frac{\vec{u}}{\norm{\vec{u}}}
 \end{align*}
-where we have used Definition \ref{defn:unitvec} to write out the unit vector.
+where we have used Definition \ref{defn:unitvec} to write out the unit vector $\hat{u}$ as $\frac{\vec{u}}{\norm{\vec{u}}}$.
 \end{proper}
 
 \begin{exmp}
 \label{exmp:projectuv}
-Find the projection of $\vec{v} = -2\hat{i} + 3\hat{j} - \hat{k}$ onto $\vec{u} = 4\hat{i} + \hat{j} - 3\hat{k}$ using Properties \ref{proper:proj}.
+Find the projection of $\vec{v} = -2\hat{i} + 3\hat{j} - \hat{k}$ onto $\vec{u} = 4\hat{i} + \hat{j} - 3\hat{k}$.
 \end{exmp}
 \begin{solution}
-The signed scalar projection of $\vec{v}$ into $\vec{u}$ is
+According to Properties \ref{proper:proj}, The signed scalar projection of $\vec{v}$ into $\vec{u}$ is
 \begin{align*}
-\widetilde{\text{proj}}_u v &= \frac{\vec{u} \cdot \vec{v}}{\norm{\vec{u}}}  \\
+\text{proj}_u v &= \frac{\vec{u} \cdot \vec{v}}{\norm{\vec{u}}}  \\
 &= \frac{(-2)(4)+(3)(1)+(-1)(-3)}{\sqrt{(4)^2+(1)^2+(-3)^2}} \\
 &= -\frac{2}{\sqrt{26}} = -\frac{\sqrt{26}}{13}
 \end{align*}
 and the vector projection is 
 \begin{align*}
-\overrightarrow{\text{proj}}_u v &= (\widetilde{\text{proj}}_u v) \frac{\vec{u}}{\norm{\vec{u}}} \\
+\overrightarrow{\text{proj}}_u v &= (\text{proj}_u v) \frac{\vec{u}}{\norm{\vec{u}}} \\
 &= (-\frac{\sqrt{26}}{13}) \left(\frac{4\hat{i} + \hat{j} - 3\hat{k}}{\sqrt{26}}\right) \\
 &= -\frac{1}{13} (4\hat{i} + \hat{j} - 3\hat{k}) = (-\frac{4}{13}, -\frac{1}{13}, \frac{3}{13})^T
 \end{align*}   
 \end{solution}
 
-\subsection{Distance} Distance of a point to a line/plane (in $\mathbb{R}^2$/$\mathbb{R}^3$ respectively) can be found by the projection of any vector starting somewhere from the line/plane to the point, onto the normal vector of that line/plane, as shown in the figures below.
+\subsection{Distance} Distance of a point to a line/plane (in $\mathbb{R}^2$/$\mathbb{R}^3$ respectively) can be found by projecting any vector starting somewhere from the line/plane to the point, onto the normal vector of that line/plane, as illustrated in the figures below.
 \begin{center}
 \begin{tikzpicture}
 \draw (0,0) -- (5,-1);
@@ -453,14 +471,14 @@ and the vector projection is
 Find the distance from the plane $x-2y+3z = 6$ to the point $(3,3,6)^T$.
 \end{exmp}
 \begin{solution}
-From the equation of the plane, and by Properties \ref{proper:normalhyperplane}, it can be inferred that the normal vector of the plane is $\hat{i} - 2\hat{j} + 3\hat{k}$. We can select any point on the plane as we wish, let's say $(4,2,2)^T$, and the vector from there to the point $(3,3,6)^T$ is computed as their difference $(3,3,6)^T - (4,2,2)^T = -\hat{i} + \hat{j} + 4\hat{k}$. Then the distance is found from the length of the projection of $-\hat{i} + \hat{j} + 4\hat{k}$ onto the normal vector of the plane $\hat{i} - 2\hat{j} + 3\hat{k}$. By Properties \ref{proper:proj}, it is
+From the equation of the plane, and by Properties \ref{proper:normalhyperplane}, it can be inferred that the normal vector of the plane is $\hat{i} - 2\hat{j} + 3\hat{k}$. We can select any point on the plane as we wish, let's say $(4,2,2)^T$, and the vector from such a point to the point $(3,3,6)^T$ in question is simply their difference $(3,3,6)^T - (4,2,2)^T = -\hat{i} + \hat{j} + 4\hat{k}$. Subsequently, the distance is found from the length of the projection of this vector $-\hat{i} + \hat{j} + 4\hat{k}$ onto the normal vector of the plane $\hat{i} - 2\hat{j} + 3\hat{k}$. By Properties \ref{proper:proj}, it is
 \begin{align*}
 \frac{(-\hat{i} + \hat{j} + 4\hat{k}) \cdot (\hat{i} - 2\hat{j} + 3\hat{k})}{\norm{\hat{i} - 2\hat{j} + 3\hat{k}}} = \frac{(-1)(1)+(1)(-2)+(4)(3)}{\sqrt{(1)^2 + (-2)^2 + (3)^2}} = \frac{9}{\sqrt{14}}
 \end{align*}
 \end{solution}
 Sometimes the calculation may lead to a negative value for the projection and we may want to take the absolute value. The case of finding the distance of a point to a line of $\mathbb{R}^3$ is considered in Exercise \ref{ex:dist_pt_line_R3}.
 
-\section{More on Geometric Applications of Cross Product}
+\section{Further Geometric Applications of Cross Product}
 Unless specified, all vectors in this section is assumed to be of $\mathbb{R}^3$.
 \subsection{Area}
 The area of the parallelogram formed by two vectors $\vec{u}$, $\vec{v}$ are simply the absolute value of their cross product.
@@ -481,11 +499,11 @@ The area of the parallelogram formed by two vectors $\vec{u}$, $\vec{v}$ are sim
 \end{center}
 \begin{proper}
 \label{proper:areaparallelogram}
-Directly from Properties \ref{proper:crossgeo}, the area of the parallelogram formed by two vectors $\vec{u}$, $\vec{v}$ is
+Directly from Properties \ref{proper:crossgeo}, the area of the parallelogram formed by two vectors $\vec{u}$ and $\vec{v}$ is
 \begin{align*}
 \norm{\vec{u} \times \vec{v}} = \norm{\vec{u}}\norm{\vec{v}}\sin\theta
 \end{align*}
-Similarly, the area of triangle outlined by $\vec{u}$, $\vec{v}$ is half of the quantity above:
+Similarly, the area of triangle made by $\vec{u}$ and $\vec{v}$ is half of the above:
 \begin{align*}
 \frac{1}{2}\norm{\vec{u} \times \vec{v}} = \frac{1}{2}\norm{\vec{u}}\norm{\vec{v}}\sin\theta   
 \end{align*}
@@ -513,7 +531,7 @@ Therefore, as suggested by Properties \ref{proper:areaparallelogram}, the requir
 \end{solution}
 
 \subsection{Volume}
-Meanwhile, volume of parallelepiped (see the figure below) formed by three vectors $\vec{u}$, $\vec{v}$, $\vec{w}$ is given by the absolute value of the so-called \keywordhl{Scalar Triple Product} as follows.
+Meanwhile, volume of parallelepiped (see the figure below) formed by three vectors $\vec{u}$, $\vec{v}$, $\vec{w}$ is given by the absolute value of the so-called \index{Scalar Triple Product}\keywordhl{scalar triple product} as follows.
 \begin{center}
 \begin{tikzpicture}
 \coordinate (0) at (0,0,0);
@@ -540,7 +558,7 @@ Meanwhile, volume of parallelepiped (see the figure below) formed by three vecto
 \end{center}
 \begin{proper}[Scalar Triple Product]
 \label{proper:parallelpiped}
-The volume of parallelepiped constructed by three vectors $\vec{u}$, $\vec{v}$, and $\vec{w}$ is calculated as
+The volume of parallelepiped formed by three vectors $\vec{u}$, $\vec{v}$, and $\vec{w}$ is calculated as
 \begin{align*}
 \norm{\vec{u} \times \vec{v}} \norm{\vec{w}} \cos\theta = |(\vec{u} \times \vec{v}) \cdot \vec{w}| =
 \text{abs}\left(
@@ -559,7 +577,7 @@ v_1 & v_2 & v_3 \\
 w_1 & w_2 & w_3
 \end{vmatrix}    
 \end{align*}
-is the scalar triple product of $\vec{u}$, $\vec{v}$, and $\vec{w}$. Also, this determinant form along with Properties \ref{proper:elementaryopdet} indicates that
+is the scalar triple product of $\vec{u}$, $\vec{v}$, and $\vec{w}$. Also, by applying Properties \ref{proper:elementaryopdet}, the determinant form of scalar triple product indicates that
 \begin{align*}
 &\quad (\vec{u} \times \vec{v}) \cdot \vec{w} = (\vec{v} \times \vec{w}) \cdot \vec{u} = (\vec{w} \times \vec{u}) \cdot \vec{v} \\
 &= -(\vec{v} \times \vec{u}) \cdot \vec{w} = -(\vec{w} \times \vec{v}) \cdot \vec{u} = -(\vec{u} \times \vec{w}) \cdot \vec{v}
@@ -584,13 +602,13 @@ w_1 & w_2 & w_3
 \end{vmatrix}
 = w_1(u_2v_3 - u_3v_2) - w_2(u_1v_3 - u_3v_1) + w_3(u_1v_2 - u_2v_1) 
 \end{align*}
-where we expand along the third row of the determinant by Properties \ref{proper:cofactorex}.
+where we do cofactor expansion (Properties \ref{proper:cofactorex}) along the third row of the determinant.
 \end{proof}
-If the volume of parallelepiped evaluated from the scalar triple product is zero, it implies that the three composing vectors are \index{Co-planar}\keywordhl{Co-planar}, i.e.\ lying on the same plane.
+If the volume of parallelepiped evaluated from the scalar triple product is zero, it implies that the three vectors involved are \index{Co-planar}\keywordhl{co-planar}, i.e.\ lying on the same plane.
 \begin{proper}
-Given three vectors $\vec{u}$, $\vec{v}$, and $\vec{w}$, if their scalar triple product $(\vec{u} \times \vec{v}) \cdot \vec{w} = 0$, then $\vec{u}$, $\vec{v}$, and $\vec{w}$ are co-planar and all lie on the same plane, and vice versa.
+Given three vectors $\vec{u}$, $\vec{v}$, and $\vec{w}$, if their scalar triple product $(\vec{u} \times \vec{v}) \cdot \vec{w} = 0$ equals to zero, then $\vec{u}$, $\vec{v}$, and $\vec{w}$ are co-planar and lie on the same plane, and vice versa.
 \end{proper}
-Note that if $\vec{w} = \alpha \vec{u} + \beta \vec{v}$, where $\alpha$ and $\beta$ are some scalars, then $\vec{u}$, $\vec{v}$, $\vec{w}$ are co-planar, and $(\vec{u} \times \vec{v}) \cdot \vec{w} = 0$. (compare this to the explanation of answer to part (c) of Exercise \ref{ex:ch4prob_coplanar})
+Note that if $\vec{w} = \alpha \vec{u} + \beta \vec{v}$, where $\alpha$ and $\beta$ are some scalars, then $\vec{u}$, $\vec{v}$, $\vec{w}$ are co-planar, and $(\vec{u} \times \vec{v}) \cdot \vec{w} = (\vec{u} \times \vec{v}) \cdot (\alpha \vec{u} + \beta \vec{v}) = \alpha ((\vec{u} \times \vec{v}) \cdot \vec{u}) + \beta ((\vec{u} \times \vec{v}) \cdot \vec{v}) = \alpha(0) + \beta(0) = 0$ as both $\vec{u} \cdot (\vec{u} \times \vec{v})$ and $\vec{v} \cdot (\vec{u} \times \vec{v})$ equal to zero.
 
 \begin{exmp}
 Find the volume of the parallelepiped formed by $\vec{u} = (1,-2,2)^T$, $\vec{v}=(-1,-1,1)^T$ and $\vec{w}=(2,1,0)^T$.
@@ -610,12 +628,12 @@ and the volume is $\abs{-3} = 3$.
 \end{solution}
 
 \subsubsection{Generalization to other dimensions}
-Given that the volume of parallelepiped formed by three vectors is equal to the absolute value of the corresponding matrix determinant as derived above, it is natural to ask if similar results hold for other numbers of dimension. In fact, Properties \ref{proper:parallelpiped} can be generalized to include length, area and the so-called \textit{$n$-volume} (Volume equivalent of $n$ vectors in $n$-dimensional space).
+Given that the volume of parallelepiped formed by three vectors is equal to the absolute value of the corresponding matrix determinant as derived above, it is natural to ask if similar results hold for other numbers of dimension. In fact, Properties \ref{proper:parallelpiped} can be generalized to include length, area and the so-called \textit{$n$-volume} (Volume equivalent of $n$ vectors in the $n$-dimensional space).
 \begin{proper}
 \label{proper:nvolume}
 For $n$ vectors of $\mathbb{R}^n$, their $n$-volume is the absolute value of the determinant of matrix formed by these column (or row) vectors. When $n=1,2,3$, the $n$-volume corresponds to the usual notions of length, area and volume.
 \end{proper}
-We can check the legitimacy of the last sentence in Properties \ref{proper:nvolume} that it is consistent with Properties \ref{proper:areaparallelogram} about area of two vectors on the $x$-$y$ plane. Given $\vec{u} = (u_1, u_2)^T$ and $\vec{v} = (v_1, v_2)^T$, by Properties \ref{proper:nvolume} the area of the parallelogram formed by them is
+We can check the legitimacy of the last sentence in Properties \ref{proper:nvolume} by noticing it is consistent with Properties \ref{proper:areaparallelogram} about area of two vectors on the $x$-$y$ plane. Given $\vec{u} = (u_1, u_2)^T$ and $\vec{v} = (v_1, v_2)^T$, by Properties \ref{proper:nvolume} the area of the parallelogram formed by them is
 \begin{align*}
 \begin{vmatrix}
 u_1 & u_2 \\
@@ -633,19 +651,19 @@ v_1 & v_2 & 0
 &= \hat{k}\begin{vmatrix}
 u_1 & u_2 \\
 v_1 & v_2
-\end{vmatrix} & \text{(Cofactor Expansion along the third row)}\\
-&= (u_1v_2 - v_1u_2)\hat{k}
+\end{vmatrix} \text{ (Cofactor Expansion along the third row)}\\
+&= (u_1v_2 - v_1u_2)\hat{k} = (0,0,u_1v_2 - v_1u_2)^T
 \end{align*}
-Hence $\norm{\vec{u} \times \vec{v}} = u_1v_2 - v_1u_2$, which coincides with the expression derived from Properties \ref{proper:nvolume}.
+Hence $\norm{\vec{u} \times \vec{v}} = \sqrt{(0)^2 + (0)^2 + (u_1v_2 - v_1u_2)^2} = u_1v_2 - v_1u_2$, which coincides with the expression we just derived from Properties \ref{proper:nvolume}.
 
 \subsubsection{Remarks}
-The solution of a linear system can be considered as a point/line/plane/hyperplane, depending on the number of free variables ($0$/$1$/$2$ or more). We may also like to call it a \textit{solution space}. However, while such shapes surely occupy space geometrically, we have been shying away from defining what really constitutes a \textit{vector space} mathematically, which will be the main point of discussion in the next chapter.
+The solution of a linear system can be considered as a point/line/plane/hyperplane too, depending on the number of free variables and thus direction vectors in the complementary part ($0$/$1$/$2$ or more). We may also like to call it a \textit{solution space}. However, while such shapes surely occupy space geometrically, we have been shying away from defining what really means by a \textit{vector space} mathematically, which will be the main point of discussion in the next chapter.
 
 \section{Useful Vector Identities}
 In this section, we will prove some key vector identities that may be of utilities to some readers.
 \begin{proper}[Vector Triple Product]
 \label{proper:triplecross}
-The \index{Vector Triple Product}\keywordhl{Vector Triple Product} of three vectors $\vec{u}$, $\vec{v}$, $\vec{w}$ is defined as
+The \index{Vector Triple Product}\keywordhl{vector triple product} of three vectors $\vec{u}$, $\vec{v}$, $\vec{w}$ is defined as
 \begin{align*}
 \vec{u} \times (\vec{v} \times \vec{w}) = (\vec{u} \cdot \vec{w})\vec{v} - (\vec{u} \cdot \vec{v})\vec{w}
 \end{align*}
@@ -671,7 +689,7 @@ The $\hat{i}$ component along the $x$-direction is
 &= (u_1w_1 + u_2w_2 + u_3w_3)v_1 - (u_1v_1 + u_2v_2 + u_3v_3)w_1 \\
 &= (\vec{u} \cdot \vec{w})v_1 - (\vec{u} \cdot \vec{v})w_1
 \end{align*}
-which is equal to the $\hat{i}$ component on the R.H.S. and the same can be shown for the $\hat{j}$, $\hat{k}$ components similarly, so the equality establishes.
+which is equal to the $\hat{i}$ component on the R.H.S. and similar results can be shown for the $\hat{j}$, $\hat{k}$ components and the equality establishes.
 \end{proof}
 
 \begin{proper}[Jacobi Identity]
