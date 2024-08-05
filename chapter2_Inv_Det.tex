@@ -1,11 +1,11 @@
 \chapter{Inverses and Determinants}
 
-In this chapter, we are going to discuss two important concepts about matrices, which are the \textit{inverse} and \textit{determinant}. To derive them, we need to introduce some prerequisite ideas first, including the \textit{identity matrix}, \textit{transpose}, and the methods of \textit{Gaussian Elimination} and \textit{Laplace Expansion}.
+In this chapter, we are going to discuss two important concepts about matrices, which are their \textit{inverses} and \textit{determinants}. They will appear from time to time in the remaining parts of this book. To derive them, we need to introduce some prerequisite ideas first, including the \textit{identity matrix}, \textit{transpose}, and the methods of \textit{Gaussian Elimination} and \textit{cofactor expansion}.
 
 \section{Identity Matrices and Transpose}
 
 \subsection{Identity Matrices}
-One important type of matrices is the \index{Identity Matrix}\keywordhl{Identity Matrices}. They are $n \times n$ square matrices, where $n$ can be any positive integer, with entries along the \index{Main Diagonal}\keywordhl{Main Diagonal} (where index of row $=$ column) being $1$ and other off-diagonal elements being $0$. Usually, they are denoted by $I_n$, or simply $I$.
+One important class of matrices is the \index{Identity Matrix}\keywordhl{identity matrices}. They are $n \times n$ square matrices, where $n$ can be any positive integer, with entries along the \textit{main diagonal} (where index of row $=$ column) being $1$ and other off-diagonal elements being $0$. Usually, they are denoted by $I_n$, or simply $I$.
 \begin{align*}
 I_2 &= 
 \begin{bmatrix}
@@ -35,44 +35,47 @@ Short Exercise: Explicitly write down $I_5$.\footnote{$I_5=
 One important property of identity matrices is
 \begin{proper}
 \label{proper:identity}
-Matrix product between any matrix $A$ with an identity matrix $I$ always produces $A$ whenever the matrix product is defined. If $A$ is of the shape $m \times n$, then $AI_n = I_mA = A$. If A is now a square matrix such that $m=n$ (and $I_m = I_n = I$), then we have $AI = IA = A$.
+Matrix product between any matrix $A$ with an identity matrix $I$ always returns $A$ whenever the matrix product is defined. If $A$ is of the shape $m \times n$, then $AI_n = I_mA = A$. If A is now a square matrix such that $m=n$ (and $I_m = I_n = I$), then we have $AI = IA = A$.
 \end{proper}
-In other words, the identity $I$ can be regarded to be the "$1$" in the world of matrices. This is one of the cases that $AB = BA$ commutes (if $A$ is a square matrix and $B=I$). Using the matrix
+In other words, the identity $I$ can be regarded to be the "$1$" in the world of matrices. This is one of the cases that $AB = BA$ commutes (if both of them are square and either one of them is the identity matrix). Using the matrix
 \begin{align*}
 A =
 \begin{bmatrix}
-a & b \\
-c & d
+a & b & c \\
+d & e & f
 \end{bmatrix}
 \end{align*}
-as an example, the readers can try to computed $AI_2$ and $I_2A$ to see if the results are $A$ itself.\footnote{
-$AI_2 =
+as an example, the readers can try to computed $AI_3$ and $I_2A$ to see if the results are $A$ itself.\footnote{\vspace{-15pt}
+\begin{align*}
+AI_3 &=
 \begin{bmatrix}
-a & b \\
-c & d
+a & b & c \\
+d & e & f
 \end{bmatrix}
 \begin{bmatrix}
-1 & 0 \\
-0 & 1
-\end{bmatrix}
-=
+1 & 0 & 0\\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix} \\
+&=
 \begin{bmatrix}
-(a)(1) + (b)(0) & (a)(0) + (b)(1) \\
-(c)(1) + (d)(0) & (c)(0) + (d)(1)
-\end{bmatrix}
-=
+(a)(1) + (b)(0) + (c)(0) & (a)(0) + (b)(1) + (c)(0) &  (a)(0) + (b)(0) + (c)(1) \\
+(d)(1) + (e)(0) + (f)(0) & (d)(0) + (e)(1) + (f)(0) &  (d)(0) + (e)(0) + (f)(1)
+\end{bmatrix} \\
+&=
 \begin{bmatrix}
-a & b \\
-c & d
+a & b & c \\
+d & e & f
 \end{bmatrix}
-= A$}
+= A    
+\end{align*} The calculation of $I_2A = A$ is similar. }
 
 \subsection{Transpose}
-\index{Transpose}\keywordhl{Transpose} of a matrix, denoted by adding the superscript $^T$ to it, is formed by swapping its rows and columns. In the special case of square matrix, this operation can be viewed as flipping the elements about the main diagonal.
+\index{Transpose}\keywordhl{Transpose} of a matrix, denoted by adding the superscript $^T$, is formed by interchanging its rows and columns, that is, flipping the elements about the main diagonal.
 \begin{defn}[Transpose]
-The transpose of an $m \times n$ matrix $A$, denoted as $A^T$, is formed according to the relation $A^T_{pq} = A_{qp}$, $1 \leq p \leq m$, $1 \leq q \leq n$, i.e.\ interchanging the row and column indices. Now $A^T$ is an $n \times m$ matrix.
+The transpose of an $m \times n$ matrix $A$, denoted as $A^T$, is formed according to the relation $[A^T]_{pq} = A_{qp}$, $1 \leq p \leq n$, $1 \leq q \leq m$, i.e.\ swapping the row and column indices. Now $A^T$ is an $n \times m$ matrix.
 \end{defn}
-Two examples are given below to show the outcome of applying transpose on matrices.
+Two examples are given below to show the effect of applying transpose on matrices.
 \begin{align*}
 A &= 
 \begin{bmatrix}
@@ -84,65 +87,63 @@ A &=
 1 & 4 \\
 2 & 5 \\
 3 & 6
-\end{bmatrix}
-\end{align*}
-\begin{align*}
+\end{bmatrix} \\
 B &= 
 \begin{tikzpicture}[baseline=-\the\dimexpr\fontdimen22\textfont2\relax]
 \matrix(mymatrix)[matrix of math nodes, left delimiter={[}, 
-right delimiter={]}, inner sep=3pt, outer sep=-5pt, nodes={text width=16pt, align=center}, ampersand replacement=\&]
+right delimiter={]}, row sep=2pt, column sep=-1pt, outer sep=-6pt, nodes={text width=14pt, align=center}, ampersand replacement=\&]
 {1 \& -4 \& 3 \\
 2 \& -2 \& 0 \\
 -3 \& 1 \& 4 \\};
-\draw (mymatrix-1-1.center) edge[dashed, thick, Red!80] (mymatrix-3-3.center);
-\draw (mymatrix-1-2.center) edge[dashed, Green!60, <->] (mymatrix-2-1.center);
-\draw (mymatrix-1-3.center) edge[dashed, Green!60, <->] (mymatrix-3-1.center);
-\draw (mymatrix-2-3.center) edge[dashed, Green!60, <->] (mymatrix-3-2.center);
+\draw (mymatrix-1-1.center) edge[dashed, thick, Red] (mymatrix-3-3.center);
+\draw (mymatrix-1-2.center) edge[dashed, Green, <->] (mymatrix-2-1.center);
+\draw (mymatrix-1-3.center) edge[dashed, Green, <->] (mymatrix-3-1.center);
+\draw (mymatrix-2-3.center) edge[dashed, Green, <->] (mymatrix-3-2.center);
 \end{tikzpicture}
 & B^T &= 
 \begin{tikzpicture}[baseline=-\the\dimexpr\fontdimen22\textfont2\relax]
 \matrix(mymatrix)[matrix of math nodes, left delimiter={[}, 
-right delimiter={]}, inner sep=3pt, outer sep=-5pt, nodes={text width=16pt, align=center}, ampersand replacement=\&]
+right delimiter={]}, row sep=2pt, column sep=-1pt, outer sep=-6pt, nodes={text width=14pt, align=center}, ampersand replacement=\&]
 {1 \& 2 \& -3 \\
 -4 \& -2 \& 1 \\
 3 \& 0 \& 4 \\};
-\draw (mymatrix-1-1.center) edge[dashed, thick, Red!80] (mymatrix-3-3.center);
-\draw (mymatrix-1-2.center) edge[dashed, Green!60, <->] (mymatrix-2-1.center);
-\draw (mymatrix-1-3.center) edge[dashed, Green!60, <->] (mymatrix-3-1.center);
-\draw (mymatrix-2-3.center) edge[dashed, Green!60, <->] (mymatrix-3-2.center);
+\draw (mymatrix-1-1.center) edge[dashed, thick, Red] (mymatrix-3-3.center);
+\draw (mymatrix-1-2.center) edge[dashed, Green, <->] (mymatrix-2-1.center);
+\draw (mymatrix-1-3.center) edge[dashed, Green, <->] (mymatrix-3-1.center);
+\draw (mymatrix-2-3.center) edge[dashed, Green, <->] (mymatrix-3-2.center);
 \end{tikzpicture}
 \end{align*}
-Particularly, in the second example, we have highlighted the main diagonal of $B$ (as well as $B^T$) and how the elements flip about it when transpose is carried out. Some useful properties about transpose are listed as follows.
+Particularly, in the second example, we have outlined the main diagonal of $B$ (as well as $B^T$) and how the elements flip about it when transpose is carried out. Some useful properties about transpose are listed as follows.
 \begin{proper}
 \label{proper:transp}
 For two matrices $A$ and $B$, we have
 \begin{enumerate}
-\item $(cA)^T = cA^T$, where $c$ is any constant,
-\item $(A^T)^T = A$, i.e.\ transposing twice returns the original matrix (which is obvious),
-\item $(A \pm B)^T = A^T \pm B^T$, if $A$ and $B$ have the same shape,
-\item $(AB)^T = B^TA^T$, if $A$ and $B$ are conformable,
+\item $(cA)^T = cA^T$, where $c$ is any constant;
+\item $(A^T)^T = A$, i.e.\ transposing twice returns the original matrix (which is obvious);
+\item $(A \pm B)^T = A^T \pm B^T$, if $A$ and $B$ have the same shape;
+\item $(AB)^T = B^TA^T$, if $A$ and $B$ are conformable;
 \item $A_{kk} = A^T_{kk}$ for any $k$ that $A_{kk}$ is defined, i.e.\ the main diagonal is unaffected by transpose.
 \end{enumerate}
 \end{proper}
-Short Exercise: Show that $(ABC)^T = C^TB^TA^T$ if the matrices have compatible shapes for the matrix product.\footnote{By (4), $(ABC)^T = ((AB)(C))^T = C^T(AB)^T = C^TB^TA^T$}
+Short Exercise: Show that $(ABC)^T = C^TB^TA^T$ if the matrices have compatible shapes for the matrix multiplcation.\footnote{By (4), $(ABC)^T = ((AB)(C))^T = C^T(AB)^T = C^TB^TA^T$}
 
 \subsection{Symmetric Matrices}
-A \index{Symmetric Matrix}\keywordhl{Symmetric Matrix} has its elements mirrored about the main diagonal. Taking transpose of such a matrix will leave it unchanged. Implicitly, it is required to be a square matrix.
+A \index{Symmetric Matrix}\keywordhl{symmetric matrix} has its elements mirrored about the main diagonal. Taking transpose of such a matrix will leave it unchanged. Implicitly, it is required to be a square matrix.
 \begin{defn}[Symmetric Matrix]
-If an $n \times n$ square matrix $A$ and its transpose $A^T$ are equal, i.e.\ $A_{pq} = A^T_{pq} = A_{qp}$ for all $1 \leq p, q \leq n$, or simply $A = A^T$, then $A$, and also $A^T$, are symmetric.
+If an $n \times n$ square matrix $A$ and its transpose $A^T$ are equal, i.e.\ $A_{pq} = [A^T]_{pq} = A_{qp}$ for all $1 \leq p, q \leq n$, or simply $A = A^T$, then $A$, and also $A^T$, are symmetric.
 \end{defn}
 As an example,
 \begin{flalign*}
 &\begin{bmatrix}
-1 & 2 & 2 \\
+1 & 2 & -2 \\
 2 & 0 & 4 \\
-2 & 4 & 3
+-2 & 4 & 3
 \end{bmatrix}&
 \end{flalign*}
 is a $3 \times 3$ symmetric matrix.\\
 \\
 Short Exercise: Show that $Y = XX^T$ and $Z = X^TX$ are symmetric for any matrix $X$.\footnote{By Properties \ref{proper:transp}, $Y^T = (XX^T)^T = (X^T)^T(X)^T = XX^T = Y$, similar goes for $Z = X^TX$.}\par
-In contrast, we have \index{Skew-symmetric Matrix}\keywordhl{Skew-symmetric Matrices} such that $A^T = -A$. This automatically requires that elements along the main diagonal to be all zeros.
+In contrast, we also have \index{Skew-symmetric Matrix}\keywordhl{skew-symmetric matrices} such that $A^T = -A$. This automatically requires elements along the main diagonal to be all zeros.
 \begin{flalign*}
 &\begin{bmatrix}
 0 & 2 & 1 \\
@@ -155,12 +156,18 @@ A $3 \times 3$ skew-symmetric matrix.
 \section{Inverses}
 \label{section:inv}
 \subsection{Definition and Properties of Inverses}
-\index{Inverse}\keywordhl{Inverse} of a square matrix, denoted by appending the superscript $^{-1}$, is another square matrix such that the matrix product between these two matrices yields an identity matrix.
+\index{Inverse}\keywordhl{Inverse} of a square matrix, denoted by appending the superscript $^{-1}$, is another square matrix such that the matrix product between these two matrices (in either order) yields an identity matrix.
 \begin{defn}[Inverse]
 \label{defn:inverse}
-An $n \times n$ square matrix $B$ is said to be the inverse of another $n \times n$ square matrix $A$ if $AB = BA = I_n$. Henceforth, we write $B = A^{-1}$, and $AA^{-1} = A^{-1}A = I$. The opposite direction also holds, i.e.\ $A$ is the inverse of $A^{-1}$. We say that $A$ and $A^{-1}$ are the inverse of each other.
+An $n \times n$ square matrix $B$ is said to be the inverse of another $n \times n$ square matrix $A$ if $AB = BA = I_n$. This inverse matrix is denoted as $B = A^{-1}$, and the relation becomes $AA^{-1} = A^{-1}A = I$. The opposite direction also holds, i.e.\ $A$ is the inverse of $A^{-1}$. Hence, we say that $A$ and $A^{-1}$ are the inverse of each other.
 \end{defn}
-If there exists an inverse $A^{-1}$ for the square matrix $A$, then both $A$ and $A^{-1}$ are called \index{Invertible}\keywordhl{Invertible}. Otherwise, $A$ is said to be \index{Singular}\keywordhl{Singular}. This is another situation in which a matrix product $AB = BA$ (if $B=A^{-1}$) can commute.\footnote{$AA^{-1} = I$ implies $A^{-1}A = I$ and vice versa. However, while looking innocent, to show this is prone to circular logic, and we have decided to avoid digging into it.} %We can show why $AA^{-1} = I$ implies $A^{-1}A = I$, or vice versa.
+If there exists an inverse $A^{-1}$ for the square matrix $A$, then both $A$ and $A^{-1}$ are called \index{Invertible}\keywordhl{invertible}. Otherwise, $A$ is said to be \index{Singular}\keywordhl{singular}. This is another situation in which a matrix product $AB = BA$ (if $B=A^{-1}$) can commute.\footnote{$AA^{-1} = I$ implies $A^{-1}A = I$ and vice versa. However, while looking innocent, showing this is actually not trivial. A heuristic way to "prove" it is to note that
+\begin{align*}
+AA^{-1} &= I \\
+AA^{-1}A &= IA \\
+A(A^{-1}A) &= A
+\end{align*}
+which implies that multiplying $A$ by $A^{-1}A$ returns $A$ itself, so it should be reasonable to assume $A^{-1}A = I$.}\par %We can show why $AA^{-1} = I$ implies $A^{-1}A = I$, or vice versa.
 %\begin{proof}
 %Assume only $AA^{-1} = I$ is true, then multiplying $A$ to the right on both sides of the equation leads to
 %\begin{align*}
@@ -170,7 +177,22 @@ If there exists an inverse $A^{-1}$ for the square matrix $A$, then both $A$ and
 %\end{align*}
 %where we write $P = A^{-1}A$. The above implies that multiplying $A$ by $P$ returns $A$ itself. We are tempted to claim that $P = I$ by observing Properties \ref{proper:identity}. However, it is not trivial to show that $P$ cannot be any matrix other than $I$, and to do so we have to wait until later chapters. Nevertheless, it is indeed true as long as $A$ is invertible. Therefore, $P = A^{-1}A = I$. The opposite direction is proved similarly.    
 %\end{proof}
-The inverse operation can be somehow viewed as taking the reciprocal in the world of matrices, and allows us to "divide" on both sides of a matrix equation provided the relevant inverse exists. In addition,
+In the last chapter, we only define addition, subtraction, and multiplication for matrices, omitting division like it is an elephant in the room. The inverse serves as a remedy for this by acting as the reciprocal in the world of matrices. This allows us to "divide" on both sides of a matrix equation provided the relevant inverse exists. Remember, in the last chapter, we mentioned that cancellation may not work for something like $AB = AC$. But if $A^{-1}$ exists, then by multiplying it to the left of both sides of the equation, we can effectively "divide by $A$" 
+\begin{align*}
+AB &= AC \\
+A^{-1}AB &= A^{-1}AC \\
+(A^{-1}A)B &= (A^{-1}A)C & \text{(Properties \ref{proper:matmul})} \\
+IB &= IC & \text{(Definition \ref{defn:inverse})} \\
+B &= C & \text{(Properties \ref{proper:identity})}
+\end{align*}
+so that cancellation holds in this situation. Take the matrix equation $AG = H$ as another example, if $A$ has an inverse $A^{-1}$, then we may do a matrix "division" as follows:
+\begin{align*}
+AG &= H \\
+A^{-1}AG &= A^{-1}H \\
+\textcolor{gray}{((A^{-1}A)G = IG =)} \; G &= A^{-1}H & 
+\text{(Properties \ref{proper:matmul} and \ref{proper:identity}, Definition \ref{defn:inverse})}
+\end{align*}
+In addition, the inverse of a matrix, if exists, must be unique.
 \begin{proper}[Uniqueness of Inverse]
 \label{proper:uniqueinverse}
 If $A$ has an inverse $A^{-1}$, it is unique.
@@ -223,7 +245,7 @@ AB &=
 0 & 1
 \end{bmatrix} = I_2
 \end{align*}
-It is easy to verify that $BA = I$ and the readers are invited to do so. Hence $AB = BA = I$, $A$ and $B$ are indeed the inverse of each other.
+We leave it to the readers for showing $BA = I$ too as an exercise. Hence, $AB = BA = I$, $A$ and $B$ are indeed the inverse of each other.
 \end{solution}
 
 The followings are some properties of inverses.
@@ -231,16 +253,16 @@ The followings are some properties of inverses.
 \label{proper:inverse}
 If a square matrix $A$ is invertible and has an inverse $A^{-1}$, then
 \begin{enumerate}
-\item $(cA)^{-1} = \frac{1}{c}A^{-1}$, for any constant $c \neq 0$,
-\item $(A^{-1})^{-1} = A$, i.e.\ the inverse of an inverse gives the original matrix,
-\item $(A^n)^{-1} = (A^{-1})^n$, for any positive integer $n$,
-\item $(AB)^{-1} = B^{-1}A^{-1}$, provided that $B$ is invertible too (and they are squares matrix of the same size),
+\item $(cA)^{-1} = \frac{1}{c}A^{-1}$, for any constant $c \neq 0$;
+\item $(A^{-1})^{-1} = A$, i.e.\ the inverse of an inverse returns the original matrix;
+\item $(A^n)^{-1} = (A^{-1})^n$, for any positive integer $n$;
+\item $(AB)^{-1} = B^{-1}A^{-1}$, provided that $B$ is invertible too (and they are square matrices of the same size);
 \item $(A^T)^{-1} = (A^{-1})^T$.
 \end{enumerate}
 \end{proper}
 However, $(A\pm B)^{-1}$ may not be equal to $A^{-1} \pm B^{-1}$, or even may be singular. We shall briefly prove (4) here.
 \begin{proof}
-It is given that $A$ and $B$ is invertible, and by Definition \ref{defn:inverse}, we have $AA^{-1} = I$ and 
+It is given that $A$ and $B$ is invertible, and by Definition \ref{defn:inverse}, we have $AA^{-1} = I$, as well as 
 \begin{align*}
 BB^{-1} = I    
 \end{align*}
@@ -252,21 +274,18 @@ AB(B^{-1}A^{-1}) &= (AI)A^{-1} = AA^{-1} & \text{(Properties \ref{proper:matmul}
 \end{align*}
 This shows that multiplying $AB$ by $B^{-1}A^{-1}$ produces an identity matrix, and therefore $(AB)^{-1} = B^{-1}A^{-1}$ is the unique inverse of $AB$ by Definition \ref{defn:inverse} and Properties \ref{proper:uniqueinverse}.
 \end{proof}
-Short Exercise: Show that $(ABC)^{-1} = C^{-1}B^{-1}A^{-1}$ if $A$, $B$ and $C$ are invertible and conformable.\footnote{By (4), $(ABC)^{-1} = ((AB)(C))^{-1} = C^{-1}(AB)^{-1} = C^{-1}B^{-1}A^{-1}$}\\
-\\
-(4) of Properties \ref{proper:inverse} explicitly shows that the product $AB$ is invertible if $A$ and $B$ are themselves invertible. We will show that the converse is true as well. Hence
+Short Exercise: Show that $(ABC)^{-1} = C^{-1}B^{-1}A^{-1}$ if $A$, $B$ and $C$ are invertible and conformable.\footnote{By (4), $(ABC)^{-1} = ((AB)(C))^{-1} = C^{-1}(AB)^{-1} = C^{-1}B^{-1}A^{-1}$}\par
+(4) of Properties \ref{proper:inverse} explicitly shows that the product $AB$ is invertible if $A$ and $B$ are themselves invertible. The converse is actually true as well. Hence
 \begin{proper}
 \label{proper:ABinv}
 For two square matrices $A$ and $B$, $AB$ is invertible if and only if $A$ and $B$ are invertible.
 \end{proper}
-\begin{proof}
-The "if" part is just (4) of Properties \ref{proper:inverse} and the "only if" part will be proved as follows. Let's assume $AB$ is invertible and has an inverse $C = (AB)^{-1}$, hence we have $(AB)C = I$ by Definition \ref{defn:inverse}, (notice that $A$, $B$, and $C$ are all square matrices of the same extent) and by Properties \ref{proper:matmul}, $A(BC) = I$. Using Definition \ref{defn:inverse} (as well as Properties \ref{proper:uniqueinverse}) again, we immediately identify $BC$ as the inverse of $A$ and $A$ is invertible. The case for $B$ is similarly proved.
-\end{proof}
 
 \subsection{(Reduced) Row Echelon Form}
-\label{Echelon}
-To find the inverse of any matrix, we have to understand a form of matrices called \index{Row Echelon Form}\index{Row Echelon Form!Reduced Row Echelon Form}\keywordhl{(Reduced) Row Echelon Form} first. The requirements of a matrix being in such a form are shown below.
+\label{section:echelon}
+Naturally, the next question is how to compute the inverse of any square matrix. For this, we have to understand a specific form of matrices called the \index{Row Echelon Form}\index{Row Echelon Form!Reduced Row Echelon Form}\keywordhl{(reduced) row echelon form} first. A matrix is in reduced row echelon form (\textit{rref}) when it satisfies the following requirements.
 \begin{defn}[(Reduced) Row Echelon Form]
+\label{defn:rref}
 A matrix is in row echelon form if
 \begin{enumerate}
 \item The first non-zero number in every row is $1$, which is known as the \textit{"Leading 1"} (sometimes referred to as a \textit{pivot}),
@@ -297,7 +316,7 @@ C &=
 \end{bmatrix}
 & D &=
 \begin{bmatrix}
-0 & \textcolor{red}{1} & 1 & 2 \\
+0 & \textcolor{red}{1} & 0 & 2 \\
 0 & 0 & 0 & \textcolor{red}{1} \\
 0 & 0 & 0 & 0
 \end{bmatrix}
@@ -317,7 +336,7 @@ Meanwhile, examples of \textit{reduced} row echelon form are
 0 & 0 & 0 & \textcolor{red}{1}
 \end{bmatrix}
 \end{align*}
-The following matrices are \textit{not} in row echelon form.
+The following matrices are \textit{not} in row echelon form. (why?)\footnote{$P$ violates (2) and $Q$ does not satisfy (1) and (3) of Definition \ref{defn:rref}.}
 \begin{align*}
 & P =
 \begin{bmatrix}
@@ -354,7 +373,7 @@ X &=
 0 & 0 & 1 
 \end{bmatrix}
 \end{align*}
-The next goal is to transform the matrix in question to reduced row echelon form by elementary row operations, whose importance will be demonstrated soon. The procedure is comprised of two major parts, \textit{Forward Phase}, converting the matrix to row echelon form, and \textit{Backward Phase}, further converting it to reduced row echelon form. The first phase is also named \index{Gaussian Elimination}\keywordhl{Gaussian Elimination}, and together they are called \index{Gaussian Elimination!Gauss-Jordan Elimination}\keywordhl{Gauss-Jordan Elimination}. We demonstrate the entire procedure using an example.
+We have studied about elementary row operations in the last chapter, which now can be used to transform matrices into their reduced row echelon form. The procedure is comprised of two major parts, the \textit{forward phase}, converting the matrix to row echelon form first, and the \textit{backward phase}, eventually transforming it into reduced row echelon form. The first phase is also named \index{Gaussian Elimination}\keywordhl{Gaussian Elimination}, and together they are called \index{Gaussian Elimination!Gauss-Jordan Elimination}\keywordhl{Gauss-Jordan Elimination}\footnote{Often we just write Gaussian Elimination in place of Gauss-Jordan Elimination.}. We demonstrate the entire procedure using an example.
 \begin{exmp}
 Carry out Gauss-Jordan Elimination on the following matrix to make it become reduced row echelon form.
 \begin{align*}
@@ -367,107 +386,108 @@ A =
 \end{align*}
 \end{exmp}
 \begin{solution}
-At each step of the forward phase, the strategy is to look at on the leftmost column that has at least one non-zero entries first (any column consisting of full zeros is ignored). Along that column, we either find an existing leading $1$, or create a leading $1$ via multiplying a suitable row having a starting entry $a$ that is as large as possible in magnitude, by the constant $1/a$.(The leading entry selected by this algorithm is exactly the \index{Pivot}\keywordhl{Pivot}, and the process is called \index{Pivot!Pivoting}\keywordhl{Pivoting}.) The row holding the leading $1$ is subsequently put at the top, by a row interchange if needed. Such a type of rows is highlighted in red during this example.
+At each step of the forward phase, the strategy is to look at on the leftmost column that has at least one non-zero entries (any column consisting of full zeros is ignored). Along that column, we either find an existing leading $1$, or create a leading $1$ via multiplying some row having a starting entry $a$ that is as large as possible in magnitude, by the constant $1/a$. (The leading entry selected by this algorithm is commonly called the \index{Pivot}\keywordhl{pivot}, and the process is called \index{Pivot!Pivoting}\keywordhl{pivoting}.) The row holding the leading $1$ is subsequently put at the top, by an interchanging of rows if needed. In this example, such rows will be highlighted in red.
 \begin{align*}
 \begin{bmatrix}
-2 & 0 & 4 & 6 \\
+2 & 1 & 4 & 6 \\
 3 & 3 & 1 & 0 \\
 1 & 2 & 3 & 4
 \end{bmatrix}
 &\to
 \begin{bmatrix}
-\textcolor{red}{1} & \textcolor{red}{0} & \textcolor{red}{2} & \textcolor{red}{3} \\
+\textcolor{red}{1} & \textcolor{red}{\frac{1}{2}} & \textcolor{red}{2} & \textcolor{red}{3} \\
 3 & 3 & 1 & 0 \\
 1 & 2 & 3 & 4
 \end{bmatrix}
 & \frac{1}{2}R_1 \to R_1
 \end{align*}
-We have picked $R_1$ here but a leading 1 can be obtained from $R_2$ or $R_3$ as well. Subsequently, we make all the elements below the leading $1$ along that pivotal column become zero, by adding the top row (holding the leading 1), times $-a_i$ (where $a_i$ is the corresponding leading entry of row $i$) to other rows. Those zeros formed in this way will be highlighted in blue.
+We have picked the first row $R_1$ for the leading 1 through multiplying it by a factor of $\frac{1}{2}$ here, but a leading 1 can be obtained from the other two rows as well. Subsequently, we make all the elements below the leading $1$ along that \textit{pivotal column} become zero, by adding the top row (which holds the leading 1), times $-a_i$ (where $a_i$ is the corresponding leading entry of row $i$) to the other rows. Those zeros produced in this way will be highlighted in blue.
 \begin{align*}
 \begin{bmatrix}
-\textcolor{red}{1} & \textcolor{red}{0} & \textcolor{red}{2} & \textcolor{red}{3} \\
+\textcolor{red}{1} & \textcolor{red}{\frac{1}{2}} & \textcolor{red}{2} & \textcolor{red}{3} \\
 3 & 3 & 1 & 0 \\
 1 & 2 & 3 & 4
 \end{bmatrix}
 &\to
 \begin{bmatrix}
-\textcolor{red}{1} & \textcolor{red}{0} & \textcolor{red}{2} & \textcolor{red}{3} \\
-\textcolor{blue}{0} & 3 & -5 & -9 \\
+\textcolor{red}{1} & \textcolor{red}{\frac{1}{2}} & \textcolor{red}{2} & \textcolor{red}{3} \\
+\textcolor{blue}{0} & \frac{3}{2} & -5 & -9 \\
 1 & 2 & 3 & 4
 \end{bmatrix}
 & R_2-3R_1 \to R_2 \\
 &\to
 \begin{bmatrix}
-\textcolor{red}{1} & \textcolor{red}{0} & \textcolor{red}{2} & \textcolor{red}{3} \\
-\textcolor{blue}{0} & 3 & -5 & -9 \\
-\textcolor{blue}{0} & 2 & 1 & 1
+\textcolor{red}{1} & \textcolor{red}{\frac{1}{2}} & \textcolor{red}{2} & \textcolor{red}{3} \\
+\textcolor{blue}{0} & \frac{3}{2} & -5 & -9 \\
+\textcolor{blue}{0} & \frac{3}{2} & 1 & 1
 \end{bmatrix}
 & R_3-R_1 \to R_3
 \end{align*}
-The first iteration is finished. We now repeat the same process over the remaining submatrix made up of elements that are not yet highlighted in colour, recursively.
+The first iteration is finished. We now repeat the same process over the remaining submatrix made up of elements that are not yet highlighted in colour, from left to right recursively.
 \begin{align*}
 \begin{bmatrix}
-\textcolor{red}{1} & \textcolor{red}{0} & \textcolor{red}{2} & \textcolor{red}{3} \\
-\textcolor{blue}{0} & 3 & -5 & -9 \\
-\textcolor{blue}{0} & 2 & 1 & 1
+\textcolor{red}{1} & \textcolor{red}{\frac{1}{2}} & \textcolor{red}{2} & \textcolor{red}{3} \\
+\textcolor{blue}{0} & \frac{3}{2} & -5 & -9 \\
+\textcolor{blue}{0} & \frac{3}{2} & 1 & 1
 \end{bmatrix}
 &\to
 \begin{bmatrix}
-\textcolor{red}{1} & \textcolor{red}{0} & \textcolor{red}{2} & \textcolor{red}{3} \\
-\textcolor{blue}{0} & \textcolor{red}{1} & \textcolor{red}{-\frac{5}{3}} & \textcolor{red}{-3} \\
-\textcolor{blue}{0} & 2 & 1 & 1
+\textcolor{red}{1} & \textcolor{red}{\frac{1}{2}} & \textcolor{red}{2} & \textcolor{red}{3} \\
+\textcolor{blue}{0} & \textcolor{red}{1} & \textcolor{red}{-\frac{10}{3}} & \textcolor{red}{-6} \\
+\textcolor{blue}{0} & \frac{3}{2} & 1 & 1
 \end{bmatrix}
-& \frac{1}{3}R_2 \to R_2 \\
+& \frac{2}{3}R_2 \to R_2 \\
 &\to
 \begin{bmatrix}
-\textcolor{red}{1} & \textcolor{red}{0} & \textcolor{red}{2} & \textcolor{red}{3} \\
-\textcolor{blue}{0} & \textcolor{red}{1} & \textcolor{red}{-\frac{5}{3}} & \textcolor{red}{-3} \\
-\textcolor{blue}{0} & \textcolor{blue}{0} & \frac{13}{3} & 7
+\textcolor{red}{1} & \textcolor{red}{\frac{1}{2}} & \textcolor{red}{2} & \textcolor{red}{3} \\
+\textcolor{blue}{0} & \textcolor{red}{1} & \textcolor{red}{-\frac{10}{3}} & \textcolor{red}{-6} \\
+\textcolor{blue}{0} & \textcolor{blue}{0} & 6 & 10
 \end{bmatrix}
-& R_3-2R_2 \to R_3 \\
+& R_3-\frac{3}{2}R_2 \to R_3 \\
 &\to
 \begin{bmatrix}
-\textcolor{red}{1} & \textcolor{red}{0} & \textcolor{red}{2} & \textcolor{red}{3} \\
-\textcolor{blue}{0} & \textcolor{red}{1} & \textcolor{red}{-\frac{5}{3}} & \textcolor{red}{-3} \\
-\textcolor{blue}{0} & \textcolor{blue}{0} & \textcolor{red}{1} & \textcolor{red}{\frac{21}{13}}
+\textcolor{red}{1} & \textcolor{red}{\frac{1}{2}} & \textcolor{red}{2} & \textcolor{red}{3} \\
+\textcolor{blue}{0} & \textcolor{red}{1} & \textcolor{red}{-\frac{10}{3}} & \textcolor{red}{-6} \\
+\textcolor{blue}{0} & \textcolor{blue}{0} & \textcolor{red}{1} & \textcolor{red}{\frac{5}{3}}
 \end{bmatrix}
-& \frac{3}{13}R_3 \to R_3 
+& \frac{1}{6}R_3 \to R_3 
 \end{align*}
-Now, below every leading $1$, all entries are zeros, indicating the forward phase is completed. We have obtained the row echelon form as an intermediate. The backward phase is done similarly but in a bottom up fashion. By adding some multiples of lower rows to higher rows, we turn all the non-zero elements above the leading $1$ along every pivotal column into zeros. Non-pivotal columns are ignored.
+Now, all entries below every leading $1$ are zeros, and the forward phase is completed. We have obtained the row echelon form as an intermediate product. The backward phase is done similarly but in a bottom-up fashion, from right to left. By adding appropriate multiples of lower rows to higher rows, we turn all the non-zero elements above the leading $1$ along every pivotal column into zeros. Non-pivotal columns (the last column here) are ignored.
 \begin{align*}
 \begin{bmatrix}
-1 & 0 & 2 & 3 \\
-0 & 1 & -\frac{5}{3} & -3 \\
-0 & 0 & 1 & \frac{21}{13}
+1 & \frac{1}{2} & 2 & 3 \\
+0 & 1 & -\frac{10}{3} & -6 \\
+0 & 0 & 1 & \frac{5}{3}
 \end{bmatrix} 
 &\to
 \begin{bmatrix}
-1 & 0 & 2 & 3 \\
-0 & 1 & 0 & -\frac{4}{13} \\
-0 & 0 & 1 & \frac{21}{13}
+1 & \frac{1}{2} & 2 & 3 \\
+0 & 1 & 0 & -\frac{4}{9} \\
+0 & 0 & 1 & \frac{5}{3}
 \end{bmatrix} 
-& R_2 + \frac{5}{3}R_3 \to R_2 \\
+& R_2 + \frac{10}{3}R_3 \to R_2 \\
 &\to
 \begin{bmatrix}
-1 & 0 & 0 & -\frac{3}{13} \\
-0 & 1 & 0 & -\frac{4}{13} \\
-0 & 0 & 1 & \frac{21}{13}
+1 & \frac{1}{2} & 0 & -\frac{1}{3} \\
+0 & 1 & 0 & -\frac{4}{9} \\
+0 & 0 & 1 & \frac{5}{3}
 \end{bmatrix} 
-& R_1 - 2R_3 \to R_1
+& R_2 - 2R_3 \to R_1 \\
+&\to
+\begin{bmatrix}
+1 & 0 & 0 & -\frac{1}{9} \\
+0 & 1 & 0 & -\frac{4}{9} \\
+0 & 0 & 1 & \frac{5}{3}
+\end{bmatrix} 
+& R_1 - \frac{1}{2}R_2 \to R_1
 \end{align*}
-The matrix is now in reduced row echelon form as required. The amount of leading 1s in the reduced row echelon form of the matrix is known as its \textit{rank}, which equals to $3$ here.
+The matrix is now in reduced row echelon form as required. The amount of leading 1s in the rref of the matrix is known as its \textit{rank}, which equals to $3$ here.
 \end{solution}
-Short Exercise: Repeat the example but start by interchanging $R_1$ and $R_3$.\footnote{For checking, after the first iteration, it will be
-\begin{align*}
-\begin{bmatrix}
-1 & 2 & 3 & 4 \\
-0 & -3 & -8 & -12 \\
-0 & -4 & -2 & -2
-\end{bmatrix}    
-\end{align*}
+Short Exercise: Repeat the example above but start by interchanging $R_1$ and $R_3$.\footnote{For checking, after the first iteration, it will be
+(WIP)
 and the end result will be the same.}\\
 \\
-From the short exercise above, we can see that even if we apply different elementary row operations (particularly for the creation of a leading 1) during Gauss-Jordan Elimination, we will acquire the same reduced echelon form in the end. In fact,
+From the short exercise above, we can see that even if we apply different elementary row operations (particularly for the creation of leading 1s) during Gauss-Jordan Elimination, we will acquire the same reduced echelon form in the end. In fact,
 \begin{thm}[Uniqueness of Reduced Row Echelon Form]
 \label{thm:uniquerref}
 Reduced row echelon form of a matrix is unique.
@@ -475,12 +495,12 @@ Reduced row echelon form of a matrix is unique.
 We shall omit the proof here. The following properties further reveal how elementary row operations are associated with reduced row echelon form.
 \begin{proper}
 \label{proper:rowequiv}
-If a matrix can be transformed into another matrix by elementary row operations, they are said to be \index{Row Equivalent}\keywordhl{Row Equivalent}.
+If a matrix can be transformed into another matrix by elementary row operations, they are said to be \index{Row Equivalent}\keywordhl{row equivalent}.
 \end{proper}
-Since for any pair of row equivalent matrices, either of them can be transformed into the other one by elementary row operations, and hence can be further transformed into the reduced row echelon form of the other matrix, by Theorem \ref{thm:uniquerref}, the uniqueness of reduced row echelon form implies that
+Since for any pair of row equivalent matrices, either of them can be transformed into the other one by elementary row operations, and hence can be further transformed into the reduced row echelon form of the other matrix, by Theorem \ref{thm:uniquerref}, the uniqueness of rref implies that
 \begin{proper}
 \label{proper:rowequivreduce}
-Row equivalent matrices have the same reduced row echelon form. Particularly, they are row equivalent to their own reduced row echelon form. If two matrices have different reduced row echelon forms, then they are not row equivalent, and vice versa.
+Row equivalent matrices have the same reduced row echelon form. Particularly, they are row equivalent to this rref. If two matrices have different reduced row echelon forms, then they are not row equivalent, and vice versa.
 \end{proper}
 Let's go through one more simple example about Gauss-Jordan Elimination.
 \begin{exmp}
@@ -499,14 +519,14 @@ A =
 \begin{solution}
 One possible way to do the forward elimination is
 \begin{align*}
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 2 & 2 & 1 \\
 6 & 4 & 1 \\
 2 & 3 & 2 \\
 2 & 1 & 0
 \end{array}\right]
 &\to
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 6 & 4 & 1 \\
 2 & 2 & 1 \\
 2 & 3 & 2 \\
@@ -514,7 +534,7 @@ One possible way to do the forward elimination is
 \end{array}\right]
 & R_1 \leftrightarrow R_2 \\
 &\to
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & \frac{2}{3} & \frac{1}{6} \\
 2 & 2 & 1 \\
 2 & 3 & 2 \\
@@ -522,7 +542,7 @@ One possible way to do the forward elimination is
 \end{array}\right]
 & \frac{1}{6}R_1 \to R_1 \\
 &\to
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & \frac{2}{3} & \frac{1}{6} \\
 0 & \frac{2}{3} & \frac{2}{3} \\
 0 & \frac{5}{3} & \frac{5}{3} \\
@@ -535,7 +555,7 @@ R_3 - 2R_1 &\to R_3 \\
 R_4 - 2R_1 &\to R_4 
 \end{aligned}\\
 &\to
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & \frac{2}{3} & \frac{1}{6} \\
 0 & 1 & 1 \\
 0 & \frac{5}{3} & \frac{5}{3} \\
@@ -543,7 +563,7 @@ R_4 - 2R_1 &\to R_4
 \end{array}\right]
 & \frac{3}{2}R_2 \to R_2 \\
 &\to
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & \frac{2}{3} & \frac{1}{6} \\
 0 & 1 & 1 \\
 0 & 0 & 0 \\
@@ -555,16 +575,16 @@ R_3 - \frac{5}{3}R_2 &\to R_3\\
 R_4 + \frac{1}{3}R_2 &\to R_4     
 \end{aligned}
 \end{align*}
-The backward elimination is simple.
+The backward elimination is straight-forward.
 \begin{align*}
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & \frac{2}{3} & \frac{1}{6} \\
 0 & 1 & 1 \\
 0 & 0 & 0 \\
 0 & 0 & 0
 \end{array}\right] 
 &\to
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & 0 & -\frac{1}{2} \\
 0 & 1 & 1 \\
 0 & 0 & 0 \\
@@ -577,7 +597,7 @@ The rank of the matrix can be readily seen to be $2$.
 
 \subsection{Finding Inverses by Gaussian Elimination}
 \label{subsection:invGauss}
-With Gaussian Elimination, obtaining the inverse $A^{-1}$ of any invertible matrix $A$ is straight-forward. We start by writing out an identity matrix $I$ of the same extent and concatenate this identity matrix to the right of $A$, leading to a form of $[A|I]$. Then we carry out elementary row operations simultaneously on both sides of $[A|I]$ such that the matrix to the left, originally as $A$, is reduced to the identity matrix $I$ by Gaussian Elimination. The identity matrix to the right will then be transformed into the desired inverse by the same set of elementary operations, such that the concatenated matrix will appear as $[I|A^{-1}]$, 
+With Gaussian Elimination, obtaining the inverse $A^{-1}$ of any invertible matrix $A$ is now possible. We start by writing out an identity matrix $I$ of the same shape and concatenate this identity matrix to the right of $A$, leading to an augmented form of $[A|I]$. Then we carry out elementary row operations simultaneously on both sides of $[A|I]$ such that the matrix to the left, originally as $A$, is reduced to the identity matrix $I$ by Gaussian Elimination. The identity matrix to the right will then be transformed into the desired inverse by the same set of elementary operations, such that the concatenated matrix will appear as $[I|A^{-1}]$, 
 \begin{exmp}
 Find the inverse of
 \begin{align*}
@@ -593,37 +613,37 @@ by Gaussian Elimination
 \begin{solution}
 Appending an $3 \times 3$ identity matrix to the right, we have
 \begin{align*}
-\left[\begin{array}{@{}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & 4 & 5 & 1 & 0 & 0 \\
 0 & 2 & 3 & 0 & 1 & 0 \\
 0 & 1 & 1 & 0 & 0 & 1
 \end{array}\right] 
 & \to
-\left[\begin{array}{@{}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & 4 & 5 & 1 & 0 & 0 \\
 0 & 0 & 1 & 0 & 1 & -2 \\
 0 & 1 & 1 & 0 & 0 & 1
 \end{array}\right] & R_2 - 2R_3 \to R_2 \\
 & \to
-\left[\begin{array}{@{}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & 4 & 5 & 1 & 0 & 0 \\
 0 & 1 & 1 & 0 & 0 & 1 \\
 0 & 0 & 1 & 0 & 1 & -2 
 \end{array}\right] & R_2 \leftrightarrow R_3 \\
 & \to
-\left[\begin{array}{@{}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & 4 & 5 & 1 & 0 & 0 \\
 0 & 1 & 0 & 0 & -1 & 3 \\
 0 & 0 & 1 & 0 & 1 & -2 
 \end{array}\right] & R_2 - R_3 \to R_2 \\
 & \to
-\left[\begin{array}{@{}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & 4 & 0 & 1 & -5 & 10 \\
 0 & 1 & 0 & 0 & -1 & 3 \\
 0 & 0 & 1 & 0 & 1 & -2 
 \end{array}\right] & R_1 - 5R_3 \to R_1 \\
 & \to
-\left[\begin{array}{@{}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}wc{10pt}@{\;}}
+\left[\begin{array}{@{}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & 0 & 0 & 1 & -1 & -2 \\
 0 & 1 & 0 & 0 & -1 & 3 \\
 0 & 0 & 1 & 0 & 1 & -2 
@@ -639,21 +659,20 @@ A^{-1} =
 \end{bmatrix}    
 \end{align*}
 \end{solution}
-Short Exercise: Find the inverse of $A^{-1}$ above by the same method. \footnote{You should be able to retrieve the matrix $A$ back.}\\
-\\
-The underlying reason why the above procedure can produce the inverse matrix is the equivalence between elementary row operations and multiplication by appropriate \index{Elementary Matrix}\keywordhl{Elementary Matrices}.
+Short Exercise: Verify the inverse of $A^{-1}$ above is just $A$ by the same method. \footnote{You should be able to retrieve the matrix $A$ back. The first column of $A^{-1}$ already holds a leading 1 and elements below which are zeros. A possible next step is to multiply $R_2$ by $-1$ and then subtract $R_3$ by $R_2$.}\par
+The underlying reason why the above procedure can produce the inverse matrix is the equivalence between elementary row operations and multiplication by appropriate \index{Elementary Matrix}\keywordhl{elementary matrices}.
 \begin{proper}[Elementary Matrices]
 \label{proper:elementarymat}
-Any elementary row operation can be represented by multiplying to the left with a suitable elementary matrix. Such a matrix is essentially the one formed after applying that particular elementary row operation on an identity matrix. For the three types of elementary row operations described in Definition \ref{defn:elerowop}
+Any elementary row operation on an $m \times n$ matrix can be represented by multiplying it to the left with a suitable \textit{elementary matrix}. Such a matrix is essentially the one appeared after applying that particular elementary row operation on an identity matrix. For the three types of elementary row operations described in Definition \ref{defn:elerowop}:
 \begin{enumerate}
 \item $cR_{p} \to R_{p}$, $c \neq 0$,
 \item $R_{p} + cR_{q} \to R_{p}$,
 \item $R_{p} \leftrightarrow R_{q}$
 \end{enumerate}
-The corresponding elementary matrices $E$ are square, and \textit{invertible} (see the remark below) matrices with
+their corresponding elementary matrices $E$ are square ($m \times m$), and \textit{invertible} (see the following remark) in which
 \begin{enumerate}
-\item $E_{kk} = 1$ for any $k$, except $E_{pp} = c$,
-\item $E_{kk} = 1$ for all $k$, with $E_{pq} = c$,
+\item $E_{kk} = 1$ for any $k$, except $E_{pp} = c$;
+\item $E_{kk} = 1$ for all $k$, with $E_{pq} = c$;
 \item $E_{kk} = 1$ for any $k$, except $E_{pp} = 0$ and $E_{qq} = 0$, with $E_{pq} = E_{qp} = 1$. 
 \end{enumerate}
 Entries not mentioned are all zeros.
@@ -665,21 +684,22 @@ Since it is quite abstract, it is useful to have some actual examples.
 1 & 0 & 0 \\
 0 & 2 & 0 \\
 0 & 0 & 1
-\end{bmatrix} & \text{Multiplying $R_2$ by a factor of $2$}, 2R_2 \to R_2 \\
+\end{bmatrix} & \text{Multiplying $R_2$ by a factor of $2$: } 2R_2 \to R_2 \\
 &
 \begin{bmatrix}
 1 & 3 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
-\end{bmatrix} & \text{Adding 3 times $R_2$ to $R_1$}, R_1 + 3R_2 \to R_1 \\
+\end{bmatrix} & \text{Adding 3 times $R_2$ to $R_1$: } R_1 + 3R_2 \to R_1 \\
 &
 \begin{bmatrix}
 0 & 0 & 1 \\
 0 & 1 & 0 \\
 1 & 0 & 0
-\end{bmatrix} & \text{Swapping $R_1$ and $R_3$}, R_1 \leftrightarrow R_3 
+\end{bmatrix} & \text{Swapping $R_1$ and $R_3$: } R_1 \leftrightarrow R_3 
 \end{align*}
 Any elementary row operation can be apparently undone by an inverse elementary row operation (addition vs subtraction, multiplication vs division ($c \neq 0$), swapping twice). Accordingly, any elementary matrix has another corresponding elementary matrix as its inverse, and the readers are invited to think about their forms in the exercise below. \\
+\\
 Short Exercise: Write down the inverses of the three example elementary matrices above.\footnote{$
 \begin{bmatrix}
 1 & 0 & 0 \\
@@ -724,16 +744,16 @@ then the action of subtracting $R_2$ from $R_3$, $R_3 - R_2 \to R_3$. can be exp
 -3 & -5 & 1
 \end{bmatrix} 
 \end{align*}
-Short Exercise: Find out the $3 \times 3$ elementary matrix for subtracting $4$ times the first row from the third row. What happens when we apply that to the left of the matrix above? \footnote{$
+Short Exercise: Find out the $3 \times 3$ elementary matrix for subtracting $2$ times the third row from the first row. What happens when we apply this elementary matrix to the left of the matrix above? \footnote{$
 \begin{bmatrix}
-1 & 0 & 0 \\
+1 & 0 & -2 \\
 0 & 1 & 0 \\
--4 & 0 & 1
-\end{bmatrix}
-$: $\begin{bmatrix}
-1 & 0 & 0 \\
+0 & 0 & 1
+\end{bmatrix}$:  
+$\begin{bmatrix}
+1 & 0 & -2 \\
 0 & 1 & 0 \\
--4 & 0 & 1
+0 & 0 & 1
 \end{bmatrix}
 \begin{bmatrix}
 1 & 4 & 3 \\
@@ -742,9 +762,9 @@ $: $\begin{bmatrix}
 \end{bmatrix}
 =
 \begin{bmatrix}
-1 & 4 & 3 \\
+7 & 14 & 1 \\
 2 & 5 & 1 \\
--7 & -21 & -11
+-3 & -5 & 1
 \end{bmatrix}
 $}\par
 Now we are ready to see why finding inverses by Gaussian Elimination works.
@@ -754,19 +774,21 @@ If a matrix $A$ can be converted to an identity matrix $I$ as its reduced row ec
 \end{thm}
 Using the language of Properties \ref{proper:rowequivreduce}, the matrix $A$ has to be row equivalent to $I$ for $A^{-1}$ to exist. This also means if Gaussian Elimination fails to reduce $A$ to $I$ (i.e.\ the reduced row echelon form of $A$ is some matrix other than the identity), then $A^{-1}$ does not exist.
 \begin{proof}
-Assume $A$ is invertible and hence $AA^{-1} = I$ (Definition \ref{defn:inverse}). From Properties \ref{proper:elementarymat}, When doing Gaussian Elimination over $A$, the $i$-th elementary row operation executed can be represented by an elementary matrix, denoted as $E_{i}$, $i = 1,2,\ldots,n$ where $n$ is the total number of steps. If we multiply these $E_{i}$ successively to the left on both sides of the equation $AA^{-1} = I$, we have
+Assume $A$ is invertible and hence $AA^{-1} = I$ (Definition \ref{defn:inverse}). From Properties \ref{proper:elementarymat}, When doing Gaussian Elimination over $A$, the $i$-th elementary row operation executed can be represented by an elementary matrix, denoted as $E_{i}$, for $i = 1,2,\ldots,n$ where $n$ is the total number of steps. If we multiply these $E_{i}$ successively to the left on both sides of the equation $AA^{-1} = I$, we have
 \begin{align*}
-E_n \cdots E_{3}E_{2}E_{1} AA^{-1} = (E_n \cdots E_{3}E_{2}E_{1}A) A^{-1} &= E_n \cdots E_{3}E_{2}E_{1}I \\
-A^{-1} = (I)A^{-1} &= (E_n \cdots E_{3}E_{2}E_{1})I
+E_n \cdots E_{3}E_{2}E_{1} AA^{-1} &= E_n \cdots E_{3}E_{2}E_{1}I \\
+(E_n \cdots E_{3}E_{2}E_{1}A) A^{-1} &= E_n \cdots E_{3}E_{2}E_{1}I & \text{(Properties \ref{proper:matmul})} \\
+(I)A^{-1} &= E_n \cdots E_{3}E_{2}E_{1}I \\
+A^{-1} &= E_n \cdots E_{3}E_{2}E_{1}I & \text{(Properties \ref{proper:identity})}
 \end{align*}
-$E_n \cdots E_{3}E_{2}E_{1}A = I$ because the elementary row operations represented by $E_i$, $i = 1,2,\ldots,n$, reduce $A$ to $I$ during Gaussian Elimination as we demand. With $A^{-1} = E_n \cdots E_{3}E_{2}E_{1}I$, we claim that the same set of equivalent elementary row operations can also transform $I$ into $A^{-1}$ and this explicitly shows that $A$ is invertible.    
+from the second line to the third line, we have $E_n \cdots E_{3}E_{2}E_{1}A = I$ because the elementary row operations during Gaussian Elimination, represented by $E_i$, $i = 1,2,\ldots,n$, reduce $A$ to $I$ as we demand in the assumption. With $A^{-1} = E_n \cdots E_{3}E_{2}E_{1}I$, we immediately see that the same set of elementary matrices and hence elementary row operations can also transform $I$ into $A^{-1}$, explicitly showing that $A$ is invertible.    
 \end{proof}
 As a corollary, because we have $E_n \cdots E_{3}E_{2}E_{1}A = I$ from above, and all $E_i$ are invertible by Properties \ref{proper:elementarymat}, we can multiply their inverses $E'_i = E_i^{-1}$ (which are also elementary matrices), to the left on both sides successively, where $i$ runs backwards from $n$ to $1$. This leads to
 \begin{align*}
 E_{1}^{-1}E_{2}^{-1}E_{3}^{-1}\cdots E_n^{-1}E_n \cdots E_{3}E_{2}E_{1}A &= E_{1}^{-1}E_{2}^{-1}E_{3}^{-1}\cdots E_n^{-1}I \\
 A &= E'_{1}E'_{2}E'_{3}\cdots E'_n
 \end{align*}
-as each of $E_n^{-1}E_n$, $E_{n-1}^{-1}E_{n-1}$, $\ldots$, $E_2^{-1}E_2$, $E_1^{-1}E_1$ cancels out to produce $I$ and hence
+as each of the pairs $E_n^{-1}E_n$, $E_{n-1}^{-1}E_{n-1}$, $\ldots$, $E_2^{-1}E_2$, $E_1^{-1}E_1$ cancels out to produce $I$, and hence
 \begin{proper}
 \label{proper:invseqelement}
 All invertible matrices can be written as a product of some sequence of elementary matrices. 
@@ -775,7 +797,7 @@ All invertible matrices can be written as a product of some sequence of elementa
 \section{Determinants}
 \label{section:det}
 \subsection{Computing Determinants}
-\index{Determinant}\keywordhl{Determinant} of a \textit{square} matrix $A$, denoted by det($A$) or $|A|$, is a number associated with certain intrinsic properties of the matrix which can help us to find its inverse (determinant of non-square matrix is undefined). Determinant of a $1 \times 1$ matrix is equal to the matrix's only entry. Determinants of $2 \times 2$ and $3 \times 3$ matrices can be calculated by a trick called \index{Sarrus' Rule}\keywordhl{Sarrus' Rule}.
+The \index{Determinant}\keywordhl{determinant} of a \textit{square} matrix $A$, denoted by det($A$) or $|A|$, is a number associated with certain intrinsic properties of the matrix which can help us to find its inverse (Determinant of non-square matrices is undefined). Determinant of a $1 \times 1$ matrix is equal to the matrix's only entry. Determinants of $2 \times 2$ and $3 \times 3$ matrices can be calculated by a trick called \index{Sarrus' Rule}\keywordhl{Sarrus' Rule}.
 \subsubsection{Sarrus' Rule}
 \begin{proper}[Sarrus' Rule]
 \label{proper:sarrus}
@@ -797,8 +819,8 @@ a_{21} & a_{22} \\ };
 \path
 ($(sarrus-1-1.north west)-(0.5em,0)$) edge[thick] ($(sarrus-2-1.south west)-(0.5em,0)$)
 ($(sarrus-1-2.north east)+(0.5em,0)$) edge[thick] ($(sarrus-2-2.south east)+(0.5em,0)$)
-(sarrus-1-1.center)                          edge[red, ->]           (sarrus-2-2.south east)
-(sarrus-2-1.center)                          edge[blue, ->, dashed]  (sarrus-1-2.north east);
+(sarrus-1-1.center)                          edge[red, line width=1, ->]           (sarrus-2-2.south east)
+(sarrus-2-1.center)                          edge[blue, line width=1, ->, dashed]  (sarrus-1-2.north east);
 \end{tikzpicture}
 \end{center}
 \vspace{-25pt}
@@ -814,7 +836,7 @@ a_{21} & a_{22} & a_{23} \\
 a_{31} & a_{32} & a_{33}
 \end{bmatrix} 
 \end{align*}
-Its determinant is found by
+Its determinant can be found by
 \begin{center}
 \begin{tikzpicture}
 \matrix[matrix of math nodes, inner sep=5pt, outer sep=-5pt] (sarrus) 
@@ -824,18 +846,12 @@ a_{31} & a_{32} & a_{33} & \textcolor{gray}{a_{31}} & \textcolor{gray}{a_{32}} \
 \path
 ($(sarrus-1-1.north west)-(0.5em,0)$) edge[thick] ($(sarrus-3-1.south west)-(0.5em,0)$)
 ($(sarrus-1-3.north east)+(0.5em,0)$) edge[thick] ($(sarrus-3-3.south east)+(0.5em,0)$)
-(sarrus-1-1.center)                          edge[red]               (sarrus-2-2.center)
-(sarrus-2-2.center)                          edge[red, ->]           (sarrus-3-3.south east)
-(sarrus-1-2.center)                          edge[red]               (sarrus-2-3.center)
-(sarrus-2-3.center)                          edge[red, ->]           (sarrus-3-4.south east)
-(sarrus-1-3.center)                          edge[red]               (sarrus-2-4.center)
-(sarrus-2-4.center)                          edge[red, ->]           (sarrus-3-5.south east)
-(sarrus-3-1.center)                          edge[blue, dashed]      (sarrus-2-2.center)
-(sarrus-2-2.center)                          edge[blue, ->, dashed]  (sarrus-1-3.north east)
-(sarrus-3-2.center)                          edge[blue, dashed]      (sarrus-2-3.center)
-(sarrus-2-3.center)                          edge[blue, ->, dashed]  (sarrus-1-4.north east)
-(sarrus-3-3.center)                          edge[dashed]            (sarrus-2-4.center)
-(sarrus-2-4.center)                          edge[blue, ->, dashed]  (sarrus-1-5.north east);
+(sarrus-1-1.center)                          edge[red, line width=1, ->]           (sarrus-3-3.south east)
+(sarrus-1-2.center)                          edge[red, line width=1, ->]           (sarrus-3-4.south east)
+(sarrus-1-3.center)                          edge[red, line width=1, ->]           (sarrus-3-5.south east)
+(sarrus-3-1.center)                          edge[blue, line width=1, ->, dashed]  (sarrus-1-3.north east)
+(sarrus-3-2.center)                          edge[blue, line width=1, ->, dashed]  (sarrus-1-4.north east)
+(sarrus-3-3.center)                          edge[blue, line width=1, ->, dashed]  (sarrus-1-5.north east);
 \end{tikzpicture}
 \end{center}
 \vspace{-25pt}
@@ -857,7 +873,7 @@ A &=
 \end{align*}
 \end{exmp}
 \begin{solution}
-By Sarrus's Rule, we have
+By Sarrus's Rule (Properties \ref{proper:sarrus}), we have
 \begin{align*}
 |A| &=
 \begin{vmatrix}
@@ -876,7 +892,7 @@ By Sarrus's Rule, we have
 Another commonly used method to calculate determinants is \textit{Cofactor Expansion}, also known as \textit{Laplace Expansion}. Before discussing cofactor expansion, it is necessary to know what \textit{cofactors} are.
 \begin{defn}[Cofactor and Minor]
 \label{defn:cofactor}
-\index{Cofactor}\keywordhl{Cofactor} $C_{ij}$ at $(i, j)$ of a matrix $A$ is simply the determinant of the submatrix formed by deleting the $i$-th row and $j$-th column of $A$, which is called \index{Minor}\keywordhl{Minor} at $(i, j)$ $M_{ij}$, times the factor of $(-1)^{i+j}$. Mathematically, $C_{ij} = (-1)^{i+j} M_{ij}$.
+The \index{Cofactor}\keywordhl{cofactor} $C_{ij}$ at the $(i, j)$ position of a matrix $A$ is simply the determinant of the submatrix formed by deleting the $i$-th row and $j$-th column of $A$: $M_{ij}$ (called the \index{Minor}\keywordhl{minor} at $(i, j)$), times the factor of $(-1)^{i+j}$, that is, $C_{ij} = (-1)^{i+j} M_{ij}$.
 \end{defn}
 The $(-1)^{i+j}$ factor can be visualized as a checkerboard pattern like
 \begin{align*}
@@ -890,7 +906,7 @@ The $(-1)^{i+j}$ factor can be visualized as a checkerboard pattern like
 So, for a matrix like
 \begin{center}
 \begin{tikzpicture}
-\matrix[matrix of math nodes, inner sep=4pt, outer sep=-4pt, left delimiter={[}, right delimiter={]}] (cofactor) 
+\matrix[matrix of math nodes, inner sep=3.5pt, outer sep=-4pt, left delimiter={[}, right delimiter={]}] (cofactor) 
 {1 & \textcolor{blue}{3} & \textcolor{blue}{5} \\
 2 & 4 & 6 \\
 3 & \textcolor{blue}{5} & \textcolor{blue}{7} \\ };
@@ -909,22 +925,25 @@ C_{21} &= (-1)^{(2+1)}
 &= (-1)((3)(7) - (5)(5)) & \text{(Properties \ref{proper:sarrus})} \\
 &= 4
 \end{align*}
-Short Exercise: Find $C_{13}$ and $C_{32}$ for the matrix above.\footnote{$C_{13} = -2$, $C_{32} = 4$}\\
+Short Exercise: Find $C_{13}$ and $C_{32}$ for the matrix above.\footnote{$C_{13} = (-1)^{1+3}\begin{vmatrix}
+2 & 4 \\
+3 & 5
+\end{vmatrix} = (1)((2)(5)-(3)(4)) = -2$, similarly $C_{32} = 4$.}\\
 \\
-With \index{Cofactor Expansion}\index{Laplace Expansion}\keywordhl{Cofactor (Laplace) Expansion}, the determinant is computed as the sum of products between each entry and the corresponding cofactor along a picked row/column.
+With \index{Cofactor Expansion}\index{Laplace Expansion}\keywordhl{Cofactor (Laplace) Expansion}, the determinant of a matrix is computed as the sum of products between each entry and the corresponding cofactor along a picked row/column of it.
 \begin{proper}[Cofactor/Laplace Expansion]
 \label{proper:cofactorex}
-The determinant of a $n \times n$ square matrix $A$, $|A|$, can be found by selecting either a fixed row $i$, or column $j$, and adding up the products of every element-cofactor pair along that row/column. For the former case, the determinant is computed as
+The determinant of a $n \times n$ square matrix $A$, $|A|$, can be found by selecting either a fixed row $i$, or column $j$, and adding up the products of every element-cofactor pair along that row/column. For the former case (selected the $i$-th row), the determinant is computed as
 \begin{align*}
 |A| &= A_{i1}C_{i1} + A_{i2}C_{i2} + \cdots + A_{in}C_{in} \\
 &= \sum_{k=1}^{n} A_{ik}C_{ik}
 \end{align*}
-For the latter case, the determinant is similarly found by
+For the latter case (fixed the $j$-th column), the determinant is similarly found by
 \begin{align*}
 |A| &= A_{1j}C_{1j} + A_{2j}C_{2j} + \cdots + A_{nj}C_{nj} \\
 &= \sum_{k=1}^{n} A_{kj}C_{kj}
 \end{align*}
-where $C$ is defined as in Definition \ref{defn:cofactor}. Regardless of the row or column chosen, the result is always the same.
+where each of the cofactors $C_{ij}$ is defined as in Definition \ref{defn:cofactor}. \textcolor{red}{Important: regardless of which row or column is chosen, the result is always the same.}
 \end{proper}
 \begin{exmp}
 Again, for the matrix
@@ -939,7 +958,7 @@ A =
 Find its determinant via cofactor expansion.
 \end{exmp}
 \begin{solution}
-According to Properties \ref{proper:cofactorex}, if we choose the first row, its determinant is
+According to Properties \ref{proper:cofactorex}, if we choose the first row to be expanded, its determinant is
 \begin{align*}
 |A| &= A_{11}C_{11} + A_{12}C_{12} + A_{13}C_{13} \\
 &= 
@@ -978,34 +997,34 @@ A =
 \end{align*}\
 \end{exmp}
 \begin{solution}
-It is a $4 \times 4$ matrix and we have to apply cofactor expansion. We can choose row or column that contains zero to reduce the computation. Here we pick the second column and by Properties \ref{proper:cofactorex}, we have
+It is a $4 \times 4$ matrix and we have to apply cofactor expansion. We can choose row or column that contains some zero(s) to reduce the computation. Here we pick the second column and by Properties \ref{proper:cofactorex}, we have
 \begin{align*}
-|A| &= (-1)^{1+2}(4)
+|A| &= (4)(-1)^{1+2}
 \begin{vmatrix}
 2 & 4 & 6 \\
 2 & 1 & 0 \\
 6 & 3 & 1 \\
 \end{vmatrix}
-+ (-1)^{2+2}(0)
++ (0)(-1)^{2+2}
 \begin{vmatrix}
 1 & 4 & 4 \\
 2 & 1 & 0 \\
 6 & 3 & 1 \\
 \end{vmatrix} \\
-&\quad + (-1)^{3+2}(1) 
+&\quad + (1)(-1)^{3+2}
 \begin{vmatrix}
 1 & 4 & 4 \\
 2 & 4 & 6 \\
 6 & 3 & 1 \\
 \end{vmatrix} 
-+ (-1)^{4+2}(2)
++ (2)(-1)^{4+2}
 \begin{vmatrix}
 1 & 4 & 4 \\
 2 & 4 & 6 \\
 2 & 1 & 0
 \end{vmatrix} 
 \end{align*}
-By Sarrus' Rule (Properties \ref{proper:sarrus}), we have (the detailed calculations are omitted, notice that we don't need to actually compute the second determinant) 
+By Sarrus' Rule (Properties \ref{proper:sarrus}), we can calculate each of the four $3 \times 3$ determinants (the detailed calculations are omitted, notice that we don't need to actually compute the second determinant) and obtain
 \begin{align*}
 |A| = (-4)(-6) + 0 + (-1)(50) + (2)(18) = 10
 \end{align*}
@@ -1015,18 +1034,18 @@ Finally, we can derive two simple results about determinants from the perspectiv
 \label{proper:zerodet}
 If a matrix have a row/column with full zeros, or two identical/proportional rows/columns, then it has a determinant of zero.
 \end{proper}
-The first case is trivial (just do the expansion along the row/column with full zeros). We will prove the second case alongside the introduction of the properties of determinants coming up in the next subsection.
+The first case is trivial (just do the expansion along the row/column with full zeros) and we will show the second case alongside the introduction of the properties of determinants in the upcoming subsection.
 
-\subsection{Properties of Determinants} There are some important results about determinants. First of all, it is very easy to see that determinants for any $n \times n$ identity matrix $I_n$ is just $1$. Second, there is a close relation between elementary row operations/elementary matrices and (their effects on) determinants.
+\subsection{Properties of Determinants} There are some notable properties about determinants. First of all, it is very easy to see that determinants for any $n \times n$ identity matrix $I_n$ is just $1$. Second, there is a close relation between elementary row operations/elementary matrices and (their effects on) determinants, noted as follows.
 \begin{proper}
 \label{proper:elementaryopdet}
-The three types of elementary row operations in Definition \ref{defn:elerowop}, when applied on some matrix $A$,
+The three types of elementary row operations in Definition \ref{defn:elerowop}, when applied on some square matrix $A$,
 \begin{enumerate}
 \item $cR_{p} \to R_{p}$, $c \neq 0$,
 \item $R_{p} + cR_{q} \to R_{p}$,
 \item $R_{p} \leftrightarrow R_{q}$,
 \end{enumerate}
-change the determinant of $A$ by a factor of $c$, $1$, and $-1$, respectively.
+change the determinant of $A$ by a factor of $c$, $1$ (unchanged), and $-1$ (switching the sign), respectively.
 \end{proper}
 \begin{proper}
 \label{proper:elementarymatdet}
@@ -1038,46 +1057,10 @@ The three types of elementary matrices $E$ in Properties \ref{proper:elementarym
 \end{enumerate}
 have a determinant of $c$, $1$, and $-1$, respectively.
 \end{proper}
-We will prove the above properties for the second kind of elementary row operations/elementary matrices (corresponding to addition/subtraction). The properties for the two other types of elementary matrices are easy to show and we will take them for granted, such that we can complete the second case in Properties \ref{proper:zerodet} first, which is in turn used for demonstrating the final result.
-\begin{proof} Consider an $n \times n$ square matrix $A$ that has two identical and adjacent rows with indices $i_1$ and $i_2$, where $i_2 = i_1 + 1$ (hence one of the indices is odd and another is even), then cofactor expansion along the odd row (let's say $i_1$) will give
-\begin{align*}
-|A| &= \sum_{k=1}^{n} A_{i_1k}C_{i_1k} \\
-&= \sum_{k=1}^{n} (-1)^{i_1+k}A_{i_1k}M_{i_1k}
-\end{align*}
-by Properties \ref{proper:cofactorex} and Definition \ref{defn:cofactor}. Similarly by considering the even row, we have
-\begin{align*}
-|A| &= \sum_{k=1}^{n} A_{i_2k}C_{i_2k} \\
-&= \sum_{k=1}^{n} (-1)^{i_2+k}A_{i_2k}M_{i_2k}
-\end{align*}
-But since the $i_1$-th and $i_2$-th row are identical, $A_{i_1k} = A_{i_2k}$. Furthermore, as these two identical rows are also adjacent, the minors $M_{i_1k} = M_{i_2k}$ are also equal. The only difference between the two expressions for $|A|$ above is the $(-1)^{i+j}$ factor. And because $i_1$ is odd and $i_2$ is even, they are differed by a negative sign only. Explicitly, we have
-\begin{align*}
-|A| &= \sum_{k=1}^{n} (-1)^{i_1+k}A_{i_1k}M_{i_1k} \\
-&= \sum_{k=1}^{n} (-1)^{(i_2-1)+k}A_{i_2k}M_{i_2k} \\
-&= (-1) \sum_{k=1}^{n} (-1)^{i_2+k}A_{i_2k}M_{i_2k} \\
-&= -|A|
-\end{align*}
-Therefore $|A| = -|A|$ and $|A| = 0$ must equal to zero. Now we can generalize the results to non-adjacent, proportional rows by doing the first and third kind (multiplication and swapping) of elementary row operations when appropriate, and the second case in Properties \ref{proper:zerodet} is completed. Subsequently, for the addition/subtraction type of elementary row operations, let's say $R_{p} + cR_{q} \to R_{p}$ is applied on some matrix $A$ (this $A$ is not the same one in the first part) to produce $A'$, then
-\begin{align*}
-A' = 
-\begin{bmatrix}
-\vdots & \vdots & & \vdots\\
-A_{p1} + cA_{q1} & A_{p2} + cA_{q2} & \cdots & A_{pn} + cA_{qn} \\
-\vdots & \vdots & & \vdots\\
-A_{q1} & A_{q2} & \cdots & A_{qn} \\
-\vdots & \vdots & & \vdots
-\end{bmatrix}
-\end{align*}
-where we have only written out the rows $R_p$ and $R_q$. By applying cofactor expansion along $R_p$ following Properties \ref{proper:cofactorex}, we have
-\begin{align*}
-|A'| &= \sum_{k=1}^{n} [(A_{pk} + cA_{qk}) C_{pk}] \\
-&= \sum_{k=1}^{n} A_{pk}C_{pk} + c\sum_{k=1}^{n} A_{qk}C_{pk}
-\end{align*}
-We identify the first term with $|A|$ that is computed from using cofactor expansion on the row $R_p$ of $A$. The second term can be thought as the determinant of a matrix $\tilde{A}$ that is formed by replacing $R_p$ by $R_q$ in $A$ and subsequently expanded along that row. So $\tilde{A}$ practically has two identical rows $R_p = R_q$ and by the previous result the value of $|\tilde{A}|$ is zero. Therefore $|A'| = |A| + c|\tilde{A}| = |A| + c(0) = |A|$, implying that the addition/subtraction type of elementary row operations does not affect the value of determinant.
-\end{proof}
-Since the values of determinants for elementary matrices, by Properties \ref{proper:elementarymatdet}, coincide exactly with the factors by how the determinant of some other matrix changes when the corresponding elementary row operations are applied on it (represented by multiplication to the left by these elementary matrices) as shown in Properties \ref{proper:elementaryopdet}, we can conclude
+Since the determinants of elementary matrices, by Properties \ref{proper:elementarymatdet}, coincide exactly with the factors by how the determinant of a square matrix $A$ changes when the corresponding elementary row operations are applied on $A$ (represented by multiplication to the left of $A$ by these elementary matrices) as shown in Properties \ref{proper:elementaryopdet}, we conclude that
 \begin{thm}
 \label{thm:elementarytimesdet}
-For any elementary matrix $E$ and another arbitrary matrix $A$, we have
+For any elementary matrix $E$ and a square matrix $A$, we have
 \begin{align*}
 \det(EA) = \det(E)\det(A)
 \end{align*}
@@ -1138,13 +1121,13 @@ The determinant in the last line can be computed by doing cofactor expansion alo
 and hence $|A| = 2(5) = 10$.
 \end{solution}
 
-Finally, it is the time to show the following properties about determinants.
+With Theorem \ref{thm:elementarytimesdet}, we can unearth the relation between invertibility of a square matrix and its determinant.
 \begin{proper}
 \label{proper:invnonzerodet}
 An invertible matrix has a non-zero determinant. Otherwise, a singular matrix has a determinant of zero.
 \end{proper}
 \begin{proof}
-Let's denote the matrix in question as $A$. Assume that $A$ is invertible and hence by Properties \ref{proper:invseqelement} it can be written as the product of some elementary matrices $E_1$, $E_2$, $\ldots$, $E_{n-1}$, $E_n$, i.e.\
+Let's denote the matrix in question as $A$. For the case in which $A$ is invertible, by Properties \ref{proper:invseqelement} it can be written as the product of some elementary matrices $E_1$, $E_2$, $\ldots$, $E_{n-1}$, $E_n$, i.e.\
 \begin{align*}
 A = E_{1}E_{2} \cdots E_{n-1}E_n
 \end{align*}
@@ -1159,8 +1142,9 @@ By repetitively using Theorem \ref{thm:elementarytimesdet}, we have
 &= \det(E_1) \det(E_{2}) \det(\cdots E_{n-1}E_n) \\
 &= \det(E_1) \det(E_{2}) \cdots \det(E_{n-1})\det(E_n)
 \end{align*}
-Since by Properties \ref{proper:elementarymatdet}, all elementary matrices have a non-zero determinant (particularly we have required $c \neq 0$ in Properties \ref{proper:elementarymatdet}), i.e. all $\det(E_i) \neq 0$, we have $\det(A) \neq 0$. To finish the part about singular matrices, we note that by Theorem \ref{thm:Gausselimprincip}, singular matrices have reduced row echelon forms that are not the identity. Furthermore, we have the observation that all other square reduced row echelon forms that are not the identity has a determinant of zero. (Why?)\footnote{Such matrices must have at least one row of full zeros, and by Properties \ref{proper:zerodet} we are done.} With these two pieces of information, we leave the remaining proof to interested readers. Other properties of determinants include:
+Since by Properties \ref{proper:elementarymatdet}, all elementary matrices have a non-zero determinant (particularly we have required $c \neq 0$ when multiplying a row), i.e. $\det(E_i) \neq 0$ for all $i$, we have $\det(A) \neq 0$. We will not go through the details for singular matrices, which are put in the footnote below only for reference.\footnote{By Theorem \ref{thm:Gausselimprincip}, singular matrices have reduced row echelon forms that are not the identity. Observe that all other square rrefs that are not the identity must have at least one row of full zeros, and by Properties \ref{proper:zerodet} has a determinant of zero.} 
 \end{proof}
+Other properties of determinants include:
 \begin{proper}
 \label{proper:properdet}
 For any $n \times n$ square matrices $A$ and $B$, we have
@@ -1213,32 +1197,31 @@ AB &=
 |AB| &= (11)(25) - (10)(29) \\
 &= -15 = (3)(-5) = |A||B|
 \end{align*}
-So we can see in this case, $\det(AB) = \det(A)\det(B)$ indeed. Now we will formally prove this ((3) of Properties \ref{proper:properdet}).
-\begin{proof}
-There are two cases to consider, $A$ being invertible or singular. If $A$ is singular, then by Properties \ref{proper:ABinv}, $AB$ is also singular. And by Properties \ref{proper:invnonzerodet}, both $\det(A)$ and $\det(AB)$ will be zero, and the equality holds trivially. Otherwise, if $A$ is invertible, then we can follow the idea in the proof of Properties \ref{proper:invnonzerodet}, and let $A = E_{1}E_{2} \cdots E_{n-1}E_n$ as a product of elementary matrices in sequence. By using Theorem \ref{thm:elementarytimesdet} back and forth, we can readily show
+So we can see in this case, $\det(AB) = \det(A)\det(B)$ indeed. We put the formal proof for (3) of Properties \ref{proper:properdet} in the footnote for reference.\footnote{There are two cases to consider, $A$ being invertible or singular. If $A$ is singular, then by Properties \ref{proper:ABinv}, $AB$ is also singular. And by Properties \ref{proper:invnonzerodet}, both $\det(A)$ and $\det(AB)$ will be zero, and the equality holds trivially. Otherwise, if $A$ is invertible, then we can follow the idea in the proof of Properties \ref{proper:invnonzerodet}, and let $A = E_{1}E_{2} \cdots E_{n-1}E_n$ as a sequence of elementary matrices. By using Theorem \ref{thm:elementarytimesdet} back and forth, we have
 \begin{align*}
 \det(AB) &= \det(E_{1}E_{2} \cdots E_{n-1}E_nB) \\
-&= \det(E_1) \det(E_{2}) \cdots \det(E_{n-1})\det(E_n)\det(B) \\
+&= \det(E_1) \det(E_{2}) \cdots \det(E_{n-1})\det(E_n)\det(B) & \text{(Theorem \ref{thm:elementarytimesdet})} \\
 &= (\det(E_1) \det(E_{2}) \cdots \det(E_{n-1})\det(E_n))\det(B) \\
-&= \det(E_{1}E_{2} \cdots E_{n-1}E_n)\det(B) = \det(A)\det(B)
+&= \det(E_{1}E_{2} \cdots E_{n-1}E_n)\det(B) & \text{(Theorem \ref{thm:elementarytimesdet})} \\
+&= \det(A)\det(B)
 \end{align*}
-So the equality is true in both cases.
-\end{proof}
+So the equality is true in both cases.}
+
 Short Exericse: Prove (4) of Properties \ref{proper:properdet}.\footnote{Consider $A^{-1}A=I$, and take determinant on both sides. By (3), we have
 \begin{align*}
 \det(A^{-1}A) &= \det(I) \\
-\det(A^{-1})\det(A) &= 1 \quad \text{(The identity always has a determinant of $1$)} \\
+\det(A^{-1})\det(A) &= 1 & \text{(The identity always has a determinant of $1$)} \\
 \det(A^{-1}) &= \frac{1}{\det(A)}
 \end{align*}}
 
 \subsection{Finding Inverses by Adjugate}
-An alternative method to compute the inverse of a matrix is by using its \index{Adjugate}\keywordhl{Adjugate}, which is the transpose of its associated cofactor matrix.
+An alternative method to compute the inverse of a matrix is by using its \index{Adjugate}\keywordhl{adjugate}, which is the transpose of its cofactor matrix associated to it.
 \begin{defn}[Adjugate]
 For a matrix $A$, its adjugate is defined as
 \begin{align*}
-[\text{adj}(A)]_{pq} = (C_{pq})^{T} = C_{qp}
+[\text{adj}(A)]_{pq} = (C_{pq})^T = C_{qp}
 \end{align*}
-where $C$ is formulated in Definition \ref{defn:cofactor}.
+where $C_{pq}$ is the cofactor of $A$ at $(p, q)$, formulated as in Definition \ref{defn:cofactor}.
 \end{defn}
 \begin{proper}
 \label{proper:invadj}
@@ -1247,7 +1230,7 @@ The inverse of a matrix $A$ can be computed from its adjugate by
 A^{-1} = \frac{1}{\det(A)}\text{adj}(A)
 \end{align*}
 \end{proper}
-From this formula, obviously, a singular matrix that has a determinant of zero does not has an inverse.
+From this formula, it is obvious that singular matrices, having a determinant of zero, does not has an inverse.
 \begin{exmp}
 \label{exmp:2x2}
 For a $2 \times 2$ matrix
@@ -1355,7 +1338,7 @@ The adjugate matrix is
 1 & -2 & 1
 \end{bmatrix}
 \end{align*}
-(be careful not to forget the transpose!) Putting the pieces together according to the formula in Properties \ref{proper:invadj}, we have
+(be careful of not forgetting the transpose!) Putting the pieces together according to the formula in Properties \ref{proper:invadj}, we have
 \begin{align*}
 A^{-1} &= \frac{1}{\det(A)}\text{adj}(A) \\
 &= \frac{1}{4}
@@ -1373,7 +1356,7 @@ A^{-1} &= \frac{1}{\det(A)}\text{adj}(A) \\
 \end{align*}
 \end{solution}
 A summarizing point to be emphasized is that
-\begin{thm}[Equivalence Statement]
+\begin{thm}[Equivalence Statements]
 \label{thm:equiv1}
 For a square matrix $A$, the followings are equivalent:
 \begin{enumerate}[label=(\alph*)]
@@ -1383,7 +1366,7 @@ For a square matrix $A$, the followings are equivalent:
 \end{enumerate}
 \end{thm}
 which is just a rephrasing of Properties \ref{proper:invnonzerodet} and Theorem \ref{thm:Gausselimprincip}. 
-Particularly, invertibility is equivalent to a non-zero determinant. We will see the expansion of this equivalence statement in later chapters.
+Particularly, invertibility is equivalent to a non-zero determinant. We will see the expansion of these equivalence statements in later chapters.
 
 \section{Python Programming}
 \label{section:ch2python}
@@ -1461,7 +1444,7 @@ has a determinant of exactly zero. It is an artifact of numerical error when usi
  [-2.401919e+15  4.803839e+15 -7.205759e+15  7.205759e+15]
  [-1.200959e+15  2.401919e+15 -3.602879e+15  3.602879e+15]]
 \end{lstlisting}
-that have entries of extremely large magnitude. This phenomenon is due to the extremely small "determinant", through Properties \ref{proper:invadj}, magnifies the adjugate by being in the denominator. (The actual computation does not use Properties \ref{proper:invadj} directly but this is one simple perspective to view the problem.) To prevent this, we can add a \verb|if| condition to look for singularity, defining a function like
+that have entries of extremely large magnitude. This phenomenon is due to the extremely small "determinant", through Properties \ref{proper:invadj}, magnifies the adjugate by being in the denominator. (The actual computation does not use Properties \ref{proper:invadj} directly but this is a heuristic perspective to view the problem.) To prevent this, we can add a \verb|if| condition to look for singularity, defining a function like
 \begin{lstlisting}
 def safe_inv(matrix):
     if np.abs(linalg.det(matrix)) < np.finfo(float).eps:
@@ -1512,6 +1495,7 @@ Find the determinant of the matrix below by inspection.
 0 & 0 & 0 & 0 & 15
 \end{bmatrix}    
 \end{align*}
+By the same logic, derive a general formula for the determinant of any upper(lower)-triangular matrix.\footnote{An upper(lower)-triangular matrix is a matrix who elements below (above) the main diagonal are all zeros.}
 \end{Exercise}
 \begin{Answer}
 (Applying cofactor expansion along the leftmost column recursively) The determinant is just the product of the diagonal elements $= (1)(6)(10)(13)(15) = 11700$.    
