@@ -1,14 +1,19 @@
 <h1>Introduction to Linear Algebra with Earth Science Applications</h1>
 
-Hello I am Benjamin Loi. This is the repository for the tex files for my textbook <em>Introduction to Linear Algebra with Earth Science Applications</em>.
+Hello I am Benjamin Loi from CUHK-EESC and NTU-AS. This is the repository for the tex files for my book <em>Introduction to Linear Algebra with Earth Science Applications</em>.
 
-The textbook pdf is located at [here](Linear_Algebra_Notes_New.pdf).
+The book pdf is located at [here](Linear_Algebra_Notes_New.pdf).
 
-<h2>Update Schedule</h2>
-This project is still alive and being constantly updated as of Jul 2024.
+This project is still alive and being constantly updated as of Aug 2024.
+
+<h2>Contributing to the Project</h2>
+
+Feel free to open an issue regarding any problem or suggestions about the book! Any ideas will be greatly appreciated.
+When the book is completed, I will upload it to ArXiv formally for open access. This repository will stay anyways.
 
 <h2>Table of Content (Draft)</h2>
 
+(inside brackets are the expected finish and upload dates)
 1. Introduction to Matrices and Linear Systems
 2. Inverses and Determinants
 3. Solutions for Linear Systems
@@ -17,9 +22,9 @@ This project is still alive and being constantly updated as of Jul 2024.
 6. Vector Spaces and Coordinate Bases
 7. More on Coordinate Bases, Linear Transformations
 8. Complex Vectors/Matrices and Block Form
-9. Eigenvalues and Eigenvectors, Diagonalization
-10. Orthogonal and Normal Matrices
-11. Quadratic Form
+9. Eigenvalues and Eigenvectors, Diagonalization (2024-09-01)
+10. Orthogonal and Normal Matrices (2024-10-01)
+11. Quadratic Form (2024-11-01)
 12. Inner Product Space
 13. Least-Square Approximation
 14. Discrete Fourier Transform
@@ -27,3 +32,6 @@ This project is still alive and being constantly updated as of Jul 2024.
 16. Matrix Factorization Methods
 17. Dynamical Systems
 18. Index Notation and Introduction to Tensor
+
+Appendix
+- Jordan Normal Form
