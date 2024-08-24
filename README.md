@@ -8,7 +8,7 @@ This project is still alive and being constantly updated as of Aug 2024.
 
 <h2>Contributing to the Project</h2>
 
-Feel free to open an issue regarding any problem or suggestions about the book! Any ideas will be greatly appreciated.
+Feel free to open an issue regarding any problem or suggestion about the book! Any idea will be greatly appreciated.
 When the book is completed, I will upload it to ArXiv formally for open access. This repository will stay anyways.
 
 <h2>Table of Content (Draft)</h2>
