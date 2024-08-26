@@ -1,4 +1,4 @@
-\chapter{Complex Vectors/Matrices and Block Form}
+\chapter{Complex Vectors/Matrices and Block Matrices}
 \label{chap:complex}
 
 In this chapter, we will take a detour to talk about two auxiliary topics. The first one is the generalization of vectors and matrices to having complex numbers as entries. Eventually, we will mention about the \textit{complex vector space}, and compare it to the real vector space that we just learnt in the previous chapters. The second one is about \textit{block form} of a matrix (or simply referred to as a \textit{block matrix}) that is composed of smaller \textit{submatrices} as the building blocks. Writing a matrix in block form enables efficient manipulation for many situations that we will encounter in the remaining parts of this book.
@@ -8,7 +8,7 @@ In this chapter, we will take a detour to talk about two auxiliary topics. The f
 
 \subsection{Basic Structure of Complex Numbers} 
 
-The idea of complex numbers initially came from some algebra problems that lead to the square root of negative quantities, which was not defined back in the days. Later, mathematicians addressed this issue by introducing the \index{Imaginary Number}\keywordhl{imaginary number} $\imath = \sqrt{-1}$, and $\imath^2 = -1$. For any positive number $b$, we have $\sqrt{-b^2} = \sqrt{b^2}\sqrt{-1} = b\imath$. \index{Complex Number}\keywordhl{Complex numbers} are then quantities in the form of $a + b\imath$, where $a$ and $b$ themselves are real. Here $a$ and $b$ are called the \index{Real Part}\keywordhl{real} and \index{Imaginary Part}\keywordhl{imaginary part} respectively. As a small example of how complex numbers arise, note that the solutions to the quadratic equation $(x+2)^2 = -1$, are $-2 \pm \imath$.
+The idea of complex numbers initially came from some algebra problems that lead to the square root of negative quantities, which was not defined back in the days. Later, mathematicians addressed this issue by introducing the \index{Imaginary Number}\keywordhl{imaginary number} $\imath = \sqrt{-1}$, and $\imath^2 = -1$. For any positive number $b$, we have $\sqrt{-b^2} = \sqrt{b^2}\sqrt{-1} = b\imath$. \index{Complex Number}\keywordhl{Complex numbers} are then quantities in the form of $a + b\imath$, where $a$ and $b$ themselves are real. Here $a$ and $b$ are called the \index{Real Part}\keywordhl{real} and \index{Imaginary Part}\keywordhl{imaginary part} respectively. As a small example of how complex numbers arise, note that the solutions to the quadratic equation $(3x+2)^2 = -1$, are $-2 \pm \frac{1}{3}\imath$.
 \begin{defn}
 Complex numbers are scalars in the form of $z = a + b\imath$, where $a$ and $b$ are some real numbers. The real and imaginary part are denoted by $\Re{z} = a$ and $\Im{z} = b$.
 \end{defn}
@@ -16,16 +16,17 @@ We also need to consider when two complex numbers are equal. This happens when t
 \begin{proper}
 Two complex numbers $z_1 = a + b\imath$, and $z_2 = c + d\imath$, where $a, b, c, d$ are real numbers, are equal if and only if, $\Re{z_1} = a = c = \Re{z_2}$ and $\Im{z_1} = b = d = \Im{z_2}$.
 \end{proper}
-For every complex number, there exists a notable complex number associated to it, known as the \index{Complex Conjugate}\keywordhl{(complex) conjugate}.
+For every complex number, there exists another corresponding complex number known as the \index{Complex Conjugate}\keywordhl{(complex) conjugate} associated to it, formed by flipping the sign of its imaginary part.
 \begin{defn}
-For a complex number $z = a + b\imath$, its complex conjugate is constructed by flipping the sign of the imaginary part, which is denoted as $\overline{z} = a - b\imath$.
+For a complex number $z = a + b\imath$, its complex conjugate is defined as $\overline{z} = a - b\imath$.
 \end{defn}
 
 \subsection{Complex Number Operations}
 Below are some rules about usual operations on two complex numbers.
 \subsubsection{Addition and Subtraction}
+Addition and subtraction between two complex numbers is carried out over the real parts and the imaginary parts separately.
 \begin{defn}
-For two complex numbers $z_1 = a + b\imath$, and $z_2 = c + d\imath$, addition and subtraction is carried out over the real parts and the imaginary parts separately, i.e.\ $z_1 \pm z_2 = (a + b\imath) \pm (c + d\imath) = (a \pm c) + (b \pm d)\imath = (\Re{z_1} \pm \Re{z_2}) + (\Im{z_1} \pm \Im{z_2})\imath$.
+For two complex numbers $z_1 = a + b\imath$, and $z_2 = c + d\imath$, we have\ $z_1 \pm z_2 = (a + b\imath) \pm (c + d\imath) = (a \pm c) + (b \pm d)\imath = (\Re{z_1} \pm \Re{z_2}) + (\Im{z_1} \pm \Im{z_2})\imath$.
 \end{defn}
 For instance, adding $1 + 3\imath$ to $2 - 4\imath$ results in $(1+2) + (3-4)\imath = 3 - \imath$.
 
@@ -36,7 +37,7 @@ Given two complex numbers $a + b\imath$, and $c + d\imath$, their product is
 \begin{align*}
 (a + b\imath)(c + d\imath) &= a(c + d\imath) + b\imath(c + d\imath)\\
 &= ac + ad\imath + bc\imath + bd\imath^2 \\
-&= (ac - bd) + (ad + bc)\imath
+&= (ac - bd) + (ad + bc)\imath & (\imath^2 = -1)
 \end{align*}
 \end{defn}
 
@@ -128,7 +129,7 @@ which is consistent with the discussion about complex division in the last secti
 z\overline{z} &= \abs{z} e^{\imath \theta} \abs{z} e^{-\imath \theta} \\
 &= \abs{z}^2 e^{\imath(\theta-\theta)} = \abs{z}^2e^{0} = \abs{z}^2
 \end{align*}
-Geometrically, we can think of it as starting with $1$ along the real axis in the complex plane, then we scale it by $\abs{z}$ and rotate it by $\theta$, and finally scale it again by $\abs{z}$ but rotate it by $-\theta$, same angle but in opposite direction. The results will be a real number $\abs{z}^2$, since the two opposite rotations cancel out each other.\\
+Geometrically, we can think of it as starting with $1$ along the real axis in the complex plane, then we scale it by $\abs{z}$ and rotate it by $\theta$, and finally scale it again by $\abs{z}$ but rotate it by $-\theta$, the same angle but in opposite direction. The results will be a real number $\abs{z}^2$ (the length of $z$ squared), since the two opposite rotations cancel out each other.\\
 \\
 Below are some properties of modulus and complex conjugate to be remembered.
 \begin{proper}
@@ -169,7 +170,7 @@ The dot product of two complex vectors $\vec{u}$ and $\vec{v}$ is computed as th
 \end{align*}
 The bar on $\overline{\textbf{v}}$ means carrying out conjugate on every entry of $\textbf{v}$. If $\textbf{v} = \Re{\textbf{v}} + \imath \Im{\textbf{v}}$, where $\Re{\textbf{v}}$ and $\Im{\textbf{v}}$ are the vectors consisted of the real/imaginary part of every element in $\textbf{v}$, then $\overline{\textbf{v}} = \Re{\textbf{v}} - \imath \Im{\textbf{v}}$.
 \end{defn}
-The Euclidean norm, or length, is defined similarly by
+The Euclidean norm, or length of a complex vector, is defined similarly by
 \begin{defn}
 The length $\norm{\vec{v}}$ of a complex vector $\vec{v}$ is calculated as
 \begin{align*}
@@ -431,7 +432,7 @@ If $A$ is a complex matrix, then
 \item $\text{det}(A^*) = \overline{\text{det}(A)}$,
 \item $\text{det}(kA) = k^n \text{det}(A)$, for any complex constant $k$,
 \item $\text{det}(AB) = \text{det}(A)\text{det}(B)$, and
-\item $\text{det}(A^{-1}) = \frac{1}{\text{det}(A)}$, given $A$ is invertible.
+\item $\text{det}(A^{-1}) = \frac{1}{\text{det}(A)}$, given $A$ is invertible ($\det(A) \neq 0$ as the same as before).
 \end{enumerate}
 Additionally, if $A$ is non-singular, then
 \begin{enumerate}
@@ -875,7 +876,7 @@ A^{-1} & 0_{p\times q} \\
 -CA^{-1} & I_q
 \end{bmatrix}
 \end{align*}
-can also be arrived via elementary row operations and is invertible as well. By multiplying this matrix to $M$, we have
+can also be arrived via elementary row operations and is invertible as well (Properties \ref{proper:ABinv}). By multiplying this matrix to $M$, we have
 \begin{align*}
 \begin{bmatrix}
 A^{-1} & 0_{p\times q} \\
@@ -1252,13 +1253,12 @@ Given a linear transformation $T: \mathcal{U} \to \mathcal{V}$ and a proper subs
 T|_W: \mathcal{W} \to \mathcal{V}, T|_W(\vec{w}) = T(\vec{w}) \text{ for any $\vec{w} \in \mathcal{W}$.}
 \end{align*}
 \end{defn}
-In simpler terms, $T|_W$ works exactly as $T$ but only defined on $\mathcal{W}$. Assume the vector spaces involved are all finite-dimensional, and $\dim(\mathcal{W}) = r < n = \dim(\mathcal{U})$. $\mathcal{W}$ then has a basis $\mathcal{B}_W$ with $r$ generating vectors, which by part (c) of Properties \ref{proper:linindspanbasisnewver} can be extended to a new basis $\mathcal{B}' = \mathcal{B}_W \cup \mathcal{G}$ for $\mathcal{U}$, where $\mathcal{G}$ contains $n - r$  vectors and $\mathcal{B}' = \mathcal{B}_W \cup \mathcal{G}$ has exactly $n$ linearly independent vectors by construction. Some may wonder why we suddenly talk about the restriction of a linear transformation here and the reason is that its related principles can be viewed from the stand point of a block matrix.\\
-\\
+In simpler terms, $T|_W$ works exactly as $T$ but only defined on $\mathcal{W}$. Assume the vector spaces involved are all finite-dimensional, and $\dim(\mathcal{W}) = r < n = \dim(\mathcal{U})$. $\mathcal{W}$ then has a basis $\mathcal{B}_W$ with $r$ generating vectors, which by part (c) of Properties \ref{proper:linindspanbasisnewver} can be extended to a new basis $\mathcal{B}' = \mathcal{B}_W \cup \mathcal{G}$ for $\mathcal{U}$, where $\mathcal{G}$ contains $n - r$  vectors and $\mathcal{B}' = \mathcal{B}_W \cup \mathcal{G}$ has exactly $n$ linearly independent vectors by construction. Some may wonder why we suddenly talk about the restriction of a linear transformation here and the reason is that its related principles can be viewed from the stand point of a block matrix.\par
 To see this, let $\mathcal{B}_W = \{\vec{u}_1, \vec{u}_2, \ldots, \vec{u}_r\}$ and $\mathcal{G} = \{\vec{u}_{r+1}, \ldots, \vec{u}_n\}$, and thus $\mathcal{B}' = \{\vec{u}_1, \vec{u}_2, \ldots, \vec{u}_r, \vec{u}_{r+1}, \ldots, \vec{u}_n\}$. By Definition \ref{defn:directsum}, since the vectors in $\mathcal{B}' = \mathcal{B}_W \cup \mathcal{G}$ are designed to be linear independent, the subspace $\mathcal{W}^C$ generated by $\mathcal{G}$ will be the complement of $\mathcal{W}$ as a result of $\mathcal{W} \oplus \mathcal{W}^C$ being a direct sum that produces $\mathcal{U}$. Any $\vec{w} \in \mathcal{W} \subset \mathcal{U}$ will then have a coordinate representation of
 \begin{align*}
 (w_1, w_2, \ldots, w_r, 0, \ldots, 0)^T
 \end{align*}
-in the $\mathcal{B}$' basis where components beyond the $r$-th index are all zeros. From the perspective of direct sum, it is the same as $\vec{w} \oplus \textbf{0}_{n-r} = (w_1, w_2, \ldots, w_r)_{B_W}^T \oplus (0, \ldots, 0)_{G}^T$, i.e. $\vec{w}$ has no components in $\mathcal{W}^C$. By Definition \ref{defn:matrixrepoflintrans}, writing out the matrix representation of $[T]_{B'}^H$ where $H$ is an arbitrary basis for $\mathcal{V}$ results in
+in the $\mathcal{B}$' basis where components beyond the $r$-th index are all zeros. From the perspective of direct sum, it is the same as $\vec{w} \oplus \textbf{0}_{n-r} = (w_1, w_2, \ldots, w_r)_{B_W}^T \oplus (0, \ldots, 0)_{G}^T$, i.e. $\vec{w}$ has all zero components in $\mathcal{W}^C$. By Definition \ref{defn:matrixrepoflintrans}, writing out the matrix representation of $[T]_{B'}^H$ where $H$ is an arbitrary basis for $\mathcal{V}$ results in
 \begin{align*}
 [T]_{B'}^H = \begin{bmatrix}
 a_1^{(1)} & a_1^{(2)} & \cdots & a_1^{(r)} & a_1^{(r+1)} & \cdots & a_1^{(n)} \\
@@ -1350,24 +1350,24 @@ $\begin{bmatrix}
 0 \\
 1 \end{bmatrix}$ to the right of it to make an identity matrix, and reverse the entire reduction procedure as follows.
 \begin{align*}
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}@{\,}}
 1 & 1 \\
 1 & 1 \\
 0 & 1
 \end{array}\right] &\to
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}@{\,}}
 1 & 1 \\
 0 & 0 \\
 0 & 1
 \end{array}\right] 
 & R_2 - R_1 \to R_2 \\
-&\to \left[\begin{array}{@{\;}wc{10pt}wc{10pt}}
+&\to \left[\begin{array}{@{\,}wc{10pt}wc{10pt}@{\,}}
 1 & 1 \\
 0 & 1 \\
 0 & 0
 \end{array}\right]
 & R_2 \leftrightarrow R_3 \\
-&\to \left[\begin{array}{@{\;}wc{10pt}wc{10pt}}
+&\to \left[\begin{array}{@{\,}wc{10pt}wc{10pt}@{\,}}
 1 & 0 \\
 0 & 1 \\
 0 & 0
@@ -1375,31 +1375,31 @@ $\begin{bmatrix}
 & R_1 - R_2 \to R_1
 \end{align*}
 \begin{align*}
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}|wc{10pt}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
 \end{array}\right] &\to
-\left[\begin{array}{@{\;}wc{10pt}wc{10pt}|wc{10pt}}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 1 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
 \end{array}\right]
 & R_1 + R_2 \to R_1 \\
-&\to \left[\begin{array}{@{\;}wc{10pt}wc{10pt}|wc{10pt}}
+&\to \left[\begin{array}{@{\,}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 1 & 0 \\
 0 & 0 & 1 \\
 0 & 1 & 0
 \end{array}\right]
 & R_2 \leftrightarrow R_3 \\
-&\to \left[\begin{array}{@{\;}wc{10pt}wc{10pt}|wc{10pt}}
+&\to \left[\begin{array}{@{\,}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
 1 & 1 & 0 \\
 1 & 1 & 1 \\
 0 & 1 & 0
 \end{array}\right]
 & R_2 + R_1 \to R_2
 \end{align*}
-So $[\vec{w}_3]_B = (0,1,0)_B^T$ is a possible choice. While in this case the algorithm looks like an overkill, it can be very powerful when the number of dimensions and vectors to be appended become much larger.\footnote{In fact, we only need to keep track of the row swapping operations with full-zero rows.} Now
+So $[\vec{w}_3]_B = (0,1,0)_B^T$ is a possible choice. This simple algorithm is powerful when the number of dimensions and vectors to be appended become much larger.\footnote{In fact, we only need to keep track of the row swapping operations with full-zero rows.} Now
 \begin{align*}
 P_{B'}^B = 
 \begin{bmatrix}
@@ -1454,8 +1454,7 @@ Short Exercise: Directly apply Properties \ref{proper:restrictmat} to redo the e
 2 \\
 0
 \end{bmatrix}_H
-$ and this will be the first column of $[T|_W]_{B_W}^H$. The second column is derived similarly by evaluating $[T(\vec{w}_2)]_H$.}\\
-\\
+$ and this will be the first column of $[T|_W]_{B_W}^H$. The second column is derived similarly by evaluating $[T(\vec{w}_2)]_H$.}\par
 With the concept of restriction, we can now introduce the matrix analogous of a direct sum. For a linear transformation $T: \mathcal{U} \to \mathcal{V}$, if the vector spaces (finite-dimensional) involved are direct sums such that $\mathcal{U} = \mathcal{W} \oplus \mathcal{W}_C$ and $\mathcal{V} = \mathcal{Y} \oplus \mathcal{Y}^C$, and the ranges
 \begin{align*}
 R(T|_W) \in \mathcal{Y} & & R(T|_{W^C}) \in \mathcal{Y}^C
@@ -1463,9 +1462,9 @@ R(T|_W) \in \mathcal{Y} & & R(T|_{W^C}) \in \mathcal{Y}^C
 of the two restrictions are such that vectors in $\mathcal{W}$ and $\mathcal{W}^C$ are mapped by $T$ to vectors in $\mathcal{Y}$ and $\mathcal{Y}^C$ respectively, then $T = T|_W \oplus T|_{W^C}$ is a \index{Direct Sum!Matrix Direct Sum}\keywordhl{matrix direct sum} in the sense that the linear transformation $T$ maps each of the complement subspaces of $\mathcal{U}$ into complement subspaces of $\mathcal{V}$. If we write the input vector $\vec{u} = \vec{w} \oplus \vec{w}^C$ as a direct sum where $\vec{w} \in \mathcal{W}$ and $\vec{w}^C \in \mathcal{W}^C$, then the output vector will also become a direct sum $\vec{v} = \vec{y} \oplus \vec{y}^C$ where $\vec{y} = T|_W(\vec{w}) = T(\vec{w})$ and $\vec{y}^C = T|_{W^C}(\vec{w}^C) = T(\vec{w}^C)$, which can be obtained by first computing $T(\vec{w})$ and $T(\vec{w}^C)$ individually, and then directly concatenating them together.
 \begin{defn}[Matrix Direct Sum]
 \label{defn:matdirectsum}
-The direct sum of two matrices acting as linear transformations $T_1: \mathcal{U}_1 \to \mathcal{V}_1$ and $T_2: \mathcal{U}_2 \to \mathcal{V}_2$ is $T = T_1 \oplus T_2$ such that for any vector direct sum $\vec{u} = \vec{u}_1 \oplus \vec{u}_2$ in $\mathcal{U} = \mathcal{U}_1 \oplus \mathcal{U}_2$, applying $T$ on $\vec{u}$ will yield an output of a vector direct sum $T(\vec{u}) = \vec{v} = \vec{v}_1 \oplus \vec{v}_2$ in $\mathcal{V}_1 \oplus \mathcal{V}_2$ as well, where $\vec{v}_1 = T_1(\vec{u}_1) = T|_{U_1}(\vec{u}_1) \in \mathcal{V}_1$ and $\vec{v}_2 = T_2(\vec{u}_2) = T|_{U_2}(\vec{u}_2) \in \mathcal{V}_2$. The matrix direct sum is then the matrix representation of $T = T_1 \oplus T_2$ with respect to the direct sum bases for $\mathcal{U}_1 \oplus \mathcal{U}_2$ and $\mathcal{V}_1 \oplus \mathcal{V}_2$.
+The direct sum of two matrices acting as linear transformations $T_1: \mathcal{U}_1 \to \mathcal{V}_1$ and $T_2: \mathcal{U}_2 \to \mathcal{V}_2$ is $T = T_1 \oplus T_2$ such that for any vector direct sum $\vec{u} = \vec{u}^{(1)} \oplus \vec{u}^{(2)}$ in $\mathcal{U} = \mathcal{U}_1 \oplus \mathcal{U}_2$, applying $T$ on $\vec{u}$ will yield an output of a vector direct sum $T(\vec{u}) = \vec{v} = \vec{v}^{(1)} \oplus \vec{v}^{(2)}$ in $\mathcal{V}_1 \oplus \mathcal{V}_2$ as well, where $\vec{v}^{(1)} = T_1(\vec{u}^{(1)}) = T|_{U_1}(\vec{u}^{(1)}) \in \mathcal{V}_1$ and $\vec{v}^{(2)} = T_2(\vec{u}^{(2)}) = T|_{U_2}(\vec{u}^{(2)}) \in \mathcal{V}_2$. The matrix direct sum is then the matrix representation of $T = T_1 \oplus T_2$ with respect to the direct sum bases for $\mathcal{U}_1 \oplus \mathcal{U}_2$ and $\mathcal{V}_1 \oplus \mathcal{V}_2$.
 \end{defn}
-Using the above definition, if $\mathcal{U}_1$ and $\mathcal{U}_2$ has a basis $\mathcal{B}_1 = \{\vec{w}_1, \vec{w}_2, \ldots, \vec{w}_r\}$ and $\mathcal{B}_2 = \{\vec{w}_{r+1}, \vec{w}_{r+2}, \ldots, \vec{w}_n\}$, and $\mathcal{V}_1$ and $\mathcal{V}_2$ has a basis $\mathcal{H}_1 = \{\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_s\}$ and $\mathcal{H}_2 = \{\vec{v}_{s+1}, \vec{v}_{s+2}, \ldots, \vec{v}_m\}$, where $r, n, s, m$ are some integers, then $T = T_1 \oplus T_2$ will have a \textit{block diagonal} matrix representation of
+Using the above definition, if $\mathcal{U}_1$ and $\mathcal{U}_2$ has a basis $\mathcal{B}_1 = \{\vec{w}^{(1)}, \vec{w}^{(2)}, \ldots, \vec{w}^{(r)}\}$ and $\mathcal{B}_2 = \{\vec{w}^{(r+1)}, \vec{w}^{(r+2)}, \ldots, \vec{w}^{(n)}\}$, and $\mathcal{V}_1$ and $\mathcal{V}_2$ has a basis $\mathcal{H}_1 = \{\vec{y}^{(1)}, \vec{y}^{(2)}, \\ \ldots, \vec{y}^{(s)}\}$ and $\mathcal{H}_2 = \{\vec{y}^{(s+1)}, \vec{y}^{(s+2)}, \ldots, \vec{y}^{(m)}\}$, where $r, n, s, m$ are some integers, then $T = T_1 \oplus T_2$ will have a \textit{block diagonal} matrix representation of
 \begin{align*}
 [T]_{B_1 + B_2}^{H_1 + H_2}
 =
@@ -1474,7 +1473,7 @@ Using the above definition, if $\mathcal{U}_1$ and $\mathcal{U}_2$ has a basis $
 0_{(m-s) \times r} & ([T_2]_{B_2}^{H_2})_{(m-s) \times (n-r)}
 \end{bmatrix}_{B_1 + B_2}^{H_1 + H_2}
 \end{align*}
-with respect to $\mathcal{B}_1 \oplus \mathcal{B}_2$ and $\mathcal{H}_1 \oplus \mathcal{H}_2$. To see this, let $\vec{u} = \vec{u}_1 \oplus \vec{u}_2$, $\vec{u}_1 \in \mathcal{U}_1$ and $\vec{u}_2 \in \mathcal{U}_2$, then
+with respect to $\mathcal{B}_1 \oplus \mathcal{B}_2$ and $\mathcal{H}_1 \oplus \mathcal{H}_2$. To see this, let $\vec{u} = \vec{u}^{(1)} \oplus \vec{u}^{(2)}$, $\vec{u}^{(1)} \in \mathcal{U}_1$ and $\vec{u}^{(2)} \in \mathcal{U}_2$, then
 \begin{align*}
 T(\vec{u}) &= [T]_{B_1 + B_2}^{H_1 + H_2}[\vec{u}]_{B_1 + B_2} \\ 
 &= \begin{bmatrix}
@@ -1482,13 +1481,13 @@ T(\vec{u}) &= [T]_{B_1 + B_2}^{H_1 + H_2}[\vec{u}]_{B_1 + B_2} \\
 0_{(m-s) \times r} & ([T_2]_{B_2}^{H_2})_{(m-s) \times (n-r)}
 \end{bmatrix}_{B_1 + B_2}^{H_1 + H_2}
 \begin{bmatrix}
-[\vec{u}_1]_{B_1, r} \\
-[\vec{u}_2]_{B_2, n-r}
+([\vec{u}_1]_{B_1})_r \\
+([\vec{u}_2]_{B_2})_{n-r}
 \end{bmatrix}_{H_1 + H_2} \\
 &= 
 \begin{bmatrix}
-([T_1]_{B_1}^{H_1})_{s \times r}[\vec{u}_1]_{B_1, r} + 0_{s \times (n-r)}[\vec{u}_2]_{B_2, n-r} \\
-0_{(m-s) \times r}[\vec{u}_1]_{B_1, r} + ([T_2]_{B_2}^{H_2})_{(m-s) \times (n-r)}[\vec{u}_2]_{B_2, n-r} 
+([T_1]_{B_1}^{H_1})_{s \times r}([\vec{u}_1]_{B_1})_r + 0_{s \times (n-r)}([\vec{u}_2]_{B_2})_{n-r} \\
+0_{(m-s) \times r}([\vec{u}_1]_{B_1})_r + ([T_2]_{B_2}^{H_2})_{(m-s) \times (n-r)}([\vec{u}_2]_{B_2})_{n-r}
 \end{bmatrix}_{H_1 + H_2} \\
 &= 
 \begin{bmatrix}
@@ -1498,7 +1497,7 @@ T(\vec{u}) &= [T]_{B_1 + B_2}^{H_1 + H_2}[\vec{u}]_{B_1 + B_2} \\
 &= 
 T_1(\vec{u}_1) \oplus T_2(\vec{u}_2)
 \end{align*}
-where the image is a direct sum composed of $T_1(\vec{u}_1): [T_1]_{B_1}^{H_1}[\vec{u}_1]_{B_1} \in \mathcal{V}_1$ and $T_2(\vec{u}_2): [T_2]_{B_2}^{H_2}[\vec{u}_2]_{B_2} \in \mathcal{V}_2$ from applying $T_1$ and $T_2$ separately to the preimages $\vec{u}_1 \in \mathcal{U}_1$ and $\vec{u}_2 \in \mathcal{U}_2$ in the two subspaces.
+where the image is a direct sum composed of $T_1(\vec{u}^{(1)}): [T_1]_{B_1}^{H_1}[\vec{u}^{(1)}]_{B_1} \in \mathcal{V}_1$ and $T_2(\vec{u}^{(2)}): [T_2]_{B_2}^{H_2}[\vec{u}^{(2)}]_{B_2} \in \mathcal{V}_2$ from applying $T_1$ and $T_2$ separately to the preimages $\vec{u}^{(1)} \in \mathcal{U}_1$ and $\vec{u}^{(2)} \in \mathcal{U}_2$ in the two subspaces.
 % we will consider linear operators such that $T: \mathcal{V} \to \mathcal{V}$ is a linear transformation within the vector space $\mathcal{V}$ itself. A special case for the restriction of a linear operator, originally $T|_W: \mathcal{W} \to \mathcal{V}$ with $\mathcal{W} \subset \mathcal{V}$, is that the range of $T|_W$ is a subspace of $\mathcal{W}$ so that it can be reduced to $T|_W: \mathcal{W} \to \mathcal{W}$. $\mathcal{W}$ is then referred to as an \index{Invariant Subspace}\keywordhl{invariant subspace} under $T$, since the mapping $T|_W$ and hence $T$ does not alter the subspace in the sense that any vector in $\mathcal{W}$ is never mapped to other vectors outside $\mathcal{W}$ via $T$, i.e. $T(\vec{w}) \notin \mathcal{W}^C$ except the zero vector. In this case, we can replace $T|_W$ by $T$.
 %\begin{defn}[Invariant Subspaces]
 %A subspace $\mathcal{W}$ of $\mathcal{V}$ is known as an invariant subspace under the linear transformation $T$ if for any $\vec{w} \in \mathcal{W}$, $T(\vec{w}) \in \mathcal{W}$.
@@ -1594,16 +1593,16 @@ For a linear transformation $T: \mathcal{U} \to \mathcal{V}$ that has a matrix r
 1 & -2 & 1 & 0
 \end{bmatrix} 
 \end{align*}
-with respect to some bases $\mathcal{B} = \{\vec{u}_1, \vec{u}_2, \vec{u}_3, \vec{u}_4\}$, $\mathcal{H} = \{\vec{v}_1, \vec{v}_2, \vec{v}_3\}$, show that it can turn into a matrix direct sum if the coordinate systems are changed according to $\mathcal{B}' = \{\vec{u}'_1, \vec{u}'_2, \vec{u}'_3, \vec{u}'_4\}$, $\mathcal{H}' = \{\vec{v}'_1, \vec{v}'_2, \vec{v}'_3\}$, where
+with respect to some bases $\mathcal{B} = \{\vec{u}^{(1)}, \vec{u}^{(2)}, \vec{u}^{(3)}, \vec{u}^{(4)}\}$, $\mathcal{H} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \vec{v}^{(3)}\}$, show that it can turn into a matrix direct sum if the coordinate systems are changed according to $\mathcal{B}' = \{\vec{u}^{(1)'}, \vec{u}^{(2)'}2, \vec{u}^{(3)'}, \vec{u}^{(4)'}\}$, $\mathcal{H}' = \{\vec{v}^{(1)'}, \vec{v}^{(2)'}, \vec{v}^{(3)'}\}$, where
 \begin{align*}
-\vec{u}'_1 &= \vec{u}_1 & \vec{v}'_1 &= \vec{v}_1 + \vec{v}_2 \\
-\vec{u}'_2 &= \vec{u}_3 & \vec{v}'_2 &= -\vec{v}_2 + \vec{v}_3 \\
-\vec{u}'_3 &= \vec{u}_1 + \vec{u}_2 & \vec{v}'_3 &= \vec{v}_1 - \vec{v}_3 \\
-\vec{u}'_4 &= \vec{u}_1 + \vec{u}_4
+\vec{u}^{(1)'} &= \vec{u}^{(1)} & \vec{v}^{(1)'} &= \vec{v}^{(1)} + \vec{v}^{(2)} \\
+\vec{u}^{(2)'} &= \vec{u}^{(3)} & \vec{v}^{(2)'} &= -\vec{v}^{(2)} + \vec{v}^{(3)} \\
+\vec{u}^{(3)'} &= \vec{u}^{(1)} + \vec{u}^{(2)} & \vec{v}^{(3)'} &= \vec{v}^{(1)} - \vec{v}^{(3)} \\
+\vec{u}^{(4)'} &= \vec{u}^{(1)} + \vec{u}^{(4)}
 \end{align*}
 \end{exmp}
 \begin{solution}
-The change of coordinate matrices for Properties \ref{proper:chcoordsmat} are
+The change of coordinate matrices suggested by Properties \ref{proper:chcoordsmat} are
 \begin{align*}
 P_{B'}^B &= 
 \begin{bmatrix}
@@ -1690,6 +1689,7 @@ print(z_1, z_2)
 returns \verb|(1-2j) (3+1j)|. Conjugate, modulus and argument can be found by
 \begin{lstlisting}
 import numpy as np
+from scipy import linalg
 
 print(np.conjugate(z_1))
 print(np.abs(z_2))    

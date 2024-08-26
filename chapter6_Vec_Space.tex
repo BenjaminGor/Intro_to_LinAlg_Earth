@@ -864,7 +864,7 @@ A &= [\vec{v}^{(1)}|\vec{v}^{(2)}|\vec{v}^{(3)}|\vec{v}^{(4)}|\vec{v}^{(5)}]
 0 & 0 & 1 & 1 & 1 \\
 \end{bmatrix}
 \end{align*}
-from the second line to the third line we use the fact that the same matrix multiplied to the left in every column of another matrix can be factored out (why?)\footnote{For an $m \times r$ matrix $A$, and an $r \times n$ matrix $B$, we have, by Definition \ref{defn:matprod} (with a slightly different notation),
+from the second line to the third line we use the fact that the same matrix multiplied to the left in every column of another matrix can be factored out (why?)\footnote{\label{foot:factorleftmatrix} For an $m \times r$ matrix $A$, and an $r \times n$ matrix $B$, we have, by Definition \ref{defn:matprod} (with a slightly different notation),
 \begin{align*}
 A[B_1|B_2|\cdots|B_n] &= \begin{bmatrix}
 a_{11} & a_{12} & \cdots & a_{1r} \\
@@ -1277,7 +1277,7 @@ P_B^E (e_2)_B =
 \end{bmatrix}
 = [\vec{v}^{(2)}]_E
 \end{align*}
-\textcolor{red}{From now on, we simply omit the subscript $E$ and write $(\vec{v})$ in place of $[\vec{v}]_E$ if not specified, to denote vectors in the standard basis as implicitly assumed before.}
+\textcolor{red}{From now on, we simply omit the subscript $E$ and write $\vec{v}$ in place of $[\vec{v}]_E$ if not specified, to denote vectors in the standard basis as implicitly assumed before.}
 \end{solution}
 
 \subsection{Coordinate Bases for Subspaces of $\mathbb{R}^n$}
@@ -1428,7 +1428,7 @@ R_4 + 3R_2 &\to R_4
 The last full-zero row is consistent and $[\vec{v}]_B = ([v_1]_B, [v_2]_B, [v_3]_B)_B^T = (2,1,-1)_B^T$. As a final note, since the fourth vector $(-2,1,0,1)^T$ in the generating set can be written as a non-zero linear combination of the first three vectors (with the coefficients of $-1,-1,3$), we can replace any one of the three vectors in the basis by $(-2,1,0,1)^T$.
 \end{solution}
 
-In general, any vector $\vec{v}^{(j)}$ in a basis can be replaced by another vector that is the linear combination of the basis vectors where the coefficient corresponding to $\vec{v}^{(j)}$ is particularly not zero.\footnote{\label{foot:ft14}This preserves the span and linear independence. See Properties \ref{proper:elemrowoprowrank} later for the span (plus (a) of Properties \ref{proper:linindspanbasisnewver} for linear independence).} Moreover, we can now properly define the "dimension" of any subspace of $\mathbb{R}^n$. It is simply the number of vectors in its basis. Some may wonder if it is possible for two bases of the same vector space to have different number of vectors so that the notion of its dimension will be problematic. In fact, all bases of a finite-dimensional vector (sub)space must possess the same amount of vectors, and we simply note this below.\footnote{It, along with other results below, actually comes from a more general theorem called the \textit{Steinitz Replacement Theorem}.} %Extending from the requirement of a basis for $\mathbb{R}^n$, here a basis of a general vector space $\mathcal{V}$ should be linearly independent and spans $\mathcal{V}$ too. To show this, we need an important result called \index{Steinitz Replacement Theorem}\keywordhl{Steinitz Replacement Theorem}.
+In general, any vector $\vec{v}^{(j)}$ in a basis can be replaced by another vector that is the linear combination of the basis vectors where the coefficient corresponding to $\vec{v}^{(j)}$ is particularly not zero.\footnote{\label{foot:ft14}This preserves the span and linear independence. Compare with Properties \ref{proper:elemrowoprowrank} later for the span part (where the vectors are in the form of rows, plus (a) of Properties \ref{proper:linindspanbasisnewver} for linear independence).} Moreover, we can now properly define the "dimension" of any subspace of $\mathbb{R}^n$. It is simply the number of vectors in its basis. Some may wonder if it is possible for two bases of the same vector space to have different number of vectors so that the notion of its dimension will be problematic. In fact, all bases of a finite-dimensional vector (sub)space must possess the same amount of vectors, and we simply note this below.\footnote{It, along with other results below, actually comes from a more general theorem called the \textit{Steinitz Replacement Theorem}.} %Extending from the requirement of a basis for $\mathbb{R}^n$, here a basis of a general vector space $\mathcal{V}$ should be linearly independent and spans $\mathcal{V}$ too. To show this, we need an important result called \index{Steinitz Replacement Theorem}\keywordhl{Steinitz Replacement Theorem}.
 
 %\begin{thm}[Steinitz Replacement Theorem]
 %\label{thm:Steinitz}

@@ -1,4 +1,4 @@
-\chapter{More on Vector Geometry}
+\chapter{Vector Geometry}
 
 Vectors provides valuable assistance when it comes to describing geometric objects. In this chapter we are going to exploit the knowledge learnt in the previous chapters to solve geometry problems and inspect more deeply the intimate relationship between vectors, dot/cross products, and geometry.
 
@@ -411,11 +411,11 @@ We have mentioned in Properties \ref{proper:dotgeo} that dot product between two
 \label{proper:proj}
 For two real vectors $\vec{u}$ and $\vec{v}$ having the same dimension, the \index{Scalar Projection}\keywordhl{(signed) scalar projection} of $\vec{v}$ onto $\vec{u}$ is computed according to
 \begin{align*}
-\text{proj}_u v = \norm{\vec{v}} \cos\theta = \frac{\vec{u} \cdot \vec{v}}{\norm{\vec{u}}}    
+\text{proj}_u v = \norm{\vec{v}} \cos\theta = \frac{\vec{v} \cdot \vec{u}}{\norm{\vec{u}}}    
 \end{align*}
 If we want to give directionality to the projection, then we can supply its unit vector $\hat{u}$ to make it a \index{Vector Projection}\keywordhl{vector projection}:
 \begin{align*}
-\overrightarrow{\text{proj}}_u v &= (\text{proj}_u v) \hat{u} = \frac{\vec{u} \cdot \vec{v}} {\norm{\vec{u}}} \hat{u} = \frac{\vec{u} \cdot \vec{v}}{\norm{\vec{u}}^2} \vec{u} \\
+\overrightarrow{\text{proj}}_u v &= (\text{proj}_u v) \hat{u} = \frac{\vec{v} \cdot \vec{u}} {\norm{\vec{u}}} \hat{u} = \frac{\vec{v} \cdot \vec{u}}{\norm{\vec{u}}^2} \vec{u} \\
 &= (\text{proj}_u v) \frac{\vec{u}}{\norm{\vec{u}}}
 \end{align*}
 where we have used Definition \ref{defn:unitvec} to write out the unit vector $\hat{u}$ as $\frac{\vec{u}}{\norm{\vec{u}}}$.
@@ -428,7 +428,7 @@ Find the projection of $\vec{v} = -2\hat{i} + 3\hat{j} - \hat{k}$ onto $\vec{u} 
 \begin{solution}
 According to Properties \ref{proper:proj}, The signed scalar projection of $\vec{v}$ into $\vec{u}$ is
 \begin{align*}
-\text{proj}_u v &= \frac{\vec{u} \cdot \vec{v}}{\norm{\vec{u}}}  \\
+\text{proj}_u v &= \frac{\vec{v} \cdot \vec{u}}{\norm{\vec{u}}}  \\
 &= \frac{(-2)(4)+(3)(1)+(-1)(-3)}{\sqrt{(4)^2+(1)^2+(-3)^2}} \\
 &= -\frac{2}{\sqrt{26}} = -\frac{\sqrt{26}}{13}
 \end{align*}
