@@ -14,16 +14,17 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 <h2>Table of Content (Draft)</h2>
 
 (inside brackets are the expected finish and upload dates)
+(Rewriting Ch6-10, 2024-10-01)
 1. Introduction to Matrices and Linear Systems
 2. Inverses and Determinants
 3. Solutions for Linear Systems
 4. Introduction to Vectors
-5. More on Vector Geometry
+5. Vector Geometry
 6. Vector Spaces and Coordinate Bases
 7. More on Coordinate Bases, Linear Transformations
-8. Complex Vectors/Matrices and Block Form
-9. Eigenvalues and Eigenvectors, Diagonalization (2024-09-01)
-10. Orthogonal and Normal Matrices (2024-10-01)
+8. Complex Vectors/Matrices and Block Matrices
+9. Eigenvalues and Eigenvectors, Diagonalization
+10. Orthogonal and Normal Matrices
 11. Quadratic Form (2024-11-01)
 12. Inner Product Space
 13. Least-Square Approximation
