@@ -1001,6 +1001,7 @@ and thus the desired new matrix representation of the endomorphism with respect 
 \end{solution}
 
 \subsection{Gram-Schmidt Orthogonalization, QR Decomposition}
+\label{section:GSortho}
 
 Sometimes the coordinate basis consists of vectors that are linearly independent but not orthogonal to each other, unlike the standard basis. A common way to create an orthogonal basis from the set is to apply the so-called \index{Gram-Schmidt Orthogonalization}\keywordhl{Gram-Schmidt Orthogonalization}. Basically, it is an iterative method. At each step it constructs a vector that are orthogonal to all the previously processed vectors by removing the parallel components projected onto them (blue) while retaining the orthogonal part (red).
 \begin{center}
@@ -1303,6 +1304,7 @@ whose values can be readily inferred from the steps during the orthogonalization
 \\
 We conclude this section with a small remark related to the concept of orthogonal complement discussed in the end of Section \ref{section:null}.
 \begin{proper}
+\label{proper:orthodirectsum}
 For an orthogonal(-normal) basis $\mathcal{B} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \vec{v}^{(3)}, \\ \cdots, \vec{v}^{(n)}\}$ for a finite, $n$-dimensional vector space $\mathcal{V}$, the subspaces $\mathcal{V}_G$ and $\mathcal{V}_H$ formed by $\mathcal{G} = \{\vec{v}^{(I)}\}$ and $\mathcal{H} = \{\vec{v}^{(J)}\}$ respectively, where $I$ and $J$ are mutually exclusive indices that together count all integers from $1$ to $n$, are the orthogonal complement to each other with respect to $\mathcal{V}$, such that $\mathcal{V}_G^\perp = \mathcal{V}_H$ and $\mathcal{V}_G \oplus \mathcal{V}_H = \mathcal{V}$.
 \end{proper}
 \end{solution}

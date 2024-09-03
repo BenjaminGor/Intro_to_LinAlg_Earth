@@ -216,8 +216,9 @@ Matrix multiplication between two complex matrices is carried out in the same wa
 
 \subsubsection{Conjugate Transpose}
 Transpose can be similarly defined for complex matrices. However, there exists a more useful operation that combines transpose and conjugate.
-\begin{defn}
-The \index{Conjugate Transpose}\keywordhl{conjugate transpose} of a matrix $A$, denoted as $A^* = \overline{A^T}$, has elements $A^*_{pq} = \overline{A}_{qp}$, where the conjugate of the matrix $\overline{A}$ is produced by changing every element in $A$ to its complex conjugate. Sometimes it is called the \textit{adjoint} or \index{Hermitian transpose}\keywordhl{Hermitian transpose} of $A$, and denoted as $A^H$. 
+\begin{defn}[Conjugate Transpose]
+\label{defn:conjutrans}
+The \index{Conjugate Transpose}\keywordhl{conjugate transpose} of a matrix $A$, denoted as $A^* = \overline{A^T}$, has elements $A^*_{pq} = \overline{A}_{qp}$, where the conjugate $\overline{A}$ of the matrix $A$ is produced by changing every element in $A$ to its complex conjugate. Sometimes it is called the \textit{adjoint} or \index{Hermitian transpose}\keywordhl{Hermitian transpose} of $A$, and denoted as $A^H$. 
 \end{defn}
 It means that conjugate transpose is formed by flipping the elements of the matrix about its main diagonal, then subsequently conjugate on all of them. Properties of conjugate transpose are alike to those for real transpose, stated in Properties \ref{proper:transp}.
 \begin{proper}

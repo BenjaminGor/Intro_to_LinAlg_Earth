@@ -576,9 +576,9 @@ Seismic wave follows \textit{Snell's Law} like a light ray when it comes to refr
     \pic [draw, "$\theta_2 = \SI{60}{\degree}$", angle eccentricity=2, font=\scriptsize, pic text options={xshift=-2}] {angle = source--interface--interdown};
     \pic [draw, "$\theta_1 = \SI{45}{\degree}$", angle eccentricity=2.5, font=\scriptsize, pic text options={xshift=2}] {angle = receive--interface--interup};
     \draw [blue, thick, <->] (7,2.4) -- (7,4) node[below, sloped, midway]{$y$};
-    \draw [thick, <->] (8.2,0) -- (8.2,4) node[below, sloped, midway]{$h = \SI{800}{\m}$};
+    \draw [thick, <->] (8.2,0) -- (8.2,4) node[below, sloped, midway]{$h = \SI{80}{\m}$};
     \draw [blue, thick, <->] (1,2.3) -- (5.4,2.3) node[below, sloped, midway]{$x$};
-    \draw [thick, <->] (1,-0.6) -- (7,-0.6) node[below, sloped, midway]{$d = \SI{1200}{\m}$};
+    \draw [thick, <->] (1,-0.6) -- (7,-0.6) node[below, sloped, midway]{$d = \SI{120}{\m}$};
 \end{tikzpicture}
 \caption{The underground schematic for the seismic ray in Example \ref{exmp:seismic1}.}
 \label{fig:seismic1}
@@ -848,7 +848,7 @@ This swaps the first and second row. (You can swap columns in a similar way.) Pr
 [[20 33]
  [21 27]]
 \end{lstlisting}
-\textcolor{red}{An important pitfall is that, since our inputs to \texttt{np.array} are all integers, the previous arrays will automatically have a data type of \texttt{int} (integer). This may produce unexpected errors when the calculation leads to decimals/fractions.} If it is the case, then we can avoid such bugs by declaring the array with the keyword \verb|dtype=float| to use \textit{floating point numbers}, like
+An important pitfall is that, since our inputs to \texttt{np.array} are all integers, the previous arrays will automatically have a data type of \texttt{int} (integer). This may produce unexpected errors when the calculation leads to decimals/fractions. If it is the case, then we can avoid such bugs by declaring the array with the keyword \verb|dtype=float| to use \textit{floating point numbers}, like
 \begin{lstlisting}
 myMatrix1 = np.array([[1, 4], [5, 3]], dtype=float) 
 \end{lstlisting}
