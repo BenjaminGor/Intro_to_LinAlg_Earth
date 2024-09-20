@@ -6,7 +6,7 @@ In this chapter we will go deeper about what actually a matrix represents in the
 
 \subsection{Linear Maps between Vector Spaces}
 
-Consider two vector spaces, we may want to know if vectors in one of the spaces, let's say $\mathcal{U}$, can be associated to or transformed into those in another vector space, $\mathcal{V}$, according to some rules. This is known as a \index{Transformation}\index{Transformation!Mapping}\keywordhl{transformation/mapping} from the vector space $\mathcal{U}$ to $\mathcal{V}$. Of the most concern is the class of \index{Linear Transformation}\index{Linear Transformation!Linear Mapping}\keywordhl{linear transformations/mappings} which obeys the two properties listed below.
+Consider two vector spaces, we may want to know if vectors in one of the vector spaces, let's say $\mathcal{U}$, can be associated to or \textit{transformed} into those in another vector space $\mathcal{V}$, according to some rules. This is known as a \index{Transformation}\index{Transformation!Mapping}\keywordhl{transformation/mapping} from the vector space $\mathcal{U}$ to $\mathcal{V}$. Of the most concern is the class of \index{Linear Transformation}\index{Linear Transformation!Linear Mapping}\keywordhl{linear transformations/mappings} which obeys the two properties listed below.
 \begin{defn}[Linear Transformation/Map]
 \label{defn:lintrans}
 A linear transformation (or linear map) from a vector space $\mathcal{U}$ to another vector space $\mathcal{V}$ is a mapping: $T: \mathcal{U} \to \mathcal{V}$, such that for all vectors $\vec{u}^{(1)}, \vec{u}^{(2)} \in \mathcal{U}$, and any scalar $a$, it satisfies:
@@ -16,15 +16,15 @@ A linear transformation (or linear map) from a vector space $\mathcal{U}$ to ano
 \end{enumerate}
 These two properties combined are known as \textit{linearity}. An equivalent condition is $T(a\vec{u}^{(1)} + b\vec{u}^{(2)}) = aT(\vec{u}^{(1)}) + bT(\vec{u}^{(2)})$, where $b$ is any scalar as well.
 \end{defn}
-Notice that if $\mathcal{U}$/$\mathcal{V}$ coincides with the real $n$/$m$-space $\mathbb{R}^n$/$\mathbb{R}^m$, and we express any vector $\vec{u}: [\vec{u}]_B$\footnote{We use ":" to indicate any vector is associated to its representation in some fixed coordinate system.} in $\mathcal{U}$ as with $n$ coordinates using some basis $\mathcal{B}$ of its (similarly for $\vec{v}: [\vec{v}]_{H} \in \mathcal{V}$ that has $m$ coordinates in some basis $\mathcal{H}$). Then $[T]_B^{H} = A$ where $A$ is any $m \times n$ matrix satisfies the requirements of and is a linear transformation from $\mathcal{U}$ to $\mathcal{V}$ according to the rule $T(\vec{u}): [T]_B^{H}[\vec{u}]_B = A[\vec{u}]_B$. (Short Exercise: show this satisfies the conditions outlined in Definition \ref{defn:lintrans}!\footnote{$T(\vec{u}^{(1)}+\vec{u}^{(2)})$ $A([\vec{u}^{(1)}]_B + [\vec{u}^{(2)}]_B) = A[\vec{u}^{(1)}]_B + A[\vec{u}^{(2)}]_B$: $T(\vec{u}^{(1)})+T(\vec{u}^{(2)})$ and $T(a\vec{u}^{(1)})$: $A(a[\vec{u}^{(1)}]_B) = a(A[\vec{u}^{(1)}]_B)$: $aT(\vec{u}^{(1)})$}) This implies that all matrices can be considered as some sort of linear mappings (for now, between $\mathbb{R}^n$ and $\mathbb{R}^m$). In fact, the converse, which states that any linear transformation (between finite-dimensional vector spaces) can be represented by a matrix, is also true as well, and will be discussed in the remaining parts of this section.\\
+Notice that if $\mathcal{U}$/$\mathcal{V}$ coincides with the real $n$/$m$-space $\mathbb{R}^n$/$\mathbb{R}^m$, and we express any vector $\vec{u} \equiv [\vec{u}]_B$\footnote{We use "$\equiv$" to associate any vector to its representation in some fixed coordinate system.} in $\mathcal{U}$ by $n$ coordinates using some basis $\mathcal{B}$ (similarly for $\vec{v} \equiv [\vec{v}]_{H} \in \mathcal{V}$ that has $m$ coordinates in some basis $\mathcal{H}$). Then $[T]_B^{H} = A$ where $A$ is any $m \times n$ matrix satisfies the requirements of and is a linear transformation from $\mathcal{U}$ to $\mathcal{V}$ according to the rule $T(\vec{u}) \equiv [T]_B^{H}[\vec{u}]_B = A[\vec{u}]_B$. (Short Exercise: show this satisfies the conditions outlined in Definition \ref{defn:lintrans} above!\footnote{$T(\vec{u}^{(1)}+\vec{u}^{(2)}) \equiv A([\vec{u}^{(1)}]_B + [\vec{u}^{(2)}]_B) = A[\vec{u}^{(1)}]_B + A[\vec{u}^{(2)}]_B \equiv T(\vec{u}^{(1)})+T(\vec{u}^{(2)})$ and $T(a\vec{u}^{(1)}) \equiv A(a[\vec{u}^{(1)}]_B) = a(A[\vec{u}^{(1)}]_B) \equiv aT(\vec{u}^{(1)})$}) This implies that all matrices can be considered as some sort of linear mappings (for now, between $\mathbb{R}^n$ and $\mathbb{R}^m$). In fact, the converse, which states that any linear transformation (between finite-dimensional vector spaces) can be represented by a matrix, is also true as well, and will be discussed in the following parts of this section.\\
 \\
-Let's now explicitly fix a basis $\mathcal{B} = \{\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \vec{u}^{(n)}\}$ for $\mathcal{U}$ (again, similarly we have $\mathcal{H} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(m)}\}$ for $\mathcal{V}$). For each $\vec{u}^{(j)}$, denote $\vec{w}^{(j)} = T(\vec{u}^{(j)})$ as the resulting vectors in $\mathcal{V}$ after applying the transformation $T$ over the basis vectors for $\mathcal{U}$. Notice that $[\vec{u}^{(j)}]_B = (e^{(j)})_B$ where the $j$-th basis vector of $\mathcal{B}$ is explicitly represented in the coordinate form with the $j$-th entry being $1$ and others being $0$ (where the usual hat symbol on $e$ is not present) in the $\mathcal{B}$ system. Due to Definition \ref{defn:coordRn} and Properties \ref{proper:lincombofspan}, $T(\vec{u}^{(j)}) = \vec{w}^{(j)} \in \mathcal{V}$ can be expressed as a \textit{unique} linear combination as $\vec{w}^{(j)} = a_1^{(j)}\vec{v}^{(1)} + a_2^{(j)}\vec{v}^{(2)} + \cdots + a_m^{(j)}\vec{v}^{(m)} = \sum_{i=1}^{m} a_i^{(j)}\vec{v}^{(i)}$ of the basis vectors $\vec{v}^{(i)}$ from $\mathcal{H}$, i.e.
+Provided that $\mathcal{U}$/$\mathcal{V}$ is $n$/$m$(finite)-dimensional, let's now explicitly fix a basis $\mathcal{B} = \{\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \vec{u}^{(n)}\}$ for $\mathcal{U}$ (again, similarly we have $\mathcal{H} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \\ \vec{v}^{(m)}\}$ for $\mathcal{V}$). For each $\vec{u}^{(j)}$, $j = 1,2,\ldots,n$, denote $\vec{w}^{(j)} = T(\vec{u}^{(j)})$ as the resulting vectors in $\mathcal{V}$ after applying the transformation $T$ over the basis vectors for $\mathcal{U}$. Notice that $[\vec{u}^{(j)}]_B = (e^{(j)})_B$ where the $j$-th basis vector of $\mathcal{B}$ is explicitly represented in a coordinate form with the $j$-th entry being $1$ and others being $0$ (where the usual hat symbol on $e$ is not present) relative to the $\mathcal{B}$ system. Due to Definition \ref{defn:coordRn} and Properties \ref{proper:lincombofspan}, $T(\vec{u}^{(j)}) = \vec{w}^{(j)} \in \mathcal{V}$ can be expressed as a \textit{unique} linear combination as $\vec{w}^{(j)} = a_1^{(j)}\vec{v}^{(1)} + a_2^{(j)}\vec{v}^{(2)} + \cdots + a_m^{(j)}\vec{v}^{(m)} = \sum_{i=1}^{m} a_i^{(j)}\vec{v}^{(i)}$ of the basis vectors $\vec{v}^{(i)}$ from $\mathcal{H}$, i.e.
 \begin{align*}
 T(\vec{u}^{(j)}) = \sum_{i=1}^{m} a_i^{(j)}\vec{v}^{(i)}
 \end{align*}
-The matrix formed by the above coefficients $A = a_i^{(j)}$ is then the desired, \textit{unique} \index{Linear Transformation!Matrix Representation of Linear Transformation}\keywordhl{matrix representation} of our linear transformation $T$. To see this, compare with what we have taken in the last paragraph, $T(\vec{u})$: $A[\vec{u}]_B$. Subsequently,
+The matrix formed by the above coefficients $A = a_i^{(j)}$ is then the desired, \textit{unique} \index{Linear Transformation!Matrix Representation of Linear Transformation}\keywordhl{matrix representation} of our linear transformation $T$. To see this, insert $\vec{u}^{(j)}$ and compare both sides of $T(\vec{u}) \equiv A[\vec{u}]_B$. Subsequently,
 \begin{align*}
-T(\vec{u}^{(j)})\text{: } A[\vec{u}^{(j)}]_B &= a_i^{(j)}(e^{(j)})_B \\
+A[\vec{u}^{(j)}]_B &= a_i^{(j)}(e^{(j)})_B \\
 &=
 \begin{bmatrix}
 a_1^{(1)} & a_1^{(2)} & \cdots & a_1^{(j)} & \cdots & a_1^{(n)} \\
@@ -48,9 +48,11 @@ a_2^{(j)} \\
 a_m^{(j)}
 \end{bmatrix}
 \end{align*}
-Due to the structure of $(e^{(j)})_B$, this matrix product yields exactly the $j$-th column of $A = a_i^{(j)}$ as shown above (see below of Properties \ref{proper:linearcombmatrix}). Moreover, the coordinates of $\vec{w}^{(j)} = T(\vec{u}^{(j)})$ in the $\mathcal{H}$ system
+Due to the structure of $(e^{(j)})_B$, this matrix product yields exactly the $j$-th column of $A = a_i^{(j)}$ as shown above (see the remark under Properties \ref{proper:linearcombmatrix}). Moreover, the coordinates of $\vec{w}^{(j)} = T(\vec{u}^{(j)})$ in the $\mathcal{H}$ system
 \begin{align*}
-[\vec{w}^{(j)}]_H = [\sum_{i=1}^{m} a_i^{(j)}\vec{v}^{(i)}]_H &= \sum_{i=1}^{m} a_i^{(j)}[\vec{v}^{(i)}]_H \\
+T(\vec{u}^{(j)}) \equiv [T(\vec{u}^{(j)})]_H &= [\vec{w}^{(j)}]_H \\
+&= [\sum_{i=1}^{m} a_i^{(j)}\vec{v}^{(i)}]_H \\
+&= \sum_{i=1}^{m} a_i^{(j)}[\vec{v}^{(i)}]_H \\
 &= \sum_{i=1}^{m} a_i^{(j)}(e^{(i)})_H \\
 &=  a_1^{(j)} \begin{bmatrix}
 1 \\
@@ -103,7 +105,7 @@ a_2^{(j)} \\
 a_m^{(j)}
 \end{bmatrix}
 \end{align*}
-also gives the same $j$-th column of $A = a_i^{(j)}$. By the same argument, this holds for any $j$. Hence, the association of the matrix $[A]_B^H = a_i^{(j)}$ to the linear transformation $T$ is consistent, where we have now added the subscript $B$ and superscript $H$ to emphasize the transformation are carried out in reference to these two specific coordinate bases. This reasoning also shows that, to construct the matrix representation of a linear transformation, we compute each of the $T(\vec{u}_j) = \vec{w}^{(j)}$ and find its coordinates in the $\mathcal{H}$ frame, namely $[\vec{w}^{(j)}]_H$, which readily become the $j$-th column of the matrix to be found. To be more clear, we have
+also gives the same $j$-th column of $A_{ij} = a_i^{(j)}$. By the same argument, this holds for any $j$. Hence, the association of the matrix $[A]_B^H = a_i^{(j)}$ to the linear transformation $T$ is consistent, where we have now added the subscript $B$ and superscript $H$ to emphasize the transformation are carried out in reference to these two specific coordinate bases. This same line of reasoning also shows that, to construct the matrix representation of a linear transformation, we compute $T(\vec{u}_j) = \vec{w}^{(j)}$ for each of the $\vec{u}_j$ in the $\mathcal{B}$ basis and find its coordinates in the $\mathcal{H}$ frame, namely $[\vec{w}^{(j)}]_H$, which readily become the $j$-th column of the matrix to be found. To be more clear, we have
 \begin{align*}
 [T]_B^H &= 
 \begin{bmatrix}
@@ -125,7 +127,7 @@ a_m^{(1)} & a_m^{(2)} & \cdots & a_m^{(n)}
 Notice that here the $i$/$j$ subscript/superscript has been exchanged when compared to like Properties \ref{proper:linsysmat}.
 \begin{defn}[Matrix Representation of a Linear Transformation]
 \label{defn:matrixrepoflintrans}
-A linear transformation $T: \mathcal{U} \to \mathcal{V}$ as defined in Definition \ref{defn:lintrans}, with respect to the bases $\mathcal{B} = \{\vec{u}^{(1)}, \vec{u}^{(1)}, \ldots, \vec{u}^{(n)}\}$ for $\mathcal{U}$ and $\mathcal{H} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(m)}\}$ for $\mathcal{V}$, has a unique matrix representation of
+A linear transformation $T: \mathcal{U} \to \mathcal{V}$ as defined in Definition \ref{defn:lintrans} between two finite-dimensional vector spaces, with respect to the bases $\mathcal{B} = \{\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \vec{u}^{(n)}\}$ for $\mathcal{U}$ and $\mathcal{H} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(m)}\}$ for $\mathcal{V}$, has a unique matrix representation of
 \begin{align*}
 [T]_B^H = 
 \begin{bmatrix}
@@ -135,13 +137,13 @@ a_2^{(1)} & a_2^{(2)} &  & a_2^{(n)} \\
 a_m^{(1)} & a_m^{(2)} & \cdots & a_m^{(n)}
 \end{bmatrix}
 \end{align*}
-where the entries $a_i^{(j)}$ are those according to the relations $T(\vec{u}^{(j)}) = \sum_{i=1}^{m} a_i^{(j)}\vec{v}^{(i)}$, or in matrix notation, $[T]_B^H [\vec{u}]_B = [\vec{v}]_H$.
+where the entries $a_i^{(j)}$ are those found according to the relations $T(\vec{u}^{(j)}) = \sum_{i=1}^{m} a_i^{(j)}\vec{v}^{(i)}$, or in matrix notation, $[T]_B^H [\vec{u}]_B = [\vec{v}]_H$.
 \end{defn}
 
 Let's illustrate how it works out using an easy example using the familiar $\mathbb{R}^n$ and $\mathbb{R}^m$. 
 \begin{exmp}
 \label{exmp:lineartransmatrixrep}
-Let $\mathcal{U} = \mathbb{R}^3$ and $\mathcal{V} = \mathbb{R}^2$, it can be easily verified that $\mathcal{B} = \{(1,2,1)^T, (0,1,-1)^T, (2,-1,1)^T\}$ is a basis for $\mathcal{U}$, and the same goes for $\mathcal{V}$ with a basis $\mathcal{H} = \{(1,2)^T, (2,-1)^T\}$. If a linear transformation $T: \mathbb{R}^3 \to \mathbb{R}^2$ obeys the rule $T((x,y,z)^T) = (x+2y, x-y+z)^T$, (by the way, you should verify if this is really a linear transformation.) find its matrix representation $[T]_B^H$ with respect to the $\mathcal{B}$ and $\mathcal{H}$ system. Then, use the results to compute $T((-1,4,-1)^T)$.
+Let $\mathcal{U} = \mathbb{R}^3$ and $\mathcal{V} = \mathbb{R}^2$, it can be easily verified that $\mathcal{B} = \{(1,2,1)^T, (0,1,-1)^T, (2,-1,1)^T\}$ is a basis for $\mathcal{U}$, and the same goes for $\mathcal{V}$ with a basis $\mathcal{H} = \{(1,2)^T, (2,-1)^T\}$. If a linear transformation $T: \mathbb{R}^3 \to \mathbb{R}^2$ obeys the rule $T((x,y,z)^T) = (x+2y, x-y+z)^T$ (by the way, you should verify if this is really a linear transformation), find its matrix representation $[T]_B^H$ with respect to the $\mathcal{B}$ and $\mathcal{H}$ system. Then, use the results to compute $T((-1,4,-1)^T)$.
 \end{exmp}
 \begin{solution}
 Following Definition \ref{defn:matrixrepoflintrans}, we set out to find how the linear transformation will apply on the basis vectors in $\mathcal{B}$. For the first one, we have
@@ -193,10 +195,10 @@ For the second part, we start by expressing $(-1,4,1)^T$ in the basis $\mathcal{
 4
 \end{bmatrix}_H = (-1,4)^T_H
 \end{align*}
-implying that $T((-1,4,-1)^T) = (-1,4)_H^T = -1(1,2)^T + 4(2,-1)^T = (7,-6)^T$ in the usual standard basis. This can be cross-checked by directly invoking the given definition of $T$, where $T((-1,4,-1)^T) = ((-1)+2(4), (-1)-(4)+(-1))^T = (7,-6)^T$ as well.
+implying that $T((-1,4,-1)^T) = (-1,4)_H^T = -1(1,2)^T + 4(2,-1)^T = (7,-6)^T$ in the usual standard basis $\mathcal{S}$. This can be cross-checked by directly invoking the given definition of $T$, where $T((-1,4,-1)^T) = ((-1)+2(4), (-1)-(4)+(-1))^T = (7,-6)^T$ as well.
 \end{solution}
 
-Up until now, we have been playing around with the simple real $n$-space only, but the real (no pun intended) power of the notion of a general vector space lies in its abstraction: Any mathematical object that satisfies the criteria in Definition \ref{defn:realvecspaceaxiom} is a (real) vector space, and the results that we have already established in the previous parts for the real $n$-space are readily transferable to them.\footnote{Again, this appeal to the isomorphic nature of real vector spaces of the same dimension that will be discussed soon.} Two prime examples of abstract vector spaces are the set of (real) polynomials $\mathcal{P}^n$ with a degree up to $n$ and\footnote{We shall argue for some criteria in Definition \ref{defn:realvecspaceaxiom} for $\mathcal{P}^n$ here. For instances, condition (1) is obvious as adding up two polynomials with a degree up to $n$ can only result in another polynomial with a maximum degree of $n$. In condition (4), the zero vector for $\mathcal{P}^n$ is simply the constant zero function $0$, which is considered to have a degree of $-1$ by convention.} the family of continuous ($k$-times continuously differentiable) functions $\mathcal{C}^0$ ($\mathcal{C}^k$) over a fixed interval. Now we will see how the concept of linear transformation is laid out when these abstract vector spaces are involved.
+Up until now, we have been playing around with the simple real $n$-space only, but the real (no pun intended) power of the notion of a general vector space lies in its abstraction: Any mathematical object that satisfies the criteria in Definition \ref{defn:realvecspaceaxiom} is a (real) vector space, and the results that we have already established in the previous parts for the real $n$-space are readily transferable to them.\footnote{Again, this appeals to the isomorphic nature of same-dimensional real vector spaces, which will be discussed soon.} Two prime examples of abstract vector spaces are the set of (real) polynomials $\mathcal{P}^n$ with a degree up to $n$\footnote{We shall argue for some criteria in Definition \ref{defn:realvecspaceaxiom} for $\mathcal{P}^n$ here. For instances, condition (1) is obvious as adding up two polynomials with a degree up to $n$ can only result in another polynomial with a maximum degree of $n$. In condition (4), the zero vector for $\mathcal{P}^n$ is simply the constant zero function $0$, which is considered to have a degree of $-1$ by convention.} and the family of continuous ($k$-times continuously differentiable) functions $\mathcal{C}^0$ ($\mathcal{C}^k$) over a fixed interval. Now we will see how the concept of linear transformation is laid out when these abstract vector spaces are involved.
 
 \begin{exmp}
 \label{exmp:lineartransderivative}
@@ -286,17 +288,17 @@ So by Definition \ref{defn:matrixrepoflintrans}, the desired matrix representati
 0 & 0 & 1
 \end{bmatrix}
 \end{align*}
-which is the $3 \times 3$ identity matrix. This is expected as the linear transformation is essentially $T[(c_0, c_1, c_2)_B^T] = (c_0, c_1, c_2)_H^T$ where $(c_0, c_1, c_2)_H^T = c_0 + c_1x + c_2x^2$, which means that the numeric representation of vectors in the two spaces is preserved under such a linear transformation between them and the only visible change is the subscript.
+which is the $3 \times 3$ identity matrix. This is expected as the linear transformation is essentially $T[(c_0, c_1, c_2)_B^T] = (c_0, c_1, c_2)_H^T$ where $(c_0, c_1, c_2)_H^T = c_0 + c_1x + c_2x^2$, which means that the numeric coordinate representation of vectors in the two spaces is preserved under such a linear transformation between them and the only visible change is the subscript.
 \end{solution}
-Most of the readers should find it boring in the above example as we are just stating the obvious. It is a straight-forward, "one-to-one" association between the standard bases of the real $n$-space and space of polynomials with degree $n-1$. However, the important message is that given such an association we can always identify any vector of some space as a vector in another space of a completely different class, which is very powerful as many operations become transferable between these two spaces. In this sense, this kind of "one-to-one" mapping is not limited to mappings that have an identity representation, or by the bases used for the two vector spaces as we will see in the following subsection.
+Most of the readers should find it boring in the above example as we are just stating the obvious. It is a straight-forward, "one-to-one" association between the standard bases of the real $n$-space and space of polynomials with degree $n-1$. However, the important message is that given such an association we can always identify any vector of some space as a vector in another space of a completely different class, which is very powerful as many operations become transferable between these two spaces. In this sense, this kind of "one-to-one" mapping is not limited to mappings that have an identity representation, or affected by the bases used for the two vector spaces as we will see in the following subsection.
 
 \subsection{One-to-one and Onto, Kernel and Range}
 
-Continuing our discussion above, to identify a vector (one and only one) from one vector space as another vector in another vector space through a linear mapping, we require it to be \index{One-to-one}\index{Injective}\keywordhl{one-to-one (injective)}. On the other hand, another important property of a linear transformation is that whether it is \index{Onto}\index{Surjective}\keywordhl{onto (surjective)}, which means that every vector (\textit{image}) in the latter vector space (\textit{codomain}) is being mapped onto by some vector(s) (\textit{preimage}) in the former vector space (\textit{domain}). The formal definitions of these two properties are given as below.
+Continuing our discussion above, to identify a vector (one and only one) from one vector space as another vector in another vector space through a linear mapping, we require it to be \index{One-to-one}\index{Injective}\keywordhl{one-to-one (injective)}. On the other hand, another important property of a linear transformation is that whether it is \index{Onto}\index{Surjective}\keywordhl{onto (surjective)}, which means that every vector (\textit{image}) in the latter vector space (\textit{codomain}) is being mapped onto by (or speaking loosely, "comes from") some vector(s) (\textit{preimage}) in the former vector space (\textit{domain}). The formal definitions of these two properties are given as below.
 
 \begin{proper}[Injective Transformation]
 \label{proper:injective}
-A transformation $T: \mathcal{U} \to \mathcal{V}$ is called one-to-one if for two vectors $\vec{u}^{(1)}, \vec{u}^{(2)} \in \mathcal{U}$, $T(\vec{u}^{(1)}) = T(\vec{u}^{(2)})$ implies $\vec{u}^{(1)} = \vec{u}^{(2)}$, i.e. an image has one and only one corresponding preimage. Furthermore, if $T$ is linear, then equivalently $T(\vec{u}) = \textbf{0}$ implies $\vec{u} = \textbf{0}$ as the only possibility.
+A transformation $T: \mathcal{U} \to \mathcal{V}$ is called \textit{one-to-one} if for any pair of two (may or may not be distinct) vectors $\vec{u}^{(1)}, \vec{u}^{(2)} \in \mathcal{U}$, $T(\vec{u}^{(1)}) = T(\vec{u}^{(2)})$ implies $\vec{u}^{(1)} = \vec{u}^{(2)}$, i.e. an image has one and only one corresponding preimage. Furthermore, if $T$ is linear, then an equivalent condition is that $T(\vec{u}) = \textbf{0}$ implies $\vec{u} = \textbf{0}$ as the only possibility.
 \end{proper}
 To show the equivalence of the two conditions above, notice that $T(\textbf{0}) = \textbf{0}$ if $T$ is linear. (why?)\footnote{$T(\textbf{0})=T(0\vec{u})=0T(\vec{u})=\textbf{0}$ for arbitrary $\vec{v}$ due to the homogeneity property as required in Definition \ref{defn:lintrans}.} For any $\vec{u}$ such that $T(\vec{u}) = 0$, we have
 \begin{align*}
@@ -305,7 +307,7 @@ T(\vec{u}) = \textbf{0} = T(\textbf{0})
 and hence $\vec{u}$ must be $\textbf{0}$ if $T(\vec{u}^{(1)}) = T(\vec{u}^{(2)})$ implies $\vec{u}^{(1)} = \vec{u}^{(2)}$. The proof of the converse is left as an exercise.
 \begin{proper}[Surjective Transformation]
 \label{proper:surjective}
-A transformation $T: \mathcal{U} \to \mathcal{V}$ is called onto if for any vector $\vec{v} \in \mathcal{V}$ (image), there exists at least one vector(s) $\vec{u} \in \mathcal{U}$ (preimage) such that $T(\vec{u}) = \vec{v}$.
+A transformation $T: \mathcal{U} \to \mathcal{V}$ is called \textit{onto} if for any vector $\vec{v} \in \mathcal{V}$ (image), there exists at least one vector(s) $\vec{u} \in \mathcal{U}$ (preimage) such that $T(\vec{u}) = \vec{v}$.
 \end{proper}
 As an illustration, in Example \ref{exmp:lineartransderivative}, the differentiation operator $T(p(x)) = p'(x)$ from $\mathcal{P}^2$ to $\mathcal{P}^1$ is onto but not one-to-one. To see these, note that given any image $\vec{v} = d_0 + d_1x \in \mathcal{P}^1$, all preimages in the form of $\vec{u} = K + d_0x + \frac{d_1}{2}x^2\in \mathcal{P}^2$ where $K$ can be any number satisfies $T(\vec{u}) = \vec{v}$ by elementary calculus, and the surjectivity is obvious. To explicitly disprove injectivity, fix an image $\vec{v} = d_0 + d_1x$ with specific $d_0$ and $d_1$, and note that both $\vec{u}_1 = K_1 + d_0x + \frac{d_1}{2}x^2$ and $\vec{u}_2 = K_2 + d_0x + \frac{d_1}{2}x^2$ where $K_1, K_2$ are distinct satisfy $T(\vec{u}_1) = T(\vec{u}_2) = \vec{v}$, but $\vec{u}_1 \neq \vec{u}_2$.
 
@@ -313,11 +315,11 @@ However, in other cases it may not be so easy to check injectivity and surjectiv
 
 \begin{thm}
 \label{thm:oneto_onebasis}
-A linear transformation $T: \mathcal{U} \to \mathcal{V}$ between two finite-dimensional vector spaces is one-to-one if and only if given any basis $\mathcal{B} = \{\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \vec{u}^{(n)}\}$ for $\mathcal{U}$, $T(\vec{u}^{(1)}), T(\vec{u}^{(2)}), \ldots, T(\vec{u}^{(n)}) \in \mathcal{V}$ are linearly independent.
+A linear transformation $T: \mathcal{U} \to \mathcal{V}$ (between two finite-dimensional vector spaces) is one-to-one if and only if given any basis $\mathcal{B} = \{\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \vec{u}^{(n)}\}$ for $\mathcal{U}$, $T(\vec{u}^{(1)}), T(\vec{u}^{(2)}), \ldots, T(\vec{u}^{(n)}) \in \mathcal{V}$ are linearly independent.
 \end{thm}
 \begin{thm}
 \label{thm:onto_basis}
-A linear transformation $T: \mathcal{U} \to \mathcal{V}$ between two finite-dimensional vector spaces is onto if and only if given any basis $\mathcal{H} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(m)}\}$ for $\mathcal{V}$, we can find a vector $\vec{u}^{(i)} \in \mathcal{U}$ such that $T(\vec{u}^{(i)}) = \vec{v}^{(i)}$ for each of the $\vec{v}_i$.
+A linear transformation $T: \mathcal{U} \to \mathcal{V}$ (between two finite-dimensional vector spaces) is onto if and only if given any basis $\mathcal{H} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(m)}\}$ for $\mathcal{V}$, we can find a vector $\vec{w}^{(i)} \in \mathcal{U}$ such that $T(\vec{w}^{(i)}) = \vec{v}^{(i)}$ for each of the $\vec{v}_i$.
 \end{thm}
 \begin{proof}
 Theorem \ref{thm:oneto_onebasis}: The "if" direction is proved by showing $T(\vec{u}^{(1)}), T(\vec{u}^{(2)}),\\ \ldots, T(\vec{u}^{(n)})$ are linearly independent implies that, if $T(\vec{u}) = \textbf{0}$ then $\vec{u} = \textbf{0}$ as suggested by the alternative condition in Properties \ref{proper:injective}. By Theorem \ref{thm:linearindep}, the equation $c_1T(\vec{u}^{(1)}) + c_2T(\vec{u}^{(2)}) + \cdots + c_nT(\vec{u}^{(n)}) = \textbf{0}$ only has $c_j = \textbf{0}$ as the trivial solution. Now by linearity from Definition \ref{defn:lintrans}, we have
@@ -326,13 +328,13 @@ c_1T(\vec{u}^{(1)}) + c_2T(\vec{u}^{(2)}) + \cdots + c_nT(\vec{u}^{(n)}) &= T(c_
 &= \textbf{0}    
 \end{align*}
 Since $c_j = 0$ is the only possibility, this means that if $T(c_1\vec{u}^{(1)} + c_2\vec{u}^{(2)} + \cdots + c_n\vec{u}^{(n)}) = \textbf{0}$ then $\vec{u} = c_1\vec{u}^{(1)} + c_2\vec{u}^{(2)} + \cdots + c_n\vec{u}^{(n)}$ must be $\textbf{0}$, hence $T(\vec{u}) = \textbf{0}$ implies $\vec{u} = 0$ and we are done. The converse is similarly proved,  having the argument goes in reverse direction. \\
-Theorem \ref{thm:onto_basis}: We compare Theorem \ref{thm:onto_basis} against Properties \ref{proper:surjective} to show the part of "if" direction. Since $H = \{\vec{v}^{(i)}\}$, $i = 1,2,\ldots,m$, is a basis for $\mathcal{V}$, any $\vec{v} \in \mathcal{V}$ can be written as a linear combination of $\vec{v} = c_1\vec{v}^{(1)} + c_2\vec{v}^{(2)} + \cdots c_m\vec{v}^{(m)}$. If we can find $\vec{u^{(i)}} \in \mathcal{U}$ such that $T(\vec{u}^{(i)}) = \vec{v}^{(i)}$ for all $\vec{v}^{(i)}$, then
+Theorem \ref{thm:onto_basis}: We compare Theorem \ref{thm:onto_basis} against Properties \ref{proper:surjective} to show the part of "if" direction. Since $H = \{\vec{v}^{(i)}\}$, $i = 1,2,\ldots,m$, is a basis for $\mathcal{V}$, any $\vec{v} \in \mathcal{V}$ can be written as a linear combination of $\vec{v} = c_1\vec{v}^{(1)} + c_2\vec{v}^{(2)} + \cdots c_m\vec{v}^{(m)}$. If we can find $\vec{w}^{(i)} \in \mathcal{U}$ such that $T(\vec{w}^{(i)}) = \vec{v}^{(i)}$ for all $\vec{v}^{(i)}$, then
 \begin{align*}
 \vec{v} &= c_1\vec{v}^{(1)} + c_2\vec{v}^{(2)} + \cdots c_m\vec{v}^{(m)}\\
-&= c_1T(\vec{u}^{(1)}) + c_2T(\vec{u}^{(2)}) + \cdots + c_mT(\vec{u}^{(m)}) \\
-&= T(c_1\vec{u}^{(1)} + c_2\vec{u}^{(2)} + \cdots + c_m\vec{u}^{(m)})
+&= c_1T(\vec{w}^{(1)}) + c_2T(\vec{w}^{(2)}) + \cdots + c_mT(\vec{w}^{(m)}) \\
+&= T(c_1\vec{w}^{(1)} + c_2\vec{w}^{(2)} + \cdots + c_m\vec{w}^{(m)})
 \end{align*}
-the last equality uses linearity from Definition \ref{defn:lintrans} again. This shows that $\vec{u} = c_1\vec{u}^{(1)} + c_2\vec{u}^{(2)} + \cdots + c_m\vec{u}^{(m)}$ is readily one possible vector in $\mathcal{U}$ such that $T(\vec{u}) = \vec{v}$ and the desired result is established. The converse is trivial as we take $\vec{v} = \vec{v}^{(i)}$ in Properties \ref{proper:surjective} for all possible $i$.
+the last equality uses linearity from Definition \ref{defn:lintrans} again. This shows that $\vec{u} = c_1\vec{w}^{(1)} + c_2\vec{w}^{(2)} + \cdots + c_m\vec{w}^{(m)}$ is readily one possible vector in $\mathcal{U}$ such that $T(\vec{u}) = \vec{v}$ and the desired result is established. The converse is trivial as we take $\vec{v} = \vec{v}^{(i)}$ in Properties \ref{proper:surjective} for all possible $i$.
 \end{proof}
 
 \begin{exmp}
@@ -350,7 +352,7 @@ determine whether it is (a) one-to-one, as well as (b) onto, or not.
 \end{exmp}
 \begin{solution}
 \begin{enumerate}[label=(\alph*)]
-    \item By Theorem \ref{thm:oneto_onebasis}, we need to check if $T(\vec{u}^{(1)}), T(\vec{u}^{(2)}), T(\vec{u}^{(3)})$ are linearly independent, where $\vec{u}^{(1)}, \vec{u}^{(2)}, \vec{u}^{(3)}$ are the basis vectors from $\mathcal{B}$. Their coordinate representation in the $\mathcal{B}$ system is trivially $[\vec{u}^{(1)}]_B = (e^{(1)})_B = (1,0,0)_B^T, [\vec{u}^{(2)}]_B = (e^{(2)}_B = (0,1,0)_B^T$ and $[\vec{u}^{(3)}]_B = (e^{(3)})_B = (0,0,1)_B^T$, and hence
+    \item By Theorem \ref{thm:oneto_onebasis}, we need to check if $T(\vec{u}^{(1)}), T(\vec{u}^{(2)}), T(\vec{u}^{(3)})$ are linearly independent, where $\vec{u}^{(1)}, \vec{u}^{(2)}, \vec{u}^{(3)}$ are the basis vectors from $\mathcal{B}$. Their coordinate representation in the $\mathcal{B}$ system is trivially $[\vec{u}^{(1)}]_B = (e^{(1)})_B = (1,0,0)_B^T, [\vec{u}^{(2)}]_B = (e^{(2)})_B = (0,1,0)_B^T$ and $[\vec{u}^{(3)}]_B = (e^{(3)})_B = (0,0,1)_B^T$, and hence
     \begin{align*}
     [T(\vec{u}^{(1)})]_H &= [T]_B^H(e^{(1)})_B \\
     &= 
@@ -372,7 +374,7 @@ determine whether it is (a) one-to-one, as well as (b) onto, or not.
     1
     \end{bmatrix}_H
     \end{align*}
-    which is just the first column of $[T]_B^H$. Similarly, $[T(\vec{u}^{(2)})]_H = (-1,1,0,1)_H^T$, $[T(\vec{u}^{(3)})]_H = (0,1,-1,0)_H^T$ are then the second/third column of $[T]_B^H$. From this we see that in general, the coordinates in $\mathcal{H}$ after transformation $[T(\vec{u}^{(j)})]_H$ is just the $j$-th column of $[T]_B^H$. (Actually, this has been observed when we are deriving the matrix representation of linear transformations in the beginning of this chapter.) So the problem is reduced to decide whether the column vectors constituting $[T]_B^H$ are linearly independent or not. By Theorem \ref{thm:linearindep}, we can accomplish this by showing if the solution $[T]_B^H\vec{x} = \textbf{0}$ is consisted of the trivial solution only, and we have
+    which is just the first column of $[T]_B^H$. Similarly, $[T(\vec{u}^{(2)})]_H = (-1,1,0,1)_H^T$, $[T(\vec{u}^{(3)})]_H = (0,1,-1,0)_H^T$ are then the second/third column of $[T]_B^H$. From this we see that in general, the coordinates in $\mathcal{H}$ after transformation $[T(\vec{u}^{(j)})]_H$ is just the $j$-th column of $[T]_B^H$. (Actually, this has been observed when we are deriving the matrix representation of linear transformations in the beginning of this chapter.) So the problem is reduced to decide whether the column vectors constituting $[T]_B^H$ are linearly independent or not. By Theorem \ref{thm:linearindep}, we can accomplish this by showing if the solution $[T]_B^H\vec{u} = \textbf{0}$ is consisted of the trivial solution only, and we have
     \begin{align*}
     \left[
     \begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
@@ -420,10 +422,10 @@ determine whether it is (a) one-to-one, as well as (b) onto, or not.
     \end{array}\right] & 
     R_4 + 2R_3 \to R_4
     \end{align*}
-    As every column in this homogeneous system contains a pivot, it demonstrates that $[T]_B^H\vec{x} = \textbf{0}$ indeed only has the trivial solution $\vec{x} = \textbf{0}$, and therefore the linear transformation in question is one-to-one.
+    As every column in this homogeneous system contains a pivot, it demonstrates that $[T]_B^H\vec{u} = \textbf{0}$ indeed only has the trivial solution $\vec{u} = \textbf{0}$, and therefore the linear transformation in question is one-to-one.
     \item By Properties \ref{proper:surjective}, it is equivalent to showing that if the $\{T(\vec{u}^{(j)})\}$ span $\mathcal{W}$, or expressed in terms of the $\mathcal{B}$/$\mathcal{H}$ coordinates, whether the three transformed vectors $\{[T]_B^H[\vec{u}^{(1)}]_B, [T]_B^H[\vec{u}^{(2)}]_B, [T]_B^H[\vec{u}^{(3)}]_B\}$ span $\mathbb{R}^4$. However, it is apparent that three vectors can never span a four-dimensional vector space as the number of vectors is fewer then the dimension, and thus the linear transformation is not onto.
 \end{enumerate}
-Notice that in the above arguments we never explicitly say what the vector spaces $\mathcal{U}$ and $\mathcal{V}$ are and only the matrix representation of the linear transformation is involved. However, some may be skeptical as we have fixed bases for the linear transformation and may ask if the results are basis-dependent. We will address this issue in later parts of this chapter.
+Notice that in the above arguments we never explicitly say what the vector spaces $\mathcal{U}$ and $\mathcal{V}$ are and only the matrix representation of the linear transformation is involved. However, some may be skeptical as we have fixed bases for the linear transformation and may ask if the results are \textit{basis-dependent}. We will address this issue in later parts of this section.
 \end{solution}
 Accompanying injectivity and surjectivity is the ideas of \index{Kernel}\keywordhl{kernel} and \index{Range}\keywordhl{range}. For a (linear) transformation $T: \mathcal{U} \to \mathcal{V}$, its kernel is consisted of vectors in $\mathcal{U}$ that is mapped to the zero vector in $\mathcal{V}$, while its range is made up of all possible vectors in $\mathcal{V}$ that are mapped from $\mathcal{U}$ via $T$.
 \begin{defn}
@@ -434,10 +436,10 @@ For a (linear) transformation $T: \mathcal{U} \to \mathcal{V}$, its kernel is de
 \end{align*}
 whereas its range is
 \begin{align*}
-R(T) = \{\vec{v} \in \mathcal{V} | T(\vec{u}) = \vec{v} \text{ for some } \vec{u} \in \mathcal{U}\}    
+\mathcal{R}(T) = \{\vec{v} \in \mathcal{V} | T(\vec{u}) = \vec{v} \text{ for some } \vec{u} \in \mathcal{U}\}    
 \end{align*}
 \end{defn}
-Also, notice that the kernel and range are a subspace of $\mathcal{U}$ and $\mathcal{V}$ respectively.\footnote{For $\vec{u}^{(1)}, \vec{u}^{(2)} \in \text{Ker}(T) \subset \mathcal{U}$, $T(a\vec{u}^{(1)} + b\vec{u}^{(2)}) = aT(\vec{u}^{(1)}) + bT(\vec{u}^{(2)}) = a\textbf{0}_V + b\textbf{0}_V = \textbf{0}_V$ for any scalar $a$ and $b$ so $a\vec{u}^{(1)} + b\vec{u}^{(2)} \in \text{Ker}(T)$ and by Theorem \ref{thm:subspacecriteria} it is a subspace of $\mathcal{U}$. We leave showing the range is a subspace of $\mathcal{V}$ as an exercise to the readers.} Hence it is reasonable to speak of their dimension or basis and we will discuss this matter later. For now, let's look at how to determine the kernel and range of a linear transformation first. For instance, in Example \ref{exmp:lineartransderivative}, the kernel is $\text{span}(\{1\})$ since the derivative of any constant vanishes, and the range is $\text{span}(\{1, x\}) = \mathcal{V} = \mathcal{P}^1$ because we have already shown that every $\mathcal{P}^1$ polynomial in this case have some corresponding preimage in $\mathcal{U} = \mathcal{P}^2$. Here the dimension of kernel/range is $1$ and $2$.
+Also, notice that the kernel and range are a subspace of $\mathcal{U}$ and $\mathcal{V}$ respectively.\footnote{For $\vec{u}^{(1)}, \vec{u}^{(2)} \in \text{Ker}(T) \subset \mathcal{U}$, $T(a\vec{u}^{(1)} + b\vec{u}^{(2)}) = aT(\vec{u}^{(1)}) + bT(\vec{u}^{(2)}) = a\textbf{0}_V + b\textbf{0}_V = \textbf{0}_V$ for any scalar $a$ and $b$ so $a\vec{u}^{(1)} + b\vec{u}^{(2)} \in \text{Ker}(T)$ and by Theorem \ref{thm:subspacecriteria} it is a subspace of $\mathcal{U}$. We leave showing the range is a subspace of $\mathcal{V}$ as an exercise to the readers.} Hence it is reasonable to speak of their dimension or basis and we will discuss this matter later. For now, let's look at how to determine the kernel and range of a linear transformation first. For instance, in Example \ref{exmp:lineartransderivative}, the kernel is $\text{span}(\{1\})$ since (only) the derivative of any constant vanishes, and the range is $\text{span}(\{1, x\}) = \mathcal{V} = \mathcal{P}^1$ because we have already shown that every $\mathcal{P}^1$ polynomial in this case have some corresponding preimage in $\mathcal{U} = \mathcal{P}^2$. Here the dimension of kernel/range is $1$ and $2$.
 
 \begin{exmp}
 Given another linear transformation $T: \mathcal{U} \to \mathcal{V}$ where $\mathcal{U}$ and $\mathcal{V}$ are now both having a dimension of $3$, if its matrix representation corresponding to some bases $\mathcal{B}$ and $\mathcal{H}$ is
@@ -452,7 +454,7 @@ Given another linear transformation $T: \mathcal{U} \to \mathcal{V}$ where $\mat
 find its kernel and range.
 \end{exmp}
 \begin{solution}
-According to Definition \ref{defn:kernelrange}, $\text{Ker}(T)$ is the set of $\vec{u}$ that satisfies $T(\vec{u}) = \textbf{0}$, or using basis representation, $[T]_B^H[\vec{u}]_B = \textbf{0}$. Therefore, it is equivalent to finding the null space (Definition \ref{defn:nullspace}) of $[T]_B^H$:
+According to Definition \ref{defn:kernelrange}, $\text{Ker}(T)$ is the set of $\vec{u}$ that satisfies $T(\vec{u}) = \textbf{0}$, or using basis representation (Definition \ref{defn:matrixrepoflintrans}), $[T]_B^H[\vec{u}]_B = \textbf{0}$. Therefore, it is equivalent to finding the null space (Definition \ref{defn:nullspace}) of $[T]_B^H$:
 \begin{align*}
 \left[
 \begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
@@ -506,17 +508,41 @@ t
 1
 \end{bmatrix}_B
 \end{align*}
-where $-\infty < t < \infty$, or in other words, $\text{Ker}(T) = \text{span}(\{(-1,0,1)_B^T\})$ with a dimension of $1$. Similarly, the range of $T$ will be the column space of $[T]_B^H$. From the elimination procedure carried out above, we know that the first two column vectors are linearly independent and the third column is clearly the same as the first column (see Properties \ref{proper:CRFactor}), and thus the range is $R(T) = \text{span}(\{(1,1,1)_B^T, (0,-1,1)_B^T\})$ and has a dimension of $2$ (the rank of the $[T]_B^H$ matrix). Note that we approach the problem with some bases (albeit unknown) fixed to represent the linear transformation in matrix form just like in the last example. Again, we will soon justify that the results are actually unrelated to the choices of bases such that the dimensions of kernel and range are exactly the nullity and rank of any matrix representation of the linear transformation.
+where $-\infty < t < \infty$, or in other words, $\text{Ker}(T) = \text{span}(\{(-1,0,1)_B^T\})$ with a dimension of $1$. Similarly, the range of $T$ will be the column space of $[T]_B^H$. From the elimination procedure carried out above, we know that the first two column vectors are linearly independent and the third column is clearly the same as the first column (see Properties \ref{proper:CRFactor}), and thus the range is $\mathcal{R}(T) = \text{span}(\{(1,1,1)_B^T, (0,-1,1)_B^T\})$ and has a dimension of $2$ (the rank of the $[T]_B^H$ matrix).
 \end{solution}
 
-Finally, we can rewrite Properties \ref{proper:injective} and \ref{proper:surjective} using the notion of kernel and range.
+Bear in mind that we approach the above problem with some bases (albeit unknown) fixed to represent the linear transformation in matrix form just like in the last example. Again, we will soon justify that the results are actually unrelated to the choices of bases, i.e.\ \textit{basis-independent}, such that the (dimensions of) kernel and range are exactly the null space and column space (nullity and rank) derived using any matrix representation of the linear transformation with respect to arbitrary bases.
+
+Finally, we can rewrite Properties \ref{proper:injective} and \ref{proper:surjective} using the notion of kernel and range (alongside Properties \ref{proper:dimWleqV}).
 \begin{proper}
-A linear transformation $T: \mathcal{U} \to \mathcal{V}$ is one-to-one if and only if the dimension of its kernel $\text{Ker}(T)$ is zero, i.e. $\text{Dim}(\text{Ker}(T)) = 0$. Meanwhile, it is onto if and only if the dimension of range $R(T)$ (rank) is same as the dimension of $\mathcal{V}$.
+A linear transformation $T: \mathcal{U} \to \mathcal{V}$ is one-to-one if and only if the dimension of its kernel $\text{Ker}(T)$ is zero, i.e. $\text{Dim}(\text{Ker}(T)) = 0$. Meanwhile, it is onto if and only if the dimension of range $\mathcal{R}(T)$ (rank) is same as the dimension of $\mathcal{V}$ (provided that they are finite).
+\end{proper}
+
+\subsection{Composition of Linear Transformations}
+
+In high-school mathematics we have learnt about the composite of two functions $(g \circ f)(x) = g(f(x))$ that applies the first function $f$ first on the input $x$ and then the second function $g$ on the intermediate product $f(x)$. It does not seem far-fetched that we can also create a composite of two (or even more) linear transformations, each of which takes an input and returns an (intermediate) output (as vectors). We now formally introduce this idea below.
+\begin{defn}[Composition of Linear Transformations]
+For two (linear) transformations $T: \mathcal{U} \to \mathcal{V}$ and $S: \mathcal{V} \to \mathcal{W}$, their composition is defined as $S \circ T: \mathcal{U} \to \mathcal{W}$ where for $\vec{u} \in \mathcal{U}$, $(S \circ T)(\vec{u}) = S(T(\vec{u})) \in \mathcal{W}$.
+\end{defn}
+From the perspective of compositing linear transformations, we can actually go back to and understand why the usual matrix multiplication is defined in that way. Since every linear transformation has a matrix representation, according to Definition \ref{defn:matrixrepoflintrans}, we can write $T(\vec{u}^{(j)}) = \sum_{k=1}^{r} a_k^{(j)}\vec{v}^{(k)}$ and $S(\vec{v}^{(k)}) = \sum_{i=1}^{m} b_i^{(k)}\vec{w}^{(i)}$ where $\mathcal{U}, \mathcal{V}, \mathcal{W}$ are $n$/$r$/$m$-dimensional with bases $\{\vec{u}^{(j)}\}, \{\vec{v}^{(k)}\}, \{\vec{w}^{(i)}\}$ and $A_{kj} = a_k^{(j)}$, $B_{ik} = b_i^{(k)}$. Hence
+\begin{align*}
+(S \circ T)(\vec{u}^{(j)}) = S(T(\vec{u}^{(j)})) &= S(\sum_{k=1}^{r} a_k^{(j)}\vec{v}^{(k)}) \\
+&= \sum_{k=1}^{r} a_k^{(j)}S(\vec{v}^{(k)}) & \text{(Linearity)} \\
+&= \sum_{k=1}^{r} a_k^{(j)}(\sum_{i=1}^{m} b_i^{(k)}\vec{w}^{(i)}) \\
+&= \sum_{i=1}^{m} \left((\sum_{k=1}^{r} b_i^{(k)} a_k^{(j)}) \vec{w}^{(i)}\right) 
+\end{align*}
+which allows us to identify that the matrix representation of $S \circ T$ with $\sum_{k=1}^{r} b_i^{(k)} a_k^{(j)}$, that is, the matrix product $BA$ as defined conventionally in Definition \ref{defn:matprod} (with the positions of $A$ and $B$ switched since $T$ is applied first, followed by $S$). One of the most frequent scenarios is that $T: \mathcal{U} \to \mathcal{V}$ and $S: \mathcal{V} \to \mathcal{U}$ are two mappings between two vector spaces, one in the "forward" and another in the "backward" direction. Given their back-and-forth nature, it is curious to ask if they are "invertible" so that applying one after another on a vector will return the same vector, i.e.\ $(S \circ T)(\vec{u}) = \text{id}_{U}(\vec{u}) = \vec{u} \in \mathcal{U}$ and $(T \circ S)(\vec{v}) = \text{id}_{V}(\vec{v}) = \vec{v} \in \mathcal{V}$, where $\text{id}: \mathcal{U} \to \mathcal{U}$ (or $\mathcal{V} \to \mathcal{V}$) denotes the \index{Identity Transformation}\index{Identity Mapping}\keywordhl{identity transformation/identity mapping} that simply returns the input vector as the output.
+\begin{defn}
+For a (linear) transformation $T: \mathcal{U} \to \mathcal{V}$, if there is another linear transformation $S: \mathcal{V} \to \mathcal{U}$ such that $S \circ T = \text{id}_{U}$ and $T \circ S = \text{id}_{V}$, then $T$, and also $S$, are known as \textit{invertible} where $S = T^{-1}$ and $T = S^{-1}$ are the inverse of each other.
+\end{defn}
+Again, assume that $\mathcal{U}$ and $\mathcal{V}$ are $n$/$m$(finite)-dimensional with bases $\mathcal{B}$ and $\mathcal{H}$. Then both the linear mappings $T \equiv [T]_B^H$ and $S \equiv [S]_H^B$\footnote{"$\equiv$" will also be used to associate any linear transformation to its matrix representation.} have a corresponding matrix representation with a shape of $m \times n$ and $n \times m$. It is also not hard to accept that $\text{id}_U \equiv [\text{id}_U]_B^B = I_n$ and $\text{id}_V \equiv [\text{id}_V]_H^H = I_m$. Subsequently, for $S$ to be the inverse of $T$, $S \circ T = \text{id}_U \equiv I_n = [S]_H^B[T]_B^H$, and similarly we need $[T]_B^H[S]_H^B = I_m$. We claim that $m = n$\footnote{Assume without loss of generality, $m < n$, then by Properties \ref{proper:rankABsmaller}, $\text{rank}([S]_H^B[T]_B^H) \leq \text{rank}([S]_H^B) \text{ or } \text{rank}([T]_B^H) \leq m < n$, but $\text{rank}(I_n) = n$ so it is impossible that $[S]_H^B[T]_B^H = I_n$.}, and thus invertible linear transformations between finite-dimensional vector spaces must require that the vector spaces have the equal dimension and they have a square matrix representation. This suggests that the results in Section \ref{subsection:invsub} are also applicable for invertible linear transformations here and we restate some of them below.
+\begin{proper}
+For an invertible linear transformation $T: \mathcal{U} \to \mathcal{V}$ where $\mathcal{U}$ and $\mathcal{V}$ are finite-dimensional vector spaces, it is necessary that $\mathcal{U}$ and $\mathcal{V}$ have the same number of dimensions $n$. Denote its inverse by $T^{-1} = S: \mathcal{V} \to \mathcal{U}$, then $T^{-1}$ will be unique. The matrix representation of this inverse would be $[T^{-1}]_H^B = ([T]_B^H)^{-1}$. Moreover, $(T^{-1})^{-1} = T$ and $(X \circ T)^{-1} = T^{-1} \circ X^{-1}$ if $X:\mathcal{V} \to \mathcal{W}$ is another invertible linear transformation where $\mathcal{W}$ is also $n$-dimensional.
 \end{proper}
 
 \subsection{Vector Space Isomorphism to $\mathbb{R}^n$}
 
-A linear transformation where both injectivity and surjectivity hold is known as \index{Bijective}\index{Isomorphic}\keywordhl{bijective/isomorphic}. As we will immediately see, this property is very central in relating finite-dimensional real vector spaces to the real $n$-space. Combining Properties \ref{proper:injective} and \ref{proper:surjective}, for a linear transformation $T: \mathcal{U} \to \mathcal{V}$ to be bijective, every vector $\vec{v} \in \mathcal{V}$ must be an image which there is one and only one preimage $\vec{u} \in \mathcal{U}$ is mapped onto, i.e. there is a unique $\vec{u} \in \mathcal{U}$ that satisfies $T(\vec{u}) = \vec{v}$ for every $\vec{v} \in \mathcal{V}$, which also means that it is \textit{invertible} in the sense that every $\vec{v} \in \mathcal{V}$ can be traced back to one and only one $\vec{u} \in \mathcal{U}$ via the transformation in reverse direction. Hence it makes sense to say a transformation is bijective \textit{between} two vector spaces. There are two major results regarding invertibility. The first one is
+A linear transformation where both injectivity and surjectivity hold is known as \index{Bijective}\index{Isomorphic}\keywordhl{bijective/isomorphic}. As we will immediately see, this property is very central in relating finite-dimensional real vector spaces to the real $n$-space. Combining Properties \ref{proper:injective} and \ref{proper:surjective}, for a linear transformation $T: \mathcal{U} \to \mathcal{V}$ to be bijective, every vector $\vec{v} \in \mathcal{V}$ must be an image which there is one and only one preimage $\vec{u} \in \mathcal{U}$ is mapped onto, i.e. there is a unique $\vec{u} \in \mathcal{U}$ that satisfies $T(\vec{u}) = \vec{v}$ for every $\vec{v} \in \mathcal{V}$, which also means that it is \textit{invertible} in the sense that every $\vec{v} \in \mathcal{V}$ can be traced back to one and only one $\vec{u} \in \mathcal{U}$ via the inverse transformation $T^{-1}$ as introduced in the last subsection so that $T^{-1}(\vec{v}) = \vec{u}$. Hence it makes sense to say a transformation is bijective \textit{between} two same-dimensional vector spaces. There are two major results regarding invertibility here. The first one is
 \begin{thm}
 \label{thm:bijectivechincoord}
 There always exists a bijective linear mapping between $\mathcal{V}$ itself, i.e. $T: \mathcal{V} \to \mathcal{V}$, that transforms the coordinates of any fixed vector in $\mathcal{V}$ between two different bases (denote them by $\mathcal{B}$ and $\mathcal{B}'$) of its. Such a change of coordinates in $\mathcal{V}$ has a matrix representation $[T]_B^{B'} = P_B^{B'}$ that is invertible.
@@ -526,7 +552,7 @@ Since it is the same vector space $\mathcal{V}$ but just represented in differen
 \begin{align*}
 T(\vec{v}) = \text{id}(\vec{v}) = \vec{v}
 \end{align*}
-the \index{Identity Transformation}\index{Identity Mapping}\keywordhl{identity transformation/identity mapping} as it is just a change of coordinates where the actual vector stays identical. This transformation is then trivially bijective because any vector is just mapped into itself, and is described by $[\vec{v}]_{B'} = [T]_B^{B'} [\vec{v}]_B$ following Definition \ref{defn:matrixrepoflintrans} with $\mathcal{U} = \mathcal{V}$ and $\vec{u} = \vec{v}$. Now note that $[\vec{v}]_{B'} = [T]_B^{B'} [\vec{v}]_{B'}$ has a unique solution $[\vec{v}]_B$ for any $[\vec{v}]_{B'}$ as $T$ is bijective and by definition each of $[\vec{v}]_{B'}$ is mapped onto by one and only one $[\vec{v}]_B$. Part (d) to (a) of Theorem \ref{thm:equiv2} then shows that $[T]_B^{B'}$ is an invertible matrix. According to the discussion prior to Definition \ref{defn:matrixrepoflintrans}, $[T]_B^{B'}$ takes the form of
+the \textit{identity mapping} as it is just a change of coordinates where the actual vector stays identical. This transformation is then trivially bijective because any vector is just mapped into itself, and is described by $[\vec{v}]_{B'} = [T]_B^{B'} [\vec{v}]_B$ following Definition \ref{defn:matrixrepoflintrans} with $\mathcal{U} = \mathcal{V}$ and $\vec{u} = \vec{v}$. Now note that $[\vec{v}]_{B'} = [T]_B^{B'} [\vec{v}]_{B'}$ has a unique solution $[\vec{v}]_B$ for any $[\vec{v}]_{B'}$ as $T$ is bijective and by definition, together with the fact that the coordinate representation of a vector in any basis is unique, each of $[\vec{v}]_{B'}$ is mapped onto by one and only one $[\vec{v}]_B$. Part (d) to (a) of Theorem \ref{thm:equiv2} then shows that $[T]_B^{B'}$ is an invertible matrix. According to the discussion prior to Definition \ref{defn:matrixrepoflintrans}, $[T]_B^{B'}$ takes the form of
 \begin{align*}
 P_B^{B'} = [T]_B^{B'} &= \begin{bmatrix}
 [\text{id}(\vec{v}_{B}^{(1)})]_{B'} | [\text{id}(\vec{v}_{B}^{(2)})]_{B'} | \cdots | [\text{id}(\vec{v}_{B}^{(n)})]_{B'}
@@ -543,8 +569,8 @@ P_{B'}^B = ([T]_B^{B'})^{-1} = [T]_{B'}^B =
 [\vec{v}_{B'}^{(1)}]_B | [\vec{v}_{B'}^{(2)}]_B | \cdots | [\vec{v}_{B'}^{(n)}]_B
 \end{bmatrix}
 \end{align*}
-Be aware that despite it being an identity mapping, the exact matrix representation is dependent on the bases and will usually not be an identity matrix. Nevertheless, such bijectivity between any two coordinate systems of the same vector space implies that all linear transformation from one vector space to another $T: \mathcal{U} \to \mathcal{V}$, together with its (dimensions of) kernel or range, are independent of the choices of bases for either $\mathcal{U}$ or $\mathcal{V}$ and we can pick whatever bases that suit the situation better. The only thing that is dependent on the coordinate systems will be their coordinate representation and we will see how it unfolds in the next part. This justify our fixing of bases during several arguments in the last subsection.
 \end{proof}
+Be aware that despite $\text{id}$ being an identity mapping, the exact matrix representation is dependent on the bases (but the effect of such an identity mapping is obviously basis-independent) and will usually not be an identity matrix. Nevertheless, such bijectivity between any two coordinate systems of the same vector space, which is always accompanied by some invertible transformation matrix, implies that all vectors in any vector space $\vec{u} \in \mathcal{U}$ (or $\vec{v} \in \mathcal{V}$) and linear mappings $T: \mathcal{U} \to \mathcal{V}$ from one vector space to another, together with its (dimensions of) kernel or range, are independent of the choices of bases for either $\mathcal{U}$ or $\mathcal{V}$ and we can pick whatever bases that suit the situation better. \textcolor{red}{This also means that statements (both previous and to be derived in the future) for finite-dimensional linear transformations are applicable for corresponding matrices (with suitable adaptions) and vice versa.} The only thing that is dependent on the coordinate systems will be their coordinate representation and we will see how it unfolds in the next part. This justify our fixing of bases during several arguments in the last subsection.
 
 \begin{exmp}
 \label{exmp:changecoord}
@@ -589,7 +615,7 @@ just as in Example \ref{exmp:basisR3} with $[(\vec{v}_{B}^{(j)})_i]_{B'}$ being 
 \end{bmatrix}
 &=
 \vec{v}_{B}^{(j)} \\
-[\vec{v}_{j,B}]_{B'} =
+[\vec{v}_{B}^{(j)}]_{B'} =
 \begin{bmatrix}
 [(\vec{v}_{B}^{(j)})_1]_{B'} \\
 [(\vec{v}_{B}^{(j)})_2]_{B'} \\
@@ -666,27 +692,27 @@ P_B^{B'}(2,1,0)^T_B &=
 -2
 \end{bmatrix}_{B'}
 \end{align*}
-and indeed $(2,2,3)^T = 1(0,0,1)^T + 2(2,0,1)^T + (-2)(1,-1,0)^T = (1,2,-2)^T_H$.
+and indeed $(2,2,3)^T = 1(0,0,1)^T + 2(2,0,1)^T + (-2)(1,-1,0)^T = (1,2,-2)^T_{B'}$.
 \end{solution}
-More generally, the relation $P_B^{B'} = [\text{id}]_B^{B'} = B'^{-1}B$ still remains valid where $B$ and $B'$ are matrices composed by the basis vectors from the $\mathcal{B}$ and $\mathcal{B}'$ systems, relative to a third basis (without loss of generality we have assumed it is the standard basis $\mathcal{S}$\footnote{Unfortunately, as you may notice, there is actually no satisfying "standard" of what really is a standard basis for (real) finite-dimensional vector space other than the real $n$-space since any basis can be regarded to be one with respect to itself. Here we just pretend it is available for the sake of reasoning.}, but the readers are advised to extend this for any other arbitrary basis), that are arranged in columns. To see this from another perspective, take any vector $\vec{v}$ that is expressed in the $\mathcal{B}$ coordinates, $[\vec{v}]_B$. We can view the change in coordinates from $\mathcal{B}$ to $\mathcal{B}'$ in two steps: first from $\mathcal{B}$ to $\mathcal{E}$, and then from $\mathcal{E}$ to $\mathcal{B}'$. From Section \ref{section:6.1.5}, we already know that the former constitutes $[\vec{v}]_E = B[\vec{v}]_B$, and the latter is done by $[\vec{v}]_{B'} = B'^{-1}[\vec{v}]_E$. Combining these two operations together we have $[\vec{v}]_{B'} = B'^{-1}[\vec{v}]_E = B'^{-1}B[\vec{v}]_B$ and hence $[\text{id}]_B^{B'} = B'^{-1}B$.
+More generally, the relation $P_B^{B'} = [\text{id}]_B^{B'} = B'^{-1}B$ still remains valid where $B$ and $B'$ are matrices composed by the basis vectors from the $\mathcal{B}$ and $\mathcal{B}'$ systems, relative to a third basis (without loss of generality we have assumed it is the standard basis $\mathcal{S}$\footnote{Unfortunately, as you may notice, there is actually no satisfying "standard" of what really is a standard basis for (real) finite-dimensional vector space other than the real $n$-space since any basis can be regarded to be one with respect to itself. Here we just pretend it is available for the sake of reasoning.}, but the readers are advised to extend this for any other arbitrary basis), that are arranged in columns. To see this from another perspective, take any vector $\vec{v}$ that is expressed in the $\mathcal{B}$ coordinates, $[\vec{v}]_B$. We can view the change in coordinates from $\mathcal{B}$ to $\mathcal{B}'$ in two steps: first from $\mathcal{B}$ to $\mathcal{S}$, and then from $\mathcal{S}$ to $\mathcal{B}'$. From Section \ref{section:6.1.5}, we already know that the former constitutes $[\vec{v}]_S = B[\vec{v}]_B$, and the latter is done by $[\vec{v}]_{B'} = B'^{-1}[\vec{v}]_S$. Combining these two operations together we have $[\vec{v}]_{B'} = B'^{-1}[\vec{v}]_S = B'^{-1}B[\vec{v}]_B$ and hence $[\text{id}]_B^{B'} = B'^{-1}B$.
 
 The second major result in this subsection is
 \begin{thm}
 \label{thm:isomorphism}
-There is always a bijective linear mapping between $\mathcal{V}$ and $\mathbb{R}^n$ where $\mathcal{V}$ is any $n$-dimensional real vector space. In this sense we say $\mathcal{V}$/such a mapping is \index{Isomorphic}\keywordhl{isomorphic}/an \index{Isomorphism}\keywordhl{isomorphism} to $\mathbb{R}^n$. It has an invertible matrix representation. Conversely if a matrix representation of a linear transformation is invertible, it is bijective.
+There is always a bijective linear mapping between $\mathcal{V}$ and $\mathbb{R}^n$ where $\mathcal{V}$ is any $n$-dimensional real vector space. In this sense we say $\mathcal{V}$/such a mapping is \keywordhl{isomorphic}/an \index{Isomorphism}\keywordhl{isomorphism} to $\mathbb{R}^n$ that has an invertible matrix representation. Conversely, if a matrix representation of a linear transformation is invertible, the linear transformation must be bijective.
 \end{thm}
 \begin{proof}
 We construct such a mapping explicitly. Note that $\mathcal{V}$ and $\mathbb{R}^n$ are both $n$-dimensional vector spaces and any of their bases will contain $n$ basis vectors. Denote the basis chosen for $\mathcal{V}$ by $\mathcal{B} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(n)}\}$ and we use the standard basis $\mathcal{S} = \{\hat{e}^{(1)}, \hat{e}^{(2)}, \ldots, \hat{e}^{(n)}\}$ for $\mathbb{R}^n$. Then the linear mapping $T: \mathcal{V} \to \mathbb{R}^n$ that abides
 \begin{align*}
 T(\vec{v}^{(j)}) = \hat{e}^{(j)}    
 \end{align*}
-where $j = 1,2,\ldots,n$, is bijective as desired. To see this, by Theorem \ref{thm:oneto_onebasis}, as for every $\vec{v}^{(j)}$, $T(\vec{v}^{(j)}) = \hat{e}^{(j)}$ leads to the standard unit vectors that are linearly independent, $T$ is one-to-one. Meanwhile, a direct use of Theorem \ref{thm:onto_basis} over the defined association $T(\vec{v}^{(j)}) = \hat{e}^{(j)}$ for each of the $\hat{e}^{(j)}$ immediately shows that $T$ is onto. Since $T$ is now one-to-one and onto, it is bijective. Again, the bijectivity, in addition to the uniqueness of basis coordinates, implies that for any $\vec{u} \in \mathbb{R}^n$, $[\vec{u}]_E = [T]_B^E[\vec{v}]_B$ has a unique solution $[\vec{v}]_B$, and part (d) to (a) of Theorem \ref{thm:equiv2} then shows that the matrix representation $[T]_B^S$ is invertible. The converse follows the same argument running in opposite direction.
+where $j = 1,2,\ldots,n$, is bijective as desired. To see this, by Theorem \ref{thm:oneto_onebasis}, as for every $\vec{v}^{(j)}$, $T(\vec{v}^{(j)}) = \hat{e}^{(j)}$ leads to the standard unit vectors that are linearly independent, $T$ is one-to-one. Meanwhile, a direct use of Theorem \ref{thm:onto_basis} over the defined association $T(\vec{v}^{(j)}) = \hat{e}^{(j)}$ for each of the $\hat{e}^{(j)}$ immediately shows that $T$ is onto. Since $T$ is now one-to-one and onto, it is bijective, and has an inverse $T^{-1}$. Again, the bijectivity, in addition to the uniqueness of basis coordinates, implies that for any $\vec{x} \in \mathbb{R}^n$, $[\vec{x}]_S = [T]_B^S[\vec{v}]_B$ has a unique solution $[\vec{v}]_B$, and part (d) to (a) of Theorem \ref{thm:equiv2} then shows that the matrix representation $[T]_B^S$ is invertible where $T^{-1} \equiv ([T]_B^S)^{-1}$. The converse follows the same argument running in opposite direction.
 \end{proof}
-This theorem enables us to identify and treat any finite-dimensional real vector space $\mathcal{V}$ as the real $n$-space $\mathbb{R}^n$ with $n$ being the dimension of $\mathcal{V}$. Thus we can work with $\mathcal{V}$ as if it is $\mathbb{R}^n$ and the results for $\mathbb{R}^n$ derived in this and the last chapter are all applicable on other $n$-dimensional real vector spaces with an appropriate transformation. Actually, we have been implicitly utilizing this isomorphism relation in many of our previous examples, e.g. writing out the coordinates of a vector from an $n$-dimensional vector space with $n$ components like an $\mathbb{R}^n$ vector. As a corollary,
+This theorem enables us to identify and treat any finite-dimensional real vector space $\mathcal{V}$ as the real $n$-space $\mathbb{R}^n$ with $n$ being the dimension of $\mathcal{V}$. \textcolor{red}{Thus we can work with $\mathcal{V}$ as if it is $\mathbb{R}^n$ and the results for $\mathbb{R}^n$ derived in this and the last chapter are all applicable on other $n$-dimensional real vector spaces with an appropriate transformation.} Actually, we have been implicitly utilizing this isomorphism relation in many of our previous examples, e.g. writing out the coordinates of a vector from an $n$-dimensional vector space with $n$ components like an $\mathbb{R}^n$ vector. As a corollary,
 \begin{proper}
-Any two real vector spaces are isomorphic such that there exists a bijective transformation between them, if and only if they have the same number of dimension. Otherwise, there will be no isomorphism between those with different dimensions.
+Any two (real) finite-dimensional vector spaces are isomorphic such that there exists a bijective linear transformation between them, if and only if they have the same number of dimension. Otherwise, there will be no isomorphism between those with different dimensions.
 \end{proper}
-The "if" direction is easy to see because they are both isomorphic to $\mathbb{R}^n$ and bijectivity is transitive. For the "only if" direction, let the two vector spaces $\mathcal{U}$ and $\mathcal{V}$ have dimensions of $m$ and $n$ respectively, and without loss of generality $m < n$. Then they can never be isomorphic since given any transformation $T: \mathcal{U} \to \mathcal{V}$ the $m$ transformed vectors $T(\vec{u_1}), T(\vec{u_2}), \ldots, T(\vec{u_m})$ will be unable to span the $n$-dimensional $\mathcal{V}$ and by Properties \ref{proper:surjective} all of them are not surjective.
+The "if" direction is easy to see because they are both isomorphic to $\mathbb{R}^n$ by Theorem \ref{thm:isomorphism} and bijectivity is transitive.\footnote{Let's say $S$: $\mathcal{U} \to \mathbb{R}^n$ and $T$: $\mathcal{V} \to \mathbb{R}^n$ are the two respective isomorphisms. Then $T^{-1} \circ S$: $\mathcal{U} \to \mathcal{V}$ will be the required bijective linear transformation.} For the "only if" direction, let the two vector spaces $\mathcal{U}$ and $\mathcal{V}$ have dimensions of $m$ and $n$ respectively, and without loss of generality $m < n$. Then they can never be isomorphic since given any transformation $T$: $\mathcal{U} \to \mathcal{V}$ the $m$ transformed basis vectors $T(\vec{u}^{(1)}), T(\vec{u}^{(2)}), \ldots, T(\vec{u}^{(m)})$ where will be unable to span the $n$-dimensional $\mathcal{V}$ and by Properties \ref{proper:surjective} all of them are not surjective.
 \begin{exmp}
 Explicitly show that $\mathcal{U} = \mathcal{P}^3$ and $\mathcal{V} = \text{span}(\mathcal{H})$, where $\mathcal{H} = \{e^x, xe^x, x^2e^x, x^3e^x\}$, are isomorphic by considering $T: \mathcal{U} \to \mathcal{V}$, $T[p(x)] = \int_{-\infty}^x e^x p(x) dx$.
 \end{exmp}
@@ -724,17 +750,17 @@ The procedure about change of coordinates for vectors have been discussed substa
 
 \begin{exmp}
 \label{exmp:2Dtransform}
-Consider the vector space of $\mathbb{R}^2$ as the $x$-$y$ plane. Given a basis $\mathcal{B}$ for $\mathbb{R}^2$ that is consisted of two vectors $\vec{v}^{(1)} = (1,2)^T$ and $\vec{v}^{(2)} = (1,-1)^T$, convert the coordinates of the vector $\vec{v} = (2,1)^T$ from the standard basis $\mathcal{E}$ to $\mathcal{B}$.
+Consider the vector space of $\mathbb{R}^2$ as the $x$-$y$ plane. Given a basis $\mathcal{B}$ for $\mathbb{R}^2$ that is consisted of two vectors $\vec{v}^{(1)} = (1,2)^T$ and $\vec{v}^{(2)} = (1,-1)^T$, convert the coordinates of the vector $\vec{v} = (2,1)^T$ from the standard basis $\mathcal{S}$ to $\mathcal{B}$.
 \end{exmp}
 \begin{solution}
-As before, $P_B^E = [\vec{v}^{(1)}|\vec{v}^{(2)}]$, and it can be seen that
+As before, $P_B^S = [\vec{v}^{(1)}|\vec{v}^{(2)}]$, and it can be seen that
 \begin{align*}
-&P_B^E =
+&P_B^S =
 \begin{bmatrix}
 1 & 1 \\
 2 & -1
 \end{bmatrix}
-&P_E^B = (P_B^E)^{-1} =
+&P_S^B = (P_B^S)^{-1} =
 \begin{bmatrix}
 \frac{1}{3} & \frac{1}{3} \\
 \frac{2}{3} & -\frac{1}{3}
@@ -742,15 +768,15 @@ As before, $P_B^E = [\vec{v}^{(1)}|\vec{v}^{(2)}]$, and it can be seen that
 \end{align*}
 Hence the coordinates of $\vec{v}$ in the $\mathcal{B}$ system is
 \begin{align*}
-[\vec{v}]_B = P_E^B[\vec{v}]_S = 
+[\vec{v}]_B = P_S^B[\vec{v}]_S = 
 \begin{bmatrix}
 \frac{1}{3} & \frac{1}{3} \\
 \frac{2}{3} & -\frac{1}{3}
-\end{bmatrix}_E^B
+\end{bmatrix}_S^B
 \begin{bmatrix}
 2 \\
 1
-\end{bmatrix}_E
+\end{bmatrix}_S
 =
 \begin{bmatrix}
 1\\
@@ -781,14 +807,14 @@ The geometry of this problem is shown in the figure on the next page where each 
 \draw[gray,dashed] (-5,1)--(5,1);
 \draw[red,->,line width=1] (-2.2,-4.4)--(2.2,4.4) node[above right]{$v_1$};
 \draw[red,->,line width=1] (-4.4,4.4)--(4.4,-4.4) node[below left]{$v_2$};
-\draw[red, thick, dashed] (4,-1)--(-1,4) node[right, pos=0, yshift=-5]{$v_1 = 1$};
-\draw[red, thick, dashed] (3.5,4)--(-0.5,-4) node[right, pos=0, yshift=5]{$v_2 = 1$};
-\draw[red, thick, dashed] (4,2)--(2,4);
-\draw[red, thick, dashed] (4,2)--(1,-4);
-\draw[red, thick, dashed] (-4,1)--(1,-4);
-\draw[red, thick, dashed] (-4,-2)--(-2,-4);
-\draw[red, thick, dashed] (-3.5,-4)--(0.5,4);
-\draw[red, thick, dashed] (-4,-2)--(-1,4);
+\draw[red, thick, dashed] (4.2,-1.2)--(-1.2,4.2) node[right, pos=0, yshift=-5]{$v_1 = 1$};
+\draw[red, thick, dashed] (3.6,4.2)--(-0.6,-4.2) node[right, pos=0, yshift=5]{$v_2 = 1$};
+\draw[red, thick, dashed] (4.2,1.8)--(1.8,4.2);
+\draw[red, thick, dashed] (4.2,2.1)--(0.8,-4.1);
+\draw[red, thick, dashed] (-4.2,1.2)--(1.2,-4.2);
+\draw[red, thick, dashed] (-4.2,-1.8)--(-1.8,-4.2);
+\draw[red, thick, dashed] (-3.6,-4.2)--(0.6,4.2);
+\draw[red, thick, dashed] (-4.1,-2.2)--(-0.9,4.2);
 \draw[blue,-stealth,line width=2] (0,0)--(2,1) node[right, yshift=10]{$\vec{v} = (2,1)^T = (1,1)^T_B$};
 \fill[orange!75, opacity=0.5] (0,0) -- (-1,1) -- (-2,-1) -- (-1,-2) -- cycle;
 \fill[Green!75, opacity=0.5] (0,0) -- (-1,0) -- (-1,-1) -- (0,-1) -- cycle;
@@ -800,7 +826,7 @@ The geometry of this problem is shown in the figure on the next page where each 
 \end{tikzpicture}
 \end{figure}
 \end{solution}
-In this example, we can see that in the two bases $\mathcal{E}$, $\mathcal{B}$, their axis vectors (reversed in the figure) can be converted via $T: \mathbb{R}^2 \to \mathbb{R}^2$ with $T(\hat{e}^{(j)}) = \vec{v}^{(j)}$. The corresponding matrix representation is $\vec{v}^{(j)} = [\vec{v}^{(1)}|\vec{v}^{(2)}]\hat{e}^{(j)} = P_B^E\hat{e}^{(j)}$. Meanwhile the coordinate transformation of a fixed vector follows $[\vec{v}]_B = (P_B^E)^{-1}[\vec{v}]_E = P_E^B[\vec{v}]_E$, where the matrix involved is the inverse of the former. The former actually alters the vectors themselves and is sometimes known as an \index{Active Transformation}\keywordhl{active (coordinate) transformation}. In contrast, the latter only changes the coordinate frame but keep the vector unchanged and is hence called a \index{Passive Transformation}\keywordhl{passive (coordinate) transformation} (in fact, it is just the identity transformation with a change of basis). We can see that in the example above, after the active transformation the area of square formed by the new two basis vectors is enlarged by a factor of $\abs{\det(P_B^S)}=3$. It is a result of Properties \ref{proper:nvolume} and the similar holds for cases of any dimension. Oppositely, with the passive transformation we can say that the value of area of an identical square is shrinked to $\abs{\det(P_S^B)} = \abs{\det((P_B^S)^{-1})} = \abs{\det(P_B^S)}^{-1} = \frac{1}{3}$ of the original, expressed in the new basis units. Therefore, the appropriate factors in the two scenarios are the reciprocal of each other.
+In this example, we can see that in the two bases $\mathcal{S}$, $\mathcal{B}$, their axis vectors (reversed in the figure) can be converted via $T: \mathbb{R}^2 \to \mathbb{R}^2$ with $T(\hat{e}^{(j)}) = \vec{v}^{(j)}$. The corresponding matrix representation is $\vec{v}^{(j)} = [\vec{v}^{(1)}|\vec{v}^{(2)}]\hat{e}^{(j)} = P_B^S\hat{e}^{(j)}$. Meanwhile the coordinate transformation of a fixed vector follows $[\vec{v}]_B = (P_B^S)^{-1}[\vec{v}]_S = P_S^B[\vec{v}]_S$, where the matrix involved is the inverse of the former. The former case actually alters the vectors themselves and is sometimes known as an \index{Active Transformation}\keywordhl{active (coordinate) transformation}. In contrast, the latter only changes the coordinate frame but keep the vector unchanged and is hence called a \index{Passive Transformation}\keywordhl{passive (coordinate) transformation} (in fact, it is just the identity transformation with a change of basis). We can see that in the example above, after the active transformation the area of square formed by the new two basis vectors is enlarged by a factor of $\abs{\det(P_B^S)}=3$. It is a result of Properties \ref{proper:nvolume} and the similar holds for cases of any dimension. Oppositely, with the passive transformation we can say that the value of area of an identical square is shrinked to $\abs{\det(P_S^B)} = \abs{\det((P_B^S)^{-1})} = \abs{\det(P_B^S)}^{-1} = \frac{1}{3}$ of the original, expressed in the new basis units. Therefore, the appropriate factors in the two scenarios are the reciprocal of each other.
 
 \subsubsection{Change of Coordinates for Linear Transformations/Matrices}
 
@@ -915,10 +941,10 @@ We use a test case to check the answer. Let $p(x) = x^2 - 3x + 1 = (x-1)^2 - (x-
 which corresponds to $-5(1) + 2(x+1) = 2x-3$, which is consistent with the usual calculation $T(p(x)) = p'(x) = (x^2-3x+1)' = 2x-3$ from elementary calculus.
 \end{solution}
 
-In most of the times, we are interested in the type of linear transformations that are an \index{Endomorphism}\keywordhl{endomorphism} (sometimes also referred to as a \index{Linear Operator}\keywordhl{linear operator}) in which the mapping is from a vector space $\mathcal{V}$ to itself, i.e. $T: \mathcal{V} \to \mathcal{V}$\footnote{An endomorphism that is at the same time an isomorphism is known as an \index{Automorphism}\keywordhl{automorphism}, e.g. the linear transformation in Example \ref{exmp:endomorphch}.}. Often we also use the same basis $\mathcal{B}$ for the input and output. Subsequently, to change the basis for both of them at the same time, let's say $\mathcal{B}'$, if the matrix for change of coordinates on vectors from $\mathcal{B}'$ to $\mathcal{B}$ is denoted as $P = P_{B'}^B$, then Properties \ref{proper:chcoordsmat} is reduced to $[T]_{B'}^{B'} = (P_{B'}^B)^{-1} [T]_B^B P_{B'}^B = P^{-1}AP$ where $A = [T]_B^B$ is the original matrix representation of the endomorphism. When it is clear from the context, we will simply write $[T]_B^B$ ($[T]_{B'}^{B'}$) as $[T]_B$ ($[T]_{B'}$).
+In most of the times, we are interested in the type of linear transformations that are an \index{Endomorphism}\keywordhl{endomorphism} (sometimes also referred to as a \index{Linear Operator}\keywordhl{(linear) operator}) in which the mapping is from a vector space $\mathcal{V}$ to itself, i.e. $T: \mathcal{V} \to \mathcal{V}$\footnote{An endomorphism that is at the same time an isomorphism is known as an \index{Automorphism}\keywordhl{automorphism}, e.g. the linear transformation in Example \ref{exmp:endomorphch}.}. Often we also use the same basis $\mathcal{B}$ for the input and output vector. Subsequently, to change the basis for both of them at the same time, let's say $\mathcal{B}'$, if the matrix for change of coordinates on vectors from $\mathcal{B}'$ to $\mathcal{B}$ is denoted as $P = P_{B'}^B$, then Properties \ref{proper:chcoordsmat} is reduced to $[T]_{B'}^{B'} = (P_{B'}^B)^{-1} [T]_B^B P_{B'}^B = P^{-1}AP$ where $A = [T]_B^B$ is the original matrix representation of the endomorphism. When it is clear from the context, we will simply write $[T]_B^B$ ($[T]_{B'}^{B'}$) as $[T]_B$ ($[T]_{B'}$).
 \begin{proper}
 \label{proper:endomorph}
-For a linear endomorphism $T: \mathcal{V} \to \mathcal{V}$, the change of coordinates for its matrix representation from the old basis $\mathcal{B}$ to the new one $\mathcal{B}'$ is described by the formula
+For a linear endomorphism/operator $T: \mathcal{V} \to \mathcal{V}$, the change of coordinates for its matrix representation from the old basis $\mathcal{B}$ to the new one $\mathcal{B}'$ is described by the formula
 \begin{align*}
 [T]_{B'} = (P_{B'}^B)^{-1} [T]_B P_{B'}^B    
 \end{align*}
@@ -927,7 +953,7 @@ Speaking loosely, the change of coordinates for a matrix in general takes the fo
 \begin{align*}
 A' = P^{-1}AP
 \end{align*}
-$A'$ and $A$ (or $[T]_{B'}$ and $[T]_B$) are said to be \index{Similar}\keywordhl{similar}.
+In this case, $A'$ and $A$ (or $[T]_{B'}$ and $[T]_B$) are said to be \index{Similar}\keywordhl{similar}.
 
 \begin{exmp}
 \label{exmp:endomorphch}
@@ -1002,8 +1028,7 @@ and thus the desired new matrix representation of the endomorphism with respect 
 
 \subsection{Gram-Schmidt Orthogonalization, QR Decomposition}
 \label{section:GSortho}
-
-Sometimes the coordinate basis consists of vectors that are linearly independent but not orthogonal to each other, unlike the standard basis. A common way to create an orthogonal basis from the set is to apply the so-called \index{Gram-Schmidt Orthogonalization}\keywordhl{Gram-Schmidt Orthogonalization}. Basically, it is an iterative method. At each step it constructs a vector that are orthogonal to all the previously processed vectors by removing the parallel components projected onto them (blue) while retaining the orthogonal part (red).
+Sometimes the coordinate basis consists of vectors that are linearly independent but not orthogonal to each other, unlike the standard basis. A common way to create an orthogonal basis from the set is to apply the so-called \index{Gram-Schmidt Orthogonalization}\keywordhl{Gram-Schmidt Orthogonalization}. Basically, it is an iterative method. At each step it constructs a vector that are orthogonal to all the previously processed vectors by removing the parallel components projected onto them (blue in the figure below) while retaining the orthogonal part (red).
 \begin{center}
 \begin{tikzpicture}[scale=1.3]
 \coordinate (0) at (0,0);
@@ -1032,19 +1057,19 @@ In general, for $j \geq 2$, the $j$-th new vector is computed by
 \begin{align*}
 \vec{v}^{(j)} &= \vec{u}^{(j)} - \sum_{k=1}^{j-1}\text{proj}_{v^{(k)}}\vec{u}^{(j)}  = \vec{u}^{(j)} - \sum_{k=1}^{j-1}\frac{\vec{u}^{(j)} \cdot \vec{v}^{(k)}}{\norm{\vec{v}^{(k)}}^2} \vec{v}^{(k)}
 \end{align*}
-where the expression of projection, Properties \ref{proper:proj}, is used.
+where the expression of vector projection, Properties \ref{proper:proj}, is used.
 \end{defn}
 A variant of Gram-Schmidt Orthogonalization is to normalize every vector at each step immediately, such that $\norm{\hat{v}^{(j)}} = 1$ for all $j$, and the resulted basis is said to be \index{Orthonormal}\keywordhl{orthonormal} (both orthogonal and of unit length). The formulae in Definition \ref{defn:GSorth} are then reduced to
 \begin{defn}[Gram-Schmidt Orthogonalization with Normalization]
 \label{defn:GSorth_norm}
 \begin{align*}
 \hat{v}^{(1)} &= \frac{\vec{u}^{(1)}}{\norm{\vec{u}^{(1)}}} \\
-\hat{v}^{(2)} &= \frac{\vec{u}^{(2)} - (\vec{u}^{(2)} \cdot \hat{v}^{(1)})\hat{v}^{(1)}}{\norm{(\vec{u}^{(2)} \cdot \hat{v}^{(1)})\hat{v}^{(1)}}} \\
+\hat{v}^{(2)} &= \frac{\vec{u}^{(2)} - (\vec{u}^{(2)} \cdot \hat{v}^{(1)})\hat{v}^{(1)}}{\norm{(\vec{u}^{(2)} - \vec{u}^{(2)} \cdot \hat{v}^{(1)})\hat{v}^{(1)}}} \\
 \hat{v}^{(3)} &= \frac{\vec{u}^{(3)} - (\vec{u}^{(3)} \cdot \hat{v}^{(1)})\hat{v}^{(1)} - (\vec{u}^{(3)} \cdot \hat{v}^{(2)})\hat{v}^{(2)}}{\norm{\vec{u}^{(3)} - (\vec{u}^{(3)} \cdot \hat{v}^{(1)})\hat{v}^{(1)} - (\vec{u}^{(3)} \cdot \hat{v}^{(2)})\hat{v}^{(2)}}} \\
 \vdots \\
 \hat{v}^{(n)} &= \frac{\vec{u}^{(n)} - (\vec{u}^{(n)} \cdot \hat{v}^{(1)})\hat{v}^{(1)} - (\vec{u}^{(n)} \cdot \hat{v}^{(2)})\hat{v}^{(2)} - \cdots - (\vec{u}^{(n)} \cdot \hat{v}^{(n-1)})\hat{v}^{(n-1)}}{\norm{\vec{u}^{(n)} - (\vec{u}^{(n)} \cdot \hat{v}^{(1)})\hat{v}^{(1)} - (\vec{u}^{(n)} \cdot \hat{v}^{(2)})\hat{v}^{(2)} - \cdots - (\vec{u}^{(n)} \cdot \hat{v}^{(n-1)})\hat{v}^{(n-1)}}} 
 \end{align*}
-For $j \geq 2$, the general formulae is
+For $j \geq 2$, the general formula is
 \begin{align*}
 \hat{v}^{(j)} &= \frac{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}{\norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}}
 \end{align*}
@@ -1201,10 +1226,10 @@ By the same essence, we have the third vector as
 \end{solution}
 Short Exercise: Verify that $\hat{v}^{(1)}, \hat{v}^{(2)}, \hat{v}^{(3)}$ are pairwise orthogonal.\footnote{We will only check $\hat{v}^{(1)}$ and $\hat{v}^{(3)}$ are orthogonal to each other and leave the remaining two pairs to the readers. $\hat{v}^{(1)} \cdot \hat{v}^{(3)} = (\frac{1}{3}, \frac{2}{3}, \frac{2}{3})^T \cdot (\frac{2}{\sqrt{17}}, \frac{2}{\sqrt{17}}, -\frac{3}{\sqrt{17}})^T = (\frac{1}{3})(\frac{2}{\sqrt{17}}) + (\frac{2}{3})(\frac{2}{\sqrt{17}}) + (\frac{2}{3})(-\frac{3}{\sqrt{17}}) = 0$.} \\
 \\
-An major application of the Gram-Schmidt process is the \index{QR Decomposition}\keywordhl{QR Decomposition}, which factors a matrix into two matrices, one as its orthogonal basis vectors arranged in columns and another one as a upper-triangular matrix (non-zero elements only found along or above the main diagonal) where the elements take the form of $\vec{u}^{(j)} \cdot \hat{v}^{(i)}$ as shown below. This is very useful in the processing of large matrices and least-square error fitting.
+An major application of the Gram-Schmidt Orthogonalization is the \index{QR Decomposition}\keywordhl{QR Decomposition}, which factors a matrix into two matrices, one as the orthogonal basis vectors acquired from the Gram-Schmidt process arranged in columns and another one as a upper-triangular matrix (non-zero elements only found along or above the main diagonal) where the elements take the form of $\vec{u}^{(j)} \cdot \hat{v}^{(i)}$ as shown below. This is very useful in the processing of large matrices and least-square error fitting.
 \begin{proper}
 \label{proper:QRdecompose}
-For a matrix $A = [\vec{u}^{(1)}|\vec{u}^{(2)}|\vec{u}^{(3)}|\cdots|\vec{u}^{(n)}]$, and the matrix $Q = [\hat{v}^{(1)}|\hat{v}^{(2)}|\hat{v}^{(3)}|\cdots|\hat{v}^{(n)}]$, where the $\hat{v}_j$ are orthonormal vectors that come from carrying out Gram-Schmidt orthogonalization on the basis vectors $\vec{u}_j$ according to the Definition \ref{defn:GSorth_norm}, we have $A = QR$, where
+For a matrix $A = [\vec{u}^{(1)}|\vec{u}^{(2)}|\vec{u}^{(3)}|\cdots|\vec{u}^{(n)}]$, and the matrix $Q = [\hat{v}^{(1)}|\hat{v}^{(2)}|\hat{v}^{(3)}|\cdots|\hat{v}^{(n)}]$, where the $\hat{v}_j \in \mathbb{R}^m$ are orthonormal vectors that come from carrying out Gram-Schmidt orthogonalization on the basis vectors $\vec{u}_j \in \mathbb{R}^m$, $m \leq n$ and $j = 1,2,\ldots,n$, according to the Definition \ref{defn:GSorth_norm}, we have $A = QR$, where
 \begin{align*}
 R &= 
 \begin{bmatrix}
@@ -1221,7 +1246,7 @@ R &=
 \end{cases}
 & \text{for $1 \leq i, j \leq n$}
 \end{align*}
-is an upper triangular $n \times n$ invertible matrix.
+is an upper-triangular $n \times n$ invertible matrix.
 \end{proper}
 \begin{proof}
 We will show that every column of $A$ and $QR$ coincides. The $j$-th column of $A$ is simply the $j$-th vector in the starting basis, $\vec{u}^{(j)}$. Meanwhile, the $j$-th column of $QR$ is $Q$ times the $j$-th column of $R$, which is
@@ -1245,7 +1270,7 @@ By Definition \ref{defn:GSorth_norm}, we have
 \begin{align*}
 \hat{v}^{(j)} &= \frac{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}{\norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}}
 \end{align*}
-\footnote{\label{foot:GSnonzero} Some may ask if $\norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}$ can be $0$ (or $\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}$ be the zero vector) and $\hat{v}^{(j)}$ is not well-defined. However, this will contradict the linear independence of the basis vectors $\vec{u}_k$. We can use induction to show this: (WIP)} which after rearrangement, becomes
+\footnote{\label{foot:GSnonzero} Some may ask if $\norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}$ can be $0$ (or $\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}$ be the zero vector) and $\hat{v}^{(j)}$ is not well-defined. However, this will contradict the linear independence of the basis vectors $\vec{u}^{(k)}$, as each of $\hat{v}^{(k)}$ are a linear combination of $\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \vec{u}^{(k)}$, deduced inductively from $k = 1$ to $k = j-1$ by looking at Definition \ref{defn:GSorth_norm}. Hence $\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)} = \textbf{0}$ implies a non-trivial solution to $c_1 \vec{u}^{(1)} + \cdots + c_{j-1}\vec{u}^{(j-1)} + c_j\vec{u}^{(j)} = \textbf{0}$ where particularly $c_j = 1 \neq 0$.} which after rearrangement, becomes
 \begin{align*}
 \vec{u}^{(j)} = \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)} + {\norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}}\hat{v}^{(j)}
 \end{align*}
@@ -1268,7 +1293,7 @@ Therefore,
 &= \norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}} (\hat{v}^{(j)} \cdot\hat{v}^{(j)}) \\
 &= \norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}
 \end{align*}
-as $\hat{v}^{(j)} \cdot \hat{v}^{(j)} = \norm{\hat{v}^{(j)}}^2 = 1$. The required equality is then established and the result follows. The invertibility of $R$ can be shown by noting that all diagonal elements $\vec{u}^{(j)} \cdot \hat{v}^{(j)} = \norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}} $ of the upper triangular $R$ matrix are non-zero (see Footnote \ref{foot:GSnonzero}). 
+as $\hat{v}^{(j)} \cdot \hat{v}^{(j)} = \norm{\hat{v}^{(j)}}^2 = 1$. The required equality is then established and the result follows. The invertibility of $R$ can be shown by noting that all diagonal elements $\vec{u}^{(j)} \cdot \hat{v}^{(j)} = \norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}} $ of the upper-triangular $R$ matrix are non-zero (see Footnote \ref{foot:GSnonzero}). 
 \end{proof}
 
 \begin{exmp}
@@ -1276,7 +1301,7 @@ as $\hat{v}^{(j)} \cdot \hat{v}^{(j)} = \norm{\hat{v}^{(j)}}^2 = 1$. The require
 Construct a QR decomposition for the case in Example \ref{exmp:GS_ex}.
 \end{exmp}
 \begin{solution}
-The matrix $Q$ is simply
+The matrix $Q$ is simply consisted of the orthonormal basis vectors:
 \begin{align*}
 Q &= 
 \begin{bmatrix}
@@ -1305,7 +1330,7 @@ whose values can be readily inferred from the steps during the orthogonalization
 We conclude this section with a small remark related to the concept of orthogonal complement discussed in the end of Section \ref{section:null}.
 \begin{proper}
 \label{proper:orthodirectsum}
-For an orthogonal(-normal) basis $\mathcal{B} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \vec{v}^{(3)}, \\ \cdots, \vec{v}^{(n)}\}$ for a finite, $n$-dimensional vector space $\mathcal{V}$, the subspaces $\mathcal{V}_G$ and $\mathcal{V}_H$ formed by $\mathcal{G} = \{\vec{v}^{(I)}\}$ and $\mathcal{H} = \{\vec{v}^{(J)}\}$ respectively, where $I$ and $J$ are mutually exclusive indices that together count all integers from $1$ to $n$, are the orthogonal complement to each other with respect to $\mathcal{V}$, such that $\mathcal{V}_G^\perp = \mathcal{V}_H$ and $\mathcal{V}_G \oplus \mathcal{V}_H = \mathcal{V}$.
+For an orthogonal(-normal) basis $\mathcal{B} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \vec{v}^{(3)}, \cdots, \\ \vec{v}^{(n)}\}$ for a finite, $n$-dimensional vector space $\mathcal{V}$, the subspaces $\mathcal{V}_G$ and $\mathcal{V}_H$ formed by $\mathcal{G} = \{\vec{v}^{(I)}\}$ and $\mathcal{H} = \{\vec{v}^{(J)}\}$ respectively, where $I$ and $J$ are mutually exclusive indices that together count all integers from $1$ to $n$, are the orthogonal complement to each other with respect to $\mathcal{V}$, such that $\mathcal{V}_G^\perp = \mathcal{V}_H$ ($\mathcal{V}_H^\perp = \mathcal{V}_G$) and $\mathcal{V}_G \oplus \mathcal{V}_H = \mathcal{V}$.
 \end{proper}
 \end{solution}
 
@@ -1408,7 +1433,7 @@ Let $\mathcal{V} = \mathcal{W} = \mathbb{R}^3$, and take $\mathcal{B} = \{(1,1,1
 \end{Exercise}
 
 \begin{Exercise}
-Let $\mathcal{V}$ be the real vector space generated by the basis $\mathcal{B} = \{\cos x, \sin x, x\cos x, x\sin x\}$ and $T: \mathcal{V} \to \mathcal{V}, T[f(x)] = f'(x)$ be the differentiation operator over $\mathcal{V}$. Find the matrix representation of $T$ with respect to $\mathcal{B}$, and determine if $T$ is injective, surjective and hence bijective. 
+Let $\mathcal{V}$ be the real vector space generated by the basis $\mathcal{B} = \{\cos x, \sin x, x\cos x, x\sin x\}$ and $T: \mathcal{V} \to \mathcal{V}, T[f(x)] = f'(x)$ be the differentiation operator over $\mathcal{V}$. Find the matrix representation of $T$ with respect to $\mathcal{B}$, and determine if $T$ is injective, surjective and hence bijective. If it is bijective, find the inverse (matrix) of $T$.
 \end{Exercise}
 
 \begin{Exercise}
@@ -1420,7 +1445,19 @@ find its matrix representation with respect to the standard bases and decide if 
 \end{Exercise}
 
 \begin{Exercise}
+If $\mathcal{U}$ and $\mathcal{V}$ are isomorphic to an $m$/$n$-dimensional (real) vector space, show that the direct sum $\mathcal{U} \oplus \mathcal{V}$ is isomorphic to an $m+n$-dimensional (real) vector space.
+\end{Exercise}
+
+\begin{Exercise}
 Show that every identity transformation $T: \mathcal{V} \to \mathcal{V}, T(\vec{v}) = \text{id}(\vec{v}) = \vec{v}$ for a finite-dimensional vector space $\mathcal{V}$ with respect to a fixed basis $\mathcal{B}$ throughout always has a matrix representation of an identity matrix such that $[T]_B = I$. 
+\end{Exercise}
+
+\begin{Exercise}
+For a linear operator $T: \mathcal{P}^2 \to \mathcal{P}^2$, $T(p(x)) = p(x-1)$, find it matrix representation with respect to the standard basis first, and then use the change of coordinates formula in Properties \ref{proper:endomorph} where we do a variable substitution of $x' = x+2$ to compute the new matrix representation.
+\end{Exercise}
+
+\begin{Exercise}
+For two linear transformations $T:$ $\mathcal{U} \to \mathcal{V}$ and $S:$ $\mathcal{V} \to \mathcal{W}$, where $\mathcal{U}$, $\mathcal{V}$, $\mathcal{W}$ are finite-dimensional with bases $\mathcal{B}$, $\mathcal{H}$, $\mathcal{K}$, find the formula for change of coordinates to new bases $\mathcal{B}'$, $\mathcal{H}'$, $\mathcal{K}'$ for the matrix representation of the composition $S \circ T$.
 \end{Exercise}
 
 \begin{Exercise}

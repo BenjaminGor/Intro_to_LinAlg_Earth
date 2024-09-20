@@ -156,12 +156,13 @@ A $3 \times 3$ skew-symmetric matrix.
 \section{Inverses}
 \label{section:inv}
 \subsection{Definition and Properties of Inverses}
+\label{subsection:invsub}
 \index{Inverse}\keywordhl{Inverse} of a square matrix, denoted by appending the superscript $^{-1}$, is another square matrix such that the matrix product between these two matrices (in either order) yields an identity matrix.
 \begin{defn}[Inverse]
 \label{defn:inverse}
 An $n \times n$ square matrix $B$ is said to be the inverse of another $n \times n$ square matrix $A$ if $AB = BA = I_n$. This inverse matrix is denoted as $B = A^{-1}$, and the relation becomes $AA^{-1} = A^{-1}A = I$. The opposite direction also holds, i.e.\ $A$ is the inverse of $A^{-1}$. Hence, we say that $A$ and $A^{-1}$ are the inverse of each other.
 \end{defn}
-If there exists an inverse $A^{-1}$ for the square matrix $A$, then both $A$ and $A^{-1}$ are called \index{Invertible}\keywordhl{invertible}. Otherwise, $A$ is said to be \index{Singular}\keywordhl{singular}. This is another situation in which a matrix product $AB = BA$ (if $B=A^{-1}$) can commute.\footnote{$AA^{-1} = I$ implies $A^{-1}A = I$ and vice versa. However, while looking innocent, showing this is actually not trivial. A heuristic way to "prove" it is to note that
+If there exists an inverse $A^{-1}$ for the square matrix $A$, then both $A$ and $A^{-1}$ are called \index{Invertible}\keywordhl{invertible}. Otherwise, $A$ is said to be \index{Singular}\keywordhl{singular}. This is another situation in which a matrix product $AB = BA$ (if $B=A^{-1}$) can commute.\footnote{$AA^{-1} = I$ implies $A^{-1}A = I$ and vice versa. However, while looking innocent, showing this is actually not trivial and prone to circular logic. A heuristic way to "prove" it is to note that
 \begin{align*}
 AA^{-1} &= I \\
 AA^{-1}A &= IA \\
@@ -275,7 +276,7 @@ AB(B^{-1}A^{-1}) &= (AI)A^{-1} = AA^{-1} & \text{(Properties \ref{proper:matmul}
 This shows that multiplying $AB$ by $B^{-1}A^{-1}$ produces an identity matrix, and therefore $(AB)^{-1} = B^{-1}A^{-1}$ is the unique inverse of $AB$ by Definition \ref{defn:inverse} and Properties \ref{proper:uniqueinverse}.
 \end{proof}
 Short Exercise: Show that $(ABC)^{-1} = C^{-1}B^{-1}A^{-1}$ if $A$, $B$ and $C$ are invertible and conformable.\footnote{By (4), $(ABC)^{-1} = ((AB)(C))^{-1} = C^{-1}(AB)^{-1} = C^{-1}B^{-1}A^{-1}$}\par
-(4) of Properties \ref{proper:inverse} explicitly shows that the product $AB$ is invertible if $A$ and $B$ are themselves invertible. The converse is actually true as well. Hence
+(4) of Properties \ref{proper:inverse} explicitly shows that the product $AB$ is invertible if $A$ and $B$ are themselves invertible. The converse is actually true as well.\footnote{Let's assume $AB$ is invertible and has an inverse $C = (AB)^{-1}$, hence we have $(AB)C = I$ by Definition \ref{defn:inverse}, (notice that $A$, $B$, and $C$ are all square matrices of the same extent) and by Properties \ref{proper:matmul}, $A(BC) = I$. Using Definition \ref{defn:inverse} (as well as Properties \ref{proper:uniqueinverse}) again, we immediately identify $BC$ as the inverse of $A$ and $A$ is invertible. The case for $B$ is similarly proved.} Hence
 \begin{proper}
 \label{proper:ABinv}
 For two square matrices $A$ and $B$, $AB$ is invertible if and only if $A$ and $B$ are invertible.
