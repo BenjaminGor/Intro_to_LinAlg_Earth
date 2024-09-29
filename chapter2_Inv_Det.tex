@@ -389,11 +389,11 @@ A =
 \begin{solution}
 At each step of the forward phase, the strategy is to look at on the leftmost column that has at least one non-zero entries (any column consisting of full zeros is ignored). Along that column, we either find an existing leading $1$, or create a leading $1$ via multiplying some row having a starting entry $a$ that is as large as possible in magnitude, by the constant $1/a$. (The leading entry selected by this algorithm is commonly called the \index{Pivot}\keywordhl{pivot}, and the process is called \index{Pivot!Pivoting}\keywordhl{pivoting}.) The row holding the leading $1$ is subsequently put at the top, by an interchanging of rows if needed. In this example, such rows will be highlighted in red.
 \begin{align*}
-\begin{bmatrix}
+\left[\begin{array}{@{\,}wc{12pt}wc{12pt}wc{12pt}wc{12pt}@{\,}}
 2 & 1 & 4 & 6 \\
 3 & 3 & 1 & 0 \\
 1 & 2 & 3 & 4
-\end{bmatrix}
+\end{array}\right]
 &\to
 \begin{bmatrix}
 \textcolor{red}{1} & \textcolor{red}{\frac{1}{2}} & \textcolor{red}{2} & \textcolor{red}{3} \\
@@ -1853,6 +1853,7 @@ which has two roots, $p = -4$ and $p = 2$ such that $|A| = 0$ and $A$ is not inv
 \end{Answer}
 
 \begin{Exercise}
+\label{ex:symskew}
 Show that for any square matrix $A$, $A + A^T$ is symmetric and $A - A^T$ is skew-symmetric. Hence show with an explicit formula that any square matrix $A$ can be written as the sum of a symmetric matrix and a skew-symmetric matrix.
 \end{Exercise}
 \begin{Answer}
