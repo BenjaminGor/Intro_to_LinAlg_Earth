@@ -116,6 +116,7 @@ This $B$ matrix is also sometimes considered to behave as a \textit{symmetric bi
 
 An important attribute of quadratic forms is their \index{Definiteness}\index{Semidefiniteness}\keywordhl{(semi)definiteness}. If a quadratic form $Q(\vec{x})$ is \index{Positive-Definite}\index{Negative-Definite}\keywordhl{positive/negative-definite}, it means that it always output positive/negative numbers no matter what the input vector $\vec{x}$ is, as long as $\vec{x} \neq \textbf{0}$ is a non-zero vector. Semidefiniteness loosens the restriction such that the quadratic form can also produces zero for some non-zero $\vec{x}$, in other words, a positive(negative)-semidefinite quadratic form always gives non-negative (non-positive) numbers. Now we will show that definiteness is related to the eigenvalues of the symmetric matrix associated to the quadratic form.
 \begin{defn}
+\label{defn:quaddefinite}
 For any quadratic form $Q(x) = \vec{x}^T B\vec{x}$, $Q$ (or $B$) is called
 \begin{enumerate}[label=(\alph*)]
 \item positive-definite, if for any $\vec{x} \neq \vec{0}$, $\vec{x}^T B\vec{x} > 0$ (positive-semidefinite if $\vec{x}^T B\vec{x} \geq 0$), 
@@ -1175,7 +1176,7 @@ u_1^{(2)}
 0.741
 \end{bmatrix}
 \end{align*}
-The original (detrended) data can be recovered by $\vec{x}'_i = [\textbf{e}]\vec{u}'_i$. If we want to extract the signal originated from the first principal direction only, we can simply remove other column eigenvector(s) in $[\textbf{e}]$ as well as discard the other principal value(s) in $\vec{u}'_i$. The time-series reconstructed by the first PC mode is hence computed by $x'_i = \textbf{e}^{(1)}u_i^{(1)}$:
+The original (detrended) data can be recovered by $\vec{x}'_i = [\textbf{e}]\vec{u}'_i$. If we want to extract the signal originated from the first principal direction only, we can simply remove other column eigenvector(s) in $[\textbf{e}]$ as well as discard the other principal value(s) in $\vec{u}'_i$. The time-series reconstructed by the first PC mode is hence computed by $\vec{x}'_i = \textbf{e}^{(1)}u_i^{(1)}$:
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
@@ -1195,7 +1196,7 @@ N' & -0.281 & -0.869 & 0.106 & -0.566 & 0.539 & 1.716 & 0.850 \\
 \end{center}
 For example, for the third day PC1 contributes
 \begin{align*}
-x'_3 =
+\vec{x}'_3 =
 \begin{bmatrix}
 m'_3 \\
 n'_3
@@ -1351,13 +1352,14 @@ Also, prepare the land-sea mask to exclude land grid points and flatten it for i
 \begin{lstlisting}
 land_sea_mask_nc = xr.open_dataset("lsm_1279l4_0.1x0.1.grb_v4_unpack.nc")
 land_sea_mask = np.array(land_sea_mask_nc["lsm"].sel({"latitude": coarse_lat, "longitude": coarse_lon}, method="nearest")[0, ...])
-land_sea_mask = np.where(land_sea_mask > 0, 1, 0)
-land_sea_mask_flatten = land_sea_mask.flatten().astype(bool)
+land_sea_mask = np.where(land_sea_mask > 0, 1, 0).astype(bool)
+land_sea_mask_flatten = land_sea_mask.flatten()
 \end{lstlisting}
 Preprocessing the SST data by subtracting the yearly climatology to acquire the anomaly fields, scale them by the square roots of cosines of the latitudes to account for area weighting and keep only the valid overwater grid points using the land-sea mask:
 \begin{lstlisting}
 SST_data_arr = np.array(SST_nc["sst"].sel({"latitude": coarse_lat, "longitude": coarse_lon}))
 SST_data_arr_no_leap = SST_data_arr[no_leapdays, ...].reshape(30,365,len(coarse_lat),len(coarse_lon))
+# The SST array now has the shape of 30 years * 365 days * nlat * nlon
 SST_clim = np.mean(SST_data_arr_no_leap, axis=0)
 SST_anomaly = SST_data_arr_no_leap - SST_clim
 
@@ -1376,7 +1378,7 @@ Then, recover the latitude-longitude structure of the first PC:
 \begin{lstlisting}
 PC1 = np.full(len(coarse_lat)*len(coarse_lon), np.nan)
 PC1[~land_sea_mask_flatten] = SST_PCA.components_[0,:] # Fill PC1 at appropriate overwater entries
-PC1_2D = PC1.reshape(len(coarse_lat), len(coarse_lon)) / cos_factor_root[:,None] # Inverse the cosine factor
+PC1_2D = PC1.reshape(len(coarse_lat), len(coarse_lon)) / cos_factor_root[:,None] # Invert the cosine factor
 \end{lstlisting}
 and plot it on the map.
 \begin{lstlisting}
@@ -1396,7 +1398,7 @@ You should be able to get the following figure.
 \end{center}
 This EOF pattern represents the \index{El Niño–Southern Oscillation (ENSO)}\keywordhl{El Niño–Southern Oscillation (ENSO)} phenomenon where the western Pacific gets cooler (warmer) and eastern Pacific becomes warmer (cooler) during the El Niño (La Niña) phase.
 
-\section{Exercise}
+\section{Exercises}
 
 \begin{Exercise}
 Identify the following conic sections and eliminate the cross-product terms by an appropriate rotation.
@@ -1408,7 +1410,7 @@ Identify the following conic sections and eliminate the cross-product terms by a
 \end{Exercise}
 
 \begin{Exercise}
-Find a new expression for the standard hyperbola $y^2 - x^2 = 1$ if a anti-clockwise rotation of $75$ degrees is done. What about a reflection along the $x$-axis?
+Find a new expression for the standard hyperbola $y^2 - x^2 = 1$ if a anti-clockwise rotation of $60$ degrees is done. What about a reflection along the $x$-axis?
 \end{Exercise}
 
 \begin{Exercise}
@@ -1456,6 +1458,6 @@ Carry out Principal Component Analysis on the data set above. Find the Principal
 \end{Exercise}
 
 \begin{Exercise}
-Download the ERA5 datasets for \SI{200}{hPa} and \SI{850}{hPa} zonal winds, as well as total column water over some $10$ to $20$ years from \SI{15}{\degree N} to \SI{15}{\degree S} and \SI{60}{\degree E} to \SI{160}{\degree E}. Standardize the three variables via dividing them by their standard deviations respectively and follow the procedure outlined in Section \ref{section:EOF} to do the so-called \textit{combined EOFs}. Recover the physical patterns through multiplying the entries of EOF modes by the standard deviations of corresponding variables. You should be able to observe the appearance of \textit{Madden-Julian Oscillation (MJO)} from the first two EOFs. 
+Download the ERA5 datasets for \SI{200}{hPa} and \SI{850}{hPa} zonal winds, as well as total column water over some $10$ to $20$ years from \SI{15}{\degree N} to \SI{15}{\degree S} and \SI{60}{\degree E} to \SI{160}{\degree E}. Standardize the three variables via dividing them by their standard deviations respectively, concatenate them and follow the procedure outlined in Section \ref{section:EOF} to do the so-called \textit{combined EOFs}. Recover the physical patterns through multiplying the entries of EOF modes back by the standard deviations of corresponding variables. You should be able to observe the appearance of \textit{Madden-Julian Oscillation (MJO)} from the first two EOFs. 
 \end{Exercise}
 
