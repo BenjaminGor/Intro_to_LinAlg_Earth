@@ -4,7 +4,7 @@ Hello I am Benjamin Loi from CUHK-EESC and NTU-AS. This is the repository for th
 
 The book pdf is located at [here](Linear_Algebra_Notes_New.pdf).
 
-This project is still alive and being constantly updated as of Sep 2024.
+This project is still alive and being constantly updated as of Oct 2024.
 
 <h2>Contributing to the Project</h2>
 
@@ -24,10 +24,10 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 8. Complex Vectors/Matrices and Block Matrices
 9. Eigenvalues and Eigenvectors, Diagonalization
 10. Orthogonal and Normal Matrices
-11. Quadratic Form (2024-11-01)
-12. Inner Product Space (2024-12-01)
-13. Least-Square Approximation
-14. Discrete Fourier Transform
+11. Quadratic Form
+12. Inner Product Space
+13. Least-Square Approximation (2024-11-01)
+14. Discrete Fourier Transform (2024-12-01)
 15. Markov Chains
 16. Matrix Factorization Methods
 17. Dynamical Systems
