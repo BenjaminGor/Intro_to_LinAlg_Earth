@@ -212,11 +212,13 @@ After rearrangement, the boundary term is put after the integral, from which we 
 \end{solution}
 Finally we note some properties of adjoints that can be compared to Properties \ref{proper:complexmat}.
 \begin{proper}
+\label{proper:adjoints}
 For two linear operators $T$ and $U$ in the same inner product space with adjoints $T^*$ and $U^*$ respectively, we have
 \begin{enumerate}
 \item $(cT)^* = \overline{c}T^*$, where $c$ is any complex scalar,
 \item $(T^*)^* = T$,
 \item $(T \pm U)^* = T^* \pm U^*$,
+\item $(T^*)^{-1} = (T^{-1})^*$ if $T$ (hence $T^*$) is invertible,
 \item $(TU)^* = U^*T^*$.
 \end{enumerate}
 \end{proper}
@@ -384,6 +386,7 @@ T(\vec{v}) = \frac{\langle \vec{v}, \vec{w}^{(1)}\rangle}{\norm{\vec{w}^{(1)}}^2
 \end{align}
 Similar to Properties \ref{proper:matrixproj} and \ref{proper:orthogonalproj}, a linear operator $T$ represents an orthogonal projection if and only if it has an adjoint $T^*$ so that $T^2 = T = T^*$.
 \begin{proper}
+\label{proper:orthoprojadjoint}
 A linear operator $T: \mathcal{V} \to \mathcal{V}$ over an inner product space, is an orthogonal projection with respect to the inner product if and only if $T^2 = T = T^*$ where $T^*$ is its adjoint.
 \end{proper}
 The proof for the first equality $T^2 = T$ is the same one in Properties \ref{proper:matrixproj} except that $\mathcal{V}$, as well as $\mathcal{W}_1$ and $\mathcal{W}_2$ may be infinite-dimensional now. Meanwhile for the second equality $T = T^*$, we need to replace the dot product in the original proof for Properties \ref{proper:orthogonalproj} by the inner product, and additionally show that $\mathcal{N}(T)^\perp = \mathcal{R}(T)$ for the "if" part when $\mathcal{V}$ is infinite-dimensional, which is not too far from our reach.\footnote{We take it for granted that $\mathcal{W} \subseteq \mathcal{W}^{\perp\perp}$ for any subspace $\mathcal{W}$, so that $\mathcal{N}(T)^\perp = \mathcal{R}(T)^{\perp\perp} \supseteq \mathcal{R}(T)$, and the remaining task is to show $\mathcal{N}(T)^\perp \subseteq \mathcal{R}(T)$ so that $\mathcal{N}(T)^\perp = \mathcal{R}(T)$, i.e.\ for any $\vec{w} \in \mathcal{N}(T)^\perp$, $\vec{w} \in \mathcal{R}(T)$. Consider $\norm{\vec{w} - T(\vec{W})}^2 = \langle \vec{w} - T(\vec{w}), \vec{w} - T(\vec{w}) \rangle = \langle \vec{w}, \vec{w} - T(\vec{w}) \rangle - \langle T(\vec{w}), \vec{w} - T(\vec{w}) \rangle$. The first term is zero since $\vec{w} - T(\vec{w}) \in \mathcal{N}(T)$ is orthogonal to $\vec{w} \in \mathcal{N}(T)^\perp$, and the second term is also zero as $\langle T(\vec{w}), \vec{w} - T(\vec{w}) \rangle = \langle \vec{w}, T^*(\vec{w} - T(\vec{w})) \rangle = \langle \vec{w}, T(\vec{w} - T(\vec{w})) \rangle = \langle \vec{w}, T(\vec{w}) - T^2(\vec{w}) \rangle = \langle \vec{w}, \textbf{0} \rangle = 0$ since $T^* = T$ by the "if" condition and $T^2 = T$ from the first part. Thus $\norm{\vec{w} - T(\vec{w})} = 0$ and this implies that $T(\vec{w}) = \vec{w}$ so $\vec{w} \in \mathcal{R}(T)$.} We now show that the expression of the orthogonal projector $T$ given in Equation (\ref{eqn:orthoprojinner}) satisfies the above requirement $T^2 = T = T^*$:
@@ -663,7 +666,7 @@ f &= \frac{a_0}{2} + a_1\cos(x) + a_2\cos(2x) + a_3\cos(3x) + \cdots \\
 &= \frac{a_0}{2} + \sum_{m=1}^{\infty} a_m \cos(mx) + \sum_{n=1}^{\infty} b_n \sin(nx) 
 \end{aligned} \label{eqn:fourierseries}
 \end{align}
-an (infinite) sum of these sinusoidal eigenfunctions (without the $\frac{1}{\sqrt{2\pi}}$ normalization factor). To compute the \index{Fourier Coefficients}\keywordhl{Fourier coefficients} $a_m$ and $b_n$, we use (d) of the Spectral Theorem where the $T_j$ are in the form of Equation (\ref{eqn:orthoprojinner}), leading to
+an (infinite) sum of these sinusoidal eigenfunctions (without the $\frac{1}{\sqrt{\pi}}$ normalization factor). To compute the \index{Fourier Coefficients}\keywordhl{Fourier coefficients} $a_m$ and $b_n$, we use (d) of the Spectral Theorem where the $T_j$ are in the form of Equation (\ref{eqn:orthoprojinner}), leading to
 \begin{align*}
 f &= \sum_{j} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \\ 
 &= \langle f, \frac{1}{\sqrt{2\pi}} \rangle (\frac{1}{\sqrt{2\pi}})\\
@@ -693,7 +696,7 @@ It is simply to compute $a_m$ and $b_n$ mechanically according to Equations (\re
 b_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} x\sin(nx) dx \\
 &= \frac{1}{\pi}[-\frac{1}{n}x\cos(nx)]_{-\pi}^{\pi} - \frac{1}{\pi}\int_{-\pi}^{\pi} (-\frac{1}{n}\cos(nx)) dx \\
 &= \frac{1}{\pi}[-\frac{1}{n}\pi\cos(n\pi) + \frac{1}{n}(-\pi)\cos(n(-\pi))] + \frac{1}{n\pi}\int_{-\pi}^{\pi} \cos(nx) dx \\
-&= -\frac{1}{n}\cos(n\pi) - \frac{1}{n}\cos(-n\pi)) + \frac{1}{n^2\pi}[\sin(nx)]_{-\pi}^{\pi} \\
+&= -\frac{1}{n}\cos(n\pi) - \frac{1}{n}\cos(-n\pi) + \frac{1}{n^2\pi}[\sin(nx)]_{-\pi}^{\pi} \\
 &= -\frac{2(-1)^n}{n} + (0) = -\frac{2(-1)^n}{n}
 \end{align*}
 as $\cos(n\pi) = \cos(-n\pi) = (-1)^n$. Therefore the Fourier series of $x$ is
@@ -1130,9 +1133,9 @@ Find the Fourier series of (a) $x^2$, (b) $x^3$ and (c) $4+\sin(3x)+2\cos(8x)$ o
 \end{Exercise}
 
 \begin{Exercise}
-Convert the Legendre's Equation
+Convert the \textit{Legendre's Equation}
 \begin{align*}
 (1-x^2) y'' - 2xy' + \lambda y = 0
 \end{align*}
-into the Sturm-Liouville form, what should be the natural interval such that the corresponding Sturm-Liouville operator is Hermitian? Then, show that when $\lambda = n(n+1)$, $n$ is a non-negative integer, the series solution truncates and produces the Legendre polynomials as its eigenfunctions. Find the first five of them. Alternatively, apply the Gram-Schmidt procedure over the standard polynomial basis over the natural interval to come up with the same set of Legendre polynomials.
+into the Sturm-Liouville form, what should be the natural interval such that the corresponding Sturm-Liouville operator is Hermitian? Then, show that when $\lambda = n(n+1)$, $n$ is a non-negative integer, the series solution truncates and produces the \textit{Legendre polynomials} as its eigenfunctions. Find the first five of them. Alternatively, apply the Gram-Schmidt procedure over the standard polynomial basis over the natural interval to come up with the same set of Legendre polynomials.
 \end{Exercise}
