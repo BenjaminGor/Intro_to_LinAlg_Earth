@@ -22,13 +22,13 @@ $\begin{bmatrix}
 \sqrt{3} \imath
 \end{bmatrix}$
 \end{minipage}\par
-\begin{minipage}{0.5\textwidth}
+\begin{minipage}[b]{0.5\textwidth}
 A $2 \times 4$ real matrix.
 \end{minipage}%
-\begin{minipage}{0.5\textwidth}
+\begin{minipage}[b]{0.5\textwidth}
 A $4 \times 1$ complex matrix.
 \end{minipage}\par
-\begin{minipage}{0.5\textwidth}
+\begin{minipage}[b]{0.5\textwidth}
 $\begin{bmatrix}
 3 & \sqrt{2} & 9 \\
 0 & -4\pi & \frac{1}{6} \\
@@ -756,11 +756,52 @@ E_5
 The seawater in oceans contains a variety of dissolved salts in the form of ions. Most of them are sodium (Na$^+$), magnesium (Mg$^{2+}$), chlorine (Cl$^-$) and sulphate (SO$_4^{2-}$). Consider a sample of seawater and assume the concentration of other ions are negligible. Their are two major constraints over the individual concentrations of each type of ions ($n=$ [Na$^+$], $m=$ [Mg$^{2+}$], $c=$ [Cl$^-$], $s=$ [SO$_4^{2-}$]). First, the overall charge of the seawater has to be neutral. Second, their concentrations should add up to the measured salinity (the total mass concentration of salts, inferred by electrical conductivity). It is given that the salinity of the seawater sample is $\SI{34}{psu}$ (\SI{1}{psu} = \SI{1}{\g\per\kg} which is the unit preferred in oceanography). Write down the corresponding linear system that is consisted of two equations for this situation.
 \end{exmp}
 
-\begin{exmp}
-There are four weather stations in proximity. Each of them measures the local air temperature $T_i$, where $i = 1,2,3,4$. Assume that the spatial pattern of temperature over the region approximately follows a linear gradient such that both $\dfrac{\partial T}{\partial x}$ and $\dfrac{\partial T}{\partial y}$ can be treated as constants. Assign the location of the first station to be the origin $(0,0)$, and the relative locations of the second/third/fourth station are $(10,20)$, $(25,15)$, $(-10,5)$ (in \si{\km}). The measured temperature of the four stations at some time are $\SI{27.1}{\degree C}, \SI{27.3}{\degree C}, \SI{27.4}{\degree C}, \SI{26.9}{\degree C}$. Set up a linear system for finding $\dfrac{\partial T}{\partial x}$ and $\dfrac{\partial T}{\partial y}$.
-\end{exmp}
-
 (WIP)
+
+\begin{exmp}
+\label{exmp:weatherstats}
+There are four weather stations in proximity. Each of them measures the local air temperature $T_i$, where $i = 0,1,2,3$. Assume that the spatial pattern of temperature over the region approximately follows a linear gradient such that both $\partial T/\partial x$ and $\partial T/\partial y$ can be treated as constants. Assign the location of the first station to be the origin $(0,0)$, and the relative locations of the second/third/fourth station are $(10,20)$, $(25,15)$, $(-10,5)$ (in \si{\km}). The measured temperature of the four stations at some time are $\SI{27.1}{\degree C}, \SI{27.3}{\degree C}, \SI{27.4}{\degree C}, \SI{26.9}{\degree C}$. Set up a linear system for finding $\partial T/\partial x$ and $\partial T/\partial y$.
+\end{exmp}
+\begin{solution}
+Since the temperature gradients $\partial T/\partial x$ and $\partial T/\partial y$ are assumed to be constants, we have, by Taylor expansion in both $x$ and $y$,
+\begin{align*}
+T_i = T_0 + \frac{\partial T}{\partial x}(\Delta x) + \frac{\partial T}{\partial y}(\Delta y)
+\end{align*}
+for $i = 1,2,3$ where $\Delta x$ and $\Delta y$ are the $x$/$y$-distances relative to the station at the origin. Substituting the provided data, we get
+\begin{align*}
+\begin{cases}
+27.3 &= 27.1 + \frac{\partial T}{\partial x}(10) + \frac{\partial T}{\partial y}(20) \\ 
+27.4 &= 27.1 + \frac{\partial T}{\partial x}(25) + \frac{\partial T}{\partial y}(15) \\
+26.9 &= 27.1 + \frac{\partial T}{\partial x}(-10) + \frac{\partial T}{\partial y}(5) 
+\end{cases}
+\end{align*}
+Reorganizing them gives
+\begin{align*}
+\begin{cases}
+10\frac{\partial T}{\partial x} + 20\frac{\partial T}{\partial y} &= 0.2 \\ 
+25\frac{\partial T}{\partial x} + 15\frac{\partial T}{\partial y} &= 0.3 \\
+-10\frac{\partial T}{\partial x} + 5\frac{\partial T}{\partial y} &= -0.2
+\end{cases}
+\end{align*}
+The matrix form of this linear system will then be
+\begin{align*}
+\begin{bmatrix}
+10 & 20 \\
+25 & 15 \\
+-10 & 5
+\end{bmatrix}
+\begin{bmatrix}
+\frac{\partial T}{\partial x} \\
+\frac{\partial T}{\partial y} 
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.2 \\
+0.3 \\
+-0.2
+\end{bmatrix}
+\end{align*}
+\end{solution}
 
 We will talk about how to solve the linear systems in these four examples in Section \ref{section:ch3earth}.
 

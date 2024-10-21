@@ -1089,6 +1089,86 @@ E_2 &= E_1 + E_{in} = E_{in} + E_{in} = 2E_{in}
 Similarly, the subsequent rows are all in the form of $E_{j} = E_{j-1} + E_{in}$, and inductively we have $E_{j} = jE_{in}$. $E_1 = E_{in}$ is the emission of radiation from the Earth as a whole as viewed from the space, and the corresponding \textit{emission temperature} is $T_e = T_1 = \sqrt[4]{E_1/\sigma} = \sqrt[4]{E_{in}/\sigma}$ by Stefan–Boltzmann Law. The surface releases terrestrial radiation at the rate of $E_{N+1} = (N+1)E_{in}$ and has a temperature of $T_{N+1} = \sqrt[4]{E_{N+1}/\sigma} = \sqrt[4]{(N+1)E_{in}/\sigma} = (N+1)^{1/4}\sqrt[4]{E_{in}/\sigma} = (N+1)^{1/4}T_e$, i.e.\ the surface temperature is $(N+1)^{1/4}$ times the emission temperature. Our earth has an emission temperature of \SI{255}{\K} and a surface temperature of \SI{288}{\K} on average (notice that we have to use Kelvin instead of degree Celsius!), which leads to an effective number of absorbing layers $N = (288/255)^4 - 1 = 0.627$.
 \end{solution}
 
+\begin{exmp}
+\label{exmp:weatherstats2}
+Show that the overdetermined system about air temperature measurements in Example \ref{exmp:weatherstats} has no solution.
+\end{exmp}
+\begin{solution}
+The overdetermined system is
+\begin{align*}
+\begin{bmatrix}
+10 & 20 \\
+25 & 15 \\
+-10 & 5
+\end{bmatrix}
+\begin{bmatrix}
+\frac{\partial T}{\partial x} \\
+\frac{\partial T}{\partial y} 
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.2 \\
+0.3 \\
+-0.2
+\end{bmatrix}
+\end{align*}
+or in augmented form,
+\begin{align*}
+\left[\begin{array}{@{}wc{20pt}wc{20pt}|wc{24pt}@{}}    
+10 & 20 & 0.2 \\
+25 & 15 & 0.3 \\
+-10 & 5 & -0.2
+\end{array}\right]
+\end{align*}
+Applying Gaussian Elimination, we have
+\begin{align*}
+\left[\begin{array}{@{}wc{20pt}wc{20pt}|wc{24pt}@{}}  
+10 & 20 & 0.2 \\
+25 & 15 & 0.3 \\
+-10 & 5 & -0.2
+\end{array}\right]
+&\to 
+\left[\begin{array}{@{}wc{20pt}wc{20pt}|wc{24pt}@{}}   
+1 & 2 & 0.02 \\
+25 & 15 & 0.3 \\
+-10 & 5 & -0.2
+\end{array}\right]
+& \frac{1}{10} R_1 \to R_1 \\
+&\to 
+\left[\begin{array}{@{}wc{20pt}wc{20pt}|wc{24pt}@{}}    
+1 & 2 & 0.02 \\
+0 & -35 & -0.2 \\
+0 & 25 & 0
+\end{array}\right]
+& \begin{aligned}
+R_2 - 25R_1 \to R_2 \\
+R_3 + 10R_1 \to R_23\\
+\end{aligned} \\
+&\to 
+\left[\begin{array}{@{}wc{20pt}wc{20pt}|wc{24pt}@{}}   
+1 & 2 & 0.02 \\
+0 & 25 & 0 \\
+0 & -35 & -0.2 
+\end{array}\right]
+& R_2 \leftrightarrow R_3 \\
+&\to 
+\left[\begin{array}{@{}wc{20pt}wc{20pt}|wc{24pt}@{}}   
+1 & 2 & 0.02 \\
+0 & 1 & 0 \\
+0 & -35 & -0.2 
+\end{array}\right]
+& \frac{1}{25}R_2 \to R_2 \\
+&\to 
+\left[\begin{array}{@{}wc{20pt}wc{20pt}|wc{24pt}@{}}   
+1 & 2 & 0.02 \\
+0 & 1 & 0 \\
+0 & 0 & -0.2 
+\end{array}\right]
+& R_3 + 35R_2 \to R_3 
+\end{align*}
+so the last row is inconsistent and the linear system has no solution. There are two possibilities for this scenario. First, the starting assumption that the temperature gradients are linear is obviously an idealized one and there can be deviations in reality. Moreover, even if the physical temperature gradients $\partial T/\partial x$ and $\partial T/\partial y$ are truly constant, there may be measurement errors or limitation in precision for the thermometers. Therefore, it is almost impossible to obtain an exact solution in this type of problems but often a "good enough" approximation is still useful. We will learn more about how to compute such an optimized solution in Chapter \ref{chap:leastsq}.
+\end{solution}
+
 \section{Python Programming}
 \label{section:ch3python}
 For solving square linear systems in the form of $A\vec{x} = \vec{h}$, we can again import the \verb|scipy.linalg| library and call the \verb|solve| function with the coefficient matrix $A$ as the first argument and $\vec{h}$ placed in the second one.

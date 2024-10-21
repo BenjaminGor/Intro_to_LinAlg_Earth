@@ -1939,6 +1939,7 @@ which reveals that the first two columns (representing the first two row vectors
 \end{solution}
 Finally, in view of Definitions \ref{defn:span} and \ref{defn:colrowspace}, the analysis about solving linear systems in Section \ref{section:SolveLinSys} can be summarized as
 \begin{proper}
+\label{proper:consistentcolspace}
 A linear system $A\vec{x} = \vec{h}$ is consistent if and only if $\vec{h}$ is in the column space of $A$.
 \end{proper}
 
@@ -1964,6 +1965,7 @@ where $\dim(\mathcal{C}(A)) = \dim(\mathcal{C}(A^T)) = \text{rank}(A)$ by Proper
 \end{thm}
 An invertible square matrix has a reduced row echelon form of an identity matrix according to Theorem \ref{thm:equiv3}, and since an identity matrix has \textit{full rank}\footnote{An $m \times n$ matrix $A$ is said to have full rank if $\text{rank}(A) = \text{min}(m,n)$} (Definition \ref{defn:rank}), by the Rank-nullity Theorem \ref{thm:ranknullity} above, we have
 \begin{proper}
+\label{proper:invertrank}
 A $n \times n$ square matrix is invertible if and only if its rank and nullity are $n$ and $0$. 
 \end{proper}
 
