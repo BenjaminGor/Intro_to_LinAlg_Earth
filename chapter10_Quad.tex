@@ -1297,7 +1297,7 @@ These generate
  ...
  [23.50317282 23.45022409]]    
 \end{lstlisting}
-equivalent to the last table in Example \ref{exmp:tempPCA} but with the original means included. The following code segments produce the main part of the three plots shown in the example.
+equivalent to the last table in Example \ref{exmp:tempPCA} but with the original means included. The following code paragraphs produce the main part of the three plots shown in the example.
 \begin{lstlisting}
 Y = X - np.mean(X, axis=0)
 lambda_1 = pca.explained_variance_[0]
@@ -1458,6 +1458,7 @@ Carry out Principal Component Analysis on the data set above. Find the Principal
 \end{Exercise}
 
 \begin{Exercise}
+\label{ex:MJO}
 Download the ERA5 datasets for \SI{200}{hPa} and \SI{850}{hPa} zonal winds, as well as total column water over some $10$ to $20$ years from \SI{15}{\degree N} to \SI{15}{\degree S} and \SI{60}{\degree E} to \SI{160}{\degree E}. Standardize the three variables via dividing them by their standard deviations respectively, concatenate them and follow the procedure outlined in Section \ref{section:EOF} to do the so-called \textit{combined EOFs}. Recover the physical patterns through multiplying the entries of EOF modes back by the standard deviations of corresponding variables. You should be able to observe the appearance of \textit{Madden-Julian Oscillation (MJO)} from the first two EOFs. 
 \end{Exercise}
 
