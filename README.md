@@ -14,6 +14,7 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 <h2>Table of Content (Draft)</h2>
 
 (inside brackets are the expected finish and upload dates)
+(Rewriting Ch10-14, 2024-12-01)
 1. Introduction to Matrices and Linear Systems
 2. Inverses and Determinants
 3. Solutions for Linear Systems
@@ -26,9 +27,9 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 10. Orthogonal and Normal Matrices
 11. Quadratic Form
 12. Inner Product Space
-13. Least-Square Approximation (2024-11-01)
-14. Discrete Fourier Transform (2024-12-01)
-15. Markov Chains
+13. Least-Square Approximation
+14. Discrete Fourier Transform
+15. Markov Chains (2025-01-01)
 16. Matrix Factorization Methods
 17. Dynamical Systems
 18. Index Notation and Introduction to Tensor
