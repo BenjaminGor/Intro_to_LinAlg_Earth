@@ -4,6 +4,7 @@
 In this chapter we will go deeper about what actually a matrix represents in the big picture. Matrices by nature is a rule of \textit{linear transformations} (or \textit{linear mappings}) between two vector spaces. We are going to study several special types of linear transformations, which ultimately reveals the relationship between any $n$-dimensional real vector space and the real $n$-space $\mathbb{R}^n$, as an \textit{isomorphism}. We then move to discuss how a change of coordinates works for vectors and matrices, as well as the \textit{Gram-Schmidt} process to make an \textit{orthonormal} basis.
 
 \section{Ideas of Linear Transformations}
+\label{section:lineartrans}
 
 \subsection{Linear Maps between Vector Spaces}
 
@@ -140,6 +141,10 @@ a_m^{(1)} & a_m^{(2)} & \cdots & a_m^{(n)}
 \end{align*}
 where the entries $a_i^{(j)}$ are those found according to the relations $T(\vec{u}^{(j)}) = \sum_{i=1}^{m} a_i^{(j)}\vec{v}^{(i)}$, or in matrix notation, $[T]_B^H [\vec{u}]_B = [\vec{v}]_H$.
 \end{defn}
+\begin{proper}
+\label{proper:sametrans}
+For two linear transformations $S$ and $T$, if $S(\vec{v}) = T(\vec{v})$ for all $\vec{v} \in \mathcal{V}$, then $S = T$ must be the same linear transformation.
+\end{proper}
 
 Let's illustrate how it works out using an easy example using the familiar $\mathbb{R}^n$ and $\mathbb{R}^m$. 
 \begin{exmp}
@@ -572,7 +577,7 @@ P_{B'}^B = ([T]_B^{B'})^{-1} = [T]_{B'}^B =
 \end{bmatrix}
 \end{align*}
 \end{proof}
-Be aware that despite $\text{id}$ being an identity mapping, the exact matrix representation is dependent on the bases (but the effect of such an identity mapping is obviously basis-independent) and will usually not be an identity matrix. Nevertheless, such bijectivity between any two coordinate systems of the same vector space, which is always accompanied by some invertible transformation matrix, \textcolor{red}{implies that all vectors in any vector space $\vec{u} \in \mathcal{U}$ (or $\vec{v} \in \mathcal{V}$) and linear mappings $T: \mathcal{U} \to \mathcal{V}$ from one vector space to another, together with its (dimensions of) kernel or range, are independent of the choices of bases for either $\mathcal{U}$ or $\mathcal{V}$} and we can pick whatever bases that suit the situation better. \textcolor{red}{This also means that statements (both previous and to be derived in the future) for finite-dimensional linear transformations are applicable for corresponding matrices (when converted properly) and vice versa.} The only thing that is dependent on the coordinate systems will be their coordinate representation and we will see how it unfolds in the next part. This justify our fixing of bases during several arguments in the last subsection.
+Be aware that despite $\text{id}$ being an identity mapping, the exact matrix representation is dependent on the bases (but the effect of such an identity mapping is obviously basis-independent) and will usually not be an identity matrix. Nevertheless, such bijectivity between any two coordinate systems of the same vector space, which is always accompanied by some invertible transformation matrix, \textcolor{red}{implies that all vectors in any vector space $\vec{u} \in \mathcal{U}$ (or $\vec{v} \in \mathcal{V}$) and linear mappings $T: \mathcal{U} \to \mathcal{V}$ from one vector space to another, together with its (dimensions of) kernel or range, are independent of the choices of bases for either $\mathcal{U}$ or $\mathcal{V}$} and we can pick whatever bases that suit the situation better. \textcolor{red}{This also means that statements (both previous and to be derived in the future) for finite-dimensional linear transformations are applicable for corresponding matrices (when converted properly) and vice versa.} The only thing that is dependent on the coordinate systems will be their coordinate representation and we will see how it unfolds in the next part. This justifies our fixing of bases during several arguments in the last subsection.
 
 \begin{exmp}
 \label{exmp:changecoord}
@@ -943,7 +948,7 @@ We use a test case to check the answer. Let $p(x) = x^2 - 3x + 1 = (x-1)^2 - (x-
 which corresponds to $-5(1) + 2(x+1) = 2x-3$, which is consistent with the usual calculation $T(p(x)) = p'(x) = (x^2-3x+1)' = 2x-3$ from elementary calculus.
 \end{solution}
 
-In most of the times, we are interested in the type of linear transformations that are an \index{Endomorphism}\keywordhl{endomorphism} (sometimes also referred to as a \index{Linear Operator}\keywordhl{(linear) operator}) in which the mapping is from a vector space $\mathcal{V}$ to itself, i.e. $T: \mathcal{V} \to \mathcal{V}$\footnote{An endomorphism that is at the same time an isomorphism is known as an \index{Automorphism}\keywordhl{automorphism}, e.g. the linear transformation in Example \ref{exmp:endomorphch}.}. Often we also use the same basis $\mathcal{B}$ for the input and output vector. Subsequently, to change the basis for both of them at the same time, let's say $\mathcal{B}'$, if the matrix for change of coordinates on vectors from $\mathcal{B}'$ to $\mathcal{B}$ is denoted as $P = P_{B'}^B$, then Properties \ref{proper:chcoordsmat} is reduced to $[T]_{B'}^{B'} = (P_{B'}^B)^{-1} [T]_B^B P_{B'}^B = P^{-1}AP$ where $A = [T]_B^B$ is the original matrix representation of the endomorphism. When it is clear from the context, we will simply write $[T]_B^B$ ($[T]_{B'}^{B'}$) as $[T]_B$ ($[T]_{B'}$).
+Most of the time, we are interested in the type of linear transformations that are an \index{Endomorphism}\keywordhl{endomorphism} (sometimes also referred to as a \index{Linear Operator}\keywordhl{(linear) operator}) in which the mapping is from a vector space $\mathcal{V}$ to itself, i.e. $T: \mathcal{V} \to \mathcal{V}$\footnote{An endomorphism that is at the same time an isomorphism is known as an \index{Automorphism}\keywordhl{automorphism}, e.g. the linear transformation in Example \ref{exmp:endomorphch}.}. Often we also use the same basis $\mathcal{B}$ for the input and output vector. Subsequently, to change the basis for both of them at the same time, let's say $\mathcal{B}'$, if the matrix for change of coordinates on vectors from $\mathcal{B}'$ to $\mathcal{B}$ is denoted as $P = P_{B'}^B$, then Properties \ref{proper:chcoordsmat} is reduced to $[T]_{B'}^{B'} = (P_{B'}^B)^{-1} [T]_B^B P_{B'}^B = P^{-1}AP$ where $A = [T]_B^B$ is the original matrix representation of the endomorphism. When it is clear from the context, we will simply write $[T]_B^B$ ($[T]_{B'}^{B'}$) as $[T]_B$ ($[T]_{B'}$).
 \begin{proper}
 \label{proper:endomorph}
 For a linear endomorphism/operator $T: \mathcal{V} \to \mathcal{V}$, the change of coordinates for its matrix representation from the old basis $\mathcal{B}$ to the new one $\mathcal{B}'$ is described by the formula
