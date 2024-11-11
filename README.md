@@ -4,7 +4,7 @@ Hello I am Benjamin Loi from CUHK-EESC and NTU-AS. This is the repository for th
 
 The book pdf is located at [here](Linear_Algebra_Notes_New.pdf).
 
-This project is still alive and being constantly updated as of Oct 2024.
+This project is still alive and being constantly updated as of Nov 2024.
 
 <h2>Contributing to the Project</h2>
 
@@ -14,7 +14,7 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 <h2>Table of Content (Draft)</h2>
 
 (inside brackets are the expected finish and upload dates)
-(Rewriting Ch10-14, 2024-12-01)
+
 1. Introduction to Matrices and Linear Systems
 2. Inverses and Determinants
 3. Solutions for Linear Systems
@@ -29,8 +29,8 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 12. Inner Product Space
 13. Least-Square Approximation
 14. Discrete Fourier Transform
-15. Markov Chains (2025-01-01)
-16. Matrix Factorization Methods
+15. Markov Chains (2024-12-01)
+16. Matrix Factorization Methods (2025-01-01)
 17. Dynamical Systems
 18. Index Notation and Introduction to Tensor
 
