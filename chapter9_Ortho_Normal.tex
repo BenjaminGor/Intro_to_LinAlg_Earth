@@ -1,12 +1,12 @@
 \chapter{Orthogonal and Normal Matrices}
 \label{chap:normalmat}
 
-We have discussed about orthonormal bases in Section \ref{section:GSortho} and it is logical to go one step further and make a coordinate transformation matrix with these orthonormal basis vectors just as if they are ordinary basis vectors. It is not surprising that such a matrix is called an \textit{orthonormal(-gonal) matrix}, but it also turns out that they carry some important properties which will be explored in this chapter. Particularly, we may want to ask if there exists an orthogonal change of coordinates matrix, which represents rotation and reflection geometrically, for making a given square matrix become diagonal, a.k.a.\ \textit{orthogonal diagonalization} which is a stronger version of diagonalization introduced in the last chapter. Eventually this will lead to a major result known as the \textit{Spectral Theorem}. These concepts will also be promoted to complex vectors and matrices, where the complex counterpart of orthogonal(-normal) is now known as \textit{unitary}, accompanied by a less stringent condition known as \textit{normal}. 
+We have discussed orthonormal bases in Section \ref{section:GSortho} and it is logical to go one step further and make a coordinate transformation matrix with these orthonormal basis vectors just as if they are ordinary basis vectors. It is not surprising that such a matrix is called an \textit{orthonormal(-gonal) matrix}, but it also turns out that they carry some important properties which will be explored in this chapter. Particularly, we may want to ask if there exists an orthogonal change of coordinates matrix, which represents rotation and reflection geometrically, for making a given square matrix become diagonal, a.k.a.\ \textit{orthogonal diagonalization} which is a stronger version of diagonalization introduced in the last chapter. Eventually, this will lead to a major result known as the \textit{Spectral Theorem}. These concepts will also be promoted to complex vectors and matrices, where the complex counterpart of orthogonal(-normal) is now known as \textit{unitary}, accompanied by a less stringent condition known as \textit{normal}. 
 
 \section{Orthogonal Matrices}
 
 \subsection{Definition of Orthogonal Matrices}
-In Section \ref{section:dotprod}, we have talked about how two $\mathbb{R}^n$ vectors are orthogonal to each other when their dot product is zero. We can extend the concept of orthogonality to a matrix. An \index{Orthogonal Matrix}\keywordhl{orthogonal matrix} (sometimes called \index{Orthonormal Matrix}\keywordhl{orthonormal}) is a matrix, each column of which is an $\mathbb{R}^n$ vector of unit length and orthogonal to all other columns. We further require the number of columns is $n$ too so that they actually form an \textit{orthonormal basis} by Properties \ref{proper:ortholinind} and (b) of Properties \ref{proper:linindspanbasisnewver}. Hence it will be a square matrix.
+In Section \ref{section:dotprod}, we have talked about how two $\mathbb{R}^n$ vectors are orthogonal to each other when their dot product is zero. We can extend the concept of orthogonality to a matrix. An \index{Orthogonal Matrix}\keywordhl{orthogonal matrix} (sometimes called \index{Orthonormal Matrix}\keywordhl{orthonormal}) is a matrix, each column of which is an $\mathbb{R}^n$ vector of unit length and orthogonal to all other columns. We further require the number of columns to be $n$ too so that they form an \textit{orthonormal basis} by Properties \ref{proper:ortholinind} and (b) of Properties \ref{proper:linindspanbasisnewver}. Hence it will be a square matrix.
 
 \begin{defn}[Orthogonal Matrix]
 \label{defn:orthomatrix}
@@ -16,7 +16,7 @@ P = \begin{bmatrix}
 \vec{v}^{(1)}|\cdots|\vec{v}^{(j)}|\cdots|\vec{v}^{(n)}   
 \end{bmatrix}
 \end{align*}
-is said to be an orthogonal matrix, if all of its columns $\vec{v}^{(j)} \in \mathbb{R}^n$ satisfy the condition:
+is said to be an orthogonal matrix, if all of its columns $\vec{v}^{(j)} \in \mathbb{R}^n$ satisfy the relationship:
 \begin{align*}
 \vec{v}^{(p)} \cdot \vec{v}^{(q)} =
 \begin{cases}
@@ -24,7 +24,7 @@ is said to be an orthogonal matrix, if all of its columns $\vec{v}^{(j)} \in \ma
 0 &\text{ if } p \neq q    
 \end{cases}
 \end{align*}
-so that $\vec{v}^{(j)}$, $j=1,2,\ldots,n$ forms an orthonormal basis.
+so that the vectors $\vec{v}^{(j)}$, $j=1,2,\ldots,n$ form an orthonormal basis.
 \end{defn}
 The orthonormal basis vectors in an orthogonal matrix can be generated through the procedure of Gram-Schmidt orthogonalization with normalization, introduced in Section \ref{section:GSortho}.\par
 Short Exercise: Verify that 
@@ -36,7 +36,7 @@ Short Exercise: Verify that
 \end{bmatrix}
 \end{align*}
 is an orthogonal matrix.\footnote{There are $3$ $\mathbb{R}^3$ column vectors in the matrix, where $\vec{v}^{(1)} \cdot \vec{v}^{(2)} = (\frac{1}{\sqrt{2}})(\frac{1}{\sqrt{3}}) + (\frac{1}{\sqrt{2}})(-\frac{1}{\sqrt{3}}) + (0)(\frac{1}{\sqrt{3}}) = 0$, $\vec{v}^{(1)} \cdot \vec{v}^{(3)} = (\frac{1}{\sqrt{2}})(-\frac{1}{\sqrt{6}}) + (\frac{1}{\sqrt{2}})(\frac{1}{\sqrt{6}}) + (0)(\frac{\sqrt{2}}{\sqrt{3}}) = 0$. We leave to the readers to check $\vec{v}^{(2)} \cdot \vec{v}^{(3)} = 0$ as well. Also, $\norm{\vec{v}^{(1)}} = \sqrt{(\frac{1}{\sqrt{2}})^2 + (\frac{1}{\sqrt{2}})^2 + (0)^2} = 1$ and $\norm{\vec{v}^{(2)}} = \sqrt{(\frac{1}{\sqrt{3}})^2 + (-\frac{1}{\sqrt{3}})^2 + (\frac{1}{\sqrt{3}})^2} = 1$. Again we let the readers to check $\norm{\vec{v}^{(3)}} = 1$ too.}\par
-Due to its definition, an orthogonal matrix $P$ has the property $P^TP = I$, since the resulting entries of this matrix product are basically dot products of the column vectors of $P$ (see the explanation below Definition \ref{defn:dotreal}), explicitly
+Due to its definition, an orthogonal matrix $P$ has the property $P^TP = I$, since the resulting entries of this matrix product $P^TP$ are basically dot products of the column vectors of $P$ (see the explanation below Definition \ref{defn:dotreal}), where explicitly
 \begin{align*}
 P^TP &= 
 \begin{bmatrix}
@@ -52,11 +52,11 @@ P^TP &=
 \hline
 \vdots \\
 \hline
-\vec{v}^{(j)T} \\
+\vec{v}^{(j)T} \Tstrut \\
 \hline
 \vdots \\
 \hline
-\vec{v}^{(n)T}  
+\vec{v}^{(n)T} \Tstrut 
 \end{array}
 \right]
 \begin{bmatrix}
@@ -79,12 +79,12 @@ P^TP &=
 0 & \cdots & 0 & \cdots & 1
 \end{bmatrix} = I_n
 \end{align*}
-By Definition \ref{defn:inverse}, $P^TP = I$ further leads to $PP^T = P^TP = I$ where the transpose of the orthogonal matrix $P^T = P^{-1}$ is at the same time its inverse. The argument works in both direction such that $PP^T = I$ also means that $P$ is orthogonal.
+By Definition \ref{defn:inverse}, $P^TP = I$ means that $PP^T = P^TP = I$ where the transpose of the orthogonal matrix $P^T = P^{-1}$ is exactly its inverse. The argument works in both directions such that $PP^T = I$ also means that $P$ is orthogonal.
 \begin{proper}
 \label{proper:orthoinvT}
-$P$ is an orthogonal matrix if and only if $PP^T = P^TP = I$ and its inverse is simply its transpose $P^{-1} = P^T$.
+$P$ is an orthogonal matrix if and only if $PP^T = P^TP = I$ so that its inverse is simply its transpose $P^{-1} = P^T$.
 \end{proper}
-The equivalence between $P^TP=I$ and $PP^T = I$ for an orthogonal matrix extends Definition \ref{defn:orthomatrix} where the former equality indicates that the rows of $P$ also has to form an orthonormal basis. So a parallel definition of orthogonal matrices is
+The equivalence between $P^TP=I$ and $PP^T = I$ for an orthogonal matrix extends Definition \ref{defn:orthomatrix} where the former equality indicates that the rows of $P$ also have to form an orthonormal basis. So a parallel definition of orthogonal matrices is
 \begin{defn}
 An $n \times n$ square matrix
 \begin{align*}
@@ -94,15 +94,15 @@ P = \left[
 \hline
 \vdots \\
 \hline
-\vec{w}^{(i)T} \\
+\vec{w}^{(i)T} \Tstrut \\
 \hline
 \vdots \\
 \hline
-\vec{w}^{(n)T}  
+\vec{w}^{(n)T} \Tstrut 
 \end{array}
 \right]
 \end{align*}
-is an orthogonal matrix, also if all row vectors $\vec{w}^{(i)} \in \mathbb{R}^n$ satisfy the similar condition:
+is an orthogonal matrix, also if all the row vectors $\vec{w}^{(i)} \in \mathbb{R}^n$ satisfy the similar condition:
 \begin{align*}
 \vec{w}^{(p)} \cdot \vec{w}^{(q)} =
 \begin{cases}
@@ -110,31 +110,31 @@ is an orthogonal matrix, also if all row vectors $\vec{w}^{(i)} \in \mathbb{R}^n
 0 &\text{ if } p \neq q    
 \end{cases}
 \end{align*}
-so that $\vec{w}^{(i)}$, $i=1,2,\ldots,n$ forms an orthonormal basis too.
+so that the vectors $\vec{w}^{(i)}$, $i=1,2,\ldots,n$ constitute an orthonormal basis too.
 \end{defn}
 
 Short Exercise: Confirm Properties \ref{proper:orthoinvT} for the matrix in the last short exercise.\footnote{It is a direct computation that shows
 \begin{align*}
-\begin{bmatrix}
+\left[\begin{array}{@{}wr{14pt}wr{14pt}wr{14pt}@{\,}}
 \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
 \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{6}} \\
 0 & \frac{1}{\sqrt{3}} & \frac{\sqrt{2}}{\sqrt{3}}
-\end{bmatrix}^T
-\begin{bmatrix}
+\end{array}\right]^T
+\left[\begin{array}{@{}wr{14pt}wr{14pt}wr{14pt}@{\,}}
 \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
 \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{6}} \\
 0 & \frac{1}{\sqrt{3}} & \frac{\sqrt{2}}{\sqrt{3}}
-\end{bmatrix} &=
-\begin{bmatrix}
+\end{array}\right] &=
+\left[\begin{array}{@{\,}wr{14pt}wr{14pt}wr{14pt}@{\,}}
 \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \\
 \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
 -\frac{1}{\sqrt{6}} & \frac{1}{\sqrt{6}} & \frac{\sqrt{2}}{\sqrt{3}}
-\end{bmatrix}
-\begin{bmatrix}
+\end{array}\right]
+\left[\begin{array}{@{}wr{14pt}wr{14pt}wr{14pt}@{\,}}
 \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
 \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{6}} \\
 0 & \frac{1}{\sqrt{3}} & \frac{\sqrt{2}}{\sqrt{3}}
-\end{bmatrix} \\
+\end{array}\right] \\
 &=
 \begin{bmatrix}
 1 & 0 & 0 \\
@@ -146,13 +146,13 @@ and $PP^T = I$ similarly.}
 
 \subsection{Geometric Implications of Orthogonal Matrices}
 \label{section:orthogeometricsub}
-All invertible matrices represent some sorts of coordinate transformation as highlighted in Section \ref{section:coordchange}. Orthogonal matrices actually further belong to a special class of them. Before going into details, we need to start with some simple observations.
+All invertible matrices represent some sort of coordinate transformation as highlighted in Section \ref{section:coordchange}. Orthogonal matrices further belong to a special class of them. Before going into details, we need to start with some simple observations.
 \begin{proper}
 \label{proper:orthopm1det}
 An orthogonal matrix $P$ has a determinant of either $1$ or $-1$.
 \end{proper}
 \begin{proof}
-Starting from Properties \ref{proper:orthoinvT} and taking determinant on both sides, we have
+Using the relationship from Properties \ref{proper:orthoinvT} and taking determinant on both sides of it, we have
 \begin{align*}
 \det(P^TP) &= \det(I) \\
 \det(P^T)\det(P) = (\det(P))^2 &= 1\\
@@ -160,21 +160,21 @@ Starting from Properties \ref{proper:orthoinvT} and taking determinant on both s
 \end{align*}
 where Properties \ref{proper:properdet} is used.    
 \end{proof} 
-Non-zero determinant reaffirms that the $n$ $\mathbb{R}^n$ row/column vectors in an orthogonal matrix $P$ are linearly independent ((b) to (e) of Theorem \ref{thm:equiv3}). 
+The non-zero determinant reaffirms that the $n$ $\mathbb{R}^n$ row/column vectors in an orthogonal matrix $P$ are linearly independent ((b) to (e) of Theorem \ref{thm:equiv3}). 
 \begin{proper}
 \label{proper:ortholengthpreserve}
 Coordinate transformation by an orthogonal matrix $P$ on a vector is length-preserving.
 \end{proper}
 \begin{proof}
-Assume the coordinate transformation is the passive type as described in Section \ref{section:coordchange}. Then the new coordinates of a vector $\vec{v}$ will be $P^{-1}\vec{v} = P^T\vec{v}$ (Properties \ref{proper:orthoinvT}). The length of the vector in the new coordinate frame is
+Assume the coordinate transformation is the passive type as described in Section \ref{section:coordchange}. Then the new coordinates of the vector $\vec{v}$ will be $P^{-1}\vec{v} = P^T\vec{v}$ (Properties \ref{proper:orthoinvT}). The length of this vector in the new coordinate frame is
 \begin{align*}
 \norm{P^T\vec{v}} &= \sqrt{(P^T\vec{v})\cdot(P^T\vec{v})} & \text{(Properties \ref{proper:lengthdot})} \\
 &= \sqrt{(P^T\textbf{v})^T(P^T\textbf{v})} & \text{(Properties \ref{proper:dotproper})}\\
-&= \sqrt{(\textbf{v}^T PP^T \textbf{v})} \\
+&= \sqrt{(\textbf{v}^T PP^T \textbf{v})} & \text{(Properties \ref{proper:dotproper})} \\
 &= \sqrt{(\textbf{v}^T I \textbf{v})} & \text{(Properties \ref{proper:orthoinvT})} \\
-&= \sqrt{(\textbf{v}^T\textbf{v})} = \norm{\vec{v}}
+&= \sqrt{(\textbf{v}^T\textbf{v})} = \norm{\vec{v}} & \text{(Properties \ref{proper:lengthdot} again)}
 \end{align*}
-So the length of the vector remains the same when the coordinate system is changed. For active transformation that actually changes the vector instead of the frame, the argument is very similar and the new vector will also has the same length as the old one. In fact, Properties \ref{proper:ortholengthpreserve} implies Properties \ref{proper:orthopm1det} (the discussion about the geometric interpretation of coordinate transformation in Section \ref{section:coordchange} will be helpful).
+So the length of the vector remains the same when the coordinate system is changed. For active transformation that actually changes the vector in space instead of just the frame, the argument is very similar and the new vector will also have the same length as the old one. In fact, Properties \ref{proper:ortholengthpreserve} implies Properties \ref{proper:orthopm1det} (the discussion about the geometric interpretation of the scaling factor for a coordinate transformation in Section \ref{section:coordchange} will be helpful).
 \end{proof}
 
 Now we are ready to see what kind of coordinate transformation an orthogonal matrix means.
@@ -182,7 +182,7 @@ Now we are ready to see what kind of coordinate transformation an orthogonal mat
 \label{thm:orthodet}
 For an orthogonal matrix $P$, if $P$ has a determinant of $1$, then it is a rotation. On the other hand, if $P$ has a determinant of $-1$, then it implies a reflection.
 \end{thm}
-Just as in Section \ref{section:coordchange}, depending on the situation, rotation and reflection can be viewed as (a) rotation and reflection of the vector while keeping the coordinate basis unchanged (active transformation), or (b) rotation and reflection of the coordinate system, while keeping the vector in the original place (passive transformation). By the previous length-preserving properties there will be no stretching/compression or shearing, and the rotation/reflection will be pure.
+Just as in Section \ref{section:coordchange}, depending on the situation, rotation and reflection can be viewed as (a) rotation and reflection of the vector physically while keeping the coordinate frame unchanged (active transformation), or (b) rotation and reflection of the coordinate system, while keeping the vector in the original place (passive transformation). By the previous length-preserving properties there will be no stretching/compression or shearing, and the rotation/reflection will be pure.
 
 \begin{center}
 \begin{tikzpicture}
@@ -202,17 +202,17 @@ Just as in Section \ref{section:coordchange}, depending on the situation, rotati
 \node[below left]{$O$}; 
 \pic[draw, ->, "$\theta$", angle eccentricity=1.5, angle radius=0.75cm] {angle = vecu--0--vecv};
 \end{tikzpicture}\\
-Left: case (a), active transformation, and Right: case (b), passive transformation, for 2D rotation. 
+\textit{Left: case (a), active transformation, and right: case (b), passive transformation, for a 2D rotation.} 
 \end{center}
 
-The construction of a rotational or reflectional matrix requires the representation of the new unit axes in the old coordinate system as suggested in Theorem \ref{thm:bijectivechincoord}, but with the extra condition that they are orthogonal to each other. Once they are found, they can be combined column by column to form the transition matrix. For an anti-clockwise (positive) rotation like the one to the right side of the figure above, we have
+The construction of a rotational or reflectional matrix requires the representation of the new unit axes in the old coordinate system as suggested in Theorem \ref{thm:bijectivechincoord}, but with the extra condition that they are orthogonal to each other. Once they are found, they can be combined column by column to form the \index{Transition Matrix}\keywordhl{transition matrix}. For an anti-clockwise (positive) rotation like the one to the right side of the figure above, we have
 \begin{align*}
-x' &= (\cos \theta) x + (\sin \theta) y \\
-y' &= (- \sin \theta) x + (\cos \theta) y
+\hat{x}' &= (\cos \theta) \hat{x} + (\sin \theta) \hat{y} \\
+\hat{y}' &= (-\sin \theta) \hat{x} + (\cos \theta) \hat{y}
 \end{align*}
-The corresponding transformation matrix is then
+The corresponding transition matrix is then
 \begin{align*}
-P_B^S &= \begin{bmatrix}
+P_\beta^S &= \begin{bmatrix}
 [\hat{x}']_S|[\hat{y}']_S    
 \end{bmatrix} \\
 &= \begin{bmatrix}
@@ -220,19 +220,19 @@ P_B^S &= \begin{bmatrix}
 \sin \theta & \cos \theta
 \end{bmatrix}
 \end{align*}
-where $\mathcal{S}$ denotes the original standard basis system, and $\mathcal{B}$ indicates the rotated coordinates. Alternatively,
+where $S$ represents the standard basis, and $\beta$ indicates the rotated coordinates system. Alternatively,
 \begin{align*}
-P_S^B &= (P_B^S)^{-1} \\
-&= (P_B^S)^T & \text{(Properties \ref{proper:orthoinvT})}\\
+P_S^\beta &= (P_\beta^S)^{-1} \\
+&= (P_\beta^S)^T & \text{(Properties \ref{proper:orthoinvT})}\\
 &= \begin{bmatrix}
 \cos \theta & \sin \theta \\
 -\sin \theta & \cos \theta
 \end{bmatrix}
 \end{align*}
 These two matrices can be compared to the one we see in the last chapter when we study the real variant of diagonalization for complex eigenvalues. \par
-If we have an orthogonal matrix $P$, and a vector $\vec{v}_0$ in the standard basis, then computing $\vec{v}_n = P\vec{v}_0$ in a forward direction can be viewed as directly applying the corresponding rotation or reflection on the vector $\vec{v}_0$ to make $\vec{v}_n$ while staying in the same coordinate frame. This is the case (a) we have discussed above. For case (b), it is the exact opposite. Rotation or reflection of the coordinate system, where the concerned vector $\vec{v}_0$ is fixed physically, is achieved by solving $\vec{v}_0 = P\vec{v}_n$ in a backward manner, or equivalently $\vec{v}_n = P^{-1}\vec{v}_0 = P^T\vec{v}_0$. Taking transpose, it becomes $\vec{v}_n^T = \vec{v}_0^T P$. In such situation, the vector is still the same vector in a physical sense, but represented in the new coordinate system. Most situations belong to case (b), on which thereafter we will focus our discussion.
+If we have an orthogonal matrix $P$, and a vector $\vec{v}_0$ in the standard basis, then computing $\vec{v}_n = P\vec{v}_0$ in a forward direction can be viewed as directly applying the corresponding rotation or reflection on the vector $\vec{v}_0$ to produce $\vec{v}_n$ while staying in the same coordinate frame. This is the case (a) we have discussed above. For case (b), it is the exact opposite. Rotation or reflection of the coordinate system, where the concerned vector $\vec{v}_0$ is fixed physically, is achieved by solving $\vec{v}_0 = P\vec{v}_n$ in a backward manner, or equivalently $\vec{v}_n = P^{-1}\vec{v}_0 = P^T\vec{v}_0$. Taking transpose, it becomes $\vec{v}_n^T = \vec{v}_0^T P$. In such a situation, the vector is still the same one in a physical sense, but represented in the new coordinate system. Most situations belong to case (b), on which thereafter we will focus our discussion.
 \par
-However, as a reminder, these two cases are much related. For example, an anti-clockwise/positive rotation of a vector in case (a), can be viewed as a clockwise/negative rotation of the coordinate system in case (b), and vice versa. The two operations are only differed by a transpose. For successive rotations and reflections, the net transition matrix $P_f$ is produced by taking the product of individual rotational and reflectional matrices each by each. One common convention has the order from right to left, where $\vec{v}_n = (P_n^T\cdots P_3^TP_2^TP_1^T)\vec{v}_0$, and $P_f^T = P_n^T\cdots P_3^TP_2^TP_1^T$. Another equivalent option is to do it from left to right by applying a transpose, as in
+However, as a reminder, these two cases are much related. For example, an anti-clockwise/positive rotation of a vector in case (a), can be viewed as a clockwise/negative rotation of the coordinate system in case (b), and vice versa. The two operations are only differed by a transpose. For successive rotations and reflections, the net transition matrix $P_f$ is produced by taking the product of individual rotational and reflectional matrices each by each. One common convention has the order from right to left, where $\vec{v}_n = (P_n^T\cdots P_3^TP_2^TP_1^T)\vec{v}_0$, and thus $P_f^T = P_n^T\cdots P_3^TP_2^TP_1^T$. Another equivalent option is to do it from left to right by applying a transpose, as in
 $\vec{v}_n^T = \vec{v}_0^T(P_1P_2P_3\cdots P_n)$, $P_f = P_1P_2P_3\cdots P_n$.
 
 \begin{exmp}
@@ -253,11 +253,11 @@ The readers should verify this. The second transition matrix is simply
 \begin{align*}
 P_2
 &= 
-\begin{bmatrix}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & -1
-\end{bmatrix}    
+\end{array}\right]    
 \end{align*}
 So the net transition matrix is
 \begin{align*}
@@ -268,11 +268,11 @@ P_f &= P_1P_2 \\
 0 & 1 & 0 \\
 -\sin(40^\circ) & 0 & \cos(40^\circ)
 \end{bmatrix}
-\begin{bmatrix}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & -1
-\end{bmatrix} \\
+\end{array}\right] \\
 &= 
 \begin{bmatrix}
 \cos(40^\circ) & 0 & -\sin(40^\circ) \\
@@ -283,11 +283,11 @@ P_f &= P_1P_2 \\
 \end{solution}
 Short Exercise: What happens if we reverse the order of rotation/reflection?\footnote{The transition matrix becomes
 \begin{align*}
-\begin{bmatrix}
+\left[\begin{array}{@{\,}wc{8pt}wc{8pt}wc{8pt}@{\,}}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & -1
-\end{bmatrix}
+\end{array}\right]   
 \begin{bmatrix}
 \cos(40^\circ) & 0 & \sin(40^\circ) \\
 0 & 1 & 0 \\
@@ -310,10 +310,10 @@ In general, finite rotations/reflections are not commutative and the order matte
 }
 
 \begin{exmp}
-For a vector $\vec{v}_0$ in the three-dimensional standard basis $\mathcal{S}$, if the coordinate system undergoes a positive rotation about the straight line $x = 0, y = z$ by a degree of $\theta$, find its representation $\vec{v}_n$ in the new system $\mathcal{B}$.
+For a vector $\vec{v}_0$ in the three-dimensional standard basis $S$, if the coordinate system undergoes a positive rotation about the straight line $x = 0, y = z$ by a degree of $\theta$, find its representation $\vec{v}_n$ in the new system $\beta$.
 \end{exmp}
 \begin{solution}
-The common way to construct transition matrix is to find the new axes in terms of the old coordinates. However, in this case it is harder because the axis about which the rotation occurs is not along any of the main axes. Here, we can do another rotation 
+The common way to construct a transition matrix is to find the new axes in terms of the old coordinates. However, in this case it is harder because the axis about which the rotation occurs is not along any of the main axes. Here, we can do another rotation 
 \begin{align*}
 P_1 = 
 \begin{bmatrix}
@@ -322,11 +322,11 @@ P_1 =
 0 & -\sin(\SI{45}{\degree}) & \cos(\SI{45}{\degree})
 \end{bmatrix}
 =
-\begin{bmatrix}
+\left[\begin{array}{@{\,}wc{12pt}wc{12pt}wc{12pt}@{\,}}
 1 & 0 & 0 \\
 0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
 0 & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
-\end{bmatrix}
+\end{array}\right]
 \end{align*}
 about the $x$-axis first with a degree of $\SI{45}{\degree}$ clockwise so that the intermediate $z'$ axis is oriented along the desired line, while the $y'$ axis points in the $x = 0, y = -z$ direction relative to the original coordinate frame. Then we can apply the required rotation in the intermediate coordinate system about that $z'$ axis, which has a simple transition matrix representation of
 \begin{align*}
@@ -337,7 +337,7 @@ P_2 =
 0 & 0 & 1
 \end{bmatrix}
 \end{align*}
-Finally, we undo the effect of the first rotation by multiplying by its inverse $P_1^{-1}$ which is an orthogonal matrix and equal to $P_1^T$. 
+Finally, we undo the effect of the first rotation via multiplying by its inverse $P_1^{-1}$ which is equal to $P_1^T$ due to orthogonality (Properties \ref{proper:orthoinvT}). 
 \begin{center}
 \begin{tikzpicture}[x={(-0.4cm, -0.9cm)}, y={(1cm, 0cm)}, z={(0cm, 1cm)}]
 \node[above left]{$O$}; 
@@ -373,21 +373,21 @@ Finally, we undo the effect of the first rotation by multiplying by its inverse 
 Hence the net transition matrix is
 \begin{align*}
 P_f = P_1 P_2 P_1^{-1} &= P_1 P_2 P_1^T \\
-&= \begin{bmatrix}
+&= \left[\begin{array}{@{\,}wc{12pt}wc{12pt}wc{12pt}@{\,}}
 1 & 0 & 0 \\
 0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
 0 & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
-\end{bmatrix}
+\end{array}\right]
 \begin{bmatrix}
 \cos \theta & -\sin \theta & 0 \\
 \sin \theta & \cos \theta & 0 \\
 0 & 0 & 1
 \end{bmatrix}
-\begin{bmatrix}
+\left[\begin{array}{@{\,}wc{12pt}wc{12pt}wc{12pt}@{\;}}
 1 & 0 & 0 \\
 0 & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\
 0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
-\end{bmatrix} \\
+\end{array}\right] \\
 &= 
 \begin{bmatrix}
 \cos{\theta} & -\frac{\sin{\theta}}{\sqrt{2}} & \frac{\sin{\theta}}{\sqrt{2}} \\
@@ -395,7 +395,7 @@ P_f = P_1 P_2 P_1^{-1} &= P_1 P_2 P_1^T \\
 -\frac{\sin{\theta}}{\sqrt{2}} & \frac{-(\cos{\theta}) + 1}{2} & \frac{(\cos{\theta}) + 1}{2}
 \end{bmatrix}
 \end{align*}
-For any vector $\vec{v}_0 = (x_0,y_0,z_0)^T$ expressed in the standard coordinate basis, the new coordinates after rotation is
+For any vector $\vec{v}_0 = (x_0,y_0,z_0)^T$ expressed in the standard coordinate basis, the new coordinates after rotation are then
 \begin{align*}
 \vec{v}_0 &= P_f \vec{v}_n \\
 \vec{v}_n &= (P_f)^T\vec{v}_0 \\
@@ -420,6 +420,7 @@ z_0
 \end{solution}
 Short Exercise: For the example above, if $(x_0, y_0, z_0)^T = (0,1,1)^T$ and $\theta = \frac{\pi}{6}$, find $\vec{v}_n = (x_n, y_n, z_n)^T$.\footnote{It is
 \begin{align*}
+\renewcommand\arraystretch{1.41}
 \begin{bmatrix}
 \cos{\frac{\pi}{6}} & \frac{\sin{\frac{\pi}{6}}}{\sqrt{2}} & -\frac{\sin{\frac{\pi}{6}}}{\sqrt{2}} \\
 -\frac{\sin{\frac{\pi}{6}}}{\sqrt{2}} & \frac{(\cos{\frac{\pi}{6}}) + 1}{2} & \frac{-(\cos{\frac{\pi}{6}}) + 1}{2} \\
@@ -443,22 +444,22 @@ Short Exercise: For the example above, if $(x_0, y_0, z_0)^T = (0,1,1)^T$ and $\
 1
 \end{bmatrix}
 \end{align*}
-In fact, all vector in form of $s(0,1,1)^T$ where $s$ is any number will keep the same coordinates after transformation, no matter what the value $\theta$ takes, because the vector is oriented exactly along the rotational axis in question.}
+In fact, all vectors in the form of $s(0,1,1)^T$ where $s$ is any number will keep the same coordinates after transformation, no matter what the value $\theta$ takes, because the vector is oriented exactly along the rotational axis in question.}
 
 \section{Orthogonal Diagonalization}
 \label{section:orthogonaldiagreal}
 
-\index{Orthogonal Diagonalization}\keywordhl{Orthogonal diagonalization} is a special case of diagonalization, in which the transformation matrix $P$ used to diagonalize the target matrix $A$ is an orthogonal matrix. Since from Section \ref{section:diagonalizeidea} we know that diagonalization boils down to asking if there exists a basis, represented by the columns of $P$, such that $D = P^{-1}AP$ is diagonal, orthogonal diagonalization is equivalent to demanding further that such a basis is orthonormal, i.e.\ $P$ is an orthogonal matrix. We will discuss the case where $A$ is a real matrix first.
+\index{Orthogonal Diagonalization}\keywordhl{Orthogonal diagonalization} is a special case of diagonalization, in which the transformation matrix $P$ used to diagonalize the target matrix $A$ is an orthogonal matrix. Since from Section \ref{section:diagonalizeidea} we know that diagonalization boils down to asking if there exists a basis, represented by the columns of $P$, such that $D = P^{-1}AP$ is diagonal, orthogonal diagonalization is equivalent to demanding further that such a basis, comprised of the eigenvectors of $A$, is orthonormal, i.e.\ $P$ is an orthogonal matrix. We will discuss the case where $A$ is a real matrix first.
 \begin{defn}[Orthogonal Diagonalization]
 \label{defn:orthodiagonal}
-Orthogonal diagonalization on a real $n \times n$ square matrix $A$ is finding an orthogonal matrix $P$ that is consisted of columns being the $n$ orthonormal $\mathbb{R}^n$ eigenvectors of $A$ (Definition \ref{defn:orthomatrix}) such that $P^{-1}AP = P^TAP = D$ is a real diagonal matrix (Properties \ref{proper:diagonalize} and \ref{proper:orthoinvT}).
+Orthogonal diagonalization on a real $n \times n$ square matrix $A$ is to find an orthogonal matrix $P$ that consists of columns being the $n$ orthonormal $\mathbb{R}^n$ eigenvectors of $A$ (Definition \ref{defn:orthomatrix}) such that $P^{-1}AP = P^TAP = D$ is a real diagonal matrix (Properties \ref{proper:diagonalize} and \ref{proper:orthoinvT}).
 \end{defn}
-Note that the requirements of eigenvectors being $\mathbb{R}^n$ and orthogonality defined by the real dot product implicitly restrain us to work over $\mathbb{R}$ and only real eigenvalues are allowed. Not all real square matrices can be orthogonally diagonalized. Since orthogonal diagonalization is a stronger version of the ordinary diagonalization, the requirement is unsurprisingly stricter, however, it turns out that there is a really simple criterion: whether the matrix is symmetric.
+Note that the requirements of eigenvectors being $\mathbb{R}^n$ and hence orthogonality defined by the real dot product implicitly constrain us to work over $\mathbb{R}$ and only real eigenvalues are allowed. Not all real square matrices can be orthogonally diagonalized because orthogonal diagonalization is a stronger version of ordinary diagonalization and the requirement is unsurprisingly stricter. However, it turns out that there is a really simple criterion: whether the matrix is symmetric.
 \begin{thm}
 \label{thm:symdiag}
 A real square matrix $A$ can be orthogonally diagonalized if and only if $A$ is symmetric.
 \end{thm}
-The "only if" part is very easy to show.\footnote{Note that if $A$ is orthogonally diagonalizable then $A = PDP^{-1} = PDP^T$. Then $A^T = (PDP^T)^T = PD^TP^T = PDP^T = A$ since the transpose of any diagonal matrix $D^T = D$ equals to itself.} As a corollary, all symmetric matrices have only real eigenvalues. On the other hand, the "if" part is much more difficult to derive and requires us to build some immediate results first, which will be done sequentially in the remaining of this section. Since the transformation matrix $P$ used to diagonalize a given matrix $A$ is consisted of the eigenvectors of $A$ as pointed out by Properties \ref{proper:diagonalize}, for $P$ to be an orthogonal matrix, obviously we need to show that these eigenvectors are orthogonal to each other if $A$ is symmetric. To this end, we have the following observation.
+As a corollary, all symmetric real matrices have only real eigenvalues. The "only if" part is very easy to show.\footnote{Note that if $A$ is orthogonally diagonalizable then $A = PDP^{-1} = PDP^T$. Then $A^T = (PDP^T)^T = PD^TP^T = PDP^T = A$ since the transpose of any diagonal matrix $D^T = D$ equals to itself.} On the other hand, the "if" part is much more difficult to derive and requires us to build some intermediate results first, which will be done sequentially in the remainder of this section. Since the transformation matrix $P$ used to diagonalize a given matrix $A$ is formed from the eigenvectors of $A$ as pointed out by Properties \ref{proper:diagonalize}, for $P$ to be an orthogonal matrix, obviously we need to show that these eigenvectors are orthogonal to each other if $A$ is symmetric. To this end, we have the following observation.
 \begin{proper}
 \label{proper:symortho}
 Any two eigenvectors of a real, symmetric matrix corresponding to two distinct eigenvalues are always orthogonal to each other.
@@ -477,19 +478,19 @@ Therefore
 \end{align*}
 Since the two eigenvalues are required to be distinct, $\lambda_{1} \neq \lambda_{2}$, and $\vec{v}_{\lambda_1}\cdot \vec{v}_{\lambda_2}$ must be $0$. By Properties \ref{proper:dotorth}, the two eigenvectors $\vec{v}_{\lambda_1}$ and $\vec{v}_{\lambda_2}$ are orthogonal to each other.
 \end{proof}
-Even when there are multiple eigenvectors (a geometric multiplicity/an eigenspace of dimension $\geq 2$) associated to the same eigenvalue, we can mediate the problem by using the Gram-Schmidt Orthogonalization procedure introduced in Section \ref{section:GSortho} to produce an orthonormal basis to that eigenspace. Since all vectors in the eigenspace are subjected to the same eigenvalue, the choice of new eigenvectors will not disrupt the diagonalization process. So, with these, we have solved the "orthogonal" part of "orthogonal diagonalization", and the remaining half of the problem is to justify why symmetric matrices are always "diagonalizable", i.e.\ the geometric multiplicity of any eigenvalue is always equal to its algebraic multiplicity following Footnote \ref{foot:algequalgeo} of Chapter \ref{chap:eigen}, or in other words, there is no \textit{"deficient"} eigenvalue.
+Even when there are multiple eigenvectors (a geometric multiplicity/an eigenspace of dimension $\geq 2$) associated with the same eigenvalue, we can mediate the problem by using the Gram-Schmidt Orthogonalization procedure introduced in Section \ref{section:GSortho} to produce an orthonormal basis to that eigenspace. Since all vectors in the eigenspace are subjected to the same eigenvalue, the choice of new eigenvectors will not disrupt the diagonalization process. So, with these, we have solved the "orthogonal" part of "orthogonal diagonalization", and the remaining half of the problem is to justify why symmetric matrices are always "diagonalizable", i.e.\ the geometric multiplicities of all their eigenvalues are equal to the corresponding algebraic multiplicities as suggested by Properties \ref{proper:diagonalize}\footnote{The another condition requires the characteristic polynomial to split over $\mathbb{R}$, but it is immediately satisfied due to the previous corollary to Theorem \ref{thm:symdiag} which points out that the eigenvalues of any symmetric matrix are always real.}, or in other words, there is no \textit{"deficient"} eigenvalue.
 \begin{proper}
 \label{proper:symnodefic}
-The geometric multiplicity of an eigenvalue to a real symmetric matrix is always strictly equal to the algebraic multiplicity.
+The geometric multiplicity of any distinct eigenvalue of a real symmetric matrix is always strictly equal to its algebraic multiplicity.
 \end{proper}
 \begin{proof}
-Let $A$ be the $n \times n$ real symmetric matrix. Denote the geometric multiplicity of some eigenvalue $\lambda_{J_i}$ as $n_{J_i}$ and its algebraic multiplicity by $k_{J_i}$. We will assume that $n_{J_i} < k_{J_i}$ and derive a contradiction. The geometric multiplicity of $n_{J_i}$ implies that there are $n_{J_i}$ (orthonormal, see the discussion above) eigenvectors $\vec{v}^{(1)}_{\lambda_{J_i}}, \vec{v}^{(2)}_{\lambda_{J_i}}, \ldots, \vec{v}^{(n_{J_i})}_{\lambda_{J_i}}$ (in $\mathbb{R}^n$) corresponding to $\lambda_{J_i}$ in the eigenspace $\mathcal{E}_{J_i}$. By (c) of Properties \ref{proper:linindspanbasisnewver} and the Gram-Schmidt process (Definition \ref{defn:GSorth_norm}), we can complete an orthonormal basis $\mathcal{E}_{J_i} \oplus \mathcal{E}_{J_i^C}$ for $\mathbb{R}^n$ (Properties \ref{proper:orthodirectsum}) by filling them with some other $n-n_{J_i}$ vectors. Let $P$ be the orthogonal coordinate matrix that represents this basis in columns, such that
+Let $A$ be some $n \times n$ real symmetric matrix. Denote the geometric multiplicity of any distinct eigenvalue $\lambda_{J_i}$ of $A$ by $n_{J_i}$ and its algebraic multiplicity by $k_{J_i}$. We will assume that $n_{J_i} < k_{J_i}$ and derive a contradiction. The geometric multiplicity of $n_{J_i}$ implies that there can be $n_{J_i}$ orthonormal (see the discussion above) eigenvectors $\vec{v}^{(1)}_{\lambda_{J_i}}, \vec{v}^{(2)}_{\lambda_{J_i}}, \ldots, \vec{v}^{(n_{J_i})}_{\lambda_{J_i}} \in \mathbb{R}^n$ corresponding to $\lambda_{J_i}$ in the eigenspace $\mathcal{E}_{J_i}$. By (c) of Properties \ref{proper:linindspanbasisnewver}, we can complete a basis $\mathcal{E}_{J_i} \oplus (\mathcal{E}_{J_i})^C$ for $\mathbb{R}^n$ by filling them with some other orthonormal $n-n_{J_i}$ vectors. Let $P$ be the orthogonal coordinate matrix that represents this basis in its columns, such that
 \begin{align*}
 P = \begin{bmatrix}
 \vec{v}^{(1)}_{\lambda_{J_i}} | \vec{v}^{(2)}_{\lambda_{J_i}} | \cdots | \vec{v}^{(n_{J_i})}_{\lambda_{J_i}} | \text{other vectors used to fill the basis for $\mathbb{R}^n$}
 \end{bmatrix}
 \end{align*}
-similar to the derivation of Theorem \ref{thm:geolessalgebra}, and with the same logic we can apply a change of coordinates over $A$ via $P$, such that
+similar to the derivation of Theorem \ref{thm:geolessalgebra}. With the same logic, we can apply a change of coordinates for $A$ with $P$, such that
 \begin{align*}
 A' &= P^{-1}AP \\
 &= \begin{bmatrix}
@@ -497,7 +498,7 @@ A' &= P^{-1}AP \\
 [\textbf{0}]_{(n-n_{J_i})\times n_{J_i}} & *_{(n-n_{J_i})\times(n-n_{J_i})}
 \end{bmatrix}
 \end{align*}
-However, this time, as $P$ is designed to be an orthogonal matrix, $A' = P^{-1}AP = P^TAP$ (Properties \ref{proper:orthoinvT}) can be easily shown to be symmetric like $A$ as well.\footnote{$(P^TAP)^T = P^TA^TP = P^TAP$.} Therefore, the upper-right block of $A'$ also has to be a zero submatrix:
+However, this time, as $P$ has been declared to be an orthogonal matrix, $A' = P^{-1}AP = P^TAP$ (Properties \ref{proper:orthoinvT}) can be easily shown to be symmetric like $A$ as well.\footnote{$(P^TAP)^T = P^TA^TP = P^TAP$.} Therefore, the upper-right block of $A'$ also has to be a zero submatrix (as the transpose of the zero submatrix to the lower left):
 \begin{align*}
 A' &=  
 \begin{bmatrix}
@@ -505,7 +506,16 @@ A' &=
 [\textbf{0}]_{(n-n_{J_i})\times n_{J_i}} & *_{(n-n_{J_i})\times(n-n_{J_i})}
 \end{bmatrix}
 \end{align*}
-which is now in the form of a matrix direct sum. This shows that we can treat it as $A' = \lambda_j I_{n_{J_i}} \oplus A^C$ with respect to the $\mathcal{E}_{J_i} \oplus \mathcal{E}_{J_i^C}$ vector direct sum basis following Definition \ref{defn:matdirectsum} where $A^C$ is an $(n-n_{J_i})\times(n-n_{J_i})$ matrix representing the bottom right asterisked block. From the perspective of a linear transformation, the restriction of $A'$ to $\mathcal{E}_{J_i^C}$ is simply $A^C: \mathcal{E}_{J_i^C} \to \mathcal{E}_{J_i^C}$ which is a linear operator by itself. Now if the algebraic multiplicity of $\lambda_{J_i}$ is $k_{J_i}$, then $A$ will have a characteristic polynomial of $p_A(\lambda) = (\lambda_{J_i}-\lambda)^{k_{J_i}} p^-(\lambda)$ where $p^-(\lambda)$ is another polynomial. By Properties \ref{proper:similarinvariant}, $A'$ will also have this same characteristic polynomial $p_{A'}(\lambda) = (\lambda_{J_i}-\lambda)^{k_{J_i}} p^-(\lambda)$, and from the structure of $A'$ derived above, we know that $p_{A'}(\lambda) = (\lambda_{J_i}-\lambda)^{n_{J_i}} p^C(\lambda)$ with $p^C(\lambda)$ denoting the characteristic polynomial for $A^C$, by repeated cofactor expansion along the first $n_{J_i}$ columns. Thus comparing the two expressions we know that $p^C(\lambda) = (\lambda_j-\lambda)^{k_{J_i} - n_{J_i}}p^-(\lambda)$. Since we assume $n_{J_i} < k_{J_i}$, $k_{J_i} - n_{J_i} \geq 1$, $p^C(\lambda)$ will contain some $(\lambda_j-\lambda)$ factor. Hence $A^C$, as a square matrix by its own right, must have an eigenvector $\vec{v}^{(n_{J_i}+1)}_{\lambda_{J_i}}$ in the $\mathcal{E}_{J_i^c}$ basis corresponding to $\lambda_{J_i}$ since its geometric multiplicity (in $A^C$) must be at least $1$. This $\vec{v}^{(n_{J_i}+1)}_{\lambda_{J_i}}$ is also an eigenvector of the entire $A$ matrix and will be linearly independent of $\vec{v}^{(1)}_{\lambda_{J_i}}, \vec{v}^{(2)}_{\lambda_{J_i}}, \ldots, \vec{v}^{(n_{J_i})}_{\lambda_{J_i}}$ because $\mathcal{E}_{J_i} \oplus \mathcal{E}_{J_i^C}$ is a direct sum (see Definition \ref{defn:directsum}). Therefore, this shows that the geometric multiplicity of $\lambda_{J_i}$ in $A$ is actually $n_{J_i}+1$ which contradicts our hypothesis that it is $n_{J_i}$, whenever $n_{J_i} < k_{J_i}$. (Or we can inductively use this argument until the geometric multiplicity adds up to $k_{J_i}$.) Hence the only reasonable conclusion is $n_{J_i} = k_{J_i}$. 
+which is now in the form of a matrix direct sum (see Definition \ref{defn:matdirectsum}). This shows that we can treat it as $A' = \lambda_j I_{n_{J_i}} \oplus A^C$ with respect to the $\mathcal{E}_{J_i} \oplus (\mathcal{E}_{J_i})^C$ vector direct sum basis following Definition \ref{defn:matdirectsum} where $A^C$ is an $(n-n_{J_i})\times(n-n_{J_i})$ matrix that makes up the bottom right asterisked block. From the perspective of a linear transformation, the restriction of $A'$ to $(\mathcal{E}_{J_i})^C$ is simply $A^C: (\mathcal{E}_{J_i})^C \to (\mathcal{E}_{J_i})^C$ which is a linear operator by itself. Now if the algebraic multiplicity of $\lambda_{J_i}$ is $k_{J_i}$, then $A$ will have a characteristic polynomial of 
+\begin{align*}
+p_A(\lambda) = (\lambda_{J_i}-\lambda)^{k_{J_i}} p^-(\lambda)    
+\end{align*} where $p^-(\lambda)$ is some other polynomial. By Properties \ref{proper:similarinvariant}, $A'$ will also have this same characteristic polynomial $p_{A'}(\lambda) = (\lambda_{J_i}-\lambda)^{k_{J_i}} p^-(\lambda)$. At the same time, from the structure of $A'$ derived above, we know that 
+\begin{align*}
+p_{A'}(\lambda) = (\lambda_{J_i}-\lambda)^{n_{J_i}} p^C(\lambda)    
+\end{align*} by repeated cofactor expansions along the first $n_{J_i}$ columns, with $p^C(\lambda)$ denoting the characteristic polynomial for $A^C$. Thus comparing the two expressions we know that 
+\begin{align*}
+p^C(\lambda) = (\lambda_j-\lambda)^{k_{J_i} - n_{J_i}}p^-(\lambda)    
+\end{align*} Since we assume $n_{J_i} < k_{J_i}$, we know that $k_{J_i} - n_{J_i} \geq 1$, and $p^C(\lambda)$ will then contain some $(\lambda_j-\lambda)$ factor. Hence $A^C$, as a square matrix in its own right, must have an eigenvector $\vec{v}^{(n_{J_i}+1)}_{\lambda_{J_i}}$ in the $(\mathcal{E}_{J_i})^C$ basis corresponding to $\lambda_{J_i}$ since its geometric multiplicity in $A^C$ must be at least $1$. This $\vec{v}^{(n_{J_i}+1)}_{\lambda_{J_i}}$ is also an eigenvector of the entire matrix $A$ and will be linearly independent of $\vec{v}^{(1)}_{\lambda_{J_i}}, \vec{v}^{(2)}_{\lambda_{J_i}}, \ldots, \vec{v}^{(n_{J_i})}_{\lambda_{J_i}}$ because $\mathcal{E}_{J_i} \oplus (\mathcal{E}_{J_i})^C$ is a direct sum (see Definition \ref{defn:directsum}). Therefore, this shows that the geometric multiplicity of $\lambda_{J_i}$ in $A$ is actually $n_{J_i}+1$ which contradicts our hypothesis that it is $n_{J_i}$, whenever $n_{J_i} < k_{J_i}$. (We can also inductively use this argument until the geometric multiplicity adds up to $k_{J_i}$.) Hence the only reasonable conclusion is $n_{J_i} = k_{J_i}$. 
 \end{proof}
 \par
 Properties \ref{proper:symortho} and \ref{proper:symnodefic} together imply the "if" part of Theorem \ref{thm:symdiag} and the proof is completed. Recall that the essence of orthogonal diagonalization is to search for an orthonormal basis such that the linear operator or square matrix is diagonal with respect to it. These orthonormal basis vectors are at the same time the eigenvectors of the symmetric matrix following Properties \ref{proper:diagonalize}. Hence as a corollary,
@@ -527,55 +537,56 @@ A =
 \end{align*}
 \end{exmp}
 \begin{solution}
-First we observe that $A$ is real and symmetric, and can be orthogonally diagonalized according to Theorem \ref{thm:symdiag}. It can be found that the eigenvectors, after normalization, are
+First, we observe that $A$ is real and symmetric, and can be orthogonally diagonalized according to Theorem \ref{thm:symdiag}. It can be found that the eigenvectors, after normalization, are
 \begin{align*}
 &\vec{v}_\lambda = 
-\begin{bmatrix}
+\left[\renewcommand{\arraystretch}{1.2}
+\begin{array}{wc{8pt}}
 1 \\
 0 \\
 0
-\end{bmatrix},
-\begin{bmatrix}
+\end{array}\right] \text{ and }
+\left[\begin{array}{wc{8pt}}
 0 \\
 -\frac{1}{\sqrt{2}} \\
 \frac{1}{\sqrt{2}}
-\end{bmatrix}
+\end{array}\right]
 & \text{for } \lambda = 1 \\
 &\vec{v}_\lambda = 
-\begin{bmatrix}
+\left[\begin{array}{wc{8pt}}
 0 \\
 \frac{1}{\sqrt{2}} \\
 \frac{1}{\sqrt{2}}
-\end{bmatrix}
+\end{array}\right]
 & \text{for } \lambda = 3
 \end{align*}
 Hence we can construct
 \begin{align*}
 P =
-\begin{bmatrix}
+\left[\begin{array}{@{}wc{12pt}wc{12pt}wc{12pt}@{\,}}
 1 & 0 & 0 \\
 0 & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
 0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
-\end{bmatrix}
+\end{array}\right]
 \end{align*}
 So that
 \begin{align*}
 P^TAP &=
-\begin{bmatrix}
+\left[\begin{array}{@{}wc{12pt}wc{12pt}wc{12pt}@{\,}}
 1 & 0 & 0 \\
 0 & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
 0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
-\end{bmatrix}^T
+\end{array}\right]^T
 \begin{bmatrix}
 1 & 0 & 0 \\
 0 & 2 & 1 \\
 0 & 1 & 2
 \end{bmatrix}
-\begin{bmatrix}
+\left[\begin{array}{@{}wc{12pt}wc{12pt}wc{12pt}@{\,}}
 1 & 0 & 0 \\
 0 & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
 0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
-\end{bmatrix} \\
+\end{array}\right] \\
 &= 
 \begin{bmatrix}
 1 & 0 & 0\\
@@ -604,26 +615,28 @@ Short Exercise: Confirm that $P$ is orthogonal.\footnote{It is simply checking
 \end{align*}
 }
 
-\subsubsection{Remark} From Properties \ref{proper:endomorph} we know that orthogonal diagonalization $D = P^{-1}AP = P^TAP$ is simply a special case of change of coordinates for a square matrix, where $P$ is now orthogonal and only pure rotations and reflections are involved (Theorem \ref{thm:orthodet}).
+\subsubsection{Remark} From Properties \ref{proper:endomorph} we know that orthogonal diagonalization $D = P^{-1}AP = P^TAP$ is simply a special case of coordinate transformation for a square matrix, where $P$ is now orthogonal and only pure rotations/reflections are involved (Theorem \ref{thm:orthodet}).
 
 \section{Orthogonal Projections and Spectral Theorem}
 
 \subsection{Projections onto a Subspace}
 
-Another important concept that also involves orthogonality is \textit{orthogonal projections}. Back in Section \ref{section:proj} we have defined the projection of a vector $\vec{v}$ onto another one $\vec{u}$, which is implicitly an orthogonal projection since the orthogonal component of $\vec{v}$ normal to $\vec{u}$ is removed while the parallel component of $\vec{v}$ along $\vec{u}$ is retained, i.e.\ $\vec{v} = \overrightarrow{\text{proj}}_u v + (\vec{v} - \overrightarrow{\text{proj}}_u v)$ and $\vec{u} \cdot (\vec{v} - \overrightarrow{\text{proj}}_u v) = 0$. Here we can treat $\vec{u}$ as the one-dimensional subspace generated by itself, and the projection of any vector $\vec{v}$ onto $\vec{u}$ is an operation to project the vector onto this subspace of $\text{span}(\{\vec{u}\})$. However, before digging deep into orthogonal projections, we have to generalize the notion of projections involving multi-dimensional subspaces first. Given two subspaces $\mathcal{W}_1$ and $\mathcal{W}_2$ of a vector space $\mathcal{V}$ which forms a direct sum $\mathcal{W}_1 \oplus \mathcal{W}_2 = \mathcal{V}$, the projection of a vector onto $\mathcal{W}_1$ along $\mathcal{W}_2$ is a linear operator $T:\mathcal{V} \to \mathcal{V}$ such that for any $\vec{v} = \vec{w}_1 + \vec{w}_2$ where $\vec{w}_1 \in \mathcal{W}_1$ and $\vec{w}_2 \in \mathcal{W}_2$, $T(\vec{v}) = \vec{w}_1$, so that only the $\mathcal{W}_1$ component is kept (projected onto) while the $\mathcal{W}_2$ component is discarded. Clearly, $\mathcal{R}(T) = \mathcal{W}_1$ and $\mathcal{N}(T) = \mathcal{W}_2$ is the range and kernel of $T$, and $\mathcal{R}(T) \oplus \mathcal{N}(T) = \mathcal{V}$. Here we give another equivalent definition of a projection.
+Another important concept that also involves orthogonality is \textit{orthogonal projections}. Back in Section \ref{section:proj} we have defined the projection of a vector $\vec{v}$ onto another vector $\vec{u}$, which is implicitly an orthogonal projection since the orthogonal component of $\vec{v}$ normal to $\vec{u}$ is removed while the parallel component of $\vec{v}$ along $\vec{u}$ is retained, i.e.\ $\vec{v} = \overrightarrow{\text{proj}}_u v + (\vec{v} - \overrightarrow{\text{proj}}_u v)$ and $\vec{u} \cdot (\vec{v} - \overrightarrow{\text{proj}}_u v) = 0$. Here we can treat $\vec{u}$ as the one-dimensional subspace generated by itself, and the projection of any vector $\vec{v}$ onto $\vec{u}$ is an operation to project the vector onto this subspace of $\text{span}(\{\vec{u}\})$. However, before digging deep into orthogonal projections, we have to first generalize the notion of projections involving multi-dimensional subspaces. Given two subspaces $\mathcal{W}_1$ and $\mathcal{W}_2$ of a vector space $\mathcal{V}$ which forms a direct sum $\mathcal{W}_1 \oplus \mathcal{W}_2 = \mathcal{V}$, the \textit{projection of a vector onto $\mathcal{W}_1$ along $\mathcal{W}_2$} is a linear operator $T:\mathcal{V} \to \mathcal{V}$ such that for any $\vec{v} = \vec{w}_1 + \vec{w}_2$\footnote{This decomposition of $\vec{v}$ into $\vec{w}_1$ and $\vec{w}_2$ is unique as $\mathcal{W}_1 \oplus \mathcal{W}_2$ is required to be a direct sum. (see Section \ref{section:directsum})} where $\vec{w}_1 \in \mathcal{W}_1$ and $\vec{w}_2 \in \mathcal{W}_2$, $T(\vec{v}) = \vec{w}_1$, so that only the $\mathcal{W}_1$ component is kept (projected onto) while the $\mathcal{W}_2$ component is discarded. Clearly, $\mathcal{R}(T) = \mathcal{W}_1$ and $\mathcal{N}(T) = \mathcal{W}_2$ is the range and kernel of $T$, and $\mathcal{R}(T) \oplus \mathcal{N}(T) = \mathcal{V}$. Here we give another equivalent definition of a projection.
 \begin{proper}[Projection]
 \label{proper:matrixproj}
 A linear operator $T: \mathcal{V} \to \mathcal{V}$ is a projection if and only if $T^2 = T$.
 \end{proper}
 \begin{proof}
-If $T^2 = T$, then for any $\vec{v} \in \mathcal{V}$, we have $T^2(\vec{v}) = T(T(\vec{v})) = T(\vec{v})$, therefore for any vector $T(\vec{v}) = \vec{w}_1 \in \mathcal{W}_1 = \mathcal{R}(T)$ in the range of $T$, $T(\vec{w}_1) = \vec{w}_1$, and the $\mathcal{W}_1$ component remains unchanged. Now, we derive $\mathcal{W}_2$ such that we can write $\vec{v} = \vec{w}_1 + (\vec{v} - \vec{w}_1) = \vec{w}_1 + \vec{w}_2$, where $\vec{v} - \vec{w}_1 = \vec{w}_2 \in \mathcal{W}_2$ and $\mathcal{W}_1 \oplus \mathcal{W}_2 = \mathcal{V}$\footnote{$\mathcal{W}_2$ can be shown to be a subspace and is linearly independent of $\mathcal{W}_1$. The actual projection matrix $T$ is not only determined by $\mathcal{W}_1$ but also $\mathcal{W}_2$, since the choice of $\mathcal{W}_2$ will dictate $\vec{v} - \vec{w}_1 \in \mathcal{W}_2$ and hence $\vec{w}_1$ too.}, applying $T$ on both sides gives 
+If $T^2 = T$, then for any $\vec{v} \in \mathcal{V}$, we have $T^2(\vec{v}) = T(T(\vec{v})) = T(\vec{v})$, therefore for any vector $T(\vec{v}) = \vec{w}_1 \in \mathcal{W}_1 = \mathcal{R}(T)$ in the range of $T$, $T(\vec{w}_1) = \vec{w}_1$, and the $\mathcal{W}_1$ component remains unchanged. Now, we demand $\mathcal{W}_2$ such that we can write $\vec{v} = \vec{w}_1 + (\vec{v} - \vec{w}_1) = \vec{w}_1 + \vec{w}_2$ for any $\vec{v} \in \mathcal{V}$, where $\vec{v} - \vec{w}_1 = \vec{w}_2 \in \mathcal{W}_2$ and $\mathcal{W}_1 \oplus \mathcal{W}_2 = \mathcal{V}$\footnote{$\mathcal{W}_2$ can be shown to be a subspace and is linearly independent of $\mathcal{W}_1$. The actual projection matrix $T$ is not only determined by $\mathcal{W}_1$ but also $\mathcal{W}_2$, since the choice of $\mathcal{W}_2$ will dictate $\vec{v} - \vec{w}_1 \in \mathcal{W}_2$ and hence $\vec{w}_1$ too.}. Applying $T$ on both sides gives 
 \begin{align*}
-T(\vec{v}) &= T(\vec{w}_1) + T(\vec{v} - \vec{w}_1) & \text{(Linearity)}\\
+T(\vec{v}) &= T(\vec{w}_1 + \vec{v} - \vec{w}_1) \\
+T(\vec{v}) &= T(\vec{w}_1) + T(\vec{v} - \vec{w}_1) & \text{(Linearity from Definition \ref{defn:lintrans})}\\
 \vec{w}_1 &= \vec{w}_1 + T(\vec{v} - \vec{w}_1) \\
 \implies T(\vec{v} - \vec{w}_1) &= \textbf{0}
 \end{align*}
-So $T(\vec{v} - \vec{w}_1) = T(\vec{w}_2) = \textbf{0}$ for any $\vec{v} \in \mathcal{V}$ and $\vec{w}_2 \in \mathcal{W}_2$ as well. This shows that $\mathcal{W}_2 = \mathcal{N}(T)$ is the kernel of $T$ and any $\mathcal{W}_2$ component is annihilated. The "only if" part is simpler: given the effect of projection $T$ as defined in the first paragraph, for any arbitrary $\vec{v}$, $T^2(\vec{v}) = T(T(\vec{v})) = T(\vec{w}_1) = \vec{w}_1 = T(\vec{v})$, so it must be that $T^2 = T$.
+So $T(\vec{v} - \vec{w}_1) = T(\vec{w}_2) = \textbf{0}$ for any $\vec{v} \in \mathcal{V}$ and $\vec{w}_2 \in \mathcal{W}_2$ as well. This shows that $\mathcal{W}_2 = \mathcal{N}(T)$ is the kernel of $T$ and any $\mathcal{W}_2$ component is annihilated. The "only if" part is simpler: given the effect of projection $T$ as defined in the beginning, for any arbitrary $\vec{v}$, $T^2(\vec{v}) = T(T(\vec{v})) = T(\vec{w}_1) = \vec{w}_1 = T(\vec{v})$, so by Properties \ref{proper:sametrans} it must be that $T^2 = T$.
 \end{proof}
+A linear operator/matrix $T$ satisfying the condition $T^2 = T$ is known as \index{Idempotent}\keywordhl{idempotent}, and we have $T^n = T$ for any positive integer $n$.\footnote{For $n \geq 2$, $T^n = (T^2) (T^{n-2}) = (T) (T^{n-2}) = T^{n-1}$ which can be recursively used.} So in other words, a linear operator is a projection if and only if it is idempotent.
 
 \begin{exmp}
 \label{exmp:xyproj}
@@ -660,7 +673,7 @@ By Properties \ref{proper:matrixproj}, we have to check if $[T]^2 = [T]$. A simp
 0 & 1 
 \end{bmatrix} = [T]
 \end{align*}
-So it is indeed a projection. The subspace onto which the projection is carried out simply equals to its range, or equivalently the column space of $[T]$, which can be immediately identified as $\text{span}(\{(1,1)^T\})$, that is, the straight line $y=x$. Similarly, the projection is along its kernel/null space, which is also easily seen to be $\text{span}(\{(1,0)^T\})$, which is just the $x$-axis.
+So it is indeed a projection. The subspace onto which the linear operator projects, is simply equal to its range, or equivalently the column space of $[T]$, which can be immediately identified as $\text{span}(\{(1,1)^T\})$, that is, the straight line $y=x$. Similarly, the projection is along its kernel/null space, which is also easily seen to be $\text{span}(\{(1,0)^T\})$, the $x$-axis.\\
 \begin{tikzpicture}
 \draw[->] (-3,0)--(3,0) node[right]{$x$};
 \draw[->] (0,-3)--(0,3) node[above]{$y$};
@@ -677,10 +690,10 @@ So it is indeed a projection. The subspace onto which the projection is carried 
 
 \subsection{Orthogonal Projections}
 
-After knowing how projections onto a subspace look like, we can now properly generalize the \index{Orthogonal Projection}\keywordhl{orthogonal projection} (not to be confused with an orthogonal matrix) of a vector onto another vector, to a (possibly multi-dimensional) subspace. For a projection onto a subspace $\mathcal{W}_1$ along another subspace $\mathcal{W}_2$ to be an orthogonal projection, the two subspaces have to be the orthogonal complement to each other, such that for any $\vec{v} = \vec{w}_1 + \vec{w}_2$, $\vec{w}_1 \in \mathcal{W}_1$ and $\vec{w}_2 \in \mathcal{W}_2$, $\vec{w}_1$ and $\vec{w}_2$ are orthogonal (i.e.\ $\vec{w}_1 \cdot \vec{w}_2 = 0$, $\mathcal{W}_1^\perp = \mathcal{W}_2$ and $\mathcal{W}_2^\perp = \mathcal{W}_1$), and $T(\vec{v}) = \vec{w}_1$ means that the orthogonal component $\vec{w}_2 \in \mathcal{W}_2$ normal to $\mathcal{W}_1$ is removed. As there is only one orthogonal complement for any (finite-dimensional) subspace, the range $\mathcal{R}(T) = \mathcal{W}_1$ uniquely determines $\mathcal{N}(T) = \mathcal{W}_2$ and hence $T$, where $\mathcal{R}(T)^\perp = \mathcal{N}(T)$ and $\mathcal{N}(T)^\perp = \mathcal{R}(T)$. An equivalent condition of an orthogonal projection is that $[T] = [T]^T$ is symmetric given we are working over reals.\footnote{Some may wonder why in Properties \ref{proper:matrixproj} we use $T$ directly but here we circumvent by employing the matrix representation $[T]$ instead. It is because we haven't defined the "transpose" or "symmetric" equivalent for a linear operator, which will be introduced as the adjoint in Chapter ??.}
+After knowing how projections onto a subspace look like, we can now properly generalize the \index{Orthogonal Projection}\keywordhl{orthogonal projection} (not to be confused with an orthogonal matrix) of a vector onto another vector, to a (possibly multi-dimensional) subspace. For a projection onto a subspace $\mathcal{W}_1$ along another subspace $\mathcal{W}_2$ to be an orthogonal projection, these two subspaces have to be the orthogonal complement to each other, such that for any $\vec{v} = \vec{w}_1 + \vec{w}_2$, $\vec{w}_1 \in \mathcal{W}_1$ and $\vec{w}_2 \in \mathcal{W}_2$, $\vec{w}_1$ and $\vec{w}_2$ are orthogonal (i.e.\ $\vec{w}_1 \cdot \vec{w}_2 = 0$, $\mathcal{W}_1^\perp = \mathcal{W}_2$ and $\mathcal{W}_2^\perp = \mathcal{W}_1$), and $T(\vec{v}) = \vec{w}_1$ means that the orthogonal component $\vec{w}_2 \in \mathcal{W}_2$ normal to $\mathcal{W}_1$ is removed. As there is only one orthogonal complement for any (finite-dimensional) subspace, the range $\mathcal{R}(T) = \mathcal{W}_1$ uniquely determines $\mathcal{N}(T) = \mathcal{W}_2$ and hence $T$, where $\mathcal{R}(T)^\perp = \mathcal{N}(T)$ and $\mathcal{N}(T)^\perp = \mathcal{R}(T)$ now. An equivalent condition of an orthogonal projection is that $[T] = [T]^T$ is symmetric given we are working over $\mathbb{R}$.\footnote{Some may wonder why in Properties \ref{proper:matrixproj} we use $T$ directly but here we circumvent by employing the matrix representation $[T]$ instead. It is because we haven't defined the "transpose" or "symmetric" equivalent for a linear operator, which will be introduced as the adjoint in Chapter \ref{chap:innerchap}.}
 \begin{proper}[Orthogonal Projection]
 \label{proper:orthogonalproj}
-A \textit{real}, \textit{finite-dimensional} linear projection operator $T: \mathcal{V} \to \mathcal{V}$ is an orthogonal projection (with respect to the usual dot product) if and only if $[T] = [T]^T$ in terms of its matrix representation.  
+A \textit{real}, \textit{finite-dimensional} linear projection operator $T: \mathcal{V} \to \mathcal{V}$ is an orthogonal projection (with respect to the usual real dot product) if and only if $[T] = [T]^T$ in terms of its matrix representation.  
 \end{proper}
 \begin{proof}
 The "if" part: We need to show that $[T] = [T]^T$ implies $\mathcal{R}(T)^\perp = \mathcal{N}(T)$ (and $\mathcal{N}(T)^\perp = \mathcal{R}(T)$)\footnote{This two are equivalent as $\mathcal{V}$ is finite-dimensional.}. Let $\vec{w}_1 \in \mathcal{R}(T)$ and $\vec{w}_2 \in \mathcal{N}(T)$, then 
@@ -722,7 +735,7 @@ The matrix representation of $T$ is derived following Definition \ref{defn:matri
 T(\hat{e}^{(1)})|T(\hat{e}^{(2)})
 \end{bmatrix}
 \end{align*}
-whose columns are the outputs of applying the orthogonal projection on the standard unit vectors. Geometrically (see the figure below), it can be easily deduced that $T(\hat{e}^{(1)}) = T(\hat{e}^{(2)}) = (\frac{1}{2}, \frac{1}{2})^T$, and hence
+Its columns are the outputs of applying the orthogonal projection on the standard unit vectors. Geometrically (see the figure below), it can be easily deduced that $T(\hat{e}^{(1)}) = T(\hat{e}^{(2)}) = (\frac{1}{2}, \frac{1}{2})^T$, and hence
 \begin{align*}
 [T] =
 \begin{bmatrix}
@@ -769,9 +782,9 @@ T(\vec{v}) = [T](1,-2)^T =
 Find the matrix for the orthogonal projection in $\mathbb{R}^3$ onto the subspace described by the plane $x + 2y - 4z = 0$.
 \end{exmp}
 \begin{solution}
-In a higher-dimensional scenario, it is beneficial to derive an orthonormal basis for both the range $\mathcal{R}(T)$ and kernel $\mathcal{N}(T)$ of the orthogonal projection $T$ first, and work out the projection transformation in the coordinate system suggested by this basis. We can follow a similar approach as in Example \ref{exmp:vecgeohighdim}, and one possible basis for the plane is simply $\{(4,0,1)^T, (0,2,1)^T\}$. Subsequently we can apply Gram-Schmidt orthogonalization (Definition \ref{defn:GSorth_norm}) to obtain an orthonormal basis for the plane. We leave to the readers to check that it is $\{(\frac{4}{\sqrt{17}}, 0, \frac{1}{\sqrt{17}})^T, (-\frac{2}{\sqrt{357}}, \frac{17}{\sqrt{357}}, \frac{8}{\sqrt{357}})^T\}$. By Properties \ref{proper:orthodirectsum}, we will derive the third vector to complete an orthonormal basis for $\mathbb{R}^3$ and this third vector will represent the kernel $\mathcal{N}(T) = \mathcal{R}(T)^\perp$ as the orthogonal complement to the plane. A quick way is to utilize cross product which yields $(\frac{4}{\sqrt{17}}, 0, \frac{1}{\sqrt{17}})^T \times (-\frac{2}{\sqrt{357}}, \frac{17}{\sqrt{357}}, \frac{8}{\sqrt{357}})^T = (-\frac{1}{\sqrt{21}}, -\frac{2}{\sqrt{21}}, \frac{4}{\sqrt{21}})^T$. The projection in this basis $\mathcal{B} = \{(\frac{4}{\sqrt{17}}, 0, \frac{1}{\sqrt{17}})^T, (-\frac{2}{\sqrt{357}}, \frac{17}{\sqrt{357}}, \frac{8}{\sqrt{357}})^T, (-\frac{1}{\sqrt{21}}, -\frac{2}{\sqrt{21}}, \frac{4}{\sqrt{21}})^T\}$ will have a matrix representation of
+In a higher-dimensional scenario, it is beneficial to derive an orthonormal basis for both the range $\mathcal{R}(T)$ and kernel $\mathcal{N}(T)$ of the orthogonal projection $T$ first, and work out the projection transformation in the coordinate system according to this basis. We can follow a similar approach as in Example \ref{exmp:vecgeohighdim}, and one possible basis for the plane is simply $\{(4,0,1)^T, (0,2,1)^T\}$. Subsequently, we can apply Gram-Schmidt orthogonalization (Definition \ref{defn:GSorth_norm}) to obtain an orthonormal basis for the plane. We leave to the readers to check that it is $\{(\frac{4}{\sqrt{17}}, 0, \frac{1}{\sqrt{17}})^T, (-\frac{2}{\sqrt{357}}, \frac{17}{\sqrt{357}}, \frac{8}{\sqrt{357}})^T\}$. Motivated by Properties \ref{proper:orthodirectsum}, we will derive the third vector to complete an orthonormal basis for $\mathbb{R}^3$ and it will represent the kernel $\mathcal{N}(T) = \mathcal{R}(T)^\perp$ as the orthogonal complement to the plane. A quick way is to utilize cross product which yields $(\frac{4}{\sqrt{17}}, 0, \frac{1}{\sqrt{17}})^T \times (-\frac{2}{\sqrt{357}}, \frac{17}{\sqrt{357}}, \frac{8}{\sqrt{357}})^T = (-\frac{1}{\sqrt{21}}, -\frac{2}{\sqrt{21}}, \frac{4}{\sqrt{21}})^T$. The projection in this basis $\beta = \{(\frac{4}{\sqrt{17}}, 0, \frac{1}{\sqrt{17}})^T, (-\frac{2}{\sqrt{357}}, \frac{17}{\sqrt{357}}, \frac{8}{\sqrt{357}})^T, (-\frac{1}{\sqrt{21}}, -\frac{2}{\sqrt{21}}, \frac{4}{\sqrt{21}})^T\}$ will have a matrix representation of
 \begin{align*}
-[T]_B = 
+[T]_\beta = 
 \begin{bmatrix}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
@@ -780,7 +793,8 @@ In a higher-dimensional scenario, it is beneficial to derive an orthonormal basi
 \end{align*}
 as the first two basis vectors are in the range $\mathcal{R}(T)$ and will be projected into itself, while the last basis vector is in the kernel $\mathcal{N}(T)$ and hence annihilated. Now we can transform the projection matrix back into the standard basis system according to Properties \ref{proper:endomorph}, where
 \begin{align*}
-P_B^S = 
+P_\beta^S = 
+\renewcommand\arraystretch{1.25}
 \begin{bmatrix}
 \frac{4}{\sqrt{17}} & -\frac{2}{\sqrt{357}} & -\frac{1}{\sqrt{21}} \\
 0 & \frac{17}{\sqrt{357}} & -\frac{2}{\sqrt{21}} \\
@@ -789,9 +803,10 @@ P_B^S =
 \end{align*}
 and
 \begin{align*}
-[T]_S &= (P_S^B)^{-1} [T]_B P_S^B \\
-&= P_B^S [T]_B (P_B^S)^T \text{\quad (Properties \ref{proper:orthoinvT} for the orthogonal $P$ matrix)} \\
+[T]_S &= (P_S^\beta)^{-1} [T]_\beta P_S^\beta \\
+&= P_\beta^S [T]_\beta (P_\beta^S)^T \text{\quad (Properties \ref{proper:orthoinvT} for the orthogonal $P$ matrix)} \\
 &=
+\renewcommand\arraystretch{1.25}
 \begin{bmatrix}
 \frac{4}{\sqrt{17}} & -\frac{2}{\sqrt{357}} & -\frac{1}{\sqrt{21}} \\
 0 & \frac{17}{\sqrt{357}} & -\frac{2}{\sqrt{21}} \\
@@ -808,6 +823,7 @@ and
 \frac{1}{\sqrt{17}} & \frac{8}{\sqrt{357}} & \frac{4}{\sqrt{21}}
 \end{bmatrix}^T \\
 &=
+\renewcommand\arraystretch{1.25}
 \begin{bmatrix}
 \frac{20}{21}&-\frac{2}{21}&\frac{4}{21}\\ 
 -\frac{2}{21}&\frac{17}{21}&\frac{8}{21}\\ 
@@ -816,16 +832,22 @@ and
 \end{align*}
 To cross-check that $[T]_S$ indeed represents an orthogonal projection, it is obvious that $[T]_S$ is symmetric and the readers can verify that $[T]_S^2 = [T]_S$. Another cross-checking method is to pick a vector in the range (kernel), e.g. $\vec{v}_R = (6,1,2)^T$ and confirm that the projection $[T]_S\vec{v}_R = [T]_S(6,1,2)^T = (6,1,2)^T = \vec{v}_R$ leaves it unchanged (vanished).
 \end{solution}
-Now we can revisit the projection of a vector $\vec{v}$ onto another vector $\vec{u}$ as a special case of orthogonal projection in this section. In Definition \ref{proper:proj}, the projection acting on $\vec{v}$ is given as $\overrightarrow{\text{proj}}_u v = \frac{\vec{v} \cdot \vec{u}}{\norm{\vec{u}}^2} \vec{u}$, which can be rewritten as
+Now we can revisit the projection of a vector $\vec{v}$ onto another vector $\vec{u}$ as a special case of orthogonal projection in this section. In Definition \ref{proper:proj}, the projection acting on $\vec{v}$ is given as \begin{align*}
+\overrightarrow{\text{proj}}_u v = \frac{\vec{v} \cdot \vec{u}}{\norm{\vec{u}}^2} \vec{u}    
+\end{align*} which can be rewritten as
 \begin{align*}
 T(\vec{v}^T) &= \frac{1}{\norm{\textbf{u}}^2}(\textbf{v}^T\textbf{u})\textbf{u}^T \\
 \implies T(\vec{v}) &= \frac{1}{\norm{\textbf{u}}^2}(\textbf{v}^T\textbf{u}\textbf{u}^T)^T \\
 &= (\frac{1}{\norm{\textbf{u}}^2}\textbf{u}\textbf{u}^T)\textbf{v} \\
 &= (\frac{\textbf{u}}{\norm{\textbf{u}}}(\frac{\textbf{u}}{\norm{\textbf{u}}})^T)\textbf{v} = [T]\textbf{v}
 \end{align*}
-where the orthogonal projection matrix is $[T] = \frac{\textbf{u}}{\norm{\textbf{u}}}(\frac{\textbf{u}}{\norm{\textbf{u}}})^T = \hat{\textbf{u}}\hat{\textbf{u}}^T$ which is clearly symmetric and can be shown that $[T]^2 = [T]$.\footnote{$(\hat{\textbf{u}}\hat{\textbf{u}}^T)(\hat{\textbf{u}}\hat{\textbf{u}}^T) = \hat{\textbf{u}}(\hat{\textbf{u}}^T\hat{\textbf{u}})\hat{\textbf{u}}^T = \hat{\textbf{u}}(1)\hat{\textbf{u}}^T = \hat{\textbf{u}}\hat{\textbf{u}}^T$ as $\hat{\textbf{u}}$ is a unit vector and the dot product $\hat{\textbf{u}}^T\hat{\textbf{u}} = \vec{u}\cdot\vec{u} = \norm{\vec{u}}^2 = 1$ is its square length.} For an orthogonal projection $T$ in $\mathbb{R}^n$ onto some $r$-dimensional subspace, which becomes its range $\mathcal{R}(T)$ with an orthonormal basis $\{\vec{w}^{(1)}, \vec{w}^{(2)}, \ldots, \vec{w}^{(r)}\}$, complete this orthonormal basis for $\mathbb{R}^n$ by appending another orthonormal basis $\{\vec{w}^{(r+1)}, \ldots, \vec{w}^{(n)}\}$ of its kernel $\mathcal{N}(T) = \mathcal{R}(T)^\perp$ (possible due to Properties \ref{proper:orthodirectsum}) just like Example \ref{exmp:planeorthoproj} above. By the same argument in that example, we know that
+where the orthogonal projection matrix is 
+\begin{align*}
+[T] = \frac{\textbf{u}}{\norm{\textbf{u}}}(\frac{\textbf{u}}{\norm{\textbf{u}}})^T = \hat{\textbf{u}}\hat{\textbf{u}}^T    
+\end{align*} which is clearly symmetric and can be shown that $[T]^2 = [T]$.\footnote{$(\hat{\textbf{u}}\hat{\textbf{u}}^T)(\hat{\textbf{u}}\hat{\textbf{u}}^T) = \hat{\textbf{u}}(\hat{\textbf{u}}^T\hat{\textbf{u}})\hat{\textbf{u}}^T = \hat{\textbf{u}}(1)\hat{\textbf{u}}^T = \hat{\textbf{u}}\hat{\textbf{u}}^T$ as $\hat{\textbf{u}}$ is a unit vector and the dot product $\hat{\textbf{u}}^T\hat{\textbf{u}} = \vec{u}\cdot\vec{u} = \norm{\vec{u}}^2 = 1$ is its square length which simply equals $1$.} For an orthogonal projection $T$ in $\mathbb{R}^n$ onto some $r$-dimensional subspace, which becomes its range $\mathcal{R}(T)$ with an orthonormal basis $\{\vec{w}^{(1)}, \vec{w}^{(2)}, \ldots, \vec{w}^{(r)}\}$, complete this orthonormal basis for $\mathbb{R}^n$ by appending another orthonormal basis $\{\vec{w}^{(r+1)}, \ldots, \vec{w}^{(n)}\}$ of its kernel $\mathcal{N}(T) = \mathcal{R}(T)^\perp$ (possible due to Definition \ref{defn:GSorth_norm} and Properties \ref{proper:orthodirectsum}) just like Example \ref{exmp:planeorthoproj} above. By the same argument in that example, we know that
 \begin{align}
 [T] &= 
+\footnotesize
 \begin{bmatrix}
 \vec{w}^{(1)}|\cdots|\vec{w}^{(r)}|\vec{w}^{(r+1)}|\cdots|\vec{w}^{(n)}
 \end{bmatrix}
@@ -838,17 +860,17 @@ I_r & [\textbf{0}]_{r\times(n-r)} \\
 \hline
 \vdots \\
 \hline
-\vec{w}^{(r)T} \\
+\vec{w}^{(r)T} \Tstrut \\
 \hline
-\vec{w}^{(r+1)T} \\
+\vec{w}^{(r+1)T} \Tstrut\\
 \hline 
 \vdots \\
 \hline
-\vec{w}^{(n)T}
+\vec{w}^{(n)T} \Tstrut
 \end{array}\right] \nonumber \\
 &= \hat{\textbf{w}}^{(1)}\hat{\textbf{w}}^{(1)T} + \hat{\textbf{w}}^{(2)}\hat{\textbf{w}}^{(2)T} + \cdots + \hat{\textbf{w}}^{(r)}\hat{\textbf{w}}^{(r)T} \label{eqn:projrank1sum}
 \end{align}
-which generalizes the above form of orthogonal projection matrix in the case of a multi-dimensional range. Furthermore, geometrically, the shortest distance of a point to a subspace is found by the orthogonal projection of that point onto the subspace.
+which generalizes the form of an orthogonal projection matrix above in the case of a multi-dimensional range. Furthermore, geometrically, the shortest distance of a point to a subspace is found by the orthogonal projection of that point onto the subspace.
 \begin{proper}
 \label{proper:shortestorthoproj}
 The shortest distance of a subspace $\mathcal{W} \subset \mathcal{V}$ to some point $\vec{v} \in \mathcal{V}$ is achieved by $\vec{v} - T(\vec{v})$ where $T$ is the orthogonal projection operator onto $\mathcal{W}$.
@@ -867,13 +889,13 @@ Note that $\vec{v} - T(\vec{v}) \in \mathcal{N}(T) = \mathcal{R}(T)^\perp$ and $
 as $\vec{w} \neq T(\vec{v})$, $\norm{T(\vec{v}) - \vec{w}}^2 > 0$.
 \end{proof}
 \subsection{Spectral Theorem}
-With orthonormal matrices and projections defined, we has come to the most important theorem in this chapter, the \index{Spectral Theorem}\keywordhl{Spectral Theorem}.
+With orthonormal matrices and projections defined, we have come to the most important theorem in this chapter, the \index{Spectral Theorem}\keywordhl{Spectral Theorem}.
 \begin{thm}[Spectral Theorem]
 \label{thm:spectral}
-For a linear operator $T: \mathcal{V} \to \mathcal{V}$ where $\mathcal{V}$ is a real, finite($n$)-dimensional vector space and the matrix representation of $T$ is symmetric, i.e.\ $[T]=[T]^T$, denote its eigenvalues by $\lambda_j$, $j = 1,2,\ldots,n$ (counting repeated ones). Assume there are $k$ distinct eigenvalues out of them. For every such a distinct eigenvalue, collect all the indices $j$ where $\lambda_j$ points to that same eigenvalue, let's say, $\lambda_{J_i}$, and put them in a set $J_i$, $i = 1,2,\ldots,k$. Let the associated eigenspace be $\mathcal{E}_{J_i}$ for the $k$ sets of $J_i$ and denote the orthogonal projection onto $\mathcal{E}_{J_i}$ as $T_{J_i}$, then we have:
+For a linear operator $T: \mathcal{V} \to \mathcal{V}$ where $\mathcal{V}$ is a real, finite($n$)-dimensional vector space and the matrix representation of $T$ is symmetric, i.e.\ $[T]=[T]^T$, denote its eigenvalues by $\lambda_j$, $j = 1,2,\ldots,n$ (counting repeated ones). Assume there are $k$ distinct eigenvalues out of them. For every such a distinct eigenvalue, collect all the indices $j$ where $\lambda_j$ points to that same eigenvalue, let's say, $\lambda_{J_i}$, and group them into an index set $J_i$, $i = 1,2,\ldots,k$. Let the associated eigenspace be $\mathcal{E}_{J_i}$ for the $k$ sets of $J_i$ and denote the orthogonal projection onto $\mathcal{E}_{J_i}$ as $T_{J_i}$, then we have:
 \begin{enumerate}[label=(\alph*)]
 \item $\mathcal{V} = \mathcal{E}_{J_1} \oplus \mathcal{E}_{J_2} \oplus \cdots \oplus \mathcal{E}_{J_k} = \bigoplus_{i=1}^{k} \mathcal{E}_{J_i}$;
-\item $(\bigoplus_{i \in \{I\}} \mathcal{E}_{J_i})^\perp = \bigoplus_{i \notin \{I\}} \mathcal{E}_{J_i}$ where $I$ is a set containing some indices between $1$ and $k$;
+\item $(\bigoplus_{i \in \{I\}} \mathcal{E}_{J_i})^\perp = \bigoplus_{i \notin \{I\}} \mathcal{E}_{J_i}$ where $I$ is an index set containing some integers between $1$ and $k$;
 \item $T_{J_i} T_{J_{i'}} = 
 \begin{cases}
 T_{J_i} & \text{if $i = i'$} \\
@@ -887,24 +909,27 @@ T_{J_i} & \text{if $i = i'$} \\
 \begin{enumerate}[label=(\alph*)]  
 \item By Theorem \ref{thm:symdiag}, $[T]$ is (orthogonally) diagonalizable. The prior discussion in Section \ref{section:diagonalproper} has shown that
 \begin{align*}
-\bigoplus_{i=1}^{k} \mathcal{E}_{J_i} = \bigoplus_{j=1}^n \mathcal{E}_j = \mathcal{V}  
+\bigoplus_{i=1}^{k} \mathcal{E}_{J_i} = \bigoplus_{j=1}^n \mathcal{E}_j = \mathcal{V} 
 \end{align*}
 where $\mathcal{E}_{J_i} = \bigoplus_{j \in J_i} \mathcal{E}_j$ is the direct sum of one-dimensional subspaces generated by each of the linearly independent eigenvector corresponding to the same eigenvalue $\lambda_{J_i}$.
-\item This is a consequence of applying Properties \ref{proper:orthodirectsum} on (a) where $\bigoplus_{i \in \{I\}} \mathcal{E}_{J_i}$ and $\bigoplus_{i \notin \{I\}} \mathcal{E}_{J_i}$ are derived from the two mutually exclusive portions of the orthonormal basis for $\mathcal{V}$ generated by $n$ orthonormal eigenvectors of the symmetric $[T]$, available due to the implication of Theorem \ref{thm:symdiag}.
-\item $T_{J_i}^2 = T_{J_i}$ by the definition of a projection (Properties \ref{proper:matrixproj}). Also, we can express any $\vec{v} = \vec{v}_{J_1} + \vec{v}_{J_2} + \cdots + \vec{v}_{J_k}$ by (a), then $T_{J_{i'}}(\vec{v}) = \vec{v}_{J_{i'}}$ due to the definition of an orthogonal projection and (b), as $\mathcal{E}_{J_{i'}}^\perp = \bigoplus_{i \neq i'} \mathcal{E}_{J_i}$. The same logic means that $T_{J_i}(T_{J_i'}(\vec{v})) = T_{J_i}(\vec{v}_{J_{i'}}) = \textbf{0}$ if $i \neq i'$. Since this holds for any $\vec{v}$, $T_{J_i} T_{J_{i'}} = 0$.
-\item Again for any $\vec{v}$ we can rewrite it as $\vec{v} = \vec{v}_{J_1} + \vec{v}_{J_2} + \cdots + \vec{v}_{J_k}$ where $\vec{v}_{J_i} \in \mathcal{E}_{J_i}$. Since $T_{J_i}$ is an orthogonal projection onto $\mathcal{E}_{J_i}$ and also $\mathcal{R}(T_{J_i})^\perp = \mathcal{E}_{J_{i'}}^\perp = \bigoplus_{i \neq i'} \mathcal{E}_{J_i} = \mathcal{N}(T_{J_i})$ as derived in (c), $T_{J_i}(\vec{v}) = \vec{v}_{J_i}$. Thus $I\vec{v} = \vec{v} = T_{J_1}(\vec{v}) + T_{J_2}(\vec{v}) + \cdots + T_{J_k}(\vec{v}) = (T_{J_1} + T_{J_2} + \cdots + T_{J_k})(\vec{v})$ and it must be that $I = T_{J_1} + T_{J_2} + \cdots + T_{J_k}$.
+\item This is a consequence of applying Properties \ref{proper:orthodirectsum} on (a) where $\bigoplus_{i \in \{I\}} \mathcal{E}_{J_i}$ and $\bigoplus_{i \notin \{I\}} \mathcal{E}_{J_i}$ are derived from the two mutually exclusive portions of the orthonormal basis for $\mathcal{V}$ that contains the $n$ orthonormal eigenvectors of the symmetric $[T]$, available due to the implication of Theorem \ref{proper:orthobasissym}.
+\item $T_{J_i}^2 = T_{J_i}$ by the definition of a projection (Properties \ref{proper:matrixproj}). Also, we can express any $\vec{v} = \vec{v}_{J_1} + \vec{v}_{J_2} + \cdots + \vec{v}_{J_k}$ by (a) where $\vec{v}_{J_i} \in \mathcal{E}_{J_i}$. Then $T_{J_{i'}}(\vec{v}) = \vec{v}_{J_{i'}}$ due to the definition of an orthogonal projection and (b) as $\mathcal{E}_{J_{i'}}^\perp = \bigoplus_{i \neq i'} \mathcal{E}_{J_i}$. Using the same argument again means that $T_{J_i}(T_{J_i'}(\vec{v})) = T_{J_i}(\vec{v}_{J_{i'}}) = \textbf{0}$ if $i \neq i'$. Since this holds for any $\vec{v}$, $T_{J_i} T_{J_{i'}} = 0$.
+\item Again for any $\vec{v}$ we can rewrite it as $\vec{v} = \vec{v}_{J_1} + \vec{v}_{J_2} + \cdots + \vec{v}_{J_k}$, $\vec{v}_{J_i} \in \mathcal{E}_{J_i}$. Since $T_{J_i}$ is an orthogonal projection onto $\mathcal{E}_{J_i}$ and also $\mathcal{E}_{J_{i'}}^\perp = \bigoplus_{i \neq i'} \mathcal{E}_{J_i} = \mathcal{N}(T_{J_i})$ as derived in (c), $T_{J_i}(\vec{v}) = \vec{v}_{J_i}$. Thus $I(\vec{v}) = \vec{v} = \vec{v}_{J_1} + \vec{v}_{J_2} + \cdots + \vec{v}_{J_k} = T_{J_1}(\vec{v}) + T_{J_2}(\vec{v}) + \cdots + T_{J_k}(\vec{v}) = (T_{J_1} + T_{J_2} + \cdots + T_{J_k})(\vec{v})$ and it must be that $I = T_{J_1} + T_{J_2} + \cdots + T_{J_k}$ by Properties \ref{proper:sametrans}.
 \item As usual, $\vec{v} = \vec{v}_{J_1} + \vec{v}_{J_2} + \cdots + \vec{v}_{J_k}$ and
 \begin{align*}
 T(\vec{v}) &= T(\vec{v}_{J_1}) + T\vec{v}_{J_2} + \cdots + T(\vec{v}_{J_k}) \\
-&= \lambda_{J_1}\vec{v}_{J_1} + \lambda_{J_2}\vec{v}_{J_2} + \cdots + \lambda_{J_k}\vec{v}_{J_k} \text{\; (Definition \ref{defn:eigen} for eigenvectors)} \\
+&= \lambda_{J_1}\vec{v}_{J_1} + \lambda_{J_2}\vec{v}_{J_2} + \cdots + \lambda_{J_k}\vec{v}_{J_k} \quad \begin{aligned}
+\text{(Definition \ref{defn:eigen} for} \\
+\text{eigenvalues/eigenvectors)}
+\end{aligned} \\
 &= \lambda_{J_1}T_{J_1}(\vec{v}) + \lambda_{J_2}T_{J_2}(\vec{v}) + \cdots + \lambda_{J_k}T_{J_k}(\vec{v}) \text{\; (Just as (d))} \\
 &= (\lambda_{J_1}T_{J_1} + \lambda_{J_2}T_{J_2} + \cdots + \lambda_{J_k}T_{J_k})(\vec{v})
 \end{align*}
-and thus the desired relation follows.
+and thus the desired relation follows, again by Properties \ref{proper:sametrans}.
 \end{enumerate}
 \end{proof}
-The set of eigenvalues $\{\lambda_{J_i}\}$, $i = 1,2,\ldots,k$ is known as the \index{Spectrum}\keywordhl{spectrum} of $T$, hence comes the name of the theorem. The expression in (d) is called the \index{Resolution of the Identity}\keywordhl{resolution of the identity} induced by $T$, and that in (e) is referred to as the \index{Spectral Decomposition}\keywordhl{spectral decomposition} of $T$. The implications of these two parts of the Spectral Theorem are as follows: The resolution of the identity in (d) means that any vector $\vec{v}$ can be decomposed into components in the orthogonal coordinate system derived from the orthonormal eigenvectors of $T$, where the corresponding coordinates are given by simply projecting onto each of these eigenvectors; The spectral decomposition in (e) means that any linear operator $T$ that happens to have a symmetric matrix representation, when applied on a vector $\vec{v}$, can be regarded to be first decomposing $\vec{v}$ into components in the orthogonal coordinate system as suggested by (d), and then scaling each of these components according to the spectrum (eigenvalues), which represents the "intensity" of $T$ in the respective eigenspace. Since only projections and scalings are involved, it implies that $T$ constitutes no rotation. Finally, notice that an orthogonal projection is a special case of (e) where the spectrum is consisted of $1$ (range) and $0$ (kernel) only.\par
-Short Exercise: Verify statements (d) and (e) in the Spectral Theorem for the symmetric matrix in Example \ref{exmp:orthodiag}.\footnote{We will just show (d) here and leave (e) to the readers. By Equation \ref{eqn:projrank1sum}, R.H.S. of (d) reads
+The set of eigenvalues $\{\lambda_{J_i}\}$, $i = 1,2,\ldots,k$ is known as the \index{Spectrum}\keywordhl{spectrum} of $T$, hence comes the name of the theorem. The expression in (d) is called the \index{Resolution of the Identity}\keywordhl{resolution of the identity} induced by $T$, and that in (e) is referred to as the \index{Spectral Decomposition}\keywordhl{spectral decomposition} of $T$. The implications of these two parts of the Spectral Theorem are as follows: The resolution of the identity in (d) means that any vector $\vec{v}$ can be decomposed into components in the orthogonal coordinate system derived from the orthonormal eigenvectors of a symmetric $T$, where the corresponding coordinates are given by simply projecting it onto each of these eigenspaces; The spectral decomposition in (e) means that any symmetric linear operator $T$, when applied on a vector $\vec{v}$, can be treated as equivalent to first decomposing $\vec{v}$ into components in the orthogonal coordinate system as suggested by (d), and then scaling each of these components according to the spectrum (eigenvalues), which represents the "intensity" of $T$ in the respective eigenspace. Since only projections and scalings are involved, it implies that $T$ constitutes no rotation. Finally, notice that an orthogonal projection is a special case of (e) where the spectrum consists of $1$ (range) and $0$ (kernel) only.\par
+Short Exercise: Verify statements (d) and (e) in the Spectral Theorem for the symmetric matrix in Example \ref{exmp:orthodiag}.\footnote{We will just show (d) here and leave (e) to the readers. By Equation (\ref{eqn:projrank1sum}), R.H.S. of (d) reads
 \begin{align*}
 T_{J_1} + T_{J_2} &= (\textbf{v}_{J_1}^{(1)T}\textbf{v}_{J_1}^{(1)T} + \textbf{v}_{J_1}^{(2)T}\textbf{v}_{J_1}^{(2)T}) + \textbf{v}_{J_2}^{(1)T}\textbf{v}_{J_2}^{(1)T} \\
 &= \begin{bmatrix}
@@ -962,21 +987,21 @@ where the set indices $J_1$ and $J_2$ indicate the eigenvectors for the eigenval
 \section{Normal Matrices and Unitary Diagonalization}
 
 \subsection{Unitary and Normal Matrices} 
-We now generalize the ideas of orthogonal matrices/diagonalization to complex vector space. The complex counterpart of orthogonal matrices are known as \index{Unitary Matrix}\keywordhl{unitary matrices}.
-\begin{defn}
+We now generalize the ideas of orthogonal matrices/diagonalization to complex vector space. The complex counterpart of orthogonal matrices is known as \index{Unitary Matrix}\keywordhl{unitary matrices}.
+\begin{defn}[Unitary Matrix]
 \label{defn:unitary}
 A complex matrix $A$ is said to be unitary if
 \begin{align*}
 A^*A = AA^* = I
 \end{align*}
-where the superscript $*$ denotes conjugate transpose (Definition \ref{defn:conjutrans}).
+where the superscript $^*$ denotes conjugate transpose (Definition \ref{defn:conjutrans}).
 \end{defn}
 Along the same line, the complex equivalent of orthogonal diagonalization is \index{Unitary Diagonalization}\keywordhl{unitary diagonalization}.
 \begin{defn}
 \label{defn:unitarydiag}
-A complex square matrix $A$ is said to be unitarily diagonalizable if there is a unitary matrix $U$ such that $U^* AU = D$ yields a complex diagonal matrix whose non-zero entries are the eigenvalues of $A$.
+A complex square matrix $A$ is said to be unitarily diagonalizable if there is a unitary matrix $U$ such that $U^* AU = D$ yields a complex diagonal matrix whose diagonal entries are the eigenvalues of $A$.
 \end{defn}
-This can be compared to Definition \ref{defn:orthodiagonal}. In addition, since we know that the availability of orthogonal diagonalization depends on whether the matrix is symmetric, we may want to know if there is a comparable criterion for unitary diagonalization. A reasonable guess is the matrix $A$ being \textit{Hermitian} (Definition \ref{defn:Hermitian}) such that $A^* = A$ since it is the direct complex analog of a symmetric matrix. However, the criterion is actually looser where the matrix is required to be just \index{Normal}\keywordhl{normal}.
+This can be compared to Definition \ref{defn:orthodiagonal}. In addition, since we know that the availability of orthogonal diagonalization depends on whether the matrix is symmetric, we may want to know if there is a comparable criterion for unitary diagonalization. A reasonable guess is the matrix $A$ being \textit{Hermitian} (Definition \ref{defn:Hermitian}) such that $A^* = A$ since it is the direct complex analog of a symmetric matrix. However, the criterion is actually looser where the matrix only needs to be \index{Normal}\keywordhl{normal}.
 \begin{defn}[Normal Matrix]
 A matrix $A$ is known as normal whenever
 \begin{align*}
@@ -984,19 +1009,19 @@ A^*A = AA^*
 \end{align*}
 which may or may not be equal to the identity.
 \end{defn}
-So normality is a less strict condition than being unitary. It is also very easy to see that a Hermitian matrix is always normal. In the next part, we are going to derive how unitary diagonalization manifests and why it is enabled by normality.
+So normal is a less strict condition than unitary. It is also very easy to see that a Hermitian matrix is always normal. In the next part, we are going to derive how unitary diagonalization can happen on a normal matrix.
 
 \subsection{Unitary Diagonalization}
 
-As in Properties \ref{proper:diagonalize}, the unitary matrix $U$ that diagonalizes some $n \times n$ complex, normal matrix $A$ is formed by the $n$ linearly independent eigenvectors of $A$ arranged in columns, which also like in Definition \ref{defn:orthodiagonal} these eigenvectors have to be orthonormal. Note that orthogonality is now defined with respect to the complex dot product which has a complex conjugate applied on the second input vector. To show the equivalence between a matrix being unitary diagonalizable and its normality, we can of course follow the similar steps in the proof of Theorem \ref{thm:symdiag} that uses Properties \ref{proper:symortho} and \ref{proper:symnodefic}. However, an alternative approach of utilizing the \keywordhl{Schur's Triangularization Theorem} will be adopted here.
+As in Properties \ref{proper:diagonalize}, the unitary matrix $U$ that diagonalizes some $n \times n$ complex, normal matrix $A$ is formed by the $n$ linearly independent eigenvectors of $A$ arranged in columns, which also like in Definition \ref{defn:orthodiagonal} these eigenvectors have to be orthonormal. Note that the eigenvectors are now $\mathbb{C}^n$ and orthogonality is defined with respect to the complex dot product (Definition \ref{defn:complexdotproduct}) which has a complex conjugate applied on the second input vector. To show the equivalence between a matrix being unitarily diagonalizable and normal, we can of course follow the similar steps in the proof of Theorem \ref{thm:symdiag} that uses Properties \ref{proper:symortho} and \ref{proper:symnodefic}. However, an alternative approach of utilizing the \keywordhl{Schur's Triangularization Theorem} will be adopted here.
 
 \begin{thm}[Schur's Triangularization Theorem]
 \label{thm:schurtrig}
-For any square complex (real) matrix $A$, there exists a unitary (orthogonal) matrix $U$ ($P$) such that $S = U^*AU$ ($P^TAP$) is upper-triangular (where the eigenvalues of $A$, counting algebraic multiplicity, are located along the main diagonal of $S$) if the characteristic polynomial of $A$ splits over $\mathbb{C}$ ($\mathbb{R}$).
+For any square complex (real) matrix $A$, there exists a unitary (orthogonal) matrix $U$ ($P$) such that $S = U^*AU$ ($P^TAP$) is upper-triangular, where the eigenvalues of $A$, counting algebraic multiplicities, are located along the main diagonal of $S$, if the characteristic polynomial of $A$ splits over $\mathbb{C}$ ($\mathbb{R}$).
 \end{thm}
-Notice the requirement in the end of the theorem (see Footnote \ref{foot:split} of Chapter \ref{chap:eigen}). Recall that every polynomial splits over $\mathbb{C}$. So in other words, every square matrix is \textit{unitariliy similar} to an upper-triangular matrix. (But not always orthogonally similar to a real diagonal matrix as the characteristic polynomial may not split over $\mathbb{R}$\footnote{which is equivalent to all eigenvalues being real.}.)
+Notice the requirement at the end of the theorem (see Footnote \ref{foot:split} of Chapter \ref{chap:eigen}) and recall that every polynomial splits over $\mathbb{C}$. So in other words, every square matrix is \textit{unitariliy similar} to an upper-triangular matrix. (But not always orthogonally similar to a real diagonal matrix as the characteristic polynomial may not split over $\mathbb{R}$\footnote{Its splitting over $\mathbb{R}$ is equivalent to all eigenvalues being real.}.)
 \begin{proof}
-We will use mathematical induction on the size of $A$ to show the theorem for the complex case. If $A$ is $1 \times 1$ then the result is automatic. Then assume $A$ is $n \times n$ and the theorem is true for all $r \times r$ matrices where $r < n$, particularly for $r = n-1$. As the characteristic polynomial splits, there is always an available (complex) root to the polynomial as one of the eigenvalues of $A$, let's say $\lambda_1$, and a corresponding eigenvector $\vec{v}_\lambda^{(1)}$. Use the Gram-Schmidt process (with respect to the complex dot product now) to generate a other set of $n-1$ vectors $\vec{w}^{(2)}, \ldots, \vec{w}^{(n)}$ to complete an orthonormal basis for $\mathbb{C}^n$. The matrix formed by arranging these orthonormal basis vectors (normalized into unit length) in columns,
+We will use mathematical induction on the size of $A$ to show the theorem for the complex case. If $A$ is $1 \times 1$ then the result is automatic. Then assume $A$ is $n \times n$ and the theorem is true for all $r \times r$ matrices where $r < n$, particularly for $r = n-1$. As the characteristic polynomial splits, there is always an available (complex) root to the polynomial as one of the eigenvalues of $A$, let's say $\lambda_1$, and a corresponding eigenvector $\vec{v}_\lambda^{(1)}$. Use the Gram-Schmidt process (with respect to the complex dot product now) to generate another set of $n-1$ vectors $\vec{w}^{(2)}, \ldots, \vec{w}^{(n)}$ to complete an orthonormal basis for $\mathbb{C}^n$. The matrix formed by arranging these orthonormal basis vectors (normalized into unit length) in columns,
 \begin{align*}
 Q = \begin{bmatrix}
 \vec{v}_\lambda^{(1)} | \vec{w}^{(2)} | \cdots | \vec{w}^{(n)}
@@ -1005,7 +1030,7 @@ Q = \begin{bmatrix}
 \vec{v}_\lambda^{(1)} | W
 \end{bmatrix}
 \end{align*}
-is Hermitian and unitary, $Q^{-1} = Q^* = Q$. A change of coordinates on $A$ by $Q$ as in Properties \ref{proper:endomorph} is
+satisfies $Q^*Q = QQ^* = I$ and is unitary, so $Q^{-1} = Q^*$. A change of coordinates on $A$ by $Q$ as in Properties \ref{proper:endomorph} is
 \begin{align*}
 Q^{-1}AQ = Q^* AQ &= Q^*A\begin{bmatrix}
 \vec{v}_\lambda^{(1)} | W
@@ -1016,34 +1041,34 @@ A\vec{v}_\lambda^{(1)} | AW
 &= Q^*\begin{bmatrix}
 \lambda_1\vec{v}_\lambda^{(1)} | AW
 \end{bmatrix} \quad \begin{aligned}
-\text{(Definition \ref{defn:eigen}} \\
-\text{for an eigenvalue/eigenvector)}
+\text{(Definition \ref{defn:eigen} for} \\
+\text{an eigenvalue/eigenvector)}
 \end{aligned} \\
 &= 
 \left[\begin{array}{c}
-\vec{v}_\lambda^{(1)*} \\
+\vec{v}_\lambda^{(1)*} \Bstrut \\
 \hline
-W^*
+W^* \Tstrut
 \end{array}\right]
 \begin{bmatrix}
 \lambda_1\vec{v}_\lambda^{(1)} | AW
-\end{bmatrix} \text{\quad ($Q$ is Hermitian)} \\
-&= 
-\begin{bmatrix}
-\left[\begin{array}{c}
-\vec{v}_\lambda^{(1)*} \\
-\hline
-W^*
-\end{array}\right]\lambda_1\vec{v}_\lambda^{(1)} | 
-\left[\begin{array}{c}
-\vec{v}_\lambda^{(1)*} \\
-\hline
-W^*
-\end{array}\right]AW
 \end{bmatrix} \\
+&= 
+\left[\begin{array}{c|c}
+\left[\begin{array}{c}
+\vec{v}_\lambda^{(1)*} \Bstrut \\
+\hline
+W^* \Tstrut
+\end{array}\right]\lambda_1\vec{v}_\lambda^{(1)} &
+\left[\begin{array}{c}
+\vec{v}_\lambda^{(1)*} \Bstrut \\
+\hline
+W^* \Tstrut
+\end{array}\right]AW
+\end{array}\right] \\
 &=
 \left[\begin{array}{cc}
-\lambda_1 & \vec{v}_\lambda^{(1)*}AW \\
+\lambda_1 (\vec{v}_\lambda^{(1)*} \cdot \vec{v}_\lambda^{(1)}) & \vec{v}_\lambda^{(1)*}AW \\
 \textbf{0} & W^*AW
 \end{array}\right]
 =
@@ -1052,7 +1077,7 @@ W^*
 \textbf{0} & W'
 \end{array}\right]
 \end{align*}
-which is expressed in the form of a $2\times 2$ block matrix. The leftmost column takes its form because $\vec{v}_\lambda^{(1)}$ is now a unit vector and hence $\textbf{v}_\lambda^{(1)*} \textbf{v}_\lambda^{(1)} = 1$ and it is orthogonal to other vectors in $W$ by construct. Now we can use the induction hypothesis on the bottom right block $W' = W^*AW$ which is an $(n-1) \times (n-1)$ matrix, such that there exists a unitary matrix $R$ so that $R^*W'R$ is upper-triangular. Consider
+which is expressed in the form of a $2\times 2$ block matrix. The leftmost column takes its form because $\vec{v}_\lambda^{(1)}$ is now a unit vector and hence $\textbf{v}_\lambda^{(1)*} \textbf{v}_\lambda^{(1)} = 1$ and it is orthogonal to other vectors in $W$ by construct. Now we can use the induction hypothesis on the bottom right block $W' = W^*AW$ which is an $(n-1) \times (n-1)$ complex matrix, such that there exists a unitary matrix $R$ so that $R^*W'R$ is upper-triangular. Then, consider
 \begin{align*}
 U = 
 Q 
@@ -1063,7 +1088,7 @@ Q
 \end{align*}
 This matrix is unitary (Definition \ref{defn:unitary}), as
 \begin{align*}
-U^*U &=  
+U^*U &= 
 \left[\begin{array}{cc}
 1 & \textbf{0}^* \\
 \textbf{0} & R^*
@@ -1089,11 +1114,18 @@ Q^* Q
 \left[\begin{array}{cc}
 1 & \textbf{0}^* \\
 \textbf{0} & R
-\end{array}\right] =
+\end{array}\right] \\
+&=
 \left[\begin{array}{cc}
 1 & \textbf{0}^* \\
 \textbf{0} & R^*R
-\end{array}\right] = I & \text{(R is unitary)}
+\end{array}\right] 
+=
+\left[\begin{array}{cc}
+1 & \textbf{0}^* \\
+\textbf{0} & I_{n-1}
+\end{array}\right] 
+= I & \text{(R is unitary)}
 \end{align*}
 Subsequently,
 \begin{align*}
@@ -1134,13 +1166,13 @@ Q^* AQ
 \textbf{0} & R^*W'R
 \end{array}\right]
 \end{align*}
-which is an upper-triangular matrix as desired since the induction hypothesis demands the bottom-right block $R^*W'R$ to be upper-triangular too. And therefore, the diagonal elements of $S$ are exactly its eigenvalues, which will be the same as those of $A$ since they are unitarily similar. 
+which is an upper-triangular matrix as desired since the induction hypothesis demands the bottom-right block $R^*W'R$ to be upper-triangular too. And therefore, the diagonal elements of $S$ are exactly its eigenvalues, which will be the same as those of $A$ since they are unitarily similar (Properties \ref{proper:similarinvariant} adapted to complex matrices). 
 \end{proof}
 
 With Schur's Triangularization Theorem, the fact that normal matrices are unitarily diagonalizable is attainable.
 \begin{thm}
 \label{thm:normalunidiag}
-A square matrix $A$ can be unitarily diagonalized if and only if $A$ is normal.
+A square matrix $A$ can be unitarily diagonalized such that $U^*AU = D$ if and only if $A$ is normal.
 \end{thm}
 We will prove the "only if" part first. This is a bit harder than that in Theorem \ref{thm:symdiag}:
 \begin{align*}
@@ -1148,12 +1180,13 @@ A^*A = (UDU^*)^*(UDU^*) = UD^*(U^*U) DU^* = UD^*DU^*
 \end{align*}
 and
 \begin{align*}
-AA^* = (UDU^*)(UDU^*)^* = UD(U^*U) DU^*U^* = UDD^*U^*  
+AA^* = (UDU^*)(UDU^*)^* = UD(U^*U) DU^* = UDD^*U^*  
 \end{align*}
-But $D^*D = DD^*$ since they are diagonal and commute, so $A^*A = AA^*$. The "if" part is also a bit more tricky. By Theorem \ref{thm:schurtrig}, we can always write $S = U^*AU$ where $S$ is upper-triangular (and $U$ is unitary), and hence $S^* = U^*A^*U$ is lower-triangular. Notice that
+$U^*U = I$ by Definition \ref{defn:unitary} as $U$ is unitary. But also $D^*D = DD^*$ since they are diagonal and commute, thus $A^*A = AA^*$. The "if" part is also a bit more tricky. By Theorem \ref{thm:schurtrig}, we can always write $S = U^*AU$ where $S$ is upper-triangular (and $U$ is unitary), and hence $S^* = U^*A^*U$ is lower-triangular. Notice that
 \begin{align*}
 S^*S = U^*A^*U U^*AU &= U^*A^* AU &\text{($U$ is unitary)} \\
 &= U^*AA^*U &\text{($A$ is normal)} \\
+&= U^*A(UU^*)A^*U &\text{(again, $U$ is unitary)} \\
 &= (U^*AU) (U^*A^*U) = SS^*
 \end{align*}
 With
@@ -1176,37 +1209,37 @@ S^* &=
 \overline{s_{1n}} & \overline{s_{2n}} & \overline{s_{3n}} & \cdots & \overline{s_{nn}}
 \end{bmatrix}
 \end{align*}
-then consider
+by considering
 \begin{align*}
 (S^*S)_{11} &= (SS^*)_{11} \\
 \overline{s_{11}}s_{11} &= s_{11}\overline{s_{11}} + s_{12}\overline{s_{12}} + \cdots + s_{1n}\overline{s_{1n}} \\
 0 &= \abs{s_{12}}^2 + \cdots + \abs{s_{1n}}^2 \geq 0
 \end{align*}
-we must have $s_{12} = \cdots = s_{1n} = 0$. Similarly, consider $(S^*S)_{22} = (SS^*)_{22}, \ldots, \\ (S^*S)_{nn} = (SS^*)_{nn}$ in order, we conclude that all off-diagonal elements $s_{ij} = 0$ when $i < j$ are zero and thus $S$ is diagonal. Hence $A$ is actually unitarily diagonalized into $D = S = U^*AU$ by the matrix $U$.
+we must have $s_{12} = \cdots = s_{1n} = 0$. Similarly, consider $(S^*S)_{22} = (SS^*)_{22}, \ldots, \\ (S^*S)_{nn} = (SS^*)_{nn}$ in sequential order, we conclude that $s_{ij} = 0$ when $i < j$, all off-diagonal elements are zero, and thus $S$ is diagonal. Hence $A$ is actually unitarily diagonalized into $D = S = U^*AU$ by the matrix $U$.
 
 \begin{exmp}
 Unitarily diagonalize the following matrix.
 \begin{align*}
 A =
 \begin{bmatrix}
-1 & 1+\imath \\
-1-\imath & 2
+1 & 1+i \\
+1-i & 2
 \end{bmatrix}
 \end{align*}
 \end{exmp}
 \begin{solution}
-This can be seen as a Hermitian matrix, and therefore unitary diagonalization is possible by Theorem \ref{thm:normalunidiag}. The characteristic equation is 
+The matrix $A$ can be seen to be Hermitian, and therefore unitary diagonalization is possible by Theorem \ref{thm:normalunidiag}. The characteristic equation is 
 \begin{align*}
-(1-\lambda)(2-\lambda) - (1+\imath)(1-\imath) &= 0 \\
+(1-\lambda)(2-\lambda) - (1+i)(1-i) &= 0 \\
 (2 - 3\lambda + \lambda^2) - 2 &= 0 \\
 \lambda^2 - 3\lambda &= 0 \\
 \lambda &= 0 \text{ or } 3
 \end{align*}
-The eigenvalues being real for an Hermitian matrix is not a mere coincidence and will be proved afterwards. In fact, it is an extension of the fact that the eigenvalues of any symmetric matrix are all reals. The eigenvectors can be computed to be $(-1-\imath, 1)^T$ for $\lambda = 0$ and $(1+\imath, 2)^T$ for $\lambda = 3$. After normalization, they are $\frac{1}{\sqrt{3}}(-1-\imath, 1)^T$ and $\frac{1}{\sqrt{6}}(1+\imath, 2)^T$ respectively. Now define
+The eigenvalues being real for a Hermitian matrix is not a mere coincidence and will be proved afterward. In fact, it is an extension of the fact that the eigenvalues of any symmetric matrix are all real. The eigenvectors can be found to be $(-1-i, 1)^T$ for $\lambda = 0$ and $(1+i, 2)^T$ for $\lambda = 3$. After normalization, they are $\frac{1}{\sqrt{3}}(-1-i, 1)^T$ and $\frac{1}{\sqrt{6}}(1+i, 2)^T$ respectively. Now define
 \begin{align*}
 U =
 \begin{bmatrix}
-\frac{-1-\imath}{\sqrt{3}} & \frac{1+\imath}{\sqrt{6}} \\
+\frac{-1-i}{\sqrt{3}} & \frac{1+i}{\sqrt{6}} \\
 \frac{1}{\sqrt{3}} & \frac{\sqrt{2}}{\sqrt{3}}
 \end{bmatrix}
 \end{align*}
@@ -1214,15 +1247,15 @@ Then the unitary diagonalization has the form of
 \begin{align*}
 U^* AU &= D \\
 \begin{bmatrix}
-\frac{-1+\imath}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
-\frac{1-\imath}{\sqrt{6}} & \frac{\sqrt{2}}{\sqrt{3}}
+\frac{-1+i}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
+\frac{1-i}{\sqrt{6}} & \frac{\sqrt{2}}{\sqrt{3}}
 \end{bmatrix}
 \begin{bmatrix}
-1 & 1+\imath \\
-1-\imath & 2
+1 & 1+i \\
+1-i & 2
 \end{bmatrix}
 \begin{bmatrix}
-\frac{-1-\imath}{\sqrt{3}} & \frac{1+\imath}{\sqrt{6}} \\
+\frac{-1-i}{\sqrt{3}} & \frac{1+i}{\sqrt{6}} \\
 \frac{1}{\sqrt{3}} & \frac{\sqrt{2}}{\sqrt{3}}
 \end{bmatrix}
 &=
@@ -1237,21 +1270,21 @@ U^* AU &= D \\
 The eigenvalues of any Hermitian matrix $A = A^*$ must be real.
 \end{proper}
 \begin{proof}
-Consider $\vec{v} \cdot (A\vec{v})$ where $\vec{v}$ is a complex eigenvector of $A$ and the complex dot product is used in place. Then
+Consider $\vec{v}_\lambda \cdot (A\vec{v}_\lambda)$ where $\vec{v}_\lambda$ is a complex eigenvector of $A$ and the complex dot product is used in place. Then
 \begin{align*}
-\vec{v} \cdot (A\vec{v}) &= \vec{v} \cdot (\lambda \vec{v}) & \text{(Definition \ref{defn:eigen})} \\
-&= \overline{\lambda} (\vec{v} \cdot \vec{v}) & \text{(Properties \ref{proper:complexdot})} \\
-&= \overline{\lambda} \norm{\vec{v}}^2
+\vec{v}_\lambda \cdot (A\vec{v}_\lambda) &= \vec{v}_\lambda \cdot (\lambda \vec{v}_\lambda) & \text{(Definition \ref{defn:eigen})} \\
+&= \overline{\lambda} (\vec{v}_\lambda \cdot \vec{v}_\lambda) & \text{(Properties \ref{proper:complexdot})} \\
+&= \overline{\lambda} \norm{\vec{v}_\lambda}^2
 \end{align*}
 But also
 \begin{align*}
-\vec{v} \cdot (A\vec{v}) &= (A^*\vec{v}) \cdot \vec{v} & \text{(Properties \ref{proper:complexdotherm})} \\
-&= (A\vec{v}) \cdot \vec{v} & \text{($A$ is Hermitian)} \\
-&= (\lambda\vec{v}) \cdot \vec{v} & \text{(Definition \ref{defn:eigen})} \\
-&= \lambda (\vec{v} \cdot \vec{v}) & \text{(Properties \ref{proper:complexdot})} \\
-&= \lambda \norm{\vec{v}}^2
+\vec{v}_\lambda \cdot (A\vec{v}_\lambda) &= (A^*\vec{v}_\lambda) \cdot \vec{v}_\lambda & \text{(Properties \ref{proper:complexdotherm})} \\
+&= (A\vec{v}_\lambda) \cdot \vec{v}_\lambda & \text{($A$ is Hermitian, Definition \ref{defn:Hermitian})} \\
+&= (\lambda\vec{v}_\lambda) \cdot \vec{v}_\lambda & \text{(Definition \ref{defn:eigen})} \\
+&= \lambda (\vec{v}_\lambda \cdot \vec{v}_\lambda) & \text{(Properties \ref{proper:complexdot})} \\
+&= \lambda \norm{\vec{v}_\lambda}^2
 \end{align*}
-Therefore, $\overline{\lambda}\norm{\vec{v}}^2 = \lambda \norm{\vec{v}}^2$, and since $\vec{v} \neq \textbf{0}$, $\norm{\vec{v}} \neq 0$, the eigenvalue $\overline{\lambda} = \lambda$ has to be real.
+Therefore, $\overline{\lambda}\norm{\vec{v}_\lambda}^2 = \lambda \norm{\vec{v}_\lambda}^2$, and since $\vec{v}_\lambda \neq \textbf{0}$, $\norm{\vec{v}_\lambda} \neq 0$, $\overline{\lambda} = \lambda$ and the eigenvalue $\lambda$ has to be real.
 \end{proof}
 
 \begin{exmp}
@@ -1260,8 +1293,8 @@ Check
 \begin{align*}
 A = 
 \begin{bmatrix}
-\frac{5}{3}-\frac{1}{3}\imath &\frac{1}{3}+\imath \\ 
--1+\frac{1}{3}\imath & \frac{4}{3}+\frac{1}{3}\imath
+\frac{5}{3}-\frac{1}{3}i &\frac{1}{3}+i \\ 
+-1+\frac{1}{3}i & \frac{4}{3}+\frac{1}{3}i
 \end{bmatrix}
 \end{align*}
 is normal and carry out unitary diagonalization on it.
@@ -1271,66 +1304,66 @@ First,
 \begin{align*}
 A^* A=
 \begin{bmatrix}
-\frac{5}{3}+\frac{1}{3}\imath & -1-\frac{1}{3}\imath\\ 
-\frac{1}{3}-\imath & \frac{4}{3}-\frac{1}{3}\imath
+\frac{5}{3}+\frac{1}{3}i & -1-\frac{1}{3}i\\ 
+\frac{1}{3}-i & \frac{4}{3}-\frac{1}{3}i
 \end{bmatrix}
 \begin{bmatrix}
-\frac{5}{3}-\frac{1}{3}\imath &\frac{1}{3}+\imath \\ 
--1+\frac{1}{3}\imath & \frac{4}{3}+\frac{1}{3}\imath
+\frac{5}{3}-\frac{1}{3}i &\frac{1}{3}+i \\ 
+-1+\frac{1}{3}i & \frac{4}{3}+\frac{1}{3}i
 \end{bmatrix} =
 \begin{bmatrix}
-4 & -1+\imath \\
--1-\imath & 3
+4 & -1+i \\
+-1-i & 3
 \end{bmatrix}
 \end{align*}
 and
 \begin{align*}
 A A^* =
 \begin{bmatrix}
-\frac{5}{3}-\frac{1}{3}\imath & \frac{1}{3}+\imath \\ 
--1+\frac{1}{3}\imath & \frac{4}{3}+\frac{1}{3}\imath
+\frac{5}{3}-\frac{1}{3}i & \frac{1}{3}+i \\ 
+-1+\frac{1}{3}i & \frac{4}{3}+\frac{1}{3}i
 \end{bmatrix}
 \begin{bmatrix}
-\frac{5}{3}+\frac{1}{3}\imath & -1-\frac{1}{3}\imath\\ 
-\frac{1}{3}-\imath & \frac{4}{3}-\frac{1}{3}\imath
+\frac{5}{3}+\frac{1}{3}i & -1-\frac{1}{3}i \\ 
+\frac{1}{3}-i & \frac{4}{3}-\frac{1}{3}i
 \end{bmatrix} =
 \begin{bmatrix}
-4 & -1+\imath \\
--1-\imath & 3
+4 & -1+i \\
+-1-i & 3
 \end{bmatrix} = A^* A
 \end{align*}
-So normality holds. Now the characteristic equation is
+So $A$ is indeed normal. Now the characteristic equation is
 \begin{align*}
-(\frac{5}{3}-\frac{1}{3}\imath-\lambda)(\frac{4}{3}+\frac{1}{3}\imath-\lambda) - (-1+\frac{1}{3}\imath)(\frac{1}{3}+\imath) &= 0 \\
-\lambda^2 - 3\lambda + (3+\imath) &= 0 
+(\frac{5}{3}-\frac{1}{3}i-\lambda)(\frac{4}{3}+\frac{1}{3}i-\lambda) - (-1+\frac{1}{3}i)(\frac{1}{3}+i) &= 0 \\
+\lambda^2 - 3\lambda + (3+i) &= 0 
 \end{align*}
-which can be checked to have the complex roots of $\lambda_1 = 1+\imath$ and $\lambda_2 = 2-\imath$ as the two eigenvalues. The corresponding orthonormal eigenvectors are $\vec{v}_{\lambda_1} = (\frac{1}{\sqrt{3}}, \frac{1+\imath}{\sqrt{3}})^T$ and $\vec{v}_{\lambda_2} = (\frac{-1+\imath}{\sqrt{3}}, \frac{1}{\sqrt{3}})^T$, and thus the unitary diagonalization reads
+which can be checked to have the complex roots of $\lambda_1 = 1+i$ and $\lambda_2 = 2-i$ as the two eigenvalues. The corresponding orthonormal eigenvectors are $\vec{v}_{\lambda_1} = (\frac{1}{\sqrt{3}}, \frac{1+i}{\sqrt{3}})^T$ and $\vec{v}_{\lambda_2} = (\frac{-1+i}{\sqrt{3}}, \frac{1}{\sqrt{3}})^T$, and thus the unitary diagonalization reads
 \begin{align*}
 D &= U^*AU \\
 &= 
 \begin{bmatrix}
-\frac{1}{\sqrt{3}} & \frac{1-\imath}{\sqrt{3}} \\ 
-\frac{-1-\imath}{\sqrt{3}}  & \frac{1}{\sqrt{3}}
+\frac{1}{\sqrt{3}} & \frac{1-i}{\sqrt{3}} \\ 
+\frac{-1-i}{\sqrt{3}}  & \frac{1}{\sqrt{3}}
 \end{bmatrix}
 \begin{bmatrix}
-\frac{5}{3}-\frac{1}{3}\imath &\frac{1}{3}+\imath \\ 
--1+\frac{1}{3}\imath & \frac{4}{3}+\frac{1}{3}\imath
+\frac{5}{3}-\frac{1}{3}i &\frac{1}{3}+i \\ 
+-1+\frac{1}{3}i & \frac{4}{3}+\frac{1}{3}i
 \end{bmatrix}
 \begin{bmatrix}
-\frac{1}{\sqrt{3}} & \frac{-1+\imath}{\sqrt{3}} \\ 
-\frac{1+\imath}{\sqrt{3}} & \frac{1}{\sqrt{3}}
+\frac{1}{\sqrt{3}} & \frac{-1+i}{\sqrt{3}} \\ 
+\frac{1+i}{\sqrt{3}} & \frac{1}{\sqrt{3}}
 \end{bmatrix} \\
 &= 
 \begin{bmatrix}
-1+\imath & 0 \\
-0 & 2-\imath
+1+i & 0 \\
+0 & 2-i
 \end{bmatrix}
 \end{align*}
 where
 \begin{align*}
 U = \begin{bmatrix}
-\frac{1}{\sqrt{3}} & \frac{-1+\imath}{\sqrt{3}} \\ 
-\frac{1+\imath}{\sqrt{3}} & \frac{1}{\sqrt{3}}
+\frac{1}{\sqrt{3}} & \frac{-1+i}{\sqrt{3}} \\ 
+\frac{1+i}{\sqrt{3}} & \frac{1}{\sqrt{3}}
 \end{bmatrix} 
 \end{align*}
 \end{solution}
@@ -1350,7 +1383,7 @@ print(A_sympy.is_symmetric())
 P, D = A_sympy.diagonalize()
 print(P, D)    
 \end{lstlisting}
-which returns \verb|true| and
+which returns \verb|true| for the symmetricity checking and
 \begin{lstlisting}
 Matrix([[1.0000,  0,       0], 
         [0,  0.7071, -0.7071], 
@@ -1363,7 +1396,7 @@ as expected. We can confirm the $P$ matrix is orthogonal by
 \begin{lstlisting}
 print(np.allclose(np.array(P.T @ P, dtype=float), np.identity(3))) # True
 \end{lstlisting}
-which is slight complicated since there will be numerical errors when computing $P$ and $P^T P$ so we need to first convert the matrix product to \verb|np.array| and use \verb|np.allclose| which does not check exact but close equality against $I$ over all entries. The same ideas applie for unitary diagonalization and let's use Example \ref{exmp:unitarydiagnormal} to demonstrate. First, we check normality by 
+which is slightly complicated since there will be numerical errors when computing $P$ and $P^T P$ so we need to first convert the matrix product to \verb|np.array| and use \verb|np.allclose| which does not check the exact but close equality against $I$ over all entries. The same idea applies to unitary diagonalization and let's use Example \ref{exmp:unitarydiagnormal} to demonstrate. First, we check if the matrix is normal by 
 \begin{lstlisting}
 A = np.array([[5/3 - (1/3)*1j, 1/3 + 1j],
               [-1 + (1/3)*1j, 4/3 + (1/3)*1j]])
@@ -1378,44 +1411,56 @@ U, D = A_sympy.diagonalize()
 print(U, D)
 print(np.allclose(np.array(U.H @ U, dtype=complex), np.identity(2)))   
 \end{lstlisting}
-gives
+gives the matrices $U$ and $D$:
 \begin{lstlisting}
 Matrix([[-0.4898 - 0.6531*I, 0.0816 + 0.571*I], 
         [-0.0816 + 0.5715*I, -0.4898 + 0.6531*I]]) 
 Matrix([[2.0 - 1.0*I, 0], 
         [0, 1.0 + 1.0*I]])  
 \end{lstlisting}
-and \verb|true| too.
+and returns \verb|true| as we check if $U$ is unitary. The form of $U$ may seem to be different from Example \ref{exmp:unitarydiagnormal} but they are actually equivalent, only differed by a complex multiplicative factor. To see this, we can do
+\begin{lstlisting}
+U_np = np.array(U, dtype=complex)
+U_np[:,0] = U_np[:,0] * np.conjugate(U_np[1,0])
+U_np[:,1] = U_np[:,1] * np.conjugate(U_np[0,1])
+print(U_np)    
+\end{lstlisting}
+which produces
+\begin{lstlisting}
+[[-0.33333333+3.33333333e-01j  0.33333333-2.58092536e-18j]
+ [ 0.33333333-3.97842146e-19j  0.33333333+3.33333333e-01j]]    
+\end{lstlisting}
+which is essentially the same as in Example \ref{exmp:unitarydiagnormal} but with the two columns of eigenvectors interchanged plus some very small round-off errors.
 
 \section{Exercises}
 
 \begin{Exercise}
-Determine if the following matrices are orthogonal. If so, also determine if they represent rotation or reflection.
+Determine if the following matrices are orthogonal. If so, also determine if they represent a rotation or reflection.
 \begin{enumerate}[label=(\alph*)]
-\item $\begin{bmatrix}
+\item $\renewcommand\arraystretch{1.3}\left[\begin{array}{wc{15pt}wc{15pt}wc{15pt}}
 \frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}}\\
 \frac{3}{2\sqrt{6}} & \frac{1}{2} & -\frac{3}{2\sqrt{6}}\\
 -\frac{1}{2\sqrt{2}} & \frac{\sqrt{3}}{2} & \frac{1}{2\sqrt{2}}
-\end{bmatrix}$
-\item $\begin{bmatrix}
+\end{array}\right]$
+\item $\renewcommand\arraystretch{1.3}\left[\begin{array}{wc{15pt}wc{15pt}wc{15pt}}
 -\frac{\sqrt{3}}{2} & \frac{1}{2} & 0\\
 \frac{1}{4} & \frac{\sqrt{3}}{4} & -\frac{\sqrt{3}}{2}\\
 \frac{\sqrt{3}}{4} & \frac{3}{4} & \frac{1}{2}
-\end{bmatrix}$
-\item $\begin{bmatrix}
+\end{array}\right]$
+\item $\renewcommand\arraystretch{1.3}\left[\begin{array}{wc{15pt}wc{15pt}wc{15pt}}
 \frac{1}{2}&-\frac{1}{2}&\frac{1}{4}\\
 1&-1&-\frac{1}{2}\\ 
-1&1&2 \end{bmatrix}$
-\item $\begin{bmatrix}
+1&1&2 \end{array}\right]$
+\item $\renewcommand\arraystretch{1.3}\left[\begin{array}{wc{15pt}wc{15pt}wc{15pt}}
 \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}}\\
 \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{3}}\\
 0 & \frac{1}{\sqrt{3}} & 0
-\end{bmatrix}$
+\end{array}\right]$
 \end{enumerate}
 \end{Exercise}
 
 \begin{Exercise}
-Represent the following operations on a three-dimensional $xyz$ coordinate system by a transitional matrix $P$. State clearly the relationship between the vectors in old and new coordinate system ($\vec{v_0}$ and $\vec{v_n}$), as well as the matrix $P$.
+Represent the following operations on a three-dimensional $xyz$ coordinate system by a transitional matrix $P$. State clearly the relationship between the vectors in the old and new coordinate systems ($\vec{v}_0$ and $\vec{v_n}$), as well as the matrix $P$.
 \begin{enumerate}[label=(\alph*)]
 \item Rotation about the z-axis (x-axis and y-axis revolving around the z-axis) counter-clockwise by 45 degrees,
 \item Reflection of the x-axis across the y-z plane and subsequently rotation about the intermediate y-axis counter-clockwise by 30 degrees,
@@ -1445,7 +1490,7 @@ a & 5 & 3\\
 a & 3 & 5
 \end{bmatrix}
 \end{align*}
-It is given that one of the eigenvalues is zero and the product of other two eigenvalues is $18$. Using the knowledge that the trace and characteristic polynomial are invariants, i.e. remains unchanged after diagonalization. Find 
+It is given that one of the eigenvalues is zero and the product of the other two eigenvalues is $18$. Using the knowledge that the trace and characteristic polynomial are invariants, i.e. remain unchanged after diagonalization. Find 
 \begin{enumerate}[label=(\alph*)]
 \item The two remaining eigenvalues,
 \item The possible values of $a$,
@@ -1456,21 +1501,21 @@ It is given that one of the eigenvalues is zero and the product of other two eig
 \begin{Exercise}
 Orthogonally diagonalize the following matrix, if possible.
 \begin{enumerate}[label=(\alph*)]
-\item $\begin{bmatrix}
+\item $\left[\begin{array}{wc{10pt}wc{10pt}wc{10pt}}
 7 & 8 & 10\\
 1 & 6 & 3\\
 5 & 1 & 2
-\end{bmatrix}$
-\item $\begin{bmatrix}
+\end{array}\right]$
+\item $\left[\begin{array}{wc{10pt}wc{10pt}wc{10pt}}
 2 & 0 & 1\\
 0 & 2 & 1\\
 1 & 1 & 1
-\end{bmatrix}$
-\item $\begin{bmatrix}
+\end{array}\right]$
+\item $\left[\begin{array}{wc{10pt}wc{10pt}wc{10pt}}
 3 & 1 & 1\\
 1 & 3 & 1\\
 1 & 1 & 3
-\end{bmatrix}$
+\end{array}\right]$
 \end{enumerate}
 \end{Exercise}
 
@@ -1486,6 +1531,7 @@ Find the orthogonal projection operator in $\mathbb{R}^4$ on the subspace inters
 Check the Spectral Theorem (Theorem \ref{thm:spectral}) for the symmetric matrix below:
 \begin{align*}
 A = 
+\renewcommand\arraystretch{1.2}
 \begin{bmatrix}
 \frac{5}{3}&0&-\frac{\sqrt{2}}{3}\\ 
 0&2&0\\ 
@@ -1499,15 +1545,15 @@ Show that the matrix below is Hermitian and unitarily diagonalize it.
 \begin{align*}
 A &=
 \begin{bmatrix}
-1 & -\imath & 0 \\
-\imath & 2 & 1+\imath \\
-0 & 1-\imath & 3 
+1 & -i & 0 \\
+i & 2 & 1+i \\
+0 & 1-i & 3 
 \end{bmatrix}
 \end{align*}
 \end{Exercise}
 
 \begin{Exercise}
-Hooke's law states that the force acting on a mass by spring is given by $F = -kx$ where $k$ is the spring constant and $x$ is the displacement (extension or compression) from equilibrium position. By considering Newton's second law, $F = ma$, we have
+Hooke's law states that the force acting on a mass by spring is given by $F = -kx$ where $k$ is the spring constant and $x$ is the displacement (extension or compression) from the equilibrium position. By considering Newton's second law, $F = ma$, we have
 \begin{equation*}
 ma = m\frac{d^2x}{dt^2} = -kx\text{ and hence }x'' = \frac{d^2x}{dt^2} = -\frac{k}{m}x
 \end{equation*}
@@ -1515,7 +1561,7 @@ The general solution is
 \begin{equation*}
 x = C\cos(\omega t - \theta)
 \end{equation*}
-where $\omega = \sqrt{\frac{k}{m}}$ and $C$, $\theta$ are some arbitrary constants to be determined from the initial condition. Consider the situation  shown in the figure below. Find the two equations describing motions of the two masses $m_1, m_2$ respectively, in terms of the displacements $\textbf{x} = (x_1, x_2)^T$, and re-written them into matrix form. Carry out orthogonal diagonalization to simplify the equations and find the general solutions for the motions.
+where $\omega = \sqrt{\frac{k}{m}}$ and $C$, $\theta$ are some arbitrary constants to be determined from the initial condition. Consider the situation shown in the figure below. Find the two equations describing motions of the two masses $m_1, m_2$ respectively, in terms of the displacements $\textbf{x} = (x_1, x_2)^T$, and re-written them into matrix form. Carry out orthogonal diagonalization to simplify the equations and find the general solutions for the motions.
 \begin{center}
 \begin{tikzpicture}
 [wall/.style = {gray,fill=gray},
