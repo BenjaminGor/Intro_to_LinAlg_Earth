@@ -27,62 +27,69 @@ b_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x)\sin(\frac{2n\pi}{N}t) d(\frac{2\pi}{
 \end{align}
 where we have written $f(t)$ in place of $f(x) = f(\frac{2\pi}{N}t - \pi)$. The partial sum of the Fourier expansion of $f(t)$ up to degree $p$
 \begin{align}
-S_p(t) &= \frac{a_0}{2} + \sum_{m=1}^{p} a_m \cos(\frac{2m\pi}{N}t) + \sum_{n=1}^{p} b_n \sin(\frac{2n\pi}{N}t) \label{eqn:fourierpart} \\
+S_p(f(t)) &= \frac{a_0}{2} + \sum_{m=1}^{p} a_m \cos(\frac{2m\pi}{N}t) + \sum_{n=1}^{p} b_n \sin(\frac{2n\pi}{N}t) \label{eqn:fourierpart} \\
 &= \frac{a_0}{2} + a_1 \cos(\frac{2\pi}{N}t) + a_2 \cos(\frac{2\pi(2)}{N}t) + \cdots + a_p \cos(\frac{2\pi p}{N}t) \nonumber \\
 &\quad + b_1 \sin(\frac{2\pi}{N}t) + b_2 \sin(\frac{2\pi(2)}{N}t) + \cdots + b_p \sin(\frac{2\pi p}{N}t) \nonumber
 \end{align}
-will then be the best approximation of the function $f(t)$ using sines and cosines up to order $p$ with distance defined with respect to the inner product of Equation (\ref{eqn:integralinner}), a.k.a.\ the best-fit trigonometric polynomial of degree $p$. This is known as the \index{Best Approximation Theorem}\keywordhl{Best Approximation Theorem} which directly follows from Properties \ref{proper:shortestorthoproj}, in addition to the related discussion about orthogonal projections and the Fourier basis in Section \ref{section:orthoproj} because such a Fourier expansion $S_p(t)$ is essentially an orthogonal projection of $f(t)$ onto the subspace spanned by the corresponding orthonormal trigonometric basis up to order $p$. Hence, the higher the degree of the partial sum of the Fourier expansion, the more closer the approximation to the given function. We use Example \ref{exmp:fourierx} as an illustration. The appropriate Fourier series of $x = f(t) = \frac{2\pi}{N}t - \pi$ is now
+will then be the best approximation of the function $f(t)$ using sines and cosines up to order $p$ with distance defined with respect to the inner product of Equation (\ref{eqn:integralinner}), a.k.a.\ the best-fit trigonometric polynomial of degree $p$. This is known as the \index{Best Approximation Theorem}\keywordhl{Best Approximation Theorem} which directly follows from Properties \ref{proper:shortestorthoproj}, in addition to the related discussion about orthogonal projections and the Fourier basis in Section \ref{section:orthoproj} because such a Fourier partial sum $S_p(f(t))$ is essentially an orthogonal projection of $f(t)$ onto the subspace spanned by the corresponding orthonormal trigonometric basis up to order $p$. Hence, the higher the degree of the partial sum of the Fourier expansion, the more closer the approximation to the given function. We use Example \ref{exmp:fourierx} as an illustration. The appropriate Fourier series of $x = f(t) = \frac{2\pi}{N}t - \pi$ is now
 \begin{align*}
 f(t) &= \sum_{n=1}^{\infty} b_n \sin(\frac{2n\pi}{N}t) \\
 &= -2 \sum_{n=1}^{\infty} \frac{1}{n} \sin(\frac{2n\pi}{N}t)
 \end{align*}
-where $b_n = -\frac{2}{n}$. The following plot shows the original function as well as the partial sum of its Fourier expansion up to degree $3,10,20$. From this, we can see that as the degree $p$ goes up, $S_p(t)$ becomes a better approximation to the straight line $y = \frac{2\pi}{N}t - \pi$.\footnote{Notice that at the end-points, the values of Fourier series of $f(t) = \frac{2\pi}{N}t - \pi$ stay at $0$. It is because the Fourier series works as the periodic extension of the original function (see Footnote \ref{foot:fourier} in Chapter \ref{chap:innerchap}) and will converge to the average of the left and right limits $(f_-(t) + f_+(t))/2$ at point of discontinuity. Therefore, the end-point is essentially a discontinuity where one of the side limits is $\pi$ while the other is $-\pi$, so it converges to $((-\pi) + \pi)/2 = 0$.}\\
+where $b_n = -\frac{2}{n}$. The following plot shows the original function as well as the partial sum of its Fourier expansion up to degree $3,10,20$. From this, we can see that as the degree $p$ goes up, $S_p(f(t))$ becomes a better approximation to the straight line $y = \frac{2\pi}{N}t - \pi$.\footnote{Notice that at the end-points, the values of Fourier series of $f(t) = \frac{2\pi}{N}t - \pi$ stay at $0$. It is because the Fourier series works as the periodic extension of the original function (see Footnote \ref{foot:fourier} in Chapter \ref{chap:innerchap}) and will converge to the average of the left and right limits $(f_-(t) + f_+(t))/2$ at point of discontinuity. Therefore, every end-point is essentially a discontinuity where one of the side limits is $\pi$ while the other is $-\pi$, so it converges to $((-\pi) + \pi)/2 = 0$.}\\
 \includegraphics[scale=0.7]{graphics/fourierxapprox.png}\\
-Eventually, as $p \to \infty$ and the expression tends to the full Fourier series, $S_p(t)$ will converge to $f(t)$ in the $L^2$ sense\footnote{This is also called \textit{convergence in mean} and is different from \textit{pointwise convergence} that is more intuitive for most people. The rigorous treatment to this requires Measure Theory, and again, Functional Analysis and will not be pursued here.}, with respect to the inner product of Equation (\ref{eqn:integralinner}). To show this heuristically, we are going to derive \index{Bessel's Inequality}\keywordhl{Bessel's Inequality} for the Fourier basis as below. Consider
+Eventually, as $p \to \infty$ and the expression tends to the full Fourier series, $S_p(f)$ will converge to $f$ in the $L^2$ sense\footnote{This is also called \textit{convergence in mean} and is different from \textit{pointwise convergence} that is more intuitive for most people. The rigorous treatment to this requires Measure Theory, and again, Functional Analysis and will not be pursued here.}, with respect to the inner product of Equation (\ref{eqn:integralinner}). To show this heuristically, we are going to derive the \textit{Bessel's Inequality} and \textit{Parseval's Identity} for a complete orthonormal basis in an $L^2$ space as below. (WIP, too messy, will be moved to Appendix) By part (d) of Theorem \ref{thm:spectralinner}, we can expand a function $f$ as
 \begin{align*}
-&\quad \norm{f(t) - S_p(t)}^2 = \int_0^N \abs{f(t) - S_p(t)}^2 dt \\
-&= \langle f(t) - S_p(t) , f(t) - S_p(t) \rangle \\
-&= \begin{aligned} \left\langle f(t) - [\frac{a_0}{2} + \sum_{k=1}^{p} (a_k \cos(\frac{2k\pi}{N}t) + b_k \sin(\frac{2k\pi}{N}t))], \right. \\
-\left. f(t) - [\frac{a_0}{2} + \sum_{k=1}^{p} (a_k \cos(\frac{2k\pi}{N}t) + b_k \sin(\frac{2k\pi}{N}t))] \right\rangle \end{aligned} \\
-&= \langle f(t), f(t) \rangle - 2 \langle f(t), \frac{a_0}{2} + \sum_{k=1}^{p} [a_k \cos(\frac{2k\pi}{N}t) + b_k \sin(\frac{2k\pi}{N}t)] \rangle \\
-&\quad + \begin{aligned}
-\left\langle \frac{a_0}{2} + \sum_{k=1}^{p} [a_k \cos(\frac{2k\pi}{N}t) + b_k \sin(\frac{2k\pi}{N}t)], \right. \\ \left. \frac{a_0}{2} + \sum_{k=1}^{p} [a_k \cos(\frac{2k\pi}{N}t) + b_k \sin(\frac{2k\pi}{N}t)] \right\rangle \end{aligned}
+f = \lim_{p \to \infty} \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} 
 \end{align*}
-But then, by Equations (\ref{eqn:fouriersca}) and (\ref{eqn:fourierscb}), the second term is actually
+where $\varphi^{(j)}$ are the orthonormal basis vectors/functions and the partial sum $S_p(f)$ will be just $\sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}$. Particularly, the completeness of the orthonormal basis in Properties \ref{proper:hilbertorthosys} means that (see the footnote below)\footnote{Otherwise, if $\norm{f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 > 0$, then consider $\tilde{\varphi} = f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}$ which is now a non-zero vector. It will be orthogonal to any of the original basis vectors $\varphi^{(j')}$ as 
 \begin{align*}
-&\quad -2\langle f(t), \frac{a_0}{2} + \sum_{k=1}^{p} [a_k \cos(\frac{2k\pi}{N}t) + b_k \sin(\frac{2k\pi}{N}t)] \rangle \\
-&= -2\int_0^N f(t) (\frac{a_0}{2} + \sum_{k=1}^{p} [a_k \cos(\frac{2k\pi}{N}t) + b_k \sin(\frac{2k\pi}{N}t)]) dt \\
-&= -2\int_0^N f(t) \frac{a_0}{2} dt -2\sum_{k=1}^{p} \int_0^N f(t) [a_k \cos(\frac{2k\pi}{N}t) + b_k \sin(\frac{2k\pi}{N}t)] dt \\
-&= -2 (\frac{N}{2}(\frac{a_0^2}{2})) -2 (\frac{N}{2} \sum_{k=1}^{p} (a_k^2 + b_k^2)) = -\frac{N}{2}a_0^2 -N\sum_{k=1}^{p} (a_k^2 + b_k^2)
+\langle \tilde{\varphi}, \varphi^{(j')} \rangle &= \langle f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} , \varphi^{(j')} \rangle \\
+&= \langle f, \varphi^{(j')} \rangle - \langle \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} , \varphi^{(j')} \rangle \\
+&= \langle f, \varphi^{(j')} \rangle - (\cdots + (0) +\langle f, \varphi^{(j')} \rangle (1) + (0) + \cdots) \\
+& \quad \text{(Orthonormality of the basis,} \\ 
+& \quad \text{$\langle \varphi^{(j)}, \varphi^{(j')} \rangle = 1$ only when $j = j'$ and $0$ if $j \neq j'$.)} \\
+&=\langle f, \varphi^{(j')} \rangle - \langle f, \varphi^{(j')} \rangle = 0
 \end{align*}
-and the inner product of the third term, by the orthogonality and normalization (see Footnote \ref{foot:fouriernorm}) of the Fourier basis, is simply
+which violates the premise of completeness as it will become another vector that is linearly independent of all the other basis vectors and can be added to the basis.}
+\begin{align}
+\norm{f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 = 0 \label{eqn:fcomplete}
+\end{align}
+On the other hand,
+\begin{align*} 
+\norm{f - S_p(f)}^2 &= \norm{f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 \\
+&= \langle f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}, f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \rangle \\
+&= \langle f, f \rangle - \langle f, \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \rangle \\
+&\quad - \langle \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}, f \rangle \\
+&\quad + \langle \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}, \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \rangle \\
+&= \norm{f}^2 - \langle f, \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \rangle \\
+&\quad - \overline{\langle f, \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \rangle} \quad \text{(Definition \ref{defn:innerprod})} \\
+&\quad + \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 \quad \text{(Orthonormality of the basis)}\\
+&= \norm{f}^2 - 2\Re{\langle f, \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \rangle} + \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 \\
+&= \norm{f}^2 - 2\Re{\sum_{j=1}^{p} (\overline{\langle f, \varphi^{(j)} \rangle} \langle f, \varphi^{(j)} \rangle)} \quad \text{(Properties \ref{proper:innerprod2})}\\
+&\quad + \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 \\
+&= \norm{f}^2 - 2\sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 + \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 \\
+&= \norm{f}^2 - \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2
+\end{align*}
+and since $\norm{f - S_p(f)}^2 \geq 0$ is always non-negative, we have the \index{Bessel's Inequality}\keywordhl{Bessel's Inequality} as
+\begin{align}
+\sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 \leq \norm{f}^2  \label{eqn:Bessel}
+\end{align}
+From Exercise \ref{ex:triangular2}, we can apply the Triangular Inequality to get
 \begin{align*}
-\norm{S_p(t)}^2 &= \begin{aligned}
-\langle \frac{a_0}{2} + \sum_{k=1}^{p} [a_k \cos(\frac{2k\pi}{N}t) + b_k \sin(\frac{2k\pi}{N}t)], \\ \frac{a_0}{2} + \sum_{k=1}^{p} [a_k \cos(\frac{2k\pi}{N}t) + b_k \sin(\frac{2k\pi}{N}t)] \rangle \end{aligned} \\
-&= \frac{N}{4}a_0^2 + \frac{N}{2} \sum_{k=1}^{p} (a_k^2 + b_k^2)
+&\norm{(f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}) + (\sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} - S_p(f))}^2 \\
+&= \norm{f - S_p(f)}^2 \leq \norm{f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 + \norm{\sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} - S_p(f)}^2
 \end{align*}
-Therefore,
+By Equation (\ref{eqn:fcomplete}), the first term on R.H.S. of the equality is zero. And the second term, when $p \to \infty$,
 \begin{align*}
-&\quad \norm{f(t) - S_p(t)}^2 \\
-&= \norm{f(t)}^2 - (\frac{N}{2}a_0^2 + N\sum_{k=1}^{p} (a_k^2 + b_k^2)) + (\frac{N}{4}a_0^2 + \frac{N}{2} \sum_{k=1}^{p} (a_k^2 + b_k^2)) \\
-&= \norm{f(t)}^2 - \frac{N}{2}(\frac{a_0^2}{2} + \sum_{k=1}^{p} (a_k^2 + b_k^2)) =  \norm{f(t)}^2 - \norm{S_p(t)}^2
+&\quad \norm{\sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} - S_p(f)}^2 \\
+&= \norm{\sum_{j=p+1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 = \sum_{j=p+1}^{\infty} \abs{\langle f, \varphi^{(j)} \rangle}^2
 \end{align*}
-As $\norm{f(t) - S_p(t)}^2 \geq 0$ by positivity (Definition \ref{defn:innerprod}), we arrive at the \textit{Bessel's Inequality}:
+is a remainder term and must tend to zero, because $\sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2$ is a convergent sequence, seen by applying the Monotone Convergence Theorem from elementary Analysis on Bessel's Inequality (\ref{eqn:Bessel}). Therefore, the L.H.S.
 \begin{align*}
-\norm{S_p(t)}^2 = \frac{N}{2}(\frac{a_0^2}{2} + \sum_{k=1}^{p} (a_k^2 + b_k^2)) \leq \norm{f(t)}^2
+\lim_{p \to \infty}\norm{f - S_p(f)}^2 = 0
 \end{align*}
-Since the function is required to be $L^2$-integrable, $\norm{f(t)}^2$ and thus $\norm{S_p(t)}^2 = \frac{N}{2}(\frac{a_0^2}{2} + \sum_{k=1}^{p} (a_k^2 + b_k^2)) < \infty$ are finite. As $p$ increases, the sequence $\norm{S_p}^2$ composed of squares is non-decreasing, and hence by the \textit{Monotone Convergence Theorem} from elementary Analysis, it is convergent (to the supremum). Therefore, as
-$f(t) = \lim_{p \to \infty} S_p(t)$ is written as an infinite sum of Fourier basis functions, we have the \index{Parseval's Equality}\keywordhl{Parseval's Equality}:
-\begin{align*}
-\norm{f(t)}^2 &= \norm{\lim_{p \to \infty} S_p(t)}^2 \\
-&= \lim_{p \to \infty} [\frac{N}{2}(\frac{a_0^2}{2} + \sum_{k=1}^{p} (a_k^2 + b_k^2))] \\
-&= \lim_{p \to \infty} \norm{S_p(t)}^2
-\end{align*}
-Pulling out the limit from the norm is allowed due to the sequence convergence we have just established and from this we see that $\norm{S_p(t)}^2$ tends to $\norm{f(t)}^2$. And, since $\norm{f(t) - S_p(t)}^2 = \norm{f(t)}^2 - \norm{S_p(t)}^2$ as derived above, by using the Parseval's Equality we further have
-\begin{align*}
-\lim_{p \to \infty} \norm{f(t) - S_p(t)}^2 = \norm{f(t)}^2 - \lim_{p \to \infty} \norm{S_p(t)}^2 = 0
-\end{align*}
-which implies the $L^2$ convergence of Fourier series.\par
+also tends to zero as we take the same limit, which implies the $L^2$ convergence for a complete orthonormal basis, which includes the case of the Fourier series.\par
 Returning to practices in Earth Science, and other fields like Engineering, often we are not given a function that has a closed form to work with. Instead, we collect data from measurements at a fixed sampling rate, and what we obtain is a \textit{discrete time series}. However, we can still try to apply the idea of Fourier, approximate and interpolate the finite time series with sinusoidal functions. Assume that, we have $N$ data points collected for the time series $f(t)$, evenly spaced at time $t = 0, 1, 2, \cdots, N-1$. Further assume that for now, we only use a few of sines and cosines for the approximation, such that the degree $p$ is much less than the number of data points $N$, specifically, $2p+1 \leq N$. The suitable Fourier approximation then will be in the form of Equation (\ref{eqn:fourierpart}) where $N$ is the period of the time series. Since we only have finite data points, we cannot carry out the needed integrations to compute (\ref{eqn:fouriersca}) and (\ref{eqn:fourierscb}). Nevertheless, we can borrow the idea in the last chapter and do the approximation in a way such that the Fourier partial sum will achieve the least-square error, summed over the sampling points. Subsequently, the system to be optimized will be
 \begin{align*}
 \footnotesize
@@ -302,6 +309,7 @@ Fit the following time-series with the Fourier basis up to order $p=1$, where $f
 \begin{solution}
 The degree is $p=1$ and it means that there are only three components, which are the constant term, and a sine-cosine pair with a frequency of $\frac{2\pi k}{N}$ where $k=1$, $N=5$. The best-fit parameters will be
 \begin{align*}
+\small
 \begin{bmatrix}
 C_0 \\
 A_1 \\
@@ -309,11 +317,13 @@ B_1
 \end{bmatrix}
 &= 
 \frac{1}{5}
+\small
 \begin{bmatrix}
 1 & 1 & 1 & 1 & 1 \\
 2 & 2\cos(\frac{2\pi}{5}) & 2\cos(\frac{2\pi(2)}{5}) & 2\cos(\frac{2\pi(3)}{5}) & 2\cos(\frac{2\pi(4)}{5}) \\
 0 & 2\sin(\frac{2\pi}{5}) & 2\sin(\frac{2\pi(2)}{5}) & 2\sin(\frac{2\pi(3)}{5}) & 2\sin(\frac{2\pi(4)}{5})
 \end{bmatrix}
+\small
 \begin{bmatrix}
 f(0)\\
 f(1)\\
@@ -379,6 +389,7 @@ G =
 1 & \cos(\frac{2\pi(4)}{5}) & \sin(\frac{2\pi(4)}{5}) & \cos(\frac{2\pi(2)(4)}{5}) & \sin(\frac{2\pi(2)(4)}{5}) & \cos(\frac{2\pi(3)(4)}{5}) & \sin(\frac{2\pi(3)(4)}{5})
 \end{bmatrix}    
 \end{align*}
+\vspace{\maxdimen}
 and a routine computation will show that
 \begin{align*}
 G^T G = 
