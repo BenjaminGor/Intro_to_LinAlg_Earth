@@ -473,9 +473,10 @@ c_2(\lambda_2-\lambda_1)\vec{v}_2 &= \textbf{0}
 Since $\lambda_1$ and $\lambda_2$ are distinct, $\lambda_2-\lambda_1 \neq 0$, and $\vec{v}_2$, being an eigenvector, cannot be the zero vector, the only possibility is $c_2 = 0$. The same argument shows that $c_1 = 0$, and we are done.
 \end{proof}
 \begin{proper}
+\label{proper:eigentransinv}
 For a square matrix $A$,
 \begin{enumerate}
-\item $A^T$ shares the same eigenvalues, but for each eigenvalue the eigenvector is not guaranteed to be the same,
+\item $A^T$ shares the same eigenvalues, but for each eigenvalue, the eigenvector(s) is/are not guaranteed to be the same. However, the dimensions (geometric multiplicity) of the two eigenspaces will be equal (proof WIP).
 \item The eigenvalues for the inverse $A^{-1}$, provided that it exists, are the reciprocals of the eigenvalues of $A$, but the corresponding eigenvectors are the same.
 \end{enumerate}
 \end{proper}
@@ -934,6 +935,8 @@ By repeated cofactor expansion along the first $n_{J_i}$ columns, we have
 p(\lambda) = (\lambda_{J_i}-\lambda)^{n_{J_i}} \det(*_{(n-n_{J_i})\times(n-n_{J_i})}-\lambda I_{(n-n_{J_i})})
 \end{align*}
 which shows that the characteristic polynomial have $\lambda_{J_i}$ as its roots occuring for at least $n_{J_i}$ times (the determinant after may or may not have any $(\lambda_{J_i}-\lambda)$ factor). By Properties \ref{proper:similarinvariant}, the original matrix $A$ will share the same characteristic polynomial and hence the algebraic multiplicity for $\lambda_{J_i}$ (the times where the $(\lambda_{J_i}-\lambda)$ factor appears in the characteristic polynomial) concerning $A$ will be greater than or equal to its given geometric multiplicity $n_{J_i}$.
+
+(Diagonalization method for successive power, WIP)
 
 \subsection{Diagonalization for Complex Eigenvalues}
 \label{subsection:diagcomplex}
