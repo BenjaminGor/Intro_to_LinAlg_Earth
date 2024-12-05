@@ -517,7 +517,7 @@ t
 where $-\infty < t < \infty$, or in other words, $\text{Ker}(T) = \text{span}(\{(-1,0,1)_B^T\})$ with a dimension of $1$. Similarly, the range of $T$ will be the column space of $[T]_B^H$. From the elimination procedure carried out above, we know that the first two column vectors are linearly independent and the third column is clearly the same as the first column (see Properties \ref{proper:CRFactor}), and thus the range is $\mathcal{R}(T) = \text{span}(\{(1,1,1)_B^T, (0,-1,1)_B^T\})$ and has a dimension of $2$ (the rank of the $[T]_B^H$ matrix).
 \end{solution}
 
-Bear in mind that we approach the above problem with some bases (albeit unknown) fixed to represent the linear transformation in matrix form just like in the last example. Again, we will soon justify that the results are actually unrelated to the choices of bases, i.e.\ \textit{basis-independent}, such that the (dimensions of) kernel and range are exactly the null space and column space (nullity and rank) derived using any matrix representation of the linear transformation with respect to arbitrary bases.
+Bear in mind that we approach the above problem with some bases (albeit unknown) fixed to represent the linear transformation in matrix form just like in the last example. Again, we will soon justify that the results are actually unrelated to the choices of bases, i.e.\ \textit{basis-independent}, such that the (dimensions of) kernel and range are exactly the null space and column space (nullity and rank) derived using any matrix representation of the linear transformation with respect to arbitrary bases. (Rank-Nullity?)
 
 Finally, we can rewrite Properties \ref{proper:injective} and \ref{proper:surjective} using the notion of kernel and range (alongside Properties \ref{proper:dimWleqV}).
 \begin{proper}
@@ -717,6 +717,7 @@ where $j = 1,2,\ldots,n$, is bijective as desired. To see this, by Theorem \ref{
 \end{proof}
 This theorem enables us to identify and treat any finite-dimensional real vector space $\mathcal{V}$ as the real $n$-space $\mathbb{R}^n$ with $n$ being the dimension of $\mathcal{V}$. \textcolor{red}{Thus we can work with $\mathcal{V}$ as if it is $\mathbb{R}^n$ and the results for $\mathbb{R}^n$ derived in this and the last chapter are all applicable on other $n$-dimensional real vector spaces with an appropriate transformation.} Actually, we have been implicitly utilizing this isomorphism relation in many of our previous examples, e.g. writing out the coordinates of a vector from an $n$-dimensional vector space with $n$ components like an $\mathbb{R}^n$ vector. As a corollary,
 \begin{proper}
+\label{proper:isomorphicsamerank}
 Any two (real) finite-dimensional vector spaces are isomorphic such that there exists a bijective linear transformation between them, if and only if they have the same number of dimension. Otherwise, there will be no isomorphism between those with different dimensions.
 \end{proper}
 The "if" direction is easy to see because they are both isomorphic to $\mathbb{R}^n$ by Theorem \ref{thm:isomorphism} and bijectivity is transitive.\footnote{Let's say $S$: $\mathcal{U} \to \mathbb{R}^n$ and $T$: $\mathcal{V} \to \mathbb{R}^n$ are the two respective isomorphisms. Then $T^{-1} \circ S$: $\mathcal{U} \to \mathcal{V}$ will be the required bijective linear transformation.} For the "only if" direction, let the two vector spaces $\mathcal{U}$ and $\mathcal{V}$ have dimensions of $m$ and $n$ respectively, and without loss of generality $m < n$. Then they can never be isomorphic since given any transformation $T$: $\mathcal{U} \to \mathcal{V}$ the $m$ transformed basis vectors $T(\vec{u}^{(1)}), T(\vec{u}^{(2)}), \ldots, T(\vec{u}^{(m)})$ which will be unable to span the $n$-dimensional $\mathcal{V}$ and by Properties \ref{proper:surjective} all of them are not surjective.
@@ -847,9 +848,9 @@ Comparing with the assumed form of $[\vec{v}]_{H'} = [T]_{B'}^{H'}[\vec{u}]_{B'}
 \begin{proper}
 \label{proper:chcoordsmat}
 The change of coordinates for the matrix representation of a linear transformation $T: \mathcal{U} \to \mathcal{V}$ from bases $\mathcal{B}$ and $\mathcal{H}$ to $\mathcal{B}'$ and $\mathcal{H}'$ for $\mathcal{U}$ and $\mathcal{V}$ respectively follows the relation
-\begin{align*}
-[T]_{B'}^{H'} = (Q_{H'}^H)^{-1} [T]_B^H P_{B'}^B
-\end{align*}
+\begin{align}
+[T]_{B'}^{H'} = (Q_{H'}^H)^{-1} [T]_B^H P_{B'}^B \label{eqn:coordchangelintrans}
+\end{align}
 where $P_{B'}^{B}$ and $Q_{H'}^{H}$ are matrices for change of coordinates on vectors from $\mathcal{B'}$ to $\mathcal{B}$ and $\mathcal{H'}$ to $\mathcal{H}$ individually.
 \end{proper}
 Another way to derive the above formula is to consider the linear transformation with respect to the basis $\mathcal{B'}$ to $\mathcal{H'}$ as three smaller steps: firstly, convert the input vector from the basis $\mathcal{B'}$ back to $\mathcal{B}$ ($P_{B'}^B$); subsequently, carry out the transformation in terms of $\mathcal{B}$ and $\mathcal{H}$ ($[T]_B^H$); finally, map the vector from the basis $\mathcal{H}$ to $\mathcal{H'}$ ($Q_H^{H'} = (Q_{H'}^H)^{-1}$). This flow is illustrated in the schematic of Figure \ref{fig:transcoordsmatrix}.

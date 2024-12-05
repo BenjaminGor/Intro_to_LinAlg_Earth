@@ -753,10 +753,44 @@ E_5
 \end{solution}
 
 \begin{exmp}
-The seawater in oceans contains a variety of dissolved salts in the form of ions. Most of them are sodium (Na$^+$), magnesium (Mg$^{2+}$), chlorine (Cl$^-$) and sulphate (SO$_4^{2-}$). Consider a sample of seawater and assume the concentration of other ions are negligible. Their are two major constraints over the individual concentrations of each type of ions ($n=$ [Na$^+$], $m=$ [Mg$^{2+}$], $c=$ [Cl$^-$], $s=$ [SO$_4^{2-}$]). First, the overall charge of the seawater has to be neutral. Second, their concentrations should add up to the measured salinity (the total mass concentration of salts, inferred by electrical conductivity). It is given that the salinity of the seawater sample is $\SI{34}{psu}$ (\SI{1}{psu} = \SI{1}{\g\per\kg} which is the unit preferred in oceanography). Write down the corresponding linear system that is consisted of two equations for this situation.
+\label{exmp:seaion}
+The seawater in oceans contains a variety of dissolved salts in the form of ions. Most of them are sodium (Na$^+$), magnesium (Mg$^{2+}$), chlorine (Cl$^-$) and sulphate (SO$_4^{2-}$). Consider a sample of seawater and assume the concentrations of other ions are negligible. There are two major constraints over the individual concentrations of each type of ions ($n=$ [Na$^+$], $m=$ [Mg$^{2+}$], $c=$ [Cl$^-$], $s=$ [SO$_4^{2-}$]). First, the overall charge of the seawater has to be neutral. Second, their concentrations should add up to the measured salinity (the total mass concentration of salts, inferred by electrical conductivity). It is given that the salinity of the seawater sample is $\SI{34}{psu}$ (\SI{1}{psu} = \SI{1}{\g\per\kg} which is the unit preferred in oceanography). Write down the corresponding linear system that consists of two equations for this situation.
 \end{exmp}
-
-(WIP)
+\begin{solution}
+The first constraint, charge neutrality, can be simply translated to
+\begin{align*}
+n + 2m - c - 2s = 0
+\end{align*}
+While for the second constraint about salinity, we need to convert the molar concentration (\textit{molarity}) of each ion species to mass concentration through multiplying it by their respective molar mass (Na$^+$: \SI{23.0}{\g \per \mol}, Mg$^{2+}$: \SI{24.3}{\g \per \mol}, Cl$^-$: \SI{35.5}{\g \per \mol}, SO$_4^{2-}$: \SI{96.1}{\g \per \mol}). This will lead to
+\begin{align*}
+23.0 n + 24.3 m + 35.5 c + 96.1s = 34.0 \\
+\end{align*}
+Thus, the linear system will be just
+\begin{align*}
+\begin{cases}
+n + 2m - c - 2s &= 0 \\
+23.0 n + 24.3 m + 35.5 c + 96.1s &= 34.0
+\end{cases}
+\end{align*}
+and its matrix form is
+\begin{align*}
+\begin{bmatrix}
+1 & 2 & -1 & -2 \\
+23.0 & 24.3 & 35.5 & 96.1    
+\end{bmatrix}
+\begin{bmatrix}
+n \\
+m \\
+c \\
+s
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+34.0
+\end{bmatrix}
+\end{align*}
+\end{solution}
 
 \begin{exmp}
 \label{exmp:weatherstats}

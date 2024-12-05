@@ -121,6 +121,7 @@ where $B^T = B$ is an $n \times n$ real symmetric matrix, where $n$ is the dimen
 It is not hard to see that the form $\vec{x}^TB\vec{y}$ fulfills the requirement of $B(\vec{x}, \vec{y}) = B(\vec{y}, \vec{x})$.\footnote{$B(\vec{x}, \vec{y}) = \vec{x}^TB\vec{y} = (\vec{x}^TB\vec{y})^T = \vec{y}^TB^T\vec{x} = \vec{y}^TB\vec{x} = B(\vec{y}, \vec{x})$, where $\vec{x}^TB\vec{y} = (\vec{x}^TB\vec{y})^T$ as it is just a real number.} It is also not hard to see that the pattern of quadratic forms proposed in Properties \ref{proper:quadformmatrix} can be derived from a symmetric bilinear form as we set $\vec{y} = \vec{x}$. In this sense, we say that a quadratic form is characterized by the symmetric bilinear form induced by the appropriate symmetric matrix $B$.
 
 \subsection{(Semi)Definiteness and Congruence}
+\label{subsection:definiteness}
 
 An important attribute of quadratic forms is their \index{Definiteness}\index{Semidefiniteness}\keywordhl{(semi)definiteness}. If a quadratic form $Q(\vec{x})$ is \index{Positive-Definite}\index{Negative-Definite}\keywordhl{positive/negative-definite}, it means that it always outputs positive/negative numbers no matter what the input vector $\vec{x}$ is, as long as $\vec{x} \neq \textbf{0}$ is a non-zero vector. Semidefiniteness relaxes the restriction such that the quadratic form can also return zero for some non-zero $\vec{x}$, in other words, a positive(negative)-semidefinite quadratic form always gives non-negative (non-positive) numbers. Now we will show that definiteness is related to the eigenvalues of the symmetric matrix that characterizes the quadratic form.
 \begin{defn}
@@ -966,18 +967,18 @@ Q &=
 \text{Cov}(X^{(n)}, X^{(1)}) & \text{Cov}(X^{(n)}, X^{(2)}) & \cdots & \text{Var}(X^{(n)}) \\
 \end{bmatrix} 
 \end{align*}
-is the so-called \index{Covariance Matrix}\keywordhl{covariance matrix} so that $Q_{ij} = \text{Cov}(X^{(i)}, X^{(j)})$. If $[X'] = [X'^{(1)}|X'^{(2)}|\cdots|X'^{(n)}]$ is the matrix consisted of the centered variables $X'^{(j)} = X^{(j)} - E(X^{(j)})$ in columns, then we have $Q = \frac{1}{m}[X']^T[X']$ where $m$ is the number of data.
+is the so-called \index{Covariance Matrix}\keywordhl{covariance matrix} so that $Q_{ij} = \text{Cov}(X^{(i)}, X^{(j)})$. If $[X'] = [X'^{(1)}|X'^{(2)}|\cdots|X'^{(n)}]$ is the matrix consisted of the centered variables $X'^{(j)} = X^{(j)} - E(X^{(j)})$ in columns, then we have $Q = \frac{1}{m-1}[X']^T[X']$ where $m$ is the number of data.
 \end{proper}
 \begin{proof}
 Let's say we have $m$ data for $Z$: $z_1, z_2, \ldots, z_m$, as well as each of the $X^{(j)}$: $x_1^{(j)}, x_2^{(j)}, \ldots, x_m^{(j)}$. Denote the mean of $X^{(j)}$ by $\mu_{j}$. Starting from the expression in Definition \ref{defn:variance}, we have
 \begin{align*}
-\text{Var}(Z) &= \frac{1}{m} \sum_{k=1}^m (z_k - \mu_z)^2 \\
-&= \frac{1}{m} \sum_{k=1}^m (\sum_{j=1}^{n} c_jx^{(j)}_k - \sum_{j=1}^{n} c_j\mu_{j})^2  \\
-&= \frac{1}{m} \sum_{k=1}^m (\sum_{j=1}^{n} (c_jx^{(j)}_k - c_j\mu_{j}))^2 \\
-&= \frac{1}{m} \sum_{k=1}^m [(\sum_{i=1}^{n} c_i(x^{(i)}_k - \mu_{i}))(\sum_{j=1}^{n} c_j(x^{(j)}_k - \mu_{j}))]  \\
+\text{Var}(Z) &= \frac{1}{m-1} \sum_{k=1}^m (z_k - \mu_z)^2 \\
+&= \frac{1}{m-1} \sum_{k=1}^m (\sum_{j=1}^{n} c_jx^{(j)}_k - \sum_{j=1}^{n} c_j\mu_{j})^2  \\
+&= \frac{1}{m-1} \sum_{k=1}^m (\sum_{j=1}^{n} (c_jx^{(j)}_k - c_j\mu_{j}))^2 \\
+&= \frac{1}{m-1} \sum_{k=1}^m [(\sum_{i=1}^{n} c_i(x^{(i)}_k - \mu_{i}))(\sum_{j=1}^{n} c_j(x^{(j)}_k - \mu_{j}))]  \\
 &\quad \text{(Changing to a new dummy summation variable)} \\
-&= \frac{1}{m} \sum_{k=1}^m (\sum_{i=1}^{n}\sum_{j=1}^{n} c_ic_j (x^{(i)}_k - \mu_{i})(x^{(j)}_k - \mu_{j})) \\
-&= \sum_{i=1}^{n}\sum_{j=1}^{n} c_ic_j (\frac{1}{m} \sum_{k=1}^m (x^{(i)}_k - \mu_{i})(x^{(j)}_k - \mu_{j})) \\
+&= \frac{1}{m-1} \sum_{k=1}^m (\sum_{i=1}^{n}\sum_{j=1}^{n} c_ic_j (x^{(i)}_k - \mu_{i})(x^{(j)}_k - \mu_{j})) \\
+&= \sum_{i=1}^{n}\sum_{j=1}^{n} c_ic_j (\frac{1}{m-1} \sum_{k=1}^m (x^{(i)}_k - \mu_{i})(x^{(j)}_k - \mu_{j})) \\
 &\quad \text{(Switching the order of summation)} \\
 &= \sum_{i=1}^{n}\sum_{j=1}^{n} c_ic_j\text{Cov}(X^{(i)}, X^{(j)}) \quad \text{(Definition \ref{defn:covariance})} \\
 &= \vec{c}^T Q\vec{c}
@@ -1036,6 +1037,7 @@ c_v
 Finally, recall that variance is always a positive-semidefinite quantity, and since it can be calculated as a quadratic form via the covariance matrix according to Properties \ref{proper:variancemul}, any covariance matrix will also be a positive-semidefinite quadratic form.
 
 \subsection{Principal Component Analysis (PCA)}
+\label{subsection:PCA}
 A common practice in Earth Science, as well as the growing field of Machine Learning, is to compress the dimensions of a large dataset having many variables/features (\textit{dimensionality reduction}). Given a high number of variables (for example, concentrations of various biochemical substances like blood cells or ions in the blood samples of some hospital patients) in measurements, we want to process them to extract and retain the most important patterns or signals. \index{Principal Component Analysis}\keywordhl{Principal Component Analysis (PCA)}, which is also known as \index{Empirical Orthogonal Functions}\keywordhl{Empirical Orthogonal Functions (EOFs)} in Atmospheric Sciences, is the most common technique for this purpose, by finding the mode(s), or more precisely, the linear combination of features, which maximizes the variance of the data along that direction. \\
 \\
 Consider the simplest case with two variables, or time-series $X$ and $Y$ first. Assume they have $m$ pairs of data, from $\textbf{x}_1^T = (x_1, y_1)^T$ to $\textbf{x}_m^T = (x_{m}, y_{m})^T$. We can compute the covariance matrix
@@ -1114,7 +1116,8 @@ which is an eigenvalue problem as introduced in Section \ref{section:eigensectio
 \end{align*}
 where we have used the facts that $Q \textbf{e}^{(j)} = \lambda_j \textbf{e}^{(j)}$ as per Definition \ref{defn:eigen} and the length of a unit vector is $1$. This means that the variance along the direction of the eigenvector is exactly equal to the corresponding eigenvalue. Note that orthogonal diagonalization (see the discussion below Definition \ref{defn:coordtransquad}) transforms the quadratic form to a diagonal matrix consisting of the eigenvalues $\lambda_j$, with respect to the coordinate system made up of the orthonormal eigenvectors $\textbf{e}^{(j)}$. Therefore, from this perspective we can come to the same conclusion that the variance of a transformed variable along the direction indicated by each eigenvector is equal to its eigenvalue, and further, the covariance between two orthogonal directions represented by any pair of distinct eigenvectors are zero, and hence the transformed variables are made uncorrelated. 
 \begin{thm}[Principal Component Analysis]
-For a covariance matrix $Q$ (which happens to be symmetric), the variance $\textbf{e}^T Q \textbf{e}$ achieves its maximum value $\lambda_1$ along the direction $\textbf{e}^{(1)}$, the largest eigenvalue of $Q$ and the associated unit eigenvector. Generalizing, as $Q$ has $n$ orthonormal eigenvectors $\textbf{e}^{(1)}, \textbf{e}^{(2)}, \cdots, \textbf{e}^{(n)}$, arranged by the magnitude of corresponding eigenvalues $\lambda_1 > \lambda_2 > \cdots > \lambda_n$ from largest to smallest, the largest variance will be $\lambda_1$ when the direction is along $\textbf{e}^{(1)}$, the second largest will be $\lambda_2$ for $\textbf{e}^{(2)}$ and so on, with the smallest variance being $\lambda_n$ for $\textbf{e}^{(n)}$. This set of orthonormal eigenvectors is called the \index{Principal Axes}\index{Principal Directions}\keywordhl{principal axes/directions} in Principal Component Analysis.
+\label{thm:PCA}
+For a covariance matrix $Q = \frac{1}{m-1}[X']^T[X']$ (which happens to be symmetric), the variance $\textbf{e}^T Q \textbf{e}$ achieves its maximum value $\lambda_1$ along the direction $\textbf{e}^{(1)}$, the largest eigenvalue of $Q$ and the associated unit eigenvector. Generalizing, as $Q$ has $n$ orthonormal eigenvectors $\textbf{e}^{(1)}, \textbf{e}^{(2)}, \cdots, \textbf{e}^{(n)}$, arranged by the magnitude of corresponding eigenvalues $\lambda_1 > \lambda_2 > \cdots > \lambda_n$ from largest to smallest, the largest variance will be $\lambda_1$ when the direction is along $\textbf{e}^{(1)}$, the second largest will be $\lambda_2$ for $\textbf{e}^{(2)}$ and so on, with the smallest variance being $\lambda_n$ for $\textbf{e}^{(n)}$. This set of orthonormal eigenvectors is called the \index{Principal Axes}\index{Principal Directions}\keywordhl{principal axes/directions} in Principal Component Analysis.
 \end{thm}
 As a side note, any quadratic form $\textbf{e}^TB\textbf{e}$ will attain its maximum and minimum when $\textbf{e}$ is the eigenvector that represents the largest and smallest eigenvalue, which will also be the value that $\textbf{e}^TB\textbf{e}$ takes when it happens. As before, this is under the constraint that $\textbf{e}$ is a unit vector, and this result bears the name of \textit{Constrained Extremum Theorem}.\par
 Going back to the problem of Principal Component Analysis, for each principal direction $\textbf{e}^{(j)}$ and the variance $\lambda_{j}$, we can compute the ratio of \index{Explained Variance}\keywordhl{explained variance}, which is the fraction of  $\lambda_{j}$ over the total variance, the sum of eigenvalues/variances from all eigenvectors for the covariance matrix. This quantity allows us to assess how well the principal direction contributes to the total variance. In the coordinate system constructed by the orthonormal eigenvectors of $Q$, $[\textbf{e}] = [\textbf{e}^{(1)}|\textbf{e}^{(2)}|\cdots|\textbf{e}^{(n)}]$, the new coordinates for any data point are $\vec{u}_i = [\textbf{e}]^T \vec{x}_i$ (see Section \ref{section:orthogeometricsub}). By the Spectral Theorem \ref{thm:spectral}, this $\vec{u}_i$ can be regarded to be the projection of $\vec{x_i}^T = (x_i^{(1)}, x_i^{(2)}, \ldots, x_i^{(n)})^T$, the $i$-th set of data, onto the principal directions and are called the \index{Principal Components}\keywordhl{principal components (PCs)}. \par
@@ -1280,8 +1283,8 @@ n'_3
 \end{bmatrix}
 \end{align*}
 \begin{center}
-\includegraphics[scale = 0.75]{graphics/PCA_exmp_1.png}\\
-\includegraphics[scale = 0.75]{graphics/PCA_exmp_2.png}\\
+\includegraphics[scale = 0.6]{graphics/PCA_exmp_1.png}\\
+\includegraphics[scale = 0.6]{graphics/PCA_exmp_2.png}\\
 \textit{The data (green) before and after rotation to the principal axes, with the one with a larger/smaller variance shown as a red/blue arrow.}
 \end{center}
 \begin{center}
@@ -1490,6 +1493,7 @@ Three-dimensional quadrics can also be treated in a similar fashion to two-dimen
 \end{Exercise}
 
 \begin{Exercise}
+\label{ex:sylvesterdefinite}
 Use Sylvester's Law of Inertia to argue that a symmetric matrix $B$ is positive-definite if and only if $B = P^TP$ for some invertible matrix $P$. Hint: Consider $P^T IP$.
 \end{Exercise}
 
