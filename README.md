@@ -29,10 +29,10 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 12. Inner Product Space
 13. Least-Square Approximation
 14. Discrete Fourier Transform
-15. Markov Chains (2024-12-01)
-16. Matrix Factorization Methods (2025-01-01)
-17. Dynamical Systems
-18. Index Notation and Introduction to Tensor
+15. Markov Chains
+16. Matrix Factorization Methods
+17. Dynamical Systems (2025-01-15)
+18. Index Notation and Introduction to Tensor (2025-02-15)
 
 Appendix
 - Jordan Normal Form
