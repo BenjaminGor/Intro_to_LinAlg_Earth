@@ -433,7 +433,7 @@ as an example. It is not hard to see that the bottom-left entry in $P^k$ where $
 * & * \\
 0 & *    
 \end{bmatrix}
-\end{align*} will take such a form too.} However, it is also easy to see that given any starting probability vector, it will approach to the steady-state vector $(1,0)^T$ as it goes on. Another problem is that in Definition \ref{defn:regularstoc} we haven't specified how large the $k$ we have to keep checking and when we can stop. For the small example above and by the footnote that accompanies it, knowing $P^2$ is not positive is adequate to decide that it is not regular. For completeness, we note that in general, given an $n \times n$ stochastic matrix $P$, the required $k$ to test is up to $n^2 - 2n + 2$ (so for $n = 2$, we will check $k = 1,2$ and $n = 3$, $k = 1,2,3,4,5$).\footnote{This "magic number" is due to a result by Wielandt but the proof is too far from the area of Linear Algebra to be included here.} But for simply checking the existence and uniqueness of a steady state, we may be better off directly computing the eigenvalues and inferring from the spectrum.
+\end{align*} will take such a form too.} However, it is also easy to see that given any starting probability vector, it will approach to the steady-state vector $(1,0)^T$ as it goes on. Another problem is that in Definition \ref{defn:regularstoc} we haven't specified how large the $k$ we have to keep checking and when we can stop. For the small example above and by the footnote that accompanies it, knowing $P^2$ is not positive is adequate to decide that it is not regular. For completeness, we note that in general, given an $n \times n$ stochastic matrix $P$, the required $k$ to test is up to $n^2 - 2n + 2$ (so for $n = 2$, we will check $k = 1,2$ and $n = 3$, $k = 1,2,3,4,5$).\footnote{This "magic number" is due to a result by Wielandt but the proof is a bit too advanced to be included here.}
 
 \subsection{Expected Value Problem}
 For the special case in which one of the states in Markov Chain is \textit{absorbing}, i.e.\ the probability of staying in this node/state is $1$ and the probabilities of moving to other states are all $0$, all pathways will eventually lead to accumulation in this particular \textit{sink} no matter what the initial state is. This is referred to as an \index{Absorbing Markov Chain}\keywordhl{absorbing Markov Chain} and it is possible to predict the expected time needed for any state to arrive at the absorbing state. Note that the previous example of
@@ -764,7 +764,7 @@ def classify_mag(mag):
     elif (mag <= 4.9):
         return(2) 
 \end{lstlisting}
-Now comes the main part. Shift the categorized time-series by one day and count the incidence of transitions between different states using the function above, to construct the stochastic matrix.
+Now comes the main part. Shift the categorized time-series by one day and count the incidence of transitions between different states using \verb|np.unique| and the function above, to construct the stochastic matrix.
 \begin{lstlisting}
 equake_Apr_prev_states = (equake_Apr_daily_mag_max.loc[3:29].apply(classify_mag)).values
 equake_Apr_next_states = (equake_Apr_daily_mag_max.loc[4:30].apply(classify_mag)).values
@@ -795,7 +795,7 @@ which returns \verb|[2 5 24]| and \verb|[2.4 12.6 16.0]| correspondingly. There 
 from scipy.stats import chisquare
 print(chisquare(f_obs=May_counts, f_exp=May_expected_counts_from_Apr))    
 \end{lstlisting}
-that yields a $p$-value of \verb|0.0135| which exceeds the $5\%$ significance level. Therefore, we can conclude that the actual distribution of Earthquake events over the testing set deviates from that predicted by the Markov Chain with $95\%$ confidence. This makes both logical and physical senses. Earthquakes are dynamic processes which means that the transition probabilities will not be stationary, violating the most fundamental assumption of a Markov Chain. Moreover, we implicitly use a first-order Markov Chain in which the current state only depends on the previous day. However, the more earlier earthquakes will also consume the accumulated stress of the tectonic plate, influencing and retarding much later earthquake events, so the Markov process should be a higher-order one. Particularly, the seismic activity should decay and its distribution will gradually shift to the dormant side.
+that yields a $p$-value of \verb|0.0135| which exceeds the $5\%$ significance level. Therefore, we can conclude that the actual distribution of Earthquake events over the testing set deviates from that predicted by the Markov Chain with $95\%$ confidence. This makes both logical and physical senses. Earthquakes are dynamic processes which means that the transition probabilities will not be stationary, violating the most fundamental assumption of a Markov Chain. Moreover, we implicitly use a first-order Markov Chain in which the current state only depends on the previous day. However, the more earlier earthquakes will also consume the accumulated stress in the tectonic plates, influencing and retarding much later earthquake events, so the Markov process should be a higher-order one. Particularly, the seismic activity should decay and its distribution will gradually shift to the dormant side.
 
 \section{Exercise}
 
@@ -815,7 +815,7 @@ Go to \href{https://ggweather.com/enso/oni.htm}{https://ggweather.com/enso/oni.h
 \begin{Exercise}
 For the carbon cycle below, calculate the rate constant $k = \frac{\text{flux}}{\text{stock mass}}$ for each transport process, and verify that on average it takes about 213000 years for carbon in the ocean reservoir to be buried in the sediment by (a) absorbing Markov Chain, (b) considering the biosphere-atmosphere-ocean as a single reservoir and calculating the lifetime $\tau = \frac{1}{k} = \frac{\text{total stock mass}}{\text{flux}}$. Also, if the pathway to sediment is neglected, find the steady-state vector of the biosphere-atmosphere-ocean system and confirm they are already in a steady state as one would expect.
 \begin{center}
-\includegraphics[scale = 1]{graphics/carboncycle.png}
+\includegraphics[scale = 1.1]{graphics/carboncycle.png}
 \end{center}
 \end{Exercise}
 
