@@ -77,19 +77,21 @@
 \nocite{*}
 
 \usepackage{enumitem}
+\usepackage{empheq}
 \usepackage{mathtools}
 \usepackage{bm,esint}
 \usepackage{siunitx}
 \DeclareSIPrePower\quartic{4}
 \usepackage{physics}
 \usepackage[open,openlevel=2,atend,numbered]{bookmark}
+\usepackage{multirow}
+\usepackage{hhline}
 
-%% (from code by Claudio Beccari in TeX and TUG News, Vol. 2, 1993)
-\newcommand\Tstrut{\rule{0pt}{2.3ex}}         % "top" strut
-\newcommand\Bstrut{\rule[-1.2ex]{0pt}{0pt}}   % "bottom" strut
-\newcommand\TBstrut{\Tstrut\Bstrut}           % "top and bottom" strut
+\newcommand\Tstrut{\rule{0pt}{2.3ex}}
+\newcommand\Bstrut{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand\TBstrut{\Tstrut\Bstrut}
 
-\usepackage{hyperref} % hyper reference
+\usepackage{hyperref}
 \hypersetup{
     colorlinks,
     allcolors = blue!70!green,
@@ -99,18 +101,22 @@
     pdfkeywords = {Mathematics, Earth Science}
 }
 
-\usepackage{pgfplots} % plots
-\pgfplotsset{ % plots option
+\usepackage{pgfplots}
+\pgfplotsset{
   compat=1.18,
-  samples=100
-}
+  samples=100}
 \usepackage{lscape}
 
-\usetikzlibrary{calc, matrix, angles,quotes, arrows.meta}
+\usetikzlibrary{calc, matrix, angles,quotes, arrows.meta, decorations.markings, decorations.pathmorphing}
 \usepackage{tikz-3dplot}
 \tikzset{>=latex}
 
-\includeonly{chapter0, chapter1_Intro_to_Matrix, chapter2_Inv_Det, chapter3_Sol_LinSys, chapter4_Intro_to_Vector, chapter5_Vec_Geometry, chapter6_Vec_Space, chapter6X_More_Vec_Space, chapter7_Complex_Block, chapter8_Eigen, chapter9_Ortho_Normal, chapter10_Quad, chapter11_Inner_Prod, chapter12_Least_sq, chapter13_DFT, chapter14_Markov, chapter15_Factorization, answers, reference}
+\makeatletter
+\let\c@table\c@figure
+\let\ftype@table\ftype@figure
+\makeatother
+
+\includeonly{chapter0, chapter1_Intro_to_Matrix, chapter2_Inv_Det, chapter3_Sol_LinSys, chapter4_Intro_to_Vector, chapter5_Vec_Geometry, chapter6_Vec_Space, chapter6X_More_Vec_Space, chapter7_Complex_Block, chapter8_Eigen, chapter9_Ortho_Normal, chapter10_Quad, chapter11_Inner_Prod, chapter12_Least_sq, chapter13_DFT, chapter14_Markov, chapter15_Factorization, chapter16_DynSys, answers, reference}
 
 \begin{document}
 
@@ -131,7 +137,7 @@
 \include{chapter13_DFT}
 \include{chapter14_Markov}
 \include{chapter15_Factorization}
-\include{chapter16}
+\include{chapter16_DynSys}
 \include{answers}
 \include{reference}
 

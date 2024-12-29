@@ -496,6 +496,7 @@ A^{-1}A\vec{v}_\lambda = I\vec{v}_\lambda = \vec{v}_\lambda &= \lambda A^{-1}\ve
 which explicitly shows that $A^{-1}$ has $\frac{1}{\lambda}$ and $\vec{v}_\lambda$ as its eigenvalue and eigenvector.
 \end{proof}
 \begin{thm}
+\label{thm:singularzeroeig}
 A square matrix is singular if and only if it has zero as one of its eigenvalues.
 \end{thm}
 \begin{proof}
@@ -1164,6 +1165,8 @@ Short Exercise: Repeat the diagonalization but keep complex entries without the 
 \end{align*}}
 
 \section{System of Ordinary Differential Equations}
+\label{section:sysode}
+
 \index{Ordinary Differential Equation (ODE)}\keywordhl{Ordinary Differential Equations (ODEs)} arise frequently in the areas of Physics and Earth Science. They involve the derivatives of a dependent variable (that represents the state of the system, e.g. temperature, velocity) with respect to one independent variable only (usually the displacement $x$ or time $t$). The simplest class of ODEs is \textit{first-order}, \textit{linear}, \textit{homogeneous} described as follows.
 \begin{defn}
 A \index{First-order Linear ODE}\keywordhl{first-order, linear ODE} is a differential equation written in the form of
@@ -1197,6 +1200,7 @@ where $\beta = -k$ is the decay constant.
 \par
 However, for many real-life problems, there are multiple ODEs, each of which is coupled to others in the system. This frequently happens in Earth System Science where we have to consider the interactions between different variables, for instance, mass flows and chemical reactions between the reservoirs of various substances. This naturally leads to a \index{System of ODEs}\keywordhl{system of ODEs}. Again the simplest case would be all of the ODEs being first-order, linear, having constant coefficients, and homogeneous.
 \begin{defn}
+\label{defn:1ordODEsys}
 A first-order, linear system of $n$ ODEs that are of constant coefficients, and homogeneous takes the form of
 \begin{align*}
 \begin{cases}
