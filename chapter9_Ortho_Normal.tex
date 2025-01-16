@@ -206,10 +206,13 @@ Just as in Section \ref{section:coordchange}, depending on the situation, rotati
 \end{center}
 
 The construction of a rotational or reflectional matrix requires the representation of the new unit axes in the old coordinate system as suggested in Theorem \ref{thm:bijectivechincoord}, but with the extra condition that they are orthogonal to each other. Once they are found, they can be combined column by column to form the \index{Transition Matrix}\keywordhl{transition matrix}. For an anti-clockwise (positive) rotation like the one to the right side of the figure above, we have
-\begin{align*}
+\begin{subequations}
+\label{eqn:2drotate}
+\begin{empheq}[left={\empheqlbrace}]{alignat=1}
 \hat{x}' &= (\cos \theta) \hat{x} + (\sin \theta) \hat{y} \\
 \hat{y}' &= (-\sin \theta) \hat{x} + (\cos \theta) \hat{y}
-\end{align*}
+\end{empheq}
+\end{subequations}
 The corresponding transition matrix is then
 \begin{align*}
 P_\beta^S &= \begin{bmatrix}
