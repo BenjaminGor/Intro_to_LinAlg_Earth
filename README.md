@@ -1,10 +1,10 @@
 <h1>Introduction to Linear Algebra with Earth Science Applications</h1>
 
-Hello I am Benjamin Loi from CUHK-EESC and NTU-AS. This is the repository for the tex files for my book <em>Introduction to Linear Algebra with Earth Science Applications</em>.
+Hello, I am Benjamin Loi from CUHK-EESC and NTU-AS. This is the repository for the tex files for my book <em>Introduction to Linear Algebra with Earth Science Applications</em>.
 
 The book pdf is located at [here](Linear_Algebra_Notes_New.pdf).
 
-This project is still alive and being constantly updated as of Nov 2024.
+This project is still alive and being constantly updated as of Jan 2025.
 
 <h2>Contributing to the Project</h2>
 
@@ -14,6 +14,8 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 <h2>Table of Content (Draft)</h2>
 
 (inside brackets are the expected finish and upload dates)
+
+Full Editing: 2025/3/1
 
 1. Introduction to Matrices and Linear Systems
 2. Inverses and Determinants
@@ -31,8 +33,8 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 14. Discrete Fourier Transform
 15. Markov Chains
 16. Matrix Factorization Methods
-17. Dynamical Systems (2025-01-15)
-18. Index Notation and Introduction to Tensor (2025-02-15)
+17. Dynamical Systems
+18. Index Notation and Introduction to Tensor
 
 Appendix
 - Jordan Normal Form
