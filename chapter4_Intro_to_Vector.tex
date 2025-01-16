@@ -5,7 +5,7 @@ After three chapters of discussion about matrices, it is time to talk about anot
 \section{Definition and Operations of Geometric Vectors}
 
 \subsection{Basic Structure of Vectors in the Real $n$-space $\mathbb{R}^n$}
-A \index{Vector}\index{Vector!Geometric Vector}\keywordhl{(geometric) vector} is a physical quantity represented by an ordered tuple of \textit{components} (numbers), e.g. $(1, 8, 7, 4)$, $(1-\imath, 1+3\imath, 2)$. It has a \textit{magnitude (length)} and \textit{direction}, resembling an arrow. Some real-life examples are: two-dimensional flow velocity $(u, v)$, relative position of an airplane to a ground radar $(x, y, z)$.
+A \index{Vector}\index{Vector!Geometric Vector}\keywordhl{(geometric) vector} is a physical quantity represented by an ordered tuple of \textit{components} (numbers), e.g. $(1, 8, 7, 4)$, $(1-\imath, 1+3\imath, 2)$. It has a \textit{magnitude (length)} and \textit{direction}, resembling an arrow. Some real-life examples are: two-dimensional flow velocity $(u, v)$, the relative position of an airplane to a ground radar $(x, y, z)$.
 \begin{defn}[$n$-dimensional Geometric Vector]
 \label{defn:geometvec}
 A $n$-dimensional geometric vector consists of $n$ ordered numbers called \index{Components}\keywordhl{components} and are denoted by either an arrow or boldface, like $\vec{v}$ or $\textbf{v}$. It is usually written out in two forms, as a \textit{column vector} or an \textit{ordered $n$-tuple}:
@@ -33,7 +33,7 @@ A $n$-dimensional vector can be treated as an $n \times 1$ (\index{Vector!Column
 \end{tikzpicture}\\    
 A 2D vector drawn in an x-y plane.\par
 {\fbox{\includegraphics[scale = 0.5]{higos.jpg}}\\
-Forecast for \textit{Typhoon Higos} (taken from \href{http://www.hkww.org/weather/tcarchive.html}{Hong Kong Weather Watch}). Its horiztonal movement is a two-dimensional vector, even though the speed and direction are given instead of the velocities in $x$ and $y$-direction (they can be converted to each other).}
+Forecast for \textit{Typhoon Higos} (taken from \href{http://www.hkww.org/weather/tcarchive.html}{Hong Kong Weather Watch}). Its horizontal movement is a two-dimensional vector, even though the speed and direction are given instead of the velocities in $x$ and $y$-direction (they can be converted to each other).}
 
 Implicit in the definition of $n$-dimensional vectors is the $n$-dimensional \textit{space} they are residing in. Assume the components of those vectors are all real, then the set of all such vectors constitutes the \index{Real $n$-space}\keywordhl{real $n$-space $\mathbb{R}^n$}.
 \begin{defn}[The Real $n$-space $\mathbb{R}^n$]
@@ -42,7 +42,7 @@ The real $n$-space $\mathbb{R}^n$ is defined as the set of all possible $n$-tupl
 \end{defn}
 While we have not clearly defined what a vector space is, we note that $\mathbb{R}^n$ fulfills the requirements of a vector space in a mathematical sense. A more detailed discussion of this aspect will be deferred to Chapter \ref{chap:vec_space}. Meanwhile, the complex counterpart will be explored in Chapter \ref{chap:complex}.\\
 \\
-An $n$-dimensional real geometric vectors as described in Definition \ref{defn:geometvec} and \ref{defn:real_nspace} can be written as the sum of $n$ \index{Standard Unit Vector}\keywordhl{standard unit vectors} that have a magnitude of $1$ and are oriented in the positive direction along the $p$-th coordinates axes. They are denoted by $\hat{e}_p$, where $p$ can be from $1$ to $n$. The coordinate axes are perpendicular (or more generally, \textit{orthogonal}, introduced later in this chapter) to each other and this coordinate system is known as the \index{Cartesian Coordinate System}\keywordhl{Cartesian (coordinate) system}. Particularly, in the three-dimensional real space $\mathbb{R}^3$, $\hat{e}_1 = \hat{i} = (1,0,0)^T$, $\hat{e}_2 = \hat{j} = (0,1,0)^T$, $\hat{e}_3 = \hat{k} = (0,0,1)^T$ correspond to "an arrow" of length $1$ pointing in the positive direction of the $x$, $y$, $z$ axes respectively. 
+An $n$-dimensional real geometric vector as described in Definition \ref{defn:geometvec} and \ref{defn:real_nspace} can be written as the sum of $n$ \index{Standard Unit Vector}\keywordhl{standard unit vectors} that have a magnitude of $1$ and are oriented in the positive direction along the $p$-th coordinates axes. They are denoted by $\hat{e}_p$, where $p$ can be from $1$ to $n$. The coordinate axes are perpendicular (or more generally, \textit{orthogonal}, introduced later in this chapter) to each other and this coordinate system is known as the \index{Cartesian Coordinate System}\keywordhl{Cartesian (coordinate) system}. Particularly, in the three-dimensional real space $\mathbb{R}^3$, $\hat{e}_1 = \hat{i} = (1,0,0)^T$, $\hat{e}_2 = \hat{j} = (0,1,0)^T$, $\hat{e}_3 = \hat{k} = (0,0,1)^T$ correspond to "an arrow" of length $1$ pointing in the positive direction of the $x$, $y$, $z$ axes respectively. 
 \begin{defn}[Standard Unit Vector]
 \label{defn:standardunitvec}
 A standard unit vector $\hat{e}_p$ in the real $n$-space $\mathbb{R}^n$ (Definition \ref{defn:real_nspace}) has $n$ components, consisted of $1$ at the $p$-th entry and $0$ elsewhere. Mathematically, for $1\leq q \leq n$, $[\hat{e}_p]_q = 1$ when $q=p$ and $[\hat{e}_p]_q = 0$ when $q\neq p$.
@@ -229,7 +229,7 @@ Looking back at vector subtraction, it can be viewed as addition with a factor o
 \end{bmatrix}
 \end{align*}
 
-\subsubsection{Length and Unit Vector} \index{Length}\index{Magnitude}\keywordhl{Length (magnitude)}, or more formally \index{Euclidean Norm}\keywordhl{Euclidean norm}, of a vector $\vec{v}$ is based on a generalized version of \index{Pythagoras’ Theorem}\keywordhl{Pythagoras’ Theorem}, and is evaluated as the square root of the sum of squares of components.
+\subsubsection{Length and Unit Vector} \index{Length}\index{Magnitude}\keywordhl{Length (magnitude)}, or more formally \index{Euclidean Norm}\keywordhl{Euclidean norm}, of a vector $\vec{v}$ is based on a generalized version of \index{Pythagoras' Theorem}\keywordhl{Pythagoras' Theorem}, and is evaluated as the square root of the sum of squares of components.
 \begin{defn}[Vector Length]
 \label{defn:vectorlength}
 Length, or magnitude of a $n$-dimensional \textit{real} vector $\vec{v}$, denoted by $\norm{\vec{v}}$, is given by

@@ -1333,14 +1333,28 @@ R &=
 0 & 0 & \textcolor{blue}{\frac{1}{\sqrt{17}}} \\
 \end{bmatrix} 
 \end{align*}
-whose values can be readily inferred from the steps during the orthogonalization process itself in Example \ref{exmp:GS_ex} (highlighted in red/blue). The readers are encouraged to compute the matrix product $QR$ to see if the original matrix $A$ is recovered.\\
-\\
-We conclude this section with a small remark related to the concept of orthogonal complement discussed in the end of Section \ref{section:null}.
+whose values can be readily inferred from the steps during the orthogonalization process itself in Example \ref{exmp:GS_ex} (highlighted in red/blue). The readers are encouraged to compute the matrix product $QR$ to see if the original matrix $A$ is recovered.
+\end{solution}
+We conclude this section with two small remarks, one related to computing the coordinates relative to an orthonormal basis, and another related to the concept of orthogonal complement discussed at the end of Section \ref{section:null}.
+\begin{proper}
+\label{proper:orthocoords}
+The coordinates of a vector $\vec{v}$ in an orthonormal coordinate system $\beta$ are simply its dot products (projection onto) with the orthonormal basis vectors in $\beta$.
+\end{proper}
+\begin{proof}
+As $\beta$ is an orthonormal coordinate system, according to the discussion in Section \ref{section:subspacebasis}, $\vec{v}$ can be written as a unique linear combination of the orthonormal basis vectors \smash{$\vec{v} = [v_1]_\beta \hat{e}_\beta^{(1)} + [v_2]_\beta \hat{e}_\beta^{(2)} + \cdots + [v_n]_\beta \hat{e}_\beta^{(n)}$}. By taking the dot product with \smash{$\hat{e}_\beta^{(1)}$}, we have
+\begin{align*}
+\vec{v} \cdot \hat{e}_\beta^{(1)} &= [v_1]_\beta (\hat{e}_\beta^{(1)} \cdot \hat{e}_\beta^{(1)}) + [v_2]_\beta (\hat{e}_\beta^{(2)} \cdot \hat{e}_\beta^{(1)}) + \cdots + [v_n]_\beta (\hat{e}_\beta^{(n)} \cdot \hat{e}_\beta^{(1)}) \\
+&= [v_1]_\beta (1) + [v_2]_\beta (0) + \cdots + [v_n]_\beta (0) \\
+&\quad \text{(Orthonormality of the basis vectors)} \\
+&= [v_1]_\beta
+\end{align*}
+which is also the projection of $\vec{v}$ onto \smash{$\hat{e}_\beta^{(1)}$} by Properties \ref{proper:proj}. The same applies to the other coordinate components.
+\end{proof}
 \begin{proper}
 \label{proper:orthodirectsum}
 For an orthogonal(-normal) basis $\mathcal{B} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \vec{v}^{(3)}, \cdots, \\ \vec{v}^{(n)}\}$ for a finite, $n$-dimensional vector space $\mathcal{V}$, the subspaces $\mathcal{V}_G$ and $\mathcal{V}_H$ formed by $\mathcal{G} = \{\vec{v}^{(I)}\}$ and $\mathcal{H} = \{\vec{v}^{(J)}\}$ respectively, where $I$ and $J$ are mutually exclusive indices that together count all integers from $1$ to $n$, are the orthogonal complement to each other with respect to $\mathcal{V}$, such that $\mathcal{V}_G^\perp = \mathcal{V}_H$ ($\mathcal{V}_H^\perp = \mathcal{V}_G$) and $\mathcal{V}_G \oplus \mathcal{V}_H = \mathcal{V}$.
 \end{proper}
-\end{solution}
+
 
 \section{Python Programming}
 We can define a function to a change in coordinates for vectors or matrices. Let's first write a helper function to produce the change of coordinates matrix $P$ proposed in Theorem \ref{thm:bijectivechincoord}, which equals to $B'^{-1}B$ as discussed in the end of Example \ref{exmp:changecoord}:

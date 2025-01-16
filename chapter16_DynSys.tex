@@ -380,6 +380,7 @@ The pattern of its field lines is shown in the following figure. \\
 The field lines are akin to the \textit{magnetic dipole} type. The equilibrium point at the origin is attractive as all outgoing field lines will return to the equilibrium point, but is also unstable since we can always find a more outer field line that travels farther in both the $x$ and $y$-directions.\footnote{There is a caveat to this "counter-example" though. The "central" field line (not explicitly drawn out) that starts from $y = 0$ to the right of the equilibrium point will keep accelerating along the $x$-axis and diverges so it is only \textit{almost} attractive. In fact, it is impossible to have an unstable, yet \textit{truly} attractive equilibrium point if the dynamical system is smooth enough. However, the key takeaway is to help the readers distinguish between the concepts of stability and attractiveness, and this example should be adequate.} Nevertheless, all stable equilibrium types in Table \ref{tab:equilpts} except centers, are attractive and hence asymptotically stable.
 
 \subsection{Linearization and Hartman-Grobman Theorem}
+\label{subsection:HGthm}
 
 Since non-linear dynamical systems are more complex, we may want to reduce them to the more familiar, linear dynamical systems. Motivated by the form (\ref{eqn:translateddynsys}), we seek to approximate the behavior of orbits near a non-linear equilibrium point by
 \begin{align}
@@ -608,13 +609,13 @@ which indeed gives the zonally constant temperature forcing as desired. We repea
 \begin{align*}
 &\quad -(\partial_{z^*} \psi^*)(\partial_{x^*} T^*) + (\partial_{x^*} \psi^*)(\partial_{z^*} T^*) \\
 &= -(\pi\hat{\psi}_{k_2 = 1}\cos(\pi z^*)) (\mathcolor{red}{(-)}\hat{T}_{k_2 = 1} \sin(\pi z^*)) \\
-&\quad + \hat{\psi}_{k_2 = 1}\sin(\pi z^*) (\pi\hat{T}_{k_2 = 1} \cos(\pi z^*) \\
+&\quad + \hat{\psi}_{k_2 = 1}\sin(\pi z^*) (\pi\hat{T}_{k_2 = 1} \cos(\pi z^*)) \\
 &\quad
 \begin{aligned}
 &\textcolor{red}{\text{(Notice that the differentiation of the real part of $\hat{T}_{k_1 = 1}$ with respect to $x$}} \\
 &\textcolor{red}{\text{in the first term will contribute an extra negative sign as above)}}
 \end{aligned} \\
-&= 2\pi\hat{\psi}_{k_2 = 1}\hat{T}_{k_2 = 1} \sin(\pi z^*)\cos(\pi z^*)) = \pi\hat{\psi}_{k_2 = 1}\hat{T}_{k_2 = 1} \sin(2\pi z^*)
+&= 2\pi\hat{\psi}_{k_2 = 1}\hat{T}_{k_2 = 1} \sin(\pi z^*)\cos(\pi z^*) = \pi\hat{\psi}_{k_2 = 1}\hat{T}_{k_2 = 1} \sin(2\pi z^*)
 \end{align*}
 Now we will combine all these where the needed three variables are the imaginary part of $\hat{\psi}_{k_1 = 1, k_2 = 1}$, and the real parts of $\hat{T}_{k_1 = 1, k_2 = 1}$ and $\hat{T}_{k_1 = 0, k_2 = 2}$ respectively. Substituting them into (\ref{eqn:lorenzwind}) and (\ref{eqn:lorenztemp}), we have
 \begin{align}
@@ -773,7 +774,7 @@ according to (\ref{eqn:lorezncrit}). The following two figures (Figures \ref{fig
 
 \section{Python Programming}
 
-In this section, we will show the necessary codes to produce Figures \ref{fig:lor63r14} and \ref{fig:lor63r28}. First, we need to use the \verb|solve_ivp| function from \verb|scipy.integrate| to integrate the dynamical system. We will define the Lorenz-63 Model as a function of $t$ and $\textbf{X}$ (which is denoted by the variable \verb|y| in the argument).
+In this section, we will show the necessary codes to produce Figures \ref{fig:lor63r14} and \ref{fig:lor63r28}. First, we need to use the \verb|solve_ivp| function from \verb|scipy.integrate| to integrate the dynamical system. We will define the equations of the Lorenz-63 Model as a function of $t$ and $\textbf{X}$ (which is denoted by the variable \verb|y| in the argument).
 \begin{lstlisting}
 import matplotlib.pyplot as plt
 import numpy as np
@@ -808,7 +809,7 @@ ax.plot(*sol.y)
 ax.legend()
 fig.savefig("Lorenz63_14", dpi=300, bbox_inches="tight")    
 \end{lstlisting}
-To run this with different parameters, we can give \verb|args| in \verb|solve_ivp|. Now we set $\rho = 28$ to enable chaotic behavior.
+To run this with different parameters, we can give \verb|args| in \verb|solve_ivp|. Now we set $\rho = 28$ to enable chaotic behavior. The asterisk \verb|*| effectively expands the arrays into the three direction components.
 \begin{lstlisting}
 Y_0 = [5,-5,20]
 sol = solve_ivp(Lorenz63, t_span, Y_0, t_eval=np.linspace(t_span[0], t_span[1], 10000), args=(10,8/3,28))
@@ -897,5 +898,5 @@ Examine the chaotic behavior of the \textit{Rössler attractor}:
 \frac{dz}{dt} &= b+z(x-c)
 \end{empheq}
 \end{subequations}
-with $a=0.2, b=0.2, c=5.7$ and plot it.
+with three parameters $a=0.2, b=0.2, c=5.7$ and plot it.
 \end{Exercise}

@@ -704,7 +704,7 @@ a & \frac{b}{2} \\
 \end{bmatrix}
 \end{align*}
 It can undergo a rotation of the coordinate system by an angle $\theta$ such that
-\begin{align*}
+\begin{align}
 \begin{bmatrix}
 \cos \theta & \sin \theta \\
 -\sin \theta & \cos \theta
@@ -722,13 +722,14 @@ a & \frac{b}{2} \\
 * & 0\\
 0 & *
 \end{bmatrix}
-\end{align*}
+\label{eqn:rotate2dquadmat}
+\end{align}
 the off-diagonal elements become zero. The required $\theta$ is found by expanding the L.H.S. and equating both sides, which gives
-\begin{align*}
--\sin \theta (a \cos\theta + \frac{b}{2}\sin \theta) + \cos\theta (\frac{b}{2} \cos \theta + c\sin \theta) &= 0 \\
-\frac{c-a}{2} \sin (2\theta) + \frac{b}{2}\cos(2\theta) &= 0 \\
-\cot(2\theta) &= \frac{a-c}{b}
-\end{align*}
+\begin{align}
+-\sin \theta (a \cos\theta + \frac{b}{2}\sin \theta) + \cos\theta (\frac{b}{2} \cos \theta + c\sin \theta) &= 0 \nonumber \\
+\frac{c-a}{2} \sin (2\theta) + \frac{b}{2}\cos(2\theta) &= 0 \nonumber \\
+\cot(2\theta) &= \frac{a-c}{b} \label{eqn:rotate2dquad}
+\end{align}
 where we have applied the familiar double-angle formulas from the first to second line.
 
 \subsubsection{Generalizing to the Three-dimensional Space}
