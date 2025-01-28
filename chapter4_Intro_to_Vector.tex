@@ -293,10 +293,10 @@ Now we are going to introduce two special types of vector operations: \textit{do
 \begin{defn}[Dot Product (Real)]
 \label{defn:dotreal}
 The dot product between two $n$-dimensional \textit{real} vectors $\vec{u}$ and $\vec{v}$ in $\mathbb{R}^n$ are denoted as either $\vec{u} \cdot \vec{v}$, or by matrix notation $\textbf{u}^T\textbf{v}$. They are defined as
-\begin{align*}
-\vec{u} \cdot \vec{v} = \textbf{u}^T\textbf{v} &= u_1v_1 + u_2v_2 + u_3v_3 + \cdots + u_nv_n \\
-&= \sum_{k=1}^{n} u_kv_k
-\end{align*}
+\begin{align}
+\vec{u} \cdot \vec{v} = \textbf{u}^T\textbf{v} &= u_1v_1 + u_2v_2 + u_3v_3 + \cdots + u_nv_n \nonumber \\
+&= \sum_{k=1}^{n} u_kv_k \label{eqn:dotreal}
+\end{align}
 which is a scalar quantity.
 \end{defn}
 Conversely, it can be said that entries of a matrix product are vector dot products between the corresponding rows and columns. It is emphasized that we are restricting ourselves to real entries since complex vectors introduce a bit of extra complications. Then, for two \textit{real} matrices expressed in the form of combined row/column vectors that are $\mathbb{R}^n$,
@@ -722,14 +722,15 @@ The calculation of cross product then follows from these rules, leading to the d
 \begin{proper}
 \label{proper:crossdet}
 For $\vec{u} = (u_1, u_2, u_3)^T, \vec{v} = (v_1, v_2, v_3)^T \in \mathbb{R}^3$, their cross product $\vec{u} \times \vec{v}$ can be written in the form of a determinant as
-\begin{align*}
+\begin{align}
 \vec{u} \times \vec{v} =
 \begin{vmatrix}
 \hat{i} & \hat{j} & \hat{k} \\
 u_1 & u_2 & u_3 \\
 v_1 & v_2 & v_3
 \end{vmatrix}
-\end{align*}
+\label{eqn:crossdet}
+\end{align}
 \end{proper}
 \begin{proof}
 Starting from Definition \ref{defn:crossijk} and Properties \ref{proper:crossproper}, we have

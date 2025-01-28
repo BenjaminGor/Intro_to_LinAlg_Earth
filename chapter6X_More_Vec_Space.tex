@@ -517,7 +517,14 @@ t
 where $-\infty < t < \infty$, or in other words, $\text{Ker}(T) = \text{span}(\{(-1,0,1)_B^T\})$ with a dimension of $1$. Similarly, the range of $T$ will be the column space of $[T]_B^H$. From the elimination procedure carried out above, we know that the first two column vectors are linearly independent and the third column is clearly the same as the first column (see Properties \ref{proper:CRFactor}), and thus the range is $\mathcal{R}(T) = \text{span}(\{(1,1,1)_B^T, (0,-1,1)_B^T\})$ and has a dimension of $2$ (the rank of the $[T]_B^H$ matrix).
 \end{solution}
 
-Bear in mind that we approach the above problem with some bases (albeit unknown) fixed to represent the linear transformation in matrix form just like in the last example. Again, we will soon justify that the results are actually unrelated to the choices of bases, i.e.\ \textit{basis-independent}, such that the (dimensions of) kernel and range are exactly the null space and column space (nullity and rank) derived using any matrix representation of the linear transformation with respect to arbitrary bases. (Rank-Nullity?)
+Bear in mind that we approach the above problem with some bases (albeit unknown) fixed to represent the linear transformation in matrix form just like in the last example. Again, we will soon justify that the results are actually unrelated to the choices of bases, i.e.\ \textit{basis-independent}, such that the (dimensions of) kernel and range are exactly the null space and column space (nullity and rank) derived using any matrix representation of the linear transformation with respect to arbitrary bases. Hence, the Rank-nullity Theorem \ref{thm:ranknullity} can be extended to any linear transformation in general as
+\begin{thm}[Rank-nullity Theorem for Linear Transformations]
+\label{thm:ranknullitytrans}
+For a linear transformation $T: \mathcal{U} \to \mathcal{V}$, we have
+\begin{align*}
+\dim(\text{Ker}(T)) + \dim(\mathcal{R}(T)) &= \dim(\mathcal{U})
+\end{align*}
+\end{thm}
 
 Finally, we can rewrite Properties \ref{proper:injective} and \ref{proper:surjective} using the notion of kernel and range (alongside Properties \ref{proper:dimWleqV}).
 \begin{proper}
@@ -556,26 +563,30 @@ There always exists a bijective linear mapping between $\mathcal{V}$ itself, i.e
 \end{thm}
 \begin{proof}
 Since it is the same vector space $\mathcal{V}$ but just represented in different bases, the number of dimension will stay the same, let's say $n$, and the bases $\mathcal{B}$ and $\mathcal{B}'$ both are made up of $n$ basis vectors (Properties \ref{proper:samenvecsbases}). Denote them by $\mathcal{B} = \{\vec{v}_{B}^{(1)}, \vec{v}_{B}^{(2)}, \ldots, \vec{v}_{B}^{(n)}\}$ and $\mathcal{B'} = \{\vec{v}_{B'}^{(1)}, \vec{v}_{B'}^{(2)}, \ldots, \vec{v}_{B'}^{(n)}\}$. The desired mapping $T: \mathcal{V} \to \mathcal{V}$ is in fact
-\begin{align*}
+\begin{align}
 T(\vec{v}) = \text{id}(\vec{v}) = \vec{v}
-\end{align*}
-the \textit{identity mapping} as it is just a change of coordinates where the actual vector stays identical. This transformation is then trivially bijective because any vector is just mapped into itself, and is described by $[\vec{v}]_{B'} = [T]_B^{B'} [\vec{v}]_B$ following Definition \ref{defn:matrixrepoflintrans} with $\mathcal{U} = \mathcal{V}$ and $\vec{u} = \vec{v}$. Now note that $[\vec{v}]_{B'} = [T]_B^{B'} [\vec{v}]_{B'}$ has a unique solution $[\vec{v}]_B$ for any $[\vec{v}]_{B'}$ as $T$ is bijective and by definition, together with the fact that the coordinate representation of a vector in any basis is unique, each of $[\vec{v}]_{B'}$ is mapped onto by one and only one $[\vec{v}]_B$. Part (d) to (a) of Theorem \ref{thm:equiv2} then shows that $[T]_B^{B'}$ is an invertible matrix. According to the discussion prior to Definition \ref{defn:matrixrepoflintrans}, $[T]_B^{B'}$ takes the form of
-\begin{align*}
+\end{align}
+the \textit{identity mapping} as it is just a change of coordinates where the actual vector stays identical. This transformation is then trivially bijective because any vector is just mapped into itself, and is described by 
+\begin{align}
+[\vec{v}]_{B'} = [T]_B^{B'} [\vec{v}]_B \label{eqn:bijectvTv}
+\end{align}
+following Definition \ref{defn:matrixrepoflintrans} with $\mathcal{U} = \mathcal{V}$ and $\vec{u} = \vec{v}$. Now note that $[\vec{v}]_{B'} = [T]_B^{B'} [\vec{v}]_{B'}$ has a unique solution $[\vec{v}]_B$ for any $[\vec{v}]_{B'}$ as $T$ is bijective and by definition, together with the fact that the coordinate representation of a vector in any basis is unique, each of $[\vec{v}]_{B'}$ is mapped onto by one and only one $[\vec{v}]_B$. Part (d) to (a) of Theorem \ref{thm:equiv2} then shows that $[T]_B^{B'}$ is an invertible matrix. According to the discussion prior to Definition \ref{defn:matrixrepoflintrans}, $[T]_B^{B'}$ takes the form of
+\begin{align}
 P_B^{B'} = [T]_B^{B'} &= \begin{bmatrix}
 [\text{id}(\vec{v}_{B}^{(1)})]_{B'} | [\text{id}(\vec{v}_{B}^{(2)})]_{B'} | \cdots | [\text{id}(\vec{v}_{B}^{(n)})]_{B'}
-\end{bmatrix} \\
-&=
+\end{bmatrix} \nonumber \\
+&= \label{eqn:PBB'}
 \begin{bmatrix}
 [\vec{v}_{B}^{(1)}]_{B'} | [\vec{v}_{B}^{(2)}]_{B'} | \cdots | [\vec{v}_{B}^{(n)}]_{B'}
 \end{bmatrix}
-\end{align*}
+\end{align}
 So we have to find how each of the basis vectors in $\mathcal{B}$ is expressed in the $\mathcal{B}'$ system. Conversely,
-\begin{align*}
+\begin{align}
 P_{B'}^B = ([T]_B^{B'})^{-1} = [T]_{B'}^B =
 \begin{bmatrix}
 [\vec{v}_{B'}^{(1)}]_B | [\vec{v}_{B'}^{(2)}]_B | \cdots | [\vec{v}_{B'}^{(n)}]_B
 \end{bmatrix}
-\end{align*}
+\end{align}
 \end{proof}
 Be aware that despite $\text{id}$ being an identity mapping, the exact matrix representation is dependent on the bases (but the effect of such an identity mapping is obviously basis-independent) and will usually not be an identity matrix. Nevertheless, such bijectivity between any two coordinate systems of the same vector space, which is always accompanied by some invertible transformation matrix, \textcolor{red}{implies that all vectors in any vector space $\vec{u} \in \mathcal{U}$ (or $\vec{v} \in \mathcal{V}$) and linear mappings $T: \mathcal{U} \to \mathcal{V}$ from one vector space to another, together with its (dimensions of) kernel or range, are independent of the choices of bases for either $\mathcal{U}$ or $\mathcal{V}$} and we can pick whatever bases that suit the situation better. \textcolor{red}{This also means that statements (both previous and to be derived in the future) for finite-dimensional linear transformations are applicable for corresponding matrices (when converted properly) and vice versa.} The only thing that is dependent on the coordinate systems will be their coordinate representation and we will see how it unfolds in the next part. This justifies our fixing of bases during several arguments in the last subsection.
 

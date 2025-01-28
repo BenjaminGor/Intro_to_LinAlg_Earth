@@ -47,9 +47,9 @@ Therefore, we have the following result.
 \begin{thm}
 \label{thm:bestfit}
 If $A$ is a $m \times n$ matrix with $m \geq n$ and all its $n$ column vectors are linearly independent, then for the system $A\vec{x} = \vec{h}$, there exists a unique best-fit solution
-\begin{align*}
-\vec{x}_f &= (A^\dag A)^{-1}A^\dag \vec{h}
-\end{align*}
+\begin{align}
+\vec{x}_f &= (A^\dag A)^{-1}A^\dag \vec{h} \label{eqn:bestfit}
+\end{align}
 such that the square error $\norm{\vec{h}-\vec{h_f}}^2 = \norm{\vec{h}-A\vec{x_f}}^2$ is minimized.
 \end{thm}
 Notice that if $\vec{h}$ already lies in the column space of $A$, then $A\vec{x} = \vec{h}$ will have an exact solution and the best-fit solution will be identical to this exact solution. However, on the other extreme, if the column vectors in $A$ are not linearly independent, then the best-fit solution will not be unique. Rather, the normal equation will still be consistent, but there are infinitely many possible solutions, each having the same least-square error. Also, if the standard real inner product is used so that $A^\dag = A^T$ and we by chance have the QR decomposition of $A$, then

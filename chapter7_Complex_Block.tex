@@ -89,27 +89,38 @@ A complex number $z = 3+4\imath$ represented in the complex plane.
 \end{center}
 A complex number can be visualized as a two-dimensional vector, in the so-called \index{Complex Plane}\keywordhl{complex plane} (or sometimes referred to as the \index{Argand Plane}\keywordhl{Argand plane}), where the $x$-axis represents the real part and the $y$-axis represents the imaginary part. These two axes are referred to as the \index{Real Axis}\keywordhl{real axis} and \index{Imaginary Axis}\keywordhl{imaginary axis} respectively.\par
 
-It is obvious that the length of such vector is $\abs{z} = \sqrt{\Re{z}^2 + \Im{z}^2}$, which is called the \index{Modulus}\keywordhl{modulus} of the corresponding complex number. In the diagram above, the modulus of $z$ is easily seen to be $\abs{z} = 5$. \\
+It is obvious that the length of such a vector is 
+\begin{align}
+\abs{z} = \sqrt{\Re{z}^2 + \Im{z}^2} \label{eqn:modulus}
+\end{align}
+which is called the \index{Modulus}\keywordhl{modulus} of the corresponding complex number. In the diagram above, the modulus of $z$ is easily seen to be $\abs{z} = 5$. \\
 \\
-The angle between the real axis and the complex number is called the \index{Argument}\keywordhl{argument}, shown as $\theta = \arctan(\Im{z}/\Re{z})$ in the same figure. Since its complex conjugate $\overline{z}$ has the sign of the imaginary part flipped while the real part remains the same, the argument of the complex conjugate is simply the negative of that of the original complex number $z$. Also, the modulus will be unchanged.\\
+The angle between the real axis and the complex number is called the \index{Argument}\keywordhl{argument}, shown as
+\begin{align}
+\theta = \arctan(\Im{z}/\Re{z}) \label{eqn:argument} 
+\end{align}
+in the same figure. Since its complex conjugate $\overline{z}$ has the sign of the imaginary part flipped while the real part remains the same, the argument of the complex conjugate is simply the negative of that of the original complex number $z$. Also, the modulus will be unchanged.\\
 \\
 Moreover, from elementary trigonometry, we know that $\Re{z} = \abs{z} \cos{\theta}$ and $\Im{z} = \abs{z} \sin{\theta}$. Hence $z$ can be represented as $z = \Re{z} + \imath\Im{z} = \abs{z} (\cos \theta + \imath \sin \theta)$. We also have the famous \index{Euler's Formula}\keywordhl{Euler's Formula}, relating the geometry of any complex number with an exponential raised to an imaginary power.
 \begin{defn}[Euler's Formula]
 \label{defn:Euler}
 An exponential raised to an imaginary power is a complex number such that
-\begin{align*}
-e^{\imath \theta} = \cos \theta + \imath \sin \theta
-\end{align*}
+\begin{align}
+e^{\imath \theta} = \cos \theta + \imath \sin \theta \label{eqn:Euler}
+\end{align}
 where $\theta$ is taken to be real.
 \end{defn}
 Hence $z$ can be further written as $z = \abs{z} e^{\imath \theta}$, and $\overline{z} = \Re{z} - \imath\Im{z} = \abs{z} (\cos \theta - \imath \sin \theta) = \abs{z} (\cos (-\theta) + \imath \sin (-\theta)) = \abs{z} e^{-\imath \theta}$. Conversely, the quantity $e^{\imath \theta}$ can be regarded as a complex number that has a modulus of $1$ and an argument of $\theta$. Additionally, this provides formulae to express sines and cosines with complex exponentials.
 \begin{proper}
 \label{proper:sincoscomplex}
 For any $\theta$ which is confined to be real,
-\begin{align*}
-\cos \theta &= \frac{e^{\imath\theta} + e^{-\imath\theta}}{2} \\
+\begin{subequations}
+\label{eqn:sincoscomplex}
+\begin{align}
+\cos \theta &= \frac{e^{\imath\theta} + e^{-\imath\theta}}{2} \label{eqn:sincoscomplexa}\\
 \sin \theta &= \frac{e^{\imath\theta} - e^{-\imath\theta}}{2\imath}
-\end{align*}
+\end{align}
+\end{subequations}
 \end{proper}
 \begin{proof}
 By Definition \ref{defn:Euler},
