@@ -61,7 +61,7 @@ The unit vector of a non-zero vector $\vec{v} \in \mathcal{V}$ in an inner produ
 \end{align*}
 where the norm $\norm{\vec{v}}$ is now defined as in Properties \ref{proper:norminner}. 
 \end{defn}
-The notion of orthogonality in Properties \ref{proper:dotorth} is also transferred to an inner product space by the same essence of replacing the dot product with an inner product.
+The notion of orthogonality (as well as orthonormal) in Properties \ref{proper:dotorth} is also transferred to an inner product space by the same essence of replacing the dot product with an inner product.
 \begin{proper}
 \label{proper:orthoinner}
 Two vectors $\vec{u}, \vec{v} \in \mathcal{V}$ in an inner product space are said to be orthogonal with respect to the inner product when $\langle\vec{u} , \vec{v}\rangle = \langle\vec{v} , \vec{u}\rangle = 0$.
@@ -635,6 +635,7 @@ Therefore, the required orthonormal basis is
 \end{solution}
 
 \subsection{Spectral Theorem for Hermitian Operators}
+\label{subsection:spectralthmherm}
 
 As in the symmetric matrix case, the Spectral Theorem is the most principal result that can be derived for Hermitian operators, which are the inner product counterpart of symmetric matrices. Its statements are therefore analogous to Theorem \ref{thm:spectral} and are listed below.
 \begin{thm}[Spectral Theorem for Hermitian Operators]
@@ -707,9 +708,9 @@ Comparing this expression with the form of Fourier series in Equation (\ref{eqn:
 \begin{proper}[Fourier Series]
 \label{proper:fourierseries}
 For a function $f(x)$ in the $L^2[-\pi, \pi]$ space, it can be written as a Fourier series of
-\begin{align*}
-f(x) = \frac{a_0}{2} + \sum_{m=1}^{\infty} a_m \cos(mx) + \sum_{n=1}^{\infty} b_n \sin(nx) 
-\end{align*}
+\begin{align}
+f(x) = \frac{a_0}{2} + \sum_{m=1}^{\infty} a_m \cos(mx) + \sum_{n=1}^{\infty} b_n \sin(nx) \label{eqn:fourierseri}
+\end{align}
 where the Fourier coefficients are given by
 \begin{align}
 a_m &= \frac{1}{\pi}\langle f, \cos(mx) \rangle = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x)\cos(mx) dx \label{eqn:fouriera} \\

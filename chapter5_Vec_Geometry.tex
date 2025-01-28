@@ -561,29 +561,29 @@ Meanwhile, volume of parallelepiped (see the figure below) formed by three vecto
 \begin{proper}[Scalar Triple Product]
 \label{proper:parallelpiped}
 The volume of parallelepiped formed by three vectors $\vec{u}$, $\vec{v}$, and $\vec{w}$ is calculated as
-\begin{align*}
+\begin{align}
 \norm{\vec{u} \times \vec{v}} \norm{\vec{w}} \cos\theta = |(\vec{u} \times \vec{v}) \cdot \vec{w}| =
 \text{abs}\left(
 \begin{vmatrix}
 u_1 & u_2 & u_3 \\
 v_1 & v_2 & v_3 \\
 w_1 & w_2 & w_3
-\end{vmatrix}\right)
-\end{align*}
+\end{vmatrix}\right) \label{eqn:scalartriple}
+\end{align}
 where
-\begin{align*}
+\begin{align}
 (\vec{u} \times \vec{v}) \cdot \vec{w} =
 \begin{vmatrix}
 u_1 & u_2 & u_3 \\
 v_1 & v_2 & v_3 \\
 w_1 & w_2 & w_3
 \end{vmatrix}    
-\end{align*}
+\end{align}
 is the scalar triple product of $\vec{u}$, $\vec{v}$, and $\vec{w}$. Also, by applying Properties \ref{proper:elementaryopdet}, the determinant form of scalar triple product indicates that
-\begin{align*}
-&\quad (\vec{u} \times \vec{v}) \cdot \vec{w} = (\vec{v} \times \vec{w}) \cdot \vec{u} = (\vec{w} \times \vec{u}) \cdot \vec{v} \\
+\begin{align}
+&\quad (\vec{u} \times \vec{v}) \cdot \vec{w} = (\vec{v} \times \vec{w}) \cdot \vec{u} = (\vec{w} \times \vec{u}) \cdot \vec{v} \nonumber \\
 &= -(\vec{v} \times \vec{u}) \cdot \vec{w} = -(\vec{w} \times \vec{v}) \cdot \vec{u} = -(\vec{u} \times \vec{w}) \cdot \vec{v}
-\end{align*}
+\end{align}
 \end{proper}
 \begin{proof}
 We will prove the determinant formula shown above for $(\vec{u} \times \vec{v}) \cdot \vec{w}$ briefly. By Properties \ref{proper:crossdet}, we have
@@ -666,9 +666,10 @@ In this section, we will prove some key vector identities that may be of utiliti
 \begin{proper}[Vector Triple Product]
 \label{proper:triplecross}
 The \index{Vector Triple Product}\keywordhl{vector triple product} of three vectors $\vec{u}$, $\vec{v}$, $\vec{w}$ is defined as
-\begin{align*}
+\begin{align}
 \vec{u} \times (\vec{v} \times \vec{w}) = (\vec{u} \cdot \vec{w})\vec{v} - (\vec{u} \cdot \vec{v})\vec{w}
-\end{align*}
+\label{eqn:triplecross}
+\end{align}
 \end{proper}
 \begin{proof}
 By Properties \ref{proper:crossdet}, the L.H.S. can be expanded into

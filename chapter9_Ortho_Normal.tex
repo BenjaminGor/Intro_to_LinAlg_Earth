@@ -455,7 +455,11 @@ In fact, all vectors in the form of $s(0,1,1)^T$ where $s$ is any number will ke
 \index{Orthogonal Diagonalization}\keywordhl{Orthogonal diagonalization} is a special case of diagonalization, in which the transformation matrix $P$ used to diagonalize the target matrix $A$ is an orthogonal matrix. Since from Section \ref{section:diagonalizeidea} we know that diagonalization boils down to asking if there exists a basis, represented by the columns of $P$, such that $D = P^{-1}AP$ is diagonal, orthogonal diagonalization is equivalent to demanding further that such a basis, comprised of the eigenvectors of $A$, is orthonormal, i.e.\ $P$ is an orthogonal matrix. We will discuss the case where $A$ is a real matrix first.
 \begin{defn}[Orthogonal Diagonalization]
 \label{defn:orthodiagonal}
-Orthogonal diagonalization on a real $n \times n$ square matrix $A$ is to find an orthogonal matrix $P$ that consists of columns being the $n$ orthonormal $\mathbb{R}^n$ eigenvectors of $A$ (Definition \ref{defn:orthomatrix}) such that $P^{-1}AP = P^TAP = D$ is a real diagonal matrix (Properties \ref{proper:diagonalize} and \ref{proper:orthoinvT}).
+Orthogonal diagonalization on a real $n \times n$ square matrix $A$ is to find an orthogonal matrix $P$ that consists of columns being the $n$ orthonormal $\mathbb{R}^n$ eigenvectors of $A$ (Definition \ref{defn:orthomatrix}) such that
+\begin{align}
+P^{-1}AP = P^TAP = D \label{eqn:orthodiagonalPAP} 
+\end{align}
+is a real diagonal matrix (Properties \ref{proper:diagonalize} and \ref{proper:orthoinvT}).
 \end{defn}
 Note that the requirements of eigenvectors being $\mathbb{R}^n$ and hence orthogonality defined by the real dot product implicitly constrain us to work over $\mathbb{R}$ and only real eigenvalues are allowed. Not all real square matrices can be orthogonally diagonalized because orthogonal diagonalization is a stronger version of ordinary diagonalization and the requirement is unsurprisingly stricter. However, it turns out that there is a really simple criterion: whether the matrix is symmetric.
 \begin{thm}
@@ -886,10 +890,12 @@ For any other point $\vec{w} \in \mathcal{W}$, we have
 &= \norm{\vec{v} - T(\vec{v})}^2 + \norm{T(\vec{v}) - \vec{w}}^2 + 2 (\vec{v} - T(\vec{v})) \cdot (T(\vec{v}) - \vec{w})
 \end{align*}
 Note that $\vec{v} - T(\vec{v}) \in \mathcal{N}(T) = \mathcal{R}(T)^\perp$ and $T(\vec{v}) - \vec{w} \in \mathcal{R}(T)$ as $T$ is an orthogonal projection. Therefore, $(\vec{v} - T(\vec{v})) \cdot (T(\vec{v}) - \vec{w}) = 0$, and 
-\begin{align*}
-\norm{\vec{v} - \vec{w}}^2 &= \norm{\vec{v} - T(\vec{v})}^2 + \norm{T(\vec{v}) - \vec{w}}^2 \\
-& > \norm{\vec{v} - T(\vec{v})}^2
-\end{align*}
+\begin{subequations}
+\begin{align}
+\norm{\vec{v} - \vec{w}}^2 &= \norm{\vec{v} - T(\vec{v})}^2 + \norm{T(\vec{v}) - \vec{w}}^2 > \norm{T(\vec{v}) - \vec{w}}^2 \label{eqn:shortestsubspacealta} \\
+& > \norm{\vec{v} - T(\vec{v})}^2 \label{eqn:shortestsubspacealtb}
+\end{align}
+\end{subequations}
 as $\vec{w} \neq T(\vec{v})$, $\norm{T(\vec{v}) - \vec{w}}^2 > 0$.
 \end{proof}
 \subsection{Spectral Theorem}

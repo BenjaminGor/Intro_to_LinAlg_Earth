@@ -1,21 +1,22 @@
 \chapter{Index Notation and Introduction to Tensors}
+\label{chapter:Tensor}
 
-This is the final chapter of this book. (Congratulations!) It will be revealed that, matrices (or to be accurate, linear transformations), along with vectors, actually can be generalized to a broader class of objects known as \textit{tensors}. In the simplest sense, tensors are quantities with subscripts. To facilitate the manipulation of these subscripts, we will introduce the handy \textit{Index Notation}, as well as the \textit{Kronecker delta/epsilon symbols}. The next step is to do \textit{matrix/tensor calculus} where several important differentiation rules and integral theorems will be given. Tensors can have physical meanings which allow us to apply them in many scenarios. One of their usages in Earth Science is to serve as the language in \textit{Continuum Mechanics}. On the other hand, the related matrix calculus is much needed in \textit{Data Assimilation}, which is a technique in Atmospheric Sciences to rectify the output of a weather model forecast with available observations.
+This is the final chapter of this book. (Congratulations!) It will be revealed that, matrices (or to be accurate, linear transformations), along with vectors, actually can be generalized to a broader class of objects known as \textit{tensors}. In the simplest sense, tensors are quantities with subscripts. To facilitate the manipulation of these subscripts, we will introduce the handy \textit{Index Notation}, as well as the \textit{Kronecker delta/epsilon symbols}. The next step is to develop \textit{matrix/tensor calculus} where several important differentiation rules and integral theorems will be given. Tensors can have physical meanings, allowing us to apply them in many scenarios. One of their usages in Earth Science is to serve as the language in \textit{Continuum Mechanics}. On the other hand, the related matrix calculus is much needed in \textit{Data Assimilation}, which is a technique in Atmospheric Sciences to rectify the output of a forecast from a weather model with available observations.
 
 \section{Index Notation and Tensors}
 
 \subsection{Rules of Index Notation}
 
-Previously, we have usually been writing matrix multiplications along the lines of $AB = C$ or $A\vec{x} = \smash{\vec{h}}$ without showing the subscripts and summation explicitly. However, if we choose to do so, then they can be expressed as
+Previously, we have usually been writing matrix multiplications along the lines of $AB = C$ or $A\vec{x} = \smash{\vec{h}}$ without explicitly showing the subscripts and summation symbol. However, if we choose to do so, then they can be expressed as
 \begin{align*}
 \sum_{k=1}^r A_{ik}B_{kj} &= C_{ij} &  & \sum_{j=1}^n A_{ij}x_j = h_i
 \end{align*}
 However, the summation symbol is clumsy to be included every time, especially when it involves a chain of products like $ABCD$. The \index{Index Notation}\keywordhl{Index Notation} (also known as the \index{Einstein Convention}\keywordhl{Einstein Convention}) solves this problem by assuming that any subscript appearing exactly twice in an additive term will be summed (\textit{contracted}) implicitly over all values that the subscript can take. This also means that any such pair of repeated subscripts must
-occur only in subscript positions with the same range of values. Consequentially, the above examples are simplified to
+occur only in positions with the same range of values. Consequentially, the above examples are simplified into
 \begin{align*}
 A_{ik}B_{kj} &= C_{ij} &  & A_{ij}x_j = h_i    
 \end{align*}
-Subscripts that appear exactly twice are called \index{Summation Indices}\keywordhl{summation indices} (or \index{Dummy Indices}\keywordhl{dummy indices}) and are summed over specific values which are often automatically inferred from the situation (for example, in three-dimensional physical problems, they will usually take the explicit values of $1,2,3$.). On the other hand, subscripts that only appear once in every additive term of an expression or equation are known as \index{Free Indices}\keywordhl{free indices}. In the first example above, $k$ is the dummy index while $i, j$ are free indices. (How about the second example?\footnote{$j$ is the dummy index and $i$ is the free index.}) There are some other important points about the Index Notation to be emphasized: First, it is not allowed for a subscript to appear more than twice within a single additive term (so we cannot write $A_{ik}B_{kj}C_{kl}$, although it is okay for a dummy subscript to appear twice in multiple additive terms, e.g. $A_{ik}B_{kj} + C_{ij}D_{kk}$); Second, any pair of dummy indices can be replaced by any other alphabets (e.g. $A_{ik}B_{kj}$ is equivalent to $A_{il}B_{lj}$) but the free indices cannot be changed arbitrarily; Finally, as just mentioned, all free indices have to appear once and only once in every additive term (on both sides if it is an equation) (so $A_i + B_{ij}C_{j} + D_{ikk}$ is acceptable but not $A_{ij} + B_{kkj}$). As long as the quantities have their subscripts written out, the order of the quantities (but not their indices) is unimportant. Below we give some illustrating examples of the Index Notation in a three-dimensional setting:
+To be more clear, subscripts that appear exactly twice in any additive term are called \index{Summation Indices}\keywordhl{summation indices} (or \index{Dummy Indices}\keywordhl{dummy indices}) and are summed over specific values which are often automatically inferred from the situation (for example, in three-dimensional physical problems, they will usually take the explicit values of $1,2,3$.). On the other hand, subscripts that only appear once in \textit{every} additive term of an expression or equation are known as \index{Free Indices}\keywordhl{free indices}. In the first example above, $k$ is the dummy index, while $i, j$ are free indices. (How about the second example?\footnote{$j$ is the dummy index and $i$ is the free index.}) There are some other important points about the Index Notation to be emphasized: First, it is not allowed for a subscript to appear more than twice within a single additive term (so we cannot write $A_{ik}B_{kj}C_{kl}$, although it is okay for a dummy subscript to appear twice in multiple additive terms, e.g. $A_{ik}B_{kj} + C_{ij}D_{kk}$); Second, any pair of dummy indices can be replaced by any other alphabets (e.g. $A_{ik}B_{kj}$ is equivalent to $A_{il}B_{lj}$) but the free indices cannot be changed arbitrarily; Finally, as just mentioned, all free indices have to appear once and only once in every additive term (on both sides if it is an equation) (so $A_i + B_{ij}C_{j} + D_{ikk}$ is acceptable but not $A_{ij} + B_{kkj}$). As long as the quantities have their subscripts written out, the order of the quantities (but not their indices) is unimportant. Below we give some examples of the Index Notation in a three-dimensional setting:
 \begin{enumerate}
     \item $a_ib_i = \sum_{i=1}^3 a_ib_i = a_1b_1 + a_2b_2 + a_3b_3$
     \item $A_{kk} = \sum_{k=1}^3 A_{kk} = A_{11} + A_{22} + A_{33}$
@@ -33,7 +34,7 @@ Subscripts that appear exactly twice are called \index{Summation Indices}\keywor
     &\coloneq Z_{ij}
     \end{align*}
     will be a subscripted quantity with 2 free indices $i, j$ where each additive term contains $3^3 = 27$ smaller terms.
-    \item $A_{ij}B_{ijkl}C_{kl} = \smash{\sum_{i=1}^3 \sum_{j=1}^3 \sum_{k=1}^3 \sum_{l=1}^3} A_{ij}B_{ijkl}C_{kl} \coloneq X$ will be a scalar quantity without free indices that is consisted of $3^4 = 81$ smaller terms.
+    \item $A_{ij}B_{ijkl}C_{kl} = \smash{\sum_{i=1}^3 \sum_{j=1}^3 \sum_{k=1}^3 \sum_{l=1}^3} A_{ij}B_{ijkl}C_{kl} \coloneq X$ will be a scalar quantity without free indices consisting of $3^4 = 81$ smaller terms.
 \end{enumerate}
 Short Exercise: Determine whether the following equations are valid or not, and justify your answers.\footnote{Incorrect ($j$ appears three times in the single additive term on R.H.S.), Correct ($i,j$ are free indices and $k,l$ are dummy indices), Incorrect ($j$ appears twice on L.H.S. but once on R.H.S), Correct (All subscripts are dummy indices and all additive terms are scalars), Incorrect ($i,j$ cannot be free and dummy indices at the same time).}
 \begin{enumerate}
@@ -46,12 +47,13 @@ Short Exercise: Determine whether the following equations are valid or not, and 
 
 \subsection{Kronecker Delta and Epsilon Symbols}
 
-Before getting to know the \textit{Kronecker delta/epsilon symbols}, it is helpful to denote the three-dimensional Cartesian standard unit vectors $\hat{\imath} = \hat{e}^{(1)}$, $\hat{\jmath} = \hat{e}^{(2)}$, $\hat{k} = \hat{e}^{(3)}$ by $\textbf{e}_1, \textbf{e}_2, \textbf{e}_3$ to ensure the consistency of notation. We will assume that the problem is always three-dimensional so that each index always runs through $1,2,3$. Therefore, given any three-dimensional vector $\textbf{u} = (u_1, u_2, u_3)^T$, it can be expressed by 
+Before getting to know about the \textit{Kronecker delta/epsilon symbols}, it is helpful to denote the three-dimensional Cartesian standard unit vectors $\hat{\imath} = \hat{e}^{(1)}$, $\hat{\jmath} = \hat{e}^{(2)}$, $\hat{k} = \hat{e}^{(3)}$ by $\textbf{e}_1, \textbf{e}_2, \textbf{e}_3$ to switch and ensure the consistency of notation. We will assume that the problem is always three-dimensional so that every index always runs through $1,2,3$ unless otherwise specified. Therefore, given any three-dimensional vector $\textbf{u} = (u_1, u_2, u_3)^T$, it can be expressed by 
 \begin{align}
 \textbf{u} = u_1 \textbf{e}_1 + u_2 \textbf{e}_2 + u_3 \textbf{e}_3 = u_i \textbf{e}_i
 \end{align}
 using the Index Notation. Now, the \index{Kronecker Delta}\keywordhl{Kronecker delta} symbol is defined as
 \begin{defn}[Kronecker Delta Symbol]
+The Kronecker delta symbol is a quantity with $2$ subscripts such that
 \begin{align}
 \delta_{ij} = \begin{cases}
 1 & \text{if $i=j$} \\
@@ -60,7 +62,7 @@ using the Index Notation. Now, the \index{Kronecker Delta}\keywordhl{Kronecker d
 \label{eqn:krondef}
 \end{align}
 \end{defn}
-By comparing with Definition \ref{defn:identity}, it can be treated as an identity matrix although there are some subtle differences between the two. Due to the definition of the delta symbol, its effect is to replace a dummy index with the other index. For example,
+Compared with Definition \ref{defn:identity}, it works like and can be treated as an identity matrix, although there are some subtle differences between them. Due to the definition of the delta symbol, its effect is to replace a dummy index with the other index. For example,
 \begin{align*}
 A_{ij}\delta_{jk} &= A_{ik} & & A_{ij}B_{kl}\delta_{jl} = A_{ij}B_{kj}
 \end{align*}
@@ -82,7 +84,7 @@ Hence we can define the Kronecker delta symbol via
 \begin{align}
 \delta_{ij} = \textbf{e}_i \cdot \textbf{e}_j \label{eqn:kronee}
 \end{align}
-With this, we can derive Definition \ref{defn:dotreal} for the dot product in a new way:
+With this, we can derive (\ref{eqn:dotreal}) in Definition \ref{defn:dotreal} for the real dot product in a new way:
 \begin{align}
 \textbf{u} \cdot \textbf{v} &= (u_i \textbf{e}_i) \cdot (v_j \textbf{e}_j) \nonumber \\
 &= u_iv_j (\textbf{e}_i \cdot \textbf{e}_j) \nonumber \\
@@ -92,6 +94,7 @@ With this, we can derive Definition \ref{defn:dotreal} for the dot product in a 
 On the other hand, the \index{Epsilon Symbol}\index{Permutation Symbol}\keywordhl{epsilon (permutation)} symbol (or the \index{Levi-Civita Symbol}\keywordhl{Levi-Civita symbol}) is defined as
 \begin{defn}[Levi-Civita Epsilon Symbol]
 \label{defn:epsilon}
+The epsilon permutation symbol is a quantity with $3$ subscripts such that
 \begin{align}
 \label{eqn:epsilon}
 \epsilon_{ijk} =
@@ -117,11 +120,11 @@ Similarly, recall that from Definition \ref{defn:crossijk}, we have
 \textbf{e}_1 \times \textbf{e}_1 &= \textbf{e}_2 \times \textbf{e}_2 = \textbf{e}_3 \times \textbf{e}_3 = \textbf{0}
 \end{align}   
 \end{subequations}
-and thus by going through all the cases they can be summarized as
+and thus by going through all the cases, they can be summarized as
 \begin{align}
 \textbf{e}_i \times \textbf{e}_j= \epsilon_{ijk} \textbf{e}_k \label{eqn:epsilonee}
 \end{align}
-By taking dot product with $\textbf{e}_l$ on both sides and adjusting the indices, we can arrive at an equivalent definition of the epsilon symbol:
+By taking a dot product with $\textbf{e}_l$ on both sides and adjusting the indices, we can arrive at an equivalent definition of the epsilon symbol:
 \begin{align}
 \textbf{e}_l \cdot (\textbf{e}_i \times \textbf{e}_j) &= \epsilon_{ijk} (\textbf{e}_l \cdot \textbf{e}_k)  \nonumber \\
 \textbf{e}_l \cdot (\textbf{e}_i \times \textbf{e}_j) &= \epsilon_{ijk} \delta_{lk} \nonumber \\
@@ -134,7 +137,7 @@ By taking dot product with $\textbf{e}_l$ on both sides and adjusting the indice
 \epsilon_{ijk} &= \textbf{e}_i \cdot (\textbf{e}_j \times \textbf{e}_k) 
 &\begin{aligned}
 &\text{($(j,k,i)$ is an even permutation of $(i,j,k)$} \\
-&\text{and can be shifted within the epsilon symbol)}    
+&\text{and can be rotated within the epsilon symbol)}    
 \end{aligned} 
 \end{align}
 In the same spirit, we can derive the formula of cross product in Properties \ref{proper:crossdet} by the Index Notation as follows.
@@ -144,9 +147,9 @@ In the same spirit, we can derive the formula of cross product in Properties \re
 &= u_iv_j \epsilon_{ijk} \textbf{e}_k \label{eqn:crossind} \\
 & \text{(by (\ref{eqn:epsilonee}))} \nonumber \\
 &= (u_2v_3 - u_3v_2)\textbf{e}_1 + (u_3v_1 - u_1v_3)\textbf{e}_2 + (u_1v_2 - u_2v_1)\textbf{e}_3 \nonumber \\
-& \text{(Directly expand using (\ref{eqn:epsilon}) in Definition \ref{defn:epsilon})} \nonumber
+& \text{(Direct expansion using (\ref{eqn:epsilon}) in Definition \ref{defn:epsilon})} \nonumber
 \end{align}
-Comparing with the determinant form in Properties \ref{proper:crossdet}, we have
+Comparing with the determinant form of cross product (\ref{eqn:crossdet}) in Properties \ref{proper:crossdet}, we have
 \begin{align}
 \textbf{u} \times \textbf{v} = u_iv_j \epsilon_{ijk} \textbf{e}_k = 
 \begin{vmatrix}
@@ -172,23 +175,24 @@ w_1 & w_2 & w_3
 \end{vmatrix} \label{eqn:determinanteps1} \\
 & \text{(Swapping rows twice leaves the sign of determinant unchanged)} \nonumber
 \end{align}
-These two symbols are related by the \index{Epsilon-delta Identity}\keywordhl{Epsilon-delta Identity}.
+These two symbols are closely related by the \index{Epsilon-delta Identity}\keywordhl{Epsilon-delta Identity}.
 \begin{proper}[$\epsilon$--$\delta$ Identity] 
-\label{proper:epsdel} Contracting over the first subscripts between two epsilon symbols gives 
+\label{proper:epsdel} Contracting over the pair of first subscripts between two epsilon symbols gives 
 \begin{align}
 \epsilon_{ijk}\epsilon_{imn} = \delta_{jm}\delta_{kn} - \delta_{jn}\delta_{km} \label{eqn:epsdel}
 \end{align}
 \end{proper}
 \begin{proof}
 We will use a brute-force approach and enumerate all the outcomes. Note that the R.H.S. will have values 
-\begin{align*}
+\begin{align}
 \begin{cases}
 +1 & \text{if $j=m$, $k=n$, $j\neq n$ (and thus $k\neq m$)} \\
 -1 & \text{if $j=n$, $k=m$, $j\neq m$ (and thus $k\neq n$)} \\
 0 & \text{Otherwise}
 \end{cases}
-\end{align*}
-Now consider the L.H.S., as the first index of the two epsilons are equal and every index can only take the three values of $1,2,3$, for their product to give a non-zero value, the only two possibilities are (1) $j = m \neq i$, $k = n \neq i$, $j \neq n$; and (2) $j = n \neq i$, $k = m \neq i$, $j \neq m$ where the four free indices cannot be the same as the dummy index or take the same value simultaneously. These are consistent with the first and second situations in (\ref{eqn:epsdel}). Now we only need to justify if they really lead to the outputs of $+1$ and $-1$ respectively. In the first case, it is not hard to see that $\epsilon_{ijk}$ and $\epsilon_{imn}$ must be $+1$ or $-1$ at the same time so their product indeed gives $+1$. Similarly, in the second case, one of the epsilon symbols will be $+1$ and the other will be $-1$ ($\epsilon_{ijk} = -\epsilon_{ikj} = -\epsilon_{imn}$) so it will produce $-1$. The identity is hence established.
+\label{eqn:epsdel2}
+\end{align}
+Now consider the L.H.S. As the first indices of the two epsilons are equal and every index can only take the three values of $1,2,3$, for their product to give a non-zero value, the only two possibilities are (1) $j = m \neq i$, $k = n \neq i$, $j \neq n$; and (2) $j = n \neq i$, $k = m \neq i$, $j \neq m$ where the four free indices $j,k,m,n$ cannot take the same value as the dummy index $i$, and $j,k$ (also $m,n$) cannot be equal simultaneously. These are consistent with the first and second situations in (\ref{eqn:epsdel2}). Now we only need to justify if they really lead to the outputs of $+1$ and $-1$ respectively. In the first case, it is not hard to see that $\epsilon_{ijk}$ and $\epsilon_{imn}$ must be $+1$ or $-1$ at the same time so their product indeed gives $+1$. Similarly, in the second case, one of the epsilon symbols will be $+1$ and the other will be $-1$ ($\epsilon_{ijk} = -\epsilon_{ikj} = -\epsilon_{imn}$) so it will produce $-1$. The identity is hence established.
 \end{proof}
 Note that contracting one more index (e.g. $j=m$) in the identity gives
 \begin{align}
@@ -201,7 +205,7 @@ as $\delta_{jj} = \delta_{11} + \delta_{22} + \delta_{33} = 1+1+1 = 3$ and in th
 \end{align}
 Now let's see how this identity can be used in showing other vector identities.
 \begin{exmp}
-Prove the formula for vector triple product in Properties \ref{proper:triplecross} using the Index Notation and Epsilon-delta Identity.
+Prove Formula (\ref{eqn:triplecross}) for vector triple product in Properties \ref{proper:triplecross} using the Index Notation and Epsilon-delta Identity.
 \end{exmp}
 \begin{solution}
 Applying (\ref{eqn:crossind}) twice, we have
@@ -219,13 +223,13 @@ When there is no ambiguity, we will omit the standard unit vector symbol $\textb
 
 \subsection{Transformation and Quotient Laws for Tensors}
 
-Now we will formally introduce \index{Tensors}\keywordhl{tensors}. A scalar is a rank-$0$ tensor and a vector is a rank-$1$ tensor. The \index{Rank}\keywordhl{rank} of a tensor (not to be confused with the rank of a matrix) is the number of its subscripts. Linear transformations or bilinear forms will be rank-$2$ tensors where the associated matrices serve as their representations in certain coordinate systems. Note that this explanation is a largely simplified one and for Mathematicians the definition will be much more rigorous.\footnote{\label{foot:rstensor}Going into depth, the rank of a tensor is actually given by a $2$-tuple $(r,s)$ which means that it receives $r$ \textit{covectors} and $s$ vectors to output a scalar. A covector takes one vector to produce a scalar and hence by definition is a $(0,1)$-tensor, while vice versa a vector will take one covector to also produce a scalar and is a $(1,0)$-tensor. Linear transformations are usually treated as $(1,1)$-tensors while bilinear forms are $(0,2)$-tensors. $r$ and $s$ indicates the number of \textit{contravariant}/\textit{covariant} indices.} But for Physicists or Earth Scientists, it is adequate to know that a rank-$r$ tensor \textit{"transforms like a tensor"}, obeying the so-called \textit{Transformation Law}. To this end, we first need to revisit how a coordinate transformation is carried out. As in Theorem \ref{thm:bijectivechincoord}, the change of coordinates matrix is
+Now we will formally introduce \index{Tensors}\keywordhl{tensors}. A scalar is a rank-$0$ tensor and a vector is a rank-$1$ tensor. The \index{Rank (of a Tensor)}\keywordhl{rank} of a tensor (not to be confused with the rank of a matrix) is the number of its subscripts. Linear transformations or bilinear forms will be rank-$2$ tensors where the associated matrices serve as their representations in certain coordinate systems. Note that this explanation is a largely simplified one and for Mathematicians the definition will be much more rigorous.\footnote{\label{foot:rstensor}Going into depth, the rank of a tensor is actually given by a $2$-tuple $(r,s)$ which means that it receives $r$ \textit{covectors} and $s$ vectors to output a scalar. A covector takes one vector to produce a scalar and hence by definition is a $(0,1)$-tensor, while vice versa a vector will take one covector to also produce a scalar and is a $(1,0)$-tensor. Linear transformations are usually treated as $(1,1)$-tensors while bilinear forms are $(0,2)$-tensors. $r$ and $s$ indicates the number of \textit{contravariant}/\textit{covariant} indices.} But for Physicists or Earth Scientists, it is adequate to know that a rank-$r$ tensor \textit{"transforms like a tensor"}, obeying the so-called \textit{Transformation Law}. To this end, we first need to revisit how a coordinate transformation is carried out. As in (\ref{eqn:PBB'}), the change of coordinates matrix is
 \begin{align}
 P_\beta^{\beta'} = \begin{bmatrix}
 [\vec{v}_\beta^{(1)}]_{\beta'} | [\vec{v}_\beta^{(2)}]_{\beta'} | \cdots | [\vec{v}_\beta^{(n)}]_{\beta'}
 \end{bmatrix}
 \end{align}
-In most of Earth Science usages, the coordinate systems used will be orthonormal and we will assume this is so for the rest of the chapter. This makes the tensors \textit{Cartesian}. By Properties \ref{proper:orthocoords}, the coordinates of any new orthonormal coordinate basis vector relative to the old orthonormal coordinate system can be found by direct projection and vice versa. Therefore, if we denote the old and new orthonormal basis by $\beta = \{\textbf{e}_1, \textbf{e}_2, \textbf{e}_3\}$ and $\beta'= \{\textbf{e}'_1, \textbf{e}'_2, \textbf{e}'_3\}$, the change of coordinates matrix will become
+In most of Earth Science usages, the coordinate systems used will be orthonormal and we will assume this is so for the rest of the chapter. This makes the tensors \textit{Cartesian}. By Properties \ref{proper:orthocoords}, the coordinates of any vector in the new orthonormal coordinate system relative to the old orthonormal coordinate system can be found by direct projection and vice versa. Therefore, if we denote the old and new orthonormal basis by $\beta = \{\textbf{e}_1, \textbf{e}_2, \textbf{e}_3\}$ and $\beta'= \{\textbf{e}'_1, \textbf{e}'_2, \textbf{e}'_3\}$, the change of coordinates matrix will become
 \begin{align}
 P_\beta^{\beta'} = \begin{bmatrix}
 \textbf{e}_1 \cdot \textbf{e}'_1 & \textbf{e}_2 \cdot \textbf{e}'_1 & \textbf{e}_3 \cdot \textbf{e}'_1 \\
@@ -233,15 +237,16 @@ P_\beta^{\beta'} = \begin{bmatrix}
 \textbf{e}_1 \cdot \textbf{e}'_3 & \textbf{e}_2 \cdot \textbf{e}'_3 & \textbf{e}_3 \cdot \textbf{e}'_3 
 \end{bmatrix}
 = \textbf{e}_j \cdot \textbf{e}'_i
+\label{eqn:Peeij}
 \end{align}
-This is an orthogonal matrix\footnote{\label{foot:orthodelta} Extending Properties \ref{proper:orthocoords}, we have $\textbf{e}'_{j} = (\textbf{e}'_{j} \cdot \textbf{e}_{k})\textbf{e}_{k}$ which expresses any new basis vector in terms of the sum of projections onto the old orthonormal basis. By considering $\textbf{e}'_{i} \cdot \textbf{e}'_{j} = \delta_{ij}$ due to (\ref{eqn:kronee}), we have
+This is an orthogonal matrix\footnote{\label{foot:orthodelta} Extending Properties \ref{proper:orthocoords}, we have $\textbf{e}'_{j} = (\textbf{e}'_{j} \cdot \textbf{e}_{k})\textbf{e}_{k}$ which expresses any new basis vector in terms of the sum of projections onto the old orthonormal basis. By considering $\textbf{e}'_{i} \cdot \textbf{e}'_{j} = \delta_{ij}$ due to (\ref{eqn:kronee}) (valid for any orthonormal basis), we have
 \vspace{\maxdimen}
 \begin{align*}
 (\textbf{e}'_{i} \cdot \textbf{e}_{k})\textbf{e}_{k} \cdot (\textbf{e}'_{j} \cdot \textbf{e}_{l})\textbf{e}_{l} &= \delta_{ij} \\
 (\textbf{e}'_{i} \cdot \textbf{e}_{k})(\textbf{e}'_{j} \cdot \textbf{e}_{l})(\textbf{e}_{k} \cdot \textbf{e}_{l}) &= \delta_{ij} \\
 (\textbf{e}'_{i} \cdot \textbf{e}_{k})(\textbf{e}'_{j} \cdot \textbf{e}_{l})\delta_{kl} &= \delta_{ij} & \text{($\textbf{e}_{k} \cdot \textbf{e}_{l} = \delta_{kl}$ from (\ref{eqn:kronee}) as well)} \\
 (\textbf{e}'_{i} \cdot \textbf{e}_{k})(\textbf{e}'_{j} \cdot \textbf{e}_{k}) &= \delta_{ij}
-\end{align*} where the L.H.S. is $(\textbf{e}'_{i} \cdot \textbf{e}_{k})(\textbf{e}_{k} \cdot \textbf{e}'_{j}) = [(P_\beta^{\beta'})^T]_{ik}[P_\beta^{\beta'}]_{kj}$ and R.H.S. is effectively an identity matrix, so by Properties \ref{proper:orthoinvT} we are done.}, and by Theorem \ref{thm:bijectivechincoord}, any vector $\vec{v}$ (that is also a rank-$1$ tensor) is transformed according to
+\end{align*} where the L.H.S. is essentially $(\textbf{e}'_{i} \cdot \textbf{e}_{k})(\textbf{e}_{k} \cdot \textbf{e}'_{j}) = [\smash{(P_\beta^{\beta'})^T}]_{ik}[\smash{P_\beta^{\beta'}}]_{kj}$ and R.H.S. is effectively an identity matrix, so by Properties \ref{proper:orthoinvT} we are done.}, and by (\ref{eqn:bijectvTv}), any vector $\vec{v}$ (that is also a rank-$1$ tensor) is transformed according to
 \begin{align}
 [\vec{v}]' &= P_\beta^{\beta'}[\vec{v}] \nonumber \\
 v'_i &= (\textbf{e}_j \cdot \textbf{e}'_i) v_j \nonumber \\
@@ -252,20 +257,20 @@ where we only keep the prime to denote the new coordinate frame as a shorthand a
 a_{ij} = \textbf{e}_i \cdot \textbf{e}'_j \label{eqn:aij}
 \end{align} for convenience, so the above becomes $v'_j = a_{ij}v_i$. Similarly, for a rank-$2$ tensor $F$, be it a linear transformation or bilinear form, it is transformed as
 \begin{align}
-F'_{kl} = a_{ik} a_{jl} F_{ij}
+F'_{kl} = a_{ik} a_{jl} F_{ij} \label{eqn:rank2aF}
 \end{align}
-This is consistent with both Properties \ref{proper:endomorph} and Definition \ref{defn:coordtransquad} as the change of coordinates matrix is orthogonal and so $[a^{-1}]_{ki} = [a^T]_{ki} = a_{ik}$ by Properties \ref{proper:orthoinvT}. In general, the \keywordhl{Transformation Law} says
+This is consistent with both Properties \ref{proper:endomorph} and Definition \ref{defn:coordtransquad} at the same time, because the change of coordinates matrix is orthogonal and so $[a^{-1}]_{ki} = [a^T]_{ki} = a_{ik}$ by Properties \ref{proper:orthoinvT}. In general, the \keywordhl{Transformation Law} says
 \begin{proper}
 \label{proper:translaw}
 A rank-$r$ \textit{Cartesian} tensor $T$ is a quantity that transforms according to the rule\footnotemark
-\begin{align*}
+\begin{align}
 T'_{ijkl\ldots} = a_{mi}a_{nj}a_{pk}a_{ql}\cdots T_{mnpq\ldots}
-\end{align*}
+\end{align}
 where $a_{**}$ invokes the orthogonal transformation matrix as in (\ref{eqn:aij}).
 \end{proper}
-\footnotetext{As we are sticking with orthonormal coordinate systems and orthogonal transformation only, the difference between contravariant/covariant indices (as mentioned in Footnote \ref{foot:rstensor}) and hence superscripts/subscripts can be safely ignored for Cartesian tensors. If you don't understand any of what I am saying, ignore this footnote as well.} Physically, it means that tensors are coordinate-independent quantities even though they can have different coordinate representations: These different representations have to be consistent and abide by the Transformation Law so that they still reflect the same physical quantity no matter the choice of coordinate system. Moreover, it implies that to consider if a quantity is a tensor requires a physical context as hinted by the example below.
+\footnotetext{As we are sticking with orthonormal coordinate systems and orthogonal transformations only, the difference between contravariant/covariant indices (as mentioned in Footnote \ref{foot:rstensor}) and hence superscripts/subscripts can be safely ignored for Cartesian tensors. If you don't understand any of what I am saying, ignore this footnote as well.} Physically, it means that tensors are coordinate-independent quantities even though they can have different coordinate representations: These different representations have to be consistent and abide by the Transformation Law so that they still reflect the same physical quantity no matter the choice of coordinate system. Moreover, it implies that to consider if a quantity is a tensor requires a physical context as hinted by the example below.
 \begin{exmp}
-Show that the following $T = (v_1, v_2)$ quantities 
+Show that the following quantities $T = (v_1, v_2) = $ 
 \begin{enumerate}[label=(\alph*)]
     \item $(x_2,x_1)$
     \item $(x_1^2,x_1x_2)$
@@ -293,13 +298,13 @@ a_{11} & a_{12} \\
 a_{21} & a_{22}
 \end{bmatrix}
 &= 
-\left[\begin{array}{@{\,}wc{25pt}wc{25pt}@{\,}}
+\left[\begin{array}{@{\,}wc{25pt}wc{30pt}@{\,}}
 \textbf{e}_1 \cdot \textbf{e}'_1 & \textbf{e}_1 \cdot \textbf{e}'_2 \\
 \textbf{e}_2 \cdot \textbf{e}'_1 & \textbf{e}_2 \cdot \textbf{e}'_2
 \end{array}\right]
 \\
 &=
-\left[\begin{array}{@{\,}wc{25pt}wc{25pt}@{\,}}
+\left[\begin{array}{@{\,}wc{25pt}wc{30pt}@{\,}}
 \cos\theta & -\sin\theta \\
 \sin\theta & \cos\theta
 \end{array}\right]
@@ -314,7 +319,7 @@ for the first component, but the Transformation Law demands that
 v_1' = T'_1 = (x_1^2)' &= a_{11}T_1 + a_{21}T_2 \\
 &= (\cos \theta) x_1^2 + (\sin \theta) x_1x_2
 \end{align*}
-They are clearly incompatible. Nevertheless, it is quite easy to see that the intuitive $\vec{x} = (x_1,x_2)^T$, as well as $(x_2,-x_1)^T$, will be a rank-$1$ tensor (we leave the verification to the readers\footnote{For the second case $T = (x_2, -x_1)$, the usual coordinate transformation is the essentially same as in part (a) of the example but with an extra negative sign for the second component, whereas the Transformation Law works as
+They are clearly incompatible. Nevertheless, it is quite easy to see that the intuitive displacement vector $\vec{x} = (x_1,x_2)^T$, as well as $(x_2,-x_1)^T$, will be a rank-$1$ tensor (we leave the verification to the readers\footnote{For the second case $T = (x_2, -x_1)$, the usual coordinate transformation is the essentially same as in part (a) of the example but with an extra negative sign for the second component, whereas the Transformation Law works as
 \begin{align*}
 v_1' = T'_1 &= a_{11}T_1 + a_{21}T_2 \\
 &= (\cos \theta) x_2 + (\sin \theta) (-x_1) \\
@@ -328,10 +333,10 @@ It is not hard to show that the product of two tensors is a tensor.\footnote{For
 \begin{align*}
 C'_{mn\ldots sr\ldots} = A'_{mn\ldots}B'_{sr\ldots} &= a_{im}a_{jn}\cdots a_{ps}a_{qr}\cdots A_{ij\ldots} B_{pq\ldots} \\
 &= a_{im}a_{jn}\cdots a_{ps}a_{qr}\cdots C_{ij\ldots pq\ldots}
-\end{align*} will also transform as indicated by Properties \ref{proper:translaw}.} Therefore, kinetic energy in Newtonian Mechanics $\frac{1}{2}(\vec{v} \cdot \vec{v}) = \frac{1}{2}v_iv_i$ is a rank-$0$ tensor (scalar) if we gladly accept the intuitive premise that the velocity $\vec{v} = v_i$ is a rank-$1$ tensor (vector). In addition, there is another way to quickly verify if a quantity is a tensor by the \keywordhl{Quotient Law} which is the other way around.
+\end{align*} will also transform as indicated by Properties \ref{proper:translaw}.} Therefore, kinetic energy (per unit mass) in Newtonian Mechanics $\frac{1}{2}(\vec{v} \cdot \vec{v}) = \frac{1}{2}v_iv_i$ is a rank-$0$ tensor (scalar) if we gladly accept the intuitive premise that the velocity $\vec{v} = v_i$ is a rank-$1$ tensor (vector). In addition, there is another way to quickly verify if a quantity is a tensor by the \keywordhl{Quotient Law} which works in the other way around.
 \begin{thm}[Quotient Law]
 \label{thm:quotientl}
-If $A_{ij\ldots n}$ is a $n$-subscripted quantity, $B_{pq\ldots m}$ is a rank-$m$ tensor, and the product
+If $A_{ij\ldots n}$ is a $n$-subscripted quantity, $B_{pq\ldots m}$ is known to be a rank-$m$ tensor, and the product
 \begin{align*}
 C_{ij\ldots npq \ldots m} = A_{ij\ldots k\ldots n} B_{pq\ldots k\ldots m}   
 \end{align*}
@@ -341,7 +346,7 @@ With this, we can easily show that some other commonly seen physical quantities 
 
 \subsection{Isotropic Tensors}
 
-Here we will revisit the Kronecker delta and epsilon symbols. In fact, they qualify as a rank-$2$ and rank-$3$ tensor respectively. Moreover, they are further \index{Isotropic}\keywordhl{isotropic} tensors in the sense that they have the same representation (i.e.\ no directionality) in any coordinate system under the Transformation Law. From another perspective, it has better to be isotropic since their components are all constants ($0$, $1$, or $-1$) and the usual coordinate transformation should have no effect on them. Now we will explicitly show that for the Kronecker delta first. The Transformation Law (Properties \ref{proper:translaw}) requires that
+Here we will revisit the Kronecker delta and epsilon symbols. In fact, they qualify as a rank-$2$ and rank-$3$ tensor respectively. Moreover, they are further \index{Isotropic}\keywordhl{isotropic} tensors in the sense that they have the same representation (i.e.\ no directionality) in any coordinate system under the Transformation Law. From another perspective, it has to be isotropic since their components are all constants ($0$, $1$, or $-1$) and the usual coordinate transformation should have no effect on them. Now we will explicitly show the isotropic attribute for the Kronecker delta first. The Transformation Law (Properties \ref{proper:translaw}) requires that
 \begin{align}
 \delta'_{ij} = \delta_{ij}
 \end{align}
@@ -351,7 +356,7 @@ and the L.H.S. will transform as
 &= a_{ki}a_{kj} \\
 &= [a^T]_{ik}a_{kj} = \delta_{ij}
 \end{align*}
-since $a_{**}$ acts as an orthogonal matrix and by Properties \ref{proper:orthoinvT} it will equal to R.H.S. which is like an identity (also see Footnote \ref{foot:orthodelta}). This indeed shows that the Kronecker delta is a rank-$2$ isotropic tensor. In a similar vein, we want to show that
+since $a_{**}$ acts as an orthogonal matrix, and by Properties \ref{proper:orthoinvT}, it will equal to R.H.S. which is like an identity (also see Footnote \ref{foot:orthodelta}). This indeed shows that the Kronecker delta is a rank-$2$ isotropic tensor. In a similar vein, we want to show that
 \begin{align}
 \epsilon'_{ijk} = \epsilon_{ijk}
 \end{align}
@@ -363,7 +368,7 @@ where $\abs{L}$ is the determinant of $L$. This can be derived by noting that fr
 \begin{align}
 \abs{L} = L_{1i}L_{2j}L_{3k}\epsilon_{ijk} \label{eqn:determinanteps3}
 \end{align}
-and swapping or rotating indices, through the properties of the epsilon symbol (or equivalently the determinant) will give the other five non-zero possibilities
+and swapping or rotating indices, through the properties of the epsilon symbol (or equivalently those of the determinant) will give the other five non-zero possibilities
 \begin{align*}
 \abs{L} &= L_{2i}L_{3j}L_{1k}\epsilon_{ijk} \\
 \abs{L} &= L_{3i}L_{1j}L_{2k}\epsilon_{ijk} \\
@@ -376,7 +381,7 @@ Using the epsilon symbol to combine all six cases then yields (\ref{eqn:determin
 \epsilon'_{ijk} &= a_{il}a_{jm}a_{kn}\epsilon_{lmn} \\
 &= \abs{a}\epsilon_{ijk} & \text{(by (\ref{eqn:determinanteps2}))}
 \end{align*}
-and it equals to $\epsilon_{ijk}$ as we assume that the coordinate transformation is orthogonal and by Properties \ref{proper:orthopm1det} the determinant will take the value $\abs{a} = 1$ or $-1$. We further place the restriction that it is a \textit{proper} rotation (compared to the \textit{improper} rotation, that is, reflection) so that $\abs{a} = 1$, and hence the desired result follows. Finally, we note that in converse, the Kronecker delta and epsilon tensors are the only possible isotropic tensors of rank $2$ and $3$, up to a multiplicative constant. The steps of the proof are provided in the Appendix. Although we will not use rank-$4$ tensors in this book, we also note in passing that the general form of an isotropic rank-$4$ tensor is
+and it equals to $\epsilon_{ijk}$ as we assume that the coordinate transformation is orthogonal and by Properties \ref{proper:orthopm1det} the determinant will take the value $\abs{a} = 1$ or $-1$. We further place the restriction that it is a \textit{proper} rotation (compared to the \textit{improper} rotation, that is, reflection) so that $\abs{a} = 1$, and hence the desired result follows. Finally, we note that in converse, the Kronecker delta and epsilon tensors are the only possible isotropic tensors of rank $2$ and $3$, up to a multiplicative constant. The steps of the proof are provided in the Appendix \ref{section:tensorappend}. Although we will not use rank-$4$ tensors in this book, we also note in passing that the general form of an isotropic rank-$4$ tensor is
 \begin{align}
 T_{ijkl}= \lambda \delta_{ij}\delta_{kl} + \mu(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}) + \nu(\delta_{ik}\delta_{jl}-\delta_{il}\delta_{jk})
 \end{align}
@@ -386,15 +391,15 @@ where $\lambda$, $\mu$ and $\nu$ are some parameters that can take any value.
 
 \subsection{Differentiating Tensors}
 
-The power of tensors is accompanied by the possibility of doing calculus on them. We will first look at differentiation before getting into integrals, just like any introductory calculus course. Given a tensor $T_{ijk\ldots}(\textbf{x}, t)$ depending on the position $\textbf{x} = x_i$ (a vector) and time $t$ (a scalar), which is often the case for physical problems, then differentiating it with respect to $t$ simply means that
+The power of tensors is accompanied by the possibility of doing calculus on them. We will first look at differentiation before getting into integrals, just like any introductory calculus course. Given a tensor $T_{ijk\ldots}(\textbf{x}, t)$ depending on the position $\textbf{x} = x_p$ (a vector) and time $t$ (a scalar), which is often the case for physical problems, then differentiating it with respect to $t$ simply means that
 \begin{align}
 \left(\frac{\partial T}{\partial t}\right)_{ijk\ldots} = \frac{\partial T_{ijk\ldots}}{\partial t}
 \end{align}
-every component of the tensor is differentiated with respect to $t$, one by one. Meanwhile, to differentiate the tensor by the position vector $\textbf{x}$ (\index{coordinate derivatives}\keywordhl{coordinate derivatives}) will lead to
+every component of the tensor is differentiated with respect to $t$, one by one. Meanwhile, to differentiate the tensor by the position vector $\textbf{x}$ (a \index{Coordinate derivative}\keywordhl{coordinate derivative}) will lead to
 \begin{align}
 \left(\frac{\partial T}{\partial \textbf{x}}\right)_{ijk\ldots p} = \frac{\partial T_{ijk\ldots}}{\partial x_p}
 \end{align}
-a new tensor which is one order higher, where each component of the original tensor is differentiated with each of the coordinates to give a vector and the results are encapsulated in a newly produced subscript. For example, for a vector $\vec{v} = v_i$, differentiation with respect to $\textbf{x}$ will produced a rank-$2$ tensor of
+a new tensor which is one order higher, where each component of the original tensor is differentiated with each of the coordinates to give a vector and the results are encapsulated in the newly produced subscript. For example, for a vector $\vec{v} = v_i$, differentiation with respect to $\textbf{x}$ will produced a rank-$2$ tensor of
 \begin{align}
 \left(\frac{\partial \textbf{v}}{\partial \textbf{x}}\right)_{ij} = \frac{\partial v_i}{\partial x_j} \label{eqn:vectortensdiff}
 \end{align}
@@ -407,7 +412,7 @@ writing out in full matrix form, we have
 \dfrac{\partial v_3}{\partial x_1} & \dfrac{\partial v_3}{\partial x_2} & \dfrac{\partial v_3}{\partial x_3} 
 \end{bmatrix}
 \end{align}
-The Jacobian $\partial F_i/\partial y_j$ previously introduced in Section \ref{subsection:HGthm} is an example of this. For a scalar $u$, its differentiation with respect to position is simply a vector:
+The Jacobian $\partial F_i/\partial y_j$ previously introduced in Section \ref{subsection:HGthm} is an example of this. For a scalar $u$, its differentiation with respect to the position is simply a vector:
 \begin{align}
 \left(\frac{\partial u}{\partial \textbf{x}}\right)_i = \frac{\partial u}{\partial x_i}
 \end{align}
@@ -415,7 +420,7 @@ while applying that over a rank-$2$ tensor $T_{ij}$ will similarly produce a ran
 \begin{align}
 \left(\frac{\partial T}{\partial \textbf{x}}\right)_{ijk} = \frac{\partial T_{ij}}{\partial x_k}
 \end{align}
-A special case is that the first index of the tensor being differentiated is contracted with the position index of the position derivative. Particularly, (\ref{eqn:vectortensdiff}) becomes
+A special case is that the first index of the tensor being differentiated is contracted with the index of the position derivative. Particularly, (\ref{eqn:vectortensdiff}) becomes
 \begin{align}
 \frac{\partial v_i}{\partial x_i} = \frac{\partial v_1}{\partial x_1} + \frac{\partial v_2}{\partial x_2} + \frac{\partial v_3}{\partial x_3}
 \end{align}
@@ -435,7 +440,7 @@ For the scalar case, it reduces to the usual gradient:
 \begin{align}
 \nabla u = \partial_i u
 \end{align}
-It is not hard to extend this for the curl which is another common operation appearing in multivariable calculus. In the same essence, referring to (\ref{eqn:crosstens}) with the indices rotated suitably and using (\ref{eqn:nablatens}), we have
+It is not hard to extend this for the curl which is another common operation appearing in multivariable Calculus. In the same essence, referring to (\ref{eqn:crosstens}) with the indices rotated suitably and plugging in (\ref{eqn:nablatens}), we have
 \begin{align}
 \nabla \times \vec{v} = \epsilon_{ijk} \partial_j v_k \label{eqn:curltens}
 \end{align}
@@ -452,7 +457,7 @@ Finally, we note that if $\vec{v} = \vec{x}$, then (\ref{eqn:vectortensdiff}) wi
 \end{cases} = \delta_{ij}
 \label{eqn:dxdxdelta}
 \end{align}
-which is how the usual partial derivatives work and this is compared to (\ref{eqn:krondef}).
+which is just how the usual partial derivatives work and this can be compared to (\ref{eqn:krondef}).
 \begin{exmp}
 Show that differentiating a quadratic form $\textbf{x}^TA\textbf{x}$ with respect to the position vector $\textbf{x}$ where $A$ does not depend on $\textbf{x}$ yields, in matrix form, $A\textbf{x} + A^T\textbf{x}$.
 \end{exmp}
@@ -491,9 +496,9 @@ Prove the following formula for the curl of a cross product:
 
 \subsection{Tensor Integral Theorem}
 
-On the other hand, for integrals involving tensors, the key, overarching result is the \index{Tensor Divergence Theorem}\keywordhl{(Tensor) Divergence Theorem} from Differential Geometry, the development of which is too advanced to be included and hence will be stated directly.
+On the other hand, for integrals involving tensors, the overarching result is the \index{Tensor Divergence Theorem}\keywordhl{(Tensor) Divergence Theorem} from Differential Geometry, the development of which is too advanced to be included and hence will be stated directly.
 \begin{thm}[Tensor Divergence Theorem]
-For a tensor $T_{ij\ldots k}$ of an arbitrary rank and over a convex regular region with a volume $V$ and surface $S$, its surface integral is equal to the volume integral of its coordinate derivative.
+For a tensor $T_{ij\ldots k}$ of an arbitrary rank and over a convex regular region with a volume $V$ and surface $S$, its surface flux integral is equal to the volume integral of its coordinate derivative.
 \begin{align}
 \int_S T_{ij\ldots k}n_l dS = \int_V \frac{\partial T_{ij\ldots k}}{\partial x_l} dV \label{eqn:tensdivthm}
 \end{align}
@@ -512,7 +517,7 @@ Consequentially, the usual \index{Divergence Theorem}\keywordhl{Divergence Theor
 
 \subsection{Stress Tensor and Mohr’s Circle}
 
-Due to the scope limit, we will only go through the derivation of the stress tensor briefly. For a \textit{mass element} that is infinitesimally small, the traction force over a (possibly oblique) surface with a normal orientation of $\hat{n} = n_i$ can be reasonably expected to have contributions from three stress components along each direction. For instance, in the $x$-direction, using the $xyz$ coordinates in the indices for now, the traction will be
+Due to the scope limit, we will only briefly go through the stress tensor's derivation. For a \textit{mass element} that is infinitesimally small, the traction force over a (possibly oblique) surface with a normal orientation of $\hat{n} = n_i$ can be reasonably expected to have contributions from three stress components along each direction. For instance, in the $x$-direction, using the $xyz$ coordinates in the indices for now, the traction will be
 \begin{subequations}
 \label{eqn:cauchy3}
 \begin{align}
@@ -559,16 +564,6 @@ or more compactly by Index Notation, the \index{Cauchy's formula}\keywordhl{Cauc
 \begin{align}
 T_j = \sigma_{ij}n_i \label{eqn:Cauchyform}
 \end{align}
-Since the traction as a force and the direction are both vectors, by the Quotient Law (Theorem \ref{thm:quotientl}), $\sigma_{ij}$ must be a rank-$2$ tensor. It is subsequently known as the \index{Cauchy Stress Tensor}\keywordhl{Cauchy Stress Tensor}. Now, we assume any mass element within a continuum (e.g. a rock layer) has to be in \textit{static equilibrium} so it is not moving. This specifically requires that there will be no net torque that will rotate the mass element (presented as a parallelepiped in Figure \ref{fig:stresspiped}). The stresses on the opposite faces of the parallelepiped must then be equal in magnitude and opposite in direction. Take the $2,3$ directions as an illustration, the shearing stresses on any pair of opposite faces (e.g.\ the component $\sigma_{23}$ on the $2$-planes) in another direction will generate a couple that tends to rotate the parallelepiped. To prevent the mass element from rotating, the shearing stresses on the corresponding side faces (e.g.\ the component $\sigma_{32}$ on the $3$-planes) must balance this torque out, and thus $\sigma_{23} = \sigma_{32}$. By the same logic, $\sigma_{13} = \sigma_{31}$ and $\sigma_{12} = \sigma_{21}$, or more generally
-\begin{align}
-\sigma_{ij} = \sigma_{ji}
-\end{align}
-which means that the stress tensor is a symmetric one (this also means that the transpose in (\ref{eqn:cauchyT}) is unimportant). Moreover, as it is a tensor, it obeys the Transformation Law (Properties \ref{proper:translaw}) so that the change of coordinates will be
-\begin{align}
-\sigma'_{ij} = a_{ki}a_{lj}\sigma_{kl}
-\end{align}
-when viewed from the matrix perspective, it easily reminds us about orthogonal diagonalization in Definition \ref{defn:orthodiagonal} since $a_{**}$ represents an orthogonal matrix and Theorem \ref{thm:symdiag} is applicable to the symmetric stress tensor. Therefore, we can always compute the orthonormal eigenvectors for any matrix representation of the stress tensor. After a change of coordinates via orthogonal diagonalization, these orthonormal eigenvectors will then become the \index{Principal Axes}\index{Principal Directions}\keywordhl{principal axes/directions} (akin to Theorem \ref{thm:PCA}) used in the new coordinate frame. The corresponding eigenvalues are naturally called the \index{Principal Stresses}\keywordhl{principal stresses} (denoted by $\sigma_{*}$ with one subscript only) and there will be no shearing components in the transformed representation of the stress tensor. Hence, the traction along any principal direction will be aligned with the normal to the surface and is equal to the respective principal stress. The geological convection is that compression/tension is taken to be positive/negative. For the ease of demonstration, we will consider plane stress with only $2$ directions first.
-
 \begin{figure}
     \centering
     \begin{tikzpicture}[x={(-0.55cm, -0.55cm)}, y={(0.8cm, 0cm)}, z={(0cm, 0.8cm)}]
@@ -595,6 +590,15 @@ when viewed from the matrix perspective, it easily reminds us about orthogonal d
     \caption{The components of stress acting on a mass element.}
     \label{fig:stresscube}
 \end{figure}
+Since the traction, as a force, and the direction are both vectors, by the Quotient Law (Theorem \ref{thm:quotientl}), $\sigma_{ij}$ must be a rank-$2$ tensor. It is subsequently known as the \index{Cauchy Stress Tensor}\keywordhl{Cauchy Stress Tensor}. Now, we assume any mass element within a continuum (e.g. a rock layer) has to be in \textit{static equilibrium} so it is not moving. This specifically requires that there is no net torque that will rotate the mass element (presented as a parallelepiped in Figure \ref{fig:stresspiped}). The stresses on the opposite faces of the parallelepiped must then be equal in magnitude and opposite in direction. Take the $2,3$ directions as an illustration, the shear stresses on any pair of opposite faces (e.g.\ the component $\sigma_{23}$ on the $2$-planes) in another axis (e.g.\ in the $3$-direction) will generate a couple that tends to rotate the parallelepiped. To prevent the mass element from rotating, the shear stresses on the corresponding side faces (e.g.\ the component $\sigma_{32}$ on the $3$-planes) must balance this torque out, and thus $\sigma_{23} = \sigma_{32}$. By the same logic, $\sigma_{13} = \sigma_{31}$ and $\sigma_{12} = \sigma_{21}$, or more generally
+\begin{align}
+\sigma_{ij} = \sigma_{ji}
+\end{align}
+which means that the stress tensor is a symmetric one (this also means that the transpose in (\ref{eqn:cauchyT}) is not important). Moreover, as it is a tensor, it obeys the Transformation Law (Properties \ref{proper:translaw}) so that the change of coordinates will be
+\begin{align}
+\sigma'_{ij} = a_{ki}a_{lj}\sigma_{kl}
+\end{align}
+when viewed from the matrix perspective, it easily reminds us about orthogonal diagonalization (\ref{eqn:orthodiagonalPAP}) in Definition \ref{defn:orthodiagonal} since $a_{**}$ represents an orthogonal matrix and Theorem \ref{thm:symdiag} is applicable to the symmetric stress tensor. Therefore, we can always compute the orthonormal eigenvectors for any matrix representation of the stress tensor. After a change of coordinates via orthogonal diagonalization, these orthonormal eigenvectors will then become the \index{Principal Axes}\index{Principal Directions}\keywordhl{principal axes/directions} (akin to Theorem \ref{thm:PCA}) used in the new coordinate frame. The corresponding eigenvalues are naturally called the \index{Principal Stresses}\keywordhl{principal stresses} (denoted by $\sigma_{*}$ with one subscript only) and there will be no shearing components in the transformed representation of the stress tensor. Hence, the traction along any principal direction will be aligned with the normal to the surface and is equal to the respective principal stress. The geological convection is that compression/tension is taken to be positive/negative. For the ease of demonstration, we will consider plane stress with only $2$ directions first.
 
 \begin{figure}
     \centering
@@ -614,7 +618,7 @@ when viewed from the matrix perspective, it easily reminds us about orthogonal d
     \draw[blue,thick,->] (1.5,3,1.5) -- (1.5,3,2.5) node[right]{$\sigma_{23}$};
     \draw[blue,thick,->] (1.5,1.5,3) -- (1.5,2.5,3) node[above]{$\sigma_{32}$};
     \end{tikzpicture} 
-    \caption{The balance between shearing stresses along the $2,3$ ($yz$) cross-section for the mass element in Figure \ref{fig:stresscube}.}
+    \caption{The balance between shear stresses along the $2,3$ ($yz$) cross-section for the mass element in Figure \ref{fig:stresscube}.}
     \label{fig:stresspiped}
 \end{figure}
 
@@ -632,7 +636,7 @@ For a two-dimensional stress tensor that has the components of (unit: \si{MPa})
 1 & 7
 \end{bmatrix}
 \end{align*}
-find its principal stresses and directions.
+find its principal stresses and principal directions.
 \end{exmp}
 \begin{solution}
 We can directly compute the eigenvalues and eigenvectors, but we can do it in a more tricky way by recalling the results indicated by (\ref{eqn:rotate2dquadmat}) and (\ref{eqn:rotate2dquad}). The angle $\theta$ required to align the coordinate system is immediately inferred from 
@@ -704,9 +708,9 @@ Rewriting the components using trigonometric identities simplifies them into
 &= -\frac{\sigma_1 - \sigma_2}{2} \sin(2\theta) \label{eqn:mohrshear}
 \end{align} 
 \end{subequations}
-where $\sigma_{x'}$ and $\sigma_{y'}$ are the normal tractions along the rotated axes and $\tau_{x'y'}$ is the shearing traction. Notice that $\sigma_{x'}$ [or $\sigma_{y'}$] and $\tau_{x'y'}$ together form a circle parameterized by the double angle $2\theta$ with its center at $(\sigma, \tau) = ((\sigma_1 + \sigma_2)/2, 0)$ and a radius of $(\sigma_1 - \sigma_2)/2$.\footnote{$
+where $\sigma_{x'}$ and $\sigma_{y'}$ are the normal tractions along the rotated axes and $\tau_{x'y'}$ is the shear traction. Notice that $\sigma_{x'}$ [or $\sigma_{y'}$] and $\tau_{x'y'}$ together form a circle parameterized by the double angle $2\theta$ with its center at $(\sigma, \tau) = (\frac{\sigma_1 + \sigma_2}{2}, 0)$ and a radius of $\frac{\sigma_1 - \sigma_2}{2}$.\footnote{$
 (\sigma_{x'} - \frac{\sigma_1 + \sigma_2}{2})^2 + \tau_{x'y'}^2 = (\frac{\sigma_1 - \sigma_2}{2})^2\cos^2(2\theta) + (\frac{\sigma_1 - \sigma_2}{2})^2 \sin^2(2\theta) = (\frac{\sigma_1 - \sigma_2}{2})^2$}
-Hence the information about normal/shearing stresses on a surface with any orientation can be condensed into a circle that cuts the horizontal axis at $\sigma = \sigma_1$ and $\sigma_2$ graphically. This is known as the \index{Mohr's Circle}\keywordhl{Mohr's Circle} and is illustrated in Figure \ref{fig:mohr1}. Bear in mind that when the geological convention is used, (\ref{eqn:mohrshear}) will have no negative sign, and an anti-clockwise [clockwise] rotation of the surface by a positive [negative] degree of $\theta$ will appear as an anti-clockwise [clockwise] rotation of the diameter within the Mohr's Circle by a positive [negative] degree $2\theta$ (double of the actual surface tilt). The largest shear traction will be obtained at a tilt of \SI{45}{\degree}.
+Hence the information about normal/shear stresses on a surface of any orientation can be condensed into a circle centered at the horizontal axis that also cuts the horizontal axis at $\sigma = \sigma_1$ and $\sigma_2$ graphically. This is known as the \index{Mohr's Circle}\keywordhl{Mohr's Circle} and is illustrated in Figure \ref{fig:mohr1}. Bear in mind that when the geological convention is used, (\ref{eqn:mohrshear}) will have no negative sign, and an anti-clockwise [clockwise] rotation of the surface by a positive [negative] degree of $\theta$ will appear as an anti-clockwise [clockwise] rotation of the diameter within the Mohr's Circle by a positive [negative] degree $2\theta$ (double of the actual surface tilt). The largest shear traction will be obtained at a tilt of \SI{45}{\degree}.
  
 \begin{figure}
 \centering
@@ -721,7 +725,7 @@ Hence the information about normal/shearing stresses on a surface with any orien
     \filldraw[blue] (0) ++ (40:2) circle (0.1); 
     \filldraw[blue] (0) ++ (220:2) circle (0.1);
     \draw[blue, thick] (0) -- ++(40:2) node(b)[above right]{$(\sigma_{x'}, \tau_{x'y'})$};
-    \draw[blue, thick] (0) -- ++(220:2) node[below left]{$(\sigma_{y'}, -\tau_{x'y'})$};
+    \draw[blue, thick] (0) -- ++(220:2) node[below]{$(\sigma_{y'}, -\tau_{x'y'})$};
     \pic[->, draw, "$2\theta$", angle eccentricity=1.8] {angle = a--0--b};
     \end{tikzpicture}
     \caption{The schematic diagram of a Mohr's Circle.}
@@ -732,7 +736,7 @@ Hence the information about normal/shearing stresses on a surface with any orien
 For a two-dimensional plane with the principal stresses of $\sigma_1 = \SI{10}{MPa}$ and $\sigma_2 = \SI{5}{MPa}$, find the normal and shear tractions over the surface with a tilt of \SI{25}{\degree} from the principal axes in the positive direction.
 \end{exmp}
 \begin{solution}
-The Mohr's Circle will have a radius of $(\sigma_1 - \sigma_2)/2 = (10-5)/2 = 2.5$, centered at $((\sigma_1 + \sigma_2)/2, 0) = ((10 + 5)/2, 0) = (7.5,0)$ along the horizontal axis representing the normal direction. By (\ref{eqn:mohrnormal1}) and (\ref{eqn:mohrnormal2}) the normal tractions (in \si{MPa}) will be
+The Mohr's Circle will have a radius of $\frac{\sigma_1 - \sigma_2}{2} = \frac{10-5}{2} = 2.5$, centered at $(\frac{\sigma_1 + \sigma_2}{2}, 0) = (\frac{10 + 5}{2}, 0) = (7.5,0)$ along the horizontal axis representing the normal direction. By (\ref{eqn:mohrnormal1}) and (\ref{eqn:mohrnormal2}) the normal tractions (in \si{MPa}) will be
 \begin{align*}
 \sigma_{x'}, \sigma_{y'} = 7.5 \pm 2.5 \cos(2(\SI{25}{\degree})) &= 7.5 \pm 2.5 \cos(\SI{50}{\degree}) \\
 &= 7.5 \pm 1.61 = 9.11, 5.89
@@ -766,7 +770,7 @@ n_3
 \sigma_3 n_3
 \end{bmatrix}    
 \end{align}
-and for the squared magnitude of the traction, which is simply the sum of the squared magnitudes of the normal traction $\sigma_n$ and shear traction $\tau$, we have
+and considering the squared magnitude of the traction, which is simply the sum of the squared magnitudes of the normal traction $\sigma_n$ and shear traction $\tau$, we have
 \begin{align}
 \sigma_n^2 + \tau^2 = \norm{T}^2 = T_1^2 + T_2^2 + T_3^2 = \sigma_1^2 n_1^2 + \sigma_2^2 n_2^2 + \sigma_3^2 n_3^2 \label{eqn:mohr3d1}
 \end{align}
@@ -804,17 +808,17 @@ Since $n_1^2 \geq 0$, $\sigma_1 - \sigma_2 \geq 0$ and $\sigma_1 - \sigma_3 \geq
 &= \frac{\sigma_2^2}{4} - \frac{\sigma_2\sigma_3}{2} +\frac{\sigma_3^2}{4} \nonumber \\
 &= (\frac{\sigma_2 - \sigma_3}{2})^2
 \end{align}
-by completing squares. Therefore, the normal and shear traction must lie outside the Mohr's Circle centered at $((\sigma_2 + \sigma_3)/2,0)$ with a radius of $(\sigma_2 - \sigma_3)/2$, which represents a circle that lies along the horizontal (normal traction) axis and cuts it at $\sigma_n = \sigma_2$ and $\sigma_3$. Similarly, we leave it to the readers to check that
+by completing squares. Therefore, the normal and shear traction must lie outside the Mohr's Circle centered at $(\frac{\sigma_2 + \sigma_3}{2},0)$ with a radius of $\frac{\sigma_2 - \sigma_3}{2}$, which represents a circle that lies along the horizontal (normal traction) axis and cuts it at $\sigma_n = \sigma_2$ and $\sigma_3$. Similarly, we leave it to the readers to check that
 \begin{align}
 n_2^2 &= \mathcolor{red}{-}\frac{(\sigma_n^2 + \tau^2) - \sigma_n(\sigma_1 + \sigma_3) + \sigma_1\sigma_3}{(\sigma_1 - \sigma_2)(\sigma_2-\sigma_3)} \\
 n_3^2 &= \frac{(\sigma_n^2 + \tau^2) - \sigma_n(\sigma_1 + \sigma_2) + \sigma_1\sigma_2}{(\sigma_2 - \sigma_3)(\sigma_1-\sigma_3)}
 \end{align}
-and thus along the same lines we have
+(notice the negative sign for $n_2^2$, why?) and thus along the same lines, we have
 \begin{align}
 (\sigma_n-\frac{\sigma_1 + \sigma_3}{2})^2 + \tau^2 &\mathcolor{red}{\leq} (\frac{\sigma_1 - \sigma_3}{2})^2 \\
 (\sigma_n-\frac{\sigma_1 + \sigma_2}{2})^2 + \tau^2 &\geq (\frac{\sigma_1 - \sigma_2}{2})^2
 \end{align}
-So the normal and shear traction must also fall outside the Mohr's Circle centered at $((\sigma_1 + \sigma_2)/2,0)$ with a radius of $(\sigma_1 - \sigma_2)/2$ that cuts the horizontal axis at $\sigma_n = \sigma_1$ and $\sigma_2$, but inside the larger Mohr's Circle aligned to the horizontal axis that also cuts it at $\sigma_n = \sigma_1$ and $\sigma_3$. These are demonstrated in Figure \ref{fig:mohr3d}.
+So the normal and shear traction must also fall outside the Mohr's Circle centered at $(\frac{\sigma_1 + \sigma_2}{2},0)$ with a radius of $\frac{\sigma_1 - \sigma_2}{2}$ that cuts the horizontal axis at $\sigma_n = \sigma_1$ and $\sigma_2$, but inside the larger Mohr's Circle also centered at the horizontal axis that cuts it at $\sigma_n = \sigma_1$ and $\sigma_3$. These are demonstrated in Figure \ref{fig:mohr3d}.
 
 \begin{figure}
     \centering
@@ -848,11 +852,11 @@ For a three-dimensional volume with principal stresses of $\sigma_1 = 12$, $\sig
 \begin{solution}
 Figure \ref{fig:mohr3d} has been drawn for the situation in this question. We simply mark the locations for the traction pairs and see if the dots fall within the shaded region bounded by the three Mohr's Circles. The direct visual inspection shows that the second pair is possible but the first and last pairs are not valid.
 \end{solution}
-We note that the largest shearing traction is acquired when the surface is inclined at $\SI{45}{\degree}$ just between the first and third principal planes, similar to the plane stress scenario.
+We note that the largest shear traction is acquired when the surface is inclined at $\SI{45}{\degree}$ just between the first and third principal planes, similar to the plane stress scenario.
 
 \subsection{Eulerian and Lagrangian Views, Spatial and Material Derivatives}
 
-In Continuum Mechanics, the material may deform and move along the flow. Due to this, we have two descriptions of the material: \textit{Eulerian} and \textit{Lagrangian} descriptions. Given a property of the material $P$, for the \index{Eulerian Description}\index{Spatial Description}\keywordhl{Eulerian (spatial) description}, we retrieve the value of $P$ by referring to the local coordinates $\textbf{x} = x_i$ at the current time $t$, such that $P = P(x_i, t)$. This is more commonly used in many situations due to convenience. However, sometimes we also need the \index{Lagrangian Description}\index{Material Description}\keywordhl{Lagrangian (material) description} that essentially follows a mass particle. We need to "label" the particle with reference coordinates $\textbf{X} = X_i$ (in capital letters) which are the local coordinates happening at some reference time $t_0$, such that $X_i = x_i(t_0)$. In this case, the value of $P$ is evaluated by going back to the fixed coordinates and hence we have $P = P(X_i, t)$ instead. It is possible to convert between these two descriptions by
+In Continuum Mechanics, the continuum may deform and move along the flow. Due to this, we have two descriptions of the continuum: \textit{Eulerian} and \textit{Lagrangian} descriptions. Given a property $P$ of the continuum, in the \index{Eulerian Description}\index{Spatial Description}\keywordhl{Eulerian (spatial) description}, we retrieve the value of $P$ by referring to the local coordinates $\textbf{x} = x_i$ at the current time $t$, so that $P = P(x_i, t)$. This is more commonly used in many situations because of convenience. However, sometimes we also need the \index{Lagrangian Description}\index{Material Description}\keywordhl{Lagrangian (material) description} that essentially follows a mass particle. We need to "label" the particle with reference coordinates $\textbf{X} = X_i$ (in capital letters) which are the local coordinates recorded at some reference time $t_0$, such that $X_i = x_i(t_0)$. In this case, the value of $P$ is evaluated by going back to the fixed reference coordinates, and hence we have $P = P(X_i, t)$ instead. It is possible to convert between these two descriptions by
 \begin{subequations}
 \begin{align}
 x_i = x_i(X_i, t) \label{eqn:lagtoeuler}
@@ -874,7 +878,7 @@ Similarly, we also have the \index{Spatial Displacement Gradient}\keywordhl{spat
 \begin{align}
 \frac{\partial u_i}{\partial x_j} = \frac{\partial x_i}{\partial x_j} -  \frac{\partial X_i}{\partial x_j} = \delta_{ij} - \frac{\partial X_i}{\partial x_j}
 \end{align}
-Both of them are rank-$2$ tensors.\footnote{We only show that for the first one but the second one is very similar. Note that by Chain Rule
+Both of them are rank-$2$ tensors.\footnote{We only show that for the first one but the second one is very similar. Note that by the multivariable Chain Rule
 \begin{align*}
 (\frac{\partial u_i}{\partial X_j})dX_j = du_i
 \end{align*}
@@ -913,7 +917,7 @@ d\textbf{x}_2 &= \frac{\partial x_2}{\partial X_1}dX_1\textbf{e}_1 + \frac{\part
 d\textbf{x}_3 &= \frac{\partial x_3}{\partial X_1}dX_1\textbf{e}_1 + \frac{\partial x_3}{\partial X_2}dX_2\textbf{e}_2 + \frac{\partial x_3}{\partial X_3}dX_3\textbf{e}_3 
 \end{empheq}
 \end{subequations}
-The deformed Eulerian volume $dV$ for an infinitesimally small mass is then given by Properties \ref{proper:parallelpiped}.
+The deformed Eulerian volume $dV$ for an infinitesimally small mass is then given by (\ref{eqn:scalartriple}) from Properties \ref{proper:parallelpiped}.
 \begin{align}
 (d\textbf{x}_1 \times d\textbf{x}_2) \cdot d\textbf{x}_3 &= 
 \begin{vmatrix}
@@ -923,14 +927,17 @@ The deformed Eulerian volume $dV$ for an infinitesimally small mass is then give
 \end{vmatrix} \nonumber \\
 &= \det(\frac{\partial x_i}{\partial X_j}) dX_1dX_2dX_3 = JdV_0
 \end{align}
-where $dV_0 = dX_1dX_2dX_3$ is the infinitesimal reference Lagrangian volume differential and $J = \det(\partial x_i/\partial X_j)$ is the determinant of the Jacobian. Alternatively, using the Index Notation and epsilon symbol, we can also arrive at
+where $dV_0 = dX_1dX_2dX_3$ is the infinitesimal reference Lagrangian volume differential and 
+\begin{align}
+J = \det(\frac{\partial x_i}{\partial X_j}) \label{eqn:Jacdet} 
+\end{align} is the determinant of the Jacobian. Alternatively, using the Index Notation and epsilon symbol, we can also arrive at
 \begin{align}
 dV &= \epsilon_{lmn} dx_ldx_mdx_n \nonumber \\
-&= \epsilon_{lmn} \frac{\partial x_l}{\partial X_i}\frac{\partial x_m}{\partial X_j}\frac{\partial x_n}{\partial X_k} dX_idX_jdX_k & \text{(Chain Rule)} \nonumber \\
-&= \epsilon_{ijk} J dX_idX_jdX_k & \text{(by (\ref{eqn:determinanteps2}))} \nonumber \\
+&= \epsilon_{lmn} \frac{\partial x_l}{\partial X_i}\frac{\partial x_m}{\partial X_j}\frac{\partial x_n}{\partial X_k} dX_idX_jdX_k & \text{(Multivariable Chain Rule)} \nonumber \\
+&= \epsilon_{ijk} J dX_idX_jdX_k & \text{(by (\ref{eqn:determinanteps2}) and (\ref{eqn:Jacdet}))} \nonumber \\
 &= J dV_0 \label{eqn:dVJdV_0}
 \end{align}
-Consequentially, $J$ is the ratio of the reference to current volume. Due to the conservation of matter, the deformed volume cannot vanish if the initial reference volume is finite and vice versa. This implies that the determinant of the Jacobian (or simply called Jacobian from now on) cannot vanish, i.e.\ $J = \det(\partial x_i/\partial X_j) \neq 0$. This ensures that the conversion between the Eulerian and Lagrangian descriptions is one-to-one.\par
+Consequentially, $J$ is the ratio of the reference to the current volume. Due to the conservation of matter, the deformed volume cannot vanish if the initial reference volume is finite and vice versa. This implies that the determinant of the Jacobian (or simply called Jacobian from now on) cannot vanish, i.e.\ $J = \det(\partial x_i/\partial X_j) \neq 0$. This ensures that the conversion between the Eulerian and Lagrangian descriptions is one-to-one.\par
 
 Now, we are going to examine the time derivative of a tensor quantity $P = P_{ij\ldots}$ from both the Eulerian and Lagrangian views. Using the Lagrangian description, it can be expressed as $P = P(\textbf{X}, t)$ where $\textbf{X}$ represents the reference coordinates. The \index{Material Derivative}\keywordhl{material derivative} $dP/dt$ is the rate of change in $P$ following a particle with respect to time $t$. Since the reference coordinates of the tracked particle are essentially labels that do not change with time, the material derivative of $P(\textbf{X}, t)$ in the Lagrangian framework is simply
 \begin{align}
@@ -941,12 +948,12 @@ its partial derivative with respect to time. However, in the Eulerian descriptio
 \underbrace{\frac{d}{dt} P(\textbf{x},t)}_{\text{Material}} &= \frac{\partial}{\partial t} P(\textbf{x},t) + \frac{\partial}{\partial x_k} [P(\textbf{x},t)] \frac{dx_k}{dt} \nonumber \\
 &= \underbrace{\frac{\partial}{\partial t} P(\textbf{x},t)}_{\text{Spatial}} + \underbrace{v_k\frac{\partial}{\partial x_k} [P(\textbf{x},t)]}_{\text{Advective}} 
 \end{align}
-where $d\textbf{x}/dt = dx_k/dt = v_k = \textbf{v}$ are the velocities of the particle. This shows that the material derivative is the combined effects of the \index{Spatial Derivative}\keywordhl{spatial derivative} which is the local rate of change of $P$ fixed at the present position of the particle, and the \index{Advective Derivative}\keywordhl{advective derivative} which is the rate of change of $P$ attributed to the particle being advected along the gradient of the field of $P$ due to the flow. Accordingly the material derivative operator expressed in the Eulerian spatial description is given by 
+where $d\textbf{x}/dt = dx_k/dt = v_k = \textbf{v}$ are the velocities of the particle. This shows that the material derivative is the combined effects of the \index{Spatial Derivative}\keywordhl{spatial derivative} which is the local rate of change of $P$ fixed at the present position of the particle, and the \index{Advective Derivative}\keywordhl{advective derivative} which is the rate of change of $P$ attributed to the particle being advected along the gradient of the field of $P$ due to the flow. Accordingly, the material derivative operator expressed in the Eulerian spatial description is given by 
 \begin{align}
 \frac{d}{dt} = \frac{\partial}{\partial t} + v_k\frac{\partial}{\partial x_k} = \frac{\partial}{\partial t} + \textbf{v} \cdot \nabla \label{eqn:localmatderiv}
 \end{align}
 Going in the reverse direction, it implies that the evolution of some property measured at a fixed point in space (spatial) is the actual change imparted to the particle (material) subtracted by the apparent advective effect due to its motion. The relationship between these three terms is demonstrated in Figure \ref{fig:advection} in a one-dimensional setting.
-\begin{figure}
+\begin{figure}[ht!]
     \centering
     \includegraphics[scale=0.8]{graphics/advect.png}
     \caption{The relationship between the spatial (blue) and material derivative (red) alongside the advective term (green), where we use temperature $T$ as the variable and only look at a single direction $x$ (and velocity $u$) for demonstration.}
@@ -954,7 +961,7 @@ Going in the reverse direction, it implies that the evolution of some property m
 \end{figure}
 
 \subsection{Field Equations}
-In this subsection, we will proceed to derive several \index{Field Equations}\keywordhl{field equations} which govern the dynamics of physical fields like temperature and motion. The central ingredient for the derivation is the \textit{conservation of mass}, and we will consider the mass enclosed in a volume bounded by an arbitrary closed surface. The boundary of this volume will be assumed to move alongside the particles on it and thus it is a \index{Material Volume}\keywordhl{material volume}. Therefore, it will contain the same set of particles for all time. Considering this material volume, the amount of mass inside it can be expressed as an integral over the deformed volume in the current configuration as
+In this subsection, we will proceed to derive several \index{Field Equations}\keywordhl{field equations} which govern the dynamics of physical fields like temperature and motion. The central ingredient for the derivation is the \textit{conservation of mass}, and we will consider the mass contained in a volume bounded by an arbitrary closed surface. The boundary of this volume will be assumed to move alongside the particles on it and thus it is a \index{Material Volume}\keywordhl{material volume}. Therefore, it will contain the same set of particles for all time. Considering this material volume, the amount of mass inside it can be expressed as an integral over the deformed volume in the current configuration as
 \begin{align}
 m = \int_{V(t)} \rho(\textbf{x},t) dV \label{eqn:eulermass}
 \end{align}
@@ -974,12 +981,12 @@ Compared to (\ref{eqn:lagmass}), the density can now change with time as the con
 \begin{align}
 J = \epsilon_{ijk} \frac{\partial x_1}{\partial X_i}\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} \label{eqn:Jdefn}
 \end{align}
-via (\ref{eqn:determinanteps3}) where $\partial x_l/\partial X_i$ is the Jacobian in the matrix/tensor form. Since the partial derivatives are defined with respect to the material reference coordinates, the time derivative of the Jacobian can be done directly. Using the Product Rule, we have
+via (\ref{eqn:determinanteps3}) where $\partial x_l/\partial X_i$ is the Jacobian in the matrix/tensor form. Since the partial derivatives in the Jacobian are defined with respect to the material reference coordinates, the time derivative of the Jacobian can be done directly. Using the Product Rule, we have
 \begin{align}
 \frac{dJ}{dt} =  \epsilon_{ijk} [\frac{d}{dt}(\frac{\partial x_1}{\partial X_i})\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} +  \frac{\partial x_1}{\partial X_i}\frac{d}{dt}(\frac{\partial x_2}{\partial X_j})\frac{\partial x_3}{\partial X_k} +  \frac{\partial x_1}{\partial X_i}\frac{\partial x_2}{\partial X_j}\frac{d}{dt}(\frac{\partial x_3}{\partial X_k})]
 \label{eqn:dJdt1}
 \end{align}
-Note that in the material coordinates, by (\ref{eqn:lagpartialt}) the time derivative can be treated as a partial derivative and by \index{Clairaut's Theorem}\keywordhl{Clairaut's Theorem} in Multivariable Calculus we can exchange the order of partial derivatives if they are smooth enough. Therefore, we have
+Note that in the material coordinates, by (\ref{eqn:lagpartialt}) the time derivative can be treated as a partial derivative, and by \index{Clairaut's Theorem}\keywordhl{Clairaut's Theorem} in Multivariable Calculus we can exchange the order of partial derivatives if they are smooth enough. Therefore, we have
 \begin{align}
 \frac{d}{dt}\frac{\partial x_l}{\partial X_i} = \frac{\partial}{\partial t}\frac{\partial x_l}{\partial X_i} = \frac{\partial}{\partial X_i}\frac{\partial x_l}{\partial t} = \frac{\partial}{\partial X_i}(\frac{d x_l}{dt}) = \frac{\partial v_l}{\partial X_i}
 \end{align}
@@ -1048,7 +1055,7 @@ By (\ref{eqn:localmatderiv}), we have the local form of the continuity equation:
 \frac{\partial \rho}{\partial t} + \nabla \cdot(\rho\textbf{v}) = 0 
 \end{align}
 \footnote{\label{footnote:divsv}$\nabla \cdot(\rho\textbf{v}) = \partial_i(\rho v_i) = v_i(\partial_i\rho) + \rho(\partial_iv_i) =  \textbf{v} \cdot \nabla\rho + \rho(\nabla \cdot \textbf{v})$.}
-The physical interpretation of the second term $\nabla \cdot(\rho\textbf{v})$ is the mass flux moving out of the volume, which leads to a reduction in the local density via the first term. This can be seen by putting $\nabla \cdot(\rho\textbf{v})$ inside an arbitrary volume integral and use (\ref{eqn:tensdivthm}):
+The physical interpretation of the second term $\nabla \cdot(\rho\textbf{v})$ is the mass flux moving out of a locally fixed volume, which leads to a reduction in the local density via the first term. This can be seen by putting $\nabla \cdot(\rho\textbf{v})$ inside an arbitrary volume integral and use (\ref{eqn:tensdivthm}):
 \begin{align}
 \int_V \nabla \cdot(\rho\textbf{v}) dV &= \int_V \partial_i(\rho v_i) dV \nonumber \\
 &= \int_S \rho v_i n_i dS = \int_S \rho\textbf{v} \cdot \hat{n} dS
@@ -1091,12 +1098,12 @@ There are two major variants of Reynold's Transport Theorem. First, consider $G(
 &= \int_{V(t)} [\frac{\partial G}{\partial t} + \nabla \cdot (G\textbf{v})] dV & \text{(Footnote \ref{footnote:divsv})} \nonumber \\
 &= \int_{V(t)} \frac{\partial G}{\partial t} dV + \int_{S(t)} G\textbf{v} \cdot \hat{n}dS &\text{(by (\ref{eqn:divthm}))} \label{eqn:RTTflux}
 \end{align}
-The two terms on R.H.S. mean the local change of $G$ within the material volume and the spread of $G$ as the boundary expands respectively. They give rise to the net change of $G$ in the material volume. Second, if the volume is not material but a so-called \index{Control Volume}\keywordhl{control volume} (denoted by $CV$) that can itself deform and its boundary will change with time but independent of the mass, i.e.\ does not follow the particles, then we can treat it as a material volume/surface that coincides with the control volume/surface at time $t$ but the velocity of the boundary is properly replaced. (\ref{eqn:RTTflux}) then becomes
+The two terms on R.H.S. mean the local change of $G$ within the material volume and the spread of $G$ as the boundary expands respectively. They give rise to the net change of $G$ in the material volume. Second, if the volume is not material but a so-called \index{Control Volume}\keywordhl{control volume} (denoted by $CV$) that can itself deform and its boundary will change with time but is independent of the mass, i.e.\ does not follow the particles, then we can treat it as a material volume/surface that coincides with the control volume/surface at time $t$ but the velocity of the boundary is properly replaced. (\ref{eqn:RTTflux}) then becomes
 \begin{subequations}
 \begin{align}
 \frac{d}{dt} \int_{CV(t)} G(\textbf{x},t) dV = \int_{CV(t)} \frac{\partial G}{\partial t} dV + \int_{S(t)} G\textbf{v}_b \cdot \hat{n}dS
 \end{align}  
-where $\textbf{v}_b$ is the velocity of the control surface. Meanwhile, for the original material volume (now denoted by $MV$), it is simply
+where $\textbf{v}_b$ is the velocity of the control surface. Meanwhile, for the original material volume (now denoted by $MV$), the integral is simply
 \begin{align}
 \frac{d}{dt} \int_{MV(t)} G(\textbf{x},t) dV = \int_{MV(t)} \frac{\partial G}{\partial t} dV + \int_{S(t)} G\textbf{v}_m \cdot \hat{n}dS
 \end{align}  
@@ -1108,11 +1115,11 @@ As we demand the material volume to match with the control volume at time $t$, s
 \end{align}
 with $\textbf{v}_r = \textbf{v}_m - \textbf{v}_b$ being the relative velocity of the material to control boundary.\par
 
-Now we will use Reynold's Transport Theorem \ref{thm:RTT} to derive the \textit{equation of motion}. Let $A = \rho$ be the velocity field so that $\rho v$ now represents the momentum per unit mass. The change in the total momentum of a material volume is caused by two major effects: the external traction $\textbf{T}$ on the material boundary and the \textit{body force} (exerted at a distance, per unit mass) $\textbf{b}$ over the entire volume:
+Now we will use Reynold's Transport Theorem \ref{thm:RTT} to derive the \textit{equation of motion}. Let $A = \textbf{v}$ be the velocity field so that $\rho \textbf{v}$ now represents the momentum per unit mass. The change in the total momentum of a material volume is caused by two major effects: the external traction $\textbf{T}$ on the material boundary and the \textit{body force} (exerted at a distance, per unit mass) $\textbf{b}$ over the entire volume:
 \begin{align}
 \frac{d}{dt} \int_V \rho \textbf{v} dV = \int_S \textbf{T} dS + \int_V \rho\textbf{b} dV
 \end{align}
-By (\ref{eqn:RTT}) and Cauchy's formula (\ref{eqn:Cauchyform}), it becomes
+By the Reynold's Transport Theorem (\ref{eqn:RTT}) and Cauchy's formula (\ref{eqn:Cauchyform}), it becomes
 \begin{align}
 \int_V \rho \frac{dv_j}{dt} dV = \int_S \sigma_{ij}n_i dS + \int_V \rho b_j dV   
 \end{align}
@@ -1133,15 +1140,15 @@ In the ocean or atmosphere, we often assume the fluid is \textit{inviscid} so it
 \end{align}
 which are commonly referred to as the \textit{Euler's equations} that can be explicitly expressed in full form for each component:
 \begin{subequations}
-\begin{empheq}[left={\empheqlbrace}]{alignat=1}
-\rho (\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z}) &= -\frac{\partial p}{\partial x} + \rho g_x \\
-\rho (\frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial v}{\partial z}) &= -\frac{\partial p}{\partial y} + \rho g_y \\
-\rho (\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z}) &= -\frac{\partial p}{\partial z} + \rho g_z
+\begin{empheq}[left={\empheqlbrace}]{alignat=2}
+&\rho (\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z}) & &= -\frac{\partial p}{\partial x} + \rho g_x \\
+&\rho (\frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial v}{\partial z}) & &= -\frac{\partial p}{\partial y} + \rho g_y \\
+&\rho (\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z}) & &= -\frac{\partial p}{\partial z} + \rho g_z
 \end{empheq} 
 \end{subequations}
-where we denote the three-dimensional flow velocities as $\textbf{v} = (u,v,w)^T$, the body force is the gravity $\textbf{b} = \textbf{g} = (g_x,g_y,g_z)^T$, and use (\ref{eqn:localmatderiv}) to expand the material time derivative. Note that we are in a non-rotating inertial frame so the usual Coriolis force does not appear.\par
+where we denote the three-dimensional flow velocities as $\textbf{v} = (u,v,w)^T$, the body force is the gravity $\textbf{b} = \textbf{g} = (g_x,g_y,g_z)^T$, and use (\ref{eqn:localmatderiv}) to expand the material time derivative. Note that we are doing the above analysis in a non-rotating inertial coordinate frame so the usual Coriolis force does not appear.\par
 
-Finally, we will use the Euler's equations above to derive \index{Kelvin's Circulation Theorem}\keywordhl{Kelvin's Circulation Theorem}. \textit{Circulation} along a closed material path is the line integral of velocity along it:
+Finally, we will use Euler's equations to derive \index{Kelvin's Circulation Theorem}\keywordhl{Kelvin's Circulation Theorem}. \textit{Circulation} along a closed material path is the line integral of velocity along it:
 \begin{align}
 \Gamma_c = \oint_{C(t)} v_i dx_i
 \end{align}
@@ -1149,12 +1156,16 @@ Its time derivative is
 \begin{align}
 \frac{d\Gamma_c}{dt} &= \frac{d}{dt}(\oint_{C} v_i dx_i) \nonumber \\
 &= \oint_{C} \frac{d}{dt}(v_i dx_i)  \nonumber \\\
-&\quad  \text{(Take the material derivative inside and enclose the material}  \nonumber \\ 
-&\quad  \text{line elements to account for the moving material loop)} \nonumber \\
+&\quad \begin{aligned}
+&\text{(Take the material derivative inside and enclose the material} \\  
+&\text{line elements to account for the moving material loop)} 
+\end{aligned} \nonumber \\
 &= \oint_{C} \frac{dv_i}{dt} dx_i + \oint_{C} v_i d(\frac{dx_i}{dt})  \nonumber \\
-&\quad \text{(Material line elements move with the flow and thus $\frac{d}{dt}(dx_i) = d(\frac{dx_i}{dt})$)} \nonumber \\
+&\quad \begin{aligned}
+&\text{(Material line elements move with the flow and thus} \\ 
+&\frac{d}{dt}(dx_i) = d(\frac{dx_i}{dt})\text{)}\end{aligned} \nonumber \\
 &= \oint_{C} \frac{dv_i}{dt} dx_i + \oint_{C} v_i dv_i \nonumber \\
-&= \oint_{C} \frac{dv_i}{dt} dx_i + \oint_{C} d(\frac{\norm{\textbf{v}}^2}{2}) \qquad \text{(By (\ref{eqn:contineqn}))}
+&= \oint_{C} \frac{dv_i}{dt} dx_i + \oint_{C} d(\frac{\norm{\textbf{v}}^2}{2}) 
 \end{align}
 The second integral is zero because the value of a scalar in a closed path must be unchanged after a loop. Substitute (\ref{eqn:eqnmotion2}) into the first integral yields
 \begin{align*}
@@ -1162,7 +1173,7 @@ The second integral is zero because the value of a scalar in a closed path must 
 &= - \oint_{C} \frac{1}{\rho}\frac{\partial p}{\partial x_i} dx_i + \oint_{C} g_i dx_i \\
 &= - \oint_C \frac{dp}{\rho} + (0)
 \end{align*}
-where the second integral vanishes because gravity is treated as a constant vector and the closed path integral will cancel out itself and Kelvin's Circulation Theorem is established:
+where the second smaller integral vanishes because gravity is treated as a constant vector and the closed path integral will cancel out itself and Kelvin's Circulation Theorem is established:
 \begin{align}
 \frac{d\Gamma_c}{dt} &= - \oint_C \frac{dp}{\rho}  
 \end{align}
@@ -1188,6 +1199,7 @@ Now take $\textbf{u} = \nabla p/\rho$.}:
 &= \epsilon_{ijk}(\frac{\partial_j\partial_k p}{\rho}) + \epsilon_{ijk}(-\frac{\partial_k p}{\rho^2})\partial_j\rho
 \end{align*}
 The first term is the zero vector since the partial derivatives are symmetric but the epsilon symbol is antisymmetric:
+\vspace{\maxdimen}
 \begin{align*}
 \epsilon_{ijk}(\frac{\partial_j\partial_k p}{\rho}) &= \epsilon_{ikj}(\frac{\partial_k\partial_j p}{\rho}) \\
 &= -\epsilon_{ijk}(\frac{\partial_k\partial_j p}{\rho}) = -\epsilon_{ijk}(\frac{\partial_j\partial_k p}{\rho}) \implies \epsilon_{ijk}(\frac{\partial_j\partial_k p}{\rho}) = \textbf{0}
@@ -1197,7 +1209,11 @@ and the second term leads to
 -\epsilon_{ijk}(\frac{\partial_k p}{\rho^2})\partial_j\rho = -\epsilon_{ijk}\frac{\partial_j\rho \partial_k p}{\rho^2} = -\frac{\nabla \rho \times \nabla p}{\rho^2}
 \end{align*}
 }
-The quantity $(\nabla \rho \times \nabla p)/\rho^2$ is called the \textit{baroclinicity} which characterizes the tilting between the pressure/density contours which often arises from a temperature gradient in a cross-section, which will generate circulation along the corresponding curve.
+The quantity 
+\begin{align}
+\frac{\nabla \rho \times \nabla p}{\rho^2}    
+\end{align}
+is called the \textit{baroclinicity} which characterizes the tilting between the pressure/density contours. It often arises from a temperature gradient in a cross-section, which will generate circulation along the corresponding curve.
 
 \section{Earth System Applications: Data Assimilation}
 
@@ -1210,7 +1226,7 @@ T_b = T_t + \varepsilon_b \label{eqn:backgT}
 \end{align}    
 where $\varepsilon_b$ is the background error with a variance of
 \begin{align}
-E(\varepsilon_b^2) = \sigma_b^2
+E[\varepsilon_b^2] = \sigma_b^2
 \end{align}
 The variance here is formulated by integrating over the \textit{probability distribution function (PDF)} and is a generalization of that in Definition \ref{defn:variance}.
 \end{subequations}
@@ -1221,45 +1237,44 @@ T_o = T_t + \varepsilon_o \label{eqn:obsT}
 \end{align}    
 and the observation error has a variance of
 \begin{align}
-E(\varepsilon_o^2) = \sigma_o^2
+E[\varepsilon_o^2] = \sigma_o^2
 \end{align}
 \end{subequations}
 Further, we assume that they are \textit{unbiased} such that
 \begin{subequations}
 \label{eqn:unbiasedbo}
 \begin{align}
-E(T_b) &= T_t &  \text{or} & & E(\varepsilon_b) &= 0 \\
-E(T_o) &= T_t &  \text{or} & & E(\varepsilon_o) &= 0
+E[T_b] &= T_t &  \text{or} & & E[\varepsilon_b] &= 0 \\
+E[T_o] &= T_t &  \text{or} & & E[\varepsilon_o] &= 0
 \end{align}
 \end{subequations}
 Moreover, the background and observation errors have to be \textit{uncorrelated}:
 \begin{align}
-E(\varepsilon_b\varepsilon_o) &= 0 \label{eqn:bouncorr}
+E[\varepsilon_b\varepsilon_o] &= 0 \label{eqn:bouncorr}
 \end{align}
-We set out to find an optimal linear combination of $T_b$ and $T_o$ to arrive at a new unbiased estimation, referred to as the analysis:
+We set out to find an optimal linear combination of $T_b$ and $T_o$ as a new unbiased estimation, referred to as the \textit{analysis}:
 \begin{align}
 T_a = a_1T_b + a_2T_o \label{eqn:analysisT}
 \end{align}
-where $a_1, a_2 > 0$ are the weightings. The analysis will also have an error of $\varepsilon_a$ such that 
+where $a_1, a_2 > 0$ are the weights. The analysis will also have an error of $\varepsilon_a$ such that 
 \begin{align}
 T_a = T_t + \varepsilon_a
 \end{align}
 The condition of being unbiased requires that
 \begin{align}
-E(\varepsilon_a) = E(T_a - T_t) &= 0 \nonumber \\
-E(a_1T_b + a_2T_o - T_t) &= 0 \nonumber &\text{(By (\ref{eqn:analysisT}))}\\
-E(a_1(T_t + \varepsilon_b) + a_2(T_t + \varepsilon_o) - T_t) &= 0 \nonumber\\
+E[\varepsilon_a] = E[T_a - T_t] &= 0 \nonumber \\
+E[a_1T_b + a_2T_o - T_t] &= 0 \nonumber &\text{(By (\ref{eqn:analysisT}))}\\
+E[a_1(T_t + \varepsilon_b) + a_2(T_t + \varepsilon_o) - T_t] &= 0 \nonumber\\
 \text{(By (\ref{eqn:backgT}) and (\ref{eqn:obsT}))} &\nonumber \\
-a_1[E(T_t) + E(\varepsilon_b)] + a_2[E(T_t) + E(\varepsilon_o)] - E(T_t) &= 0 \nonumber \\
-(a_1 + a_2 - 1)E(T_t) &= 0 &\text{(By (\ref{eqn:unbiasedbo}))} \nonumber \\
+a_1(E[T_t] + E[\varepsilon_b]) + a_2(E[T_t] + E[\varepsilon_o]) - E[T_t] &= 0 \nonumber \\
+(a_1 + a_2 - 1)E[T_t] &= 0 &\text{(By (\ref{eqn:unbiasedbo}))} \nonumber \\
 \implies a_1 + a_2 &= 1
 \end{align}
-i.e.\ the sum of weightings has to be unity ($1$). To obtain the best analysis estimation $T_a$,
-we want the weightings to minimize the mean squared error of $T_a$: the analysis error variance 
+i.e.\ the sum of weighting has to be unity ($1$). To obtain the best analysis estimation $T_a$, we want the weighting to minimize the mean squared error of $T_a$, a.k.a.\ the analysis error variance 
 \begin{align}
-\sigma_a^2 = E(\varepsilon_a^2) = E((T_a - T_t)^2)
+\sigma_a^2 = E[\varepsilon_a^2] = E[(T_a - T_t)^2]
 \end{align}
-We proceed by differentiating it with respect to one of the weightings, let's say $a_1$, and the minimum will occur when the partial derivative is zero.
+We proceed by differentiating it with respect to one of the weights, let's say $a_1$, and the minimum will occur when the partial derivative is zero:
 \begin{align}
 \frac{\partial \sigma_a^2}{\partial a_1} &= 0 \label{eqn:DAunimin}
 \end{align}
@@ -1271,10 +1286,10 @@ Now
 \end{align}
 and hence
 \begin{align}
-\sigma_a^2 = E(\varepsilon_a^2) &= E((T_a - T_t)^2) \nonumber \\
-&= E((a_1\varepsilon_b + a_2\varepsilon_o)^2) \nonumber \\
-&= E(a_1^2\varepsilon_b^2 + a_1a_2\varepsilon_b\varepsilon_o + a_2^2\varepsilon_o^2) \nonumber \\
-&= a_1^2E(\varepsilon_b^2) + a_1a_2 E(\varepsilon_b\varepsilon_o) + a_2^2E(\varepsilon_o^2) \nonumber \\
+\sigma_a^2 = E[\varepsilon_a^2] &= E[(T_a - T_t)^2] \nonumber \\
+&= E[(a_1\varepsilon_b + a_2\varepsilon_o)^2] \nonumber \\
+&= E[a_1^2\varepsilon_b^2 + a_1a_2\varepsilon_b\varepsilon_o + a_2^2\varepsilon_o^2] \nonumber \\
+&= a_1^2E[\varepsilon_b^2] + a_1a_2 E[\varepsilon_b\varepsilon_o] + a_2^2E[\varepsilon_o^2] \nonumber \\
 &= a_1^2\sigma_b^2 + a_2^2\sigma_o^2 & \text{(By (\ref{eqn:bouncorr}))} \nonumber \\
 &= a_1^2\sigma_b^2 + (1-a_1)^2\sigma_o^2 \label{eqn:DAunisigmaa}
 \end{align}
@@ -1285,12 +1300,12 @@ Substituting this into (\ref{eqn:DAunimin}), we obtain
 2a_1(\sigma_b^2 + \sigma_o^2) - 2\sigma_o^2 &= 0 \nonumber \\
 a_1 &= \frac{\sigma_o^2}{\sigma_b^2 + \sigma_o^2} = \frac{\sigma_b^{-2}}{\sigma_b^{-2} + \sigma_o^{-2}}
 \end{align}
-where the second equality in the last line is from dividing by \smash{$\sigma_b^2\sigma_o^2$}. The reciprocals of the background/observation error variances \smash{$\sigma_b^{-2}, \sigma_o^{-2}$} represent their respective precisions. The best analysis is then given by
+where the second equality in the last line is from dividing by \smash{$\sigma_b^2\sigma_o^2$}. The reciprocals of the background/observation error variances \smash{$\sigma_b^{-2}, \sigma_o^{-2}$} represent their respective \textit{precisions}. The best analysis is then given by
 \begin{align}
 T_a &= a_1T_b + (1-a_1)T_o \nonumber \\
 &= \frac{\sigma_o^2}{\sigma_b^2 + \sigma_o^2}T_b + \frac{\sigma_b^2}{\sigma_b^2 + \sigma_o^2}T_o =  \frac{\sigma_b^{-2} T_b + \sigma_o^{-2} T_o}{\sigma_b^{-2} + \sigma_o^{-2}} \label{eqn:univOIan}
 \end{align}
-Therefore, the analysis is a weighted average of the background and the observation where the weightings are proportional to their precisions. The analysis error variance in (\ref{eqn:DAunisigmaa}) is subsequently
+Therefore, the analysis is a weighted average of the background and the observation where the weights are proportional to their precisions. The analysis error variance in (\ref{eqn:DAunisigmaa}) is subsequently
 \begin{align}
 \sigma_a^2 &= a_1^2\sigma_b^2 + (1-a_1)^2\sigma_o^2 \nonumber \\
 &= (\frac{\sigma_o^2}{\sigma_b^2 + \sigma_o^2})^2\sigma_b^2 + (\frac{\sigma_b^2}{\sigma_b^2 + \sigma_o^2})^2\sigma_o^2 \nonumber \\
@@ -1307,12 +1322,12 @@ the background and observation. An illustration is given in Figure \ref{fig:DA1}
 \label{eqn:univOIschm}
 \begin{align}
 W &= \frac{\sigma_b^2}{\sigma_b^2 + \sigma_o^2}\\  
-T_a &= T_b + W(T_o - T_b) \\
+T_a &= T_b + W(T_o - T_b) \label{eqn:uniDAweight} \\
 \sigma_a^2 &= (1 - W)\sigma_b^2
 \end{align}    
 \end{subequations}
 
-\begin{figure}
+\begin{figure}[ht!]
     \centering
     \includegraphics[scale=0.75]{graphics/DA1.png}
     \caption{The probability density distribution of the background/observation/analysis temperatures in the section example where the errors are assumed to have a Gaussian shape.}
@@ -1321,7 +1336,7 @@ T_a &= T_b + W(T_o - T_b) \\
 
 \subsection{Optimal Interpolation}
 
-In the last subsection, we only use a single variable as the illustrating example. Obviously in actual weather models, there will be multiple variables (let's say $N$) like temperature, pressure, density, and three-dimensional winds to be simulated in a large amount of grid points ($M$). Hence there will be a total of $L = MN$ variables in the model output and we will place all of them into a \textit{state vector} of length $L = MN$:
+In the last subsection, we only use a single variable as the illustrating example. Obviously, in actual weather models, there will be multiple variables (let's say $N$) like temperature, pressure, density, and three-dimensional winds to be simulated in a large number of grid points ($M$). Hence there will be a total of $L = MN$ variables in the model output and we will place all of them into a \textit{state vector} of length $L = MN$:
 \begin{align}
 \textbf{x} = 
 \begin{bmatrix}
@@ -1341,7 +1356,7 @@ with a corresponding error vector of
 \varepsilon_L
 \end{bmatrix}
 \end{align}
-which is assumed to be always unbiased such that any error will have $E(\bm{\epsilon}) = \textbf{0}$. The \textit{error covariance matrix} is then defined as
+which is assumed to be unbiased too, such that the expected values of the errors $E(\bm{\epsilon}) = \textbf{0}$ is always a zero vector. The \textit{error covariance matrix} is then defined as
 \begin{align}
 P &= E[(\bm{\epsilon} - E(\bm{\epsilon}))(\bm{\epsilon} - E(\bm{\epsilon}))^T] = E[\bm{\epsilon}\bm{\epsilon}^T] \nonumber \\
 &= \begin{bmatrix}
@@ -1351,7 +1366,7 @@ E[\varepsilon_2\varepsilon_1] & E[\varepsilon_2\varepsilon_2] & & E[\varepsilon_
 E[\varepsilon_L\varepsilon_1] & E[\varepsilon_L\varepsilon_2] & \cdots & E[\varepsilon_L\varepsilon_L] 
 \end{bmatrix}
 \end{align}
-generalized from Properties \ref{proper:variancemul}. We will start with the simplest case where the observations are exactly the model variables. Then the background, analysis, and observation states can be expressed as
+which is generalized from Properties \ref{proper:variancemul}. We will start with the simplest case where the observations are exactly the model variables. Then the background, analysis, and observation states can be expressed as
 \begin{subequations}
 \label{eqn:OIxbaoe}
 \begin{align}
@@ -1377,18 +1392,18 @@ We also require the analysis $\textbf{x}_a$ to be an unbiased linear combination
 \begin{align}
 \textbf{x}_a &= \textbf{x}_b + K(\textbf{x}_o - \textbf{x}_b)  \label{eqn:OIinnov}
 \end{align}
-where $K$ is the \textit{Kalman gain} matrix that represents the optimal weight. Therefore, the analysis will be the background plus the optimal weight times the observation increment (\textit{innovation}). Subsequently,
+akin to (\ref{eqn:uniDAweight}) where $K$ is the \textit{Kalman gain} matrix that represents the optimal weight. Therefore, the analysis will be the background plus the optimal weight times the observation increment (\textit{innovation}). Subsequently,
 \begin{align}
 \textbf{x}_t + \bm{\epsilon}_a &= \textbf{x}_t + \bm{\epsilon}_b + K(\textbf{x}_o - \textbf{x}_t - \bm{\epsilon}_b) \nonumber \\
 \bm{\epsilon}_a &= \bm{\epsilon}_b + K(\bm{\epsilon}_o - \bm{\epsilon}_b) \label{eqn:varakalman}
 \end{align}
-The total error variance $E(\bm{\epsilon}_a^T\bm{\epsilon}_a)$ or equivalently the trace of $A$, by Index Notation, is
+The total error variance $E[\bm{\epsilon}_a^T\bm{\epsilon}_a]$, or equivalently the trace of $A$, by Index Notation, is
 \begin{align}
-E(\bm{\epsilon}_a^T\bm{\epsilon}_a) = E[(\varepsilon_a)_i(\varepsilon_a)_i)]  
+E[\bm{\epsilon}_a^T\bm{\epsilon}_a] = E[(\varepsilon_a)_i(\varepsilon_a)_i)]  
 \end{align}
 Similar to (\ref{eqn:DAunimin}), we want to differentiate this quantity but with respect to the Kalman gain matrix $K$ and demand that
 \begin{align}
-\frac{\partial E(\bm{\epsilon}_a^T\bm{\epsilon}_a)}{\partial K} = E\left(\frac{\partial (\bm{\epsilon}_a^T\bm{\epsilon}_a)}{\partial K}\right) = [\textbf{0}] \label{eqn:Kalmande0}
+\frac{\partial E[\bm{\epsilon}_a^T\bm{\epsilon}_a]}{\partial K} = E\left(\frac{\partial [\bm{\epsilon}_a^T\bm{\epsilon}_a]}{\partial K}\right) = [\textbf{0}] \label{eqn:Kalmande0}
 \end{align}
 To proceed, we first note that it works very much like (\ref{eqn:dxdxdelta}) but with two Kronecker deltas now:
 \begin{align}
@@ -1398,9 +1413,9 @@ Now, writing out the subscripts in (\ref{eqn:varakalman}), we have
 \begin{align}
 (\varepsilon_a)_i(\varepsilon_a)_i = [(\varepsilon_b)_i + K_{ij}((\varepsilon_o)_j - (\varepsilon_b)_j)][(\varepsilon_b)_i + K_{ik}((\varepsilon_o)_k - (\varepsilon_b)_k)]
 \end{align}
-where we have to use two different dummy indices for the product due to the rule. Then the derivative is computed to be
+where we have to use two different dummy indices for the product due to the rule of Index Notation. Then the derivative is computed to be
 \begin{align}
-&\quad \frac{\partial (\bm{\epsilon}_a^T\bm{\epsilon}_a)}{\partial K} \nonumber \\
+&\quad \frac{\partial [\bm{\epsilon}_a^T\bm{\epsilon}_a]}{\partial K} \nonumber \\
 &= \frac{\partial}{\partial K_{pq}}\left([(\varepsilon_b)_i + K_{ij}((\varepsilon_o)_j - (\varepsilon_b)_j)][(\varepsilon_b)_i + K_{ik}((\varepsilon_o)_k - (\varepsilon_b)_k)]\right) \nonumber \\
 &= \left(\frac{\partial}{\partial K_{pq}}[(\varepsilon_b)_i + K_{ij}((\varepsilon_o)_j - (\varepsilon_b)_j)]\right)[(\varepsilon_b)_i + K_{ik}((\varepsilon_o)_k - (\varepsilon_b)_k)] \nonumber \\
 &\quad +[(\varepsilon_b)_i + K_{ij}((\varepsilon_o)_j - (\varepsilon_b)_j)] \left(\frac{\partial}{\partial K_{pq}}[(\varepsilon_b)_i + K_{ik}((\varepsilon_o)_k - (\varepsilon_b)_k)]\right) \nonumber \\
@@ -1415,9 +1430,9 @@ where we have to use two different dummy indices for the product due to the rule
 \end{align}
 where in the last step we convert it back to matrix form. Plugging it into (\ref{eqn:Kalmande0}) gives the desired expression for the Kalman gain matrix.
 \begin{align}
-E\left(\frac{\partial (\bm{\epsilon}_a^T\bm{\epsilon}_a)}{\partial K}\right) = E(2 \bm{\epsilon}_b (\bm{\epsilon}_o - \bm{\epsilon}_b)^T + 2K(\bm{\epsilon}_o - \bm{\epsilon}_b)(\bm{\epsilon}_o - \bm{\epsilon}_b)^T) &= [\textbf{0}] \nonumber \\
-E(\bm{\epsilon}_b\bm{\epsilon}_o^T) - E(\bm{\epsilon}_b\bm{\epsilon}_b^T) + K(E(\bm{\epsilon}_o\bm{\epsilon}_o^T) - E(\bm{\epsilon}_b\bm{\epsilon}_o^T) - E(\bm{\epsilon}_o\bm{\epsilon}_b^T) + E(\bm{\epsilon}_b\bm{\epsilon}_b^T)) &= [\textbf{0}] \nonumber \\
-- E(\bm{\epsilon}_b\bm{\epsilon}_b^T) + K(E(\bm{\epsilon}_o\bm{\epsilon}_o^T) + E(\bm{\epsilon}_b\bm{\epsilon}_b^T)) &= [\textbf{0}] \nonumber \\
+E\left(\frac{\partial [\bm{\epsilon}_a^T\bm{\epsilon}_a]}{\partial K}\right) = E[2 \bm{\epsilon}_b (\bm{\epsilon}_o - \bm{\epsilon}_b)^T + 2K(\bm{\epsilon}_o - \bm{\epsilon}_b)(\bm{\epsilon}_o - \bm{\epsilon}_b)^T] &= [\textbf{0}] \nonumber \\
+E[\bm{\epsilon}_b\bm{\epsilon}_o^T] - E[\bm{\epsilon}_b\bm{\epsilon}_b^T] + K(E[\bm{\epsilon}_o\bm{\epsilon}_o^T] - E[\bm{\epsilon}_b\bm{\epsilon}_o^T] - E[\bm{\epsilon}_o\bm{\epsilon}_b^T] + E[\bm{\epsilon}_b\bm{\epsilon}_b^T)] &= [\textbf{0}] \nonumber \\
+- E[\bm{\epsilon}_b\bm{\epsilon}_b^T] + K(E[\bm{\epsilon}_o\bm{\epsilon}_o^T] + E[\bm{\epsilon}_b\bm{\epsilon}_b^T]) &= [\textbf{0}] \nonumber \\
 \text{(Uncorrelated errors by (\ref{eqn:OIuncorr}))} & \nonumber \\
 - B + K(B+R) &= [\textbf{0}] \nonumber \\
 \implies K = B(B+R)&^{-1} \label{eqn:OImatK}
@@ -1450,7 +1465,7 @@ A = B - KB &= B - (B^{-1} + R^{-1})^{-1}R^{-1} B \nonumber \\
 \end{align}
 Same as the univariate case, the inverses of covariance matrices represent the precisions and the analysis precision is just the sum of those of the background and observation. \par
 
-However, most of the time, the observations are not the model variables or measured at different locations from the grid points. Let there be $G$ observations stored in a vector $\textbf{y}_o$, and it is related to the model variables by the observation operator $H$ according to $\textbf{y} = H(\textbf{x})$. Then (a) and (b) of (\ref{eqn:OIxbaoe}) remain the same but (c) is now 
+However, most of the time, the observations are not exactly the model variables or measured at different locations from the grid points. Let there be $G$ observations stored in a vector $\textbf{y}_o$, and it is related to the model variables by the observation operator $H$ according to $\textbf{y} = H(\textbf{x})$. Then (a) and (b) of (\ref{eqn:OIxbaoe}) remain the same but (c) is now 
 \begin{align}
 \textbf{y}_o = H(\textbf{x}_t) + \bm{\epsilon}_o \label{eqn:OIinnover}
 \end{align}
@@ -1490,7 +1505,7 @@ A &= E[\bm{\epsilon}_a\bm{\epsilon}_a^T] \nonumber \\
 &= E[\bm{\epsilon}_b\bm{\epsilon}_b^T] - E[KH\bm{\epsilon}_b\bm{\epsilon}_b^T] - E[\bm{\epsilon}_b(KH\bm{\epsilon}_b)^T] \nonumber \\
 &\quad + E[(K\bm{\epsilon}_o)(K\bm{\epsilon}_o)^T] + E[KH\bm{\epsilon}_b(KH\bm{\epsilon}_b)^T] \nonumber \\
 &\quad \text{(Uncorrelated errors by (\ref{eqn:OIuncorr}))} \nonumber \\
-&= E[\bm{\epsilon}_b\bm{\epsilon}_b^T] - E[KH\bm{\epsilon}_b\bm{\epsilon}_b^T] - E[\bm{\epsilon}_b\bm{\epsilon}_b)H^TK^T] \nonumber \\
+&= E[\bm{\epsilon}_b\bm{\epsilon}_b^T] - E[KH\bm{\epsilon}_b\bm{\epsilon}_b^T] - E[\bm{\epsilon}_b\bm{\epsilon}_b^TH^TK^T] \nonumber \\
 &\quad + E[K\bm{\epsilon}_o\bm{\epsilon}_o^TK^T] + E[KH\bm{\epsilon}_b\bm{\epsilon}_b^TH^TK^T] \nonumber \\
 &= B - KHB - BH^TK^T + KRK^T + KHBH^TK^T \nonumber \\
 &= B - KHB - BH^TK^T + K(HBH^T+R)K^T \nonumber \\
@@ -1503,7 +1518,7 @@ Similar to (\ref{eqn:OIKalt}), we can express $K$ in an alternative form. We may
 K &= BH^T(HBH^T+R)^{-1} \\
 &= BH^T[(H^TR^{-1})^{-1}(H^TR^{-1})HBH^T+R(BH^T)^{-1}(BH^T)]^{-1} 
 \end{align*}
-just like (\ref{eqn:OIKalt}). However, $H$ will be a non-square $G \times L$ matrix and hence $H^TR^{-1}$, $BH^T$ are also not square, so their inverses are not defined. To proceed, we need the \index{Sherman-Morrison-Woodbury Formula}\keywordhl{Sherman-Morrison-Woodbury Formula}:
+just like (\ref{eqn:OIKalt}). However, $H$ will be a non-square $G \times L$ matrix, hence $H^TR^{-1}$ and $BH^T$ are also not square, and their inverses are not defined. To proceed, we need the \index{Sherman-Morrison-Woodbury Formula}\keywordhl{Sherman-Morrison-Woodbury Formula}:
 \begin{align}
 (A + SXC)^{-1} = A^{-1} - A^{-1}S(X^{-1} + CA^{-1}S)^{-1}CA^{-1}
 \end{align}
@@ -1534,7 +1549,7 @@ A = B - KHB &= B - (B^{-1} + H^TR^{-1}H)^{-1}H^TR^{-1}HB \nonumber \\
 
 \subsection{Kalman Filter}
 
-Notice that the technique of Optimal Interpolation introduced in the last subsection does not depend on time and can be used at any time step in an isolated fashion. However, in physical models, we need to integrate forwards in time for the forecast. We may ask if there is an improved version of Optimal Interpolation such that it will take the evolution of the model state into account. Particularly, the background error is previously assumed to be static but should probably change in time, e.g. different climatologies in different seasons. \index{Kalman Filter}\keywordhl{Kalman Filter} solves this by further cycling the background error covariance using the model. It is essentially Optimal Interpolation but with the error covariances evolved forward in time as well. No matter how the background error is initially determined, it will become more and more optimal after several cycles as long as the model and observations are good. Kalman Filter consists of two steps: the \textit{analysis step} which is identical to Optimal Interpolation, and the \textit{forecast step} where we carry out time integration for the state vector and the error covariance matrix in the model.\par
+Notice that the technique of Optimal Interpolation introduced in the last subsection does not depend on time and can be used at any time step in an isolated fashion. However, in physical models, we need to integrate forwards in time for the forecast. We may ask if there is an improved version of Optimal Interpolation such that it will take the evolution of the model state into account. Particularly, the background error is previously assumed to be static but should actually change in time, e.g. different climatologies in different seasons. \index{Kalman Filter}\keywordhl{Kalman Filter} solves this by further cycling the background error covariance using the model. It is essentially Optimal Interpolation but with the error covariances evolved forward in time as well. No matter how the background error is initially determined, it will become more and more optimal after several cycles as long as the model and observations are good. Kalman Filter consists of two steps: the \textit{analysis step} which is identical to Optimal Interpolation, and the \textit{forecast step} where we carry out time integration for the state vector and the error covariance matrix in the model.\par
 
 In Kalman filter, a short-term model forecast is used as the background and the subscript $b$ is now replaced by $f$, and similar to (\ref{eqn:OIxbaoe}) plus (\ref{eqn:OIinnover}), we have
 \begin{subequations}
@@ -1560,11 +1575,11 @@ The forward integration model $M$ is assumed to be linear such that the forecast
 \textbf{x}_t^{[i+1]} &= M^{[i]}\textbf{x}_t^{[i]} - \bm{\eta}^{[i]}
 \end{align}
 \end{subequations}
-where $M^{[i]}$ is the corresponding mapping at the $i$-th time step and $\bm{\eta}^{[i]}$ represents the inherent model error as a vector. We assume that
+where $M^{[i]}$ is the corresponding forward mapping at the $i$-th time step and $\bm{\eta}^{[i]}$ represents the inherent model error vector. We assume that
 \begin{subequations}
 \begin{align}
 E[\bm{\eta}^{[i]}] &= \textbf{0} \\
-E[\bm{\epsilon}_a^{[i]}\bm{\eta}^{[i]T}] &= [\textbf{0}] \label{eqn:modelanluncorr}\\
+E[\bm{\epsilon}_a^{[i]}\bm{\eta}^{[i]T}] = E[\bm{\eta}_a^{[i]}\bm{\epsilon}^{[i]T}] &= [\textbf{0}] \label{eqn:modelanluncorr}\\
 Q^{[i]} &= E[\bm{\eta}^{[i]}\bm{\eta}^{[i]T}]
 \end{align}   
 \end{subequations}
@@ -1592,18 +1607,22 @@ P_f^{[i+1]} &= E[\bm{\epsilon}_f^{[i+1]}\bm{\epsilon}_f^{[i+1]T}] \nonumber \\
 \end{align}
 The forecast step then consists of (\ref{eqn:xaMxf}) and (\ref{eqn:MPMQ}). There are two ways to implement Kalman Filter. The standard scheme is to compute the Kalman gain first in the analysis step while the other scheme is to the analysis error covariance first. The flowcharts for these two implementations are shown in Figures \ref{fig:Kalmansteps} and \ref{fig:Kalmansteps2}.
 
+\begin{landscape}
 \begin{figure}
     \centering
     \includegraphics[width=0.99\linewidth]{graphics/Kalman1.png}
     \caption{The flowchart for the standard Kalman Filter scheme.}
     \label{fig:Kalmansteps}
 \end{figure}
+\end{landscape}
+\begin{landscape}
 \begin{figure}
     \centering
     \includegraphics[width=0.99\linewidth]{graphics/Kalman2.png}
     \caption{The flowchart for the alternative Kalman Filter scheme using equivalent expressions for the analysis error covariance and Kalman gain.}
     \label{fig:Kalmansteps2}
 \end{figure}
+\end{landscape}
 
 \subsection{Python Programming: Demonstration of DA using the Lorenz-63 Model}
 \label{subsection:DAsystem}
@@ -1634,7 +1653,7 @@ R = np.diag([0.5]*3)
 obs_errors = np.random.multivariate_normal([0,0,0], R, x_t.shape[0])
 x_o = x_t + obs_errors    
 \end{lstlisting}
-Since the Lorenz-63 system is non-linear, for the algorithm of Kalman Filter to work properly, we have to use the \textit{Tangent Linear Model} in place of $M^{[i]}$:
+Since the Lorenz-63 system is non-linear, for the algorithm of Kalman Filter to work properly, we have to use the \textit{Tangent Linear Model} in place of $M^{[i]}$ when computing $P_f^{[i]}$:
 \begin{align}
 M^{[i]} = I + (\frac{\partial F}{\partial \textbf{x}})_a^{[i]} \Delta t
 \end{align}
@@ -1732,13 +1751,13 @@ A three-dimensional stress tensor is known to have principal stresses of $\sigma
 \end{Exercise}
 
 \begin{Exercise}
-Derive the continuity equation for any extensive quantity, let's say specific humidity $q$.
-\begin{align}
+Derive the continuity equation for any extensive quantity, let's say specific humidity $q$:
+\begin{align*}
 \frac{\partial (\rho q)}{\partial t} + \nabla \cdot(\rho q \textbf{v}) = 0
-\end{align}
+\end{align*}
 if there is no sink or source so that $dq/dt=0$.
 \end{Exercise}
 
 \begin{Exercise}
-Modify the DA system in Section \ref{subsection:DAsystem} so that it only assimilates selected but not all variables (let's say, $X$ and $Z$).
+Modify the DA system in Section \ref{subsection:DAsystem} so that it only assimilates selected but not all variables (let's say, $X$ and $Z$), and also try to change the values of $R$ and $Q$.
 \end{Exercise}

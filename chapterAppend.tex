@@ -1,0 +1,211 @@
+\appendix
+\rohead{\headmark}
+\lehead{\headmark}
+
+\definecolor{prussianblue}{rgb}{0.0, 0.19, 0.33}
+
+\renewcommand{\chapterformat}{\raggedleft \colorbox{prussianblue}{%
+\centering\textit{\textcolor{white}{{\Large Appendix} {\Huge \thechapter}}}}}
+
+\chapter{Supplementary Information for the Main Text}
+
+\section{Chapter \ref*{chap:DFT}}
+\label{section:DFTappend}
+
+\paragraph{Bessel's Inequality}
+By part (d) of Theorem \ref{thm:spectralinner}, we can expand a function $f$ as
+\begin{align}
+f = \lim_{p \to \infty} \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} 
+\end{align}
+where $\varphi^{(j)}$ are the orthonormal basis vectors/functions and the partial sum $S_p[f]$ will be just $\sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}$. Particularly, the completeness of the orthonormal basis in Properties \ref{proper:hilbertorthosys} means that (see the footnote below)\footnote{Otherwise, if $\norm{\smash{f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}}^2 > 0$, then consider $\tilde{\varphi} = f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}$ which is now a non-zero vector. It will be orthogonal to any of the original basis vectors $\varphi^{(j')}$ as 
+\begin{align*}
+\langle \tilde{\varphi}, \varphi^{(j')} \rangle &= \langle f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} , \varphi^{(j')} \rangle \\
+&= \langle f, \varphi^{(j')} \rangle - \langle \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} , \varphi^{(j')} \rangle \\
+&= \langle f, \varphi^{(j')} \rangle - (\cdots + (0) +\langle f, \varphi^{(j')} \rangle (1) + (0) + \cdots) \\
+& \quad \text{(Orthonormality of the basis: $\langle \varphi^{(j)}, \varphi^{(j')} \rangle = 1$ } \\ 
+& \quad \text{only when $j = j'$ and $0$ if $j \neq j'$)} \\
+&=\langle f, \varphi^{(j')} \rangle - \langle f, \varphi^{(j')} \rangle = 0
+\end{align*}
+which violates the premise of completeness as it will become another vector that is linearly independent of all the other basis vectors and can be added to the basis.}
+\begin{align}
+\norm{f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 = 0 \label{eqn:fcomplete}
+\end{align}
+On the other hand,
+\begin{align} 
+\norm{f - S_p(f)}^2 &= \norm{f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 \nonumber \\
+&= \left\langle f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}, f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \right\rangle \nonumber \\
+&= \langle f, f \rangle - \left\langle f, \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \right\rangle - \left\langle \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}, f \right\rangle \nonumber \\
+&\quad + \left\langle \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}, \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \right\rangle \nonumber \\
+&= \norm{f}^2 - \left\langle f, \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \right\rangle \nonumber \\
+&\quad - \overline{\left\langle f, \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \right\rangle} \quad \text{((1) of Definition \ref{defn:innerprod})} \nonumber \\
+&\quad + \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 \quad \text{(Orthonormality of the basis)} \nonumber \\
+&= \norm{f}^2 - 2\Re{\langle f, \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \rangle} + \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 \nonumber \\
+&= \norm{f}^2 - 2\Re{\sum_{j=1}^{p} (\overline{\langle f, \varphi^{(j)} \rangle} \langle f, \varphi^{(j)} \rangle)} \nonumber \\
+& \quad \text{((4) of Properties \ref{proper:innerprod2})}\nonumber \\
+&\quad + \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 \nonumber \\
+&= \norm{f}^2 - 2\sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 + \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 \nonumber \\
+&= \norm{f}^2 - \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2
+\end{align}
+and since $\norm{f - S_p(f)}^2 \geq 0$ is always non-negative, we have the \textit{Bessel's Inequality} as
+\begin{align}
+\sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 \leq \norm{f}^2  \label{eqn:Bessel}
+\end{align}
+From Exercise \ref{ex:triangular2}, we can apply the Triangular Inequality to get
+\begin{align}
+&\quad \norm{(f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}) + (\sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} - S_p[f])}^2 \nonumber \\
+&= \norm{f - S_p[f]}^2 \leq \norm{f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 + \norm{\sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} - S_p[f]}^2
+\end{align}
+By Equation (\ref{eqn:fcomplete}), the first term on R.H.S. of the equality is zero. And the second term, when $p \to \infty$,
+\begin{align}
+&\quad \norm{\sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} - S_p[f]}^2 \nonumber \\
+&= \norm{\sum_{j=p+1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 = \sum_{j=p+1}^{\infty} \abs{\langle f, \varphi^{(j)} \rangle}^2
+\end{align}
+is a remainder term and must tend to zero, because $\sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2$ is a convergent sequence, seen by applying the \textit{Monotone Convergence Theorem} from elementary Analysis on Bessel's Inequality (\ref{eqn:Bessel}). Therefore, the L.H.S.
+\begin{align}
+\lim_{p \to \infty}\norm{f - S_p[f]}^2 = 0
+\end{align}
+also tends to zero as we take the same limit, which implies the $L^2$ convergence for a complete orthonormal basis.
+
+\section{Chapter \ref*{chapter:Markov}}
+\label{section:Markovappend}
+
+\paragraph{Properties \ref*{proper:positivestoceig}}
+
+\textit{Reference Materials: \cite{markov}}
+
+Let $\vec{q}$ be any eigenvector of $A^T$ that has an eigenvalue of modulus $\abs{\lambda} = 1$. Then $A^T\vec{q} = \lambda \vec{q}$ by the definition of an eigenvalue-eigenvector problem, i.e.\
+\begin{align}
+\sum_{k=1}^{n} a_{ki}\vec{q}_k = \lambda \vec{q}_i
+\end{align}
+where $a_{ji}$ is the $(j,i)$ [$(i,j)$] entry of the matrix $A$ [$A^T$]. Then
+\begin{align}
+\abs{\lambda \vec{q}_i} = \abs{\lambda}\abs{\vec{q}_i} &= \abs{\sum_{k=1}^{n} a_{ki}\vec{q}_k} \nonumber \\
+\abs{\vec{q}_i} &\leq \sum_{k=1}^{n} \abs{a_{ki}}\abs{\vec{q}_k} = \sum_{k=1}^{n} a_{ki}\abs{\vec{q}_k} \quad (\abs{\lambda} = 1)\\
+&\text{(Triangle Inequality for complex numbers and $a_{ij}$ are real)} \nonumber
+\end{align}
+Now assume that for some fixed $i$, $\abs{\vec{q}_i} \geq \abs{\vec{q}_k}$ for $1 \leq k \leq n$. Then the inequality above becomes
+\begin{align}
+\abs{\vec{q}_i} \leq \sum_{k=1}^{n} a_{ki}\abs{\vec{q}_k} &\leq \sum_{k=1}^{n} a_{ki}\abs{\vec{q}_i} = \abs{\vec{q}_i}  & \text{($\sum_{k=1}^{n} a_{ki}$ sums to $1$)}
+\end{align}
+By squeezing using $\abs{\vec{q}_i}$ at the both ends, the part $\sum_{k=1}^{n} a_{ki}\abs{\vec{q}_k} \leq \sum_{k=1}^{n} a_{ki}\abs{\vec{q}_i}$ forces that $\abs{\vec{q}_k} = \abs{\vec{q}_i}$ for all $k$ and it also holds for any $i$. This is where the positiveness of $A$ is needed, otherwise $a_{ki}$ can be $0$ and the squeeze becomes vacuous ($0\abs{\vec{q}_k} = 0\abs{\vec{q}_i} = 0$). Moreover, as $\abs{\vec{q}_i} = \abs{\sum_{k=1}^{n} a_{ki}\vec{q}_k}$, incorporating it into the inequality
+\begin{align}
+\abs{\vec{q}_i} = \abs{\sum_{k=1}^{n} a_{ki}\vec{q}_k} \leq \sum_{k=1}^{n} a_{ki}\abs{\vec{q}_k} &\leq \sum_{k=1}^{n} a_{ki}\abs{\vec{q}_i} = \abs{\vec{q}_i}
+\end{align}
+and apply squeezing again, the part of Triangle Inequality $\abs{\sum_{k=1}^{n} a_{ki}\vec{q}_k} \leq \sum_{k=1}^{n} a_{ki}\abs{\vec{q}_k}$ becomes an equality $\abs{\sum_{k=1}^{n} a_{ki}\vec{q}_k} = \sum_{k=1}^{n} a_{ki}\abs{\vec{q}_k}$, which means that all the components $\vec{q}_k$ have to lie along the same direction in the complex plane.\footnote{For any two complex number $z_1$ and $z_2$, if $\abs{z_1 + z_2} = \abs{z_1} + \abs{z_2}$, then
+\begin{align*}
+\abs{z_1 + z_2}^2 &= (z_1 + z_2) \overline{(z_1 + z_2)} \\
+&= z_1 \overline{z_1} + z_1 \overline{z_2} + z_2 \overline{z_1} + z_2 \overline{z_2} \\
+&= \abs{z_1}^2 + z_1 \overline{z_2} + z_2 \overline{z_1} + \abs{z_2}^2
+\end{align*}
+but also
+$(\abs{z_1} + \abs{z_2})^2 = \abs{z_1}^2 + 2\abs{z_1}\abs{z_2} + \abs{z_2}^2$. Hence we have
+\begin{align*}
+z_1 \overline{z_2} + z_2 \overline{z_1} = 2\abs{z_1}\abs{z_2}
+\end{align*}
+Assume that $z_1$ and $z_2$ points in some directions so that $z_1 = \abs{z_1}e^{i\theta_1}$ and $z_2 = \abs{z_2}e^{i\theta_2}$, then
+\begin{align*}
+z_1 \overline{z_2} + z_2 \overline{z_1} &= \abs{z_1}e^{i\theta_1} \abs{z_2}e^{-i\theta_2} + \abs{z_2}e^{i\theta_2} \abs{z_1}e^{-i\theta_1} \\
+&= \abs{z_1}\abs{z_2} e^{i(\theta_1-\theta_2)} + \abs{z_1}\abs{z_2} e^{-i(\theta_1-\theta_2)} \\
+&= 2 \abs{z_1}\abs{z_2} (\frac{e^{i(\theta_1-\theta_2)} + e^{-i(\theta_1-\theta_2)}}{2}) \\
+&= 2 \abs{z_1}\abs{z_2} \cos(\theta_1-\theta_2) & \text{(Properties \ref{proper:sincoscomplex})}
+\end{align*}
+but this has to equal to $2\abs{z_1}\abs{z_2}$, thus $\cos(\theta_1-\theta_2) = 1$ and the arguments $\theta_1$ and $\theta_2$ will be the same. Now apply this logic repetitively to $\abs{\sum_{k=1}^{n} a_{ki}\vec{q}_k} = \sum_{k=1}^{n} a_{ki}\abs{\vec{q}_k}$.} Therefore, $\vec{q}$ must be be in the form of $c(1,1,1,\ldots,1)^T$ where $c$ will be any complex constant and this shows that over $\mathbb{C}$, the only linearly independent eigenvector for $A^T$ corresponding to $\abs{\lambda} = 1$ will be $(1,1,1,\ldots,1)^T$, matching the derivation in Properties \ref{proper:markoveigen1} where the eigenvalue is exactly $\lambda = 1$ and the geometric multiplicity is hence $1$ as well. Again, by Properties \ref{proper:eigentransinv}, this result will then also hold for the original matrix $A$ (but the form of the eigenvector will be different).
+
+\section{Chapter \ref*{chapter:Tensor}}
+\label{section:tensorappend}
+
+\paragraph{Uniqueness of rank-$2$ and $3$ Isotropic Tensors} The uniqueness of the Kronecker delta as the only isotropic rank-$2$ tensor can be shown as follows. By a \SI{90}{\degree} positive rotation about the $3$-axis, we have
+\begin{subequations}
+\begin{align}
+\textbf{e}'_1 &= \textbf{e}_2 \\
+\textbf{e}'_2 &= -\textbf{e}_1 \\
+\textbf{e}'_3 &= \textbf{e}_3
+\end{align}    
+\end{subequations}
+and according to (\ref{eqn:aij}), the change of coordinates matrix is
+\begin{align}
+a_{ij} = 
+\begin{bmatrix}
+\textbf{e}_1 \cdot \textbf{e}'_1 & \textbf{e}_1 \cdot \textbf{e}'_2 & \textbf{e}_1 \cdot \textbf{e}'_3 \\
+\textbf{e}_2 \cdot \textbf{e}'_1 & \textbf{e}_2 \cdot \textbf{e}'_2 & \textbf{e}_2 \cdot \textbf{e}'_3 \\
+\textbf{e}_3 \cdot \textbf{e}'_1 & \textbf{e}_3 \cdot \textbf{e}'_2 & \textbf{e}_3 \cdot \textbf{e}'_3 
+\end{bmatrix} = 
+\begin{bmatrix}
+0 & -1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\label{eqn:rotate903ax}
+\end{align}
+For a general rank-$2$ tensor $F$, by (\ref{eqn:rank2aF}) its transformation will then be
+\begin{align}
+\begin{bmatrix}
+F'_{11} & F'_{12} & F'_{13} \\
+F'_{21} & F'_{22} & F'_{23} \\
+F'_{31} & F'_{32} & F'_{33}  
+\end{bmatrix} &= 
+\begin{bmatrix}
+0 & 1 & 0 \\
+-1 & 0 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+F_{11} & F_{12} & F_{13} \\
+F_{21} & F_{22} & F_{23} \\
+F_{31} & F_{32} & F_{33}  
+\end{bmatrix} 
+\begin{bmatrix}
+0 & -1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{bmatrix} \nonumber \\
+&= \begin{bmatrix}
+F_{22} & -F_{21} & F_{23} \\
+-F_{12} & F_{11} & -F_{13} \\
+F_{32} & -F_{31} & F_{33}
+\end{bmatrix}
+\end{align}
+If the tensor is isotropic such that $F'_{ij} = F_{ij}$, then by comparing the entries on both sides, we must have
+\begin{subequations}
+\begin{align}
+F_{11} &= F_{22} \\
+F_{13} = F_{23} = -F_{13} \implies F_{13} &= F_{23} = 0 \\
+F_{31} = F_{32} = -F_{31} \implies F_{31} &= F_{32} = 0 
+\end{align}
+\end{subequations}
+By the same technique, we can carry out a \SI{90}{\degree} positive rotation about the $2$-axis to obtain
+\begin{subequations}
+\begin{align}
+F_{11} &= F_{33} \\
+F_{12} &= F_{32} = 0 \\
+F_{21} &= F_{23} = 0 
+\end{align}
+\end{subequations}
+Therefore, $F_{11} = F_{22} = F_{33}$ and $F_{12} = F_{21} = F_{13} = F_{31} = F_{23} = F_{32} = 0$, the diagonal entries have the same value and all off-diagonal entries are zero, and any isotropic rank-$2$ tensor must be in the form of $\lambda \delta_{ij}$, a constant multiple of the Kronecker delta symbol. We can show the same for the rank-$3$ isotropic tensor to be found. First, do a rotation about the $(1,1,1)^T$ axis so that the effect is a subscript permutation $1 \to 2 \to 3 \to 1$, then we have
+\begin{subequations}
+\begin{align}
+T_{111} &= T_{222} = T_{333} \\
+T_{112} &= T_{223} = T_{331} \\
+T_{122} &= T_{233} = T_{311} \\
+T_{212} &= T_{323} = T_{131} \\
+T_{211} &= T_{322} = T_{133} \\
+T_{121} &= T_{232} = T_{313} \\
+T_{221} &= T_{332} = T_{113} \\
+T_{123} &= T_{231} = T_{312} \\
+T_{132} &= T_{321} = T_{213}
+\end{align}
+\end{subequations}
+Next, apply a \SI{90}{\degree} positive rotation about the $3$-axis as suggested by (\ref{eqn:rotate903ax}) before. After some tedious algebra, we can obtain the following relations:
+\begin{subequations}
+\begin{align}
+T_{111} = -T_{222} &\implies T_{111} = T_{222} = T_{333} = 0 \\
+T_{112} = T_{221} \quad \text{and}\quad T_{221} = -T_{112} &\implies T_{112} = T_{221} = 0 \\
+T_{122} = T_{211} \quad \text{and}\quad  T_{211} = -T_{122} &\implies T_{122} = T_{211} = 0 \\
+T_{121} = T_{212} \quad \text{and}\quad  T_{212} = -T_{121} &\implies T_{121} = T_{212} = 0 \\
+T_{123} = -T_{213} &\implies \begin{aligned}
+T_{123} &= T_{231} = T_{312}  \\
+= -T_{213} &= -T_{321} = -T_{132}    
+\end{aligned}
+\end{align}
+The first four of them show that the rank-$3$ isotropic tensor must take a value of zero when there are repeated subscripts. The last relation implies that it will have an opposite sign when the subscripts belong to an odd/even permutation respectively. This coincides with Definition \ref{defn:epsilon} for the epsilon symbol and thus any isotropic rank-$3$ tensor must be in the form of $\lambda\epsilon_{ijk}$, a constant multiple of the epsilon symbol.
+\end{subequations}
