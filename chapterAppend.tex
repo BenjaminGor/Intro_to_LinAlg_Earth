@@ -9,6 +9,50 @@
 
 \chapter{Supplementary Information for the Main Text}
 
+\section{Chapter \ref*{chapter:invdet}}
+\label{section:invdetappend}
+
+\paragraph{Properties \ref*{proper:zerodet}}
+Consider an $n \times n$ square matrix $A$ that has two identical and adjacent rows with indices $i_1$ and $i_2$, where $i_2 = i_1 + 1$ (hence one of the indices is odd and another is even), then cofactor expansion along the odd row (let's say $i_1$) will give
+\begin{subequations}
+\begin{align}
+\abs{A} &= \sum_{k=1}^{n} A_{i_1k}C_{i_1k} \nonumber \\
+&= \sum_{k=1}^{n} (-1)^{i_1+k}A_{i_1k}\det(M_{i_1k})
+\end{align}
+by Properties \ref{proper:cofactorex} and Definition \ref{defn:cofactor}. Similarly, by considering the even row, we have
+\begin{align}
+\abs{A} &= \sum_{k=1}^{n} A_{i_2k}C_{i_2k} \nonumber \\
+&= \sum_{k=1}^{n} (-1)^{i_2+k}A_{i_2k}\det(M_{i_2k})
+\end{align}
+\end{subequations}
+But since the $i_1$-th and $i_2$-th row are identical, $A_{i_1k} = A_{i_2k}$. Furthermore, as these two identical rows are also adjacent, the minors $M_{i_1k} = M_{i_2k}$ are also equal. The only difference between the two expressions for $|A|$ above is the $(-1)^{i+j}$ factor. And because $i_1$ is odd and $i_2$ is even, they are differed by a negative sign only. Explicitly, we have
+\begin{align}
+\abs{A} &= \sum_{k=1}^{n} (-1)^{i_1+k}A_{i_1k}\det(M_{i_1k}) \nonumber \\
+&= \sum_{k=1}^{n} (-1)^{(i_2-1)+k}A_{i_2k}\det(M_{i_2k}) \nonumber \\
+&= (-1) \sum_{k=1}^{n} (-1)^{i_2+k}A_{i_2k}\det(M_{i_2k}) \nonumber \\
+&= -\abs{A}
+\end{align}
+Therefore $\abs{A} = -\abs{A}$ and $\abs{A} = 0$ must equal to zero. Now we can generalize the results to non-adjacent, proportional rows by doing the first and third kind (multiplication and swapping) of elementary row operations when appropriate with the aid of Properties \ref{proper:elementaryopdet}, and the second case in Properties \ref{proper:zerodet} is completed. Subsequently, for the addition/subtraction type of elementary row operations, let's say $R_{p} + cR_{q} \to R_{p}$ is applied on some matrix $A$ (this $A$ is not the same one as in the first part) to produce $A'$, then
+\begin{align*}
+A' = 
+\begin{bmatrix}
+\vdots & \vdots & & \vdots\\
+A_{p1} + cA_{q1} & A_{p2} + cA_{q2} & \cdots & A_{pn} + cA_{qn} \\
+\vdots & \vdots & & \vdots\\
+A_{q1} & A_{q2} & \cdots & A_{qn} \\
+\vdots & \vdots & & \vdots
+\end{bmatrix}
+\end{align*}
+where we have only written out the rows $R_p$ and $R_q$. By applying cofactor expansion along $R_p$ following Properties \ref{proper:cofactorex}, we have
+\begin{align}
+\abs{A'} &= \sum_{k=1}^{n} [(A_{pk} + cA_{qk}) C_{pk}] \nonumber \\
+&= \sum_{k=1}^{n} A_{pk}C_{pk} + c\sum_{k=1}^{n} A_{qk}C_{pk}
+\end{align}
+We identify the first term with $\abs{A}$ that is computed using cofactor expansion on the row $R_p$ of $A$. The second term can be thought of as the determinant of a matrix $\tilde{A}$ that is formed by replacing the $p$-th row $R_p$ by the $q$-th row $R_q$ in $A$ and subsequently expanded along that row. So $\tilde{A}$ practically has two identical rows $R_p = R_q$ and by the previous result the value of $\abs{\tilde{A}}$ is zero. Therefore
+\begin{align}
+\abs{A'} = \abs{A} + c\abs{\tilde{A}} = \abs{A} + c(0) = \abs{A}    
+\end{align} implying that the addition/subtraction type of elementary row operations does not affect the value of the determinant.
+
 \section{Chapter \ref*{chap:DFT}}
 \label{section:DFTappend}
 
@@ -55,12 +99,12 @@ From Exercise \ref{ex:triangular2}, we can apply the Triangular Inequality to ge
 &\quad \norm{(f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}) + (\sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} - S_p[f])}^2 \nonumber \\
 &= \norm{f - S_p[f]}^2 \leq \norm{f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 + \norm{\sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} - S_p[f]}^2
 \end{align}
-By Equation (\ref{eqn:fcomplete}), the first term on R.H.S. of the equality is zero. And the second term, when $p \to \infty$,
+By Equation (\ref{eqn:fcomplete}), the first term on R.H.S. of the equality is zero. And the second term
 \begin{align}
 &\quad \norm{\sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} - S_p[f]}^2 \nonumber \\
 &= \norm{\sum_{j=p+1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 = \sum_{j=p+1}^{\infty} \abs{\langle f, \varphi^{(j)} \rangle}^2
 \end{align}
-is a remainder term and must tend to zero, because $\sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2$ is a convergent sequence, seen by applying the \textit{Monotone Convergence Theorem} from elementary Analysis on Bessel's Inequality (\ref{eqn:Bessel}). Therefore, the L.H.S.
+is a remainder term and when $p \to \infty$, must tend to zero, because $\sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2$ is a convergent sequence, seen by applying the \textit{Monotone Convergence Theorem} from elementary Analysis on Bessel's Inequality (\ref{eqn:Bessel}). Therefore, the L.H.S.
 \begin{align}
 \lim_{p \to \infty}\norm{f - S_p[f]}^2 = 0
 \end{align}

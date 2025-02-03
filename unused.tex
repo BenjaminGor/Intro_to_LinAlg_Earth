@@ -205,3 +205,32 @@ Use Trapezoidal Rule and Simpson's Rule to numerically integrate $\int_2^{10}\in
 \begin{Exercise}
 What is the error of Simpson's Rule if we integrate $f(x) = x^3 + 2x^2 + 3x + 4$ between $[0, 10]$?
 \end{Exercise}
+
+\begin{align*}
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}wc{10pt}@{\,}}
+\mathcolor{red}{1} & \mathcolor{red}{\frac{1}{2}} & \mathcolor{red}{2} & \mathcolor{red}{3} \\
+\mathcolor{blue}{0} & \frac{3}{2} & -5 & -9 \\
+\mathcolor{blue}{0} & \frac{3}{2} & 1 & 1
+\end{array}\right]
+&\to
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}wc{10pt}@{\,}}
+\mathcolor{red}{1} & \mathcolor{red}{\frac{1}{2}} & \mathcolor{red}{2} & \mathcolor{red}{3} \\
+\mathcolor{blue}{0} & \mathcolor{red}{1} & \mathcolor{red}{-\frac{10}{3}} & \mathcolor{red}{-6} \\
+\mathcolor{blue}{0} & \frac{3}{2} & 1 & 1
+\end{array}\right]
+& \frac{2}{3}R_2 \to R_2 \\
+&\to
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}wc{10pt}@{\,}}
+\mathcolor{red}{1} & \mathcolor{red}{\frac{1}{2}} & \mathcolor{red}{2} & \mathcolor{red}{3} \\
+\mathcolor{blue}{0} & \mathcolor{red}{1} & \mathcolor{red}{-\frac{10}{3}} & \mathcolor{red}{-6} \\
+\mathcolor{blue}{0} & \mathcolor{blue}{0} & 6 & 10
+\end{array}\right]
+& R_3-\frac{3}{2}R_2 \to R_3 \\
+&\to
+\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}wc{10pt}@{\,}}
+\mathcolor{red}{1} & \mathcolor{red}{\frac{1}{2}} & \mathcolor{red}{2} & \mathcolor{red}{3} \\
+\mathcolor{blue}{0} & \mathcolor{red}{1} & \mathcolor{red}{-\frac{10}{3}} & \mathcolor{red}{-6} \\
+\mathcolor{blue}{0} & \mathcolor{blue}{0} & \mathcolor{red}{1} & \mathcolor{red}{\frac{5}{3}}
+\end{array}\right]
+& \frac{1}{6}R_3 \to R_3 
+\end{align*}
