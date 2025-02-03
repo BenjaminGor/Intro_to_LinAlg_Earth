@@ -1,15 +1,15 @@
 \chapter{Introduction to Vectors}
 
-After three chapters of discussion about matrices, it is time to talk about another closely related object type in linear algebra, namely, vectors. While \textit{vectors} and \textit{vector spaces} have strictly mathematical definitions which make them abstract, we will take a more physical point of view with the special case of (finite-dimensional) geometric vectors first.
+After three chapters of discussion about matrices, it is time to introduce another closely related type of object in linear algebra, vectors. While \textit{vectors} and \textit{vector spaces} have strictly mathematical definitions that make them abstract, we will take a more physical point of view with the special case of (finite-dimensional) geometric vectors first.
 
 \section{Definition and Operations of Geometric Vectors}
 
 \subsection{Basic Structure of Vectors in the Real $n$-space $\mathbb{R}^n$}
-A \index{Vector}\index{Vector!Geometric Vector}\keywordhl{(geometric) vector} is a physical quantity represented by an ordered tuple of \textit{components} (numbers), e.g. $(1, 8, 7, 4)$, $(1-\imath, 1+3\imath, 2)$. It has a \textit{magnitude (length)} and \textit{direction}, resembling an arrow. Some real-life examples are: two-dimensional flow velocity $(u, v)$, the relative position of an airplane to a ground radar $(x, y, z)$.
+A \index{Vector}\index{Vector (Geometric)}\keywordhl{(geometric) vector} is a physical quantity represented by an ordered tuple of \textit{components} (numbers), e.g. $(1, 8, 7, 4)$, $(1-i, 1+3i, 2)$. It has a \textit{magnitude (length)} and \textit{direction}, resembling an arrow. Some real-life examples are: two-dimensional fluid flow velocity $(u, v)$, the relative position of an airplane to a ground radar $(x, y, z)$.
 \begin{defn}[$n$-dimensional Geometric Vector]
 \label{defn:geometvec}
 A $n$-dimensional geometric vector consists of $n$ ordered numbers called \index{Components}\keywordhl{components} and are denoted by either an arrow or boldface, like $\vec{v}$ or $\textbf{v}$. It is usually written out in two forms, as a \textit{column vector} or an \textit{ordered $n$-tuple}:
-\begin{align*}
+\begin{align}
 \vec{v} &=
 \begin{bmatrix}
 v_1 \\
@@ -20,47 +20,55 @@ v_n
 \end{bmatrix}
 =
 (v_1, v_2, v_3, \ldots, v_n)^T
-\end{align*}
+\end{align}
 \end{defn}
-A $n$-dimensional vector can be treated as an $n \times 1$ (\index{Vector!Column Vector}\keywordhl{column vector}) as suggested above, or a $1 \times n$ matrix (\index{Vector!Row Vector}\keywordhl{row vector}) depending on the situation. The form of a column vector is taken more often than the row vector one and so the column form is assumed throughout the book if it is not further specified. That is why the superscript $^T$ is added for the $n$-tuple form to reflect that it is in fact a column vector despite written horizontally. \par
-\begin{tikzpicture}
-\draw[->] (-2.5,0)--(2.5,0) node[right]{$x$};
-\draw[->] (0,-2.5)--(0,2.5) node[above]{$y$};
-\draw[blue,->,line width=1.2] (0,0)--(2,1) node[anchor=south]{$\vec{v} = (2,1)^T$};
-\draw[Gray,dashed] (2,1)--(2,0) node[below]{$x = 2$};
-\draw[Gray,dashed] (2,1)--(0,1) node[left]{$y = 1$};
-\node[below left]{$O$}; 
-\end{tikzpicture}\\    
-A 2D vector drawn in an x-y plane.\par
-{\fbox{\includegraphics[scale = 0.5]{higos.jpg}}\\
-Forecast for \textit{Typhoon Higos} (taken from \href{http://www.hkww.org/weather/tcarchive.html}{Hong Kong Weather Watch}). Its horizontal movement is a two-dimensional vector, even though the speed and direction are given instead of the velocities in $x$ and $y$-direction (they can be converted to each other).}
-
+An $n$-dimensional vector can be treated as an $n \times 1$ (\index{Column Vector}\keywordhl{column vector}) as suggested above, or a $1 \times n$ matrix (\index{Row Vector}\keywordhl{row vector}) depending on the situation. The form of a column vector is taken more often than the row vector one, so the column form is assumed throughout the book if it is not further specified. That is why the superscript $^T$ is added for the $n$-tuple form in the definition above to reflect that it is in fact a column vector despite being written horizontally. \par
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+    \draw[->] (-2.5,0)--(2.5,0) node[right]{$x$};
+    \draw[->] (0,-2.5)--(0,2.5) node[above]{$y$};
+    \draw[blue,->,line width=1.2] (0,0)--(2,1) node[anchor=south]{$\vec{v} = (2,1)^T$};
+    \draw[Gray,dashed] (2,1)--(2,0) node[below]{$x = 2$};
+    \draw[Gray,dashed] (2,1)--(0,1) node[left]{$y = 1$};
+    \node[below left]{$O$}; 
+    \end{tikzpicture}
+    \caption{\textit{A 2D vector drawn in an x-y plane.}}
+\end{figure}
+\begin{table}
+    \centering
+    \includegraphics[scale = 0.5]{higos.jpg}
+    \caption{\textit{Forecast for Typhoon Higos (taken from \href{http://www.hkww.org/weather/tcarchive.html}{Hong Kong Weather Watch}). Its horizontal movement is a two-dimensional vector, even though the speed and direction are given instead of the velocities in $x$ and $y$-direction (they can be converted to each other).}}
+\end{table}
 Implicit in the definition of $n$-dimensional vectors is the $n$-dimensional \textit{space} they are residing in. Assume the components of those vectors are all real, then the set of all such vectors constitutes the \index{Real $n$-space}\keywordhl{real $n$-space $\mathbb{R}^n$}.
 \begin{defn}[The Real $n$-space $\mathbb{R}^n$]
 \label{defn:real_nspace}
-The real $n$-space $\mathbb{R}^n$ is defined as the set of all possible $n$-tuples $\vec{v} = (v_1, v_2, v_3, \ldots, v_n)^T$ as defined in Definition \ref{defn:geometvec}, where $v_i$ can take any \textit{real} value, for $i = 1,2,3,\ldots,n$. Such objects in $\mathbb{R}^n$ are known as $n$-dimensional \textit{real} vectors.
+The real $n$-space $\mathbb{R}^n$ is defined as the set of all possible $n$-dimensional vectors $\vec{v} = (v_1, v_2, v_3, \ldots, v_n)^T$ as defined in Definition \ref{defn:geometvec}, where $v_i$ can take any \textit{real} value, for $i = 1,2,3,\ldots,n$. Conversely, such objects in $\mathbb{R}^n$ are known as $n$-dimensional \textit{real} vectors.
 \end{defn}
-While we have not clearly defined what a vector space is, we note that $\mathbb{R}^n$ fulfills the requirements of a vector space in a mathematical sense. A more detailed discussion of this aspect will be deferred to Chapter \ref{chap:vec_space}. Meanwhile, the complex counterpart will be explored in Chapter \ref{chap:complex}.\\
-\\
-An $n$-dimensional real geometric vector as described in Definition \ref{defn:geometvec} and \ref{defn:real_nspace} can be written as the sum of $n$ \index{Standard Unit Vector}\keywordhl{standard unit vectors} that have a magnitude of $1$ and are oriented in the positive direction along the $p$-th coordinates axes. They are denoted by $\hat{e}_p$, where $p$ can be from $1$ to $n$. The coordinate axes are perpendicular (or more generally, \textit{orthogonal}, introduced later in this chapter) to each other and this coordinate system is known as the \index{Cartesian Coordinate System}\keywordhl{Cartesian (coordinate) system}. Particularly, in the three-dimensional real space $\mathbb{R}^3$, $\hat{e}_1 = \hat{i} = (1,0,0)^T$, $\hat{e}_2 = \hat{j} = (0,1,0)^T$, $\hat{e}_3 = \hat{k} = (0,0,1)^T$ correspond to "an arrow" of length $1$ pointing in the positive direction of the $x$, $y$, $z$ axes respectively. 
+Although we have not clearly defined what a vector space is, we note that $\mathbb{R}^n$ fulfills the requirements of a vector space in a mathematical sense. A more detailed discussion of this aspect will be deferred to Chapter \ref{chap:vec_space}. Meanwhile, the complex counterpart will be explored in Chapter \ref{chap:complex}.\par
+An $n$-dimensional real geometric vector as described in Definitions \ref{defn:geometvec} and \ref{defn:real_nspace} can be written as the sum of $n$ \index{Standard Unit Vector}\keywordhl{standard unit vectors} that have a magnitude of $1$ and are oriented in the positive direction along the $p$-th coordinate axes, where $p$ can be from $1$ to $n$. They are denoted as $\hat{e}^{(p)}$. The coordinate axes are perpendicular (or more generally, \textit{orthogonal}, introduced later in this chapter) to each other and this coordinate system is known as the \index{Cartesian Coordinate System}\keywordhl{Cartesian (coordinate) system}. Particularly, in the three-dimensional real space $\mathbb{R}^3$, $\hat{e}^{(1)} = \hat{\imath} = (1,0,0)^T$, $\hat{e}^{(2)} = \hat{\jmath} = (0,1,0)^T$, $\hat{e}^{(3)} = \hat{k} = (0,0,1)^T$ correspond to "an arrow" of length $1$ pointing in the positive direction of the $x$, $y$, $z$ axes respectively. 
 \begin{defn}[Standard Unit Vector]
 \label{defn:standardunitvec}
-A standard unit vector $\hat{e}_p$ in the real $n$-space $\mathbb{R}^n$ (Definition \ref{defn:real_nspace}) has $n$ components, consisted of $1$ at the $p$-th entry and $0$ elsewhere. Mathematically, for $1\leq q \leq n$, $[\hat{e}_p]_q = 1$ when $q=p$ and $[\hat{e}_p]_q = 0$ when $q\neq p$.
+A standard unit vector $\hat{e}^{(p)}$ in the real $n$-space $\mathbb{R}^n$ (Definition \ref{defn:real_nspace}) has $n$ components, consisting of $1$ at the $p$-th entry and $0$ elsewhere. Mathematically, for $1\leq q \leq n$, $[\hat{e}^{(p)}]_q = 1$ when $q=p$ and $[\hat{e}^{(p)}]_q = 0$ when $q\neq p$.
 \end{defn}
-Below is an example of a geometric vector in the three-dimensional $xyz$ space ($\mathbb{R}^3$).
-\begin{center}
-\begin{tikzpicture}[x={(1.8cm, -0.4cm)}, y={(1.4cm, 1.2cm)}, z={(0cm, 2cm)}]
-\draw [->] (0,0,0) -- (2,0,0) node [below right] {$x$};
-\draw [->] (0,0,0) -- (0,2,0) node [above] {$y$};
-\draw [->] (0,0,0) -- (0,0,2) node [left] {$z$};
-\draw [->, thick, red, line width=1] (0,0,0) -- (1,0,0) node [below left] {$\hat{i} = (1,0,0)^T$};
-\draw [->, thick, red, line width=1] (0,0,0) -- (0,1,0) node [above right, midway, sloped] {$\hat{j} = (0,1,0)^T$} ; 
-\draw [->, thick, red, line width=1] (0,0,0) -- (0,0,1) node [left] {$\hat{k} = (0,0,1)^T$};
-\draw [Gray, dashed] (1.8,0.4,0) -- (1.8,0,0) node[right, midway]{$y=0.4$}; 
-\draw [Gray, dashed] (1.8,0.4,0) -- (0,0.4,0) node[above, midway, sloped]{$x=1.8$}; 
-\draw [Gray, dashed] (1.8,0.4,0) -- (1.8,0.4,1.1) node[midway, right]{$z=1.1$};
-\draw [->, blue, line width=1.2] (0,0,0) -- (1.8,0.4,1.1) node [right] {$\vec{v} = (1.8,0.4,1.1)^T$};
-/\end{tikzpicture}
+Figure \ref{fig:3dvec} shows an example of a geometric vector in the three-dimensional $xyz$ space ($\mathbb{R}^3$).
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[x={(1.8cm, -0.4cm)}, y={(1.4cm, 1.2cm)}, z={(0cm, 2cm)}]
+    \draw [->] (0,0,0) -- (2,0,0) node [below right] {$x$};
+    \draw [->] (0,0,0) -- (0,2,0) node [above] {$y$};
+    \draw [->] (0,0,0) -- (0,0,2) node [left] {$z$};
+    \draw [->, thick, red, line width=1] (0,0,0) -- (1,0,0) node [below left] {$\hat{\imath} = (1,0,0)^T$};
+    \draw [->, thick, red, line width=1] (0,0,0) -- (0,1,0) node [above right, midway, sloped] {$\hat{\jmath} = (0,1,0)^T$} ; 
+    \draw [->, thick, red, line width=1] (0,0,0) -- (0,0,1) node [left] {$\hat{k} = (0,0,1)^T$};
+    \draw [Gray, dashed] (1.8,0.4,0) -- (1.8,0,0) node[right, midway]{$y=0.4$}; 
+    \draw [Gray, dashed] (1.8,0.4,0) -- (0,0.4,0) node[above, midway, sloped]{$x=1.8$}; 
+    \draw [Gray, dashed] (1.8,0.4,0) -- (1.8,0.4,1.1) node[midway, right]{$z=1.1$};
+    \draw [->, blue, line width=1.2] (0,0,0) -- (1.8,0.4,1.1) node [right] {$\vec{v} = (1.8,0.4,1.1)^T$};
+    \end{tikzpicture}
+    \caption{\textit{A 3D vector example in $\mathbb{R}^3$.}}
+    \label{fig:3dvec}
+\end{figure}
 \begin{align*}
 \vec{v} &= 
 \begin{bmatrix}
@@ -86,11 +94,10 @@ Below is an example of a geometric vector in the three-dimensional $xyz$ space (
 0 \\
 1
 \end{bmatrix} 
-= 1.8\hat{i} + 0.4\hat{j} + 1.1\hat{k} \\
+= 1.8\hat{\imath} + 0.4\hat{\jmath} + 1.1\hat{k} \\
 &= (1.8,0.4,1.1)^T
 \end{align*}
-\end{center}
-where we have written $\vec{v}$ in two forms, as an $n$-tuple and a sum of the three standard unit vectors $\hat{i}, \hat{j}, \hat{k}$.
+where we have written $\vec{v}$ in two forms, as an $n$-tuple and a sum of the three standard unit vectors $\hat{\imath}, \hat{\jmath}, \hat{k}$.
 
 \subsection{Fundamental Vector Operations}
 \label{section:vectoraddmul}
@@ -109,7 +116,7 @@ Same as their matrix counterpart, addition and subtraction between vectors are c
 -1
 \end{bmatrix}
 \end{align*}
-then
+then (see Figure \ref{fig:vecaddsubtract})
 \begin{align*}
 \vec{u} + \vec{v} =
 \begin{bmatrix}
@@ -143,7 +150,10 @@ then
 \textcolor{Green}{3}
 \end{bmatrix}
 \end{align*}
-\begin{center}
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{0.7\textwidth}
+\centering
 \begin{tikzpicture}[scale=0.8]
 \draw[->] (-3.5,0)--(3.5,0) node[right]{$x$};
 \draw[->] (0,-3.5)--(0,3.5) node[above]{$y$};
@@ -151,10 +161,15 @@ then
 \draw[blue,-stealth,line width=1] (1,2)--(3,1) node[anchor=south west]{$\vec{v} = (2,-1)^T$};
 \draw[Green,-stealth,line width=1] (0,0)--(3,1) node[anchor=north west]{$\vec{u} + \vec{v} = (3,1)^T$};
 \node[below left]{$O$}; 
-\end{tikzpicture}\\
-Addition: The tail of the blue vector is placed to the head of the red vector, and the resultant green vector is from the origin to the head of blue vector.
-\end{center}
-\begin{center}
+\end{tikzpicture}
+\caption{\textit{Addition: The tail of the blue vector is placed to the head of the red vector, and the resultant green vector is from the origin to the head of the blue vector.}}
+\end{subfigure}
+\end{figure}
+\begin{figure}[h!]
+\ContinuedFloat
+\centering
+\begin{subfigure}{0.7\textwidth}
+\centering
 \begin{tikzpicture}[scale=0.8]
 \draw[->] (-3.5,0)--(3.5,0) node[right]{$x$};
 \draw[->] (0,-3.5)--(0,3.5) node[above]{$y$};
@@ -162,12 +177,15 @@ Addition: The tail of the blue vector is placed to the head of the red vector, a
 \draw[blue,-stealth,line width=1] (1,2)--(-1,3) node[anchor=south east]{$-\vec{v} = (-2,1)^T$};
 \draw[Green,-stealth,line width=1] (0,0)--(-1,3) node[anchor=north east]{$\vec{u} - \vec{v} = (-1,3)^T$};
 \node[below left]{$O$}; 
-\end{tikzpicture}\\
-Subtraction: Similar to addition but with the blue vector oriented in the opposite direction.
-\end{center}
+\end{tikzpicture}
+\caption{\textit{Subtraction: Similar to addition but with the blue vector oriented in the opposite direction.}}
+\end{subfigure}
+\caption{\textit{Demonstration of vector addition and Subtraction.}}
+\label{fig:vecaddsubtract}
+\end{figure}
 
 \subsubsection{Scalar Multiplication} 
-Multiplying a scalar (be it a real or complex number) to a vector means that all components are multiplied by that scalar.
+Multiplying a scalar (it can be real or complex, but we will limit ourselves to the case of real only first) to a vector means that all components are multiplied by that scalar. An example is
 \begin{align*}
 2
 \begin{bmatrix}
@@ -184,7 +202,7 @@ Multiplying a scalar (be it a real or complex number) to a vector means that all
 18
 \end{bmatrix}
 \end{align*}
-Looking back at vector subtraction, it can be viewed as addition with a factor of $-1$ in the front.
+Looking back at vector subtraction, it can be viewed as an addition with a factor of $-1$ in the front.
 \begin{align*}
 \begin{bmatrix}
 7 \\
@@ -229,36 +247,19 @@ Looking back at vector subtraction, it can be viewed as addition with a factor o
 \end{bmatrix}
 \end{align*}
 
-\subsubsection{Length and Unit Vector} \index{Length}\index{Magnitude}\keywordhl{Length (magnitude)}, or more formally \index{Euclidean Norm}\keywordhl{Euclidean norm}, of a vector $\vec{v}$ is based on a generalized version of \index{Pythagoras' Theorem}\keywordhl{Pythagoras' Theorem}, and is evaluated as the square root of the sum of squares of components.
+\subsubsection{Length and Unit Vector} \index{Length}\index{Magnitude}\keywordhl{Length (magnitude)}, or more formally \index{Euclidean Norm}\keywordhl{Euclidean norm}, of a vector $\vec{v}$ is based on a generalized version of \index{Pythagoras' Theorem}\keywordhl{Pythagoras' Theorem}, and is computed as the square root of the sum of squares of components.
 \begin{defn}[Vector Length]
 \label{defn:vectorlength}
 Length, or magnitude of a $n$-dimensional \textit{real} vector $\vec{v}$, denoted by $\norm{\vec{v}}$, is given by
-\begin{align*}
+\begin{subequations}
+\label{eqn:veclength}
+\begin{align}
 \norm{\vec{v}} &= \sqrt{v_1^2 + v_2^2 + v_3^2 + \cdots + v_n^2} \\
 &= \sqrt{\sum_{k=1}^{n} v_k^2}
-\end{align*}
+\end{align}    
+\end{subequations}
 \end{defn}
-For instance, the length of a two-dimensional vector follows the usual Pythagoras' Theorem as below. \\
-\begin{tikzpicture}
-\draw[->] (-2.5,0)--(2.5,0) node[right]{$x$};
-\draw[->] (0,-2.5)--(0,2.5) node[above]{$y$};
-\draw[blue,-stealth,line width=1.2] (0,0)--(2,1) node[anchor=south west, align=left]{$\vec{v} = (2,1)^T$\\$\norm{\vec{v}} = \sqrt{x^2 + y^2} = \sqrt{2^2+1^2} = \sqrt{5}$};
-\draw[Gray,dashed] (2,1)--(2,0) node[below]{$x = 2$};
-\draw[Gray,dashed] (2,1)--(0,1) node[left]{$y = 1$};
-\node[below left]{$O$}; 
-\end{tikzpicture}\\
-Here is another example which is three-dimensional.
-\begin{center}
-\begin{tikzpicture}[x={(1.8cm, -0.6cm)}, y={(1.6cm, 1.0cm)}, z={(0cm, 2cm)}]
-\draw [->] (-1,0,0) -- (2,0,0) node [right] {$x$};
-\draw [->] (0,-1,0) -- (0,2,0) node [above] {$y$};
-\draw [->] (0,0,0) -- (0,0,2) node [left] {$z$};
-\node[below] (0,0,0){$O$};
-\draw [Gray, dashed] (1.6,-0.2,0) -- (1.6,0,0) node[below, pos=-0.5, sloped]{$y=-1$}; 
-\draw [Gray, dashed] (1.6,-0.2,0) -- (0,-0.2,0) node[below, midway, sloped]{$x=8$}; 
-\draw [Gray, dashed] (1.6,-0.2,0) -- (1.6,-0.2,0.8) node[midway, right]{$z=4$};
-\draw [->, blue, line width=1.2] (0,0,0) -- (1.6,-0.2,0.8) node [right] {$\vec{w} = (8,-1,4)^T$};
-\end{tikzpicture}
+For instance, the length of a two-dimensional vector follows the usual Pythagoras' Theorem as in the following Figure \ref{fig:veclength} (a). For Figure \ref{fig:veclength} (b), it is
 \begin{align*}
 \vec{w} &= 
 \begin{bmatrix}
@@ -269,19 +270,48 @@ Here is another example which is three-dimensional.
 & \norm{\vec{w}}&=
 \sqrt{8^2 + (-1)^2 + 4^2} = 9 
 \end{align*}
-\end{center}
-We can create a \index{Vector!Unit Vector}\keywordhl{unit vector} that has a length of $1$ from any vector $\vec{v}$ and orients in the same direction as $\vec{v}$. It is simply created by dividing (normalizing) $\vec{v}$ by its distance $\norm{\vec{v}}$.
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{0.7\textwidth}
+\centering
+\begin{tikzpicture}
+\draw[->] (-2.5,0)--(2.5,0) node[right]{$x$};
+\draw[->] (0,-2.5)--(0,2.5) node[above]{$y$};
+\draw[blue,-stealth,line width=1.2] (0,0)--(2,1) node[anchor=south west, align=left]{$\vec{v} = (2,1)^T$\\$\norm{\vec{v}} = \sqrt{x^2 + y^2} = \sqrt{2^2+1^2} = \sqrt{5}$};
+\draw[Gray,dashed] (2,1)--(2,0) node[below]{$x = 2$};
+\draw[Gray,dashed] (2,1)--(0,1) node[left]{$y = 1$};
+\node[below left]{$O$}; 
+\end{tikzpicture}
+\caption{\textit{A 2D vector length example.}}
+\end{subfigure}
+\begin{subfigure}{0.7\textwidth}
+\centering
+\begin{tikzpicture}[x={(1.8cm, -0.6cm)}, y={(1.6cm, 1.0cm)}, z={(0cm, 2cm)}]
+\draw [->] (-1,0,0) -- (2,0,0) node [right] {$x$};
+\draw [->] (0,-1,0) -- (0,2,0) node [above] {$y$};
+\draw [->] (0,0,0) -- (0,0,2) node [left] {$z$};
+\node[below] (0,0,0){$O$};
+\draw [Gray, dashed] (1.6,-0.2,0) -- (1.6,0,0) node[below, pos=-0.5, sloped]{$y=-1$}; 
+\draw [Gray, dashed] (1.6,-0.2,0) -- (0,-0.2,0) node[below, midway, sloped]{$x=8$}; 
+\draw [Gray, dashed] (1.6,-0.2,0) -- (1.6,-0.2,0.8) node[midway, right]{$z=4$};
+\draw [->, blue, line width=1.2] (0,0,0) -- (1.6,-0.2,0.8) node [right] {$\vec{w} = (8,-1,4)^T$};
+\end{tikzpicture}
+\caption{\textit{Another example now for 3D vector length.}}
+\end{subfigure}
+\caption{\textit{Demonstration diagrams of deriving vector lengths.}}
+\label{fig:veclength}
+\end{figure}\\
+We can create a \index{Unit Vector}\keywordhl{unit vector} that has a length of $1$ from any vector $\vec{v}$ and orients in the same direction as $\vec{v}$. It is simply created by dividing (normalizing) $\vec{v}$ by its distance $\norm{\vec{v}}$.
 \begin{defn}[Unit Vector]
 \label{defn:unitvec}
 The unit vector corresponding to a non-zero vector $\vec{v}$ is denoted as $\hat{v}$ and is given by
-\begin{align*}
+\begin{align}
 \hat{v} &= \frac{1}{\norm{\vec{v}}}\vec{v}
-\end{align*}
-where the length $\norm{\vec{v}}$ is defined as in Definition \ref{defn:vectorlength}. 
+\end{align}
+where the length $\norm{\vec{v}}$ is defined as (\ref{eqn:veclength}) in Definition \ref{defn:vectorlength}. 
 \end{defn}
-Note that despite vectors can carry physical units, unit vectors are all physically \textit{dimensionless} when formulated in this way. \\
-\\
-Short Exercise: Find the unit vector for $\vec{w} = (8, -1, 4)^T$ in the previous example, and verify that it has a length of $1$.\footnote{$\norm{\vec{w}} = 9$, $\hat{w} = \frac{\vec{w}}{\norm{\vec{w}}} = \frac{1}{9}(8,-1,4)^T = (\frac{8}{9}, -\frac{1}{9}, \frac{4}{9})^T$, $\norm{\hat{w}} = \sqrt{(\frac{8}{9})^2 + (-\frac{1}{9})^2 + (\frac{4}{9})^2} = 1$.}
+Note that even though vectors can carry physical units, unit vectors are all physically \textit{dimensionless} when formulated in this way. \par
+Short Exercise: Find the unit vector for $\vec{w} = (8, -1, 4)^T$ in the previous example of Figure \ref{fig:veclength} (b), and verify that it has a length of $1$.\footnote{$\norm{\vec{w}} = 9$, $\hat{w} = \frac{\vec{w}}{\norm{\vec{w}}} = \frac{1}{9}(8,-1,4)^T = (\frac{8}{9}, -\frac{1}{9}, \frac{4}{9})^T$, $\norm{\hat{w}} = \sqrt{(\frac{8}{9})^2 + (-\frac{1}{9})^2 + (\frac{4}{9})^2} = 1$.}
 
 \section{Special Vector Operations}
 \label{section:vectorops}
@@ -289,35 +319,38 @@ Now we are going to introduce two special types of vector operations: \textit{do
 
 \subsection{Dot Product}
 \label{section:dotprod}
-\index{Dot Product}\keywordhl{(Real) Dot product} (or \index{Scalar Product}\keywordhl{scalar product}) is defined for two (real) vectors that have the same number of dimension. It is the sum of products of paired components between the two vectors. In other words, it can be regarded to be the matrix product between a row vector ($1 \times m$ matrix) and a column vector ($m \times 1$ matrix). 
+\index{Dot Product (Real)}\keywordhl{(Real) Dot product} (or \index{Scalar Product}\keywordhl{scalar product}) is defined for two (real) vectors that have the same number of dimensions. It is the sum of products of paired components between the two vectors. In other words, it can be regarded to be the matrix product between a row vector ($1 \times m$ matrix) and a column vector ($m \times 1$ matrix). 
 \begin{defn}[Dot Product (Real)]
 \label{defn:dotreal}
-The dot product between two $n$-dimensional \textit{real} vectors $\vec{u}$ and $\vec{v}$ in $\mathbb{R}^n$ are denoted as either $\vec{u} \cdot \vec{v}$, or by matrix notation $\textbf{u}^T\textbf{v}$. They are defined as
+The \textit{real} dot product between two $n$-dimensional \textit{real} vectors $\vec{u}$ and $\vec{v}$ in $\mathbb{R}^n$ are denoted as either $\vec{u} \cdot \vec{v}$, or by matrix notation $\textbf{u}^T\textbf{v}$. They are defined as
+\begin{subequations}
+\label{eqn:dotreal}
 \begin{align}
-\vec{u} \cdot \vec{v} = \textbf{u}^T\textbf{v} &= u_1v_1 + u_2v_2 + u_3v_3 + \cdots + u_nv_n \nonumber \\
-&= \sum_{k=1}^{n} u_kv_k \label{eqn:dotreal}
-\end{align}
-which is a scalar quantity.
+\vec{u} \cdot \vec{v} = \textbf{u}^T\textbf{v} &= u_1v_1 + u_2v_2 + u_3v_3 + \cdots + u_nv_n \\
+&= \sum_{k=1}^{n} u_kv_k 
+\end{align}    
+\end{subequations}
+which is a real scalar quantity.
 \end{defn}
-Conversely, it can be said that entries of a matrix product are vector dot products between the corresponding rows and columns. It is emphasized that we are restricting ourselves to real entries since complex vectors introduce a bit of extra complications. Then, for two \textit{real} matrices expressed in the form of combined row/column vectors that are $\mathbb{R}^n$,
+Conversely, it can be said that the entries of a matrix product are vector dot products between the corresponding rows and columns. It is emphasized that we are restricting ourselves to real entries since complex vectors introduce a bit of extra complications. Then, for two \textit{real} matrices expressed in the form of combined row/column vectors that are $\mathbb{R}^n$,
 \begin{align*}
 A &= \left[\begin{array}{@{}c@{}}
 \text{---} \vec{u}^{(1)T} \text{---} \\
 \hline
-\text{---} \vec{u}^{(2)T} \text{---} \\
+\text{---} \vec{u}^{(2)T} \text{---} \Tstrut \\
 \hline
 \vdots \\
 \hline
-\text{---} \vec{u}^{(p)T} \text{---}
+\text{---} \vec{u}^{(p)T} \text{---} \Tstrut
 \end{array}\right]
 =  \left[\begin{array}{@{}c|c|c|c@{}}
 | & | & & | \\
-\vec{u}^{(1)} & \vec{u}^{(2)} & \cdots & \vec{u}^{(p)} \\
+\vec{u}^{(1)} & \vec{u}^{(2)} & \cdots & \vec{u}^{(p)} \\[-4pt]
 | & | & & |
 \end{array}\right]^T
 & B &= \left[\begin{array}{@{}c|c|c|c@{}}
 | & | & & | \\
-\vec{v}^{(1)} & \vec{v}^{(2)} & \cdots & \vec{v}^{(q)} \\
+\vec{v}^{(1)} & \vec{v}^{(2)} & \cdots & \vec{v}^{(q)} \\[-4pt]
 | & | & & |
 \end{array}\right]\\
 &= 
@@ -330,12 +363,12 @@ A &= \left[\begin{array}{@{}c@{}}
 & &= 
 \begin{bmatrix}
 \vec{v}^{(1)}_1  & \vec{v}^{(2)}_1 & \cdots & \vec{v}^{(q)}_1 \\
-\vec{v}^{(1)}_2  & \vec{v}^{(2)}_2 & & \vec{v}^{(q)}_2 \\
-\vdots & & \ddots & \vdots \\
+\vec{v}^{(1)}_2  & \vec{v}^{(2)}_2 & \cdots & \vec{v}^{(q)}_2 \\
+\vdots & \vdots & & \vdots \\
 \vec{v}^{(1)}_n  & \vec{v}^{(2)}_n & \cdots & \vec{v}^{(q)}_n \\
 \end{bmatrix} 
 \end{align*}
-(notice those transposes in the expression of $A$) their matrix product $AB$ can be written as
+(notice the transposes in the expression of $A$) their matrix product $AB$ can be written as
 \begin{align*}
 AB =
 \begin{bmatrix}
@@ -345,17 +378,16 @@ AB =
 \vec{u}^{(p)} \cdot \vec{v}^{(1)} & \vec{u}^{(p)} \cdot \vec{v}^{(2)} & \cdots & \vec{u}^{(p)} \cdot \vec{v}^{(q)} \\
 \end{bmatrix}
 \end{align*}
-We can use dot product to express the length of a real vector.
+We can use the dot product to express the length of a real vector.
 \begin{proper}
 \label{proper:lengthdot}
-The length of a real vector, as defined in Definition \ref{defn:vectorlength}, can be written using its dot product between itself as
+The length of a real vector, as defined by (\ref{eqn:veclength}) in Definition \ref{defn:vectorlength}, can be written using its dot product between itself as
 \begin{align*}
 \norm{\vec{v}} &= \sqrt{\vec{v} \cdot \vec{v}} & &\text{or} &
 \norm{\vec{v}}^2 &= \vec{v} \cdot \vec{v}
 \end{align*}
 \end{proper}
-Notice that $\vec{v} \cdot \vec{v} = v_1^2 + v_2^2 + v_3^2 + \cdots + v_n^2 \geq 0$. This quantity is always strictly greater than zero ($\vec{v} \cdot \vec{v} > 0$) unless $\vec{v} = \textbf{0}$ is the zero vector (then $\vec{v} \cdot \vec{v} = 0$), which makes sense physically given that it represents length.
-
+Notice that $\vec{v} \cdot \vec{v} = v_1^2 + v_2^2 + v_3^2 + \cdots + v_n^2 \geq 0$. This quantity is always strictly greater than zero ($\vec{v} \cdot \vec{v} > 0$) unless $\vec{v} = \textbf{0}$ is the zero vector (then $\vec{v} \cdot \vec{v} = 0$), which makes sense physically given that it represents length, which can never be negative.
 \begin{exmp}
 \label{exmp:dotproduct5d}
 If $\vec{u} = (1, 2, 3, 4, 5)^T$ and $\vec{v} = (-1, 0, 2, 1, -2)^T$, find the dot product $\vec{u} \cdot \vec{v} = \textbf{u}^T\textbf{v}$.
@@ -380,7 +412,6 @@ Alternatively,
 = -1
 \end{align*}
 \end{solution}
-
 Here are some properties of dot product.
 \begin{proper}
 \label{proper:dotproper}
@@ -494,29 +525,33 @@ A^T\vec{u} &=
 The geometric meaning of dot product is embedded in the relation below.
 \begin{proper}
 \label{proper:dotgeo}
-For two real vectors $\vec{u}$ and $\vec{v}$ that are of the same dimension, we have
-\begin{align*}
-\vec{u} \cdot \vec{v} = \norm{\vec{u}}\norm{\vec{v}}\cos\theta
-\end{align*}
-where $\theta$ is the angle between $\vec{u}$ and $\vec{v}$. Furthermore, if $\hat{u}$ and $\hat{v}$ are unit vectors (Definition \ref{defn:unitvec}) such that $\norm{\vec{u}} = \norm{\vec{v}} = 1$, it reduces to
-\begin{align*}
+For two real vectors $\vec{u}$ and $\vec{v}$ that have the same number of dimensions, we have
+\begin{align}
+\vec{u} \cdot \vec{v} = \norm{\vec{u}}\norm{\vec{v}}\cos\theta \label{eqn:dotgeo}
+\end{align}
+where $\theta$ is the angle between $\vec{u}$ and $\vec{v}$. Furthermore, if $\hat{u}$ and $\hat{v}$ are unit vectors (Definition \ref{defn:unitvec}) such that $\norm{\hat{u}} = \norm{\hat{v}} = 1$, it reduces to
+\begin{align}
+\label{eqn:unitvecsangle}
 \hat{u} \cdot \hat{v} = \cos\theta    
-\end{align*}
+\end{align}
 \end{proper}
-This means that the dot product between two vectors $\vec{u}$ and $\vec{v}$ is geometrically the signed product between $\vec{u}$ and the parallel component (projection) of $\vec{v}$ onto $\vec{u}$ (or vice versa), which is illustrated in the figure below. While an angle has a clear physical meaning only in a two/three-dimensional space, such relation generalizes the idea of an angle to higher dimensions.
-\begin{center}
-\begin{tikzpicture}[scale=1.3]
-\coordinate (0) at (0,0);
-\coordinate (vecu) at (4,1);
-\coordinate (vecv) at (1,2);
-\draw[->](0)--(vecu) node[right]{$\vec{u}$};
-\draw[->](0)--(vecv) node[above]{$\vec{v}$};
-\draw[dashed] (1,2)--(24/17, 6/17);
-\draw[red] (24/17+0.2, 6/17+0.05)--(24/17+0.15, 6/17+0.25)--(24/17-0.05, 6/17+0.2);
-\pic[draw, "$\theta$", angle eccentricity=1.5] {angle = vecu--0--vecv};
-\draw[blue, very thick] (0,0)--(24/17, 6/17) node[below, shift={(0mm, -2mm)}]{$\norm{\vec{v}}\cos\theta$};
-\end{tikzpicture}
-\end{center}
+This means that the dot product between two vectors $\vec{u}$ and $\vec{v}$ is geometrically the signed product between $\vec{u}$ and the parallel component (projection) of $\vec{v}$ onto $\vec{u}$ (or vice versa), which is illustrated in Figure \ref{fig:dotproj} below. While an angle has a clear physical meaning only in a two/three-dimensional space, such a relation generalizes the idea of an angle to higher dimensions.
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=1.3]
+    \coordinate (0) at (0,0);
+    \coordinate (vecu) at (4,1);
+    \coordinate (vecv) at (1,2);
+    \draw[->](0)--(vecu) node[right]{$\vec{u}$};
+    \draw[->](0)--(vecv) node[above]{$\vec{v}$};
+    \draw[dashed] (1,2)--(24/17, 6/17);
+    \draw[red] (24/17+0.2, 6/17+0.05)--(24/17+0.15, 6/17+0.25)--(24/17-0.05, 6/17+0.2);
+    \pic[draw, "$\theta$", angle eccentricity=1.5] {angle = vecu--0--vecv};
+    \draw[blue, very thick] (0,0)--(24/17, 6/17) node[below, shift={(0mm, -2mm)}]{$\norm{\vec{v}}\cos\theta$};
+    \end{tikzpicture}
+    \caption{\textit{Schematic diagram for the relation between dot product and projection.}}
+    \label{fig:dotproj}
+\end{figure}
 \begin{exmp}
 Find the angle between $\vec{u}$ and $\vec{v}$ in Example \ref{exmp:dotproduct5d}.
 \end{exmp}
@@ -534,23 +569,25 @@ By Properties \ref{proper:dotgeo}, we have
 \theta &\approx \SI{1.613}{\radian} = \SI{92.44}{\degree}
 \end{align*}
 \end{solution}
-By Properties \ref{proper:dotgeo}, if the absolute value of the dot product $|\vec{u} \cdot \vec{v}|$ is equal to $\norm{\vec{u}}\norm{\vec{v}}$, where $\vec{u}$ and $\vec{v}$ are non-zero vectors, then it implies that $\cos\theta = \pm 1$, $\theta$ is either $0$ or $\pi$, and hence the two vectors are parallel. In constrast,
+By Formula (\ref{eqn:dotgeo}), if the absolute value of the dot product $\abs{\vec{u} \cdot \vec{v}}$ is equal to $\norm{\vec{u}}\norm{\vec{v}}$, where $\vec{u}$ and $\vec{v}$ are non-zero vectors, then it implies that $\cos\theta = \pm 1$, $\theta$ is either $0$ or $\pi$, and hence the two vectors are parallel. In contrast,
 \begin{proper}
 \label{proper:dotorth}
-If the dot product between two real vectors $\vec{u}$ and $\vec{v}$ is zero ($\vec{u} \cdot \vec{v} = \vec{v} \cdot \vec{u} = 0$), then by Properties \ref{proper:dotgeo}, $\cos\theta = 0$ and the angle $\theta$ between $\vec{u}$ and $\vec{v}$ is $\frac{\pi}{2}$. In this case, $\vec{u}$ and $\vec{v}$ are said to be perpendicular, or \textit{orthogonal} to each other.
+If the dot product between two real vectors $\vec{u}$ and $\vec{v}$ is zero ($\vec{u} \cdot \vec{v} = \vec{v} \cdot \vec{u} = 0$), then by (\ref{eqn:dotgeo}) in Properties \ref{proper:dotgeo}, $\cos\theta = 0$ and the angle $\theta$ between $\vec{u}$ and $\vec{v}$ is $\frac{\pi}{2}$. In this case, $\vec{u}$ and $\vec{v}$ are said to be perpendicular, or \textit{orthogonal} to each other.
 \end{proper}
-From this, the concept of "\index{Orthogonal}\keywordhl{orthogonal}" becomes an extension of "perpendicular" in higher dimensions. It is easy to see that the standard unit vectors of $\mathbb{R}^n$ are orthogonal. Note that \textit{the zero vector is regarded to be orthogonal to any vector}, so even if $\vec{u}$ or $\vec{v}$ is a zero vector, this properties still hold. \par
-Some may notice that as $-1 \leq \cos\theta \leq 1$, if $|\vec{u} \cdot \vec{v}| > \norm{\vec{u}}\norm{\vec{v}}$, then $\theta$ in Properties \ref{proper:dotgeo} will be ill-defined. However, the \index{Cauchy–Schwarz Inequality}\keywordhl{Cauchy–Schwarz Inequality} ensures this will not happen.
+From this, the concept of "\index{Orthogonal}\keywordhl{orthogonal}" becomes an extension of "perpendicular" in higher dimensions. It is easy to see that the standard unit vectors of $\mathbb{R}^n$ are orthogonal. Note that \textit{the zero vector is regarded to be orthogonal to any vector}, so even if $\vec{u}$ or $\vec{v}$ is a zero vector, this property still holds. \par
+Some may notice that as $-1 \leq \cos\theta \leq 1$, if $\abs{\vec{u} \cdot \vec{v}} > \norm{\vec{u}}\norm{\vec{v}}$, then $\theta$ in (\ref{eqn:dotgeo}) will be ill-defined. However, the \index{Cauchy–Schwarz Inequality}\keywordhl{Cauchy–Schwarz Inequality} ensures this will not happen.
 \begin{thm}[Cauchy–Schwarz Inequality]
 \label{thm:CauchySch}
-Given two \textit{real} $n$-dimensional vectors $\vec{u}$ and $\vec{v}$ ($\vec{u}, \vec{v} \in \mathbb{R}^n$), the following inequality holds.
-\begin{align*}
+Given two \textit{real} $n$-dimensional vectors $\vec{u}$ and $\vec{v}$ ($\vec{u}, \vec{v} \in \mathbb{R}^n$), the following inequality holds:
+\begin{subequations}
+\begin{align}
 |\vec{u} \cdot \vec{v}| &\leq \norm{\vec{u}}\norm{\vec{v}} \\
 |u_1v_1+u_2v_2+\cdots+u_nv_n| &\leq \sqrt{u_1^2+u_2^2+\cdots+u_n^2}\sqrt{v_1^2+v_2^2+\cdots+v_n^2}
-\end{align*}
+\end{align}    
+\end{subequations}
 \end{thm}
 \begin{proof}
-Consider $\vec{w} = \vec{u} + t\vec{v}$, where $t$ is any scalar, then $\norm{\vec{w}}^2 = \vec{w}\cdot\vec{w} \geq 0$ by Properties \ref{proper:lengthdot}. Also, $\vec{w}\cdot\vec{w}$ can be written as a quadratic polynomial in $t$:
+Consider $\vec{w} = \vec{u} + t\vec{v}$, where $t$ is any scalar, then $\norm{\vec{w}}^2 = \vec{w}\cdot\vec{w} \geq 0$ by positivity (Properties \ref{proper:lengthdot}). Also, $\vec{w}\cdot\vec{w}$ can be written as a quadratic polynomial in $t$:
 \begin{align*}
 \vec{w}\cdot\vec{w} = (\vec{u} + t\vec{v}) \cdot (\vec{u} + t\vec{v}) = \norm{\vec{u}}^2 + 2t(\vec{u} \cdot \vec{v}) + t^2\norm{\vec{v}}^2
 \end{align*}
@@ -563,7 +600,7 @@ Since this quantity is always greater than or equal to zero, i.e.\ the quadratic
 |\vec{u} \cdot \vec{v}| &\leq \norm{\vec{u}}\norm{\vec{v}}
 \end{align*}
 \end{proof}
-Short Exercise: Think about under what circumstances the Cauchy–Schwarz Inequality turns into an equality (i.e.\ $|\vec{u} \cdot \vec{v}| = \norm{\vec{u}}\norm{\vec{v}}$).\footnote{When $\vec{u}$ and $\vec{v}$ are parallel, i.e. $\vec{u} = k\vec{v}$ for some scalar $k$, or $\vec{v} = \textbf{0}$.}
+Short Exercise: Think about under what circumstances the Cauchy–Schwarz Inequality will turn into an equality (i.e.\ $\abs{vec{u} \cdot \vec{v}} = \norm{\vec{u}}\norm{\vec{v}}$).\footnote{When $\vec{u}$ and $\vec{v}$ are parallel, i.e. $\vec{u} = k\vec{v}$ for some scalar $k$, or $\vec{v} = \textbf{0}$.}
 
 \begin{exmp}
 Prove the \index{Cosine Law}\keywordhl{Cosine Law} by considering the triangle below
@@ -579,7 +616,7 @@ Prove the \index{Cosine Law}\keywordhl{Cosine Law} by considering the triangle b
 and expanding the dot product $\norm{(\vec{u}-\vec{v})}^2 = (\vec{u}-\vec{v}) \cdot (\vec{u}-\vec{v})$.    
 \end{exmp}
 \begin{solution}
-Let denote the lengths $\norm{\vec{u}}$, $\norm{\vec{v}}$, $\norm{(\vec{u}-\vec{v})}$ be $a$, $b$, $c$, then
+Let denote the lengths $\norm{\vec{u}}$, $\norm{\vec{v}}$, $\norm{(\vec{u}-\vec{v})}$ by $a$, $b$, $c$, then
 \begin{align*}
 c^2 = \norm{(\vec{u}-\vec{v})}^2 &= (\vec{u}-\vec{v}) \cdot (\vec{u}-\vec{v}) & \text{(Properties \ref{proper:lengthdot})} \\
 &= \vec{u} \cdot \vec{u} - \vec{u} \cdot \vec{v} - \vec{v} \cdot \vec{u} + \vec{v} \cdot \vec{v} & \text{(Properties \ref{proper:dotproper})} \\
@@ -591,37 +628,37 @@ c^2 = \norm{(\vec{u}-\vec{v})}^2 &= (\vec{u}-\vec{v}) \cdot (\vec{u}-\vec{v}) & 
 
 \subsection{Cross Product}
 \label{section:crossprod}
-Another important type of vector product is the \index{Cross Product}\keywordhl{cross product} (or sometimes just \index{Vector Product}\keywordhl{vector product}), which produces a three-dimensional real vector from two other three-dimensional real vectors. \textit{The output vector will be orthogonal to the two input vectors}, and the direction is determined by the \index{Right Hand Rule}\keywordhl{right hand rule}. Motivated by these requirements, we have the following basic definitions of cross product between the three standard unit vectors in $\mathbb{R}^3$.
+Another important type of vector product is the \index{Cross Product}\keywordhl{cross product} (or sometimes just \index{Vector Product}\keywordhl{vector product}), which produces a three-dimensional real vector from two other three-dimensional real vectors. \textit{The output vector will be orthogonal to the two input vectors}, and the direction is determined by the \index{Right-hand Rule}\keywordhl{right-hand rule}. Motivated by these requirements, we have the following basic definitions of cross product between the three standard unit vectors in $\mathbb{R}^3$.
 \begin{defn}
 \label{defn:crossijk}
-The computation of cross products (denoted by $\times$) involving any two of the standard unit vectors $\hat{i}$, $\hat{j}$, $\hat{k}$ in $\mathbb{R}^3$ obeys the following rules.
+The computation of cross products (denoted by $\times$) involving any two of the standard unit vectors $\hat{\imath}$, $\hat{\jmath}$, $\hat{k}$ in $\mathbb{R}^3$ obeys the following rules.
 \begin{enumerate}
-\item $\hat{i} \times \hat{j} = \hat{k}$, $\hat{j} \times \hat{i} = -\hat{k}$,
-\item $\hat{j} \times \hat{k} = \hat{i}$, $\hat{k} \times \hat{j} = -\hat{i}$,
-\item $\hat{k} \times \hat{i} = \hat{j}$, $\hat{i} \times \hat{k} = -\hat{j}$, and
-\item $\hat{i} \times \hat{i} = \hat{j} \times \hat{j} = \hat{k} \times \hat{k} = \textbf{0}$
+\item $\hat{\imath} \times \hat{\jmath} = \hat{k}$, $\hat{\jmath} \times \hat{\imath} = -\hat{k}$,
+\item $\hat{\jmath} \times \hat{k} = \hat{\imath}$, $\hat{k} \times \hat{\jmath} = -\hat{\imath}$,
+\item $\hat{k} \times \hat{\imath} = \hat{\jmath}$, $\hat{\imath} \times \hat{k} = -\hat{\jmath}$, and
+\item $\hat{\imath} \times \hat{\imath} = \hat{\jmath} \times \hat{\jmath} = \hat{k} \times \hat{k} = \textbf{0}$
 \end{enumerate}
 \end{defn}
-\begin{minipage}{0.45\textwidth}
-\begin{center}
-% https://tex.stackexchange.com/questions/287284/drawing-a-diagram-of-a-three-cycle
-\begin{tikzpicture}[->,scale=2]
-   \node (i) at (90:1cm)  {\huge$\hat{i}$};
-   \node (j) at (-30:1cm) {\huge$\hat{j}$};
+\begin{figure}
+\centering
+\begin{subfigure}{.49\textwidth}
+  \centering
+  % https://tex.stackexchange.com/questions/287284/drawing-a-diagram-of-a-three-cycle
+    \begin{tikzpicture}[->,scale=2]
+   \node (i) at (90:1cm)  {\huge$\hat{\imath}$};
+   \node (j) at (-30:1cm) {\huge$\hat{\jmath}$};
    \node (k) at (210:1cm) {\huge$\hat{k}$};
 
    \draw (70:1cm)  arc (70:-10:1cm);
    \draw (-50:1cm) arc (-50:-130:1cm);
    \draw (190:1cm) arc (190:110:1cm);
-\end{tikzpicture} \\
-\end{center}
-A cyclic diagram for memorizing Definition \ref{defn:crossijk}. A clockwise / anti-clockwise permutation produces a positive / negative unit vector of the third.
-\end{minipage}
-\hfill
-\begin{minipage}{0.5\textwidth}
-\begin{center}
-% https://tikz.net/righthand_rule/
-\begin{tikzpicture}[scale=0.8]
+    \end{tikzpicture}
+  \caption{A helper cyclic diagram for memorizing Definition \ref{defn:crossijk}. A clockwise/anti-clockwise permutation produces a positive/negative unit vector of the third.}
+\end{subfigure}%
+\begin{subfigure}{.49\textwidth}
+  \centering
+  % https://tikz.net/righthand_rule/
+  \begin{tikzpicture}[scale=0.8]
   \coordinate (O) at (1.0,0.7);
   \coordinate (WT) at ( 2.9,-1.1);
   \coordinate (T1) at ( 2.3, 0.7);
@@ -702,11 +739,11 @@ A cyclic diagram for memorizing Definition \ref{defn:crossijk}. A clockwise / an
   \draw[->, red, line width=1] (O) -- (-182:3.2) coordinate(Y) node[above=5,left=-6,scale=1.5] {$\vec{v}$};
   \draw[->, Purple, line width=2] (O) -- (62:3.2) node[above=-1,scale=1.5] {$\textcolor{blue}{\vec{u}} \textcolor{Purple}{\;\times\;} \textcolor{red}{\vec{v}}$};
   \draw pic[->, "$\theta$", draw=black, thick, angle radius=30, angle eccentricity=1.2] {angle = X--O--Y};
-\end{tikzpicture}\\
-Demonstration of the right hand rule.
-\end{center}
-\end{minipage}
-\par
+  \end{tikzpicture}
+  \caption{Demonstration of the right-hand rule.}
+\end{subfigure}
+\caption{\textit{Schematic diagrams for the cross product.}}
+\end{figure}
 The properties of cross product are noted below. One major difference setting cross product apart from the dot product is its anti-symmetric property.
 \begin{proper}
 \label{proper:crossproper}
@@ -725,7 +762,7 @@ For $\vec{u} = (u_1, u_2, u_3)^T, \vec{v} = (v_1, v_2, v_3)^T \in \mathbb{R}^3$,
 \begin{align}
 \vec{u} \times \vec{v} =
 \begin{vmatrix}
-\hat{i} & \hat{j} & \hat{k} \\
+\hat{\imath} & \hat{\jmath} & \hat{k} \\
 u_1 & u_2 & u_3 \\
 v_1 & v_2 & v_3
 \end{vmatrix}
@@ -735,29 +772,29 @@ v_1 & v_2 & v_3
 \begin{proof}
 Starting from Definition \ref{defn:crossijk} and Properties \ref{proper:crossproper}, we have
 \begin{align*}
-\vec{u} \times \vec{v} &= (u_1\hat{i} + u_2\hat{j} + u_3\hat{k}) \times (v_1\hat{i} + v_2\hat{j} + v_3\hat{k}) \\
-&= u_1v_1(\hat{i}\times\hat{i}) + u_1v_2(\hat{i}\times\hat{j}) + u_1v_3(\hat{i}\times\hat{k}) \\
-&\quad +u_2v_1(\hat{j}\times\hat{i}) + u_2v_2(\hat{j}\times\hat{j}) + u_2v_3(\hat{j}\times\hat{k}) \\
-&\quad +u_3v_1(\hat{k}\times\hat{i}) + u_3v_2(\hat{k}\times\hat{j}) + u_3v_3(\hat{k}\times\hat{k}) & \text{(Properties \ref{proper:crossproper})}\\
-&= u_1v_1(\textbf{0}) + u_1v_2(\hat{k}) - u_1v_3(\hat{j}) \\
-&\quad -u_2v_1(\hat{k}) + u_2v_2(\textbf{0}) + u_2v_3(\hat{i}) \\
-&\quad +u_3v_1(\hat{j}) - u_3v_2(\hat{i}) + u_3v_3(\textbf{0}) & \text{(Definition \ref{defn:crossijk})}\\
-&= (u_2v_3 - u_3v_2)\hat{i} + (u_3v_1 - u_1v_3)\hat{j} + (u_1v_2 - u_2v_1)\hat{k} 
+\vec{u} \times \vec{v} &= (u_1\hat{\imath} + u_2\hat{\jmath} + u_3\hat{k}) \times (v_1\hat{\imath} + v_2\hat{\jmath} + v_3\hat{k}) \\
+&= u_1v_1(\hat{\imath}\times\hat{\imath}) + u_1v_2(\hat{\imath}\times\hat{\jmath}) + u_1v_3(\hat{\imath}\times\hat{k}) \\
+&\quad +u_2v_1(\hat{\jmath}\times\hat{\imath}) + u_2v_2(\hat{\jmath}\times\hat{\jmath}) + u_2v_3(\hat{\jmath}\times\hat{k}) \\
+&\quad +u_3v_1(\hat{k}\times\hat{\imath}) + u_3v_2(\hat{k}\times\hat{\jmath}) + u_3v_3(\hat{k}\times\hat{k}) & \text{(Properties \ref{proper:crossproper})}\\
+&= u_1v_1(\textbf{0}) + u_1v_2(\hat{k}) - u_1v_3(\hat{\jmath}) \\
+&\quad -u_2v_1(\hat{k}) + u_2v_2(\textbf{0}) + u_2v_3(\hat{\imath}) \\
+&\quad +u_3v_1(\hat{\jmath}) - u_3v_2(\hat{\imath}) + u_3v_3(\textbf{0}) & \text{(Definition \ref{defn:crossijk})}\\
+&= (u_2v_3 - u_3v_2)\hat{\imath} + (u_3v_1 - u_1v_3)\hat{\jmath} + (u_1v_2 - u_2v_1)\hat{k} 
 \end{align*}
 Meanwhile, cofactor expansion (Properties \ref{proper:cofactorex}) along the first row of the given determinant form
 \begin{align*}
 \begin{vmatrix}
-\hat{i} & \hat{j} & \hat{k} \\
+\hat{\imath} & \hat{\jmath} & \hat{k} \\
 u_1 & u_2 & u_3 \\
 v_1 & v_2 & v_3
 \end{vmatrix} 
 &= 
-\hat{i}
+\hat{\imath}
 \begin{vmatrix}
 u_2 & u_3 \\
 v_2 & v_3
 \end{vmatrix} 
-- \hat{j}
+- \hat{\jmath}
 \begin{vmatrix}
 u_1 & u_3 \\
 v_1 & v_3
@@ -767,7 +804,7 @@ v_1 & v_3
 u_1 & u_2 \\
 v_1 & v_2
 \end{vmatrix} \\
-&= (u_2v_3 - u_3v_2)\hat{i} + (u_3v_1 - u_1v_3)\hat{j} + (u_1v_2 - u_2v_1)\hat{k}
+&= (u_2v_3 - u_3v_2)\hat{\imath} + (u_3v_1 - u_1v_3)\hat{\jmath} + (u_1v_2 - u_2v_1)\hat{k}
 \end{align*}
 yields the identical result.
 \end{proof}
@@ -794,17 +831,17 @@ Find $\vec{u} \times \vec{v}$.
 \begin{align*}
 \vec{u} \times \vec{v} &=
 \begin{vmatrix}
-\hat{i} & \hat{j} & \hat{k} \\
+\hat{\imath} & \hat{\jmath} & \hat{k} \\
 1 & 0 & 2 \\
 3 & -1 & 1
 \end{vmatrix} \\
 &= 
-\hat{i}
+\hat{\imath}
 \begin{vmatrix}
 0 & 2 \\
 -1 & 1 
 \end{vmatrix}
-- \hat{j}
+- \hat{\jmath}
 \begin{vmatrix}
 1 & 2 \\
 3 & 1 
@@ -815,29 +852,28 @@ Find $\vec{u} \times \vec{v}$.
 3 & -1 
 \end{vmatrix}
 & \begin{aligned}
-\text{(Cofactor expansion} \\ 
-\text{along the first row)}
+&\text{(Cofactor expansion} \\ 
+&\text{along the first row)}
 \end{aligned}\\
-&= 2\hat{i} + 5\hat{j} - \hat{k} = (2,5,-1)^T
+&= 2\hat{\imath} + 5\hat{\jmath} - \hat{k} = (2,5,-1)^T
 \end{align*} 
 \end{solution}
-Short Exercise: Check if $\vec{u} \times \vec{v}$ is orthogonal to $\vec{u}$ and $\vec{v}$ by finding the corresponding dot products.\footnote{$\vec{u} \cdot (\vec{u} \times \vec{v}) = (1,0,2)^T\cdot(2,5,-1)^T = (1)(2) + (0)(5) + (2)(-1) = 0$, $\vec{v} \cdot (\vec{u} \times \vec{v}) = (3,-1,1)^T\cdot(2,5,-1)^T = (3)(2) + (-1)(5) + (1)(-1) = 0$. The zero dot product in both cases  shows they are orthogonal via Properties \ref{proper:dotorth}.}\\
-Short Exercise: Following the short exercise above, show in general, $\vec{u} \cdot (\vec{u} \times \vec{v}) = \vec{v} \cdot (\vec{u} \times \vec{v}) = 0$.\footnote{From the derivation of Properties \ref{proper:crossdet}, $\vec{u} \times \vec{v} = (u_2v_3 - u_3v_2)\hat{i} + (u_3v_1 - u_1v_3)\hat{j} + (u_1v_2 - u_2v_1)\hat{k}$, and $\vec{u} \cdot (\vec{u} \times \vec{v}) = u_1(u_2v_3 - u_3v_2) + u_2(u_3v_1 - u_1v_3) + u_3(u_1v_2 - u_2v_1) = 0$ where all terms cancel out, and it is similar for $\vec{v}$.}
-
+Short Exercise: Check if $\vec{u} \times \vec{v}$ is orthogonal to $\vec{u}$ and $\vec{v}$ by finding the corresponding dot products.\footnote{$\vec{u} \cdot (\vec{u} \times \vec{v}) = (1,0,2)^T\cdot(2,5,-1)^T = (1)(2) + (0)(5) + (2)(-1) = 0$, $\vec{v} \cdot (\vec{u} \times \vec{v}) = (3,-1,1)^T\cdot(2,5,-1)^T = (3)(2) + (-1)(5) + (1)(-1) = 0$. The zero dot product in both cases shows they are orthogonal via Properties \ref{proper:dotorth}.}\\
+Short Exercise: Following the short exercise above, show in general, $\vec{u} \cdot (\vec{u} \times \vec{v}) = \vec{v} \cdot (\vec{u} \times \vec{v}) = 0$, i.e.\ the cross product is orthogonal to the two input vectors.\footnote{From the derivation of Properties \ref{proper:crossdet}, $\vec{u} \times \vec{v} = (u_2v_3 - u_3v_2)\hat{\imath} + (u_3v_1 - u_1v_3)\hat{\jmath} + (u_1v_2 - u_2v_1)\hat{k}$, and $\vec{u} \cdot (\vec{u} \times \vec{v}) = u_1(u_2v_3 - u_3v_2) + u_2(u_3v_1 - u_1v_3) + u_3(u_1v_2 - u_2v_1) = 0$ where all terms cancel out, and it is similar for $\vec{v}$.}
 
 \subsubsection{Geometric Meaning of Cross Product} Similar to vector dot product, vector cross product has a geometric interpretation.
 \begin{proper}
 \label{proper:crossgeo}
 Given two vectors $\vec{u}$ and $\vec{v}$ which are both of $\mathbb{R}^3$, the magnitude (length) of $\vec{u} \times \vec{v}$ is related to the angle between $\vec{u}$ and $\vec{v}$ as
-\begin{align*}
-\norm{\vec{u} \times \vec{v}} = \norm{\vec{u}}\norm{\vec{v}}\sin\theta
-\end{align*}
+\begin{align}
+\norm{\vec{u} \times \vec{v}} = \norm{\vec{u}}\norm{\vec{v}}\sin\theta \label{eqn:crossgeo}
+\end{align}
 \end{proper}
 From this, we immediately know that if $\vec{u}$ and $\vec{v} = k\vec{u}$, where $k$ is some constant, are two parallel vectors, their cross product will be a zero vector as $\theta = 0$ (or $\pi$) and $\sin \theta = 0$. This is equivalent to the statement of $\vec{u} \times \vec{u} = \textbf{0}$\footnote{By Properties \ref{proper:crossdet},
 \begin{align*}
 \vec{u} \times \vec{u} = 
 \begin{vmatrix}
-\hat{i} & \hat{j} & \hat{k} \\
+\hat{\imath} & \hat{\jmath} & \hat{k} \\
 u_1 & u_2 & u_3 \\
 u_1 & u_2 & u_3
 \end{vmatrix} 
@@ -859,16 +895,16 @@ where the fact that $\vec{u} \times \vec{u} = \textbf{0}$, $\vec{v} \times \vec{
 -3\vec{u} \times \vec{v} &=  
 -3
 \begin{vmatrix}
-\hat{i} & \hat{j} & \hat{k} \\
+\hat{\imath} & \hat{\jmath} & \hat{k} \\
 1 & 2 & 3 \\
 -1 & 1 & 2
 \end{vmatrix} \\
-&= -3\left(\hat{i}
+&= -3\left(\hat{\imath}
 \begin{vmatrix}
 2 & 3 \\
 1 & 2 
 \end{vmatrix}
-- \hat{j}
+- \hat{\jmath}
 \begin{vmatrix}
 1 & 3 \\
 -1 & 2
@@ -878,18 +914,18 @@ where the fact that $\vec{u} \times \vec{u} = \textbf{0}$, $\vec{v} \times \vec{
 1 & 2 \\
 -1 & 1 
 \end{vmatrix}\right) & \begin{aligned}
-\text{(Cofactor expansion} \\ 
-\text{along the first row)}
+&\text{(Cofactor expansion} \\ 
+&\text{along the first row)}
 \end{aligned} \\
-&= -3(\hat{i}-5\hat{j}+3\hat{k}) \\
-&= -3\hat{i}+15\hat{j}-9\hat{k} = (-3,15,-9)^T
+&= -3(\hat{\imath}-5\hat{\jmath}+3\hat{k}) \\
+&= -3\hat{\imath}+15\hat{\jmath}-9\hat{k} = (-3,15,-9)^T
 \end{align*}
 The readers can try the alternative of computing $\vec{u}+2\vec{v}$ and $\vec{u} - \vec{v}$ first and then their cross product.
 \end{solution}
 
 Finally, cancellation of dot product or cross product at both sides of an equation is generally not correct, and here is a table summarizing the inputs and outputs of dot/cross product for clarification.
 \begin{center}
-\begin{tabular}{|p{30mm}|p{55mm}|p{25mm}|}
+\begin{tabular}{|p{32mm}|p{60mm}|p{26mm}|}
 \hline
  & Input & Output \\
 \hline
@@ -904,12 +940,18 @@ Cross Product, or Vector Product ($\times$) & Two three-dimensional real vectors
 \section{Earth Science Applications}
 \begin{exmp}
 \label{exmp:Coriolis}
-The \textit{Coriolis Effect} is a phenomenon describing the deflection of motion due to rotation of the Earth. It introduces an apparent force known as the \textit{Coriolis Force} which is given by $\overrightarrow{F_\text{cor}} = -2\vec{\Omega} \times \vec{v}$ where $\Omega = \norm{\vec{\Omega}} = \SI{7.292e-5}{\radian \per \s}$ represents the angular speed of Earth's rotation, and $\vec{\Omega}$ is oriented in the direction of the North Pole. Define the local frame of reference (see Figure \ref{fig:Coriolis}) with the $x$-direction being the zonal direction, $y$-direction being the meridional direction, and $z$-direction being the zenith direction (normal to the Earth's surface), then we have $\vec{v} = (u,v,w) = u\hat{i} + v\hat{j} + w\hat{k}$ as the flow velocity in this local Cartesian coordinate system with unit vectors $\hat{i}, \hat{j}, \hat{k}$ along the $x$, $y$, $z$ axes. It can be seen that $\vec{\Omega} = (\Omega \cos\varphi) \hat{j} + (\Omega \sin \varphi) \hat{k}$ where $\varphi$ is the latitude. Now by expanding $\overrightarrow{F_\text{cor}} = -2\vec{\Omega} \times \vec{v}$ show that the components of Coriolis Force along the local $x,y,z$ directions are
-\begin{align*}
+The \textit{Coriolis Effect} is a phenomenon describing the deflection of motion due to rotation of the Earth. It introduces an apparent force known as the \textit{Coriolis Force} which is given by 
+\begin{align}
+\overrightarrow{F_\text{cor}} = -2\vec{\Omega} \times \vec{v}    
+\end{align} 
+where $\Omega = \norm{\smash{\vec{\Omega}}} = \SI{7.292e-5}{\radian \per \s}$ represents the angular speed of Earth's rotation, and $\smash{\vec{\Omega}}$ is oriented in the direction of the North Pole. Define the local frame of reference (see Figure \ref{fig:Coriolis}) with the $x$-direction being the zonal direction, $y$-direction being the meridional direction, and $z$-direction being the zenith direction (normal to the Earth's surface), then we have $\vec{v} = (u,v,w) = u\hat{\imath} + v\hat{\jmath} + w\hat{k}$ as the flow velocity in this local Cartesian coordinate system with unit vectors $\hat{\imath}, \hat{\jmath}, \hat{k}$ along the $x$, $y$, $z$ axes. It can be seen that $\smash{\vec{\Omega}} = (\Omega \cos\varphi) \hat{\jmath} + (\Omega \sin \varphi) \hat{k}$ where $\varphi$ is the latitude. Now by expanding $\smash{\overrightarrow{F_\text{cor}}} = -2\smash{\vec{\Omega}} \times \vec{v}$, show that the components of Coriolis Force along the local $x,y,z$ directions are
+\begin{subequations}
+\begin{align}
 F_{\text{cor},x} &= 2\Omega (v\sin\varphi - w\cos\varphi) \\
 F_{\text{cor},y} &= -2\Omega u \sin\varphi \\
 F_{\text{cor},z} &= 2\Omega u \cos\varphi
-\end{align*}
+\end{align}    
+\end{subequations}
 The \textit{Coriolis Parameter} $f$ is usually used to denote the factor $2\Omega\sin\varphi$.
 \end{exmp}
 \begin{figure}[h!]
@@ -924,36 +966,36 @@ The \textit{Coriolis Parameter} $f$ is usually used to denote the factor $2\Omeg
 \draw[dashed] (0) -- (10:2) node(vecL){};
 \draw pic["$\varphi$", draw=black, thick, angle eccentricity=1.5] {angle = vecE--0--vecL};
 \draw[red, ->] (10:2) --++ (10:1.5) node[right]{$\hat{k}$};
-\draw[red, ->] (10:2) --++ (100:1.5) node[above]{$\hat{j}$};
-\draw[red, fill=gray!20] (10:2) circle (0.25) node[below right, yshift=-6]{$\hat{i}$};
+\draw[red, ->] (10:2) --++ (100:1.5) node[above]{$\hat{\jmath}$};
+\draw[red, fill=gray!20] (10:2) circle (0.25) node[below right, yshift=-6]{$\hat{\imath}$};
 \draw[red] (10:2) --++ (45:0.25);
 \draw[red] (10:2) --++ (45:-0.25);
 \draw[red] (10:2) --++ (-45:0.25);
 \draw[red] (10:2) --++ (-45:-0.25);
 \coordinate (P) at (5,-0.5);
 \draw[red, ->] (P) --++ (10:1.5) node[right]{$\hat{k}$};
-\draw[red, ->] (P) --++ (100:1.5) node[above](vecJ){$\hat{j}$};
+\draw[red, ->] (P) --++ (100:1.5) node[above](vecJ){$\hat{\jmath}$};
 \draw[dashed,->] (P) --++ (66.5:2) node[above](vecOM){};
-\node at (8,1.7) {$\vec{\Omega} = (\Omega \cos \varphi)\hat{j} + (\Omega \sin \varphi)\hat{k}$};
+\node at (8,1.7) {$\vec{\Omega} = (\Omega \cos \varphi)\hat{\jmath} + (\Omega \sin \varphi)\hat{k}$};
 \draw pic["$\varphi$", draw=black, thick, angle eccentricity=1.5] {angle = vecOM--P--vecJ};
 \end{tikzpicture}
-\caption{An illustration of the coordinate frame in Example \ref{exmp:Coriolis}.}
+\caption{\textit{An illustration of the local coordinate frame to derive Coriolis Force in Example \ref{exmp:Coriolis}.}}
 \label{fig:Coriolis}
 \end{figure}
 \begin{solution}
-Using Properties \ref{proper:crossdet} to expand $\overrightarrow{F_\text{cor}}$ gives
+Using (\ref{eqn:crossdet}) in Properties \ref{proper:crossdet} to expand $\overrightarrow{F_\text{cor}}$ gives
 \begin{align*}
--2\overrightarrow{\Omega} \times \vec{v} &= -2((\Omega \cos\varphi) \hat{j} + (\Omega \sin \varphi) \hat{k}) \times (u\hat{i} + v\hat{j} + w\hat{k}) \\
+-2\overrightarrow{\Omega} \times \vec{v} &= -2((\Omega \cos\varphi) \hat{\jmath} + (\Omega \sin \varphi) \hat{k}) \times (u\hat{\imath} + v\hat{\jmath} + w\hat{k}) \\
 &= -2
 \begin{vmatrix}
-\hat{i} & \hat{j} & \hat{k} \\
+\hat{\imath} & \hat{\jmath} & \hat{k} \\
 0 & \Omega\cos\varphi & \Omega\sin\varphi \\
 u & v & w 
 \end{vmatrix} \\
-&= -2[(w\Omega\cos\varphi - v\Omega\sin\varphi)\hat{i} + (u\Omega\sin\varphi)\hat{j} - (u\Omega\cos\varphi)\hat{k}] \\
-&= [2\Omega(v\sin\varphi - w\cos\varphi)]\hat{i} + (-2\Omega u\sin\varphi)\hat{j} + (2\Omega u\cos\varphi)\hat{k}
+&= -2[(w\Omega\cos\varphi - v\Omega\sin\varphi)\hat{\imath} + (u\Omega\sin\varphi)\hat{\jmath} - (u\Omega\cos\varphi)\hat{k}] \\
+&= [2\Omega(v\sin\varphi - w\cos\varphi)]\hat{\imath} + (-2\Omega u\sin\varphi)\hat{\jmath} + (2\Omega u\cos\varphi)\hat{k}
 \end{align*}
-The $\hat{i}$, $\hat{j}$, $\hat{k}$ components correspond to $F_{\text{cor},x}$, $F_{\text{cor},y}$, $F_{\text{cor},z}$ respectively. Assume $w$ is negligible, then $F_{\text{cor},x} = fv$ and $F_{\text{cor},y} = -fu$.
+The $\hat{\imath}$, $\hat{\jmath}$, $\hat{k}$ components correspond to $F_{\text{cor},x}$, $F_{\text{cor},y}$, $F_{\text{cor},z}$ respectively. Assume $w$ is negligible, then $F_{\text{cor},x} = fv$ and $F_{\text{cor},y} = -fu$.
 \end{solution}
 
 \section{Python Programming}
@@ -972,7 +1014,7 @@ print(myVec3)
 \end{lstlisting}
 gives the expected output of \verb|[5. 0. 2.]|. We can select a component of any vector by indexing. Again, remember that indices in \textit{Python} start from zero. \verb|print(myVec3[1])| then returns \verb|0.0|. The magnitude of a vector can be checked with \verb|np.linalg.norm|. For example,
 \begin{lstlisting}
-print(np.linalg.norm(myVec1))    
+print(np.linalg.norm(myVec1)) # or np.dot(myVec1, myVec1)**0.5   
 \end{lstlisting}
 produces \verb|4.58257569495584| ($\sqrt{(-1)^2 + 2^2 + 4^2} = \sqrt{21}$). Dot product is computed via \verb|np.dot| as follows.
 \begin{lstlisting}
@@ -1010,7 +1052,7 @@ raises the error of
 ValueError: incompatible dimensions for cross product
 (dimension must be 2 or 3)    
 \end{lstlisting}
-Finally, we note that following \href{https://stackoverflow.com/questions/2827393/angles-between-two-n-dimensional-vectors-in-python}{this Stack Overflow post} (2827393), we can compute the unit vector of any given vector and angle between two vectors (based from the second observation in Properties \ref{proper:dotgeo}, $\theta = \cos^{-1}(\hat{u} \cdot \hat{v})$).
+Finally, we note that following \href{https://stackoverflow.com/questions/2827393/angles-between-two-n-dimensional-vectors-in-python}{this Stack Overflow post} (2827393), we can compute the unit vector of any given vector and angle between two vectors (based from Formula (\ref{eqn:unitvecsangle}) in Properties \ref{proper:dotgeo}, $\theta = \cos^{-1}(\hat{u} \cdot \hat{v})$).
 \begin{lstlisting}
 def unit_vector(vector):
     """ Returns the unit vector of the vector.  """
@@ -1088,18 +1130,18 @@ Verify that
 \begin{align*}
 \vec{u} \times \vec{v} &= 
 \begin{vmatrix}
-\hat{i} & \hat{j} & \hat{k}\\
+\hat{\imath} & \hat{\jmath} & \hat{k}\\
 7 & 4 & 1\\
 8 & 1 & 1    
 \end{vmatrix}
-= 3\hat{i} + \hat{j} - 25\hat{k} = (3, 1, -25)^T \\
+= 3\hat{\imath} + \hat{\jmath} - 25\hat{k} = (3, 1, -25)^T \\
 \vec{v} \times \vec{u} &=
 \begin{vmatrix}
-\hat{i} & \hat{j} & \hat{k}\\
+\hat{\imath} & \hat{\jmath} & \hat{k}\\
 8 & 1 & 1 \\  
 7 & 4 & 1
 \end{vmatrix}
-= -3\hat{i} - \hat{j} + 25\hat{k} = (-3, -1, 25)^T
+= -3\hat{\imath} - \hat{\jmath} + 25\hat{k} = (-3, -1, 25)^T
 \end{align*} 
 \item 
 \begin{align*}
@@ -1180,11 +1222,11 @@ For $\vec{u} = (1, -3, 9)^T$ and $\vec{v} = (1, -2, 4)^T$, find
 \theta \approx \SI{0.181}{\radian}    
 \end{align*}
 \item $\vec{u} \times \vec{v} = \begin{vmatrix}
-\hat{i} & \hat{j} & \hat{k}\\
+\hat{\imath} & \hat{\jmath} & \hat{k}\\
 1 & -3 & 9\\
 1 & -2 & 4
 \end{vmatrix}
-= 6\hat{i} + 5\hat{j} + \hat{k} = (6, 5, 1)^T$
+= 6\hat{\imath} + 5\hat{\jmath} + \hat{k} = (6, 5, 1)^T$
 \item $\vec{u} \cdot (\vec{u} \times \vec{v}) = (1, -3, 9)^T \cdot (6, 5, 1)^T = (1)(6) + (-3)(5) + (9)(1) = 0$, $\vec{v} \cdot (\vec{u} \times \vec{v}) = (1)(6) + (-2)(5) + (4)(1) = 0$
 \end{enumerate}
 \end{Answer}
@@ -1229,10 +1271,10 @@ Mangkhut & 2018/09/16, 22:00 & \textcolor{red}{\SI{25}{\km \per \hour}} & \SI{28
 
 \begin{Exercise}
 \label{ex:triangular}
-Prove the Triangular Inequality.
-\begin{align*}
+Prove the Triangle Inequality.
+\begin{align}
 \norm{\vec{u} + \vec{v}} \leq \norm{\vec{u}} + \norm{\vec{v}}
-\end{align*}
+\end{align}
 \end{Exercise}
 \begin{Answer}
 \begin{align*}
@@ -1247,9 +1289,9 @@ Prove the Triangular Inequality.
 \phantomsection
 \label{ex:parallellaw}
 Prove the Parallelogram Law. (See Figure \ref{fig:parallellaw})
-\begin{align*}
+\begin{align}
 2\norm{\vec{u}}^2 + 2\norm{\vec{v}}^2 = \norm{\vec{u}+\vec{v}}^2 + \norm{\vec{u}-\vec{v}}^2
-\end{align*}
+\end{align}
 \end{Exercise}
 \begin{figure}
 \centering
@@ -1261,7 +1303,7 @@ Prove the Parallelogram Law. (See Figure \ref{fig:parallellaw})
 \draw[blue, dashed, ->] (1,3) -- (6,4);
 \draw[red, dashed, ->] (5,1) -- (6,4);
 \end{tikzpicture}
-\caption{The parallelogram constructed by vectors for Exercise \ref{ex:parallellaw}.}
+\caption{\textit{The parallelogram constructed by vectors for Exercise \ref{ex:parallellaw}.}}
 \label{fig:parallellaw}
 \end{figure}
 \begin{Answer}
@@ -1278,12 +1320,12 @@ Show that Coriolis Force derived in Example \ref{exmp:Coriolis} does zero work a
 \begin{Answer}
 In Example \ref{exmp:Coriolis}, we have
 \begin{align*}
-\overrightarrow{F_\text{cor}} &= (2\Omega(v\sin\varphi - w\cos\varphi))\hat{i} + (-2\Omega u\sin\varphi)\hat{j} + (2\Omega u\cos\varphi)\hat{k}    
+\overrightarrow{F_\text{cor}} &= (2\Omega(v\sin\varphi - w\cos\varphi))\hat{\imath} + (-2\Omega u\sin\varphi)\hat{\jmath} + (2\Omega u\cos\varphi)\hat{k}    
 \end{align*}
 and hence the rate of work done is
 \begin{align*}
 &\quad \overrightarrow{F_\text{cor}} \cdot \vec{v} \\
-&= [(2\Omega(v\sin\varphi - w\cos\varphi))\hat{i} + (-2\Omega u\sin\varphi)\hat{j} + (2\Omega u\cos\varphi)\hat{k}] \cdot (u\hat{i} + v\hat{j} + w\hat{k}) \\
+&= [(2\Omega(v\sin\varphi - w\cos\varphi))\hat{\imath} + (-2\Omega u\sin\varphi)\hat{\jmath} + (2\Omega u\cos\varphi)\hat{k}] \cdot (u\hat{\imath} + v\hat{\jmath} + w\hat{k}) \\
 &= (2\Omega(v\sin\varphi - w\cos\varphi))u + (-2\Omega u\sin\varphi)v + (2\Omega u\cos\varphi)w \\
 &= 2\Omega uv\sin\varphi - 2\Omega uw\sin\varphi - 2\Omega uv\sin\varphi + 2\Omega uw\sin\varphi = 0
 \end{align*}
