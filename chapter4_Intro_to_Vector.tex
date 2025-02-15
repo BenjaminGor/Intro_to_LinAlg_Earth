@@ -737,7 +737,7 @@ The computation of cross products (denoted by $\times$) involving any two of the
     
   \draw[->, blue, line width=1] (O) -- (128:3.2) coordinate(X) node[above=6,left=-6,scale=1.5] {$\vec{u}$};
   \draw[->, red, line width=1] (O) -- (-182:3.2) coordinate(Y) node[above=5,left=-6,scale=1.5] {$\vec{v}$};
-  \draw[->, Purple, line width=2] (O) -- (62:3.2) node[above=-1,scale=1.5] {$\textcolor{blue}{\vec{u}} \textcolor{Purple}{\;\times\;} \textcolor{red}{\vec{v}}$};
+  \draw[->, Purple, line width=2] (O) -- (62:3.2) node[above=-1,scale=1.5] {$\textcolor{blue}{\vec{u}} \textcolor{Purple}{\,\times\,} \textcolor{red}{\vec{v}}$};
   \draw pic[->, "$\theta$", draw=black, thick, angle radius=30, angle eccentricity=1.2] {angle = X--O--Y};
   \end{tikzpicture}
   \caption{Demonstration of the right-hand rule.}
@@ -924,7 +924,8 @@ The readers can try the alternative of computing $\vec{u}+2\vec{v}$ and $\vec{u}
 \end{solution}
 
 Finally, cancellation of dot product or cross product at both sides of an equation is generally not correct, and here is a table summarizing the inputs and outputs of dot/cross product for clarification.
-\begin{center}
+\begin{table}
+\centering
 \begin{tabular}{|p{32mm}|p{60mm}|p{26mm}|}
 \hline
  & Input & Output \\
@@ -935,7 +936,8 @@ Cross Product, or Vector Product ($\times$) & Two three-dimensional real vectors
 \\
 \hline
 \end{tabular}
-\end{center}
+\caption{\textit{A table comparing the differences between dot/cross product.}}
+\end{table}
 
 \section{Earth Science Applications}
 \begin{exmp}
@@ -1007,7 +1009,7 @@ import numpy as np
 myVec1 = np.array([-1., 2., 4.])
 myVec2 = np.array([2., 1., 3.])
 \end{lstlisting}
-Addition, subtraction, and scalar multiplication works just like for matrices.
+Addition, subtraction, and scalar multiplication work just like for matrices.
 \begin{lstlisting}
 myVec3 = -myVec1 + 2*myVec2
 print(myVec3)

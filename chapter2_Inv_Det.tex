@@ -218,7 +218,7 @@ so that cancellation holds in this situation. Take the matrix equation $AG = H$ 
 \begin{align*}
 AG &= H \\
 A^{-1}AG &= A^{-1}H \\
-\textcolor{gray}{((A^{-1}A)G = IG =)} \; G &= A^{-1}H & 
+\textcolor{gray}{((A^{-1}A)G = IG =)} \, G &= A^{-1}H & 
 \begin{aligned}
 & \text{(Properties \ref{proper:matmul} and \ref{proper:identity},} \\    
 & \text{Definition \ref{defn:inverse})}
@@ -735,7 +735,7 @@ Since it is quite abstract, it is useful to have some actual examples.
 1 & 0 & 0
 \end{bmatrix} & \text{Swapping $R_1$ and $R_3$: } R_1 \leftrightarrow R_3 
 \end{align*}
-The third type of elementary matrices listed above is known as permutation matrices. Any elementary row operation can be apparently undone by an inverse elementary row operation (addition vs subtraction, multiplication vs division ($c \neq 0$), swapping twice). Accordingly, any elementary matrix has another corresponding elementary matrix as its inverse, and the readers are invited to think about their forms in the exercise below. \par
+The third type of elementary matrices listed above is known as \textit{permutation matrices}. Any elementary row operation can be apparently undone by an inverse elementary row operation (addition vs subtraction, multiplication vs division ($c \neq 0$), swapping twice). Accordingly, any elementary matrix has another corresponding elementary matrix as its inverse, and the readers are invited to think about their forms in the exercise below. \par
 Short Exercise: Write down the inverses of the three example elementary matrices above.\footnote{$
 \begin{bmatrix}
 1 & 0 & 0 \\
@@ -861,7 +861,7 @@ a_{21} & a_{22} \\ };
 \end{center}
 \vspace{-25pt}
 \begin{align}
-|A| &= \textcolor{red}{a_{11}a_{22}} - \textcolor{blue}{a_{21}a_{12}}
+\abs{A} &= \textcolor{red}{a_{11}a_{22}} - \textcolor{blue}{a_{21}a_{12}}
 \end{align}
 which is the product of entries crossed by the red arrow, minus the blue one. Similarly, for a $3 \times 3$ matrix
 \begin{align*}
@@ -892,8 +892,10 @@ a_{31} & a_{32} & a_{33} & \textcolor{gray}{a_{31}} & \textcolor{gray}{a_{32}} \
 \end{center}
 \vspace{-25pt}
 \begin{align}
-|A| ={}& (\textcolor{red}{a_{11}a_{22}a_{33}} + \textcolor{red}{a_{12}a_{23}a_{31}} + \textcolor{red}{a_{13}a_{21}a_{32}}) \nonumber \\
-&- (\textcolor{blue}{a_{31}a_{22}a_{13}} + \textcolor{blue}{a_{32}a_{23}a_{11}} + \textcolor{blue}{a_{33}a_{21}a_{12}})
+\abs{A} ={}& \begin{aligned}
+&(\textcolor{red}{a_{11}a_{22}a_{33}} + \textcolor{red}{a_{12}a_{23}a_{31}} + \textcolor{red}{a_{13}a_{21}a_{32}}) \\
+&- (\textcolor{blue}{a_{31}a_{22}a_{13}} + \textcolor{blue}{a_{32}a_{23}a_{11}} + \textcolor{blue}{a_{33}a_{21}a_{12}})    
+\end{aligned}
 \end{align}
 \end{proper}
 
@@ -1103,7 +1105,8 @@ The three types of elementary matrices $E$ in Properties \ref{proper:elementarym
 have a determinant of $c$, $1$, and $-1$, respectively.
 \end{proper}
 We will prove the above properties for the second kind of elementary row
-operations/elementary matrices (corresponding to addition/subtraction) in Appendix \ref{section:invdetappend}. The properties for the two other types of elementary matrices are easy to show and we will take them for granted, such that we can establish the second case in Properties \ref{proper:zerodet}, which is in turn used for demonstrating the later results. Since the determinants of elementary matrices, by Properties \ref{proper:elementarymatdet}, coincide exactly with the factors by how the determinant of a square matrix $A$ changes when the corresponding elementary row operations are applied on $A$ (represented by multiplication to the left of $A$ by these elementary matrices) as shown in Properties \ref{proper:elementaryopdet}, we conclude that
+operations/elementary matrices (corresponding to addition/subtraction) in Appendix \ref{section:invdetappend}. The properties for the two other types of elementary matrices are easy to show and we will take them for granted, such that we can establish the second case in Properties \ref{proper:zerodet}, which is in turn used for demonstrating the later results.\par
+Since the determinants of elementary matrices, by Properties \ref{proper:elementarymatdet}, coincide exactly with the factors by how the determinant of a square matrix $A$ changes when the corresponding elementary row operations are applied on $A$ (represented by multiplication to the left of $A$ by these elementary matrices) as shown in Properties \ref{proper:elementaryopdet}, we conclude that
 \begin{proper}
 \label{proper:elementarytimesdet}
 For any elementary matrix $E$ and a square matrix $A$, we have
