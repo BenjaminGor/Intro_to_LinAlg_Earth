@@ -478,14 +478,15 @@ Differentiation then gives
 Short Exercise: What is the result if the expression above is differentiated with respect to $\textbf{x}$ once more?\footnote{It is simply $A+A^T$.}
 
 \begin{exmp}
-Prove the following formula for the curl of a cross product:
+Prove the following formula for the curl of cross product:
 \begin{align}
 \nabla \times (\vec{u} \times \vec{v}) = (\nabla \cdot \vec{v})\vec{u} + \vec{v} \cdot \nabla\vec{u} - \vec{u} \cdot \nabla\vec{v} - (\nabla \cdot \vec{u})\vec{v}  
 \end{align}
 \end{exmp}
 \begin{solution}
 \begin{align*}
-\nabla \times (\vec{u} \times \vec{v}) &= \nabla \times (\epsilon_{ijk}u_jv_k) &\text{(by (\ref{eqn:crosstens}))} \\
+&\quad \nabla \times (\vec{u} \times \vec{v}) \\
+&= \nabla \times (\epsilon_{ijk}u_jv_k) &\text{(by (\ref{eqn:crosstens}))} \\
 &= \epsilon_{lmi}\partial_m (\epsilon_{ijk}u_jv_k) &\text{(by (\ref{eqn:curltens}))} \\
 &= \epsilon_{ilm}\epsilon_{ijk} [u_j\partial_m(v_k) + \partial_m(u_j)v_k] &\text{(Product Rule)} \\
 &= (\delta_{lj}\delta_{mk} - \delta_{lk}\delta_{mj}) [u_j\partial_m(v_k) + \partial_m(u_j)v_k] &\text{(by (\ref{eqn:epsdel}))} \\

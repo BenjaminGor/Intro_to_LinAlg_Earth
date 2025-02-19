@@ -211,7 +211,7 @@ For two complex vectors $\vec{u}$ and $\vec{v}$, we have
 (a\vec{u}) \cdot (b\vec{v}) &= a\textcolor{red}{\bar{b}}(\vec{u} \cdot \vec{v}) &\text{where $a$, $b$ are some complex constants}    
 \end{align*}
 \end{proper}
-There is no cross product analogous for complex vectors.
+There is no cross product analog for complex vectors.
 \begin{exmp}
 Show the anti-symmetric property in Properties \ref{proper:complexdot} holds for $\vec{u} = (1+2i, 3+i)^T$, $\vec{v} = (2-5i, 1+4i)^T$.
 \end{exmp}
@@ -247,7 +247,7 @@ It means that conjugate transpose is done by conjugating all entries of the matr
 \label{defn:Hermitian}
 A complex square matrix $A$ is called Hermitian if $A^* = A$.
 \end{defn}
-Properties of conjugate transpose are alike to those for real transpose stated in Properties \ref{proper:transp}. Furthermore, for complex dot product, there is also something parallel to the second half of Properties \ref{proper:dotproper}.
+Note that the diagonal entries of a Hermitian matrix are always real. Properties of conjugate transpose are alike to those for real transpose stated in Properties \ref{proper:transp}. Furthermore, for complex dot product, there is also something parallel to the second half of Properties \ref{proper:dotproper}.
 \begin{proper}
 \label{proper:complexmat}
 For two complex matrices $A$ and $B$, we have
@@ -1497,7 +1497,7 @@ Short Exercise: Directly apply Properties \ref{proper:restrictmat} to redo the e
 0
 \end{bmatrix}_\eta
 $ and this will be the first column of $\smash{[T|_W]_{\beta_W}^\eta}$. The second column is derived similarly by evaluating $[T(\vec{w}_2)]_\eta$.}\par
-With the concept of restriction, we can now introduce the matrix analogous of a direct sum. For a linear transformation $T: \mathcal{U} \to \mathcal{V}$, if the vector spaces (finite-dimensional) involved are direct sums such that $\mathcal{U} = \mathcal{W} \oplus \mathcal{W}_C$ and $\mathcal{V} = \mathcal{Y} \oplus \mathcal{Y}^C$, and the ranges
+With the concept of restriction, we can now introduce the matrix analog of a direct sum. For a linear transformation $T: \mathcal{U} \to \mathcal{V}$, if the vector spaces (finite-dimensional) involved are direct sums such that $\mathcal{U} = \mathcal{W} \oplus \mathcal{W}_C$ and $\mathcal{V} = \mathcal{Y} \oplus \mathcal{Y}^C$, and the ranges
 \begin{align*}
 R(T|_W) \in \mathcal{Y} & & R(T|_{W^C}) \in \mathcal{Y}^C
 \end{align*}
@@ -1894,6 +1894,7 @@ find its determinant and inverse.
 \end{Exercise}
 
 \begin{Exercise}
+\phantomsection
 \label{ex:schurinvD}
 Prove the formulae in Properties \ref{proper:schurinvD}, by noting that
 \begin{align*}

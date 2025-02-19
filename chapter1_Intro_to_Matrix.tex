@@ -444,7 +444,7 @@ A linear system of the shape $m \times n$, i.e. $m$ linear equations in $n$ unkn
 \sum_{j=1}^n a_j^{(m)}x_j &= a_1^{(m)}x_1 + a_2^{(m)}x_2 + a_3^{(m)}x_3 + \cdots + a_n^{(m)}x_n & &= h^{(m)} 
 \end{alignedat}\right.
 \end{align}
-If $h^{(1)}, h^{(2)}, \ldots, h^{(m)}$ on R.H.S. are all zeros, i.e. all the equations are homogeneous, then the system is called a \index{Linear System of Equations!Homogeneous Linear System of Equations}\keywordhl{homogeneous linear system (of equations)}.
+If $h^{(1)}, h^{(2)}, \ldots, h^{(m)}$ on R.H.S. are all zeros, i.e. all the equations are homogeneous, then the system is called a \index{Homogeneous Linear System of Equations}\keywordhl{homogeneous linear system (of equations)}.
 \end{defn}
 It is not hard to see that for any homogeneous linear system, it always has the trivial solution of $x_j = 0$ for $j = 1, 2 \ldots, n$, or expressed as $\vec{x} = \textbf{0}$. However, such a trivial solution may not be the only solution to the system, as we shall see in Chapter \ref{chap:SolLinSys}. Below are some examples of linear systems.
 \begin{align*}
@@ -1202,9 +1202,9 @@ For the following matrix,
 1 & 3 & 6 & 10
 \end{bmatrix}
 \]
-Find the results if the following elementary row operations are applied on it: 
+Find the results if the following elementary row operations are applied to it: 
 \begin{enumerate}[label=(\alph*)]
-\item Multiplying the third row by a factor of 2, and then subtracting the third row by the second row,
+\item Multiplying the third row by a factor of 2, and then subtracting the third row using the second row,
 \item Adding the first row by 3 times the third row, and then interchanging the first and second row, and finally subtract the third row by 2 times the first row.\\
 \end{enumerate}
 \end{Exercise}
@@ -1220,6 +1220,7 @@ Find the results if the following elementary row operations are applied on it:
 \end{Answer}
 
 \begin{Exercise}
+\phantomsection
 \label{ex:lapse}
 The \textit{dry adiabatic lapse rate}, which is the rate of decrease in air temperature when an unsaturated air parcel rises, is about $\Gamma_{dry} = \SI{9.8}{\celsius \per \km}$. When the temperature of the air parcel falls below the \textit{dew point}, the air saturates and condensation occurs. Typically, the dew point temperature of an air parcel will decrease at a rate of roughly $\Gamma_{dew} = \SI{2}{\celsius \per \km}$. Now, an air parcel with an initial air temperature/dew point temperature of $T_{a,ini} = \SI{25.4}{\celsius}$ / $T_{dew, ini} = \SI{17.8}{\celsius}$ at the ground starts to rise. Let $z_{cd}$ and $T_{cd}$ be the height above the ground (in \si{\km}) and temperature (in \si{\celsius}) of the air parcel when condensation occurs. Construct a linear system with $z_{cd}$ and $T_{cd}$ as the unknowns to represent this situation.
 \end{Exercise}
@@ -1277,6 +1278,7 @@ z_{cd}
 \end{Answer}
 
 \begin{Exercise}
+\phantomsection
 \label{ex:animals}
 In some ancient Chinese Mathematics texts, the problem of \textit{Chickens and Rabbits in the Same Cage} was posed. \textit{"Now there are some chickens and rabbits placed in the same cage, with a total number of $35$ heads and $94$ legs. How many chickens and rabbits are there respectively?"} Given the fact that a chicken [rabbit] has two [four] legs (and obviously only one head), write down the corresponding linear system in terms of the numbers of chickens $x$ and rabbits $y$.
 \end{Exercise}
