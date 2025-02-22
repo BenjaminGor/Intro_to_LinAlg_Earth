@@ -10,25 +10,25 @@ In Chapter \ref{chap:vec_space}, we have discussed what it means to be a vector 
 As introduced in the beginning, an \index{Inner Product Space}\keywordhl{inner product space} is a vector space (either real or complex) that comes with an \index{Inner Product}\keywordhl{inner product} operation that is akin to the usual dot product. To qualify as a valid inner product, it has to fulfill four requirements as suggested below.
 \begin{defn}[Inner Product (Space)]
 \label{defn:innerprod}
-An inner product on a vector space $\mathcal{V}$ over $\mathbb{R}$ ($\mathbb{C}$) is a function that takes a pair of vectors $\vec{u}, \vec{v} \in \mathcal{V}$ as the input and returns an $\mathbb{R}$ ($\mathbb{C}$) scalar, denoted by $\langle \vec{u}, \vec{v} \rangle$. Then, for any $\vec{u}, \vec{v}, \vec{w} \in \mathcal{V}$ and scalar $a \in \mathbb{R}$ ($\mathbb{C}$), the following four axioms have to hold.
+An inner product on a vector space $\mathcal{V}$ over $\mathbb{R}$ ($\mathbb{C}$) is a function that takes a pair of vectors $\vec{u}, \vec{v} \in \mathcal{V}$ as the input and returns an $\mathbb{R}$ [$\mathbb{C}$] scalar, denoted by $\langle \vec{u}, \vec{v} \rangle$. Then, for any $\vec{u}, \vec{v}, \vec{w} \in \mathcal{V}$ and scalar $a \in \mathbb{R}$ [$\mathbb{C}$], the following four axioms have to hold.
 \begin{enumerate}
-    \item $\langle \vec{u}, \vec{v} \rangle = \langle \vec{v}, \vec{u} \rangle$ ($\langle \vec{u}, \vec{v} \rangle = \overline{\langle \vec{v}, \vec{u} \rangle}$) ((Conjugate) Symmetry);
+    \item $\langle \vec{u}, \vec{v} \rangle = \langle \vec{v}, \vec{u} \rangle$ [$\langle \vec{u}, \vec{v} \rangle = \overline{\langle \vec{v}, \vec{u} \rangle}$] ([Conjugate] Symmetry);
     \item $\langle \vec{u}+\vec{v}, \vec{w} \rangle = \langle \vec{u}, \vec{w} \rangle + \langle \vec{v}, \vec{w} \rangle$ (Additivity);
     \item $\langle a\vec{u}, \vec{v} \rangle = a\langle \vec{u}, \vec{v} \rangle$ (Homogeneity); and
     \item $\langle \vec{v}, \vec{v} \rangle \geq 0$, and $\langle \vec{v}, \vec{v} \rangle = 0$ if and only if $\vec{v} = \textbf{0}$ is the zero vector. (Positivity)
 \end{enumerate}
-The second and third condition can be combined into \textit{linearity} (in the first argument): given another scalar $b \in \mathbb{R}$ ($\mathbb{C}$), we have $\langle a\vec{u}+b\vec{v}, \vec{w} \rangle = a\langle \vec{u}, \vec{w} \rangle + b\langle \vec{v}, \vec{w} \rangle$. A real (complex) vector space equipped with an inner product is then known as a real (complex) inner product space. 
+The second and third condition can be combined into \textit{linearity} (in the first argument): given another scalar $b \in \mathbb{R}$ [$\mathbb{C}$], we have $\langle a\vec{u}+b\vec{v}, \vec{w} \rangle = a\langle \vec{u}, \vec{w} \rangle + b\langle \vec{v}, \vec{w} \rangle$. A real [complex] vector space equipped with an inner product is then known as a real [complex] inner product space. 
 \end{defn}
 Short Exercise: Show that $\langle a\vec{u}, b\vec{v} \rangle = a\overline{b}\langle \vec{u}, \vec{v} \rangle$ for any complex inner product space.\footnote{$\langle a\vec{u}, b\vec{v} \rangle = a\langle \vec{u}, b\vec{v} \rangle = a\overline{\langle b\vec{v}, \vec{u} \rangle} = a\overline{b\langle \vec{v}, \vec{u} \rangle} = a(\overline{b}) \overline{\langle \vec{v}, \vec{u} \rangle} = a\overline{b}\langle \vec{u}, \vec{v} \rangle$ by the first and third axiom.}\par
-For now, we will limit ourselves to finite-dimensional vector/inner product spaces until Section \ref{section:infinner}. It is not hard to verify that the above axioms hold for the usual dot product, so $\mathbb{R}^n$ (as well as $\mathbb{C}^n$) is automatically an inner product space when the (complex) dot product is equipped. In this case, they are known as the \index{Standard Inner Product}\keywordhl{standard inner product} and \index{Euclidean $n$-space}\keywordhl{Euclidean $n$-space}. However, $\mathbb{R}^n$ will be a different inner product space when another inner product is used. It can be shown that all alternative inner products that can applied to $\mathbb{R}^n$ are precisely positive-definite symmetric bilinear forms as the extension of positive-definite quadratic forms introduced in the last chapter. Given any positive-definite symmetric bilinear form $B$, it can be verified that $\langle \vec{u}, \vec{v} \rangle = \vec{u}^TB\vec{v}$ will satisfy the real inner product axioms.\footnote{For (1): $\langle \vec{u}, \vec{v} \rangle = \vec{u}^TB\vec{v} = (\vec{u}^TB\vec{v})^T$ since it is only a scalar, and then $(\vec{u}^TB\vec{v})^T = \vec{v}^TB^T\vec{u} = \vec{v}^TB\vec{u} = \langle \vec{v}, \vec{u} \rangle$ due to Properties \ref{proper:transp} and because $B$ is symmetric. (2) and (3) are obvious. For (4), as $B$ is required to be positive-definite, $\langle \vec{v}, \vec{v} \rangle = \vec{v}^TB\vec{v} > 0$ by Definition \ref{defn:quaddefinite} as long as $\vec{v} \neq \textbf{0}$ and it is apparent that $\langle \vec{v}, \vec{v} \rangle = \textbf{0}B\textbf{0} = 0$ when $\vec{v} = \textbf{0}$.} Below are some other properties of inner products extended from the axioms that can be compared to Properties \ref{proper:dotproper} and \ref{proper:complexdot}.
+For now, we will limit ourselves to finite-dimensional vector/inner product spaces until Section \ref{section:infinner}. It is not hard to verify that the above axioms hold for the usual dot product, so $\mathbb{R}^n$ [as well as $\mathbb{C}^n$] is automatically an inner product space when the [complex] dot product is equipped. In this case, they are known as the \index{Standard Inner Product}\keywordhl{standard inner product} and \index{Euclidean $n$-space}\keywordhl{Euclidean $n$-space}. However, $\mathbb{R}^n$ will be a different inner product space when another inner product is used. It can be shown that all alternative inner products that can be applied to $\mathbb{R}^n$ are precisely positive-definite symmetric bilinear forms as the extension of positive-definite quadratic forms introduced in the last chapter. Given any positive-definite symmetric bilinear form $B$, it can be verified that $\langle \vec{u}, \vec{v} \rangle = \textbf{u}^TB\textbf{v}$ will satisfy the real inner product axioms.\footnote{For (1): $\langle \vec{u}, \vec{v} \rangle = \vec{u}^TB\vec{v} = (\vec{u}^TB\vec{v})^T$ since it is only a scalar, and then $(\vec{u}^TB\vec{v})^T = \vec{v}^TB^T\vec{u} = \vec{v}^TB\vec{u} = \langle \vec{v}, \vec{u} \rangle$ due to Properties \ref{proper:transp} and because $B$ is symmetric. (2) and (3) are obvious. For (4), as $B$ is required to be positive-definite, $\langle \vec{v}, \vec{v} \rangle = \vec{v}^TB\vec{v} > 0$ by Definition \ref{defn:quaddefinite} as long as $\vec{v} \neq \textbf{0}$ and it is apparent that $\langle \vec{v}, \vec{v} \rangle = \textbf{0}B\textbf{0} = 0$ when $\vec{v} = \textbf{0}$.} Below are some other properties of inner products extended from the axioms that can be compared to Properties \ref{proper:dotproper} and \ref{proper:complexdot}.
 \begin{proper}
 \label{proper:innerprod2}
-For vectors $\vec{u}, \vec{v}, \vec{w} \in \mathcal{V}$ and scalar $b \in \mathbb{R}$ ($\mathbb{C}$) in a real (complex) inner product space, we have
+For vectors $\vec{u}, \vec{v}, \vec{w} \in \mathcal{V}$ and scalar $b \in \mathbb{R}$ [$\mathbb{C}$] in a real [complex] inner product space, we have
 \begin{enumerate}
     \item $\langle \vec{u} \pm \vec{v}, \vec{w} \rangle = \langle \vec{u}, \vec{w} \rangle \pm \langle \vec{v}, \vec{w} \rangle$ (Distributive Property);
     \item $\langle \vec{u}, \vec{v} \pm \vec{w} \rangle = \langle \vec{u}, \vec{v} \rangle \pm \langle \vec{u}, \vec{w} \rangle$ (Distributive Property);
     \item $\langle \vec{v}, \textbf{0} \rangle = \langle \textbf{0}, \vec{v} \rangle = 0$;
-    \item $\langle \vec{u}, b\vec{v} \rangle = b\langle \vec{u}, \vec{v} \rangle$ ($\langle \vec{u}, b\vec{v} \rangle = \bar{b}\langle \vec{u}, \vec{v} \rangle$);
+    \item $\langle \vec{u}, b\vec{v} \rangle = b\langle \vec{u}, \vec{v} \rangle$ [$\langle \vec{u}, b\vec{v} \rangle = \bar{b}\langle \vec{u}, \vec{v} \rangle$];
     \item if $\langle \vec{u}, \vec{v} \rangle = \langle \vec{u}, \vec{w} \rangle$ for all $\vec{u}$, then $\vec{v} = \vec{w}$.
 \end{enumerate}
 \end{proper}
@@ -47,32 +47,33 @@ As noted earlier, the idea of inner products extends the usual dot product and w
 \begin{proper}[Vector Norm]
 \label{proper:norminner}
 The norm of a vector in an inner product space is induced by
-\begin{align*}
+\begin{align}
 \norm{\vec{v}} &= \sqrt{\langle\vec{v} , \vec{v}\rangle} & &\text{or equivalently} &
 \norm{\vec{v}}^2 &= \langle\vec{v} , \vec{v}\rangle
-\end{align*}
+\end{align}
 \end{proper}
-Unit vectors are then conveniently created using this definition of norm.
+where $\langle \cdot, \cdot \rangle$ is an inner product following Definition \ref{defn:innerprod}.
+Unit vectors with respect to a specific inner product are then conveniently created using this definition of norm.
 \begin{defn}
 \label{defn:unitvecinner}
 The unit vector of a non-zero vector $\vec{v} \in \mathcal{V}$ in an inner product space is denoted as $\hat{v}$ and is given by
-\begin{align*}
+\begin{align}
 \hat{v} &= \frac{1}{\norm{\vec{v}}}\vec{v}
-\end{align*}
+\end{align}
 where the norm $\norm{\vec{v}}$ is now defined as in Properties \ref{proper:norminner}. 
 \end{defn}
 The notion of orthogonality (as well as orthonormal) in Properties \ref{proper:dotorth} is also transferred to an inner product space by the same essence of replacing the dot product with an inner product.
 \begin{proper}
 \label{proper:orthoinner}
-Two vectors $\vec{u}, \vec{v} \in \mathcal{V}$ in an inner product space are said to be orthogonal with respect to the inner product when $\langle\vec{u} , \vec{v}\rangle = \langle\vec{v} , \vec{u}\rangle = 0$.
+Two vectors $\vec{u}, \vec{v} \in \mathcal{V}$ in an inner product space are said to be orthogonal with respect to the inner product when $\langle\vec{u}, \vec{v}\rangle = \langle\vec{v}, \vec{u}\rangle = 0$.
 \end{proper}
 Some other related results derived using dot product are also valid when inner products are used instead and we note them below.
 \begin{thm}[Cauchy–Schwarz Inequality]
 \label{thm:cauchyschinner}
 Given two vectors $\vec{u}, \vec{v} \in \mathcal{V}$ in an inner product space, we have
-\begin{align*}
+\begin{align}
 \abs{\langle\vec{u} , \vec{v}\rangle} \leq \norm{\vec{u}}\norm{\vec{v}} =  \sqrt{\langle\vec{u} , \vec{u}\rangle} \sqrt{\langle\vec{v} , \vec{v}\rangle}
-\end{align*}
+\end{align}
 \end{thm}
 The proof is essentially the same as the one in Theorem \ref{thm:CauchySch} but with all the dot product expressions replaced by the inner product ones. Also
 \begin{proper}
@@ -83,7 +84,7 @@ Again, the proof follows the same line of arguments as in Properties \ref{proper
 \begin{exmp}
 Show that $\vec{u} = (1,2)^T$ and $\vec{v} = (-3,4)^T$ in $\mathbb{R}^2$ are orthogonal to each other if the inner product used is given by
 \begin{align*}
-\langle\vec{u}, \vec{v}\rangle = \vec{u}^TB\vec{v}
+\langle\vec{u}, \vec{v}\rangle = \textbf{u}^TB\textbf{v}
 \end{align*}
 where 
 \begin{align*}
@@ -95,9 +96,9 @@ B =
 \end{align*}
 \end{exmp}
 \begin{solution}
-First, we have to make sure the inner product defined as a symmetric bilinear form above is indeed valid, particularly it has to be positive-definite. By Theorem \ref{thm:quaddefinite}, it simply amounts to checking if the eigenvalues are all positive. A simple calculation reveals that $\lambda = \frac{3+\sqrt{5}}{2}, \frac{3-\sqrt{5}}{2} > 0$ so we can proceed to calculate
+First, we have to make sure the inner product defined as a symmetric bilinear form above is indeed valid, particularly it has to be positive-definite. By Theorem \ref{thm:quaddefinite}, it simply amounts to checking if the eigenvalues are all positive. A simple calculation reveals that $\lambda = \smash{\frac{3+\sqrt{5}}{2}, \frac{3-\sqrt{5}}{2}} > 0$ so we can proceed to calculate
 \begin{align*}
-\langle\vec{u}, \vec{v}\rangle &= \vec{u}^TB\vec{v} \\
+\langle\vec{u}, \vec{v}\rangle &= \textbf{u}^TB\textbf{v} \\
 &= \begin{bmatrix}
 1 & 2
 \end{bmatrix}
@@ -127,7 +128,7 @@ We have been staying in the realm of finite-dimensional vector/inner product spa
 \begin{align}
 \langle f,g \rangle = \int_a^b f(x) \overline{g(x)} dx \label{eqn:integralinner}
 \end{align}
-where $a < b$ are some real constants. Checking the validity of this inner product formulation is not hard.\footnote{We will only justify (4) in Definition \ref{defn:innerprod} and leave the remaining axioms to the readers. It is obvious that if $f(x) = 0$ is the zero function then $\langle f,f \rangle = \int_a^b (0)^2 dx = 0$. Assume that $f(x)$ is not everywhere zero, then by continuity from elementary calculus, we know that $f(c) \neq 0$ and hence $\abs{f(c)}^2 > 0$ at some point $a \leq c \leq b$ and there exists $\delta > 0$ such that $\abs{f(x)}^2 > \frac{\abs{f(c)}^2}{2}$ where $c-\delta \leq c \leq c+\delta$, therefore $\langle f,f \rangle \geq \frac{\abs{f(c)}^2}{2} (2\delta) = \abs{f(c)}^2 \delta > 0$.} 
+where $a < b$ are some real constants. Checking the validity of this inner product formulation is not hard.\footnote{We will only justify (4) in Definition \ref{defn:innerprod} and leave the remaining axioms to the readers. It is obvious that if $f(x) = 0$ is the zero function then $\langle f,f \rangle = \int_a^b (0)^2 dx = 0$. Assume that $f(x)$ is not everywhere zero, then by continuity from elementary calculus, we know that $f(c) \neq 0$ and hence $\abs{f(c)}^2 > 0$ at some point $a \leq c \leq b$ and there exists $\delta > 0$ such that $\abs{f(x)}^2 > \frac{\abs{f(c)}^2}{2}$ where $c-\delta \leq x \leq c+\delta$, therefore $\langle f,f \rangle \geq \frac{\abs{f(c)}^2}{2} (2\delta) = \abs{f(c)}^2 \delta > 0$.} 
 Unfortunately, the above example fails to be a \index{Hilbert Space}\keywordhl{Hilbert space} which we often desire. The detailed explanation of how Hilbert spaces work belongs to the area of Functional Analysis and is very much out of the scope of this book\footnote{To put shortly, a Hilbert space is a \textit{complete} inner product space where all \textit{Cauchy sequences} are convergent. The meaning of complete here is different from that in Properties \ref{proper:hilbertorthosys}.}, and we will take the liberty to assume that an infinite-dimensional inner product space we work on is a \index{Separable Hilbert Space}\keywordhl{separable} Hilbert space from time to time. For instance, the $L^2[a,b]$ space for all square-integrable functions\footnote{A square-integrable function $f$ means that $\int \abs{f}^2 < \infty$ is finite, and the $L^2[a,b]$ space is actually the "completed" (in the sense of the footnote above) version of $\mathcal{C}^0[a,b]$.} equipped with the same inner product in Equation (\ref{eqn:integralinner}) is such a Hilbert space. The reason why we care so much about Hilbert spaces, particularly those that are separable, is because they always admit a countable orthonormal basis that is \textit{complete}.
 \begin{proper}
 \label{proper:hilbertorthosys}
@@ -163,28 +164,34 @@ Short Exercise: Show that the same\footnote{Actually, they are not the same func
 \subsection{Definition of Adjoints}
 \label{section:adjointdef}
 
-With the usual (complex) dot product as the inner product for $\mathbb{R}^n$ ($\mathbb{C}^n$), we have $\langle A\vec{u}, \vec{v} \rangle = \langle \vec{u}, A^T\vec{v} \rangle$ ($\langle \vec{u}, A^*\vec{v} \rangle$) by Properties \ref{proper:dotproper} (\ref{proper:complexdotherm}). Here the square matrix $A$ in the first argument can be moved to the second argument by applying a (conjugate) transpose on it. In this context, $A^T$ ($A^*$) is known as the \keywordhl{adjoint} of $A$ with respect to the dot product. Since any square matrix essentially represents a linear operator behind the scene (see Section \ref{section:lineartrans}), we can extend this idea for a general vector space $\mathcal{V}$ that has an inner product, where $\vec{u}, \vec{v} \in \mathcal{V}$ and the linear operator is $T: \mathcal{V} \to \mathcal{V}$ now. Subsequently, the adjoint of $T$ will then be another linear operator $T^\dag$ defined by the relationship $\langle T(\vec{u}), \vec{v} \rangle = \langle \vec{u}, T^\dag(\vec{v}) \rangle$. Again, if the standard inner product is employed, then we know that if the matrix representation of $T$ in the basis $\beta$ is $[T]_\beta$, then (WIP, need to write out the complex dot product)
-\begin{align*}
-\langle T(\vec{u}), \vec{v} \rangle &\equiv \langle [T]_\beta[\vec{u}]_\beta, [\vec{v}]_\beta \rangle \\ 
+With the usual [complex] dot product as the inner product for $\mathbb{R}^n$ [$\mathbb{C}^n$], we have $\langle A\vec{u}, \vec{v} \rangle = \langle \vec{u}, A^T\vec{v} \rangle$ [$\langle \vec{u}, A^*\vec{v} \rangle$] by Properties \ref{proper:dotproper} [\ref{proper:complexdotherm}]. Here the square matrix $A$ in the first argument can be moved to the second argument by applying a (conjugate) transpose on it. In this context, $A^T$ ($A^*$) is known as the \keywordhl{adjoint} of $A$ with respect to the dot product. Since any square matrix essentially represents a linear operator behind the scenes (see Section \ref{section:lineartrans}), we can extend this idea for a general vector space $\mathcal{V}$ that has an inner product, where $\vec{u}, \vec{v} \in \mathcal{V}$ and the linear operator is $T: \mathcal{V} \to \mathcal{V}$ now. Subsequently, the adjoint of $T$ will then be another linear operator $T^\dag$ defined by the relationship $\langle T(\vec{u}), \vec{v} \rangle = \langle \vec{u}, T^\dag(\vec{v}) \rangle$. Again, if the standard inner product is employed, then we know that if the matrix representation of $T$ in the basis $\beta$ is $[T]_\beta$, then
+\begin{align}
+\langle T(\vec{u}), \vec{v} \rangle &\equiv \langle [T]_\beta[\vec{u}]_\beta, [\vec{v}]_\beta \rangle \nonumber \\
+&= ([T]_\beta[\vec{u}]_\beta)^T\overline{[\vec{v}]_\beta} \nonumber \\
+&= [\vec{u}]_\beta^T[T]_\beta^T\overline{[\vec{v}]_\beta} \nonumber \\
+&= [\vec{u}]_\beta^T (\overline{[T]_\beta^*[\vec{v}]_\beta}) \nonumber \\
 &= \langle [\vec{u}]_\beta, ([T]_\beta)^*[\vec{v}]_\beta \rangle \stackrel{\text{def}}{\equiv} \langle \vec{u}, T^\dag(\vec{v}) \rangle
-\end{align*}
-so that we identify the adjoint operator $T^\dag$ with the conjugate transpose matrix representation of $([T]_\beta)^*$. 
+\end{align}
+by Properties \ref{proper:complexdotherm}, so that we identify the adjoint operator $T^\dag$ with the conjugate transpose matrix representation of $([T]_\beta)^*$. 
 \begin{defn}[Adjoint]
 \label{defn:adjoint}
 The adjoint of a linear operator $T: \mathcal{V} \to \mathcal{V}$ with respect to some inner product $\langle \cdot, \cdot \rangle$ is another linear operator denoted by $T^\dag$ such that the relation
-\begin{align*}
+\begin{align}
 \langle T(\vec{u}), \vec{v} \rangle = \langle \vec{u}, T^\dag(\vec{v}) \rangle    
-\end{align*}
+\end{align}
 holds for all $\vec{u}, \vec{v} \in \mathcal{V}$. Such an adjoint $T^\dag$ is always unique for a given $T$. 
 \end{defn}
-It is easy to check the linearity and uniqueness of an adjoint.\footnote{Linearity (Definition \ref{defn:lintrans}): Consider $\langle \vec{u}, T^\dag(a\vec{v} + b\vec{w}) \rangle = \langle T(\vec{u}), a\vec{v} + b\vec{w} \rangle = a\langle T(\vec{u}), \vec{v} \rangle + b\langle T(\vec{u}), \vec{w} \rangle$ by Definitions \ref{defn:adjoint} and \ref{defn:innerprod}. Subsequently $a\langle T(\vec{u}), \vec{v} \rangle + b\langle T(\vec{u}), \vec{w} \rangle = a\langle \vec{u}, T^\dag (\vec{v}) \rangle + b\langle \vec{u}, T^\dag(\vec{w}) \rangle = \langle \vec{u}, aT^\dag(\vec{v}) \rangle + \langle \vec{u}, bT^\dag(\vec{w}) \rangle = \langle \vec{u}, aT^\dag(\vec{v}) + bT^\dag(\vec{w}) \rangle$ by those definitions again. Since this has to hold for any $\vec{u}$ (plus $\vec{v}$ and $\vec{w}$), $\langle \vec{u}, T^\dag(a\vec{v} + b\vec{w}) \rangle = \langle \vec{u}, aT^\dag(\vec{v}) + bT^\dag(\vec{w}) \rangle$ means that $T^\dag(a\vec{v} + b\vec{w}) = aT^\dag(\vec{v}) + bT^\dag(\vec{w})$ by Properties \ref{proper:innerprod2}. Uniqueness: Assume that there is another adjoint $S^\dag$ satisfies $\langle T(\vec{u}), \vec{v} \rangle = \langle \vec{u}, S^\dag(\vec{v}) \rangle$ for all $\vec{u}$ and $\vec{v}$, then by Properties \ref{proper:innerprod2} $T^\dag(\vec{v}) = S^\dag(\vec{v})$ for all $\vec{v}$. Hence $T^\dag$ and $S^\dag$ must be the same operator by Properties \ref{proper:sametrans}.} Now let's look at how adjoint is found when inner products other than the standard one are used. First, if $\mathcal{V}$ is a finite-dimensional complex vector space and a new inner product is defined via a positive-definite Hermitian form (see Section \ref{section:hermform}\footnote{The readers should check for themselves that the four inner space axioms hold in this case.}) $\langle \vec{u}, \vec{v} \rangle = \textbf{u}^TH\overline{\textbf{v}} = (H^T\vec{u})\cdot\vec{v}$ where $\cdot$ denotes the usual complex dot product, then for a (complex) linear operator $T$ with a matrix representation of $[T]_\beta$ in the $\beta$ system, by Definition \ref{defn:complexdotproduct} and Properties \ref{proper:complexdotherm}:
+It is easy to check the linearity and uniqueness of an adjoint.\footnote{Linearity (Definition \ref{defn:lintrans}): Consider $\langle \vec{u}, T^\dag(a\vec{v} + b\vec{w}) \rangle = \langle T(\vec{u}), a\vec{v} + b\vec{w} \rangle = \overline{a}\langle T(\vec{u}), \vec{v} \rangle + \overline{b}\langle T(\vec{u}), \vec{w} \rangle$ by Definitions \ref{defn:adjoint} and Properties \ref{proper:innerprod2}. Subsequently $\overline{a}\langle T(\vec{u}), \vec{v} \rangle + \overline{b}\langle T(\vec{u}), \vec{w} \rangle = \overline{a}\langle \vec{u}, T^\dag (\vec{v}) \rangle + \overline{b}\langle \vec{u}, T^\dag(\vec{w}) \rangle = \langle \vec{u}, aT^\dag(\vec{v}) \rangle + \langle \vec{u}, bT^\dag(\vec{w}) \rangle = \langle \vec{u}, aT^\dag(\vec{v}) + bT^\dag(\vec{w}) \rangle$ by those definitions again. Since this has to hold for any $\vec{u}$ (plus $\vec{v}$ and $\vec{w}$), $\langle \vec{u}, T^\dag(a\vec{v} + b\vec{w}) \rangle = \langle \vec{u}, aT^\dag(\vec{v}) + bT^\dag(\vec{w}) \rangle$ means that $T^\dag(a\vec{v} + b\vec{w}) = aT^\dag(\vec{v}) + bT^\dag(\vec{w})$ by Properties \ref{proper:innerprod2}. Uniqueness: Assume that there is another adjoint $S^\dag$ satisfies $\langle T(\vec{u}), \vec{v} \rangle = \langle \vec{u}, S^\dag(\vec{v}) \rangle$ for all $\vec{u}$ and $\vec{v}$, then by Properties \ref{proper:innerprod2} $T^\dag(\vec{v}) = S^\dag(\vec{v})$ for all $\vec{v}$. Hence $T^\dag$ and $S^\dag$ must be the same operator by Properties \ref{proper:sametrans}.} Now let's look at how adjoint is found when inner products other than the standard one are used. First, if $\mathcal{V}$ is a finite-dimensional complex vector space and a new inner product is defined via a positive-definite Hermitian form (see Section \ref{section:hermform}\footnote{The readers should check for themselves that the four inner space axioms hold in this case.}) $\langle \vec{u}, \vec{v} \rangle = \textbf{u}^T\overline{H\textbf{v}} = (H^*\vec{u})\cdot\vec{v}$ where $\cdot$ denotes the usual complex dot product, then for a (complex) linear operator $T$ with a matrix representation of $[T]_\beta$ in the $\beta$ system, by Definition \ref{defn:complexdotproduct} and Properties \ref{proper:complexdotherm}:
 \begin{align*}
-\langle T(\vec{u}), \vec{v} \rangle &\equiv (H^T[T]_\beta[\vec{u}]_\beta) \cdot ([\vec{v}]_\beta) \\
-&= (H^T[T]_\beta (H^T)^{-1} H^T [\vec{u}]_\beta) \cdot ([\vec{v}]_\beta) \\
-&= (H^T[\vec{u}]_\beta) \cdot ((H^T[T]_\beta (H^T)^{-1})^*[\vec{v}]_\beta) \\
-&\equiv \langle \vec{u}, (H^T[T]_\beta (H^T)^{-1})^* \vec{v} \rangle = \langle \vec{u}, (\overline{H})^{-1} [T]_\beta^* \overline{H} \vec{v} \rangle
+\langle T(\vec{u}), \vec{v} \rangle &\equiv (H^*[T]_\beta[\vec{u}]_\beta) \cdot ([\vec{v}]_\beta) \\
+&= (H^*[T]_\beta (H^*)^{-1} H^* [\vec{u}]_\beta) \cdot ([\vec{v}]_\beta) \\
+&= (H^*[\vec{u}]_\beta) \cdot ((H^*[T]_\beta (H^*)^{-1})^*[\vec{v}]_\beta) \\
+&\equiv \langle \vec{u}, (H^*[T]_\beta (H^*)^{-1})^* \vec{v} \rangle = \langle \vec{u}, H^{-1} [T]_\beta^* H \vec{v} \rangle
 \end{align*}
-and thus we identify the matrix representation of the adjoint as $T^\dag \equiv (\overline{H})^{-1} [T]_\beta^* \overline{H}$ relative to such an inner product. For an infinite-dimensional inner product space, the inner product used is usually in the form of an integral like the one in Equation (\ref{eqn:integralinner}), additionally with a weighting function, and a linear operator $T$ can be more general, including differentiation and multiplication by some function, or a mix of them. As a result, the adjoint is often found via the technique of \textit{integration by parts}, producing boundary terms as a by-product. Conventionally, we will use $\mathcal{L}$ in place of $T$ to denote the operator when the vectors are functions.
+and thus we identify the matrix representation of the adjoint as 
+\begin{align}
+T^\dag \equiv H^{-1} [T]_\beta^* H    
+\end{align} relative to such an inner product. For an infinite-dimensional inner product space, the inner product used is usually in the form of an integral like the one in Equation (\ref{eqn:integralinner}), additionally with a weighting function, and a linear operator $T$ can be more general, including differentiation and multiplication by some function, or a mix of them. As a result, the adjoint is often found via the technique of \textit{integration by parts}, producing boundary terms as a by-product. Conventionally, we will use $\mathcal{L}$ in place of $T$ to denote the operator when the vectors are functions.
 \begin{proper}
 \label{proper:adjointinnerint}
 For a general integral inner product:
@@ -192,11 +199,11 @@ For a general integral inner product:
 \langle f,g \rangle = \int_a^b w(x) f(x) \overline{g(x)} dx \label{eqn:integralinner2}
 \end{align}
 where $w(x) > 0$ is a positive-definite \textit{real} weighting function, the unique adjoint $\mathcal{L}^\dagger$ of a linear operator $\mathcal{L}$ is another one that satisfies
-\begin{align*}
-\langle \mathcal{L}[f], g \rangle &= \int_a^b w(x) \mathcal{L}[f(x)] \overline{g(x)} dx \\ 
-&= \int_a^b w(x) f(x) \overline{(\mathcal{L^\dag}[g(x)])} dx + \text{boundary terms} \\
+\begin{align}
+\langle \mathcal{L}[f], g \rangle &= \int_a^b w(x) \mathcal{L}[f(x)] \overline{g(x)} dx \nonumber \\ 
+&= \int_a^b w(x) f(x) \overline{(\mathcal{L^\dag}[g(x)])} dx + \text{boundary terms} \nonumber \\
 &= \langle f, \mathcal{L}^\dag[g] \rangle + \text{boundary terms}
-\end{align*}
+\end{align}
 for all functions $f, g \in \mathcal{V}$ and the boundary terms are evaluated at the end-points $a$ and $b$.
 \end{proper}
 Equation (\ref{eqn:integralinner}) is then simply a special case of (\ref{eqn:integralinner2}) with a constant weight of $w = 1$.
@@ -204,14 +211,14 @@ Equation (\ref{eqn:integralinner}) is then simply a special case of (\ref{eqn:in
 Find the adjoint of the linear operator $\mathcal{L}[f] = x\frac{d}{dx}[f]$ with respect to the inner product in Equation (\ref{eqn:integralinner}).
 \end{exmp}
 \begin{solution}
-We start with $\langle \mathcal{L}[f], g \rangle = \int_a^b \left(x\frac{d}{dx}(f(x))\right) \overline{g(x)} dx$ and aim to rewrite it into the form of $\int_a^b f(x) \overline{(\mathcal{L^\dag}[g(x)])} dx = \langle f, \mathcal{L}^\dag[g] \rangle$, plus possibly some boundary term(s). As suggested above we can try to apply integration by parts:
+We start with $\langle \mathcal{L}[f], g \rangle = \int_a^b \smash{\left(x\frac{d}{dx}(f(x))\right)} \overline{g(x)} dx$ and aim to rewrite it into the form of $\int_a^b f(x) \overline{(\mathcal{L^\dag}[g(x)])} dx = \langle f, \mathcal{L}^\dag[g] \rangle$, plus possibly some boundary term(s). As suggested above we can try to apply integration by parts:
 \begin{align*}
 \langle \mathcal{L}[f], g \rangle &=  \int_a^b \left(x\frac{d}{dx}(f(x))\right) \overline{g(x)} dx \\  
 &= \int_a^b \frac{d}{dx}(f(x)) x\overline{(g(x))} dx \\
 &= [xf(x)\overline{g(x)}]_a^b - \int_a^b f(x)\frac{d}{dx}(x\overline{(g(x))}) dx \\
 &= \int_a^b f(x)\overline{\left(-\frac{d}{dx}(x(g(x)))\right)} dx + [xf(x)\overline{(g(x))}]_a^b
 \end{align*}
-The boundary term is now put after the integral, from which we deduce that $\mathcal{L}^\dag[f] = -\frac{d}{dx}(x[f])$ by comparing it with $\int_a^b f(x) \overline{(\mathcal{L^\dag}[g(x)])} dx$.
+The boundary term is now put after the integral, from which we deduce that $\mathcal{L}^\dag[g] = -\frac{d}{dx}(x[g])$ by comparing it with $\int_a^b f(x) \overline{(\mathcal{L^\dag}[g(x)])} dx$.
 \end{solution}
 Finally, we note some properties of adjoints that can be compared to Properties \ref{proper:complexmat}.
 \begin{proper}
@@ -233,33 +240,33 @@ We will briefly show the last item here. Using Definition \ref{defn:adjoint} twi
 so we identify that $(TU)^\dag = U^\dag T^\dag$.
 
 \subsection{Hermitian Operators}
-As suggested in the last subsection, adjoints are the inner product counterpart of (conjugate) transposes. Therefore, it is natural to ask if the concept of symmetric or Hermitian in the matrix world is also applicable to an adjoint. Correspondingly, when a linear operator $T$ has an adjoint $T^\dag$ which is equal to itself, i.e.\ $T^\dag = T$, it is called \index{Self-adjoint}\keywordhl{self-adjoint}, as the inner product equivalent of Hermitian. If the inner product space is finite-dimensional with a positive-definite Hermitian form $H$ that induces its inner product, then according to what we have just derived we simply need to check if $T^\dag \equiv (\overline{H})^{-1} [T]_\beta^* \overline{H} = [T]_\beta \equiv T$. The problem becomes a bit more complicated when we consider the integral inner product in Equation (\ref{eqn:integralinner2}) because even when $\mathcal{L}^* = \mathcal{L}$ is self-adjoint there can be boundary terms. We need an even stronger condition where there is no boundary term so that $\mathcal{L}$ becomes "nicer" to work with and gives desirable properties. In this situation, the self-adjoint operator $\mathcal{L}$ is further known as a \index{Hermitian}\keywordhl{Hermitian} (or \textit{truly self-adjoint}, compared to \textit{formally self-adjoint}) operator.
+As suggested in the last subsection, adjoints are the inner product counterpart of (conjugate) transposes. Therefore, it is natural to ask if the concept of symmetric or Hermitian in the matrix world is also applicable to an adjoint. Correspondingly, when a linear operator $T$ has an adjoint $T^\dag$ which is equal to itself, i.e.\ $T^\dag = T$, it is called \index{Self-adjoint}\keywordhl{self-adjoint}, as the inner product equivalent of Hermitian. If the inner product space is finite-dimensional with a positive-definite Hermitian form $H$ that induces its inner product, then according to what we have just derived we simply need to check if $T^\dag \equiv H^{-1} [T]_\beta^* H = [T]_\beta \equiv T$. The problem becomes a bit more complicated when we consider the integral inner product in Equation (\ref{eqn:integralinner2}) because even when $\mathcal{L}^* = \mathcal{L}$ is self-adjoint there can be boundary terms. We need an even stronger condition where there is no boundary term so that $\mathcal{L}$ becomes "nicer" to work with and gives desirable properties. In this situation, the self-adjoint operator $\mathcal{L}$ is further known as a \index{Hermitian}\keywordhl{Hermitian} (or \textit{truly self-adjoint}, compared to \textit{formally self-adjoint}) operator.
 \begin{defn}
 \label{defn:selfadjoint}
 A linear operator $T$ is self-adjoint if its adjoint $T^\dag = T$ is equal to itself. A linear operator $\mathcal{L}$ is Hermitian if it is self-adjoint and all boundary terms vanish.
 \end{defn}
 The absence of any boundary term can be due to the structure of $\mathcal{L}$ or $\mathcal{L}^\dag$ itself, or the boundary condition(s) imposed on the input functions. 
 \begin{exmp}
-Show that $\mathcal{L} = -i \hbar\frac{d}{dx}$, where $\hbar$ is a real constant, is a self-adjoint operator with respect to the inner product in Equation (\ref{eqn:integralinner}) over the entire $x$-axis. Find the form of its eigenfunctions (treating functions as (eigen)vectors).
+Show that $\mathcal{L} = -i\hbar\frac{d}{dx}$, where $\hbar$ is a real constant, is a self-adjoint operator with respect to the inner product in Equation (\ref{eqn:integralinner}) over the entire $x$-axis. Find the form of its eigenfunctions (treating functions as (eigen)vectors).
 \end{exmp}
 \begin{solution}
 \begin{align*}
 \langle \mathcal{L}[f], g \rangle &= \int_{-\infty}^\infty \mathcal{L}[f(x)] \overline{g(x)} dx \\
 &= \int_{-\infty}^\infty \left(-i \hbar\frac{d}{dx}(f(x))\right) \overline{g(x)} dx \\
-&= [-i\hbar f(x)\overline{g(x)}]_{-\infty}^\infty - \int_{-\infty}^\infty f(x) \left(-i\hbar\frac{d}{dx}\overline{g(x)}\right) dx \\
+&= [-i\hbar f(x)\overline{g(x)}]_{-\infty}^\infty - \int_{-\infty}^\infty f(x) \left(-i\hbar\frac{d}{dx}(\overline{g(x)})\right) dx \\
 &\quad \text{(Integration by parts)} \\
 &= \int_{-\infty}^\infty f(x) \left(i\hbar\frac{d}{dx}(\overline{g(x)})\right) dx + [-i\hbar f(x)\overline{g(x)}]_{-\infty}^\infty \\
 &= \int_{-\infty}^\infty f(x) \overline{\left(-i\hbar\frac{d}{dx}(g(x))\right)} dx + [-i\hbar f(x)\overline{g(x)}]_{-\infty}^\infty \\
 &= \int_{-\infty}^\infty f(x) \overline{\mathcal{L}^\dag[g(x)]} dx + [-i\hbar f(x)\overline{g(x)}]_{-\infty}^\infty
 \end{align*}
-So we see that $\mathcal{L}^\dag = \mathcal{L}$ is self-adjoint. The eigenfunctions $\varphi_m$ of $\mathcal{L}$ can be found from solving the ODE:
+So we see that $\mathcal{L}^\dag = \mathcal{L} = -i\hbar\frac{d}{dx}$ is self-adjoint. The eigenfunctions $\varphi_m$ of $\mathcal{L}$ can be found from solving the ODE:
 \begin{align*}
 \mathcal{L}[\varphi_m] = -i \hbar\frac{d\varphi_m}{dx} &= m\varphi_m \\
 -\int i \hbar \frac{d\varphi_m}{\varphi_m} &= \int m dx \\
 - i \hbar \ln{\varphi_m} &= mx + C \\
 \therefore \varphi_m &= Ke^{\frac{i}{\hbar}mx}
 \end{align*}
-where $K = e^{\frac{i}{\hbar} C}$ is any scaling constant. Notice that the eigenvalue $m$ can take any value ranging from $-\infty$ to $\infty$ as there is no boundary condition being enforced. In this case, the eigenvalues form a \textit{continuous spectrum} and we note that the vector space generated by those eigenfunctions, which are uncountable in this problem, are not separable. In fact, this operator $\mathcal{L} = -i \hbar\frac{d}{dx}$, is famously referred to as the \textit{momentum operator} in Quantum Mechanics.
+where $K = e^{\frac{i}{\hbar} C}$ is any scaling constant. Notice that the eigenvalue $m$ can take any value ranging from $-\infty$ to $\infty$ as there is no boundary condition being enforced. In this case, the eigenvalues form a \textit{continuous spectrum} and we note that the inner product space generated by those eigenfunctions, which are uncountable in this problem, are not separable. In fact, this operator $\mathcal{L} = -i\hbar\frac{d}{dx}$, is famously referred to as the \textit{momentum operator} in Quantum Mechanics.
 \end{solution}
 The above example shows that eigenfunctions for a self-adjoint linear operator may be uncountable. In this case, a function cannot be represented by an infinite sum $f = c_1\varphi_1 + c_2\varphi_2 + \cdots = \sum_{j=1}^{\infty} c_j \varphi_j$ as suggested by Properties \ref{proper:hilbertorthosys} but rather requires to be expressed by an integral $f(x) = \int_0^\infty c_m\varphi_m(x) dm$ over a continuous index $m$, which is much more troublesome to deal with. This is the exact reason why we have introduced separable Hilbert spaces and Hermitian operators before and now, as they carry the desirable attributes of possessing countably infinite eigenfunctions that form a complete orthonormal basis and thus a \textit{discrete spectrum}. The completeness of the eigenfunctions of a Hermitian operator, again should be delegated to the world of Functional Analysis. But first, we can show an important property of Hermitian operators that their eigenvalues are always real, which can be compared to Properties \ref{proper:hermrealeig}.
 \begin{proper}
@@ -291,12 +298,12 @@ This closely parallels Properties \ref{proper:symortho} and the proof is also ve
 \begin{proof}
 Denote the two eigenfunctions as $\varphi_1$ and $\varphi_2$ where the respective eigenvalues are $m_1$ and $m_2$. Subsequently, we have
 \begin{align*}
-\langle \mathcal{L}[\varphi_1], \varphi_2 \rangle &= \langle m_1\varphi_1, \varphi_2 \rangle + \cdots & \text{(Definition \ref{defn:eigen})} \\
+\langle \mathcal{L}[\varphi_1], \varphi_2 \rangle &= \langle m_1\varphi_1, \varphi_2 \rangle & \text{(Definition \ref{defn:eigen})} \\
 &= m_1 \langle \varphi_1, \varphi_2 \rangle 
 \end{align*}
 but also
 \begin{align*}
-\langle \mathcal{L}[\varphi_1], \varphi_2 \rangle &= \langle \varphi_1, \mathcal{L}^\dag[\varphi_2] \rangle & \text{(Properties \ref{proper:adjointinnerint})} \\
+\langle \mathcal{L}[\varphi_1], \varphi_2 \rangle &= \langle \varphi_1, \mathcal{L}^\dag[\varphi_2] \rangle + \cdots & \text{(Properties \ref{proper:adjointinnerint})} \\
 &= \langle \varphi_1, \mathcal{L}[\varphi_2] \rangle & \text{(Definition \ref{defn:selfadjoint})} \\
 &= \langle \varphi_1, m_2\varphi_2 \rangle & \text{(Definition \ref{defn:eigen})} \\
 &= \overline{m_2} \langle \varphi_1, \varphi_2 \rangle & \text{(Properties \ref{proper:innerprod2})} \\
@@ -327,7 +334,7 @@ First, we have to check if $\mathcal{L}$ is self-adjoint, from
 &= [\frac{d}{dx}(f(x)) \overline{(g(x))}]_{-\pi}^\pi - [(f(x)) \frac{d}{dx}\overline{(g(x))}]_{-\pi}^\pi \\
 &\quad + \int_{-\pi}^\pi f(x) \overline{\mathcal{L}[g(x)]} dx
 \end{align*}
-we thus see $\mathcal{L}^\dag = \frac{d^2}{dx^2} = \mathcal{L}$. Again from basic ODE we know that the eigenfunctions $\varphi$ of $\mathcal{L}[f] = \frac{d^2}{dx^2}[f]$ will be in the form of $\sin(mx)$ and $\cos(mx)$ as $\frac{d^2}{dx^2}(\sin(mx)) = -m^2\sin(mx)$ and $\frac{d^2}{dx^2}(\cos(mx)) = -m^2\cos(mx)$. For the two boundary terms to vanish, $m = 0, 1, 2, \ldots$ must be a non-negative integer\footnote{Without loss of generality, let $f = \sin(m_1 x)$ and $g = \cos(m_2 x)$, then
+we thus see $\mathcal{L}^\dag = \smash{\frac{d^2}{dx^2}} = \mathcal{L}$. Again from basic ODE, we know that the eigenfunctions $\varphi$ of $\mathcal{L}[f] = \smash{\frac{d^2}{dx^2}[f]}$ will be in the form of $\sin(mx)$ and $\cos(mx)$ as $\smash{\frac{d^2}{dx^2}}(\sin(mx)) = -m^2\sin(mx)$ and $\smash{\frac{d^2}{dx^2}}(\cos(mx)) = -m^2\cos(mx)$. For the two boundary terms to vanish, $m = 0, 1, 2, \ldots$ must be a non-negative integer\footnote{Without loss of generality, let $f = \sin(m_1 x)$ and $g = \cos(m_2 x)$, then
 \begin{align*}
 &\quad [\frac{d}{dx}(f(x)) \overline{(g(x))}]_{-\pi}^\pi - [(f(x)) \frac{d}{dx}\overline{([g(x)])}]_{-\pi}^\pi \\
 &= [m_1\cos(m_1 x)\cos(m_2 x)]_{-\pi}^\pi - [-m_2\sin(m_1 x)\sin(m_2 x)]_{-\pi}^\pi \\
@@ -351,7 +358,7 @@ A unitary operator $T$ is a linear operator such that its inverse operator is eq
 \end{defn}
 With this definition, the distance-preserving property can be readily derived.
 \begin{proper}
-Transformation by a unitary operator $T = T^\dag$ on a vector is length-preserving.
+Transformation by a unitary operator $T = T^\dag$ on a vector/function is length-preserving.
 \end{proper}
 which should be compared to Properties \ref{proper:ortholengthpreserve}.
 \begin{proof}
@@ -387,9 +394,9 @@ Since we have defined orthogonality and adjoints, we are now ready to derive the
 \begin{defn}
 \label{defn:orthoprojinner}
 The orthogonal projection of a vector $\vec{v}$ onto $\vec{u}$ with respect to an inner product $\langle \cdot, \cdot \rangle$ is
-\begin{align*}
+\begin{align}
 \overrightarrow{\text{proj}}_u v = \frac{\langle \vec{v}, \vec{u}\rangle}{\norm{\vec{u}}^2} \vec{u}
-\end{align*}
+\end{align}
 \end{defn}
 This definition is consistent in the sense that $\vec{u}$ and the component of $\vec{v}$ normal to $\vec{u}$ are orthogonal:
 \begin{align*}
@@ -399,16 +406,16 @@ This definition is consistent in the sense that $\vec{u}$ and the component of $
 &= \langle \vec{u}, \vec{v} \rangle - \frac{\langle \vec{u}, \vec{v}\rangle}{\norm{\vec{u}^2}} {\norm{\vec{u}}^2} \\
 &= \langle \vec{u}, \vec{v} \rangle -  \langle \vec{u}, \vec{v} \rangle = 0
 \end{align*}
-Similar to the expression (\ref{eqn:projrank1sum}), the orthogonal projection operator $T$ onto a subspace $\mathcal{W} \subseteq \mathcal{V}$ of an inner product space with an orthonormal basis $\{\vec{w}^{(1)}, \vec{w}^{(2)}, \ldots\}$ that may be finite or countably infinite, is the sum of the one-dimensional projectors onto each of the basis vectors according to the definition above:
+Similar to Expression (\ref{eqn:projrank1sum}), the orthogonal projection operator $T$ onto a subspace $\mathcal{W} \subseteq \mathcal{V}$ of an inner product space with an orthonormal basis $\{\vec{w}^{(1)}, \vec{w}^{(2)}, \ldots\}$ that may be finite or countably infinite, is the sum of the one-dimensional projectors onto each of the basis vectors according to the definition above:
 \begin{align}
 T(\vec{v}) = \frac{\langle \vec{v}, \vec{w}^{(1)}\rangle}{\norm{\vec{w}^{(1)}}^2} \vec{w}^{(1)} + \frac{\langle \vec{v}, \vec{w}^{(2)}\rangle}{\norm{\vec{w}^{(2)}}^2} \vec{w}^{(2)} + \cdots \label{eqn:orthoprojinner}
 \end{align}
-Similar to Properties \ref{proper:matrixproj} and \ref{proper:orthogonalproj}, a linear operator $T$ represents an orthogonal projection if and only if it has an adjoint $T^\dag$ so that $T^2 = T = T^\dag$.
+Just as Properties \ref{proper:matrixproj} and \ref{proper:orthogonalproj}, a linear operator $T$ represents an orthogonal projection if and only if it has an adjoint $T^\dag$ so that $T^2 = T = T^\dag$.
 \begin{proper}
 \label{proper:orthoprojadjoint}
 A linear operator $T: \mathcal{V} \to \mathcal{V}$ over an inner product space, is an orthogonal projection with respect to the inner product if and only if $T^2 = T = T^\dag$ where $T^\dag$ is its adjoint.
 \end{proper}
-The proof for the first equality $T^2 = T$ is the same one in Properties \ref{proper:matrixproj} except that the $^\dag$ adjoint superscript now replaces that of conjugate transpose $^*$, and $\mathcal{V}$, as well as $\mathcal{W}_1$ and $\mathcal{W}_2$ may be infinite-dimensional now. Meanwhile for the second equality $T = T^\dag$, we need to replace the dot product in the original proof for Properties \ref{proper:orthogonalproj} by the inner product, and additionally show that $\mathcal{N}(T)^\perp = \mathcal{R}(T)$ for the "if" part when $\mathcal{V}$ is infinite-dimensional, which is not too far from our reach.\footnote{We take it for granted that $\mathcal{W} \subseteq \mathcal{W}^{\perp\perp}$ for any subspace $\mathcal{W}$, so that $\mathcal{N}(T)^\perp = \mathcal{R}(T)^{\perp\perp} \supseteq \mathcal{R}(T)$, and the remaining task is to show $\mathcal{N}(T)^\perp \subseteq \mathcal{R}(T)$ so that $\mathcal{N}(T)^\perp = \mathcal{R}(T)$, i.e.\ for any $\vec{w} \in \mathcal{N}(T)^\perp$, $\vec{w} \in \mathcal{R}(T)$. Consider $\norm{\vec{w} - T(\vec{W})}^2 = \langle \vec{w} - T(\vec{w}), \vec{w} - T(\vec{w}) \rangle = \langle \vec{w}, \vec{w} - T(\vec{w}) \rangle - \langle T(\vec{w}), \vec{w} - T(\vec{w}) \rangle$. The first term is zero since $\vec{w} - T(\vec{w}) \in \mathcal{N}(T)$ is orthogonal to $\vec{w} \in \mathcal{N}(T)^\perp$, and the second term is also zero as $\langle T(\vec{w}), \vec{w} - T(\vec{w}) \rangle = \langle \vec{w}, T^\dag(\vec{w} - T(\vec{w})) \rangle = \langle \vec{w}, T(\vec{w} - T(\vec{w})) \rangle = \langle \vec{w}, T(\vec{w}) - T^2(\vec{w}) \rangle = \langle \vec{w}, \textbf{0} \rangle = 0$ since $T^\dag = T$ by the "if" condition and $T^2 = T$ from the first part. Thus $\norm{\vec{w} - T(\vec{w})} = 0$ and this implies that $T(\vec{w}) = \vec{w}$ so $\vec{w} \in \mathcal{R}(T)$.} We now show that the expression of the orthogonal projector $T$ given in Equation (\ref{eqn:orthoprojinner}) satisfies the above requirement $T^2 = T = T^\dag$:
+The proof for the first equality $T^2 = T$ is the same one in Properties \ref{proper:matrixproj} except that the $^\dag$ adjoint superscript now replaces that of conjugate transpose $^*$, and $\mathcal{V}$, as well as $\mathcal{W}_1$ and $\mathcal{W}_2$ may be infinite-dimensional now. Meanwhile for the second equality $T = T^\dag$, we need to replace the dot product in the original proof for Properties \ref{proper:orthogonalproj} by the inner product, and additionally show that $\mathcal{N}(T)^\perp = \mathcal{R}(T)$ for the "if" part when $\mathcal{V}$ is infinite-dimensional, which is not too far from our reach.\footnote{We take it for granted that $\mathcal{W} \subseteq \mathcal{W}^{\perp\perp}$ for any subspace $\mathcal{W}$, so that $\mathcal{N}(T)^\perp = \mathcal{R}(T)^{\perp\perp} \supseteq \mathcal{R}(T)$, and the remaining task is to show $\mathcal{N}(T)^\perp \subseteq \mathcal{R}(T)$ so that $\mathcal{N}(T)^\perp = \mathcal{R}(T)$, i.e.\ for any $\vec{w} \in \mathcal{N}(T)^\perp$, $\vec{w} \in \mathcal{R}(T)$. Consider $\norm{\smash{\vec{w} - T(\vec{W})}}^2 = \langle \vec{w} - T(\vec{w}), \vec{w} - T(\vec{w}) \rangle = \langle \vec{w}, \vec{w} - T(\vec{w}) \rangle - \langle T(\vec{w}), \vec{w} - T(\vec{w}) \rangle$. The first term is zero since $\vec{w} - T(\vec{w}) \in \mathcal{N}(T)$ is orthogonal to $\vec{w} \in \mathcal{N}(T)^\perp$, and the second term is also zero as $\langle T(\vec{w}), \vec{w} - T(\vec{w}) \rangle = \langle \vec{w}, T^\dag(\vec{w} - T(\vec{w})) \rangle = \langle \vec{w}, T(\vec{w} - T(\vec{w})) \rangle = \langle \vec{w}, T(\vec{w}) - T^2(\vec{w}) \rangle = \langle \vec{w}, \textbf{0} \rangle = 0$ since $T^\dag = T$ by the "if" condition and $T^2 = T$ from the first part. Thus $\norm{\vec{w} - T(\vec{w})} = 0$ and this implies that $T(\vec{w}) = \vec{w}$ so $\vec{w} \in \mathcal{R}(T)$.} We now show that the expression of the orthogonal projector $T$ given in Equation (\ref{eqn:orthoprojinner}) satisfies the above requirement $T^2 = T = T^\dag$: Using (\ref{eqn:orthoprojinner}) twice, we have
 \begin{align*}
 T^2(\vec{v}) = T(T(\vec{v})) &= \frac{\langle T(\vec{v}), \vec{w}^{(1)}\rangle}{\norm{\vec{w}^{(1)}}^2} \vec{w}^{(1)} + \frac{\langle T(\vec{v}), \vec{w}^{(2)}\rangle}{\norm{\vec{w}^{(2)}}^2} \vec{w}^{(2)} + \cdots \\
 &= \frac{\left\langle \frac{\langle \vec{v}, \vec{w}^{(1)}\rangle}{\norm{\vec{w}^{(1)}}^2} \vec{w}^{(1)} + \frac{\langle \vec{v}, \vec{w}^{(2)}\rangle}{\norm{\vec{w}^{(2)}}^2} \vec{w}^{(2)} + \cdots, \vec{w}^{(1)}\right\rangle}{\norm{\vec{w}^{(1)}}^2} \vec{w}^{(1)} \\
@@ -439,27 +446,27 @@ After obtaining the formula for orthogonal projections with respect to an inner 
 \begin{defn}
 \label{defn:GSorthinner}
 Given a countably infinite basis $\{\vec{u}^{(1)}, \vec{u}^{(2)}, \vec{u}^{(3)}, \ldots\}$, where $\vec{u}^{(j)} \in \mathcal{V}$ belongs to an inner product space, it is transformed into an orthogonal basis $\{\vec{v}^{(1)}, \vec{v}^{(2)}, \vec{v}^{(3)}, \ldots\}$, $\vec{v}^{(j)} \in \mathcal{V}$, by Gram-Schmidt Orthogonalization according to the following formulae:
-\begin{align*}
-\vec{v}^{(1)} &= \vec{u}^{(1)} \\
-\vec{v}^{(2)} &= \vec{u}^{(2)} - \text{proj}_{v^{(1)}}\vec{u}^{(2)} = \vec{u}^{(2)} - \frac{\langle \vec{u}^{(2)}, \vec{v}^{(1)}\rangle}{\norm{\vec{v}^{(1)}}^2} \vec{v}^{(1)} \\
-\vec{v}^{(3)} &= \vec{u}^{(3)} - \text{proj}_{v^{(1)}}\vec{u}^{(3)} - \text{proj}_{v^{(2)}}\vec{u}^{(3)} \\
+\begin{align}
+\vec{v}^{(1)} &= \vec{u}^{(1)} \nonumber\\
+\vec{v}^{(2)} &= \vec{u}^{(2)} - \text{proj}_{v^{(1)}}\vec{u}^{(2)} = \vec{u}^{(2)} - \frac{\langle \vec{u}^{(2)}, \vec{v}^{(1)}\rangle}{\norm{\vec{v}^{(1)}}^2} \vec{v}^{(1)} \nonumber \\
+\vec{v}^{(3)} &= \vec{u}^{(3)} - \text{proj}_{v^{(1)}}\vec{u}^{(3)} - \text{proj}_{v^{(2)}}\vec{u}^{(3)} \nonumber\\
 &= \vec{u}^{(3)} - \frac{\langle\vec{u}^{(3)}, \vec{v}^{(1)}\rangle}{\norm{\vec{v}^{(1)}}^2} \vec{v}^{(1)} - \frac{\langle\vec{u}^{(3)}, \vec{v}^{(2)}\rangle}{\norm{\vec{v}^{(2)}}^2} \vec{v}^{(2)} \\
-\vdots \\
-\vec{v}^{(n)} &= \vec{u}^{(n)} - \text{proj}_{v^{(1)}}\vec{u}^{(n)} - \text{proj}_{v^{(2)}}\vec{u}^{(n)} - \cdots - \text{proj}_{v^{(n-1)}}\vec{u}^{(n)} \\
-&= \vec{u}^{(n)} - \frac{\langle\vec{u}^{(n)}, \vec{v}^{(1)}\rangle}{\norm{\vec{v}^{(1)}}^2} \vec{v}^{(1)} - \frac{\langle\vec{u}^{(n)}, \vec{v}^{(2)}\rangle}{\norm{\vec{v}^{(2)}}^2} \vec{v}^{(2)} - \cdots - \frac{\langle\vec{u}^{(n)}, \vec{v}^{(n-1)}\rangle}{\norm{\vec{v}^{(n-1)}}^2} \vec{v}^{(n-1)}
-\end{align*}
+\vdots \nonumber \\
+\vec{v}^{(n)} &= \vec{u}^{(n)} - \text{proj}_{v^{(1)}}\vec{u}^{(n)} - \text{proj}_{v^{(2)}}\vec{u}^{(n)} - \cdots - \text{proj}_{v^{(n-1)}}\vec{u}^{(n)} \nonumber \\
+&= \vec{u}^{(n)} - \frac{\langle\vec{u}^{(n)}, \vec{v}^{(1)}\rangle}{\norm{\vec{v}^{(1)}}^2} \vec{v}^{(1)} - \frac{\langle\vec{u}^{(n)}, \vec{v}^{(2)}\rangle}{\norm{\vec{v}^{(2)}}^2} \vec{v}^{(2)} - \cdots - \frac{\langle\vec{u}^{(n)}, \vec{v}^{(n-1)}\rangle}{\norm{\vec{v}^{(n-1)}}^2} \vec{v}^{(n-1)} \nonumber
+\end{align}
 For $j \geq 2$, the $j$-th new orthogonal basis vector is computed by
-\begin{align*}
+\begin{align}
 \vec{v}^{(j)} &= \vec{u}^{(j)} - \sum_{k=1}^{j-1}\text{proj}_{v^{(k)}}\vec{u}^{(j)}  = \vec{u}^{(j)} - \sum_{k=1}^{j-1}\frac{\langle \vec{u}^{(j)}, \vec{v}^{(k)} \rangle}{\norm{\vec{v}^{(k)}}^2} \vec{v}^{(k)}
-\end{align*}
+\end{align}
 where the expression of a vector projection in an inner product space now follows Definition \ref{defn:orthoprojinner} and $j$ can be arbitrary large. To make it an orthonormal basis we simply normalize each $\vec{v}^{(j)}$ by its norm as suggested by Definition \ref{defn:unitvecinner}.  
 \end{defn}
-However, for now we will go through the example of a general, finite-dimensional inner product space first, in which the procedure truncates at the $n$-th step where $n$ is the dimension, and reserve the infinite-dimensional case until the next section.
+However, for now, we will go through the example of a general, finite-dimensional inner product space first, in which the procedure truncates at the $n$-th step where $n$ is the dimension, and reserve the infinite-dimensional case until the next section.
 \begin{exmp}
 \label{exmp:R3innerGS}
 For the $\mathbb{R}^3$ space with an inner product defined according to the symmetric bilinear form as
 \begin{align*}
-\langle \vec{u}, \vec{v} \rangle = \vec{u}^TB\vec{v}
+\langle \vec{u}, \vec{v} \rangle = \textbf{u}^TB\textbf{v}
 \end{align*}
 where 
 \begin{align*}
@@ -470,7 +477,7 @@ B =
 0&1&2
 \end{bmatrix}
 \end{align*}
-apply the Gram-Schmidt Orthogonalization over the standard basis for $\mathbb{R}^3$, $\hat{e}^{(1)} = (1,0,0)^T, \hat{e}^{(2)} = (0,1,0)^T, \hat{e}^{(3)} = (0,0,1)^T$, to transform it into an orthonormal basis.
+apply the Gram-Schmidt Orthogonalization over the standard basis for $\mathbb{R}^3$, $\hat{e}^{(1)} = (1,0,0)^T, \hat{e}^{(2)} = (0,1,0)^T, \hat{e}^{(3)} = (0,0,1)^T$, to transform it into an orthonormal basis with respect to this inner product.
 \end{exmp}
 \begin{solution}
 We leave it to the readers to check that the eigenvalues of $B$ are $\lambda = 2-\sqrt{2},2,2+\sqrt{2}$ all positive so that $B$ is positive-definite by Theorem \ref{thm:quaddefinite} and the inner product makes sense. We calculate each of the expressions appearing in Definition \ref{defn:GSorthinner}:
@@ -630,7 +637,7 @@ We leave it to the readers to check that the eigenvalues of $B$ are $\lambda = 2
 \end{align*}
 Therefore, the required orthonormal basis is 
 \begin{align*}
-\{(\frac{1}{\sqrt{2}},0,0)^T, (-\frac{1}{\sqrt{6}}, \frac{2}{\sqrt{6}}, 0)^T, (\frac{1}{2\sqrt{3}}, -\frac{1}{\sqrt{3}}, \frac{3}{2\sqrt{3}})^T\}    
+\left\{(\frac{1}{\sqrt{2}},0,0)^T, (-\frac{1}{\sqrt{6}}, \frac{2}{\sqrt{6}}, 0)^T, (\frac{1}{2\sqrt{3}}, -\frac{1}{\sqrt{3}}, \frac{3}{2\sqrt{3}})^T\right\}    
 \end{align*} found by dividing each of the $\vec{v}^{(j)}$ by $\norm{\vec{v}^{(j)}}$. This example shows that the standard unit vectors are usually not orthogonal to each other when an inner product other than the standard one is used. 
 \end{solution}
 
@@ -653,7 +660,7 @@ T_{j} & \text{if $j = j'$} \\
 \item $T = \lambda_{1}T_{1} + \lambda_{2}T_{2} + \cdots = \lim_{n \to \infty} \sum_{j=1}^{n} \lambda_{j}T_{j}$, where the eigenvalues $\lambda_j$ are all real due to Properties \ref{proper:hermrealeiginner}.
 \end{enumerate}
 \end{thm}
-Note that (a) and subsequently (d) are simply a restatement of the fact that a Hermitian operator has a complete orthonormal basis formed by countably infinite eigenvectors/eigenfunctions which we have taken for granted to avoid getting involved with Functional Analysis. (a) essentially means that any vector $\vec{v} = c_1\varphi^{(1)} + c_2\varphi^{(2)} + \cdots = \lim_{n \to \infty}\sum_{j=1}^{n}c_j\varphi^{(j)} \in \mathcal{V}$ in the inner product space can be written as a unique (infinite) sum of the eigenvectors which is exactly what a (Schauder) basis indicates, although it is only in the so-called $L^2$ sense.\footnote{We will demonstrate this using \textit{Bessel's Inequality} in Section \ref{section:FouriertoDFT} for the Fourier basis. But the $L^2$ convergence is already good enough in many situations.} We put the justification of (b) in the footnote below\footnote{For $\vec{v} \in \bigoplus_{j \in \{J\}} \mathcal{E}_{j}$, it will be in the form of $\vec{v} = \sum_{j \in \{J\}} c_j\varphi^{(j)}$ which is clearly orthogonal to $\vec{w} = \sum_{j' \notin \{J\}} c_{j'}\varphi^{(j')} \in \bigoplus_{j \notin \{J\}} \mathcal{E}_{j}$, seen by expanding and computing $\langle \vec{v}, \vec{w} \rangle = 0$. Each $\langle \varphi^{(j)}, \varphi^{(j')} \rangle$ term is zero when $j \neq j'$, as $\varphi^{(j)}$ and $\varphi^{(j')}$ are orthogonal to each other.} and (c) follows its counterpart in Theorem \ref{thm:spectral} but the group indices there are now replaced by individual indices. The resolution of the identity (d) is then derived similarly as in Theorem \ref{thm:spectral}: express any $\vec{v}$ as $\vec{v} = c_1\varphi^{(1)} + c_2\varphi^{(2)} + \cdots = \lim_{n \to \infty} \bigoplus_{j=1}^{n} c_j\varphi^{(j)}$ and by Definition \ref{defn:orthoprojinner}, we have
+Note that (a) and subsequently (d) are simply a restatement of the fact that a Hermitian operator has a complete orthonormal basis formed by countably infinite eigenvectors/eigenfunctions which we have taken for granted to avoid getting involved with Functional Analysis. (a) essentially means that any vector $\vec{v} = c_1\varphi^{(1)} + c_2\varphi^{(2)} + \cdots = \lim_{n \to \infty}\sum_{j=1}^{n}c_j\varphi^{(j)} \in \mathcal{V}$ in the inner product space can be written as a unique (infinite) sum of the eigenvectors which is exactly what a (Schauder) basis indicates, although it is only in the so-called $L^2$ sense.\footnote{We will demonstrate this using \textit{Bessel's Inequality} introduced in Section \ref{section:FouriertoDFT} for the Fourier basis. But the $L^2$ convergence is already good enough in many situations.} We put the justification of (b) in the footnote below\footnote{For $\vec{v} \in \bigoplus_{j \in \{J\}} \mathcal{E}_{j}$, it will be in the form of $\vec{v} = \sum_{j \in \{J\}} c_j\varphi^{(j)}$ which is clearly orthogonal to $\vec{w} = \smash{\sum_{j' \notin \{J\}} c_{j'}\varphi^{(j')}} \in \bigoplus_{j \notin \{J\}} \mathcal{E}_{j}$, seen by expanding and computing $\langle \vec{v}, \vec{w} \rangle = 0$. Each $\langle \varphi^{(j)}, \varphi^{(j')} \rangle$ term is zero when $j \neq j'$, as $\varphi^{(j)}$ and $\varphi^{(j')}$ are orthogonal to each other.} and (c) follows its counterpart in Theorem \ref{thm:spectral} but the group indices there are now replaced by individual indices. The resolution of the identity (d) is then derived similarly as in Theorem \ref{thm:spectral}: express any $\vec{v}$ as $\vec{v} = c_1\varphi^{(1)} + c_2\varphi^{(2)} + \cdots = \lim_{n \to \infty} \bigoplus_{j=1}^{n} c_j\varphi^{(j)}$ and by Definition \ref{defn:orthoprojinner}, we have
 \begin{align*}
 T_j(\vec{v}) &= \langle \vec{v}, \varphi^{(j)} \rangle \varphi^{(j)} \\
 &= \langle \cdots + c_{j-1}\varphi^{(j-1)} + c_j\varphi^{(j)} + c_{j+1}\varphi^{(j+1)} + \cdots, \varphi^{(j)} \rangle \varphi^{(j)} \\
@@ -673,7 +680,7 @@ T(\vec{v}) &= T(c_1\varphi^{(1)} + c_2\varphi^{(2)} + \cdots) = T(\lim_{n \to \i
 &= \lambda_1 T_1(\vec{v}) + \lambda_2 T_2(\vec{v}) + \cdots & \text{(as in deriving (d))} \\
 &= (\lambda_1T_1 + \lambda_2T_2 + \cdots)\vec{v} = (\lim_{n \to \infty} \sum_{j=1}^{n} \lambda_jT_j)(\vec{v}) 
 \end{align*}
-\footnotetext{Notice that in such an infinite series linearity is actually not sufficient, see the caution just below the derivation.}Be wary that in (e), the linear operator $T$ applied on $\vec{v}$ is required to be Hermitian (truly self-adjoint), not only formally self-adjoint.\footnote{Curious readers may like to search about what a compact operator is.} This means that there will be problems if boundary terms appear when an integral-like inner product is used. This issue is going to be raised in the next example and short exercise.\par
+\footnotetext{Notice that in such an infinite series, linearity is actually not sufficient, see the caution just below the derivation.}Be wary that in (e), the linear operator $T$ applied on $\vec{v}$ is required to be Hermitian (truly self-adjoint), not only formally self-adjoint.\footnote{Curious readers may like to search about what a compact operator is.} This means that there will be problems if boundary terms appear when an integral-like inner product is used. This issue is going to be raised in the next example and short exercise.\par
 
 Recall that in Example \ref{exmp:Fourierbasis} we have derived the Fourier basis $\{\sin(x), \sin(2x), \\ \sin(3x), \ldots, 1, \cos(x), \cos(2x), \cos(3x), \ldots\}$ for the $L^2[-\pi, \pi]$ Hilbert space with the inner product of Equation (\ref{eqn:integralinner}). To normalize it, note that each eigenfunction has a norm of $\frac{1}{\sqrt{\pi}}$\footnote{We will only show this for the cosines but the calculation is the same for the sines. \\For integer $m$,
 \begin{align*}
@@ -684,22 +691,28 @@ Recall that in Example \ref{exmp:Fourierbasis} we have derived the Fourier basis
 &= \frac{1}{2}(2\pi) + (0) = \frac{1}{\pi}
 \end{align*}
 } ($\frac{1}{\sqrt{2\pi}}$ for $1$) and hence the orthonormal Fourier basis is 
-\begin{align*}
-\{\frac{1}{\sqrt{\pi}}\sin(x), \frac{1}{\sqrt{\pi}}\sin(2x), \frac{1}{\sqrt{\pi}}\sin(3x), \ldots, \\
-\frac{1}{\sqrt{2\pi}}, \frac{1}{\sqrt{\pi}}\cos(x), \frac{1}{\sqrt{\pi}}\cos(2x), \frac{1}{\sqrt{\pi}}\cos(3x), \ldots\}    
-\end{align*} According to (a) of the Spectral Theorem \ref{thm:spectralinner}, any function $f \in L^2[-\pi, \pi]$ can thus be expanded in a so-called \index{Fourier Series}\keywordhl{Fourier series}, which is often expressed in the form of
 \begin{align}
 \begin{aligned}
-f &= \frac{a_0}{2} + a_1\cos(x) + a_2\cos(2x) + a_3\cos(3x) + \cdots \\
-&\quad + b_1\sin(x) + b_2\sin(2x) + b_3\sin(3x) + \cdots \\
+&\left\{\frac{1}{\sqrt{\pi}}\sin(x), \frac{1}{\sqrt{\pi}}\sin(2x), \frac{1}{\sqrt{\pi}}\sin(3x), \ldots,\right. \\
+&\left.\frac{1}{\sqrt{2\pi}}, \frac{1}{\sqrt{\pi}}\cos(x), \frac{1}{\sqrt{\pi}}\cos(2x), \frac{1}{\sqrt{\pi}}\cos(3x), \ldots\right\} 
+\end{aligned}
+\end{align} According to part (a) of the Spectral Theorem \ref{thm:spectralinner}, any function $f \in L^2[-\pi, \pi]$ can thus be expanded in a so-called \index{Fourier Series}\keywordhl{Fourier series}, which is often expressed in the form of
+\begin{subequations}
+ \label{eqn:fourierseries}
+\begin{align}
+f &= 
+\begin{aligned}
+&\frac{a_0}{2} + a_1\cos(x) + a_2\cos(2x) + a_3\cos(3x) + \cdots \\
+& + b_1\sin(x) + b_2\sin(2x) + b_3\sin(3x) + \cdots 
+\end{aligned}\\
 &= \frac{a_0}{2} + \sum_{m=1}^{\infty} a_m \cos(mx) + \sum_{n=1}^{\infty} b_n \sin(nx) 
-\end{aligned} \label{eqn:fourierseries}
 \end{align}
+\end{subequations}
 an (infinite) sum of these sinusoidal eigenfunctions (without the $\frac{1}{\sqrt{\pi}}$ normalization factor). To compute the \index{Fourier Coefficients}\keywordhl{Fourier coefficients} $a_m$ and $b_n$, we use (d) of the Spectral Theorem where the $T_j$ are in the form of Equation (\ref{eqn:orthoprojinner}), leading to
 \begin{align*}
 f &= \sum_{j} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \\ 
 &= \langle f, \frac{1}{\sqrt{2\pi}} \rangle (\frac{1}{\sqrt{2\pi}})\\
-&\quad + \langle f, \frac{1}{\sqrt{\pi}}\cos(x) \rangle (\frac{1}{\sqrt{\pi}}\cos(x)) + \langle f, \frac{1}{\sqrt{\pi}}\cos(2x) \rangle (\frac{1}{\sqrt{\pi}}\cos(2x)) + \cdots + \\
+&\quad + \langle f, \frac{1}{\sqrt{\pi}}\cos(x) \rangle (\frac{1}{\sqrt{\pi}}\cos(x)) + \langle f, \frac{1}{\sqrt{\pi}}\cos(2x) \rangle (\frac{1}{\sqrt{\pi}}\cos(2x)) + \cdots \\
 &\quad + \langle f, \frac{1}{\sqrt{\pi}}\sin(x) \rangle (\frac{1}{\sqrt{\pi}}\sin(x)) + \langle f, \frac{1}{\sqrt{\pi}}\sin(2x) \rangle (\frac{1}{\sqrt{\pi}}\sin(2x)) + \cdots \\
 &= \frac{1}{2\pi} \langle f, 1 \rangle + \frac{1}{\pi} \langle f, \cos(x) \rangle \cos(x) + \frac{1}{\pi} \langle f, \cos(2x) \rangle \cos(2x) + \cdots \\
 &\quad + \frac{1}{\pi}\langle f, \sin(x) \rangle \sin(x) + \frac{1}{\pi}\langle f, \sin(2x) \rangle \sin(2x) + \cdots
@@ -712,10 +725,12 @@ For a function $f(x)$ in the $L^2[-\pi, \pi]$ space, it can be written as a Four
 f(x) = \frac{a_0}{2} + \sum_{m=1}^{\infty} a_m \cos(mx) + \sum_{n=1}^{\infty} b_n \sin(nx) \label{eqn:fourierseri}
 \end{align}
 where the Fourier coefficients are given by
+\begin{subequations}
 \begin{align}
 a_m &= \frac{1}{\pi}\langle f, \cos(mx) \rangle = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x)\cos(mx) dx \label{eqn:fouriera} \\
 b_n &= \frac{1}{\pi}\langle f, \sin(nx) \rangle = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x)\sin(nx) dx \label{eqn:fourierb}
 \end{align}    
+\end{subequations}
 \end{proper}
 \begin{exmp}
 \label{exmp:fourierx}
@@ -745,43 +760,51 @@ will vanish only if $f(x)$ and $g(x)$ and their derivatives $f'(x)$ and $g'(x)$ 
 
 \subsection{Sturm-Liouville Equations}
 
-The theory of Hermitian operators is most widely applied in the context of \index{Sturm-Liouville Equation}\keywordhl{Sturm-Liouville Equations} that are frequently encountered when solving \index{Partial Differential Equation (PDE)}\keywordhl{Partial Differential Equations (PDEs)} with the technique of \textit{separation of variables}. A Sturm-Liouville equation takes the general form of
+The theory of Hermitian operators is most widely applied in the context of \index{Sturm-Liouville Equation}\keywordhl{Sturm-Liouville Equations} that are frequently encountered when solving \index{Partial Differential Equation (PDE)}\keywordhl{Partial Differential Equations (PDEs)} with the technique of \index{Separation of Variables}\textit{separation of variables}. A Sturm-Liouville equation takes the general form of
 \begin{align}
 \frac{d}{dx} (p(x) \frac{dy}{dx}) + q(x) y + \lambda w(x)y = 0
 \end{align}
-where $p(x)$, $q(x)$ are real functions of $x$ and $w(x)$ is a real positive-definite weighting function in $x$. It can be written in terms of the \index{Sturm–Liouville Operator}\keywordhl{Sturm–Liouville operator} $\mathcal{L}[f] = -[\frac{d}{dx} (p(x) \frac{d}{dx}) + q(x)][f]$ as
-\begin{align*}
+where $p(x)$, $q(x)$ are real functions of $x$ and $w(x)$ is a real positive-definite weighting function in $x$. It can be written in terms of the \index{Sturm–Liouville Operator}\keywordhl{Sturm–Liouville operator}
+\begin{align}
+\mathcal{L}[f] = -[\frac{d}{dx} (p(x) \frac{d}{dx}) + q(x)][f]    
+\end{align}
+as
+\begin{align}
 \mathcal{L}[y] = \lambda w(x)y
-\end{align*}
+\end{align}
 which apparently poses an eigenvalue-eigenfunction problem with a weighting $w(x)$ where $\lambda$ is the eigenvalue. The Sturm–Liouville operator is self-adjoint with respect to the inner product (\ref{eqn:integralinner}) and can become Hermitian under suitable boundary conditions as shown below:
 \begin{align*}
 \langle \mathcal{L}[f], g \rangle &= \int_a^b \mathcal{L}[f(x)] \overline{g(x)} dx \\
 &= \int_a^b -\left(\frac{d}{dx} (p(x) \frac{df(x)}{dx}) + q(x)f(x)\right)  \overline{g(x)} dx \\
-&= -\int_a^b \frac{d}{dx} (p(x) \frac{d f(x)}{dx}) \overline{g(x)} + \int_a^b q(x)f(x)\overline{g(x)} dx \\
+&= -\int_a^b \frac{d}{dx} (p(x) \frac{d f(x)}{dx}) \overline{g(x)} - \int_a^b q(x)f(x)\overline{g(x)} dx \\
 &= -[p(x) \frac{df(x)}{dx} \overline{g(x)}]_a^b + \int_a^b \frac{df(x)}{dx} p(x) \frac{d\overline{g(x)}}{dx} dx \\
-&\quad + \int_a^b q(x)f(x)\overline{g(x)} dx\\
+&\quad - \int_a^b q(x)f(x)\overline{g(x)} dx\\
 &= -[p(x) \frac{df(x)}{dx} \overline{g(x)}]_a^b + [f(x) p(x) \frac{d\overline{g(x)}}{dx}]_a^b  \\
-&\quad -\int f(x)\frac{d}{dx}(p(x) \frac{d\overline{g(x)}}{dx}) dx + \int_a^b q(x)f(x)\overline{g(x)} dx \\
+&\quad -\int f(x)\frac{d}{dx}(p(x) \frac{d\overline{g(x)}}{dx}) dx - \int_a^b q(x)f(x)\overline{g(x)} dx \\
 &= -[p(x) \frac{df(x)}{dx} \overline{g(x)}]_a^b + [f(x) p(x) \frac{d\overline{g(x)}}{dx}]_a^b  \\
-&\quad + \int f(x) \left(-(\frac{d}{dx}(p(x) \frac{d\overline{g(x)}}{dx}) + q(x)\overline{g(x)})\right) dx \\
+&\quad + \int f(x) \left(-[\frac{d}{dx}(p(x) \frac{d\overline{g(x)}}{dx}) + q(x)\overline{g(x)}]\right) dx \\
 &= -[\frac{df(x)}{dx} p(x) \overline{g(x)}]_a^b + [f(x) p(x) \frac{d\overline{g(x)}}{dx}]_a^b \\
-&\quad + \int f(x) \overline{\left(-(\frac{d}{dx}(p(x) \frac{d g(x)}{dx}) + q(x)g(x))\right)} dx \\
+&\quad + \int f(x) \overline{\left(-[\frac{d}{dx}(p(x) \frac{d g(x)}{dx}) + q(x)g(x)]\right)} dx \\
 &\quad \text{($p(x), q(x)$ are real)} \\
 &= -[\frac{df(x)}{dx} p(x) \overline{g(x)}]_a^b + [f(x) p(x) \frac{d\overline{g(x)}}{dx}]_a^b \\
 &\quad + \int_a^b f(x) \overline{\mathcal{L}[g(x)]} dx
 \end{align*}
-So $\mathcal{L}^\dag = \mathcal{L}$ is self-adjoint, and the boundary condition for the boundary terms to vanish is $[f(x) p(x) \frac{d\overline{g(x)}}{dx}]_a^b = 0$ for any pair of $f(x)$ and $g(x)$\footnote{This implies that $[\frac{d\overline{f(x)}}{dx} p(x) g(x)]_a^b = 0$ as well when the roles of $f(x)$ and $g(x)$ are exchanged. Conjugating this relation gives $\overline{[\frac{d\overline{f(x)}}{dx} p(x) g(x)]_a^b} = [\frac{df(x)}{dx} p(x) \overline{g(x)}]_a^b = 0$ so the first boundary term also vanishes.} so that $\mathcal{L}$ can be Hermitian. This boundary condition will also have to be obeyed by the eigenfunctions $\varphi_j$ where $\mathcal{L}[\varphi_j] = \lambda w(x)\varphi_j$. However, sometimes $p(x)$ may take a form such that at some end-points its value may be zero so that $\mathcal{L}$ is automatically Hermitian over this \textit{natural interval}. The reality of eigenvalues (left as an exercise, see Properties \ref{proper:hermrealeiginner}) and the orthogonality of eigenfunctions are enabled by the Hermicity of the Sturm-Liouville operator as in Properties \ref{proper:orthogonalherm} but with an extra factor from the weighting function $w(x)$:
+So $\mathcal{L}^\dag = \mathcal{L}$ is self-adjoint, and the boundary condition for the boundary terms to vanish is $\smash{[f(x) p(x) \frac{d\overline{g(x)}}{dx}]_a^b} = 0$ for any pair of $f(x)$ and $g(x)$\footnote{This implies that $\smash{[\frac{d\overline{f(x)}}{dx} p(x) g(x)]_a^b} = 0$ as well when the roles of $f(x)$ and $g(x)$ are exchanged. Conjugating this relation gives $\smash{[\frac{df(x)}{dx} p(x) \overline{g(x)}]_a^b} = 0$ so the first boundary term also vanishes.} so that $\mathcal{L}$ can be Hermitian. This boundary condition will also have to be obeyed by the eigenfunctions $\varphi_j$ where $\mathcal{L}[\varphi_j] = \lambda w(x)\varphi_j$. However, sometimes $p(x)$ may take a form such that at some end-points its value may be zero so that $\mathcal{L}$ is automatically Hermitian over this \textit{natural interval}. The reality of eigenvalues (left as an exercise, see Properties \ref{proper:hermrealeiginner}) and the orthogonality of eigenfunctions are enabled by the Hermicity of the Sturm-Liouville operator as in Properties \ref{proper:orthogonalherm} but with an extra factor from the weighting function $w(x)$:
 \begin{align*}
 \int_a^b \mathcal{L}[\varphi_1]\overline{\varphi_2} &= \int_a^b \varphi_1\overline{\mathcal{L}[\varphi_2]} \\
 \int_a^b \lambda_1 w(x)\varphi_1\overline{\varphi_2} dx &= \int_a^b \varphi_1\overline{\lambda_2 w(x)\varphi_2} dx \\
 \int_a^b \lambda_1 w(x)\varphi_1\overline{\varphi_2} dx &= \int_a^b \lambda_2 w(x)\varphi_1 \overline{\varphi_2} dx\\
 (\lambda_1 - \lambda_2) \int_a^b w(x)\varphi_1 \overline{\varphi_2} dx &= 0
 \end{align*}
-so that $\int_a^b w(x)\varphi_1 \overline{\varphi_2} dx = 0$ and the two different eigenfunctions are orthogonal with respect to the inner product (\ref{eqn:integralinner2}) assumed that $\lambda_1 \neq \lambda_2$. To transform a general second-order ODE appearing as $P(x)\frac{d^2y}{dx^2} + R(x)\frac{dy}{dx} + Q(x)y + \lambda w(x)y = 0$ into the Sturm-Liouville form, we can multiply it by the integrating factor $F(x) = \exp(\int \frac{R(x) - P'(x)}{P(x)} dx)$, so that it becomes
-\begin{align*}
-&\quad [F(x)P(x)y']' + F(x)Q(x)y + \lambda F(x)w(x)y \\
+so that $\int_a^b w(x)\varphi_1 \overline{\varphi_2} dx = 0$ and the two different eigenfunctions are orthogonal with respect to the inner product (\ref{eqn:integralinner2}) assumed that $\lambda_1 \neq \lambda_2$. To transform a general second-order ODE appearing as $\smash{P(x)\frac{d^2y}{dx^2} + R(x)\frac{dy}{dx}} + Q(x)y + \lambda w(x)y = 0$ into the Sturm-Liouville form, we can multiply it by the integrating factor 
+\begin{align}
+F(x) = \smash{\exp(\int \frac{R(x) - P'(x)}{P(x)} dx)} \label{eqn:intfactorsl}
+\end{align}
+so that it becomes
+\begin{align}
+&\quad [F(x)P(x)y']' + F(x)Q(x)y + \lambda F(x)w(x)y \nonumber \\
 &= [p(x)y']' + q(x)y + \lambda F(x)w(x)y = 0
-\end{align*}
+\end{align}
 \footnote{$F(x)$ is derived such that $F(x)P(x)y'' + F(x)R(x)y' = [F(x)P(x)y']'$:
 \begin{align*}
 [F(x)P(x)y']' = F(x)P(x)y'' + F(x)R(x)y' &= F(x)P(x)y'' + F(x)P'(x)y' + F'(x)P(x)y' \\
@@ -796,40 +819,46 @@ where $p(x) = F(x)P(x)$, $q(x) = F(x)Q(x)$, and the new weighting is $F(x)w(x)$ 
 \begin{exmp}
 \label{exmp:hermiteeqn}
 Convert the Hermite's Equation
-\begin{align*}
+\begin{align}
 y'' - 2xy' + 2\nu y = 0
-\end{align*}
+\end{align}
 to the Sturm-Liouville form and find its eigenfunctions.
 \end{exmp}
 \begin{solution}
-The integrating factor is
+The integrating factor, by (\ref{eqn:intfactorsl}), is
 \begin{align*}
 F(x) &= \exp(\int \frac{(-2x) - (0)}{(1)} dx) \\
 &= \exp(\int -2x dx) = e^{-x^2}
 \end{align*}
 and hence by multiplying it to the Hermite's Equation
-\begin{align*}
-e^{-x^2}y'' - 2xe^{-x^2}y' + 2\nu e^{-x^2} y &= 0 \\
+\begin{align}
+e^{-x^2}y'' - 2xe^{-x^2}y' + 2\nu e^{-x^2} y &= 0 \nonumber \\
 (e^{-x^2}y')' + 2\nu e^{-x^2} y &= 0
-\end{align*}
-yields the Sturm-Liouville form with $p(x) = e^{-x^2}$, $q(x) = 0$, $\lambda = 2\nu$, $w(x) = e^{-x^2}$. We can find the eigenfunctions by the method of \textit{series solution}. Assume a series solution of $y = a_0 + a_1x + a_2x^2 + \cdots = \sum_{n=0}^{\infty} a_n x^n$, then
-\begin{align*}
+\end{align}
+yields the Sturm-Liouville form with $p(x) = e^{-x^2}$, $q(x) = 0$, $\lambda = 2\nu$, $w(x) = e^{-x^2}$. We can find the eigenfunctions by the method of \textit{series solution}. Assume a series solution of 
+\begin{align}
+y = a_0 + a_1x + a_2x^2 + \cdots = \sum_{n=0}^{\infty} a_n x^n    
+\end{align}
+then
+\begin{subequations}
+\begin{align}
 y' &= \sum_{n=1}^{\infty} n a_nx^{n-1} \\
 y'' &= \sum_{n=2}^{\infty} n(n-1) a_nx^{n-2}
-\end{align*}
+\end{align}    
+\end{subequations}
 Substituting them into the original form of Hermite's equation, we have
-\begin{align*}
-\sum_{n=2}^{\infty} n(n-1) a_nx^{n-2} - 2x\sum_{n=1}^{\infty} n a_nx^{n-1} + 2\nu \sum_{n=0}^{\infty} a_n x^n &= 0 \\
+\begin{align}
+\sum_{n=2}^{\infty} n(n-1) a_nx^{n-2} - 2x\sum_{n=1}^{\infty} n a_nx^{n-1} + 2\nu \sum_{n=0}^{\infty} a_n x^n &= 0 \nonumber \\
 \sum_{n=0}^{\infty} (n+2)(n+1) a_{n+2}x^{n} - 2\sum_{n=1}^{\infty} n a_nx^{n} + 2\nu \sum_{n=0}^{\infty} a_n x^n &= 0 
-\end{align*}
+\end{align}
 Comparing the coefficients of $x^n$ gives a recurrence relation of
-\begin{align*}
+\begin{align}
 (n+2)(n+1)a_{n+2} - 2n a_n + 2\nu a_n &= 0
-\end{align*}
+\end{align}
 for $n \geq 1$. For $n=0$ it is simply $2a_2 + 2\nu a_0 = 0$. Rearranging we have
-\begin{align*}
+\begin{align}
 a_{n+2} = \frac{2(n-\nu)}{(n+2)(n+1)}a_n
-\end{align*}
+\end{align}
 Such a form indicates that there will be two series, one for the odd indices and another for the even. Note that for the corresponding Sturm-Liouville operator to become Hermitian, the boundary term 
 \begin{align*}
 [\varphi_1 p(x) \frac{d\overline{\varphi_2}}{dx}]_a^b = [e^{-x^2} \varphi_1 \frac{d\overline{\varphi_2}}{dx}]_a^b = 0
@@ -845,12 +874,14 @@ a_3 &= \frac{2(1-3)}{(3)(2)}a_1 = -\frac{2}{3}a_1 \\
 a_5 &= \frac{2(3-3)}{(5)(4)}a_3 = 0
 \end{align*}
 hence $y = a_1x - \frac{2}{3}a_1x^3 = a_1(x-\frac{2}{3}x^3)$. By convention, the Hermite polynomials are scaled in a way such that the leading highest degree term has a coefficient of $2^n$. Hence the first four of Hermite polynomials are
-\begin{align*}
+\begin{align}
+\begin{aligned}
 H_0(x) &= 1 \\
 H_1(x) &= 2x \\
 H_2(x) &= 4x^2 - 2 \\
 H_3(x) &= 8x^3 - 12x
-\end{align*}
+\end{aligned}
+\end{align}    
 Short Exercise: Find the Hermite polynomial of degree $4$, $H_4(x)$, corresponding to $\nu = n = 4$.\footnote{Using the recurrence relation, we have
 \begin{align*}
 a_2 &= \frac{2(0-4)}{(2)(1)}a_0 = -4a_0 \\
@@ -886,7 +917,7 @@ for the Gaussian integral. By mathematical induction and integration by parts, w
 &= \int_{-\infty}^{\infty} -\frac{1}{2}x^{2m+1} d(e^{-x^2}) \\
 &= [-\frac{1}{2}x^{2m+1}e^{-x^2}]_{-\infty}^{\infty} - \int_{-\infty}^{\infty} (-\frac{2m+1}{2}x^{2m})e^{-x^2} dx \\
 &= (0) + \frac{2m+1}{2} \int_{-\infty}^{\infty} x^{2m}e^{-x^2} dx \\
-&= \frac{(1)(3)(5)\cdots(2m-1)(2m+1)\sqrt{\pi}}{2^(m+1)} \\
+&= \frac{(1)(3)(5)\cdots(2m-1)(2m+1)\sqrt{\pi}}{2^{(m+1)}} \\
 &\quad \text{(via the induction hypothesis)}
 \end{align*}
 so the formula is established.}
@@ -925,18 +956,22 @@ thus $\vec{v}^{(4)} \leftarrow H_3(x) = 8x^3 - 12x$.
 
 \begin{exmp}
 Consider the \textit{linearized shallow water system} along the Equator:
-\begin{align*}
+\begin{subequations}
+\begin{empheq}[left={\empheqlbrace}]{alignat=1}
 \frac{\partial u}{\partial t} - \beta y v &= -\frac{\partial \Phi}{\partial x} \\
 \frac{\partial v}{\partial t} + \beta y u &= -\frac{\partial \Phi}{\partial y} \\
 \frac{\partial \Phi}{\partial t} &= - gH(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y})
-\end{align*}
-The first two equations are the momentum equations and the last one is the continuity equation. $u, v, \Phi$ are the zonal, meridional winds and the geopotential. The constants include $\beta$ which denotes the beta effect (the change of $f$ over latitudes), and $g, H$ as the gravitational acceleration and equivalent depth. By assuming a traveling wave solution (written in the complex form, $i$ is the imaginary number)
-\begin{align*}
+\end{empheq}    
+\end{subequations}
+The first two equations are the momentum equations and the last one is the continuity equation. $u, v, \Phi$ are the zonal, meridional winds, and the geopotential. The constants include $\beta$ which denotes the beta effect (the change of $f$ over latitudes), and $g, H$ as the gravitational acceleration and equivalent depth. By assuming a traveling wave solution (written in the complex form, $i$ is the imaginary number)
+\begin{subequations}
+\begin{align}
 u &= \hat{u}(y)\exp(i(kx-\omega t)) \\
 v &= \hat{v}(y)\exp(i(kx-\omega t)) \\
 \Phi &= \hat{\Phi}(y)\exp(i(kx-\omega t))
-\end{align*}
-so that $\hat{u}(y), \hat{v}(y), \hat{\Phi}(y)$ are now functions of $y$ only. Substitute them into the three shallow water equations above, simplify them and apply some suitable changes of variable to arrive at the Hermite's equation and hence derive the modes of the linearized shallow water system.
+\end{align}    
+\end{subequations}
+so that $\hat{u}(y), \hat{v}(y), \hat{\Phi}(y)$ are now functions of $y$ only. Substitute them into the three shallow water equations above, simplify them, and apply some suitable change of variables to arrive at the Hermite's equation and hence derive the dynamical modes of the linearized shallow water system.
 \end{exmp}
 \begin{solution}
 Plugging the ansatz in, the system of equations becomes
@@ -970,66 +1005,73 @@ Using (\ref{eqn:linshallow1}) in (\ref{eqn:linshallow5}) gives
 &\quad- gH \frac{d^2\hat{v}(y)}{dy^2}   \label{eqn:linshallow6}   
 \end{align}
 Applying both (\ref{eqn:linshallow2}) and (\ref{eqn:linshallow3}) in (\ref{eqn:linshallow6}) yields
-\begin{align*}
-&\quad \omega^2 \hat{v}(y) + i \omega\beta y \hat{u}(y) \\
-&= \frac{i gHk^2}{\omega}(-i\omega \hat{v}(y) + \beta y \hat{u}(y)) + \frac{gHk}{\omega}(\beta\hat{v}(y) + \beta y (\frac{i \omega}{gH} \hat{\Phi}(y) - i k\hat{u}(y)) \\
+\begin{align}
+&\quad \omega^2 \hat{v}(y) + i \omega\beta y \hat{u}(y) \nonumber \\
+&= \frac{i gHk^2}{\omega}(-i\omega \hat{v}(y) + \beta y \hat{u}(y)) + \frac{gHk}{\omega}(\beta\hat{v}(y) + \beta y (\frac{i \omega}{gH} \hat{\Phi}(y) - i k\hat{u}(y))  \nonumber \\
 &\quad - gH \frac{d^2\hat{v}(y)}{dy^2}    
-\end{align*}
+\end{align}
 Rearranging then gives
-\begin{align*}
-&\quad \omega^2 \hat{v}(y) + i \omega\beta y \hat{u}(y) \\
-&= gHk^2 \hat{v}(y) \mathcolor{red}{+ \frac{i gHk^2}{\omega} \beta y \hat{u}(y)} + \frac{gHk}{\omega}\beta\hat{v}(y) + i k \beta y \hat{\Phi}(y) \\
-&\quad \mathcolor{red}{- \frac{i gHk^2}{\omega} \beta y \hat{u}(y)} - gH \frac{d^2\hat{v}(y)}{dy^2} \\
+\begin{align}
+&\quad \omega^2 \hat{v}(y) + i \omega\beta y \hat{u}(y) \nonumber \\
+&= gHk^2 \hat{v}(y) \mathcolor{red}{+ \frac{i gHk^2}{\omega} \beta y \hat{u}(y)} + \frac{gHk}{\omega}\beta\hat{v}(y) + i k \beta y \hat{\Phi}(y) \nonumber \\
+&\quad \mathcolor{red}{- \frac{i gHk^2}{\omega} \beta y \hat{u}(y)} - gH \frac{d^2\hat{v}(y)}{dy^2} \nonumber \\
 &= gHk^2 \hat{v}(y)  + \frac{gHk}{\omega}\beta\hat{v}(y) + i k \beta y \hat{\Phi}(y) - gH \frac{d^2\hat{v}(y)}{dy^2}
-\end{align*}
+\end{align}
 Finally, using (\ref{eqn:linshallow1}) again, we have
-\begin{align*}
+\begin{align}
 \omega^2 \hat{v}(y) - \beta^2 y^2 \hat{v}(y) = gHk^2 \hat{v}(y)  + \frac{gHk}{\omega}\beta\hat{v}(y) - gH \frac{d^2\hat{v}(y)}{dy^2}    
-\end{align*}
+\end{align}
 Cleaning this up, we obtain
-\begin{align*}
+\begin{align}
 \frac{d^2\hat{v}(y)}{dy^2} + [(\frac{\omega^2}{gH} - k^2 - \beta\frac{k}{\omega}) - \frac{\beta^2}{gH}y^2]\hat{v}(y) = 0
-\end{align*}
+\end{align}
 Finally, with a change of variable $\tilde{y} = y/y_0$, $y_0 = (\sqrt{gH}/\beta)^{1/2}$, it becomes
-\begin{align*}
-\frac{\beta}{\sqrt{gH}} \frac{d^2\hat{v}(\tilde{y})}{d\tilde{y}^2} + [(\frac{\omega^2}{gH} - k^2 - \beta\frac{k}{\omega}) - \frac{\beta^2}{gH}(\frac{\sqrt{gH}}{\beta}\tilde{y}^2)]\hat{v}(\tilde{y}) &= 0 \\
+\begin{align}
+\frac{\beta}{\sqrt{gH}} \frac{d^2\hat{v}(\tilde{y})}{d\tilde{y}^2} + [(\frac{\omega^2}{gH} - k^2 - \beta\frac{k}{\omega}) - \frac{\beta^2}{gH}(\frac{\sqrt{gH}}{\beta}\tilde{y}^2)]\hat{v}(\tilde{y}) &= 0 \nonumber \\
 \frac{d^2\hat{v}(\tilde{y})}{d\tilde{y}^2} + [\frac{\sqrt{gH}}{\beta}(\frac{\omega^2}{gH} - k^2 - \beta\frac{k}{\omega}) - \tilde{y}^2]\hat{v}(\tilde{y}) &= 0   
-\end{align*}
+\end{align}
 Letting 
-\begin{align*}
+\begin{align}
 \mu = \frac{\sqrt{gH}}{\beta}(\frac{\omega^2}{gH} - k^2 - \beta\frac{k}{\omega})
-\end{align*}
-simplifies the equation to $\hat{v}'' + (\mu - \tilde{y}^2)\hat{v} = 0$. Further, if
-\begin{align*}
+\end{align}
+simplifies the equation to 
+\begin{align}
+\hat{v}'' + (\mu - \tilde{y}^2)\hat{v} = 0    
+\end{align}
+Further, if
+\begin{align}
 \hat{v} = \hat{w} \exp(-\frac{\tilde{y}^2}{2})
-\end{align*}
+\end{align}
 then 
-\begin{align*}
+\begin{align}
 \hat{v}' = \hat{w}' \exp(-\frac{\tilde{y}^2}{2}) - \tilde{y}\hat{w} \exp(-\frac{\tilde{y}^2}{2})
-\end{align*}
+\end{align}
 and
-\begin{align*}
-\hat{v}'' &= \hat{w}'' \exp(-\frac{\tilde{y}^2}{2}) - \tilde{y}\hat{w}' \exp(-\frac{\tilde{y}^2}{2}) - \hat{w} \exp(-\frac{\tilde{y}^2}{2}) \\
-&\quad - \tilde{y}\hat{w}' \exp(-\frac{\tilde{y}^2}{2}) + \tilde{y}^2\hat{w} \exp(-\frac{\tilde{y}^2}{2}) \\
+\begin{align}
+\hat{v}'' &= \hat{w}'' \exp(-\frac{\tilde{y}^2}{2}) - \tilde{y}\hat{w}' \exp(-\frac{\tilde{y}^2}{2}) - \hat{w} \exp(-\frac{\tilde{y}^2}{2}) \nonumber \\
+&\quad - \tilde{y}\hat{w}' \exp(-\frac{\tilde{y}^2}{2}) + \tilde{y}^2\hat{w} \exp(-\frac{\tilde{y}^2}{2}) \nonumber \\
 &= (\hat{w}'' - 2\tilde{y}\hat{w}' + (\tilde{y}^2-1)\hat{w})\exp(-\frac{\tilde{y}^2}{2})
-\end{align*}
+\end{align}
 So
-\begin{align*}
+\begin{align}
 \hat{v}'' + (\mu - \tilde{y}^2)\hat{v} = 0
-\end{align*}
+\end{align}
 becomes
-\begin{align*}
-(\hat{w}'' - 2\tilde{y}\hat{w}' + (\tilde{y}^2-1)\hat{w})\exp(-\frac{\tilde{y}^2}{2}) + (\mu - \tilde{y}^2)\hat{w} \exp(-\frac{\tilde{y}^2}{2}) &= 0 \\
+\begin{align}
+(\hat{w}'' - 2\tilde{y}\hat{w}' + (\tilde{y}^2-1)\hat{w})\exp(-\frac{\tilde{y}^2}{2}) + (\mu - \tilde{y}^2)\hat{w} \exp(-\frac{\tilde{y}^2}{2}) &= 0 \nonumber \\
 \hat{w}'' - 2\tilde{y}\hat{w}' + (\mu-1)\hat{w} &= 0
-\end{align*}
+\end{align}
 This is Hermite's equation in disguise where we have $\mu = 2\nu + 1$, $\nu = 0, 1, 2, \ldots$ if the solutions have to be bounded. Hence the equatorial wave modes are given in terms of
-\begin{align*}
+\begin{align}
 \hat{v}(\tilde{y}) &= v_0H_n(\tilde{y})\exp(-\frac{\tilde{y}^2}{2})    
-\end{align*}
+\end{align}
 From this, $\hat{u}(\tilde{y})$ and $\hat{\Phi}(\tilde{y})$ can be found via any two of (\ref{eqn:linshallow1}), (\ref{eqn:linshallow2}) and (\ref{eqn:linshallow3}).
-\includegraphics[height=0.7\textheight]{graphics/rog1687-fig-0003.png}\\
-\textit{Horizontal structures of selected zonally propagating wave solutions to the shallow water equations on an equatorial $\beta$ plane. (Kiladis et al., 2009)}
 \end{solution}
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[height=0.7\textheight]{graphics/rog1687-fig-0003.png}
+    \caption{\textit{Horizontal structures of selected zonally propagating wave solutions to the shallow water equations on an equatorial $\beta$ plane. (Kiladis et al., 2009 \cite{https://doi.org/10.1029/2008RG000266})}}
+\end{figure}
 
 \section{Python Programming}
 Here we demonstrate how to compute a real inner product supplied by a symmetric bilinear form $B$ and carry out Gram-Schmidt Orthogonalization with respect to it. We use Example \ref{exmp:R3innerGS} as the test case. We first define a function to calculate the inner product given two input vectors and the matrix $B$:
@@ -1094,7 +1136,7 @@ Show that the set of all $n \times n$ (complex) matrices $\mathcal{V} = \mathcal
 \begin{Exercise}
 Show that $\vec{u} = (-1,0,2)^T$ and $\vec{v} = (1,-1,1)^T$ in $\mathbb{R}^3$ are orthogonal to each other if an inner product of
 \begin{align*}
-\langle\vec{u}, \vec{v}\rangle = \vec{u}^TB\vec{v}
+\langle\vec{u}, \vec{v}\rangle = \textbf{u}^TB\textbf{v}
 \end{align*}
 where 
 \begin{align*}
@@ -1111,7 +1153,7 @@ is used. Also, find the norm $\norm{\vec{u}}$ and $\norm{\vec{v}}$ of both $\vec
 \begin{Exercise}
 Let $\mathcal{V} = \mathbb{R}^3$. Show that
 \begin{align*}
-\langle\vec{u}, \vec{v}\rangle = \vec{u}^TB\vec{v}
+\langle\vec{u}, \vec{v}\rangle = \textbf{u}^TB\textbf{v}
 \end{align*}
 where 
 \begin{align*}
@@ -1127,10 +1169,10 @@ is a valid inner product for all $\vec{u}, \vec{v} \in \mathcal{V}$ and turns $\
 
 \begin{Exercise}
 \label{ex:triangular2}
-Prove the Triangular Inequality
-\begin{align*}
+Prove the \index{Triangle Inequality}\textit{Triangle Inequality}
+\begin{align}
 \norm{\vec{u} + \vec{v}} \leq \norm{\vec{u}} + \norm{\vec{v}}
-\end{align*}
+\end{align}
 as in Exercise \ref{ex:triangular} but now for any inner product.
 \end{Exercise}
 
@@ -1147,7 +1189,7 @@ where $w(x) =$ (a) $1$, and (b) $e^{-x}$, with $a > 0$.
 \end{Exercise}
 
 \begin{Exercise}
-Show that given a real inner product induced by $\langle \vec{u},\vec{v} \rangle = \vec{u}^TB\vec{v}$ where
+Show that given a real inner product induced by $\langle \vec{u},\vec{v} \rangle = \textbf{u}^TB\textbf{v}$ where
 \begin{align*}
 B = 
 \begin{bmatrix}
@@ -1172,8 +1214,8 @@ Find the Fourier series of (a) $x^2$, (b) $x^3$ and (c) $4+\sin(3x)+2\cos(8x)$ o
 
 \begin{Exercise}
 Convert the \textit{Legendre's Equation}
-\begin{align*}
+\begin{align}
 (1-x^2) y'' - 2xy' + \lambda y = 0
-\end{align*}
+\end{align}
 into the Sturm-Liouville form, what should be the natural interval such that the corresponding Sturm-Liouville operator is Hermitian? Then, show that when $\lambda = n(n+1)$, $n$ is a non-negative integer, the series solution truncates and produces the \textit{Legendre polynomials} as its eigenfunctions. Find the first five of them. Alternatively, apply the Gram-Schmidt procedure over the standard polynomial basis over the natural interval to come up with the same set of Legendre polynomials.
 \end{Exercise}
