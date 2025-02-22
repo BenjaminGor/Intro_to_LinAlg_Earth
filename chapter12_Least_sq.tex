@@ -5,29 +5,32 @@ As discussed in Chapter \ref{chap:SolLinSys}, given a linear system, if the numb
 
 \section{Mathematical Ideas of Least-Square Approximation}
 
-For a linear system $A\vec{x} = \vec{h}$ where $\vec{h}$ does not lie in $\mathcal{C}(A)$ the column space of $A$, by Properties \ref{proper:consistentcolspace} it is inconsistent and there will be no exact solution. Nevertheless, a best-fit vector $\vec{x}_f$ can be found, where $A\vec{x}_f = \vec{h}_f$, in the sense that $\vec{h}_f$ will be the closest vector in the column space of $A$ to $\vec{h}$ in distance, i.e.\ the squared error
-\begin{align*}
+For a linear system $A\vec{x} = \vec{h}$ where $\vec{h}$ does not lie in $\mathcal{C}(A)$ the column space of $A$, by Properties \ref{proper:consistentcolspace} it is inconsistent and there will be no exact solution. Nevertheless, a best-fit vector $\vec{x}_f$ can be found, where $A\vec{x}_f = \smash{\vec{h}_f}$, in the sense that $\smash{\vec{h}_f}$ will be the closest vector in the column space of $A$ to $\smash{\vec{h}}$ in distance, i.e.\ the squared error
+\begin{align}
 \norm{\vec{h}-\vec{h}_f}^2 = \norm{\vec{h}-A\vec{x}_f}^2    
-\end{align*}
-is minimized and $\vec{h}_f = A\vec{x}_f$ (or $\vec{x}_f$) is referred to as the \index{Least-square Approximation}\keywordhl{least-square approximation} to the system. From Properties \ref{proper:shortestorthoproj}, we know that the shortest distance will be achieved by the orthogonal projection of $\vec{x}$ onto the column space of $A$. Notice that the distance and orthogonality can now be defined with respect to a general inner product other than the usual dot product. Therefore, $\vec{h}-A\vec{x}_f$ will be in the orthogonal complement $\mathcal{C}(A)^\perp$\footnote{which may not be equal to $\mathcal{N}(A^T)$ or $\mathcal{N}(A^*)$ but rather $\mathcal{N}(A^\dag)$ if an inner product other than the standard one is used.} of the column space $\mathcal{C}(A)$ of $A$, and we have
-\begin{align*}
+\end{align}
+is minimized and $\smash{\vec{h}_f} = A\vec{x}_f$ (or $\vec{x}_f$) is referred to as the \index{Least-square Approximation}\keywordhl{least-square approximation} to the system. From Properties \ref{proper:shortestorthoproj}, we know that the shortest distance will be achieved by the orthogonal projection of $\vec{h}$ onto the column space of $A$. Notice that the distance and orthogonality can now be defined with respect to a general inner product other than the usual dot product. Therefore, $\vec{h}-A\vec{x}_f$ will be in the orthogonal complement $\mathcal{C}(A)^\perp$\footnote{which may not be equal to $\mathcal{N}(A^T)$ or $\mathcal{N}(A^*)$ but rather $\mathcal{N}(A^\dag)$ if an inner product other than the standard one is used.} of the column space $\mathcal{C}(A)$ of $A$, and we have
+\begin{align}
 \langle A\vec{x}, \vec{h}-A\vec{x}_f \rangle = \langle \vec{x}, A^\dag(\vec{h}-A\vec{x}_f) \rangle = 0 
-\end{align*}
+\end{align}
 Since this holds for any $\vec{x}$, by the last item of Properties \ref{proper:innerprod2} we have
-\begin{align*}
-A^\dag(\vec{h}-A\vec{x}_f) &= \textbf{0} \\
+\begin{align}
+A^\dag(\vec{h}-A\vec{x}_f) &= \textbf{0} \nonumber \\
 A^\dag A\vec{x}_f &= A^\dag \vec{h}
-\end{align*}
-This is called the \index{Normal Equation}\keywordhl{normal equation} due to the appearance of $A^\dag A$. So any $\vec{x}_f$\footnote{The existence of at least one of such a vector is guaranteed by the uniqueness of orthogonal projection of $\vec{h}$ onto $\mathcal{C}(A)$.} satisfying this equation will produce the least-square error. We may be tempted to multiply both sides of the equation by the inverse $(A^\dag A)^{-1}$ to arrive at a formula for the least-square solution $\vec{x}_f = (A^\dag A)^{-1}A^\dag \vec{h}$. However, this is only allowed when this inverse indeed exists, and we now discuss under what condition it will happen.\par
-\begin{tikzpicture}[rotate=-10]
-\filldraw[fill=Green!20]
-(0,0,0) -- (4,0,0) -- (4,0,4) -- (0,0,4) -- cycle;
-\draw[red, thick, ->] (1,0,1) -- (3,2,2) node[right]{$\vec{h}$};
-\draw[blue, thick, ->] (1,0,1) -- (3,0,2) node[right]{$A\vec{x_f} = \vec{h_f}$};
-\draw[gray, thick, dashed] (3,2,2) -- (3,0,2);
-\node[Green] at (-2,0,1) {Column space of $A$};
-\end{tikzpicture} \\
-\textit{Geometric view for the least-square approximation problem, where $\vec{h}$ and the orthogonal projection of $\vec{h}$ onto the two-dimensional column space of the $3 \times 2$ matrix $A$, that is, $\vec{h_f} = A\vec{x_f}$, are $\mathbb{R}^3$ vectors.}\par
+\end{align}
+This is called the \index{Normal Equation}\keywordhl{normal equation} due to the appearance of $A^\dag A$. So any $\vec{x}_f$\footnote{The existence of at least one of such a vector is guaranteed by the uniqueness of orthogonal projection of $\smash{\vec{h}}$ onto $\mathcal{C}(A)$.} satisfying this equation will produce the least-square error. We may be tempted to multiply both sides of the equation by the inverse $(A^\dag A)^{-1}$ to arrive at a formula for the least-square solution $\vec{x}_f = (A^\dag A)^{-1}A^\dag \smash{\vec{h}}$. However, this is only allowed when this inverse indeed exists, and we now discuss under what condition it will happen.\par
+\begin{figure}[ht!]
+    \centering
+    \begin{tikzpicture}[rotate=-10]
+    \filldraw[fill=Green!20]
+    (0,0,0) -- (4,0,0) -- (4,0,4) -- (0,0,4) -- cycle;
+    \draw[red, thick, ->] (1,0,1) -- (3,2,2) node[right]{$\vec{h}$};
+    \draw[blue, thick, ->] (1,0,1) -- (3,0,2) node[right]{$A\vec{x_f} = \vec{h_f}$};
+    \draw[gray, thick, dashed] (3,2,2) -- (3,0,2);
+    \node[Green] at (-2,0,1) {Column space of $A$};
+    \end{tikzpicture}
+    \caption{\textit{Geometric view for the least-square approximation problem, where $\smash{\vec{h}}$ and the orthogonal projection of $\smash{\vec{h}}$ onto the two-dimensional column space of the $3 \times 2$ matrix $A$, that is, $\smash{\vec{h_f}} = A\vec{x_f}$, are $\mathbb{R}^3$ vectors.}}
+\end{figure}
 
 \begin{proper}
 For an $m \times n$ matrix $A$, $A^\dag A$ and $A$ have the same null space.
@@ -46,21 +49,21 @@ By the Rank-nullity Theorem \ref{thm:ranknullity}, $\text{rank}(A^\dag A) + \tex
 Therefore, we have the following result.
 \begin{thm}
 \label{thm:bestfit}
-If $A$ is a $m \times n$ matrix with $m \geq n$ and all its $n$ column vectors are linearly independent, then for the system $A\vec{x} = \vec{h}$, there exists a unique best-fit solution
+If $A$ is a $m \times n$ matrix with $m \geq n$ and all its $n$ column vectors are linearly independent, then for the system $A\vec{x} = \smash{\vec{h}}$, there exists a unique best-fit solution
 \begin{align}
 \vec{x}_f &= (A^\dag A)^{-1}A^\dag \vec{h} \label{eqn:bestfit}
 \end{align}
 such that the square error $\norm{\vec{h}-\vec{h_f}}^2 = \norm{\vec{h}-A\vec{x_f}}^2$ is minimized.
 \end{thm}
-Notice that if $\vec{h}$ already lies in the column space of $A$, then $A\vec{x} = \vec{h}$ will have an exact solution and the best-fit solution will be identical to this exact solution. However, on the other extreme, if the column vectors in $A$ are not linearly independent, then the best-fit solution will not be unique. Rather, the normal equation will still be consistent, but there are infinitely many possible solutions, each having the same least-square error. Also, if the standard real inner product is used so that $A^\dag = A^T$ and we by chance have the QR decomposition of $A$, then
-\begin{align*}
-\vec{x_f} &= (A^TA)^{-1}A^T\vec{h} \\
-&= ((QR)^T(QR))^{-1}(QR)^T\vec{h} \\
-&= (R^TQ^TQR)^{-1} (QR)^T\vec{h} \\
-&= (R^TR)^{-1} R^TQ^T \vec{h} \\
-&= R^{-1} (R^T)^{-1} R^TQ^T \vec{h} \\
+Notice that if $\vec{h}$ already lies in the column space of $A$, then $A\vec{x} = \vec{h}$ will have an exact solution, and the best-fit solution will be identical to this exact solution. However, on the other extreme, if the column vectors in $A$ are not linearly independent, then the best-fit solution will not be unique. Rather, the normal equation will still be consistent, but there are infinitely many possible solutions, each having the same least-square error. Also, if the standard real inner product is used so that $A^\dag = A^T$ and we by chance have the QR decomposition of $A$, then
+\begin{align}
+\vec{x_f} &= (A^TA)^{-1}A^T\vec{h} \nonumber \\
+&= ((QR)^T(QR))^{-1}(QR)^T\vec{h} \nonumber \\
+&= (R^TQ^TQR)^{-1} (QR)^T\vec{h} \nonumber \\
+&= (R^TR)^{-1} R^TQ^T \vec{h} \nonumber \\
+&= R^{-1} (R^T)^{-1} R^TQ^T \vec{h} \nonumber \\
 &= R^{-1} Q^T\vec{h}
-\end{align*}
+\end{align}
 where $Q^TQ = I$ since $Q$ is an orthogonal matrix in which the column vectors form an orthonormal basis as indicated by Properties \ref{proper:QRdecompose}.
 
 \begin{exmp}
@@ -201,7 +204,7 @@ A^\dag &= C^{-1} A^T B \\
 8&14&12
 \end{bmatrix}
 \end{align*}
-where $C$ can be picked to be any positive-definite matrix\footnote{The choice of $C$ actually matters if there are multiple least-square solutions and $\vec{x}_f$ is also required to have a minimal norm with respect to some other inner product. This will be explored in Chapter ??.} and we choose $C = I$ for simplicity. Subsequently, the least-square solution is
+where $C$ can be picked to be any positive-definite matrix\footnote{The choice of $C$ actually matters if there are multiple least-square solutions and $\vec{x}_f$ is also required to have a minimal norm with respect to some other inner product. This will be explored in Section \ref{section:SVDgeneral}.} and we choose $C = I$ for simplicity. Subsequently, the least-square solution is
 \begin{align*}
 \vec{x}_f &= (A^\dag A)^{-1}A^\dag \vec{h} \\
 &=
@@ -331,9 +334,10 @@ T^\dag &= (A(A^\dag A)^{-1}A^\dag)^\dag \\
 \section{Linear Regression}
 \subsection{Linear Regression for One Predictor Variable}
 
-\index{Linear Regression}\keywordhl{Linear regression} is a very important tool in Statistics that helps identify any linear trend in data and is based on least-square approximation. The simplest type of linear regression is fitting a straight line $y = \alpha + \beta x$, where $\alpha$ and $\beta$ are its intercept and slope, to $m$ pairs of observation, $(x_1, y_1), (x_2, y_2), \cdots, (x_m, y_m)$ such that the sum of squared errors $\sum_{k=1}^m (y_k - (\alpha + \beta x_k))^2$ is minimized. In this context, $x$ and $y$ are known as the \textit{explanatory} and \textit{response variable} respectively.
+\index{Linear Regression}\keywordhl{Linear regression} is a very important tool in Statistics that helps identify any linear trend in data and is based on least-square approximation. The simplest type of linear regression is fitting a straight line $y = \alpha + \beta x$, where $\alpha$ and $\beta$ are its intercept and slope, to $m$ pairs of observation, $(x_1, y_1), (x_2, y_2), \cdots, (x_m, y_m)$ such that the sum of squared errors $\sum_{k=1}^m (y_k - (\alpha + \beta x_k))^2$ is minimized. In this context, $x$ and $y$ are known as the \textit{explanatory} and \textit{response variable} respectively.\par
 
-\begin{center}
+\begin{figure}[ht!]
+\centering
 \begin{tikzpicture}
 \draw[thick, ->] (-1,0) -- (5,0) node[right]{$x$};
 \draw[thick, ->] (0,-1) -- (0,5) node[above]{$y$};
@@ -352,15 +356,15 @@ T^\dag &= (A(A^\dag A)^{-1}A^\dag)^\dag \\
 \draw[thick, Green] (3,2.8) -- (3,3.04);
 \draw[thick, Green] (4,4.4) -- (4,4.12);
 \end{tikzpicture}
-\end{center}
-\textit{A toy linear regression model for 4 data points. The red straight line represents the best linear fit, and the green lines are the distances, or errors between the actual data and the regression line, whose sum of squares is minimized.}\par
+\caption{\textit{A toy linear regression model for 4 data points. The red straight line represents the best linear fit, and the green lines are the distances, or errors between the actual data and the regression line, whose sum of squares is minimized.}}
+\end{figure}
 
 To see how we can apply the results in the last section, we first rewrite the system into matrix form. The actual sampled values are given by $\vec{y} = (y_1, y_2, \ldots, y_m)^T$, while the values predicted by the best-fit straight line will be in the form of $\vec{y}^{\text{pred}} = (\alpha\textbf{1} + \beta \vec{x})^T = (\alpha + \beta x_1, \alpha + \beta x_2, \ldots, \alpha + \beta x_m)^T$, where $\textbf{1}$ is a column vector filled with ones, $\alpha$ and $\beta$ are the intercept and slope of the best-fit line to be determined. In other words, we are trying to find an optimal solution for the unknown parameters $\alpha$ and $\beta$ in the matrix system
-\begin{align*}
+\begin{align}
 \alpha\textbf{1} + \beta \vec{x} &= \vec{y}
-\end{align*}
+\end{align}
 or alternatively
-\begin{align*}
+\begin{align}
 \begin{bmatrix}
 1 & x_1 \\
 1 & x_2 \\
@@ -378,22 +382,22 @@ y_2 \\
 \vdots \\
 y_m
 \end{bmatrix}
-\end{align*}
-so that the sum of squared errors $\sum_{k=1}^m (y_k - y^{\text{pred}}_k)^2 = \sum_{k=1}^m (y_k - (\alpha + \beta x_k))^2$ is minimized. Such a system is conveniently denoted as $[X]\vec{\beta} = \vec{y}$, where the first and second column of $[X] = [\textbf{1}|\vec{x}]$ represent the two predictors, the constant term which is a "hidden" predictor that gives rise to the $y$-intercept, and the linear term of $x$. Now, the sum of squared errors
-\begin{align*}
+\end{align}
+so that the sum of squared errors $\smash{\sum_{k=1}^m (y_k - y^{\text{pred}}_k)^2} = \sum_{k=1}^m (y_k - (\alpha + \beta x_k))^2$ is minimized. Such a system is conveniently denoted as $[X]\vec{\beta} = \vec{y}$, where the first and second column of $[X] = [\textbf{1}|\vec{x}]$ represent the two predictors, the constant term which is a "hidden" predictor that gives rise to the $y$-intercept, and the linear term of $x$. Now, the sum of squared errors
+\begin{align}
 \sum_{k=1}^m (y_k - (\alpha + \beta x_k))^2 = \norm{\vec{y} - [X]\vec{\beta}}^2    
-\end{align*}
+\end{align}
 will be minimized by the best-fit parameters which are computed via
-\begin{align*}
+\begin{align}
 \vec{\beta_f} = ([X]^T[X])^{-1}[X]^T \vec{y}
-\end{align*}
+\end{align}
 according to Theorem \ref{thm:bestfit} where $A = [X]$, and simply $A^\dag = [X]^T$ as the error is computed based on the usual dot product/Euclidean distance. Writing out the matrices in the formula, the parameters for single variable linear regression are
-\begin{align*}
+\begin{align}
 \begin{bmatrix}
 \alpha_f \\
 \beta_f
 \end{bmatrix}
-& =
+&=
 \left(
 \begin{bmatrix}
 1 & 1 & \cdots & 1 \\
@@ -415,7 +419,7 @@ y_1 \\
 y_2 \\
 \vdots \\
 y_m
-\end{bmatrix} \\
+\end{bmatrix} \nonumber \\
 &= 
 \begin{bmatrix}
 m & \sum X \\
@@ -424,7 +428,7 @@ m & \sum X \\
 \begin{bmatrix}
 \sum Y \\
 \sum XY
-\end{bmatrix} \\
+\end{bmatrix} \nonumber  \\
 &=
 \frac{1}{m(\sum X^2) - (\sum X)^2}
 \begin{bmatrix}
@@ -434,29 +438,34 @@ m & \sum X \\
 \begin{bmatrix}
 \sum Y \\
 \sum XY
-\end{bmatrix} \\
+\end{bmatrix} \nonumber \\
 &=
 \frac{1}{m(\sum X^2) - (\sum X)^2}
 \begin{bmatrix}
 (\sum Y) (\sum X^2) - (\sum X) (\sum XY) \\
 m (\sum XY) - (\sum X) (\sum Y)
 \end{bmatrix}
-\end{align*}
+\end{align}
 where 
-\begin{align*}
+\begin{subequations}
+\begin{align}
 \sum X &= x_1 + x_2 + \cdots + x_m \\
 \sum X^2 &= x_1^2 + x_2^2 + \cdots + x_m^2 \\
 \sum Y &= y_1 + y_2 + \cdots + y_m \\
 \sum XY &= x_1y_1 + x_2y_2 + \cdots + x_my_m   
-\end{align*}
-and we have used the results in Example \ref{exmp:2x2} to calculate the inverse from the second to third line.
+\end{align}
+\end{subequations}
+and we have used the results (\ref{eqn:2times2inv}) in Example \ref{exmp:2x2} to calculate the inverse from the second to third line.
 \begin{proper}
 \label{proper:bestfit2}
 The best-fit parameters for the single predictor variable linear regression are found by
-\begin{align*}
+\begin{subequations}
+\label{eqn:bestfit2}
+\begin{align}
 \alpha_f &= \frac{(\sum Y) (\sum X^2) - (\sum X) (\sum XY)}{m(\sum X^2) - (\sum X)^2} \\
 \beta_f &= \frac{m (\sum XY) - (\sum X) (\sum Y)}{m(\sum X^2) - (\sum X)^2}
-\end{align*}
+\end{align}    
+\end{subequations}
 such that the regression line $y = \alpha_f + \beta_f x$ achieves the least-square error, i.e.\ the value of $\sum_{k=1}^m (y_k - (\alpha_f + \beta_f x_k))^2$ is the smallest possible.
 \end{proper}
 \begin{exmp}
@@ -471,7 +480,7 @@ We first compute the following quantities.
 \sum Y &= 4+6+7+9+11 = 37 \\
 \sum (XY) &= (2)(4)+(3)(6)+(4)(7)+(5)(9)+(7)(11) = 176
 \end{align*}
-Using Properties \ref{proper:bestfit2}, with $m=5$, the required parameters are
+By Formula (\ref{eqn:bestfit2}) in Properties \ref{proper:bestfit2}, with $m=5$, the required parameters are
 \begin{align*}
 \alpha_f &= \frac{\sum Y \sum (X^2) - \sum X \sum (XY)}{m\sum(X^2) - (\sum X)^2} = \frac{(37)(103)-(21)(176)}{(5)(103)-(21)^2} \approx 1.554 \\
 \beta_f &= \frac{m \sum(XY) - (\sum X) (\sum Y)}{m\sum(X^2) - (\sum X)^2} = \frac{(5)(176)-(21)(37)}{(5)(103)-(21)^2} \approx 1.392
@@ -485,25 +494,25 @@ Sometimes we may need to predict a variable $y$ with multiple predictor variable
 \begin{align*}
 \vec{\beta}_f = ([X]^T[X])^{-1}[X]^T \vec{y}
 \end{align*}
-where in this case the quantities now involve more predictor variables, $\vec{\beta}_f^T = (\alpha_f, {\beta_1}_f, {\beta_2}_f, \cdots, {\beta_n}_f)^T$, and the matrix $[X] = [\textbf{1}|\vec{x}^{(1)}|\vec{x}^{(2)}|\cdots|\vec{x}^{(n)}]$ holds the observed values of those multiple predictor variables column by column.
+where in this case the quantities now involve more predictor variables, $\smash{\vec{\beta}_f^T} = \smash{(\alpha_f, {\beta_1}_f, {\beta_2}_f, \cdots, {\beta_n}_f)^T}$, and the matrix $[X] = [\textbf{1}|\vec{x}^{(1)}|\vec{x}^{(2)}|\cdots|\vec{x}^{(n)}]$ holds the observed values of those multiple predictor variables column by column.
 
 \begin{exmp}
 \label{exmp:GPAregress}
-The university carries out an experiment and tries to quantify the effects of IQ and studying time on the GPA of students. 5 students participate and below are the data.
+The university carries out an experiment and tries to quantify the effects of IQ and studying time on the GPA of students. 5 students participated and the data are shown below.
 \begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
 Students & IQ & Studying Time per Week (Hours) & GPA \\
 \hline
-Lily & 104 & 5.2 & 3.56 \\
+Lily & $104$ & $5.2$ & $3.56$ \\
 \hline
-Christy & 111 & 6.1 & 3.71 \\
+Christy & $111$ & $6.1$ & $3.71$ \\
 \hline
-Sabrina & 107 & 8.3 & 3.73 \\
+Sabrina & $107$ & $8.3$ & $3.73$ \\
 \hline
-Julia & 106 & 3.4 & 3.34 \\
+Julia & $106$ & $3.4$ & $3.34$ \\
 \hline
-Emily & 109 & 9.6 & 3.88 \\
+Emily & $109$ & $9.6$ & $3.88$ \\
 \hline
 \end{tabular}
 \end{center} 
@@ -617,7 +626,7 @@ The predictor variables are the constant term, the linear term $x$, as well as t
 The quadratic fit is thus $y = -0.009 + 2.201x - 0.089x^2$.
 \end{solution}
 Notice that in the above example, although we use the quadratic term $x^2$ as a predictor, the regression is still \textit{linear} in the sense that the regression model is a \textit{linear} combination of these predictors. Usually, fitting a degree $n$ polynomials in a single variable $x$ to $m$ points, $n < m$, will involve a matrix in the form like the one above:
-\begin{align*}
+\begin{align}
 [X]
 &= 
 \begin{bmatrix}
@@ -626,7 +635,7 @@ Notice that in the above example, although we use the quadratic term $x^2$ as a 
 \vdots & \vdots & \vdots & & \vdots \\
 1 & x_m & x_m^2 & \cdots & x_m^n \\
 \end{bmatrix} 
-\end{align*}
+\end{align}
 This class of matrices is called \index{Vandermonde Matrix}\keywordhl{Vandermonde matrices}.\footnote{As long as $n < m$ and the sampled points $x_i$ are distinct, the columns of a Vandermonde matrix will be linearly independent.}
 
 \subsection{Properties of Linear Regression}
@@ -634,35 +643,39 @@ This class of matrices is called \index{Vandermonde Matrix}\keywordhl{Vandermond
 Before going to the next topic, we derive some features of linear regression. The errors, or called the \index{Residual}\keywordhl{residuals} $e_i = h_i - (h_f)_i$, have a mean of zero. Using matrix notation, it means that the sum of components in the error vector $\vec{e} = \vec{h} - \vec{h_f}$ is zero. This can be seen from the very beginning of our derivation for the best-fit problem $A\vec{x} = \vec{h}$, where the condition has been $A^\dag (\vec{h} - A\vec{x}_f) = A^\dag (\vec{h} - \vec{h}_f) = \textbf{0}$. For linear regression, $A^\dag =[X]^T$ and it becomes $[X]^T\vec{e} = \textbf{0}$. However, since the first column in $[X]$ is $\textbf{1}$, the first entry in $[X]^T\vec{e}$ is just $\textbf{1} \cdot \vec{e}$, which is just the sum of errors. As $[X]^T\vec{e} = \textbf{0}$, the sum and hence the mean of errors must be zero.\par
 
 Another property is that, if we denote the mean of $y$ as $\overline{y}$, each actual data and predicted values as $y_i$ and $\hat{y}_i = y^{\text{pred}}_i$ respectively, then
-\begin{align*}
+\begin{align}
 \sum_i (y_i - \overline{y})^2 &= \sum_i (y_i - \hat{y}_i)^2 + \sum_i (\hat{y}_i - \overline{y})^2
-\end{align*}
+\end{align}
 The term on L.H.S. is called the \index{Sum of Squares Total (SST)}\keywordhl{SST/Sum of Squares Total}, while the two terms on R.H.S. are known as the \index{Sum of Squares Error (SSE)}\keywordhl{SSE/Sum of Squares Error} and \index{Sum of Squares Regression (SSR)}\keywordhl{SSR/Sum of Squares Regression}. To prove this, we expand the SST, which gives
-\begin{align*}
-\text{SST} &= \sum_i (y_i - \overline{y})^2 \\
-&= \sum_i ((y_i - \hat{y}_i) + (\hat{y}_i - \overline{y}))^2 \\
-&= \sum_i (y_i - \hat{y}_i)^2 + \sum_i (\hat{y}_i - \overline{y})^2 + 2\sum_i ((y_i - \hat{y}_i) (\hat{y}_i - \overline{y})) \\
+\begin{align}
+\text{SST} &= \sum_i (y_i - \overline{y})^2 \nonumber \\
+&= \sum_i ((y_i - \hat{y}_i) + (\hat{y}_i - \overline{y}))^2 \nonumber \\
+&= \sum_i (y_i - \hat{y}_i)^2 + \sum_i (\hat{y}_i - \overline{y})^2 + 2\sum_i ((y_i - \hat{y}_i) (\hat{y}_i - \overline{y})) \nonumber \\
 &= \text{SSE} + \text{SSR} + 2\sum_i ((y_i - \hat{y}_i) (\hat{y}_i - \overline{y}))
-\end{align*}
+\end{align}
 The remaining step is to show that the last term equals zero. For simplicity, we work with the case of a single predictor variable so there are two parameters $\alpha$ and $\beta$ only, but it can be easily generalized to multiple predictors and $\beta_j$. Expanding the product gives
-\begin{align*}
-\sum_i ((y_i - \hat{y}_i) (\hat{y}_i - \overline{y})) &= \sum_i (\hat{y}_i(y_i - \hat{y}_i)) - \overline{y} \sum_i (y_i - \hat{y}_i) \\
-&= \sum_i ((\alpha + \beta x_i)(y_i - \hat{y}_i)) - \overline{y} \sum_i (y_i - \hat{y}_i) \\
-&= \beta \sum_i (x_i(y_i - \hat{y}_i)) - (\overline{y} - \alpha) \sum_i (y_i - \hat{y}_i) \\
+\begin{align}
+\sum_i ((y_i - \hat{y}_i) (\hat{y}_i - \overline{y})) &= \sum_i (\hat{y}_i(y_i - \hat{y}_i)) - \overline{y} \sum_i (y_i - \hat{y}_i) \nonumber \\
+&= \sum_i ((\alpha + \beta x_i)(y_i - \hat{y}_i)) - \overline{y} \sum_i (y_i - \hat{y}_i) \nonumber \\
+&= \beta \sum_i (x_i(y_i - \hat{y}_i)) - (\overline{y} - \alpha) \sum_i (y_i - \hat{y}_i) \nonumber \\
 &= \beta \sum_i (x_i e_i) - (\overline{y} - \alpha) \sum_i e_i
-\end{align*}
+\end{align}
 Using the same logic when we are investigating $[X]^T\vec{e} = \textbf{0}$ before, we know that
-\begin{align*}
+\begin{subequations}
+\begin{align}
 \textbf{1} \cdot \vec{e} &= \sum_i e_i = 0 \\
 \vec{x} \cdot \vec{e} &= \sum_i (x_i e_i) = 0
-\end{align*}
+\end{align}    
+\end{subequations}
 These two relations can also be derived by setting $\partial (\sum_i e_i^2)/\partial \alpha = 0$ and $\partial (\sum_i e_i^2)/\partial \beta = 0$ as the sum of squared errors reaches the minimum at the point of best-fit. Substituting this two equations readily implies that the concerned quantity $\sum_i ((y_i - \hat{y}_i) (\hat{y}_i - \overline{y})) = 0$ is zero, and thus $\text{SST} = \text{SSE} + \text{SSR}$. We repeat these two results as follows.
 \begin{proper}
 The mean error of any linear regression is zero. Moreover, its sum of squares total (SST) is equal to the sum of squares error (SSE) plus the sum of squares regression (SSR), i.e.\ 
-\begin{align*}
+\begin{subequations}
+\begin{align}
 \sum_i (y_i - \overline{y})^2 &= \sum_i (y_i - \hat{y}_i)^2 + \sum_i (\hat{y}_i - \overline{y})^2 \\
 \text{SST} &= \text{SSE} + \text{SSR}   
-\end{align*}
+\end{align}    
+\end{subequations}
 \end{proper}
 The ratio of SSR to SST is known as the \index{Coefficient of Determination}\keywordhl{coefficient of determination} and is denoted by $R^2$ (hence sometimes we also simply call it \index{R-squared}\keywordhl{R-squared}). It is the proportion of variance in the response variable that can be explained by the predictors and thus indicates how good the linear fit is. It ranges from $0$ to $1$. The larger the value of $R^2$, the better the linear regression at predicting the target variable. If $R^2$ is close to one, then the fit is almost perfect. However, it is cautioned that there may be the problem of \textit{overfitting}\footnote{For $n$ distinct sets of data, it is always possible to achieve a perfect fit ($R^2 = 1$) using $n-1$ predictors (plus the intercept term) in the linear regression even when they may not be really related to the predictand and this is an extreme case of overfitting.}, which means that the regression does well on the dataset it is trained on but fails horribly when extrapolated to data points outside this training set. On the other hand, if $R^2$ is low, then the linear regression is ineffective, but it simply means that there is no apparent linear trend and the possibility of other forms of relationship, like a logarithmic one, existing between the explanatory variables and response variable, cannot be ruled out.
 
@@ -698,7 +711,7 @@ Hence $R^2 \approx 0.157/0.167 = 0.94$ which indicates a good fit.
 Find the least-square approximation to the temperature measurement problem in Example \ref{exmp:weatherstats}.
 \end{exmp}
 \begin{solution}
-In Example \ref{exmp:weatherstats2} we have found that the overdetermined system has no exact solution. To find the least-square solution we invoke the formula in Theorem \ref{thm:bestfit} where
+In Example \ref{exmp:weatherstats2} we have found that the corresponding overdetermined system has no exact solution. To find the least-square solution, we invoke the formula in Theorem \ref{thm:bestfit} where
 \begin{align*}
 \vec{x}_f &= (A^TA)^{-1}A^T\vec{h}
 \end{align*}
@@ -780,8 +793,12 @@ and the \verb|predict| method will return the predicted values from an input dat
 \begin{lstlisting}
 print(res.predict(Xc))    
 \end{lstlisting}
-This gives \verb|[3.495 3.672 3.764 3.400 3.888]| which is slightly different from what we have obtained in Example \ref{exmp:GPAregress2} as our manual calculation of the regression coefficients inevitably contains more round-off errors. \par
-\includegraphics[width=\textwidth]{graphics/OLS_table.png}
+This gives \verb|[3.495 3.672 3.764 3.400 3.888]| which is slightly different from what we have obtained in Example \ref{exmp:GPAregress} as our manual calculation of the regression coefficients inevitably contains more round-off errors.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.99\textwidth]{graphics/OLS_table.png}
+    \caption{\textit{The output of the Python program that calculates the OLS for Example \ref{exmp:GPAregress}.}}
+\end{figure}
 
 \section{Exercise}
 
@@ -800,12 +817,12 @@ the exact solution as derived in Section \ref{subsection:SolLinSysInv}.
 \begin{Exercise}
 Find the least-square solution to the overdetermined linear system below.
 \begin{align*}
-\begin{cases}
-x + 2y - 3z = 4 \\
-x - y + 3z = 5 \\
-2x + y - z = 1 \\
-x + y + z = 2
-\end{cases}
+\left\{\begin{alignedat}{2}
+&x + 2y - 3z &&= 4 \\
+&x - y + 3z &&= 5 \\
+&2x + y - z &&= 1 \\
+&x + y + z &&= 2
+\end{alignedat}\right.
 \end{align*}
 \end{Exercise}
 
@@ -814,29 +831,33 @@ Find a linear fit for the following data about sea level pressure and temperatur
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-Temperature ($^\circ$ C) & 10 & 12 & 12 & 13 & 16 & 17\\
+Temperature ($^\circ$ C) & $10$ & $12$ & $12$ & $13$ & $16$ & $17$\\
 \hline
-Pressure (hPa) & 1022.1 & 1019.5 & 1018.9 & 1017.6 & 1014.3 & 1013.5\\
+Pressure (hPa) & $1022.1$ & $1019.5$ & $1018.9$ & $1017.6$ & $1014.3$ & $1013.5$\\
 \hline
 \end{tabular}
 \end{center}
 \end{Exercise}
 
 \begin{Exercise}
+\phantomsection
+\label{ex:carbontrend}
 Find a linear fit and a quadratic fit for the following atmospheric data regarding global carbon dioxide level. Also, calculate the root-mean-square error for each fit.
-\begin{center}
-\fbox{\includegraphics[scale = 0.3]{carbon.png}}
-\end{center}
+\begin{figure}[h!]
+\centering
+\fbox{\includegraphics[scale = 0.32]{carbon.png}}
+\caption{\textit{The trend of atmospheric carbon dioxide level measured at Mauna Loa Observatory for Example \ref{ex:carbontrend}.}}
+\end{figure}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-Years passed since 1960 & 0 & 5 & 10 & 15 & 20 & 25 \\
+Years passed since 1960 & $0$ & $5$ & $10$ & $15$ & $20$ & $25$ \\
 \hline
-CO$_2$ level (ppm) & 316.9 & 320.0 & 325.7 & 331.1 & 338.8 & 346.4 \\
+CO$_2$ level (ppm) & $316.9$ & $320.0$ & $325.7$ & $331.1$ & $338.8$ & $346.4$ \\
 \hline
-Years passed since 1960 & 30 & 35 & 40 & 45 & 50 & 55\\
+Years passed since 1960 & $30$ & $35$ & $40$ & $45$ & $50$ & $55$\\
 \hline
-CO$_2$ level (ppm) & 354.4 & 361.0 & 369.7 & 380.0 & 390.1 & 401.0\\
+CO$_2$ level (ppm) & $354.4$ & $361.0$ & $369.7$ & $380.0$ & $390.1$ & $401.0$\\
 \hline
 \end{tabular}
 \end{center}
@@ -848,9 +869,9 @@ Radioactive decay is modeled by $N = N_0e^{-kt}$, where $N_0$ and $k$ are the in
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-Time passed (hr) & 6 & 8 & 12 & 24 & 36 & 48\\
+Time passed (hr) & $6$ & $8$ & $12$ & $24$ & $36$ & $48$\\
 \hline
-Mass (g) & 75.8 & 69.1 & 57.3 & 33.0 & 18.8 & 10.8\\
+Mass (g) & $75.8$ & $69.1$ & $57.3$ & $33.0$ & $18.8$ & $10.8$\\
 \hline
 \end{tabular}
 \end{center}
@@ -863,21 +884,21 @@ A commercial study investigates eight companies that sell the same type of produ
 \hline
 & Revenues & R\&D & Wages & Advertisement \\
 \hline
-Company 1 & 135\% & 2.5 & 1.7 & 0.8 \\
+Company 1 & $135\%$ & $2.5$ & $1.7$ & $0.8$ \\
 \hline
-Company 2 & 128\% & 1.6 & 1.8 & 1.5 \\
+Company 2 & $128\%$ & $1.6$ & $1.8$ & $1.5$ \\
 \hline
-Company 3 & 119\% & 1.8 & 0.5 & 2.4 \\
+Company 3 & $119\%$ & $1.8$ & $0.5$ & $2.4$ \\
 \hline
-Company 4 & 121\% & 0.3 & 1.5 & 1.2 \\
+Company 4 & $121\%$ & $0.3$ & $1.5$ & $1.2$ \\
 \hline
-Company 5 & 126\% & 1.9 & 1.6 & 1.3 \\
+Company 5 & $126\%$ & $1.9$ & $1.6$ & $1.3$ \\
 \hline
-Company 6 & 112\% & 0.8 & 1.1 & 0.2 \\
+Company 6 & $112\%$ & $0.8$ & $1.1$ & $0.2$ \\
 \hline
-Company 7 & 143\% & 2.2 & 2.4 & 1.1 \\
+Company 7 & $143\%$ & $2.2$ & $2.4$ & $1.1$ \\
 \hline
-Company 8 & 135\% & 1.5 & 2.2 & 2.3 \\
+Company 8 & $135\%$ & $1.5$ & $2.2$ & $2.3$ \\
 \hline
 \end{tabular}
 \end{center}
