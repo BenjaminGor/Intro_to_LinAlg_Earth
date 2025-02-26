@@ -682,15 +682,12 @@ T(\vec{v}) &= T(c_1\varphi^{(1)} + c_2\varphi^{(2)} + \cdots) = T(\lim_{n \to \i
 \end{align*}
 \footnotetext{Notice that in such an infinite series, linearity is actually not sufficient, see the caution just below the derivation.}Be wary that in (e), the linear operator $T$ applied on $\vec{v}$ is required to be Hermitian (truly self-adjoint), not only formally self-adjoint.\footnote{Curious readers may like to search about what a compact operator is.} This means that there will be problems if boundary terms appear when an integral-like inner product is used. This issue is going to be raised in the next example and short exercise.\par
 
-Recall that in Example \ref{exmp:Fourierbasis} we have derived the Fourier basis $\{\sin(x), \sin(2x), \\ \sin(3x), \ldots, 1, \cos(x), \cos(2x), \cos(3x), \ldots\}$ for the $L^2[-\pi, \pi]$ Hilbert space with the inner product of Equation (\ref{eqn:integralinner}). To normalize it, note that each eigenfunction has a norm of $\frac{1}{\sqrt{\pi}}$\footnote{We will only show this for the cosines but the calculation is the same for the sines. \\For integer $m$,
+Recall that in Example \ref{exmp:Fourierbasis} we have derived the Fourier basis $\{\sin(x), \sin(2x), \\ \sin(3x), \ldots, 1, \cos(x), \cos(2x), \cos(3x), \ldots\}$ for the $L^2[-\pi, \pi]$ Hilbert space with the inner product of Equation (\ref{eqn:integralinner}). To normalize it, note that each eigenfunction has a norm of $\frac{1}{\sqrt{\pi}}$\footnote{We will only show this for the cosines but the calculation is the same for the sines. For any integer $m$,
 \begin{align*}
 \norm{\cos(mx)}^2 &= \int_{-\pi}^{\pi} \cos(mx)\overline{\cos(mx)} dx \\
 &= \int_{-\pi}^{\pi} \cos^2(mx) dx \\
 &= \int_{-\pi}^{\pi} \frac{1}{2}(1 + \cos(2mx)) dx \\
-&= [\frac{1}{2}x + \frac{1}{4m}\sin(2mx)]_{-\pi}^{\pi} \\
-&= \frac{1}{2}(2\pi) + (0) = \frac{1}{\pi}
-\end{align*}
-} ($\frac{1}{\sqrt{2\pi}}$ for $1$) and hence the orthonormal Fourier basis is 
+&= [\frac{1}{2}x + \frac{1}{4m}\sin(2mx)]_{-\pi}^{\pi} = \frac{1}{2}(2\pi) + (0) = \frac{1}{\pi} \end{align*}} ($\frac{1}{\sqrt{2\pi}}$ for $1$) and hence the orthonormal Fourier basis is 
 \begin{align}
 \begin{aligned}
 &\left\{\frac{1}{\sqrt{\pi}}\sin(x), \frac{1}{\sqrt{\pi}}\sin(2x), \frac{1}{\sqrt{\pi}}\sin(3x), \ldots,\right. \\
@@ -708,7 +705,7 @@ f &=
 &= \frac{a_0}{2} + \sum_{m=1}^{\infty} a_m \cos(mx) + \sum_{n=1}^{\infty} b_n \sin(nx) 
 \end{align}
 \end{subequations}
-an (infinite) sum of these sinusoidal eigenfunctions (without the $\frac{1}{\sqrt{\pi}}$ normalization factor). To compute the \index{Fourier Coefficients}\keywordhl{Fourier coefficients} $a_m$ and $b_n$, we use (d) of the Spectral Theorem where the $T_j$ are in the form of Equation (\ref{eqn:orthoprojinner}), leading to
+an infinite sum of these sinusoidal eigenfunctions (without the $\frac{1}{\sqrt{\pi}}$ normalization factor). To compute the \index{Fourier Coefficients}\keywordhl{Fourier coefficients} $a_m$ and $b_n$, we use (d) of the Spectral Theorem where the $T_j$ are in the form of Equation (\ref{eqn:orthoprojinner}), leading to
 \begin{align*}
 f &= \sum_{j} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \\ 
 &= \langle f, \frac{1}{\sqrt{2\pi}} \rangle (\frac{1}{\sqrt{2\pi}})\\

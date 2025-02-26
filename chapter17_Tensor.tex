@@ -1,7 +1,7 @@
 \chapter{Index Notation and Introduction to Tensors}
 \label{chapter:Tensor}
 
-This is the final chapter of this book. (Congratulations!) It will be revealed that, matrices (or to be accurate, linear transformations), along with vectors, actually can be generalized to a broader class of objects known as \textit{tensors}. In the simplest sense, tensors are quantities with subscripts. To facilitate the manipulation of these subscripts, we will introduce the handy \textit{Index Notation}, as well as the \textit{Kronecker delta/epsilon symbols}. The next step is to develop \textit{matrix/tensor calculus} where several important differentiation rules and integral theorems will be given. Tensors can have physical meanings, allowing us to apply them in many scenarios. One of their usages in Earth Science is to serve as the language in \textit{Continuum Mechanics}. On the other hand, the related matrix calculus is much needed in \textit{Data Assimilation}, which is a technique in Atmospheric Sciences to rectify the output of a forecast from a weather model with available observations.
+This is the final chapter of this book. (Congratulations!) It will be revealed that matrices (or to be accurate, linear transformations), along with vectors, actually can be generalized to a broader class of objects known as \textit{tensors}. In the simplest sense, tensors are quantities with subscripts. To facilitate the manipulation of these subscripts, we will introduce the handy \textit{Index Notation}, as well as the \textit{Kronecker delta/epsilon symbols}. The next step is to develop \textit{matrix/tensor calculus} where several important differentiation rules and integral theorems will be given. Tensors can have physical meanings, allowing us to apply them in many scenarios. One of their usages in Earth Science is to serve as the language in \textit{Continuum Mechanics}. On the other hand, the related matrix calculus is much needed in \textit{Data Assimilation}, which is a technique in Atmospheric Sciences to rectify the output of a forecast from a weather model with available observations.
 
 \section{Index Notation and Tensors}
 
@@ -16,10 +16,10 @@ occur only in positions with the same range of values. Consequentially, the abov
 \begin{align*}
 A_{ik}B_{kj} &= C_{ij} &  & A_{ij}x_j = h_i    
 \end{align*}
-To be more clear, subscripts that appear exactly twice in any additive term are called \index{Summation Indices}\keywordhl{summation indices} (or \index{Dummy Indices}\keywordhl{dummy indices}) and are summed over specific values which are often automatically inferred from the situation (for example, in three-dimensional physical problems, they will usually take the explicit values of $1,2,3$.). On the other hand, subscripts that only appear once in \textit{every} additive term of an expression or equation are known as \index{Free Indices}\keywordhl{free indices}. In the first example above, $k$ is the dummy index, while $i, j$ are free indices. (How about the second example?\footnote{$j$ is the dummy index and $i$ is the free index.}) There are some other important points about the Index Notation to be emphasized: First, it is not allowed for a subscript to appear more than twice within a single additive term (so we cannot write $A_{ik}B_{kj}C_{kl}$, although it is okay for a dummy subscript to appear twice in multiple additive terms, e.g. $A_{ik}B_{kj} + C_{ij}D_{kk}$); Second, any pair of dummy indices can be replaced by any other alphabets (e.g. $A_{ik}B_{kj}$ is equivalent to $A_{il}B_{lj}$) but the free indices cannot be changed arbitrarily; Finally, as just mentioned, all free indices have to appear once and only once in every additive term (on both sides if it is an equation) (so $A_i + B_{ij}C_{j} + D_{ikk}$ is acceptable but not $A_{ij} + B_{kkj}$). As long as the quantities have their subscripts written out, the order of the quantities (but not their indices) is unimportant. Below we give some examples of the Index Notation in a three-dimensional setting:
+To be more clear, subscripts that appear exactly twice in any additive term are called \index{Summation Indices}\keywordhl{summation indices} (or \index{Dummy Indices}\keywordhl{dummy indices}) and are summed over specific values which are often automatically inferred from the situation (for example, in three-dimensional physical problems, they will usually take the explicit values of $1,2,3$.). On the other hand, subscripts that only appear once in \textit{every} additive term of an expression or equation are known as \index{Free Indices}\keywordhl{free indices}. In the first example above, $k$ is the dummy index, while $i, j$ are free indices. (How about the second example?\footnote{$j$ is the dummy index and $i$ is the free index.}) There are some other important points about the Index Notation to be emphasized: First, it is not allowed for a subscript to appear more than twice within a single additive term (so we cannot write $A_{ik}B_{kj}C_{kl}$, although it is okay for a dummy subscript to appear twice in each of multiple additive terms, e.g. $A_{ik}B_{kj} + C_{ij}D_{kk}$); Second, any pair of dummy indices can be replaced by any other alphabets (e.g. $A_{ik}B_{kj}$ is equivalent to $A_{il}B_{lj}$) but the free indices cannot be changed arbitrarily; Finally, as just mentioned, all free indices have to appear once and only once in every additive term (on both sides if it is an equation) (so $A_i + B_{ij}C_{j} + D_{ikk}$ is acceptable but not $A_{ij} + B_{kkj}$). As long as the quantities have their subscripts written out, the order of the quantities (but not their indices) is unimportant. Below we give some examples of the Index Notation in a three-dimensional setting:
 \begin{enumerate}
-    \item $a_ib_i = \sum_{i=1}^3 a_ib_i = a_1b_1 + a_2b_2 + a_3b_3$
-    \item $A_{kk} = \sum_{k=1}^3 A_{kk} = A_{11} + A_{22} + A_{33}$
+    \item $a_ib_i = \sum_{i=1}^3 a_ib_i = a_1b_1 + a_2b_2 + a_3b_3$ (Dot Product)
+    \item $A_{kk} = \sum_{k=1}^3 A_{kk} = A_{11} + A_{22} + A_{33}$ (Trace)
     \item $A_{ik}B_{jk} = \sum_{k=1}^3 A_{ik}B_{jk} = A_{i1}B_{j1} + A_{i2}B_{j2} + A_{i3}B_{j3}$
     \item \begin{align*}
     A_{ijk}B_{jl}C_{km} &= \sum_{j=1}^3 \sum_{k=1}^3 A_{ijk}B_{jl}C_{km} \\
@@ -47,7 +47,7 @@ Short Exercise: Determine whether the following equations are valid or not, and 
 
 \subsection{Kronecker Delta and Epsilon Symbols}
 
-Before getting to know about the \textit{Kronecker delta/epsilon symbols}, it is helpful to denote the three-dimensional Cartesian standard unit vectors $\hat{\imath} = \hat{e}^{(1)}$, $\hat{\jmath} = \hat{e}^{(2)}$, $\hat{k} = \hat{e}^{(3)}$ by $\textbf{e}_1, \textbf{e}_2, \textbf{e}_3$ to switch and ensure the consistency of notation. We will assume that the problem is always three-dimensional so that every index always runs through $1,2,3$ unless otherwise specified. Therefore, given any three-dimensional vector $\textbf{u} = (u_1, u_2, u_3)^T$, it can be expressed by 
+Before getting to know about the \textit{Kronecker delta/epsilon symbols}, it is helpful to denote the three-dimensional Cartesian standard unit vectors $\hat{\imath} = \hat{e}^{(1)}$, $\hat{\jmath} = \hat{e}^{(2)}$, $\hat{k} = \hat{e}^{(3)}$ by $\textbf{e}_1, \textbf{e}_2, \textbf{e}_3$ to switch and ensure the consistency of the notation. We will assume that the problem is always three-dimensional so that every index always runs through $1,2,3$ unless otherwise specified. Therefore, given any three-dimensional vector $\textbf{u} = (u_1, u_2, u_3)^T$, it can be expressed by 
 \begin{align}
 \textbf{u} = u_1 \textbf{e}_1 + u_2 \textbf{e}_2 + u_3 \textbf{e}_3 = u_i \textbf{e}_i
 \end{align}
@@ -66,7 +66,7 @@ Compared with Definition \ref{defn:identity}, it works like and can be treated a
 \begin{align*}
 A_{ij}\delta_{jk} &= A_{ik} & & A_{ij}B_{kl}\delta_{jl} = A_{ij}B_{kj}
 \end{align*}
-since only when $j = k$ the delta symbol will be equal to $1$ and otherwise $0$ in the first case (how about the second case?). Recall that for the standard unit vectors, we have
+since only when $j = k$, the delta symbol will be equal to $1$ and otherwise $0$ in the first case (how about the second case?). Recall that for the standard unit vectors, we have
 \begin{subequations}
 \begin{align}
 \textbf{e}_1 \cdot \textbf{e}_1 = \textbf{e}_2 \cdot \textbf{e}_2 = \textbf{e}_3 \cdot \textbf{e}_3 &= 1 \\
@@ -129,13 +129,16 @@ By taking a dot product with $\textbf{e}_l$ on both sides and adjusting the indi
 \textbf{e}_l \cdot (\textbf{e}_i \times \textbf{e}_j) &= \epsilon_{ijk} (\textbf{e}_l \cdot \textbf{e}_k)  \nonumber \\
 \textbf{e}_l \cdot (\textbf{e}_i \times \textbf{e}_j) &= \epsilon_{ijk} \delta_{lk} \nonumber \\
 \textbf{e}_l \cdot (\textbf{e}_i \times \textbf{e}_j) &= \epsilon_{ijl} \nonumber \\
-\textbf{e}_k \cdot (\textbf{e}_i \times \textbf{e}_j) &= \epsilon_{ijk} \nonumber & \begin{aligned}
+\textbf{e}_k \cdot (\textbf{e}_i \times \textbf{e}_j) &= \epsilon_{ijk} \nonumber & &\begin{aligned}
 &\text{(Replacing a free index $l \to k$} \\
 &\text{on both sides simultaneously is allowed)}     
 \end{aligned} \\
-\epsilon_{jki} &= \textbf{e}_i \cdot (\textbf{e}_j \times \textbf{e}_k) & \text{(Rotating the free indices $k \to i$, $i \to j$, $j \to k$)}  \nonumber \\
+\epsilon_{jki} &= \textbf{e}_i \cdot (\textbf{e}_j \times \textbf{e}_k) & & \begin{aligned}
+&\text{(Rotating the free indices} \\
+&\text{$k \to i$, $i \to j$, $j \to k$)}    
+\end{aligned}  \nonumber \\
 \epsilon_{ijk} &= \textbf{e}_i \cdot (\textbf{e}_j \times \textbf{e}_k) 
-&\begin{aligned}
+& &\begin{aligned}
 &\text{($(j,k,i)$ is an even permutation of $(i,j,k)$} \\
 &\text{and can be rotated within the epsilon symbol)}    
 \end{aligned} 
@@ -172,8 +175,10 @@ v_1 & v_2 & v_3
 u_1 & u_2 & u_3 \\
 v_1 & v_2 & v_3 \\
 w_1 & w_2 & w_3
-\end{vmatrix} \label{eqn:determinanteps1} \\
-& \text{(Swapping rows twice leaves the sign of determinant unchanged)} \nonumber
+\end{vmatrix} & \begin{aligned}
+&\text{(Swapping rows twice} \\ 
+&\text{leaves the sign of determinant unchanged)}     
+\end{aligned} \label{eqn:determinanteps1} 
 \end{align}
 These two symbols are closely related by the \index{Epsilon-delta Identity}\keywordhl{Epsilon-delta Identity}.
 \begin{proper}[$\epsilon$--$\delta$ Identity] 
@@ -212,7 +217,7 @@ Applying (\ref{eqn:crossind}) twice, we have
 \begin{align*}
 \vec{u} \times (\vec{v} \times \vec{w}) &= (u_j\textbf{e}_j) \times (v_mw_n\epsilon_{mni}\textbf{e}_i) \\
 &= (u_j\epsilon_{jik}(v_mw_n\epsilon_{mni})) \textbf{e}_k \\
-&= \epsilon_{ikj}\epsilon_{imn}u_jv_mw_n \textbf{e}_k \\
+&= \epsilon_{ikj}\epsilon_{imn}u_jv_mw_n \textbf{e}_k &\text{(Rotating the epsilon symbols)} \\
 &= (\delta_{km}\delta_{jn} - \delta_{kn}\delta_{jm})(u_jv_mw_n \textbf{e}_k) & \text{((\ref{eqn:epsdel}) in Properties \ref{proper:epsdel})} \\
 &= u_jv_kw_j \textbf{e}_k - u_jv_jw_k \textbf{e}_k \\
 &= (u_jw_j)(v_k\textbf{e}_k) - (u_jv_j)(w_k \textbf{e}_k) \\
@@ -333,7 +338,7 @@ It is not hard to show that the product of two tensors is a tensor.\footnote{For
 \begin{align*}
 C'_{mn\ldots sr\ldots} = A'_{mn\ldots}B'_{sr\ldots} &= a_{im}a_{jn}\cdots a_{ps}a_{qr}\cdots A_{ij\ldots} B_{pq\ldots} \\
 &= a_{im}a_{jn}\cdots a_{ps}a_{qr}\cdots C_{ij\ldots pq\ldots}
-\end{align*} will also transform as indicated by Properties \ref{proper:translaw}.} Therefore, kinetic energy (per unit mass) in Newtonian Mechanics $\frac{1}{2}(\vec{v} \cdot \vec{v}) = \frac{1}{2}v_iv_i$ is a rank-$0$ tensor (scalar) if we gladly accept the intuitive premise that the velocity $\vec{v} = v_i$ is a rank-$1$ tensor (vector). In addition, there is another way to quickly verify if a quantity is a tensor by the \keywordhl{Quotient Law} which works in the other way around.
+\end{align*} will also transform as indicated by Properties \ref{proper:translaw}.} Therefore, kinetic energy (per unit mass) in Newtonian Mechanics $\frac{1}{2}(\vec{v} \cdot \vec{v}) = \frac{1}{2}v_iv_i$ is a rank-$0$ tensor (scalar) if we gladly accept the intuitive premise that the velocity $\vec{v} = v_i$ is a rank-$1$ tensor (vector). In addition, there is another way to quickly verify if a quantity is a tensor by the \keywordhl{Quotient Law} which works the other way around.
 \begin{thm}[Quotient Law]
 \label{thm:quotientl}
 If $A_{ij\ldots n}$ is a $n$-subscripted quantity, $B_{pq\ldots m}$ is known to be a rank-$m$ tensor, and the product
@@ -430,7 +435,7 @@ which is exactly the divergence $\nabla \cdot \vec{v}$ commonly seen in multivar
 \end{align}
 such that
 \begin{align}
-\nabla \cdot \vec{v} = \partial_i v_i
+\nabla \cdot \vec{v} = \partial_i v_i \label{eqn:divv}
 \end{align}
 Going one step back, for (\ref{eqn:vectortensdiff}) without the index contraction, it can be expressed as a vector gradient:
 \begin{align}
@@ -480,7 +485,7 @@ Short Exercise: What is the result if the expression above is differentiated wit
 \begin{exmp}
 Prove the following formula for the curl of cross product:
 \begin{align}
-\nabla \times (\vec{u} \times \vec{v}) = (\nabla \cdot \vec{v})\vec{u} + \vec{v} \cdot \nabla\vec{u} - \vec{u} \cdot \nabla\vec{v} - (\nabla \cdot \vec{u})\vec{v}  
+\nabla \times (\vec{u} \times \vec{v}) = (\nabla \cdot \vec{v})\vec{u} - (\nabla \cdot \vec{u})\vec{v}  + \vec{v} \cdot \nabla\vec{u} - \vec{u} \cdot \nabla\vec{v} 
 \end{align}
 \end{exmp}
 \begin{solution}
@@ -499,7 +504,7 @@ Prove the following formula for the curl of cross product:
 
 On the other hand, for integrals involving tensors, the overarching result is the \index{Tensor Divergence Theorem}\keywordhl{(Tensor) Divergence Theorem} from Differential Geometry, the development of which is too advanced to be included and hence will be stated directly.
 \begin{thm}[Tensor Divergence Theorem]
-For a tensor $T_{ij\ldots k}$ of an arbitrary rank and over a convex regular region with a volume $V$ and surface $S$, its surface flux integral is equal to the volume integral of its coordinate derivative.
+For a Cartesian tensor $T_{ij\ldots k}$ of an arbitrary rank and over a convex regular region with a volume $V$ and surface $S$, its surface flux integral is equal to the volume integral of its coordinate derivative.
 \begin{align}
 \int_S T_{ij\ldots k}n_l dS = \int_V \frac{\partial T_{ij\ldots k}}{\partial x_l} dV \label{eqn:tensdivthm}
 \end{align}
@@ -508,7 +513,7 @@ where $\hat{n} = n_l$ is the unit outward normal vector.
 Consequentially, the usual \index{Divergence Theorem}\keywordhl{Divergence Theorem} and \index{Stokes' Theorem}\keywordhl{Stokes' Theorem} can be readily seen to be a special case of the Tensor Divergence Theorem:
 \begin{align}
 \int_S \vec{v}\cdot \hat{n} dS = \int_S v_ln_l dS &= \int_V \frac{\partial v_l}{\partial x_l} dV \nonumber &\text{(by (\ref{eqn:tensdivthm}))} \\ 
-&= \int_V (\nabla \cdot \vec{v}) dV \label{eqn:divthm} \\
+&= \int_V (\nabla \cdot \vec{v}) dV &\text{(by (\ref{eqn:divv}))} \label{eqn:divthm} \\
 \int_S \hat{n} \times \vec{v} dS = \int_S \epsilon_{klm}v_mn_l dS &= \int_V \frac{\partial (\epsilon_{klm}v_m)}{\partial l} dV \nonumber &\text{(by (\ref{eqn:tensdivthm}))} \\
 &= \int_V \epsilon_{klm}\partial_lv_m dV \nonumber \\
 &= \int_V (\nabla \times \vec{v}) dV &\text{(by (\ref{eqn:curltens}))} \label{eqn:stokes}
@@ -516,9 +521,9 @@ Consequentially, the usual \index{Divergence Theorem}\keywordhl{Divergence Theor
 
 \section{Earth System Applications: Continuum Mechanics}
 
-\subsection{Stress Tensor and Mohr’s Circle}
+\subsection{Stress Tensor and Mohr's Circle}
 
-Due to the scope limit, we will only briefly go through the stress tensor's derivation. For a \textit{mass element} that is infinitesimally small, the traction force over a (possibly oblique) surface with a normal orientation of $\hat{n} = n_i$ can be reasonably expected to have contributions from three stress components along each direction. For instance, in the $x$-direction, using the $xyz$ coordinates in the indices for now, the traction will be
+Due to the scope limit, we will only briefly go through the stress tensor's derivation. For a \textit{mass element} that is infinitesimally small, the traction force on a (possibly oblique) surface with a normal orientation of $\hat{n} = n_i$ can be reasonably expected to have contributions from three stress components along each direction. For instance, in the $x$-direction, using the $xyz$ coordinates in the indices for now, the traction will be
 \begin{subequations}
 \label{eqn:cauchy3}
 \begin{align}
@@ -565,6 +570,7 @@ or more compactly by Index Notation, the \index{Cauchy's formula}\keywordhl{Cauc
 \begin{align}
 T_j = \sigma_{ij}n_i \label{eqn:Cauchyform}
 \end{align}
+
 \begin{figure}
     \centering
     \begin{tikzpicture}[x={(-0.55cm, -0.55cm)}, y={(0.8cm, 0cm)}, z={(0cm, 0.8cm)}]
@@ -588,9 +594,10 @@ T_j = \sigma_{ij}n_i \label{eqn:Cauchyform}
     \draw[red,thick,->] (1.5,1.5,3) -- (1.5,2.5,3) node[right]{$\sigma_{32}$};
     \draw[red,thick,->] (1.5,1.5,3) -- (1.5,1.5,4) node[above]{$\sigma_{33}$};
     \end{tikzpicture} 
-    \caption{The components of stress acting on a mass element.}
+    \caption{\textit{The components of stress acting on a mass element.}}
     \label{fig:stresscube}
 \end{figure}
+
 Since the traction, as a force, and the direction are both vectors, by the Quotient Law (Theorem \ref{thm:quotientl}), $\sigma_{ij}$ must be a rank-$2$ tensor. It is subsequently known as the \index{Cauchy Stress Tensor}\keywordhl{Cauchy Stress Tensor}. Now, we assume any mass element within a continuum (e.g. a rock layer) has to be in \textit{static equilibrium} so it is not moving. This specifically requires that there is no net torque that will rotate the mass element (presented as a parallelepiped in Figure \ref{fig:stresspiped}). The stresses on the opposite faces of the parallelepiped must then be equal in magnitude and opposite in direction. Take the $2,3$ directions as an illustration, the shear stresses on any pair of opposite faces (e.g.\ the component $\sigma_{23}$ on the $2$-planes) in another axis (e.g.\ in the $3$-direction) will generate a couple that tends to rotate the parallelepiped. To prevent the mass element from rotating, the shear stresses on the corresponding side faces (e.g.\ the component $\sigma_{32}$ on the $3$-planes) must balance this torque out, and thus $\sigma_{23} = \sigma_{32}$. By the same logic, $\sigma_{13} = \sigma_{31}$ and $\sigma_{12} = \sigma_{21}$, or more generally
 \begin{align}
 \sigma_{ij} = \sigma_{ji}
@@ -619,7 +626,7 @@ when viewed from the matrix perspective, it easily reminds us about orthogonal d
     \draw[blue,thick,->] (1.5,3,1.5) -- (1.5,3,2.5) node[right]{$\sigma_{23}$};
     \draw[blue,thick,->] (1.5,1.5,3) -- (1.5,2.5,3) node[above]{$\sigma_{32}$};
     \end{tikzpicture} 
-    \caption{The balance between shear stresses along the $2,3$ ($yz$) cross-section for the mass element in Figure \ref{fig:stresscube}.}
+    \caption{\textit{The balance between shear stresses along the $2,3$ ($yz$) cross-section for the mass element in Figure \ref{fig:stresscube}.}}
     \label{fig:stresspiped}
 \end{figure}
 
@@ -709,7 +716,7 @@ Rewriting the components using trigonometric identities simplifies them into
 &= -\frac{\sigma_1 - \sigma_2}{2} \sin(2\theta) \label{eqn:mohrshear}
 \end{align} 
 \end{subequations}
-where $\sigma_{x'}$ and $\sigma_{y'}$ are the normal tractions along the rotated axes and $\tau_{x'y'}$ is the shear traction. Notice that $\sigma_{x'}$ [or $\sigma_{y'}$] and $\tau_{x'y'}$ together form a circle parameterized by the double angle $2\theta$ with its center at $(\sigma, \tau) = (\frac{\sigma_1 + \sigma_2}{2}, 0)$ and a radius of $\frac{\sigma_1 - \sigma_2}{2}$.\footnote{$
+where $\sigma_{x'}$ and $\sigma_{y'}$ are the normal tractions along the rotated axes and $\tau_{x'y'}$ is the shear traction. Notice that $\sigma_{x'}$ (or $\sigma_{y'}$) and $\tau_{x'y'}$ together form a circle parameterized by the double angle $2\theta$ with its center at $(\sigma, \tau) = (\frac{\sigma_1 + \sigma_2}{2}, 0)$ and a radius of $\frac{\sigma_1 - \sigma_2}{2}$.\footnote{$
 (\sigma_{x'} - \frac{\sigma_1 + \sigma_2}{2})^2 + \tau_{x'y'}^2 = (\frac{\sigma_1 - \sigma_2}{2})^2\cos^2(2\theta) + (\frac{\sigma_1 - \sigma_2}{2})^2 \sin^2(2\theta) = (\frac{\sigma_1 - \sigma_2}{2})^2$}
 Hence the information about normal/shear stresses on a surface of any orientation can be condensed into a circle centered at the horizontal axis that also cuts the horizontal axis at $\sigma = \sigma_1$ and $\sigma_2$ graphically. This is known as the \index{Mohr's Circle}\keywordhl{Mohr's Circle} and is illustrated in Figure \ref{fig:mohr1}. Bear in mind that when the geological convention is used, (\ref{eqn:mohrshear}) will have no negative sign, and an anti-clockwise [clockwise] rotation of the surface by a positive [negative] degree of $\theta$ will appear as an anti-clockwise [clockwise] rotation of the diameter within the Mohr's Circle by a positive [negative] degree $2\theta$ (double of the actual surface tilt). The largest shear traction will be obtained at a tilt of \SI{45}{\degree}.
  
@@ -729,7 +736,7 @@ Hence the information about normal/shear stresses on a surface of any orientatio
     \draw[blue, thick] (0) -- ++(220:2) node[below]{$(\sigma_{y'}, -\tau_{x'y'})$};
     \pic[->, draw, "$2\theta$", angle eccentricity=1.8] {angle = a--0--b};
     \end{tikzpicture}
-    \caption{The schematic diagram of a Mohr's Circle.}
+    \caption{\textit{The schematic diagram of a Mohr's Circle.}}
     \label{fig:mohr1}
 \end{figure}
 
@@ -783,7 +790,7 @@ Finally, we have a quite trivial condition of $\hat{n}$ being a unit normal vect
 \begin{align}
 1 = n_1^2 + n_2^2 + n_3^2 \label{eqn:mohr3d3}
 \end{align}
-(\ref{eqn:mohr3d1}), (\ref{eqn:mohr3d2}), (\ref{eqn:mohr3d3}) together form a linear system of three equations in three unknowns $n_1^2, n_2^2, n_3^2$. This can be efficiently dealt with with Cramer's Rule. Considering the first unknown $n_1^2$, we have
+(\ref{eqn:mohr3d1}), (\ref{eqn:mohr3d2}), (\ref{eqn:mohr3d3}) together form a linear system of three equations in three unknowns $n_1^2, n_2^2, n_3^2$. This can be efficiently dealt with with Cramer's Rule (Theorem \ref{thm:Cramer}). Considering the first unknown $n_1^2$, we have
 \begin{align}
 n_1^2 &= \frac{\begin{vmatrix}
 \sigma_n^2 + \tau^2 & \sigma_2^2 & \sigma_3^2 \\
@@ -837,7 +844,7 @@ So the normal and shear traction must also fall outside the Mohr's Circle center
     \filldraw[blue] (3.25,1.25) circle (0.1) node[above right]{$(6.5,2.5)$};
     \filldraw[blue] (2.5,1.6) circle (0.1) node[above]{$(5,3.2)$};
     \end{tikzpicture}
-    \caption{Mohr's Circles extended to the three-dimensional space, adapted to Example \ref{exmp:mohr3d}. The normal/shear tractions $(\sigma_n, \tau)$ have to lie within the shaded region.}
+    \caption{\textit{Mohr's Circles extended to the three-dimensional space, adapted to Example \ref{exmp:mohr3d}. The normal/shear tractions $(\sigma_n, \tau)$ have to lie within the shaded region.}}
     \label{fig:mohr3d}
 \end{figure}
 
@@ -851,7 +858,7 @@ For a three-dimensional volume with principal stresses of $\sigma_1 = 12$, $\sig
 \end{enumerate}
 \end{exmp}
 \begin{solution}
-Figure \ref{fig:mohr3d} has been drawn for the situation in this question. We simply mark the locations for the traction pairs and see if the dots fall within the shaded region bounded by the three Mohr's Circles. The direct visual inspection shows that the second pair is possible but the first and last pairs are not valid.
+Figure \ref{fig:mohr3d} has been drawn for the situation in this question. We simply mark the locations for the traction pairs and see if the dots fall within the shaded region (green) bounded by the three Mohr's Circles. The direct visual inspection shows that the second pair is possible but the first and last pairs are not valid.
 \end{solution}
 We note that the largest shear traction is acquired when the surface is inclined at $\SI{45}{\degree}$ just between the first and third principal planes, similar to the plane stress scenario.
 
@@ -907,7 +914,7 @@ Since $dX_j$ and $du_i$ are (differentials of) displacement and velocity, they a
     \filldraw[black] (5.1, 2.6) circle (0.1) node[Green, below]{$A$};
     \filldraw[black] (5.9, 4.3) circle (0.1) node[Green, above]{$B$};
     \end{tikzpicture}
-    \caption{The conversion between the Eulerian/Lagrangian views for coordinates and displacements.}
+    \caption{\textit{The conversion between the Eulerian/Lagrangian views for coordinates and displacements.}}
     \label{fig:displace}
 \end{figure}
 Notice that the quantity $\partial x_i/\partial X_j$ (also the closely related $\partial X_i/\partial x_j$) appeared in the displacement gradient. This is called the \index{Deformation Jacobian}\keywordhl{Jacobian} of the deformation. To see this, by the multivariable Chain Rule, the transformation between the Eulerian and Lagrangian displacements is explicitly
@@ -938,7 +945,7 @@ dV &= \epsilon_{lmn} dx_ldx_mdx_n \nonumber \\
 &= \epsilon_{ijk} J dX_idX_jdX_k & \text{(by (\ref{eqn:determinanteps2}) and (\ref{eqn:Jacdet}))} \nonumber \\
 &= J dV_0 \label{eqn:dVJdV_0}
 \end{align}
-Consequentially, $J$ is the ratio of the reference to the current volume. Due to the conservation of matter, the deformed volume cannot vanish if the initial reference volume is finite and vice versa. This implies that the determinant of the Jacobian (or simply called Jacobian from now on) cannot vanish, i.e.\ $J = \det(\partial x_i/\partial X_j) \neq 0$. This ensures that the conversion between the Eulerian and Lagrangian descriptions is one-to-one.\par
+Consequentially, $J$ is the ratio of the current to the reference volume. Due to the conservation of matter, the deformed volume cannot vanish if the initial reference volume is finite and vice versa. This implies that the determinant of the Jacobian (or simply called Jacobian from now on) cannot vanish, i.e.\ $J = \det(\partial x_i/\partial X_j) \neq 0$. This ensures that the conversion between the Eulerian and Lagrangian descriptions is one-to-one.\par
 
 Now, we are going to examine the time derivative of a tensor quantity $P = P_{ij\ldots}$ from both the Eulerian and Lagrangian views. Using the Lagrangian description, it can be expressed as $P = P(\textbf{X}, t)$ where $\textbf{X}$ represents the reference coordinates. The \index{Material Derivative}\keywordhl{material derivative} $dP/dt$ is the rate of change in $P$ following a particle with respect to time $t$. Since the reference coordinates of the tracked particle are essentially labels that do not change with time, the material derivative of $P(\textbf{X}, t)$ in the Lagrangian framework is simply
 \begin{align}
@@ -957,7 +964,7 @@ Going in the reverse direction, it implies that the evolution of some property m
 \begin{figure}[ht!]
     \centering
     \includegraphics[scale=0.8]{graphics/advect.png}
-    \caption{The relationship between the spatial (blue) and material derivative (red) alongside the advective term (green), where we use temperature $T$ as the variable and only look at a single direction $x$ (and velocity $u$) for demonstration.}
+    \caption{\textit{The relationship between the spatial (blue) and material derivative (red) alongside the advective term (green), where we use temperature $T$ as the variable and only look at a single direction $x$ (and velocity $u$) for demonstration.}}
     \label{fig:advection}
 \end{figure}
 
@@ -1163,8 +1170,8 @@ Its time derivative is
 \end{aligned} \nonumber \\
 &= \oint_{C} \frac{dv_i}{dt} dx_i + \oint_{C} v_i d(\frac{dx_i}{dt})  \nonumber \\
 &\quad \begin{aligned}
-&\text{(Material line elements move with the flow and thus} \\ 
-&\frac{d}{dt}(dx_i) = d(\frac{dx_i}{dt})\text{)}\end{aligned} \nonumber \\
+&\text{(Material line elements move with the flow} \\ 
+&\text{and thus } \frac{d}{dt}(dx_i) = d(\frac{dx_i}{dt})\text{)}\end{aligned} \nonumber \\
 &= \oint_{C} \frac{dv_i}{dt} dx_i + \oint_{C} v_i dv_i \nonumber \\
 &= \oint_{C} \frac{dv_i}{dt} dx_i + \oint_{C} d(\frac{\norm{\textbf{v}}^2}{2}) 
 \end{align}
@@ -1208,19 +1215,18 @@ The first term is the zero vector since the partial derivatives are symmetric bu
 and the second term leads to
 \begin{align*}
 -\epsilon_{ijk}(\frac{\partial_k p}{\rho^2})\partial_j\rho = -\epsilon_{ijk}\frac{\partial_j\rho \partial_k p}{\rho^2} = -\frac{\nabla \rho \times \nabla p}{\rho^2}
-\end{align*}
-}
+\end{align*}}
 The quantity 
 \begin{align}
 \frac{\nabla \rho \times \nabla p}{\rho^2}    
 \end{align}
-is called the \textit{baroclinicity} which characterizes the tilting between the pressure/density contours. It often arises from a temperature gradient in a cross-section, which will generate circulation along the corresponding curve.
+is called the \textit{baroclinicity} which characterizes the tilting between the pressure and density contours. It often arises from a temperature gradient in a cross-section, which will generate circulation along the corresponding curve.
 
 \section{Earth System Applications: Data Assimilation}
 
 \subsection{Basic Ideas behind Data Assimilation}
 
-\index{Data Assimilation}\keywordhl{Data Assimilation (DA)} is a technique to integrate current \textit{observations} into the \textit{background} state of a weather model to produce a more accurate \textit{analysis} field. This is needed as the error of the model will inevitably grow in time and become useless if it is not supplied with real information. To motivate, we will use air temperature at a fixed grid point as a single variable (\textit{univariate}) example. Let the true temperature be $T_t$, and the background temperature from the model output be
+\index{Data Assimilation}\keywordhl{Data Assimilation (DA)} is a technique to integrate \textit{observations} into the \textit{background} state of a weather model to produce a more accurate \textit{analysis} field. This is needed as the error of the model will inevitably grow in time and become useless if it is not supplied with real information. To motivate, we will use air temperature at a fixed grid point as a single variable (\textit{univariate}) example. Let the true temperature be $T_t$, and the background temperature from the model output be
 \begin{subequations}
 \begin{align}
 T_b = T_t + \varepsilon_b \label{eqn:backgT}
@@ -1331,13 +1337,13 @@ T_a &= T_b + W(T_o - T_b) \label{eqn:uniDAweight} \\
 \begin{figure}[ht!]
     \centering
     \includegraphics[scale=0.75]{graphics/DA1.png}
-    \caption{The probability density distribution of the background/observation/analysis temperatures in the section example where the errors are assumed to have a Gaussian shape.}
+    \caption{\textit{The probability density distribution of the background/observation/analysis temperatures in the section example where the errors are assumed to have a Gaussian shape.}}
     \label{fig:DA1}
 \end{figure}
 
 \subsection{Optimal Interpolation}
 
-In the last subsection, we only use a single variable as the illustrating example. Obviously, in actual weather models, there will be multiple variables (let's say $N$) like temperature, pressure, density, and three-dimensional winds to be simulated in a large number of grid points ($M$). Hence there will be a total of $L = MN$ variables in the model output and we will place all of them into a \textit{state vector} of length $L = MN$:
+In the last subsection, we only use a single variable as the illustrating example. Obviously, in actual weather models, there will be multiple variables (let's say $N$) like temperature, pressure, density, and three-dimensional winds, to be simulated in a large number of grid points ($M$). Hence there will be a total of $L = MN$ variables in the model output and we will place all of them into a \textit{state vector} of length $L = MN$:
 \begin{align}
 \textbf{x} = 
 \begin{bmatrix}
@@ -1423,7 +1429,7 @@ where we have to use two different dummy indices for the product due to the rule
 &= \delta_{ip}\delta_{jq}((\varepsilon_o)_j - (\varepsilon_b)_j)[(\varepsilon_b)_i + K_{ik}((\varepsilon_o)_k - (\varepsilon_b)_k)] \nonumber \\
 &\quad + ((\varepsilon_b)_i + K_{ij}((\varepsilon_o)_j - (\varepsilon_b)_j)) \delta_{ip}\delta_{kq} ((\varepsilon_o)_k - (\varepsilon_b)_k) \nonumber \\
 &= ((\varepsilon_o)_q - (\varepsilon_b)_q)[(\varepsilon_b)_p + K_{pk}((\varepsilon_o)_k - (\varepsilon_b)_k)] \nonumber \\
-&\quad + ((\varepsilon_b)_p + K_{pj}((\varepsilon_o)_j - (\varepsilon_b)_j)) ((\varepsilon_o)_q - (\varepsilon_b)_q) \nonumber \\
+&\quad + [(\varepsilon_b)_p + K_{pj}((\varepsilon_o)_j - (\varepsilon_b)_j)] ((\varepsilon_o)_q - (\varepsilon_b)_q) \nonumber \\
 &= 2((\varepsilon_b)_p + K_{pk}((\varepsilon_o)_k - (\varepsilon_b)_k)) ((\varepsilon_o)_q - (\varepsilon_b)_q) \nonumber \\
 &\quad \text{(One of the dummy indices can be changed and the terms will be grouped)} \nonumber \\
 &= 2(\varepsilon_b)_p ((\varepsilon_o)_q - (\varepsilon_b)_q) + 2 K_{pk}((\varepsilon_o)_k - (\varepsilon_b)_k)((\varepsilon_o)_q - (\varepsilon_b)_q) \nonumber \\
@@ -1442,7 +1448,7 @@ The analysis covariance is
 \begin{align}
 A &= E[\bm{\epsilon}_a\bm{\epsilon}_a^T] \nonumber \\
 &= E[(\bm{\epsilon}_b + K(\bm{\epsilon}_o - \bm{\epsilon}_b))(\bm{\epsilon}_b + K(\bm{\epsilon}_o - \bm{\epsilon}_b))^T] \nonumber \\
-&= E[\bm{\epsilon}_b\bm{\epsilon}_b^T] + E[\bm{\epsilon}_bK(\bm{\epsilon}_o - \bm{\epsilon}_b)^T] \nonumber \\
+&= E[\bm{\epsilon}_b\bm{\epsilon}_b^T] + E[\bm{\epsilon}_b(K(\bm{\epsilon}_o - \bm{\epsilon}_b))^T] \nonumber \\
 &\quad + E[K(\bm{\epsilon}_o - \bm{\epsilon}_b)\bm{\epsilon}_b^T] + E[K(\bm{\epsilon}_o - \bm{\epsilon}_b)(K(\bm{\epsilon}_o - \bm{\epsilon}_b))^T] \nonumber \\
 &= E[\bm{\epsilon}_b\bm{\epsilon}_b^T] + E[\bm{\epsilon}_b(\bm{\epsilon}_o - \bm{\epsilon}_b)^TK^T] \nonumber \\
 &\quad + E[K(\bm{\epsilon}_o - \bm{\epsilon}_b)\bm{\epsilon}_b^T] + E[K(\bm{\epsilon}_o - \bm{\epsilon}_b) (\bm{\epsilon}_o - \bm{\epsilon}_b)^TK^T] \nonumber \\
@@ -1523,7 +1529,7 @@ just like (\ref{eqn:OIKalt}). However, $H$ will be a non-square $G \times L$ mat
 \begin{align}
 (A + SXC)^{-1} = A^{-1} - A^{-1}S(X^{-1} + CA^{-1}S)^{-1}CA^{-1}
 \end{align}
-This can be derived by comparing the upper-left block of Properties \ref{proper:schurinv} and \ref{proper:schurinvD} with $D$ replaced by $-X^{-1}$ and $B$ replaced by $S$. Now substitute $A = R$, $S = H$, $X = B$, $C=H^T$ to get
+This can be derived by comparing the upper-left block of (\ref{eqn:schurinv1}) and (\ref{eqn:schurinv2}) with $D$ replaced by $-X^{-1}$ and $B$ replaced by $S$. Now substitute $A = R$, $S = H$, $X = B$, $C=H^T$ to get
 \begin{align}
 (HBH^T + R)^{-1} = R^{-1} - R^{-1}H(B^{-1} + H^TR^{-1}H)^{-1}H^T R^{-1}    
 \end{align}
@@ -1550,7 +1556,7 @@ A = B - KHB &= B - (B^{-1} + H^TR^{-1}H)^{-1}H^TR^{-1}HB \nonumber \\
 
 \subsection{Kalman Filter}
 
-Notice that the technique of Optimal Interpolation introduced in the last subsection does not depend on time and can be used at any time step in an isolated fashion. However, in physical models, we need to integrate forwards in time for the forecast. We may ask if there is an improved version of Optimal Interpolation such that it will take the evolution of the model state into account. Particularly, the background error is previously assumed to be static but should actually change in time, e.g. different climatologies in different seasons. \index{Kalman Filter}\keywordhl{Kalman Filter} solves this by further cycling the background error covariance using the model. It is essentially Optimal Interpolation but with the error covariances evolved forward in time as well. No matter how the background error is initially determined, it will become more and more optimal after several cycles as long as the model and observations are good. Kalman Filter consists of two steps: the \textit{analysis step} which is identical to Optimal Interpolation, and the \textit{forecast step} where we carry out time integration for the state vector and the error covariance matrix in the model.\par
+Notice that the technique of Optimal Interpolation introduced in the last subsection does not depend on time and can be used at any time step in an isolated fashion. However, in physical models, we need to integrate forwards in time for the forecast. We may ask if there is an improved version of Optimal Interpolation such that it will take the evolution of the model state into account. Particularly, the background error is previously assumed to be static but should actually change in time, e.g.\ different climatologies in different seasons. \index{Kalman Filter}\keywordhl{Kalman Filter} solves this by further cycling the background error covariance using the model. It is essentially Optimal Interpolation but with the error covariances evolved forward in time as well. No matter how the background error is initially determined, it will become more and more optimal after several cycles as long as the model and observations are good. Kalman Filter consists of two steps: the \textit{analysis step} which is identical to Optimal Interpolation, and the \textit{forecast step} where we carry out time integration for the state vector and the error covariance matrix in the model.\par
 
 In Kalman filter, a short-term model forecast is used as the background and the subscript $b$ is now replaced by $f$, and similar to (\ref{eqn:OIxbaoe}) plus (\ref{eqn:OIinnover}), we have
 \begin{subequations}
@@ -1606,21 +1612,21 @@ P_f^{[i+1]} &= E[\bm{\epsilon}_f^{[i+1]}\bm{\epsilon}_f^{[i+1]T}] \nonumber \\
 &= M^{[i]}E[\bm{\epsilon}_a^{[i]}\bm{\epsilon}_a^{[i]T}]M^{[i]T} + E[\bm{\eta}^{[i]}\bm{\eta}^{[i]T}] &\text{(by (\ref{eqn:modelanluncorr}))} \nonumber \\
 &= M^{[i]}P_a^{[i]}M^{[i]T} + Q^{[i]} \label{eqn:MPMQ}
 \end{align}
-The forecast step then consists of (\ref{eqn:xaMxf}) and (\ref{eqn:MPMQ}). There are two ways to implement Kalman Filter. The standard scheme is to compute the Kalman gain first in the analysis step while the other scheme is to the analysis error covariance first. The flowcharts for these two implementations are shown in Figures \ref{fig:Kalmansteps} and \ref{fig:Kalmansteps2}.
+The forecast step then consists of (\ref{eqn:xaMxf}) and (\ref{eqn:MPMQ}). There are two ways to implement Kalman Filter. The standard scheme is to compute the Kalman gain first in the analysis step while the other scheme is to compute the analysis error covariance first. The flowcharts for these two implementations are shown in Figures \ref{fig:Kalmansteps} and \ref{fig:Kalmansteps2}.
 
 \begin{landscape}
 \begin{figure}
     \centering
-    \includegraphics[width=0.99\linewidth]{graphics/Kalman1.png}
-    \caption{The flowchart for the standard Kalman Filter scheme.}
+    \includegraphics[width=0.9\linewidth]{graphics/Kalman1.png}
+    \caption{\textit{The flowchart for the standard Kalman Filter scheme.}}
     \label{fig:Kalmansteps}
 \end{figure}
 \end{landscape}
 \begin{landscape}
 \begin{figure}
     \centering
-    \includegraphics[width=0.99\linewidth]{graphics/Kalman2.png}
-    \caption{The flowchart for the alternative Kalman Filter scheme using equivalent expressions for the analysis error covariance and Kalman gain.}
+    \includegraphics[width=0.9\linewidth]{graphics/Kalman2.png}
+    \caption{\textit{The flowchart for the alternative Kalman Filter scheme using equivalent expressions for the analysis error covariance and Kalman gain.}}
     \label{fig:Kalmansteps2}
 \end{figure}
 \end{landscape}
@@ -1648,7 +1654,7 @@ x_0 = [-4,10,8]
 sol_t = solve_ivp(Lorenz63, t_span, x_0, t_eval=np.arange(t_span[0], t_span[1], dt))
 x_t = sol_t.y.T
 \end{lstlisting}
-From this, we also generate a time-series of synthetic observations by adding Gaussian noises with a constant error covariance of $R = 0.5I$.
+From this, we also generate a time series of synthetic observations by adding Gaussian noises with a constant error covariance of $R = 0.5I$.
 \begin{lstlisting}
 R = np.diag([0.5]*3)
 obs_errors = np.random.multivariate_normal([0,0,0], R, x_t.shape[0])
@@ -1658,7 +1664,7 @@ Since the Lorenz-63 system is non-linear, for the algorithm of Kalman Filter to 
 \begin{align}
 M^{[i]} = I + (\frac{\partial F}{\partial \textbf{x}})_a^{[i]} \Delta t
 \end{align}
-where $\partial F/\partial \textbf{x}$ is the Jacobian of the Lorenz-63 system as in (\ref{eqn:lorenzjac}). We will integrate the model forward in time using the simple \textit{Euler method} at the forecast step. On the other hand, at the analysis step, we have to compute the Kalman gain and analysis (as well as its error covariance). To initialize, we will make a guess of \smash{$P_f^{[0]} = 0.5I$}, which is not a problem as the Kalman Filter procedure itself will cycle and tune the error covariance. Finally, we simply have $H = I$ as we will use the synthetic observations of all exact variables. The final program will look like this:
+where $\partial F/\partial \textbf{x}$ is the Jacobian of the Lorenz-63 system as in (\ref{eqn:lorenzjac}). We will integrate the model forward in time using the simple \textit{forward Euler method} at the forecast step. On the other hand, at the analysis step, we have to compute the Kalman gain and analysis (as well as its error covariance). To initialize, we will make a guess of \smash{$P_f^{[0]} = 0.5I$}, which is not a problem as the Kalman Filter procedure itself will cycle and tune the error covariance. Finally, we simply have $H = I$ as we will use the synthetic observations of all exact variables. The final program will look like this:
 \begin{lstlisting}
 sigma, beta, rho = 10, 8/3, 28
 P_f_i = np.diag([0.5]*3)
@@ -1712,7 +1718,7 @@ plt.savefig("Kalman Filter", dpi=300, bbox_inches="tight")
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\linewidth]{graphics/Kalman3.png}
-    \caption{The evolution of the root-mean-squared error in the Lorenz-63 Model with a Kalman Filter DA system.}
+    \caption{\textit{The evolution of the root-mean-squared error in the Lorenz-63 Model with a Kalman Filter DA system.}}
     \label{fig:kalman3}
 \end{figure}
 From Figure \ref{fig:kalman3}, we can see that the error quickly diminishes at just the beginning of DA and successfully remains at a low level that is slightly above the given observation error.
@@ -1727,6 +1733,18 @@ Prove the following vector calculus identities using the Index Notation.
     \item $\nabla \times (\nabla \times \vec{v}) = \nabla (\nabla \cdot \vec{v}) - \nabla^2 \vec{v}$
     \item $\nabla \cdot (\vec{u} \times \vec{v}) = \vec{v} \cdot (\nabla \times \vec{u}) - \vec{u} \cdot (\nabla \times \vec{v})$.
 \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+Prove that for an $n \times n$ square matrix $A$, if its characteristic polynomial is
+\begin{align*}
+p(t) = (-1)^n(t^n + c_{n-1}t^{n-1} + \cdots + c_1 t + c_0)
+\end{align*}
+then we have
+\begin{align*}
+\text{tr}(A^n) + c_{n-1}\text{tr}(A^{n-1}) + \cdots + c_1 \text{tr}(A) = -nc_0
+\end{align*}
+Hint: Use the Cayley-Hamilton Theorem with the subscripts for the powers of $A$ written out, then contract the equation with a Kronecker delta.
 \end{Exercise}
 
 \begin{Exercise}

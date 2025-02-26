@@ -532,11 +532,11 @@ We conclude this section by introducing the \index{Cayley-Hamilton Theorem}\keyw
 \begin{thm}[Cayley-Hamilton Theorem]
 For any $n \times n$ square matrix $A$, denote its characteristic polynomial by
 \begin{align}
-p(\lambda) = \det(A-\lambda I) = \sum_{k=0}^{n} c_k \lambda^k
+p(\lambda) = \det(A-\lambda I) = (-1)^n \sum_{k=0}^{n} c_k \lambda^k
 \end{align}
-then we have
+where $c_n = 1$, then we have
 \begin{align}
-p(A) = \sum_{k=0}^{n} c_k A^k = [\textbf{0}]
+p(A) = (-1)^n \sum_{k=0}^{n} c_k A^k = [\textbf{0}]
 \end{align}
 as an $n \times n$ zero matrix.
 \end{thm}
@@ -955,6 +955,7 @@ which shows that the characteristic polynomial has $\lambda_{J_i}$ as its roots 
 Diagonalization also enables the efficient computation of matrix powers, as demonstrated in the following example.
 
 \begin{exmp}
+\label{exmp:powerdiag}
 Show that for
 \begin{align*}
 A = 
@@ -2043,6 +2044,14 @@ A = \begin{bmatrix}
 \end{bmatrix}
 \end{align*}
 as well as its transposes $A^T$. Use your answer to support the fact that the transpose of a matrix always has the same eigenvalues, but may or may not lead to the same eigenvectors.
+\end{Exercise}
+
+\begin{Exercise}
+Show that for any $n \times n$ square matrix $A$, if its characteristic polynomial is given by
+\begin{align*}
+p(\lambda) = \det(A-\lambda I) = (-1)^n(\lambda^n + c_{n-1}\lambda^{n-1} + \cdots + c_0)
+\end{align*}
+then $\text{tr}(A) = -c_{n-1}$ and $\det(A) = c_0$ where $\text{tr}()$ is the trace. You may assume for simplicity, that the matrix $A$ is diagonalizable. However, this result actually holds for all square matrices regardless of the diagonalizability.
 \end{Exercise}
 
 \begin{Exercise}

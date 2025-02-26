@@ -258,7 +258,7 @@ Another method, \index{LU Decomposition/Factorization}\keywordhl{LU Factorizatio
 \begin{align}
 A = (E_1'^{-1}E_2'^{-1}\cdots E_m'^{-1})U    
 \end{align}
-If none of the $E_i'$ involves row interchange, then they would be all lower-triangular matrices (particularly, the multiplicative constant for adding an upper row to a lower row will appear below the main diagonal in that elementary matrix) as required by the forward stage of Gaussian Elimination (meanwhile, if there is row interchange, then $E_i'$ will not be a lower triangular matrix)\footnote{If rows $p$ and $q$ are interchanged, and let's say $p < q$, then above the main diagonal $E_{pq} = 1$.}. As a result, their product $E_1'^{-1}E_2'^{-1}\cdots E_m'^{-1}$ will also be a lower triangular matrix $L$:
+If none of the $E_i'$ involves row interchange, then they (as well as the inverses $E_i'^{-1}$) would be all lower-triangular matrices (particularly, the multiplicative constant for adding an upper row to a lower row will appear below the main diagonal in that elementary matrix) as required by the forward stage of Gaussian Elimination (meanwhile, if there is row interchange, then $E_i'$ will not be a lower triangular matrix)\footnote{If rows $p$ and $q$ are interchanged, and let's say $p < q$, then above the main diagonal $E_{pq} = 1$.}. As a result, their product $E_1'^{-1}E_2'^{-1}\cdots E_m'^{-1}$ will also be a lower triangular matrix $L$ (see Exercise \ref{ex:triangularprod}):
 \begin{align}
 L = E_1'^{-1}E_2'^{-1}\cdots E_m'^{-1}    
 \end{align}
@@ -717,7 +717,7 @@ A = \begin{bmatrix}
 \end{align*}}
 
 \subsection{Solving Linear Systems with LU Decomposition}
-As mentioned at the start of this chapter, matrix factorization helps a lot when it comes to electronic calculation. For instance, LU factorization is widely applied to solving linear systems in computers, preferred over direct Gaussian Elimination or using inverses (we will discuss the reasons in the end). Basically, it is a two-step procedure. For a linear system $A\vec{x} = \vec{h}$, if we have the LU Decomposition of the matrix $A$, then it can be rewritten as 
+As mentioned at the start of this chapter, matrix factorization greatly helps when it comes to electronic calculation. For instance, LU factorization is widely applied to solving linear systems in computers, preferred over direct Gaussian Elimination or using inverses (we will discuss the reasons in the end). Basically, it is a two-step procedure. For a linear system $A\vec{x} = \vec{h}$, if we have the LU Decomposition of the matrix $A$, then it can be rewritten as 
 \begin{align}
 LU\vec{x} = \vec{h}    
 \end{align}
@@ -805,7 +805,7 @@ x_3
 which gives $x_3 = 0$, $x_2 + x_3 = x_2 + (0) = 1 \to x_2 = 1$ and $x_1 + x_2 = x_1 + (1) = 3 \to x_1 = 2$, and thus the final answer is $\vec{x} = (2,1,0)^T$.
 \end{solution}
 
-To solve a family of linear systems $A\vec{x} = \vec{h}^{(j)}$, where $\vec{h}^{(j)}$ are many different column vectors, can be very time-consuming if we use Gaussian Elimination every time. LU Decomposition extracts and encapsulates the information from Gaussian Elimination, and saves the effort needed to compute Gaussian Elimination for different $\vec{h}^{(j)}$ every time since we will only have to do the forward and backward substitution (more details in the answer to this \href{https://math.stackexchange.com/questions/266355/necessity-advantage-of-lu-decomposition-over-gaussian-elimination}{Math Stackexchange post} (266355)). While it is also possible to achieve similar effects by utilizing the inverse $A^{-1}$, calculating the inverse for large systems can be numerically unstable and expensive (which has been discussed in Section \ref{section:ch3python}, and more thoroughly at \href{https://gregorygundersen.com/blog/2020/12/09/matrix-inversion}{https://gregorygundersen.com/blog/2020/12/09/matrix-inversion}).
+To solve a family of linear systems $A\vec{x} = \vec{h}^{(j)}$, where $\vec{h}^{(j)}$ are many different column vectors, can be very time-consuming if we use Gaussian Elimination every time. LU Decomposition extracts and encapsulates the information from Gaussian Elimination, and saves the effort needed to compute Gaussian Elimination for different $\smash{\vec{h}^{(j)}}$ every time since we will only have to do the forward and backward substitution (more details in the answer to this \href{https://math.stackexchange.com/questions/266355/necessity-advantage-of-lu-decomposition-over-gaussian-elimination}{Math Stackexchange post} (266355)). While it is also possible to achieve similar effects by utilizing the inverse $A^{-1}$, calculating the inverse for large systems can be numerically unstable and expensive (which has been discussed in Section \ref{section:ch3python}, and more thoroughly at \href{https://gregorygundersen.com/blog/2020/12/09/matrix-inversion}{https://gregorygundersen.com/blog/2020/12/09/matrix-inversion}).
 
 \section{Singular Value Decomposition (SVD)}
 
@@ -828,7 +828,7 @@ Since $U$ and $V$ are both unitary (Definition \ref{defn:unitary}, $U^{-1} = U^*
 So we arrive at (\ref{eqn:SVD1}) again. This means that the central idea of SVD is to find two orthonormal (unitary) bases for the input/output vector spaces $\mathcal{V}$ and $\mathcal{W}$ so that after changing the respective coordinate systems to these two bases, the linear transformation will then have a diagonal representation. As a result, the first step is to show for any linear transformation, we can always find some suitable orthonormal bases for $\mathcal{V}$ and $\mathcal{W}$ so that any basis vector $\vec{v}^{(j)} \in \mathcal{V}$ from the starting vector space is mapped to a constant multiple of one and only one corresponding basis vector $\vec{u}^{(j)} \in \mathcal{W}$ in the other vector space.
 \begin{thm}[Singular Value Theorem for Linear Transformations]
 \label{thm:SVDtrans}
-For two inner product spaces $\mathcal{V}$ and $\mathcal{W}$ of finite dimensions $n$ and $m$ respectively, as well given a linear transformation $T: \mathcal{V} \to \mathcal{W}$ between them, there exist orthonormal bases $\beta = \{\vec{v}^{(1)}, \vec{v}^{(2)},\ldots,\vec{v}^{(n)}\}$ for $\mathcal{V}$ and $\gamma = \{\vec{u}^{(1)}, \vec{u}^{(2)},\ldots,\vec{u}^{(m)}\}$ for $\mathcal{W}$ so that 
+For two inner product spaces $\mathcal{V}$ and $\mathcal{W}$ of finite dimensions $n$ and $m$ respectively, as well as given a linear transformation $T: \mathcal{V} \to \mathcal{W}$ between them, there exist orthonormal bases $\beta = \{\vec{v}^{(1)}, \vec{v}^{(2)},\ldots,\vec{v}^{(n)}\}$ for $\mathcal{V}$ and $\gamma = \{\vec{u}^{(1)}, \vec{u}^{(2)},\ldots,\vec{u}^{(m)}\}$ for $\mathcal{W}$ so that 
 \begin{align}
 T(\vec{v}^{(j)}) = \sigma_j \vec{u}^{(j)} \label{eqn:SVDT}
 \end{align}
@@ -853,7 +853,7 @@ which shows that $T^\dag T$ is positive-semidefinite.} $T^\dag T$ is also clearl
 \end{cases}
 & \text{($\vec{v}^{(j)}$ are set to be orthonormal)}
 \end{align}
-which shows that $\{\vec{u}^{(1)}, \vec{u}^{(2)},\ldots,\vec{u}^{(\min(m,n))}\}$ are orthonormal. By part (c) of Properties \ref{proper:linindspanbasisnewver} and the Gram-Schmidt process (Definition \ref{defn:GSorthinner}), we can complete an orthonormal basis $\gamma = \{\vec{u}^{(1)}, \vec{u}^{(2)},\ldots,\vec{u}^{(m)}\}$ for $\mathcal{W}$. As we have set $\vec{u}^{(j)} = \smash{\frac{1}{\sigma_j}T(\vec{v}^{(j)})}$, we immediately have $T(\vec{v}^{(j)}) = \sigma_j\vec{u}^{(j)}$ for $1 \leq j \leq \min(m,n)$. And if $j > \min(m,n)$, we have $T(\vec{v}^{(j)}) = \textbf{0}$ because $T^\dag T(\vec{v}^{(j)}) = \lambda_j \vec{v}^{(j)} = \textbf{0}$ as $\lambda_j = 0$ whenever $j > \min(m,n)$.\footnote{Again, as in Footnote \ref{foot:TdagTpossemidef}, 
+which shows that $\{\vec{u}^{(1)}, \vec{u}^{(2)},\ldots,\vec{u}^{(\min(m,n))}\}$ are orthonormal. By part (c) of Properties \ref{proper:linindspanbasisnewver} and the Gram-Schmidt process (Definition \ref{defn:GSorthinner}), we can complete an orthonormal basis $\gamma = \{\vec{u}^{(1)}, \vec{u}^{(2)},\ldots,\vec{u}^{(m)}\}$ for $\mathcal{W}$ if $m > n$. As we have set $\vec{u}^{(j)} = \smash{\frac{1}{\sigma_j}T(\vec{v}^{(j)})}$, we immediately have $T(\vec{v}^{(j)}) = \sigma_j\vec{u}^{(j)}$ for $1 \leq j \leq \min(m,n)$. And if $j > \min(m,n)$, we have $T(\vec{v}^{(j)}) = \textbf{0}$ because $T^\dag T(\vec{v}^{(j)}) = \lambda_j \vec{v}^{(j)} = \textbf{0}$ as $\lambda_j = 0$ whenever $j > \min(m,n)$.\footnote{Again, as in Footnote \ref{foot:TdagTpossemidef}, 
 \begin{align*}
 \langle \vec{v}^{(j)}, T^\dag T (\vec{v}^{(j)}) \rangle &= \langle T(\vec{v}^{(j)}), T(\vec{v}^{(j)}) \rangle \\
 &= \norm{T(\vec{v}^{(j)})}^2
@@ -896,13 +896,13 @@ V =
 \hat{v}^{(1)} | \hat{v}^{(2)} | \cdots | \hat{v}^{(n)}
 \end{bmatrix}
 \end{align}
-where the unit column vectors $\hat{v}^{(1)}, \hat{v}^{(2)}, \ldots, \hat{v}^{(n)}$ are the orthonormal eigenvectors of the Hermitian matrix product $A^*A$ (Properties \ref{proper:orthogonalherm}) called \index{Right Singular Vectors}\keywordhl{right singular vectors}, ordered by decreasing, real eigenvalues $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n \geq 0$. $\Sigma$ then consists of the first $k = \min(m,n)$ singular values $\sigma_j$  along the main diagonal, which are the square roots of the eigenvalues of $A^*A$ (also in decreasing order) of the corresponding column vectors $\hat{v}^{(j)}$ in the unitary matrix $V$, and has a value of zero elsewhere. Finally, $U$ is made up of the orthonormal column vectors that satisfy
+where the unit column vectors $\hat{v}^{(1)}, \hat{v}^{(2)}, \ldots, \hat{v}^{(n)}$ are the orthonormal eigenvectors of the Hermitian matrix product $A^*A$ (Properties \ref{proper:orthogonalherm}) called \index{Right Singular Vectors}\keywordhl{right singular vectors}, ordered by decreasing, real eigenvalues $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n \geq 0$. $\Sigma$ then consists of the first $k = \min(m,n)$ singular values $\sigma_j$ along the main diagonal, which are the square roots of the eigenvalues of $A^*A$ (also in decreasing order) of the corresponding column vectors $\hat{v}^{(j)}$ in the unitary matrix $V$, and has a value of zero elsewhere. Finally, $U$ is made up of the orthonormal column vectors that satisfy
 \begin{align}
 \hat{u}^{(j)} = \frac{1}{\sigma_j} A\hat{v}^{(j)}
 \end{align}
 for any $j$ that is associated to a non-zero singular value $\sigma_j \neq 0$. These vectors $\hat{u}^{(j)}$ are called \index{Left Singular Vectors}\keywordhl{left singular vectors}. When there are not enough column vectors to construct $U$ by this relation, we can use Gram-Schmidt Orthogonalization (or other feasible methods) to create orthonormal vectors that extend the basis of $\hat{u}^{(j)}$ up to $j = m$.
 \end{thm}
-This is just Theorem \ref{thm:SVDtrans} applied on Properties \ref{proper:chcoordsmat} in another form, where now we update the basis subscripts/superscripts to match the notation appropriately and have $[T]^{\gamma}_{\beta} = \Sigma$, $Q_{\gamma}^{S} = U$, $[T]_{S} = A$ and $P_{\beta}^{S} = V$ (see the flowchart of Figure \ref{fig:transcoordSVD} below) where $S$ denotes the standard bases for both $\mathbb{R}^n$ and $\mathbb{R}^m$ (but can be replaced by any other arbitrary basis when needed), so
+This is just Theorem \ref{thm:SVDtrans} applied on Properties \ref{proper:chcoordsmat} in another form, where now we update the basis subscripts/superscripts to match the notation appropriately and have $[T]^{\gamma}_{\beta} = \Sigma$, $Q_{\gamma}^{S} = U$, $[T]_{S} = A$ and $P_{\beta}^{S} = V$ (see the flowchart of Figure \ref{fig:transcoordSVD} below) where $S$ denotes the standard bases for both $\mathbb{R}^n$/$\mathbb{C}^n$ and $\mathbb{R}^m$/$\mathbb{C}^m$ (but can be replaced by any other arbitrary basis when needed), so
 \begin{align*}
 A = [T]_S &= Q_{\gamma}^{S}[T]^{\gamma}_{\beta}(P_{\beta}^{S})^{-1} \\
 &= U\Sigma V^{-1} = U\Sigma V^* & \text{(($U$ and) $V$ is unitary)}
@@ -1204,9 +1204,9 @@ First, we have $V^T$ which constitutes a positive (counter-clockwise) rotation o
     \coordinate (0) at (0,0);
     \draw[thick] (0,0) circle (1.5);
     \draw[Green, ->] (0,0) -- (1.5,0) node[right](vecu){$\hat{e}^{(1)} = (1,0)^T$};
-    \draw[red, ->] (0,0) -- (0.6708,1.3416) node[above right](vecv){$\vec{v}^{(1)}$};
+    \draw[red, ->] (0,0) -- (0.6708,1.3416) node[above right](vecv){$\hat{v}^{(1)}$};
     \draw[Green, ->] (0,0) -- (0,1.5) node[above left]{$\hat{e}^{(2)} = (0,1)^T$};
-    \draw[red, ->] (0,0) -- (-1.3416,0.6708) node[above left]{$\vec{v}^{(2)}$};
+    \draw[red, ->] (0,0) -- (-1.3416,0.6708) node[above left]{$\hat{v}^{(2)}$};
     \pic[draw, ->, gray, "$\SI{63.4}{\degree}$", angle eccentricity=2.25] {angle = vecu--0--vecv};
     \draw[thick] (0,-4) circle (1.5);
     \draw[red, ->] (0,-4) -- (1.5,-4) node[right]{$x'$-axis};
@@ -1252,17 +1252,17 @@ During the derivation of Theorem \ref{thm:SVDtrans}, we have shown that if $n > 
 \vdots & & & & & \ddots
 \end{bmatrix}
 \left[\begin{array}{c} 
-\vec{v}^{(1)*} \\
+\hat{v}^{(1)*} \\
 \hline
-\vec{v}^{(2)*} \Tstrut \\
+\hat{v}^{(2)*} \Tstrut \\
 \hline
 \vdots \\
 \hline 
-\vec{v}^{(k)*} \Tstrut \\
+\hat{v}^{(k)*} \Tstrut \\
 \hline
 \vdots \\
 \hline
-\vec{v}^{(n)*} \Tstrut
+\hat{v}^{(n)*} \Tstrut
 \end{array}\right] 
 \end{align}
 can be reduced to the so-called \index{Truncated SVD}\index{Compact SVD}\keywordhl{Truncated/Compact SVD}, by only keeping entries associated with up to the first $k$ non-zero singular values, resulting in
@@ -1277,16 +1277,16 @@ A = U_k\Sigma_k V_k^* = \begin{bmatrix}
 0 & & & \sigma_k
 \end{bmatrix}
 \left[\begin{array}{c} 
-\vec{v}^{(1)*} \\
+\hat{v}^{(1)*} \\
 \hline
-\vec{v}^{(2)*} \Tstrut \\
+\hat{v}^{(2)*} \Tstrut \\
 \hline
 \vdots \\
 \hline 
-\vec{v}^{(k)*} \Tstrut 
+\hat{v}^{(k)*} \Tstrut 
 \end{array}\right] 
 \end{align}
-where $U_k$, $V_k$ come from keeping only the first $k$ columns of $U$ and $V$, and $\Sigma_k$ is a diagonal $k \times k$ square matrix that preserves the $k$ non-zero singular values. From this point onwards, we mean the Compact SVD instead of the original one whenever we refer to SVD unless otherwise specified. If the singular values are distinct, the compact SVD of a matrix will be \textit{unique up to a (complex) sign difference}\footnote{which means that an $e^{i\theta}$ factor can be added to any singular vector.} for the singular vectors because the right singular vectors are designated to be the eigenvectors of $A^*A$ and we have required them to be arranged in the order of decreasing singular values. It can also be expanded in a fashion similar to Equation (\ref{eqn:projrank1sum}), which gives
+where $U_k$, $V_k$ come from retaining only the first $k$ columns of $U$ and $V$, and $\Sigma_k$ is a diagonal $k \times k$ square matrix that preserves the $k$ non-zero singular values. From this point onwards, we mean the Compact SVD instead of the original one whenever we refer to SVD unless otherwise specified. If the singular values are distinct, the compact SVD of a matrix will be \textit{unique up to a (complex) sign difference}\footnote{which means that an $e^{i\theta}$ factor can be added to any singular vector.} for the singular vectors because the right singular vectors are designated to be the eigenvectors of $A^*A$ and we have required them to be arranged in the order of decreasing singular values. It can also be expanded in a fashion similar to Equation (\ref{eqn:projrank1sum}), which gives
 \begin{align}
 & \quad \begin{bmatrix}
 \hat{u}^{(1)} | \hat{u}^{(2)} | \cdots | \hat{u}^{(k)}
@@ -1298,15 +1298,15 @@ where $U_k$, $V_k$ come from keeping only the first $k$ columns of $U$ and $V$, 
 0 & & & \sigma_k
 \end{bmatrix}
 \left[\begin{array}{c} 
-\vec{v}^{(1)*} \\
+\hat{v}^{(1)*} \\
 \hline
-\vec{v}^{(2)*} \Tstrut \\
+\hat{v}^{(2)*} \Tstrut \\
 \hline
 \vdots \\
 \hline 
-\vec{v}^{(k)*} \Tstrut 
+\hat{v}^{(k)*} \Tstrut 
 \end{array}\right] \nonumber \\
-&= \sigma_1\hat{u}^{(1)}\vec{v}^{(1)*} + \sigma_2\hat{u}^{(2)}\vec{v}^{(2)*} + \cdots + \sigma_k\hat{u}^{(k)}\vec{v}^{(k)*} 
+&= \sigma_1\hat{u}^{(1)}\hat{v}^{(1)*} + \sigma_2\hat{u}^{(2)}\hat{v}^{(2)*} + \cdots + \sigma_k\hat{u}^{(k)}\hat{v}^{(k)*} 
 \end{align}
 
 \begin{exmp}
@@ -1351,7 +1351,7 @@ and
 \end{array}\right]
 & \text{ for } \lambda_2 = 3 \\
 \end{align*}
-and $\vec{v}^{(3)} = (-\frac{1}{\sqrt{6}},\frac{1}{\sqrt{6}},\frac{2}{\sqrt{6}},0)^T$, $\vec{v}^{(4)} = (-\frac{1}{\sqrt{6}},-\frac{1}{\sqrt{6}},0,\frac{2}{\sqrt{6}})^T$ for $\lambda_3 = \lambda_4 = 0$. We now only need the first two of them for the SVD, so
+and $\vec{v}^{(3)} = \smash{(-\frac{1}{\sqrt{6}},\frac{1}{\sqrt{6}},\frac{2}{\sqrt{6}},0)^T}$, $\vec{v}^{(4)} = \smash{(-\frac{1}{\sqrt{6}},-\frac{1}{\sqrt{6}},0,\frac{2}{\sqrt{6}})^T}$ for $\lambda_3 = \lambda_4 = 0$. We now only need the first two of them for the SVD, so
 \begin{align*}
 V &= 
 \begin{bmatrix}
@@ -1447,12 +1447,15 @@ We will end this section by talking about how SVD can be used to carry out PCA, 
 Q &= \frac{1}{m-1}[X']^T[X'] \nonumber \\
 &= \frac{1}{m-1}(U\Sigma V^T)^TU\Sigma V^T \nonumber \\
 &= \frac{1}{m-1}V \Sigma U^T U \Sigma V^T & \text{($\Sigma$ is diagonal)} \nonumber \\
-&= \frac{1}{m-1}V \Sigma^2 V^T & \text{($U^TU = I$ as $U$ is orthogonal)} \nonumber \\
+&= \frac{1}{m-1}V \Sigma^2 V^T & \begin{aligned}
+&\text{($U^TU = I$ as $U$ is orthogonal,} \\
+&\text{Properties \ref{proper:orthoinvT})}
+\end{aligned}\nonumber \\
 &= V(\frac{\Sigma^2}{m-1}) V^T 
 \end{align}
 By comparing this to (\ref{eqn:orthodiagonalPAP}) in Definition \ref{defn:orthodiagonal}, we immediately identify that the orthogonal matrix $P = V$ contains the orthonormal principal directions in columns, which coincide with the right singular vectors of $[X']$. The variances of the PCs are related to the singular values by 
 \begin{align}
-\lambda_j = \sigma_j^2/(m-1)    
+\lambda_j = \frac{\sigma_j^2}{m-1}    
 \end{align} as $D = \Sigma^2/(m-1)$. In addition, as suggested by (\ref{eqn:PCAcoordchange}) below Theorem \ref{thm:PCA}, the new PC coordinates are given \begin{align}
 \vec{u}_i = [\textbf{e}]^T \vec{x}_i = V^T \vec{x}_i    
 \end{align}
@@ -1478,7 +1481,7 @@ The Singular Value Theorem \ref{thm:SVDtrans} shows that a linear transformation
 \begin{align}
 T^+(\vec{u}^{(j)}) = \frac{1}{\sigma_j} \vec{v}^{(j)} \label{eqn:pinv1}
 \end{align}
-where now $T^+$ reverts the mapping by $T$ from each of $\gamma = \{\vec{u}^{(1)}, \vec{u}^{(2)},\ldots,\vec{u}^{(k)}\}$ back to each of $\beta = \{\vec{v}^{(1)}, \vec{v}^{(2)},\ldots,\vec{v}^{(k)}\}$ where there are $k$ non-zero singular values. Notice that the subspaces generated by $\beta$ and $\gamma$ are the kernel's complement and the range, $\mathcal{N}(T)^\perp$ and $\mathcal{R}(T)$ respectively. Motivated by all of these, we may want to construct a \index{Pseudoinverse}"\keywordhl{pseudoinverse}" $T^+: \mathcal{W} \to \mathcal{V}$ out of $T$ even though the matrix representation of $T$ may not have a square shape to be invertible in the usual sense: we only need Equation (\ref{eqn:pinv1}) to hold from $\mathcal{R}(T)$ to $\mathcal{N}(T)^\perp$ and this will be good enough to capture the invertibility between just this two subspaces: Both $\mathcal{R}(T)$ and $\mathcal{N}(T)^\perp$ have the same dimension\footnote{Let $T$ has a rank of $k$ so that $\dim(\mathcal{R}(T)) = k$, then by the Rank-Nullity Theorem \ref{thm:ranknullitytrans}, $\dim(\mathcal{N}(T)) = n-k$ and $\dim(\mathcal{N}(T)^\perp) = n-(n-k) = k$.} and there will always be a invertible linear transformation $L$ between them by Properties \ref{proper:isomorphicsamerank}. We require that this $L$ coincides with $T$ as long as the input vectors are in the range $\mathcal{N}(T)^\perp$ and hence in the backward direction $T^+$ coincides with $L^{-1}$ over $\mathcal{R}(T)$ as well. For other input vectors in the complement of the range $\mathcal{R}(T)^\perp \subseteq \mathcal{W}$, we effectively ignore them by requiring that $T^+$ maps all of them into the zero vector. From these, we can properly define the pseudoinverse of a linear transformation as below.
+where now $T^+$ reverts the mapping by $T$ from each of $\gamma = \{\vec{u}^{(1)}, \vec{u}^{(2)},\ldots,\vec{u}^{(k)}\}$ back to each of $\beta = \{\vec{v}^{(1)}, \vec{v}^{(2)},\ldots,\vec{v}^{(k)}\}$ where there are $k$ non-zero singular values. Notice that the subspaces generated by $\beta$ and $\gamma$ are the kernel's complement and the range, $\mathcal{N}(T)^\perp$ and $\mathcal{R}(T)$ respectively. Motivated by all of these, we may want to construct a \index{Pseudoinverse}"\keywordhl{pseudoinverse}" $T^+: \mathcal{W} \to \mathcal{V}$ out of $T$ even though the matrix representation of $T$ may not have a square shape to be invertible in the usual sense: we only need Equation (\ref{eqn:pinv1}) to hold from $\mathcal{R}(T)$ to $\mathcal{N}(T)^\perp$ and this will be good enough to capture the invertibility between just this two subspaces. Both $\mathcal{R}(T)$ and $\mathcal{N}(T)^\perp$ have the same dimension\footnote{Let $T$ has a rank of $k$ so that $\dim(\mathcal{R}(T)) = k$, then by the Rank-Nullity Theorem \ref{thm:ranknullitytrans}, $\dim(\mathcal{N}(T)) = n-k$ and $\dim(\mathcal{N}(T)^\perp) = n-(n-k) = k$.} and there will always be a invertible linear transformation $L$ between them by Properties \ref{proper:isomorphicsamerank}. We require that this $L$ coincides with $T$ as long as the input vectors are in the kernel's complement $\mathcal{N}(T)^\perp$ and hence in the backward direction $T^+$ coincides with $L^{-1}$ over the range $\mathcal{R}(T)$ as well. For other vectors in the complement of the range $\mathcal{R}(T)^\perp \subseteq \mathcal{W}$, we effectively ignore them by requiring that $T^+$ maps all of them into the zero vector. From these, we can properly define the pseudoinverse of a linear transformation as below.
 \begin{defn}[Pseudoinverse of a Linear Transformation]
 \label{defn:pseudoinversetrans}
 For two inner product spaces $\mathcal{V}$ and $\mathcal{W}$ of finite dimensions $n$ and $m$ respectively, and given a linear transformation $T\colon \mathcal{V} \to \mathcal{W}$ between them, let $L\colon \mathcal{N}(T)^\perp \to \mathcal{R}(T)$ be the invertible linear transformation between the two subspaces $\mathcal{N}(T)^\perp$ and $\mathcal{R}(T)$ such that 
@@ -1828,7 +1831,7 @@ B &=
 1 & 1 \\
 1 & 2
 \end{bmatrix} \\
-\norm{\smash{A\vec{x} - \vec{h}}}^2 &= (A\vec{x} - \vec{h})^T B(A\vec{x} - \vec{h})
+\norm{\smash{A\vec{x} - \vec{h}}}^2 &= (A\textbf{x} - \textbf{h})^T B(A\textbf{x} - \textbf{h})
 \end{align*}
 and the norm $\norm{\vec{x}}$ is computed with respect to the inner product defined by
 \begin{align*}
@@ -1838,7 +1841,7 @@ C &=
 0 & 2 & 1 \\
 0 & 1 & 2
 \end{bmatrix} \\
-\norm{\vec{x}}^2 &= \vec{x}^TC\vec{x}
+\norm{\vec{x}}^2 &= \textbf{x}^TC\textbf{x}
 \end{align*}
 \end{exmp}
 \begin{solution}
@@ -2047,7 +2050,7 @@ It would be wise to delegate the calculation of the eigenvalues of $A^TA$ and th
 0.18590 \\
 0.25171
 \end{bmatrix}
-& \sigma_2 \approx 2.81 \\
+& \sigma_2 \approx 2.81 
 \end{align*}
 and
 \begin{align*}
@@ -2134,7 +2137,7 @@ We can convert the molar concentration of each ion species to mass concentration
 \begin{align*}
 [\text{Na}^+] &= (\SI{23.0}{\g \per \mol})(\SI{0.1430}{\mol \per \kg}) = \SI{3.29}{\g \per \kg}
 \end{align*}
-and similarly $[\text{Mg}^{2+}] = (24.3)(0.2057) = \SI{5.00}{\g \per \kg}$, $[\text{Cl}^{-}] = (35.5)(0.0737) \allowbreak = \SI{2.62}{\g \per \kg}$, $[\text{SO}_4^{2-}] = (96.1)(0.2403) = \SI{23.09}{\g \per \kg}$. However, while this minimal solution is a valid solution by part (a) of Properties \ref{proper:minimalsoln}, it is far from the actual observed composition (see \href{https://www.britannica.com/science/seawater}{https://www.britannica.com/science/seawater}). This is because the minimal solution also tries to minimize the squared norm $\norm{\vec{x}}^2$, which tends to average out the components. Therefore, we have to be very careful if we attempt to obtain a single solution for a linear system that admits infinitely many solutions using the pseudoinverse.
+and similarly $[\text{Mg}^{2+}] = (24.3)(0.2057) = \SI{5.00}{\g \per \kg}$, $[\text{Cl}^{-}] = (35.5)(0.0737) \allowbreak = \SI{2.62}{\g \per \kg}$, $[\text{SO}_4^{2-}] = (96.1)(0.2403) = \SI{23.09}{\g \per \kg}$. However, while this minimal solution is a valid solution by part (a) of Properties \ref{proper:minimalsoln}, it is far from the actual observed composition (see \href{https://www.britannica.com/science/seawater}{https://www.britannica.com/science/\\seawater}). This is because the minimal solution also tries to minimize the squared norm $\norm{\vec{x}}^2$, which tends to average out the components. Therefore, we have to be very careful if we attempt to obtain a single solution for a linear system that admits infinitely many solutions using the pseudoinverse.
 \end{solution}
 
 \section{Python Programming}
@@ -2160,7 +2163,7 @@ A2 = np.array([[1, 1, 2],
                [2, 2, 3],
                [1, 3, 0]])
 P, L, U_raw = linalg.lu(A2)
-D = np.diag(np.diag(U_raw))
+D = np.diag(np.diag(U_raw)) # Factor out the diagonal elements in U_raw
 U = U_raw/np.diag(U_raw)[:,None]
 print(P, L, D, U)
 print(np.allclose(P@L@D@U, A2)) # Check if the factors can be combined to reconstruct the matrix
@@ -2219,6 +2222,12 @@ print(linalg.lstsq(A3, h))
 both will produce the same answer apart from the different, but negligible round-off errors in the second entry which should have been zero.
 
 \section{Exercises}
+
+\begin{Exercise}
+\phantomsection
+\label{ex:triangularprod}
+Show that the product of a sequence of lower[upper]-triangular matrices of the same extent ultimately results in a lower[upper]-triangular matrix as well.
+\end{Exercise}
 
 \begin{Exercise}
 Find the (a) Cholesky Factorization, (b) LDU Decomposition for the symmetric matrix
@@ -2283,6 +2292,6 @@ C &=
 1 & 2 & 1 \\
 0 & 1 & 3
 \end{bmatrix} \\
-\norm{\vec{x}}^2 &= \vec{x}^TC\vec{x}
+\norm{\vec{x}}^2 &= \textbf{x}^TC\textbf{x}
 \end{align*}
 \end{Exercise}
