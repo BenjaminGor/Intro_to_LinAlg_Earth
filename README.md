@@ -4,7 +4,7 @@ Hello, I am Benjamin Loi from CUHK-EESC and NTU-AS. This is the repository for t
 
 The book pdf is located at [here](Linear_Algebra_Notes_New.pdf).
 
-This project is still alive and being constantly updated as of Jan 2025.
+This project is still alive and being constantly updated as of Mar 2025.
 
 <h2>Contributing to the Project</h2>
 
@@ -14,8 +14,6 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 <h2>Table of Content (Draft)</h2>
 
 (inside brackets are the expected finish and upload dates)
-
-Full Editing: 2025/3/1
 
 1. Introduction to Matrices and Linear Systems
 2. Inverses and Determinants
@@ -37,4 +35,4 @@ Full Editing: 2025/3/1
 18. Index Notation and Introduction to Tensor
 
 Appendix
-- Jordan Normal Form
+- Jordan Normal Form (2025-04-01)
