@@ -6,6 +6,8 @@ Hello, I am Benjamin Loi from CUHK-EESC and NTU-AS. This is the repository for t
 
 This project is still alive and being constantly updated as of Mar 2025.
 
+![image](https://github.com/BenjaminGor/Intro_to_LinAlg_Earth/blob/main/Book%20Cover.png)
+
 <h2>Contributing to the Project</h2>
 
 Feel free to open an issue regarding any problem or suggestion about the book! Any idea will be greatly appreciated.
