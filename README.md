@@ -2,7 +2,7 @@
 
 Hello, I am Benjamin Loi from CUHK-EESC and NTU-AS. This is the repository for the tex files for my book <em>Introduction to Linear Algebra with Earth Science Applications</em>.
 
-<b>The book pdf is located at [here](Linear_Algebra_Notes_New.pdf). (Beta Version)</b>
+<b>The book pdf is located at [here](https://github.com/BenjaminGor/Intro_to_LinAlg_Earth/releases/tag/v0.1). (Beta Version)</b>
 
 This project is still alive and being constantly updated as of Mar 2025.
 
