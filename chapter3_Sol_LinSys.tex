@@ -939,6 +939,7 @@ For a square matrix $A$, the followings are equivalent:
 \subsubsection{Cramer's Rule}
 For a square linear system of equations, there is another way to find its solution via utilizing determinants called \index{Cramer's Rule}\keywordhl{Cramer's Rule}.
 \begin{thm}[Cramer's Rule]
+\label{thm:Cramer}
 Denote the $n\times n$ linear system as $A\vec{x} = \smash{\vec{h}}$, $\vec{x} = (x_1, x_2, \ldots, x_n)^T$. If the square matrix $A$ is invertible, i.e. $\det(A) \neq 0$, then the solution can be found by
 \begin{align}
 x_i = \frac{\det(A_i)}{\det(A)}
@@ -1951,8 +1952,8 @@ t
 \begin{Exercise}
 \phantomsection
 \label{ex:circuitsys}
-\textit{Ohm's law} relates the voltage drop of a current due to resistance by $V=IR$. In addition, \textit{Kirchhoff’s Second Law} states that: The voltage gain balances the voltage drop around any closed loop (the net voltage change must be zero). The clockwise convention is adopted, i.e.\ around a loop, a battery with its positive terminal facing the clockwise direction is considered a voltage gain, and clockwise current passing through a resistor is deemed as a voltage drop. Together with the knowledge that current at a junction must conserve (\textit{Kirchhoff's First Law}), find $I_1$, $I_2$, $I_3$ (assumed flowing in the direction as indicated) for the circuit in Figure \ref{fig:circuitsys}. \par
-You will obtain two equations by considering any two loops with Kirchhoff’s Second Law, and one from Kirchhoff's First Law. So, there are three equations, for the three unknown currents.
+\textit{Ohm's law} relates the voltage drop of a current due to resistance by $V=IR$. In addition, \textit{Kirchhoff's Second Law} states that: The voltage gain balances the voltage drop around any closed loop (the net voltage change must be zero). The clockwise convention is adopted, i.e.\ around a loop, a battery with its positive terminal facing the clockwise direction is considered a voltage gain, and clockwise current passing through a resistor is deemed as a voltage drop. Together with the knowledge that current at a junction must conserve (\textit{Kirchhoff's First Law}), find $I_1$, $I_2$, $I_3$ (assumed flowing in the direction as indicated) for the circuit in Figure \ref{fig:circuitsys}. \par
+You will obtain two equations by considering any two loops with Kirchhoff's Second Law, and one from Kirchhoff's First Law. So, there are three equations, for the three unknown currents.
 \end{Exercise}
 \begin{figure}[h!]
 \centering
