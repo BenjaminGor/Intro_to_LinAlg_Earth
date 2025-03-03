@@ -21,7 +21,7 @@ A^\dag A\vec{x}_f &= A^\dag \vec{h}
 This is called the \index{Normal Equation}\keywordhl{normal equation} due to the appearance of $A^\dag A$. So any $\vec{x}_f$\footnote{The existence of at least one of such a vector is guaranteed by the uniqueness of orthogonal projection of $\smash{\vec{h}}$ onto $\mathcal{C}(A)$.} satisfying this equation will produce the least-square error. We may be tempted to multiply both sides of the equation by the inverse $(A^\dag A)^{-1}$ to arrive at a formula for the least-square solution $\vec{x}_f = (A^\dag A)^{-1}A^\dag \smash{\vec{h}}$. However, this is only allowed when this inverse indeed exists, and we now discuss under what condition it will happen.\par
 \begin{figure}[ht!]
     \centering
-    \begin{tikzpicture}[rotate=-10]
+    \begin{tikzpicture}[rotate=0]
     \filldraw[fill=Green!20]
     (0,0,0) -- (4,0,0) -- (4,0,4) -- (0,0,4) -- cycle;
     \draw[red, thick, ->] (1,0,1) -- (3,2,2) node[right]{$\vec{h}$};
@@ -711,7 +711,7 @@ Hence $R^2 \approx 0.157/0.167 = 0.94$ which indicates a good fit.
 Find the least-square approximation to the temperature measurement problem in Example \ref{exmp:weatherstats}.
 \end{exmp}
 \begin{solution}
-In Example \ref{exmp:weatherstats2} we have found that the corresponding overdetermined system has no exact solution. To find the least-square solution, we invoke the formula in Theorem \ref{thm:bestfit} where
+In Example \ref{exmp:weatherstats2}, we have found that the corresponding overdetermined system has no exact solution. To find the least-square solution, we invoke the formula in Theorem \ref{thm:bestfit} where
 \begin{align*}
 \vec{x}_f &= (A^TA)^{-1}A^T\vec{h}
 \end{align*}
