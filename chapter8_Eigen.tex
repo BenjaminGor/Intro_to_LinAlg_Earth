@@ -513,14 +513,15 @@ Exercise.\footnote{Denote the matrix by $A$, if it has an eigenvalue of zero, th
 \end{proof}
 
 \subsection{Eigenspace as an Invariant Subspace}
-The eigenspace actually belongs to a broader class of subspaces known as the \index{Invariant Subspaces}\keywordhl{invariant subspaces}. Given a linear operator $T:\mathcal{V} \to \mathcal{V}$, a subspace $\mathcal{W}$ of $\mathcal{V}$ is known as \textit{$T$-invariant} if applying $T$ to any vector $\vec{w} \in \mathcal{W}$ in the subspace maps it into a vector in the subspace $\mathcal{W}$ itself.
+The eigenspace actually belongs to a broader class of subspaces known as the \index{Invariant Subspaces}\keywordhl{invariant subspaces}. Given a linear operator $T: \mathcal{V} \to \mathcal{V}$, a subspace $\mathcal{W}$ of $\mathcal{V}$ is known as \textit{$T$-invariant} if applying $T$ to any vector $\vec{w} \in \mathcal{W}$ in the subspace maps it into a vector in the subspace $\mathcal{W}$ itself.
 \begin{defn}[Invariant Subspace]
-With respect to a linear endomorphism $T:\mathcal{V} \to \mathcal{V}$, a $T$-invariant subspace $\mathcal{W} \subseteq \mathcal{V}$ is a subspace such that $T(\vec{w}) \in \mathcal{W}$ for all $\vec{w} \in \mathcal{W}$.
+\label{defn:invariantsub}
+With respect to a linear endomorphism $T: \mathcal{V} \to \mathcal{V}$, a $T$-invariant subspace $\mathcal{W} \subseteq \mathcal{V}$ is a subspace such that $T(\vec{w}) \in \mathcal{W}$ for all $\vec{w} \in \mathcal{W}$.
 \end{defn}
 The zero subspace and improper subspace ($\mathcal{V}$ itself) are two trivial invariant subspaces for any $T$. A more relevant fact is that any eigenspace of a fixed eigenvalue is $T$-invariant.
 \begin{proper}
 \label{proper:eigenTinvariant}
-For a linear endomorphism $T:\mathcal{V} \to \mathcal{V}$, the eigenspace $\mathcal{E}_{J_i} \subseteq \mathcal{V}$ associated with a specific eigenvalue $\lambda_{J_i}$ is a $T$-invariant subspace.
+For a linear endomorphism $T: \mathcal{V} \to \mathcal{V}$, the eigenspace $\mathcal{E}_{J_i} \subseteq \mathcal{V}$ associated with a specific eigenvalue $\lambda_{J_i}$ is a $T$-invariant subspace.
 \end{proper}
 \begin{proof}
 Exercise.\footnote{For any $\vec{w} \in \mathcal{E}_{J_i}$, by Definition \ref{defn:eigen}, $T(\vec{w}) = \lambda_{J_i} \vec{w} \in \mathcal{E}_{J_i}$. ((2) of Theorem \ref{thm:subspacecriteria})}
@@ -530,6 +531,7 @@ and the same idea of an invariant subspace is applicable to any $n \times n$ squ
 \subsection{Cayley-Hamilton Theorem}
 We conclude this section by introducing the \index{Cayley-Hamilton Theorem}\keywordhl{Cayley-Hamilton Theorem}, which states that every square matrix satisfies its own characteristic equation, which means that replacing the $\lambda$ in the characteristic polynomial by the matrix results in a zero matrix.
 \begin{thm}[Cayley-Hamilton Theorem]
+\label{thm:CHthmmat}
 For any $n \times n$ square matrix $A$, denote its characteristic polynomial by
 \begin{align}
 p(\lambda) = \det(A-\lambda I) = (-1)^n \sum_{k=0}^{n} c_k \lambda^k
@@ -540,7 +542,7 @@ p(A) = (-1)^n \sum_{k=0}^{n} c_k A^k = [\textbf{0}]
 \end{align}
 as an $n \times n$ zero matrix.
 \end{thm}
-One may be tempted to substitute $\lambda = A$ into $\det(A-\lambda I)$ to prove the Cayley-Hamilton Theorem. However, since $\lambda$ (and $\det(A-\lambda I)$) is a scalar but $A$ (and $[\textbf{0}]$) is a matrix, it is not a rigorous proof. Correct proofs require advanced knowledge, which is presented in Appendix ??. Here we will briefly see how it works.
+One may be tempted to substitute $\lambda = A$ into $\det(A-\lambda I)$ to prove the Cayley-Hamilton Theorem. However, since $\lambda$ (and $\det(A-\lambda I)$) is a scalar but $A$ (and $[\textbf{0}]$) is a matrix, it is not a rigorous proof. Correct proofs require advanced knowledge, which is presented in Appendix \ref{section:B1}. Here we will briefly see how it works.
 \begin{exmp}
 With the matrix
 \begin{align*}
@@ -972,6 +974,7 @@ A^n =
 \frac{1}{2}(2^n - 1) & \frac{1}{2}(2^n + 1)
 \end{bmatrix}
 \end{align*}
+\end{exmp}
 \begin{solution}
 We leave it to the readers to show that the diagonalization of $A$ is done by
 \begin{align*}
@@ -1032,7 +1035,6 @@ A^n &= (PDP^{-1})^n \\
 \end{align*}
 The successive powers of a diagonal matrix can be simply computed over each of the diagonal entries.
 \end{solution}
-\end{exmp}
 
 \subsection{Diagonalization for Complex Eigenvalues}
 \label{subsection:diagcomplex}
@@ -1374,6 +1376,7 @@ P\textbf{z}' &= AP\textbf{z} \\
 \end{align*}
 assuming $P$ is invertible. The term $P^{-1}AP$, which is a matrix similar to $A$, immediately tells us a hint as it resembles a diagonalized form as described in Properties \ref{proper:diagonalize}, $P^{-1}AP = D$. If diagonalization is indeed possible, the system will then become $\textbf{z}' = D\textbf{z}$. When written out, the transformed ODEs are
 \begin{align}
+\label{eqn:ODEDz}
 \left\{\begin{alignedat}{2}
 & dz_1/dx & &= D_{11}z_1 \\
 & dz_2/dx & &= D_{22}z_2 \\
@@ -1709,11 +1712,12 @@ e^{x}\cos(\sqrt{2}x) \\
 associated to $C_2$ and $C_3$, will also be obtained if we consider only one eigenvalue out of the conjugate pair (either $\lambda_{-} = 1-\sqrt{2}i$ or $\lambda_{+} = 1+\sqrt{2}i$) and compute either $\textbf{y} = \textbf{v}_{\lambda_{-}}e^{\lambda_{-} x}$ or $\textbf{v}_{\lambda_{+}}e^{\lambda_{+} x}$ where $\textbf{v}_{\lambda_{-}}$ and $\textbf{v}_{\lambda_{+}}$ are the corresponding eigenvectors. 
 \end{solution}
 
-\subsubsection{Remarks} If the coefficient matrix for a system of first-order ODEs is not diagonalizable, then we need to employ alternative methods to solve the system. The most common approach, generalized from diagonalization, is to use the Jordan Normal Form. This is an advanced topic and interested readers can go to Appendix ?? for reference.
+\subsubsection{Remarks} If the coefficient matrix for a system of first-order ODEs is not diagonalizable, then we need to employ alternative methods to solve the system. The most common approach, generalized from diagonalization, is to use the Jordan Normal Form. This is an advanced topic and interested readers can go to Appendix \ref{sec:JNF} and \ref{sec:matexp} for reference.
 
 \section{Earth Science Applications}
 
 \begin{exmp}
+\label{exmp:chemtrace}
 A chemical tracer $P$ decays into another tracer $Q$, which in turn decays to produce yet another tracer $R$. Both reactions are first-order
 \begin{align*}
 P \xrightarrow{k_1} Q \xrightarrow{k_2} R

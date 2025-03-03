@@ -999,12 +999,12 @@ is the so-called \index{Covariance Matrix}\keywordhl{covariance matrix} so that 
 Let's say we have $m$ data for $Z$: $z_1, z_2, \ldots, z_m$, as well as each of the $X^{(j)}$: $x_1^{(j)}, x_2^{(j)}, \ldots, x_m^{(j)}$. Denote the mean of $X^{(j)}$ by $\mu_{j}$. Starting from the Expression (\ref{eqn:varianceb}) in Definition \ref{defn:variance}, we have
 \begin{align*}
 \text{Var}(Z) &= \frac{1}{m-1} \sum_{k=1}^m (z_k - \mu_z)^2 \\
-&= \frac{1}{m-1} \sum_{k=1}^m (\sum_{j=1}^{n} c_jx^{(j)}_k - \sum_{j=1}^{n} c_j\mu_{j})^2  \\
-&= \frac{1}{m-1} \sum_{k=1}^m (\sum_{j=1}^{n} (c_jx^{(j)}_k - c_j\mu_{j}))^2 \\
-&= \frac{1}{m-1} \sum_{k=1}^m [(\sum_{i=1}^{n} c_i(x^{(i)}_k - \mu_{i}))(\sum_{j=1}^{n} c_j(x^{(j)}_k - \mu_{j}))]  \\
+&= \frac{1}{m-1} \sum_{k=1}^m \left(\sum_{j=1}^{n} c_jx^{(j)}_k - \sum_{j=1}^{n} c_j\mu_{j}\right)^2  \\
+&= \frac{1}{m-1} \sum_{k=1}^m \left(\sum_{j=1}^{n} (c_jx^{(j)}_k - c_j\mu_{j})\right)^2 \\
+&= \frac{1}{m-1} \sum_{k=1}^m \left[\left(\sum_{i=1}^{n} c_i(x^{(i)}_k - \mu_{i})\right)\left(\sum_{j=1}^{n} c_j(x^{(j)}_k - \mu_{j})\right)\right]  \\
 &\quad \text{(Changing to a new dummy summation variable)} \\
-&= \frac{1}{m-1} \sum_{k=1}^m (\sum_{i=1}^{n}\sum_{j=1}^{n} c_ic_j (x^{(i)}_k - \mu_{i})(x^{(j)}_k - \mu_{j})) \\
-&= \sum_{i=1}^{n}\sum_{j=1}^{n} c_ic_j (\frac{1}{m-1} \sum_{k=1}^m (x^{(i)}_k - \mu_{i})(x^{(j)}_k - \mu_{j})) \\
+&= \frac{1}{m-1} \sum_{k=1}^m \left(\sum_{i=1}^{n}\sum_{j=1}^{n} c_ic_j (x^{(i)}_k - \mu_{i})(x^{(j)}_k - \mu_{j})\right) \\
+&= \sum_{i=1}^{n}\sum_{j=1}^{n} c_ic_j \left(\frac{1}{m-1} \sum_{k=1}^m (x^{(i)}_k - \mu_{i})(x^{(j)}_k - \mu_{j})\right) \\
 &\quad \text{(Switching the order of summation)} \\
 &= \sum_{i=1}^{n}\sum_{j=1}^{n} c_ic_j\text{Cov}(X^{(i)}, X^{(j)}) \quad \text{((\ref{eqn:covsumprod}) in Definition \ref{defn:covariance})} \\
 &= \textbf{c}^T Q\textbf{c}
@@ -1059,7 +1059,7 @@ c_v
 0.8 \\
 -0.6
 \end{bmatrix} \\
-&= \SI{1.54}{\square\m \per \square\s}
+&= \SI{1.54}{\square\m \per \square\s} \qedhere
 \end{align*} 
 \end{solution}
 Finally, recall that variance is always a positive-semidefinite quantity, and since it can be calculated as a quadratic form via the covariance matrix according to Properties \ref{proper:variancemul}, any covariance matrix will also be a positive-semidefinite quadratic form.
