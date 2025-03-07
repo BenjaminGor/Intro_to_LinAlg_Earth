@@ -426,7 +426,7 @@ Again, we refer the readers to Friedberg for the proof of part (a) as it is expl
 0 & 0 & 0 & \cdots & 1 & -a_{k-1}
 \end{bmatrix}
 \end{align}
-Its characteristic polynomial (in $t$) is then directly obtained by repeated cofactor expansion (Properties \ref{proper:cofactorex}) along the rows from top to bottom:
+This is called a \index{Companion Matrix}\textit{companion matrix}. Its characteristic polynomial (in $t$) is then directly obtained by repeated cofactor expansion (Properties \ref{proper:cofactorex}) along the rows from top to bottom:
 \begin{align}
 &\quad \det([T|_W]_\beta - t I) \nonumber \\
 &= \begin{vmatrix}
@@ -653,7 +653,7 @@ J &= Q^{-1}AQ \\
 \end{align*}
 The final result is that we can derive the \index{Jordan Normal Form}\keywordhl{Jordan Normal Form} of a matrix/linear operator by composing Jordan blocks as a direct sum.
 \begin{thm}
-Let $T: \mathcal{V} \to \mathcal{V}$ be a linear operator on a finite-dimensional vector space $\mathcal{V}$ and the characteristic polynomial of $T$ splits over the chosen field ($\mathbb{R}$ or $\mathbb{C}$). Then $T$ can be transformed into its Jordan Normal Form as the direct sum of smaller Jordan blocks. Using the matrix representation $A$, we have
+Let $T: \mathcal{V} \to \mathcal{V}$ be a linear operator on a finite-dimensional vector space $\mathcal{V}$ and the characteristic polynomial of $T$ \textit{splits} over the chosen field ($\mathbb{R}$ or $\mathbb{C}$). Then $T$ can be transformed into its Jordan Normal Form as the direct sum of smaller Jordan blocks. Using the matrix representation $A$, we have
 \begin{align}
 J = Q^{-1}AQ
 \end{align}

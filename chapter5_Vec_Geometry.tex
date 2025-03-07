@@ -1,9 +1,9 @@
 \chapter{Vector Geometry}
 
-Vectors provide valuable assistance when it comes to describing geometric objects. In this chapter, we are going to exploit the knowledge learnt in the previous chapters to solve geometry problems and inspect more deeply the intimate relationship between vectors, \textit{dot/cross products}, and geometry.
+Vectors provide valuable assistance when it comes to describing geometric objects. In this chapter, we are going to exploit the knowledge learnt in the previous chapters to solve geometry problems and inspect more deeply the intimate relationships between vectors, \textit{dot/cross products}, and geometry.
 
 \section{Lines and Planes}
-\textit{(Straight) lines} and \textit{planes} are geometric shapes of importance in two/three-dimensional real spaces ($\mathbb{R}^2$ and $\mathbb{R}^3$) and due to their simplicity they will be frequently seen. They can be expressed either in terms of (a) an equation, and (b) vectors. We will start from the easier case of a line. Since a straight line is a one-dimensional object, the vector form of such a line can be expressed by a fixed vector that points to its initial position, plus another vector oriented along the line's direction, times an arbitrary parameter that controls its extension or contraction, so that it traces out the line when the parameter changed continuously.
+\textit{(Straight) lines} and \textit{planes} are geometric shapes of importance in two/three-dimensional real spaces ($\mathbb{R}^2$ and $\mathbb{R}^3$), and due to their simplicity, they will be frequently seen. They can be expressed either in terms of (a) an equation, or (b) vectors. We will start with the easier case of a line. Since a straight line is a one-dimensional object, the vector form of such a line can be expressed by a fixed vector that points to its initial position, plus another vector oriented along the line's direction, times an arbitrary parameter that controls its extension or contraction, so that it traces out the line when the parameter changed continuously.
 \begin{figure}[ht!]
     \centering
     \begin{tikzpicture}
@@ -23,10 +23,10 @@ Vectors provide valuable assistance when it comes to describing geometric object
     \caption{\textit{The graph of $\color{blue}x - 2y = -2$ can take the vector form of $\smash{\color{Green}\overrightarrow{OP}} = {\color{orange}\vec{r}} + {\color{Green}t} {\color{red}\vec{u}} = {\color{orange}(-1,\frac{1}{2})^T} + {\color{Green}t}{\color{red}(2,1)^T}$. The orange/red arrow represents the initial position/direction, and the locus of the green arrow is controlled by $\color{Green}t$ like a slider. The cases for $\color{Green}t = 0.75, 1, 1.25, 1.5, 1.75, 2$ are shown.}}
     \label{fig:vectraceline}
 \end{figure}\par
-Short Exercise: Choose any value of $t$ for the example in Figure \ref{fig:vectraceline} and substitute that value into the expression of $\smash{\overrightarrow{OP}}$ above to see if the $x$ and $y$ components satisfy the starting equation. Also, try to increase/decrease the value of $t$ to observe how the vector traces out the desired straight line.\footnote{Let's say $t = -0.25$, $\overrightarrow{OP}=(-1,0.5)^T + (-0.25)(2,1)^T = (-1.5, 0.25)^T$, $x - 2y = (-1.5) - 2(0.25) = -2$.}
+$\blacktriangleright$ Short Exercise: Choose any value of $t$ for the example in Figure \ref{fig:vectraceline} and substitute that value into the expression of $\smash{\overrightarrow{OP}}$ to see if the $x$ and $y$ components satisfy the starting equation. Also, try to increase/decrease the value of $t$ to observe how the vector traces out the desired straight line.\footnote{Let's say $t = -0.25$, $\overrightarrow{OP}=(-1,0.5)^T + (-0.25)(2,1)^T = (-1.5, 0.25)^T$, $x - 2y = (-1.5) - 2(0.25) = -2$.}
 
 \subsection{Translating Equation Form to Vector Form}
-The general equation form of a line on an $xy$ plane is $ax + by = h$, resembling a linear system of one equation with two unknowns. From Section \ref{subsection:SolLinSysGauss}, it can be observed that it has infinitely many solutions and possesses a free variable. Let $y = t$, then rearranging the equation we have $x = (h - bt)/a$ where $t$ is any scalar. Denote the origin as $O$ and any point on the line as $P$, then 
+The general equation form of a line on an $xy$ plane is $ax + by = h$, resembling a linear system of one equation with two unknowns. From Section \ref{subsection:SolLinSysGauss}, it can be observed that it has infinitely many solutions and possesses a free variable. Let $y = t$, then by rearranging the equation, we have $x = (h - bt)/a$ where $t$ is any scalar. Denote the origin as $O$ and any point on the line as $P$, then 
 \begin{align*}
 \overrightarrow{OP} =
 \begin{bmatrix}
@@ -49,7 +49,7 @@ t
 1
 \end{bmatrix}
 \end{align*}
-This is one possible vector form (\textit{parameterization}) of the line. Its idea can be borrowed from Example \ref{exmp:mulsol}, with $\smash{(\frac{h}{a}, 0)^T}$ being the initial position/particular solution, and $\smash{(-\frac{b}{a}, 1)^T}$ as the direction of that line, multiplied by a free parameter (complementary solution) to complete the general solution. For example, if we have $3x - 2y = 5$, then by the same method, we get
+This is one possible vector form (\index{Parameterization}\textit{parameterization}) of the line. Its idea can be borrowed from Example \ref{exmp:mulsol}, with $\smash{(\frac{h}{a}, 0)^T}$ being the initial position/particular solution, and $\smash{(-\frac{b}{a}, 1)^T}$ as the direction of that line, multiplied by a free parameter (complementary solution) to complete the general solution. For example, if we have $3x - 2y = 5$, then by the same method, we can get
 \begin{align*}
 \begin{bmatrix}
 x \\
@@ -71,7 +71,7 @@ t
 1
 \end{bmatrix}    
 \end{align*}
-Bear in mind that the direction vector (representing complementary solution) can be scaled freely. In addition, any initial position vector (particular solution) can be chosen as long as it connects to a point on the line and satisfies the equation. (You may refer to the discussion about particular/complementary solutions in Section \ref{subsection:SolLinSysGauss}.) Hence, there is no unique vector form for a line. For instance,
+Bear in mind that the direction vector (representing the complementary solution) can be scaled freely. In addition, any initial position vector (particular solution) can be chosen as long as it connects to a point on the line and satisfies the equation. (You may refer to the discussion about particular/complementary solutions in Section \ref{subsection:SolLinSysGauss}.) Hence, there is no unique vector form for a line. For instance,
 \begin{align*}
 \begin{bmatrix}
 1\\
@@ -96,7 +96,7 @@ is equivalent to
 \end{bmatrix}     
 \end{align*}
 for the line equation $2x - y = -1$.\par
-Short Exercise: Check the equivalence of the two vector forms above by choosing a value for $t_1$ and finding the corresponding $t_2$ so that the vector points to the same position.\footnote{For example, if $t_1 = 1$, we have $(1, 3)^T + (1)(2, 4)^T = (3,7)^T$ as a point on the line, and for the other vector form $(-1,-1)^T + t_2(1, 2)^T = (3,7)^T$ to coincide we will have $t_2 = 4$. In this case, it can be shown that the general relation between the two forms is determined by $t_2 = 2t_1 + 2$, as
+$\blacktriangleright$ Short Exercise: Check the equivalence of the two vector forms above by choosing a value for $t_1$ and finding the corresponding $t_2$ so that the vector points to the same position.\footnote{For example, if $t_1 = 1$, we have $(1, 3)^T + (1)(2, 4)^T = (3,7)^T$ as a point on the line, and for the other vector form $(-1,-1)^T + t_2(1, 2)^T = (3,7)^T$ to coincide we will have $t_2 = 4$. In this case, it can be shown that the general relation between the two forms is determined by $t_2 = 2t_1 + 2$, as
 \begin{align*}
 \begin{bmatrix}
 1\\
@@ -134,8 +134,8 @@ Short Exercise: Check the equivalence of the two vector forms above by choosing 
 1 \\
 2
 \end{bmatrix}
-\end{align*}}\\
-Short Exercise: What is the vector form of the equation $ax + by = h$ for the degenerate case $a=0$?\footnote{The equation is reduced to $y = \frac{h}{b}$ and we select $x = t$ as the free variable instead.\\ 
+\end{align*}}\par
+$\blacktriangleright$ Short Exercise: What is the vector form of the equation $ax + by = h$ for the degenerate case $a=0$?\footnote{The equation is reduced to $y = \frac{h}{b}$ and we select $x = t$ as the free variable instead.\\ 
 $\begin{bmatrix}
 x \\
 y
@@ -157,7 +157,7 @@ t
 0
 \end{bmatrix}$}
 
-\subsection{Recovering Equation Form from Vector Form} On the other hand, inferring a line equation from the vector form is not straightforward at first sight. Since the vector form of a line always contains an arbitrary parameter, which is absent in the equation form, the motivation is to remove the parameter through some manipulation. Remember that from Properties \ref{proper:dotorth} the dot product between orthogonal (perpendicular) vectors returns zero. This means that by carrying out a dot product with the \index{Normal Vector}\keywordhl{normal vector} of the line, which is orthogonal to the direction vector, on both sides of the vector form, we will eliminate the parameter and recover the line equation. For example, given that
+\subsection{Recovering Equation Form from Vector Form} On the other hand, inferring a line equation from the vector form is not straightforward at first sight. Since the vector form of a line always contains an arbitrary parameter, which is absent in the equation form, the motivation is to remove the parameter through some manipulation. Remember that from Properties \ref{proper:dotorth}, the dot product between orthogonal (perpendicular) vectors returns zero. This means that by carrying out a dot product with the \index{Normal Vector}\keywordhl{normal vector} of the line, which is orthogonal to the direction vector, on both sides of the vector form, we will eliminate the parameter and recover the line equation. For example, given that
 \begin{align*}
 \begin{bmatrix}
 x\\
@@ -211,7 +211,7 @@ y
 -1
 \end{bmatrix}
 + t
-\begin{bmatrix}
+\left(\begin{bmatrix}
 1 \\
 4
 \end{bmatrix} 
@@ -219,18 +219,17 @@ y
 \begin{bmatrix}
 4\\
 -1
-\end{bmatrix}\\
-4x - y &= ((1)(4) + (3)(-1)) + ((1)(4)+(4)(-1))t = 1 + 0t = 1 \\
+\end{bmatrix}\right)\\
+4x - y &= ((1)(4) + (3)(-1)) + ((1)(4)+(4)(-1))t = 1 + (0)t = 1 \\
 \Rightarrow 4x - y &= 1
 \end{align*}
 Notice that the coefficients of the equation are the same as the components of the normal vector. \par
-Short Exercise: Verify that $(a, b)$ is always normal/orthogonal to $(b, -a)$, and vice versa.\footnote{$(a, b)^T \cdot (b, -a)^T = (a)(b) + (b)(-a) = 0$}
+$\blacktriangleright$ Short Exercise: Verify that $(a, b)^T$ is always normal/orthogonal to $(b, -a)^T$, and vice versa.\footnote{$(a, b)^T \cdot (b, -a)^T = (a)(b) + (b)(-a) = 0$}
 
 \subsection{Generalizing to Higher Dimensions}
 \label{section:vecgeohighdim}
-Similar concepts can be applied on the equation and vector form for planes. General form of the equation of a plane in three-dimensional space is $ax + by + cz = h$, which is a linear system of one equation with three unknowns. From the analysis in Section \ref{subsection:SolLinSysGauss} we know there are two free variables and two (non-parallel) direction vectors for such a plane. By assigning any two (non-pivotal) unknowns as the free variables, we then obtain the vector form of the plane. 
-\par
-Recall from Section \ref{section:crossprod}, that the cross product of any two non-parallel vectors on the plane will give a third vector normal to the plane. Subsequently, we can take the dot product with this newly obtained normal vector to convert the vector form back to a plane equation just like what we have done for a line in the last subsection. Again, the coefficients of the plane equation match the components of the normal vector, differing at most by a multiplicative factor.
+Similar concepts can be applied to the equation and vector forms for planes. The general form of the equation of a plane in three-dimensional space is $ax + by + cz = h$, which is a linear system of one equation with three unknowns. From the analysis in Section \ref{subsection:SolLinSysGauss}, we know that there are two free variables and two (non-parallel) direction vectors for such a plane. By assigning any two (non-pivotal) unknowns as the free variables, we then obtain the vector form of the plane. \par
+Recall from Section \ref{section:crossprod} that the cross product of any two non-parallel vectors on the plane will give a third vector normal to the plane. Subsequently, we can take the dot product with this newly obtained normal vector to convert the vector form back to a plane equation, just like what we have done for a line in the last subsection. Again, the coefficients of the plane equation match the components of the normal vector, differing at most by a multiplicative factor. (See Figure \ref{fig:5.2plane})
 \begin{figure}[ht!]
     \centering
     \begin{tikzpicture}[x={(-0.4cm, -0.7cm)}, y={(0.7cm, -0.2cm)}, z={(0cm, 0.8cm)}]
@@ -245,7 +244,8 @@ Recall from Section \ref{section:crossprod}, that the cross product of any two n
 \draw[very thick,->,blue] (0,0,1) -- (0,1,1/3) node[above right]{$(0, 1, -\frac{2}{3})^T$};
 \draw[very thick,->,red] (0,0,1) -- (1,2,4) node[above right]{Normal Vector $= (\frac{1}{3}, \frac{2}{3}, 1)^T$};
 \end{tikzpicture} 
-    \caption{\textit{The plane represented by the equation $x + 2y + 3z = 3$. Notice that the normal vector can be found via computing $\smash{(1, 0, -\frac{1}{3})^T} \times \smash{(0, 1, -\frac{2}{3})^T} = \smash{(\frac{1}{3}, \frac{2}{3}, 1)^T}$. The normal vector is magnified for the purpose of illustration.}}
+    \caption{\textit{The plane represented by the equation $x + 2y + 3z = 3$. Notice that the normal vector can be found via computing $\smash{(1, 0, -\frac{1}{3})^T} \times \smash{(0, 1, -\frac{2}{3})^T} \allowbreak = \smash{(\frac{1}{3}, \frac{2}{3}, 1)^T}$. The normal vector is magnified for the purpose of illustration.}}
+    \label{fig:5.2plane}
 \end{figure}
 
 \begin{exmp}
@@ -355,7 +355,7 @@ z
 \frac{1}{2}
 \end{bmatrix}
 + s
-\begin{bmatrix}
+\left(\begin{bmatrix}
 -\frac{3}{2} \\
 1 \\
 0
@@ -365,9 +365,9 @@ z
 1 \\
 \frac{3}{2} \\
 \frac{1}{2}
-\end{bmatrix}
+\end{bmatrix}\right)
 + t
-\begin{bmatrix}
+\left(\begin{bmatrix}
 -\frac{1}{2} \\
 0 \\
 1
@@ -377,9 +377,9 @@ z
 1 \\
 \frac{3}{2} \\
 \frac{1}{2}
-\end{bmatrix} \\
+\end{bmatrix}\right) \\
 x + \frac{3}{2}y + \frac{1}{2}z &= 2 + s(0) + t(0) = 2 \\
-\rightarrow 2x+3y+z &= 4
+\Rightarrow 2x+3y+z &= 4 
 \end{align*}
 \end{solution}
 The correspondence between the coefficients of a linear equation and the components of its normal vector is not a coincidence. In fact, even for higher-dimensional cases, where there is no intuitive geometric interpretation, it is still true.
@@ -387,27 +387,12 @@ The correspondence between the coefficients of a linear equation and the compone
 \label{proper:normalhyperplane}
 An equation of the form $a_1x_1 + a_2x_2 + a_3x_3 + \cdots + a_nx_n = h$ in $\mathbb{R}^n$ has a normal vector of $(a_1, a_2, a_3, \ldots, a_n)^T$.
 \end{proper}
-The procedures carried in the last example can be similarly applied to higher-dimensional situations where the equation now represents a \index{Hyperplane}\keywordhl{hyperplane}\footnote{A hyperplane in the $n$-dimensional real space $\mathbb{R}^n$ can be thought of as an "$(n-1)$-dimensional flat surface".}.
+The procedures carried out in the last example can be similarly applied to higher-dimensional situations where the equation now represents a \index{Hyperplane}\keywordhl{hyperplane}\footnote{A hyperplane in the $n$-dimensional real space $\mathbb{R}^n$ can be thought of as an "$(n-1)$-dimensional flat surface".}.
 
 \section{Further Geometric Applications of Dot Product}
 \subsection{Projection}
 \label{section:proj}
-We have mentioned in Properties \ref{proper:dotgeo} that dot product between two vectors is related to the projection of one vector onto another. By rearranging the formula of Properties \ref{proper:dotgeo}, we can derive the length of projection as follows.
-\begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}[scale=1.3]
-\coordinate (0) at (0,0);
-\coordinate (vecu) at (4,1);
-\coordinate (vecv) at (1,2);
-\draw[->](0)--(vecu) node[right]{$\vec{u}$};
-\draw[->](0)--(vecv) node[above]{$\vec{v}$};
-\draw[dashed] (1,2)--(24/17, 6/17);
-\draw[red] (24/17+0.2, 6/17+0.05)--(24/17+0.15, 6/17+0.25)--(24/17-0.05, 6/17+0.2);
-\pic[draw, "$\theta$", angle eccentricity=1.5] {angle = vecu--0--vecv};
-\draw[blue, very thick] (0,0)--(24/17, 6/17) node[below, shift={(0mm, -2mm)}]{$\norm{\vec{v}}\cos\theta$};
-\end{tikzpicture}
-\caption{\textit{Same as Figure \ref{fig:dotproj}.}}
-\end{figure}
+We have mentioned in Properties \ref{proper:dotgeo} that the dot product between two vectors is related to the projection of one vector onto another. By rearranging the formulae of Properties \ref{proper:dotgeo}, we can derive the length of projection as follows.
 \begin{proper}
 \label{proper:proj}
 For two real vectors $\vec{u}$ and $\vec{v}$ having the same number of dimensions, the \index{Scalar Projection}\keywordhl{(signed) scalar projection} of $\vec{v}$ onto $\vec{u}$ is computed according to
@@ -477,18 +462,18 @@ and the vector projection is
 Find the distance from the plane $x-2y+3z = 6$ to the point $(3,3,6)^T$.
 \end{exmp}
 \begin{solution}
-From the equation of the plane, and by Properties \ref{proper:normalhyperplane}, it can be inferred that the normal vector of the plane is $\hat{\imath} - 2\hat{\jmath} + 3\hat{k}$. We can select any point on the plane as we wish, let's say $(4,2,2)^T$, and the vector from such a point to the point $(3,3,6)^T$ in question is simply their difference $(3,3,6)^T - (4,2,2)^T = -\hat{\imath} + \hat{\jmath} + 4\hat{k}$. Subsequently, the distance is found from the length of the projection of this vector $-\hat{\imath} + \hat{\jmath} + 4\hat{k}$ onto the normal vector of the plane $\hat{\imath} - 2\hat{\jmath} + 3\hat{k}$. By (\ref{eqn:scalarproj}) of Properties \ref{proper:proj}, it is
+From the equation of the plane and by Properties \ref{proper:normalhyperplane}, it can be inferred that the normal vector of the plane is $\hat{\imath} - 2\hat{\jmath} + 3\hat{k}$. We can select any point on the plane as we wish, let's say $(4,2,2)^T$, and the vector from such a point to the point $(3,3,6)^T$ in question is simply their difference $(3,3,6)^T - (4,2,2)^T = -\hat{\imath} + \hat{\jmath} + 4\hat{k}$. Subsequently, the distance is found from the length of the projection of this vector $-\hat{\imath} + \hat{\jmath} + 4\hat{k}$ onto the normal vector of the plane $\hat{\imath} - 2\hat{\jmath} + 3\hat{k}$. By (\ref{eqn:scalarproj}) of Properties \ref{proper:proj}, it is
 \begin{align*}
 \frac{(-\hat{\imath} + \hat{\jmath} + 4\hat{k}) \cdot (\hat{\imath} - 2\hat{\jmath} + 3\hat{k})}{\norm{\hat{\imath} - 2\hat{\jmath} + 3\hat{k}}} = \frac{(-1)(1)+(1)(-2)+(4)(3)}{\sqrt{(1)^2 + (-2)^2 + (3)^2}} = \frac{9}{\sqrt{14}}
 \end{align*}
 \end{solution}
-Sometimes the calculation may lead to a negative value for the projection and we may want to take the absolute value. The case of finding the distance of a point to a line of $\mathbb{R}^3$ is considered in Exercise \ref{ex:dist_pt_line_R3}.
+Sometimes, the calculation may lead to a negative value for the projection and we may want to take the absolute value. The case of finding the distance of a point to a line of $\mathbb{R}^3$ is considered in Exercise \ref{ex:dist_pt_line_R3}.
 
 \section{Further Geometric Applications of Cross Product}
 Unless specified, all vectors in this section are assumed to be of $\mathbb{R}^3$.
 \subsection{Area}
 The area of the parallelogram formed by two vectors $\vec{u}$, $\vec{v}$ is simply the absolute value of their cross product, as seen in Figure \ref{fig:crossgeo} below.
-\begin{figure}
+\begin{figure}[h!]
     \centering
     \begin{tikzpicture}
     \coordinate (0) at (0,0);
@@ -503,7 +488,7 @@ The area of the parallelogram formed by two vectors $\vec{u}$, $\vec{v}$ is simp
     \draw[red] (1+0.2, 0)--(1+0.2, 0+0.2)--(1, 0+0.2);
     \pic[draw, "$\theta$",angle eccentricity=1.5] {angle = vecu--0--vecv};
     \end{tikzpicture}
-    \caption{\textit{Geometric Meaning of the cross product.}}
+    \caption{\textit{Geometric meaning of the cross product.}}
     \label{fig:crossgeo}
 \end{figure}
 \begin{proper}
@@ -570,7 +555,7 @@ Meanwhile, the volume of parallelepiped (see Figure \ref{fig:triplevol} below) f
 \end{figure}
 \begin{proper}[Scalar Triple Product]
 \label{proper:parallelpiped}
-The volume of parallelepiped formed by three vectors $\vec{u}$, $\vec{v}$, and $\vec{w}$ is calculated as
+The volume of parallelepiped formed by three $\mathbb{R}^3$ vectors $\vec{u}$, $\vec{v}$, and $\vec{w}$, is calculated as
 \begin{align}
 \norm{\vec{u} \times \vec{v}} \norm{\vec{w}} \cos\theta = |(\vec{u} \times \vec{v}) \cdot \vec{w}| =
 \text{abs}\left(
@@ -589,7 +574,7 @@ v_1 & v_2 & v_3 \\
 w_1 & w_2 & w_3
 \end{vmatrix}    
 \end{align}
-is the scalar triple product of $\vec{u}$, $\vec{v}$, and $\vec{w}$. Also, by applying Properties \ref{proper:elementaryopdet}, the determinant form of the scalar triple product indicates that
+is the \textit{scalar triple product} of $\vec{u}$, $\vec{v}$, and $\vec{w}$. Also, by applying Properties \ref{proper:elementaryopdet}, the determinant form of the scalar triple product indicates that
 \begin{align}
 \begin{aligned}
 &\quad (\vec{u} \times \vec{v}) \cdot \vec{w} = (\vec{v} \times \vec{w}) \cdot \vec{u} = (\vec{w} \times \vec{u}) \cdot \vec{v} \\
@@ -605,9 +590,9 @@ We will prove the determinant formula shown above for $(\vec{u} \times \vec{v}) 
 and then according to Definition \ref{defn:dotreal}
 \begin{align*}
 (\vec{u} \times \vec{v}) \cdot \vec{w} &= (u_2v_3 - u_3v_2, u_3v_1 - u_1v_3, u_1v_2 - u_2v_1)^T \cdot (w_1, w_2, w_3)^T \\ 
-&= (u_2v_3 - u_3v_2)(w_1) + (u_3v_1 - u_1v_3)(w_2) + (u_1v_2 - u_2v_1)(w_3) 
+&= (u_2v_3 - u_3v_2)w_1 + (u_3v_1 - u_1v_3)w_2 + (u_1v_2 - u_2v_1)w_3 
 \end{align*}
-which is equal to
+which is just equal to
 \begin{align*}
 \begin{vmatrix}
 u_1 & u_2 & u_3 \\
@@ -616,16 +601,16 @@ w_1 & w_2 & w_3
 \end{vmatrix}
 = w_1(u_2v_3 - u_3v_2) - w_2(u_1v_3 - u_3v_1) + w_3(u_1v_2 - u_2v_1) 
 \end{align*}
-where we do cofactor expansion (Properties \ref{proper:cofactorex}) along the third row of the determinant.
+where we do cofactor expansion (Properties \ref{proper:cofactorex}) along the third row of the given determinant form.
 \end{proof}
 If the volume of the parallelepiped evaluated from the scalar triple product is zero, it implies that the three vectors involved are \index{Co-planar}\keywordhl{co-planar}, i.e.\ lying on the same plane.
 \begin{proper}
-Given three vectors $\vec{u}$, $\vec{v}$, and $\vec{w}$, if their scalar triple product $(\vec{u} \times \vec{v}) \cdot \vec{w} = 0$ equals zero, then $\vec{u}$, $\vec{v}$, and $\vec{w}$ are co-planar and lie on the same plane, and vice versa.
+Given three $\mathbb{R}^3$ vectors $\vec{u}$, $\vec{v}$, and $\vec{w}$, if their scalar triple product $(\vec{u} \times \vec{v}) \cdot \vec{w} = 0$ equals zero, then $\vec{u}$, $\vec{v}$, and $\vec{w}$ are co-planar and lie on the same plane, and vice versa.
 \end{proper}
-Note that if $\vec{w} = \alpha \vec{u} + \beta \vec{v}$, where $\alpha$ and $\beta$ are some scalars, then $\vec{u}$, $\vec{v}$, $\vec{w}$ are co-planar, and $(\vec{u} \times \vec{v}) \cdot \vec{w} = (\vec{u} \times \vec{v}) \cdot (\alpha \vec{u} + \beta \vec{v}) = \alpha ((\vec{u} \times \vec{v}) \cdot \vec{u}) + \beta ((\vec{u} \times \vec{v}) \cdot \vec{v}) = \alpha(0) + \beta(0) = 0$ as both $\vec{u} \cdot (\vec{u} \times \vec{v})$ and $\vec{v} \cdot (\vec{u} \times \vec{v})$ equal to zero (why?).
+Note that if $\vec{w} = \alpha \vec{u} + \beta \vec{v}$, where $\alpha$ and $\beta$ are some scalars, then $\vec{u}$, $\vec{v}$, $\vec{w}$ are co-planar: $(\vec{u} \times \vec{v}) \cdot \vec{w} = (\vec{u} \times \vec{v}) \cdot (\alpha \vec{u} + \beta \vec{v}) = \alpha ((\vec{u} \times \vec{v}) \cdot \vec{u}) + \beta ((\vec{u} \times \vec{v}) \cdot \vec{v}) = \alpha(0) + \beta(0) = 0$ as both $\vec{u} \cdot (\vec{u} \times \vec{v})$ and $\vec{v} \cdot (\vec{u} \times \vec{v})$ are equal to zero (why?).
 
 \begin{exmp}
-Find the volume of the parallelepiped formed by $\vec{u} = (1,-2,2)^T$, $\vec{v}=(-1,-1,1)^T$ and $\vec{w}=(2,1,0)^T$.
+Find the volume of the parallelepiped formed by $\vec{u} = (1,-2,2)^T$, $\vec{v} =(-1,-1,1)^T$ and $\vec{w}=(2,1,0)^T$.
 \end{exmp}
 \begin{solution}
 By Properties \ref{proper:parallelpiped}, the triple scalar product of the three given vectors is
@@ -642,17 +627,17 @@ and the volume is $\abs{-3} = 3$.
 \end{solution}
 
 \subsubsection{Generalization to other dimensions}
-Given that the volume of parallelepiped formed by three vectors is equal to the absolute value of the corresponding matrix determinant as derived above, it is natural to ask if similar results hold for other numbers of dimension. In fact, Properties \ref{proper:parallelpiped} can be generalized to include length, area, and the so-called \textit{$n$-volume} (Volume equivalent of $n$ vectors in the $n$-dimensional space).
+Given that the volume of parallelepiped formed by three vectors is equal to the absolute value of the corresponding matrix determinant as derived above, it is natural to ask if similar results hold for other numbers of dimensions. In fact, Properties \ref{proper:parallelpiped} can be generalized to include length, area, and the so-called \index{$n$-volume}\textit{$n$-volume} (Volume equivalent of $n$ vectors in the $n$-dimensional space).
 \begin{proper}
 \label{proper:nvolume}
 For $n$ vectors of $\mathbb{R}^n$, their $n$-volume is the absolute value of the determinant of the matrix formed by these column (or row) vectors. When $n=1,2,3$, the $n$-volume corresponds to the usual notions of length, area, and volume.
 \end{proper}
 We can check the legitimacy of the last sentence in Properties \ref{proper:nvolume} by noticing that it is consistent with Properties \ref{proper:areaparallelogram} about the area of two vectors on the $xy$ plane. Given $\vec{u} = (u_1, u_2)^T$ and $\vec{v} = (v_1, v_2)^T$, by Properties \ref{proper:nvolume} the area of the parallelogram formed by them will be
 \begin{align*}
-\begin{vmatrix}
+\text{abs}\left(\begin{vmatrix}
 u_1 & u_2 \\
 v_1 & v_2
-\end{vmatrix} = u_1v_2 - v_1u_2
+\end{vmatrix}\right) = \abs{u_1v_2 - v_1u_2}
 \end{align*}
 Alternatively, we can treat $\vec{u}$ and $\vec{v}$ as two three-dimensional vectors $(u_1, u_2, 0)^T$ and $(v_1, v_2, 0)^T$ such that they have a zero $z$-component and remain lying on the $xy$ plane. Then according to the previous Properties \ref{proper:areaparallelogram}, the area is computed as $\norm{\vec{u} \times \vec{v}}$, and by Properties \ref{proper:crossdet} it is
 \begin{align*}
@@ -668,7 +653,7 @@ v_1 & v_2
 \end{vmatrix} \quad \text{(Cofactor Expansion along the third row)}\\
 &= (u_1v_2 - v_1u_2)\hat{k} = (0,0,u_1v_2 - v_1u_2)^T
 \end{align*}
-Hence $\norm{\vec{u} \times \vec{v}} = \sqrt{(0)^2 + (0)^2 + (u_1v_2 - v_1u_2)^2} = u_1v_2 - v_1u_2$, which coincides with the expression we just derived from Properties \ref{proper:nvolume}.
+Hence $\norm{\vec{u} \times \vec{v}} = \sqrt{(0)^2 + (0)^2 + (u_1v_2 - v_1u_2)^2} = \abs{u_1v_2 - v_1u_2}$, which coincides with the expression we just derived from Properties \ref{proper:nvolume}.
 
 \subsubsection{Remarks}
 The solution of a linear system can be considered as a point/line/plane/hyperplane too, depending on the number of free variables and thus direction vectors in the complementary part ($0$/$1$/$2$ or more). We may also like to call it a \textit{solution space}. However, while such shapes surely occupy space geometrically, we have been shying away from defining what really means by a \textit{vector space} mathematically, which will be the main point of discussion in the next chapter.
@@ -677,7 +662,7 @@ The solution of a linear system can be considered as a point/line/plane/hyperpla
 In this section, we will prove some key vector identities that may be of utility to some readers.
 \begin{proper}[Vector Triple Product]
 \label{proper:triplecross}
-The \index{Vector Triple Product}\keywordhl{vector triple product} of three vectors $\vec{u}$, $\vec{v}$, $\vec{w}$ is defined as
+The \index{Vector Triple Product}\keywordhl{vector triple product} of three vectors $\vec{u}$, $\vec{v}$, $\vec{w}$ is computed as
 \begin{align}
 \vec{u} \times (\vec{v} \times \vec{w}) = (\vec{u} \cdot \vec{w})\vec{v} - (\vec{u} \cdot \vec{v})\vec{w}
 \label{eqn:triplecross}
@@ -704,7 +689,7 @@ The $\hat{\imath}$ component along the $x$-direction is
 &= (u_1w_1 + u_2w_2 + u_3w_3)v_1 - (u_1v_1 + u_2v_2 + u_3v_3)w_1 \\
 &= (\vec{u} \cdot \vec{w})v_1 - (\vec{u} \cdot \vec{v})w_1
 \end{align*}
-which is equal to the $\hat{\imath}$ component on the R.H.S. and similar results can be shown for the $\hat{\jmath}$, $\hat{k}$ components and the equality establishes.
+which is equal to the $\hat{\imath}$ component on the R.H.S. and similar results can be shown for the $\hat{\jmath}$, $\hat{k}$ components, and the equality establishes.
 \end{proof}
 
 \begin{proper}[Jacobi Identity]
@@ -806,8 +791,8 @@ where $a$, $b$, $c$ are the (subtended angle of) three arcs (in radians) of a sp
 \label{fig:cosinesphere}
 \end{figure}
 \begin{proof}
-For the given spherical triangle, we can always rotate the coordinate system (see Figure \ref{fig:cosinesphere}) while keeping its shape intact, such that the corner $C$ is positioned exactly at the north pole ($\hat{u} = (0,0,1)^T$) and one of the two arcs starting from corner $C$ (let's say $a$) lies along the Prime Meridian (angle from the $x$-axis is $\SI{0}{\degree}$, i.e. $y = 0$). The vector $\hat{v}$ at the end of arc $a$ will then have a direction of $(\sin a, 0, \cos a)^T$. The vector $\hat{w}$ to the remaining corner at the intersection of arcs $b$ and $c$ will similarly have a $z$-component of $\cos b$, and its projection on the $xy$ plane will be $\sin b$ and the $x$/$y$-component will then be $\sin b \cos C$ and $\sin b \sin C$, i.e. $\hat{w} = (\sin b \cos C, \sin b \sin C, \cos b)^T$. \par
-Now consider the dot product $\hat{v} \cdot \hat{w}$. The geometric meaning of dot product (Properties \ref{proper:dotgeo}) implies that it is the angle between $\hat{v}$ and $\hat{w}$, that is, $\hat{v} \cdot \hat{w} = \cos c$. On the other hand,
+For the given spherical triangle, we can always rotate the coordinate system (see Figure \ref{fig:cosinesphere}) while keeping its shape intact, such that the corner $C$ is positioned exactly at the north pole ($\hat{u} = (0,0,1)^T$) and one of the two arcs starting from corner $C$ (let's say $a$) lies along the Prime Meridian (angle from the $x$-axis is $\SI{0}{\degree}$, i.e. $y = 0$). The vector $\hat{v}$ at the end of arc $a$ will then have a direction of $(\sin a, 0, \cos a)^T$. The vector $\hat{w}$ to the remaining corner at the intersection of arcs $b$ and $c$ will similarly have a $z$-component of $\cos b$, and its projection on the $xy$ plane will be $\sin b$ and the $x$/$y$-component will then be $\sin b \cos C$ and $\sin b \sin C$, i.e.\ $\hat{w} = (\sin b \cos C, \sin b \sin C, \cos b)^T$. \par
+Now consider the dot product $\hat{v} \cdot \hat{w}$. The geometric meaning of dot product (Properties \ref{proper:dotgeo}) implies that it is the angle between $\hat{v}$ and $\hat{w}$, that is, $\hat{v} \cdot \hat{w} \allowbreak = \cos c$. On the other hand,
 \begin{align*}
 \hat{v} \cdot \hat{w} &= (\sin a, 0, \cos a)^T \cdot (\sin b \cos C, \sin b \sin C, \cos b)^T \\
 &= (\sin a) (\sin b \cos C) + (0) (\sin b \sin C) + (\cos a) (\cos b) \\
@@ -836,23 +821,23 @@ The \textit{haversine} of an angle $\theta$ is $\text{hav}(\theta) = \sin^2 (\fr
 (1 - 2\ \text{hav}(c)) &= (1 - 2\ \text{hav}(\varphi_2 - \varphi_1)) - 2 \cos \varphi_1 \cos \varphi_2\ \text{hav}(\lambda_2 - \lambda_1) \nonumber \\
 \text{hav}(c) &= \text{hav}(\varphi_2 - \varphi_1) + \cos \varphi_1 \cos \varphi_2\ \text{hav}(\lambda_2 - \lambda_1)
 \end{align}
-where we have used the trigonometric identity $\cos(\theta-\phi) = \cos \theta \cos \phi + \sin \theta \sin \phi$ in the middle. The \textit{Haversine Formula} is now established and we can use it to calculate the angle $c$ subtended by the arc between two locations and hence their distance by $d = Rc$ where $R$ is the radius (of the Earth, \SI{6370}{\km}). For New York (\SI{40.73}{\degree N}, \SI{73.94}{\degree W}) and Warsaw (\SI{52.24}{\degree N}, \SI{21.02}{\degree E}), $\lambda_1 = \SI{-73.94}{\degree}$, $\lambda_2 = \SI{21.02}{\degree}$, $\varphi_1 = \SI{40.73}{\degree}$, $\varphi_2 = \SI{52.24}{\degree}$, and
+where we have used the trigonometric identity $\cos(\theta-\phi) = \cos \theta \cos \phi + \sin \theta \sin \phi$ in the middle. The \textit{Haversine Formula} is now established and we can use it to calculate the angle $c$ subtended by the arc between two locations, and hence their distance by $d = Rc$ where $R$ is the radius (of the Earth, \SI{6370}{\km}). For New York (\SI{40.73}{\degree N}, \SI{73.94}{\degree W}) and Warsaw (\SI{52.24}{\degree N}, \SI{21.02}{\degree E}), $\lambda_1 = \SI{-73.94}{\degree}$, $\lambda_2 = \SI{21.02}{\degree}$, $\varphi_1 = \SI{40.73}{\degree}$, $\varphi_2 = \SI{52.24}{\degree}$, and
 \begin{align*}
 \text{hav}(c) &= \text{hav}(\SI{52.24}{\degree} - \SI{40.73}{\degree}) \\
 &\quad+ \cos (\SI{40.73}{\degree}) \cos (\SI{52.24}{\degree})\ \text{hav}(\SI{21.02}{\degree} - (\SI{-73.94}{\degree})) \\
 &= \text{hav}(\SI{11.51}{\degree}) + \cos (\SI{40.73}{\degree}) \cos (\SI{52.24}{\degree})\ \text{hav}(\SI{94.96}{\degree}) \\
-&= \sin^2 (\frac{\SI{11.51}{\degree}}{2}) + \cos (\SI{40.73}{\degree}) \cos (\SI{52.24}{\degree}) \sin^2 (\frac{\SI{94.96}{\degree}}{2}) \\
-\sin^2 (\frac{c}{2}) &\approx 0.26214 \\
+&= \sin^2 \left(\frac{\SI{11.51}{\degree}}{2}\right) + \cos (\SI{40.73}{\degree}) \cos (\SI{52.24}{\degree}) \sin^2 \left(\frac{\SI{94.96}{\degree}}{2}\right) \\
+\sin^2 \left(\frac{c}{2}\right) &\approx 0.26214 \\
 c &\approx \SI{61.6}{\degree} = \SI{1.075}{\radian}
 \end{align*}
-and therefore the required distance is $d = Rc = (\SI{6370}{\km})(\SI{1.075}{\radian}) \approx \SI{6848}{\km}$. The value computed by the Haversine Formula will be slightly off from the true value since the Earth is not a perfect sphere but rather an oblate one.
+and therefore the required great-arc distance is $d = Rc = (\SI{6370}{\km})(\SI{1.075}{\radian}) \approx \SI{6848}{\km}$. The value computed by the Haversine Formula will be slightly off from the true value since the Earth is not a perfect sphere but rather an oblate one.
 \end{solution}
 
 \begin{exmp}
 The Earth's magnetic field can be approximated by a magnetic dipole so that the magnetic field lines on the Earth's surface are oriented from the geomagnetic North Pole to the geomagnetic South Pole (like longitudinal lines but for the geomagnetic dipole). In 2020, the geomagnetic North Pole is at \SI{80.7}{\degree N}, \SI{72.7}{\degree W}. Find the magnetic declination (angle from the geographic North to geomagnetic North) at Tokyo (\SI{35.65}{\degree N}, \SI{139.84}{\degree E}) according to this \textit{geomagnetic dipole model}.
 \end{exmp}
 \begin{solution}
-To find the magnetic declination we need to calculate the three arcs of the spherical triangle with its three corners at the geographic/geomagnetic North Pole and Tokyo. The arc distance between geographic/geomagnetic North Pole $d$ is simply $\SI{90}{\degree} - \SI{80.7}{\degree} = \SI{9.3}{\degree}$. Similarly, the arc from the geographic North Pole to Tokyo is $a = \SI{90}{\degree} - \SI{35.65}{\degree} = \SI{54.35}{\degree}$. We can use the Haversine Formula derived in the last example to obtain the arc from the geomagnetic North Pole to Tokyo, which yields
+To find the magnetic declination, we need to calculate the three arcs of the spherical triangle with its three corners at the geographic/geomagnetic North Pole and Tokyo. The arc distance between geographic/geomagnetic North Pole $d$ is simply $\SI{90}{\degree} - \SI{80.7}{\degree} = \SI{9.3}{\degree}$. Similarly, the arc from the geographic North Pole to Tokyo is $a = \SI{90}{\degree} - \SI{35.65}{\degree} = \SI{54.35}{\degree}$. We can use the Haversine Formula derived in the last example to obtain the arc from the geomagnetic North Pole to Tokyo, which yields
 \begin{align*}
 \text{hav}(t) &= \text{hav}(\SI{80.7}{\degree} - \SI{35.65}{\degree}) \\ 
 &\quad + \cos(\SI{35.65}{\degree}) \cos(\SI{80.7}{\degree})\ \text{hav}((\SI{-72.7}{\degree}) - \SI{139.84}{\degree}) \\
@@ -867,7 +852,7 @@ Denote the declination angle by $D$. By Properties \ref{proper:cosinesphere}, we
 \cos D &\approx 0.9951 \\
 D &\approx \pm \SI{5.7}{\degree}
 \end{align*}
-To determine the sign, we note that concluded from the longitudes of Tokyo and the geomagnetic North, the geomagnetic North is located to the east of Tokyo, and hence $D = \SI{5.7}{\degree E}$. However, we note that the actual declination is \SI{7.8}{\degree W} which has an opposite sign and is far from our answer (you can extract the value from \href{https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml}{https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml}). The reason is that the geomagnetic dipole is only a rough first-order approximation, while in reality the Earth's magnetic field has a much more complex structure.
+To determine the sign, we note that concluding from the longitudes of Tokyo and the geomagnetic North, the geomagnetic North is located to the east of Tokyo, and hence $D = \SI{5.7}{\degree E}$. However, we note that the actual declination is \SI{7.8}{\degree W} which has an opposite sign and is far from our answer (you can extract the value from \href{https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml}{https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml}). The reason is that the geomagnetic dipole is only a rough first-order approximation, while in reality the Earth's magnetic field has a much more complex structure.
 \end{solution}
 
 \section{Python Programming}
@@ -881,7 +866,7 @@ This computes the scalar projection of $\vec{v}$ onto $\vec{u}$. Testing with Ex
 \begin{lstlisting}
 u = np.array([4., 1., -3.])
 v = np.array([-2., 3., -1.])
-print(scalar_projection(u, v))    
+print(scalar_projection(u, v))
 \end{lstlisting}
 a consistent output of \texttt{-0.39223}. Incorporating the unit vector function (\verb|unit_vector()|) defined in the last chapter's programming section, we obtain the vector projection.
 \begin{lstlisting}
@@ -889,9 +874,9 @@ def vector_projection(u, v):
     """ Calculates the vector projection of v onto u. """
     return scalar_projection(u, v) * unit_vector(u)
 
-print(vector_projection(u, v))    
+print(vector_projection(u, v))
 \end{lstlisting}
-This results in \texttt{[-0.3077 -0.0769  0.2308]} which matches the example's answer. The area of parallelogram formed by two vectors is the magnitude of their cross product and the corresponding function is typed below.
+This results in \texttt{[-0.3077 -0.0769  0.2308]} which matches the example's answer. The area of a parallelogram formed by two vectors is the magnitude of their cross product and the corresponding function is given below.
 \begin{lstlisting}
 def area_parallelogram(u, v):
     """ Calculate the area of parallelogram formed by two vectors u and v. """
@@ -1178,14 +1163,13 @@ t
 where $-\infty < t < \infty$.
 \end{Exercise}
 \begin{Answer}
-Part 1: Choose $(0,0,2)^T$ as a reference point on the plane.\\
-Projection of the vector from $(0,0,2)^T$ to $(3,2,9)^T$: $(3-0)\hat{\imath} + (2-0)\hat{\jmath} + (9-2)\hat{k} = 3\hat{\imath} + 2\hat{\jmath} + 7\hat{k}$ onto the normal vector $\hat{\imath} + 2\hat{\jmath} + 5\hat{k}$ of the plane is
-\[\frac{(3)(1)+(2)(2)+(7)(5)}{\sqrt{1^2 + 2^2 + 5^2}} = \frac{42}{\sqrt{30}}\] which is the required distance.\\
-Part 2: Choose $(0,1,2)^T$ as a reference point along the line. Find the projection of $(3,2,9)^T - (0,1,2)^T = 3\hat{\imath} + 1\hat{\jmath} + 7\hat{k}$ onto the direction vector $\hat{\jmath} + 2\hat{k}$, which is
+Part 1: Choose $(0,0,2)^T$ as a reference point on the plane. Projection of the displacement $(3,2,9)^T - (0,0,2)^T = 3\hat{\imath} + 2\hat{\jmath} + 7\hat{k}$ onto the normal vector $\hat{\imath} + 2\hat{\jmath} + 5\hat{k}$ of the plane is
+\[\frac{(3)(1)+(2)(2)+(7)(5)}{\sqrt{1^2 + 2^2 + 5^2}} = \frac{42}{\sqrt{30}}\] which is the required distance.\par
+Part 2: Choose $(0,1,2)^T$ as a reference point along the line. Find the vector projection of $(3,2,9)^T - (0,1,2)^T = 3\hat{\imath} + 1\hat{\jmath} + 7\hat{k}$ onto the direction vector $\hat{\jmath} + 2\hat{k}$, which is
 \begin{align*}
-\frac{(3)(0)+(1)(1)+(7)(2)}{0^2 + 1^2 + 2^2} (\hat{\jmath} + 2\hat{k}) &= 3(\hat{\jmath} + 2\hat{k}) = 3\hat{\jmath} + 6\hat{k}
+\left(\frac{(3)(0)+(1)(1)+(7)(2)}{0^2 + 1^2 + 2^2}\right) (\hat{\jmath} + 2\hat{k}) &= 3(\hat{\jmath} + 2\hat{k}) = 3\hat{\jmath} + 6\hat{k}
 \end{align*}
-The displacement vector between the point and line (which is orthogonal to the line) is then $(3\hat{\imath} + 1\hat{\jmath} + 7\hat{k}) - (3\hat{\jmath} + 6\hat{k}) = 3\hat{\imath} - 2\hat{\jmath} + \hat{k}$ and the required distance equals to $\sqrt{3^2 + (-2)^2 + 1^2} = \sqrt{14}$.
+The displacement vector between the point and line (which is orthogonal to the line) is then $(3\hat{\imath} + 1\hat{\jmath} + 7\hat{k}) - (3\hat{\jmath} + 6\hat{k}) = 3\hat{\imath} - 2\hat{\jmath} + \hat{k}$ and the required distance is equal to its norm $\sqrt{3^2 + (-2)^2 + 1^2} = \sqrt{14}$.
 \end{Answer}
 
 \begin{Exercise}
@@ -1205,17 +1189,17 @@ Using the hints, we have the distance as
 \frac{(\vec{v} - \vec{u}) \cdot (\hat{l} \times \hat{m})}{\norm{\hat{l} \times \hat{m}}} &= \frac{[(\vec{b} + \hat{m}t) - (\vec{a} + \hat{l}s)] \cdot (\hat{l} \times \hat{m})}{\norm{\hat{l} \times \hat{m}}} \\
 &= \frac{(\vec{b} - \vec{a}) \cdot (\hat{l} \times \hat{m}) + [\hat{m} \cdot (\hat{l} \times \hat{m})] t - [\hat{l} \cdot (\hat{l} \times \hat{m})] s}{\norm{\hat{l} \times \hat{m}}}
 \end{align*}
-Notice that $\hat{l} \times \hat{m}$ is orthogonal to both $\hat{l}$ and $\hat{m}$, and thus $\hat{l} \cdot (\hat{l} \times \hat{m}) = \hat{m} \cdot (\hat{l} \times \hat{m}) = 0$ both vanish. Therefore we are left with
+Notice that $\hat{l} \times \hat{m}$ is orthogonal to both $\hat{l}$ and $\hat{m}$, and thus $\hat{l} \cdot (\hat{l} \times \hat{m}) = \hat{m} \cdot (\hat{l} \times \hat{m}) = 0$ both vanish. Therefore, we are left with
 \begin{align*}
 \frac{(\vec{b} - \vec{a}) \cdot (\hat{l} \times \hat{m})}{\norm{\hat{l} \times \hat{m}}} 
 \end{align*} 
-If $\vec{a} \cdot (\hat{l} \times \hat{m}) = \vec{b} \cdot (\hat{l} \times \hat{m})$, then the numerator $(\vec{b} - \vec{a}) \cdot (\hat{l} \times \hat{m}) = 0$ equals to zero such that the two lines intersect. In this case, the values of $s$ or $t$ at the point of intersection ($\vec{u} = \vec{v}$) can be found by applying a cross product with $\hat{m}$ on $\vec{u} = \vec{a} + \hat{l}s = \vec{b} + \hat{m}s = \vec{v}$ and note that $\hat{m} \times \hat{m} = \vec{0}$, and hence
+If $\vec{a} \cdot (\hat{l} \times \hat{m}) = \vec{b} \cdot (\hat{l} \times \hat{m})$, then the numerator $(\vec{b} - \vec{a}) \cdot (\hat{l} \times \hat{m}) = 0$ equals to zero such that the two lines intersect. In this case, the value of $s$ or $t$ at the point of intersection ($\vec{u} = \vec{v}$) can be found by applying a cross product with $\hat{m}$ on $\vec{u} = \vec{a} + \hat{l}s = \vec{b} + \hat{m}s = \vec{v}$ and note that $\hat{m} \times \hat{m} = \textbf{0}$, and hence
 \begin{align*}
 (\vec{a} + \hat{l}s) \times \hat{m} &= (\vec{b} + \hat{m}s) \times \hat{m} \\
-\vec{a} \times \hat{m} + s(\hat{l} \times \hat{m}) &= \vec{b} \times \hat{m} + s (\hat{m} \times \hat{m}) =  \vec{b} \times \hat{m} + s\vec{0}\\
+\vec{a} \times \hat{m} + s(\hat{l} \times \hat{m}) &= \vec{b} \times \hat{m} + s (\hat{m} \times \hat{m}) =  \vec{b} \times \hat{m} + s\textbf{0}\\
 s (\hat{l} \times \hat{m}) &= (\vec{b} - \vec{a}) \times \hat{m}
 \end{align*}
-$s$ is then inferred from the scaling ratio of $(\vec{b} - \vec{a}) \times \hat{m}$ to $(\hat{l} \times \hat{m})$. $t$ is found similarly.
+$s$ is then inferred from the ratio of $(\vec{b} - \vec{a}) \times \hat{m}$ to $(\hat{l} \times \hat{m})$. $t$ is found similarly.
 \end{Answer}
 
 \begin{Exercise}
@@ -1237,11 +1221,11 @@ and equating three expressions of its area $\frac{1}{2}\norm{\vec{a}\times\smash
 \end{Exercise}
 \begin{Answer}
 \begin{align*}
-&\quad \frac{1}{2}\norm{\vec{a}\times\vec{b}} = \frac{1}{2}\norm{\vec{b}\times\vec{c}} = \frac{1}{2}\norm{\vec{c}\times\vec{a}} \\
-&\rightarrow \frac{1}{2}\norm{\vec{a}}\norm{\vec{b}}\sin{C} = \frac{1}{2}\norm{\vec{b}}\norm{\vec{c}}\sin{A} = \frac{1}{2}\norm{\vec{c}}\norm{\vec{a}}\sin{B} \\
+&\quad \frac{1}{2}\norm{\smash{\vec{a}\times\vec{b}}} = \frac{1}{2}\norm{\smash{\vec{b}\times\vec{c}}} = \frac{1}{2}\norm{\vec{c}\times\vec{a}} \\
+&\rightarrow \frac{1}{2}\norm{\vec{a}}\norm{\smash{\vec{b}}}\sin{C} = \frac{1}{2}\norm{\smash{\vec{b}}}\norm{\vec{c}}\sin{A} = \frac{1}{2}\norm{\vec{c}}\norm{\vec{a}}\sin{B} \\
 &\rightarrow \frac{\sin{A}}{a} = \frac{\sin{B}}{b} = \frac{\sin{C}}{c}
 \end{align*}
-where we divide the entire equality by $abc = \norm{\vec{a}}\norm{\vec{b}}\norm{\vec{c}}$).
+where we divide the entire equality by $abc = \norm{\vec{a}}\norm{\smash{\vec{b}}}\norm{\vec{c}}$.
 \end{Answer}
 
 \begin{Exercise}
@@ -1273,27 +1257,22 @@ For $\vec{u} = (1,2,3)^T$, $\vec{v} = (2,1,5)^T$, $\vec{w} = (1,4,0)^T$, find
 \begin{Answer}
 \begin{enumerate}[label=(\alph*)]
 \item $\vec{u} \times \vec{v} =
-\left|
-\begin{array}{ccc}
+\begin{vmatrix}
 \hat{\imath} & \hat{\jmath} & \hat{k}\\
 1 & 2 & 3\\
-2 & 1 & 5
-\end{array}
-\right|
+2 & 1 & 5    
+\end{vmatrix}
 =
 7\hat{\imath} + \hat{\jmath} - 3\hat{k}$\\
 Area = $\sqrt{7^2 + 1^2 + (-3)^2} = \sqrt{59}$
-\item Volume is the absolute value of $|\vec{u} \times \vec{v}| \cdot \vec{w} 
-= |(7\hat{\imath} + \hat{\jmath} - 3\hat{k}) \cdot (\hat{\imath} + 4\hat{\jmath})| = |(7)(1) + (1)(4) + (-3)(0)| = 11$
-\item Volume = $\text{abs}\left|
-\begin{array}{ccc}
+\item Volume is the absolute value of $\abs{\vec{u} \times \vec{v}} \cdot \vec{w}$: $\abs{(7\hat{\imath} + \hat{\jmath} - 3\hat{k}) \cdot (\hat{\imath} + 4\hat{\jmath})} = \abs{(7)(1) + (1)(4) + (-3)(0)} = 11$
+\item Volume = $\text{abs}\left(
+\begin{vmatrix}
 1 & 2 & 3\\
 2 & 1 & 5\\
 1 & 5 & 4
-\end{array}
-\right|
-= 0$. \\
-So the three vectors are co-planar.
+\end{vmatrix}\right)
+= 0$, so the three vectors are co-planar.
 \end{enumerate}
 \end{Answer}
 
