@@ -110,7 +110,7 @@ u_{mm}^2 & u_{mm}\vec{r}_m^T \\
 u_{mm}\vec{r}_m & \vec{r}_m\vec{r}_m^T + U_{m+1}^T U_{m+1}
 \end{bmatrix} 
 \end{align}
-The formulas are iterated over $U_{b=m+1}^T U_{b=m+1}$ acquired at the end of each step.
+The formulae are iterated over $U_{b=m+1}^T U_{b=m+1}$ acquired at the end of each step.
 \end{defn}
 We require that at every step, $\alpha_{mm}$ and $u_{mm}$ to be positive so that (\ref{eqn:cholesky1}) and (\ref{eqn:cholesky2}) make sense. It has been shown that matrices in the form of $U^T U$ will always be symmetric, and under this restriction, $U^T U$ will also be positive-definite according to the result in Exercise \ref{ex:sylvesterdefinite}.\footnote{This is because the diagonal elements $u_{mm}$ cannot be zero and thus the upper-triangular $U$ is invertible (why?) so that Exercise \ref{ex:sylvesterdefinite} can apply.} 
 
@@ -1770,7 +1770,7 @@ The first condition can be inferred as follows. $A\vec{v} \in \mathcal{R}(A)$ is
 \section{Generalization of SVD to Alternative Inner Products}
 \label{section:SVDgeneral}
 
-In the Singular Value Theorem \ref{thm:SVDtrans}, the adjoint $T^\dag$ of the linear transformation $T$ is involved, but for simplicity, during the derivation of the matrix SVD, we have only discussed the case where the conjugate transpose $A^*$ is used in place of the adjoint $A^\dag$. However, as already shown in Section \ref{section:adjointherm}, we can define different matrix adjoints with respect to different inner products, and hence different notions of orthogonality and distance. Therefore, one may ask if we can come up with a variant of matrix SVD and pseudoinverses that incorporates the symmetric/Hermitian bilinear form associated with any inner product, and for example, at the same time still produces orthonormal bases of left/right singular vectors. The answer is possible, with appropriate changes to the previous formulas about SVD while the essence of its properties remains intact. We now state the formulation below.
+In the Singular Value Theorem \ref{thm:SVDtrans}, the adjoint $T^\dag$ of the linear transformation $T$ is involved, but for simplicity, during the derivation of the matrix SVD, we have only discussed the case where the conjugate transpose $A^*$ is used in place of the adjoint $A^\dag$. However, as already shown in Section \ref{section:adjointherm}, we can define different matrix adjoints with respect to different inner products, and hence different notions of orthogonality and distance. Therefore, one may ask if we can come up with a variant of matrix SVD and pseudoinverses that incorporates the symmetric/Hermitian bilinear form associated with any inner product, and for example, at the same time still produces orthonormal bases of left/right singular vectors. The answer is possible, with appropriate changes to the previous formulae about SVD while the essence of its properties remains intact. We now state the formulation below.
 
 \begin{defn}[SVD for an Alternative Adjoint]
 \label{defn:SVDadjoint}
