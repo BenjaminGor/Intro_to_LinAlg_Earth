@@ -1,14 +1,14 @@
 \chapter{Eigenvalues and Eigenvectors}
 \label{chap:eigen}
 
-In this section, we will discuss a very important topic in Linear Algebra, the \textit{eigenvalue-eigenvector} problem. By finding the eigenvectors of a square matrix that span subspaces that are \textit{invariant} under the corresponding linear operator, it is sometimes possible to obtain a coordinate basis such that the matrix can be \textit{diagonalized}, i.e. become a diagonal matrix under that particular change of coordinates. One of the practical usages of \textit{diagonalization} is to solve systems of linear ordinary differential equations (ODEs) which are also commonly seen in many areas of Earth Science.
+In this section, we will discuss a very important topic in Linear Algebra, the \textit{eigenvalue-eigenvector} problem. By finding the eigenvectors of a square matrix that span subspaces that are \textit{invariant} under the corresponding linear operator, it is sometimes possible to obtain a coordinate basis such that the matrix can be \textit{diagonalized}, i.e.\ become a diagonal matrix under that particular change of coordinates. One of the practical usages of \textit{diagonalization} is to solve systems of linear ordinary differential equations (ODEs) which are also commonly seen in many areas of Earth Science.
 
 \section{Eigenvalues and Eigenvectors of a Square Matrix}
 \label{section:eigensection}
 
 \subsection{Definition of Eigenvalues and Eigenvectors}
 
-Consider a linear operator/endomorphism $T: \mathcal{V} \to \mathcal{V}$, an interesting question is if a vector $\vec{v} \in \mathcal{V}$ under this mapping will remain stationary in direction such that the image $T(\vec{v}) = \lambda v$ is a scalar multiple of the original vector, or in other words, the effect of $T$ on $\vec{v}$ is simply a rescaling. In this situation, the vector $\vec{v}$ is known as an \keywordhl{eigenvector} of $T$ and the factor $\lambda$ is the corresponding \keywordhl{eigenvalue}. Since a linear operator is a mapping between the same vector space itself, it has a square matrix representation under any basis. This fact extends the ideas of eigenvalues and eigenvectors to square matrices.
+Consider a linear operator/endomorphism $T: \mathcal{V} \to \mathcal{V}$, an interesting question is if a vector $\vec{v} \in \mathcal{V}$ under this mapping will remain stationary in direction such that the image $T(\vec{v}) = \lambda \vec{v}$ is a scalar multiple of the original vector, or in other words, the effect of $T$ on $\vec{v}$ is simply a rescaling. In this situation, the vector $\vec{v}$ is known as an \keywordhl{eigenvector} of $T$, and the factor $\lambda$ is the corresponding \keywordhl{eigenvalue}. Since a linear operator is a mapping between the same vector space itself, it has a square matrix representation under any basis. This fact extends the ideas of eigenvalues and eigenvectors to square matrices.
 
 \begin{defn}
 \label{defn:eigen}
@@ -22,7 +22,7 @@ A\vec{v}_\lambda = \lambda\vec{v}_\lambda \label{eqn:eigenmat}
 \end{align}
 This is a special case in which a vector space $\mathcal{V}$ is finite-dimensional, $\dim(\mathcal{V}) = n$, and $A = [T]_\beta$ is just the matrix representation of $T$ with respect to some basis $\mathcal{\beta}$.
 \end{defn}
-Notice that there can be more than one eigenvalues and eigenvectors. An example is given by the matrix
+Notice that there can be more than one eigenvalue and eigenvector. An example is given by the matrix
 \begin{align*}
 A =
 \begin{bmatrix}
@@ -75,7 +75,7 @@ that corresponds to an eigenvalue of $\lambda = 2$. Meanwhile, $\vec{v}^{(2)} = 
 \end{bmatrix}
 \end{align*}
 We emphasize that an eigenvalue of zero is perfectly valid which represents vanishing. \par
-Short Exercise: Prove that all vectors in form of $s(1,2)^T$, where $s$ is any number, are eigenvectors for the matrix $A$ above with $\lambda = 2$.\footnote{
+$\blacktriangleright$ Short Exercise: Prove that all vectors in form of $s(1,2)^T$, where $s$ is any number, are eigenvectors for the matrix $A$ above with $\lambda = 2$.\footnote{
 $
 \begin{bmatrix}
 1 & \frac{1}{2} \\
@@ -126,7 +126,7 @@ $. In general, if $A\vec{v}_\lambda = \lambda\vec{v}_\lambda$ so that $\vec{v}_\
 \end{tikzpicture}
 \caption{\textit{Illustrations for the example above with $\lambda = 2 > 1$ (Extension), and $\lambda = 0$ (Vanished). The red/blue vector is before/after applying the linear transformation.}}
 \end{figure}
-There are infinitely many eigenvectors that are oriented in the same direction for a single eigenvalue, as seen in the remark of the last short exercise. Particularly, they are actually the span of any one of these (non-zero) eigenvectors. Thus, along a single direction, only one of them is needed for representation, and its span is at the same time a subspace by Properties \ref{proper:subspace_n_span}. This subspace is known as the \keywordhl{eigenspace} corresponding to that eigenvalue. Moreover, there may be more than one linearly independent eigenvector for the same eigenvalue, and the dimension of eigenspace generated by them will be greater than one as well. In addition, the zero vector, technically, can be the eigenvectors of any matrix since $A\vec{0} = \vec{0} = \lambda\vec{0}$ for any matrix $A$ and scalar $\lambda$. However, it is a trivial solution, plus more importantly the zero vector is always linearly dependent by definition, and will not be taken into consideration (unlike the totally fine eigenvalue of zero).\par
+There are infinitely many eigenvectors that are oriented in the same direction for a single eigenvalue, as seen in the remark of the last short exercise. Particularly, they are actually the span of any one of these (non-zero) eigenvectors. Thus, along a single direction, only one of them is needed for representation, and its span is at the same time a subspace by Properties \ref{proper:subspace_n_span}. This subspace is known as the \keywordhl{eigenspace} corresponding to that eigenvalue. Moreover, there may be more than one linearly independent eigenvector for the same eigenvalue, and the dimension of the eigenspace generated by them will be greater than one as well. In addition, the zero vector, technically, can be the eigenvectors of any matrix since $A\vec{0} = \vec{0} = \lambda\vec{0}$ for any matrix $A$ and scalar $\lambda$. However, it is a trivial solution, plus more importantly, the zero vector is always linearly dependent by definition, and will not be taken into consideration (unlike the totally fine eigenvalue of zero).\par
 Below is the visualization of some other possibilities for eigenvector rescaling.
 \begin{figure}[h!]
 \centering
@@ -161,7 +161,7 @@ A\vec{v}_\lambda &= \lambda\vec{v}_\lambda \nonumber \\
 A\vec{v}_\lambda &= \lambda I\vec{v}_\lambda  &\text{($I\vec{v} = \vec{v}$ for any $\vec{v}$)} \nonumber  \\
 (A-\lambda I)\vec{v}_\lambda &= \textbf{0} \label{eqn:eigenminus}
 \end{align}
-The last line constitutes a homogeneous linear system $B\vec{v}_\lambda = \vec{0}$ where $B = A - \lambda I$. For this system to have a non-trivial solution and hence an eigenvector, it is required that $\det(B) = \det(A - \lambda I) = 0$ implied by Theorem \ref{thm:sqlinsysunique}. The relationship 
+The last line constitutes a homogeneous linear system $B\vec{v}_\lambda = \vec{0}$ where $B = A - \lambda I$. For this system to have a non-trivial solution and hence an eigenvector, it is required that $\det(B) = \det(A - \lambda I) = 0$, as implied by Theorem \ref{thm:sqlinsysunique}. The relationship 
 \begin{align}
 p(\lambda) = \det(A - \lambda I) = 0    
 \end{align}
@@ -174,7 +174,7 @@ The characteristic equation for a linear operator $T: \mathcal{V} \to \mathcal{V
 \end{align*}
 where $\mathcal{\beta}$ is any coordinate basis for $\mathcal{V}$. The L.H.S. ($p(\lambda) = \det([T]_B - \lambda I)$ or $\det(A-\lambda I)$), when expanded, constitutes a \index{Characteristic Polynomial}\keywordhl{characteristic polynomial} in $\lambda$ of degree $n$, the roots of which are the eigenvalues of $T$ (or $A$).
 \end{defn}
-Short Exercise: By inspection, find all three eigenvalues of the matrix.\footnote{They are $\lambda = 1,2,3$.}
+$\blacktriangleright$ Short Exercise: By inspection, find all three eigenvalues of the matrix.\footnote{They are $\lambda = 1,2,3$.}
 \begin{align*}
 \begin{bmatrix}
 1 & 0 & 0 \\
@@ -182,7 +182,7 @@ Short Exercise: By inspection, find all three eigenvalues of the matrix.\footnot
 0 & 0 & 3
 \end{bmatrix}
 \end{align*}
-For each eigenvalue, there corresponds to at least one linearly independent eigenvector by definition. The required eigenvectors that generate the eigenspace for a particular eigenvalue $\lambda_j$ can be found as the general solution to the matrix equation $(A - \lambda_j I)\vec{v} = \textbf{0}$ (see ((\ref{eqn:eigenminus})), or in other words, (the basis for) the null space of $A - \lambda_j I$, $\mathcal{N}(A-\lambda_j I)$. The number of linearly independent eigenvectors (dimensions) in the eigenspace for $\lambda_j$ is hence the dimension of the null space (Definition \ref{defn:nullspace}) of $A-\lambda_j I$, known as the \index{Geometric Multiplicity}\keywordhl{geometric multiplicity}. A closely related quantity is the \index{Algebraic Multiplicity}\keywordhl{algebraic multiplicity} which is the number of times where $\lambda_j$ appears as the root to the characteristic polynomial. It can be shown that the geometric multiplicity of $\lambda_j$ is capped by its algebraic multiplicity.
+For each eigenvalue, there corresponds at least one linearly independent eigenvector by definition. The required eigenvector(s) that generates the eigenspace for a particular eigenvalue $\lambda_j$ can be found as the general solution to the matrix equation $(A - \lambda_j I)\vec{v} = \textbf{0}$ (see (\ref{eqn:eigenminus})), or in other words, (the basis for) the null space of $A - \lambda_j I$: $\mathcal{N}(A-\lambda_j I)$. The number of linearly independent eigenvectors (dimensions) in the eigenspace for $\lambda_j$ is hence the dimension of the null space (Definition \ref{defn:nullspace}) $\mathcal{N}(A-\lambda_j I)$, known as the \index{Geometric Multiplicity}\keywordhl{geometric multiplicity}. A closely related quantity is the \index{Algebraic Multiplicity}\keywordhl{algebraic multiplicity}, which is the number of times where $\lambda_j$ appears as the root to the characteristic polynomial. It can be shown that the geometric multiplicity of $\lambda_j$ is capped by its algebraic multiplicity.
 \begin{thm}
 \label{thm:geolessalgebra}
 For an eigenvalue $\lambda_j$ to a square matrix $A$, its geometric multiplicity is equal to $\dim(\mathcal{N}(A-\lambda_j I))$, the dimension of the null space of $A-\lambda_j I$. Meanwhile, its algebraic multiplicity is the power $k_j$ of the factor $(\lambda_j - \lambda)^{k_j}$ present in the characteristic polynomial $p(\lambda)$. With these two quantities defined, we have
@@ -191,7 +191,7 @@ For an eigenvalue $\lambda_j$ to a square matrix $A$, its geometric multiplicity
 \end{align*}
 for every distinct eigenvalue $\lambda_j$.
 \end{thm}
-We defer the proof showing that geometric multiplicity is always smaller than algebraic multiplicity until we introduce diagonalization later in this chapter.
+We defer the proof showing that geometric multiplicity is always smaller than or equal to algebraic multiplicity until we introduce diagonalization later in this chapter.
 
 \begin{exmp}
 \label{exmp:dummyjordan}
@@ -245,44 +245,45 @@ find its eigenvalues and eigenvectors.
 \begin{solution}
 The characteristic polynomial is, by Sarrus' Rule (Properties \ref{proper:sarrus})
 \begin{align*}
-\det(A-\lambda I) = \begin{vmatrix}
+\det(A-\lambda I) &= \begin{vmatrix}
 1-\lambda & 3 & 1 \\
 0 & 1-\lambda & 0 \\
 1 & 0 & 2-\lambda 
-\end{vmatrix} &=
+\end{vmatrix} \\
+&=
 (1-\lambda)(1-\lambda)(2-\lambda) - (1)(1-\lambda)(1) \\
 &= (1-\lambda)((2-3\lambda+\lambda^2) - 1) \\
 &= (1-\lambda)(1-3\lambda+\lambda^2)
 \end{align*}
-The roots and thus eigenvalues are $\lambda = 1$, as well as
+The roots and thus eigenvalues are $\lambda = 1$ and
 \begin{align*}
 \lambda &= \frac{-(-3) \pm \sqrt{(-3)^2 - 4(1)(1)}}{2} \\
 &= \frac{3}{2} \pm \frac{\sqrt{5}}{2}
 \end{align*}
 Particularly, for the eigenvalue $\lambda = \frac{3}{2} + \frac{\sqrt{5}}{2}$, the eigenvector is inferred from the homogeneous system $A - \lambda I = \textbf{0}$
 \begin{align*}
-& \left[\begin{array}{@{\,}wc{30pt}wc{30pt}wc{30pt}|c@{\,}}
+& \left[\begin{array}{@{\,}wc{33pt}wc{30pt}wc{30pt}|c@{\,}}
 -\frac{1}{2}-\frac{\sqrt{5}}{2} & 3 & 1 & 0 \\
 0 & -\frac{1}{2}-\frac{\sqrt{5}}{2} & 0 & 0 \\
 1 & 0 & \frac{1}{2}-\frac{\sqrt{5}}{2} & 0
 \end{array}\right] \\
 \to&
-\left[\begin{array}{@{\,}wc{30pt}wc{30pt}wc{30pt}|c@{\,}}
+\left[\begin{array}{@{\,}wc{33pt}wc{30pt}wc{30pt}|c@{\,}}
 1 & 0 & \frac{1}{2}-\frac{\sqrt{5}}{2} & 0 \\
 0 & 1 & 0 & 0 \\
 -\frac{1}{2}-\frac{\sqrt{5}}{2} & 3 & 1 & 0
 \end{array}\right] & \begin{aligned}
 R_1 &\leftrightarrow R_3 \\
-(\frac{1}{-\frac{1}{2}-\frac{\sqrt{5}}{2}})R_2 &\to R_2
+\left(\frac{1}{-\frac{1}{2}-\frac{\sqrt{5}}{2}}\right)R_2 &\to R_2
 \end{aligned} \\
 \to&
-\left[\begin{array}{@{\,}wc{30pt}wc{30pt}wc{30pt}|c@{\,}}
+\left[\begin{array}{@{\,}wc{33pt}wc{30pt}wc{30pt}|c@{\,}}
 1 & 0 & \frac{1}{2}-\frac{\sqrt{5}}{2} & 0 \\
 0 & 1 & 0 & 0 \\
 0 & 3 & 0 & 0
-\end{array}\right] & R_3 - (-\frac{1}{2}-\frac{\sqrt{5}}{2})R_1 \to R_3 \\
+\end{array}\right] & R_3 - \left(-\frac{1}{2}-\frac{\sqrt{5}}{2}\right)R_1 \to R_3 \\
 \to&
-\left[\begin{array}{@{\,}wc{30pt}wc{30pt}wc{30pt}|c@{\,}}
+\left[\begin{array}{@{\,}wc{33pt}wc{30pt}wc{30pt}|c@{\,}}
 1 & 0 & \frac{1}{2}-\frac{\sqrt{5}}{2} & 0 \\
 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & 0
@@ -290,7 +291,7 @@ R_1 &\leftrightarrow R_3 \\
 \end{align*}
 whose eigenvector can be seen to be $(-\frac{1}{2}+\frac{\sqrt{5}}{2},0,1)^T$ for $\lambda = \frac{3}{2} + \frac{\sqrt{5}}{2}$ by letting $z$ be the free variable.
 \end{solution}
-Short Exercise: Find the eigenvectors for other remaining eigenvalues.\footnote{For $\lambda = 1$, the eigenvector is $(-1,-\frac{1}{3},1)^T$. For $\lambda = \frac{3}{2} - \frac{\sqrt{5}}{2}$, it is $(-\frac{1}{2}-\frac{\sqrt{5}}{2},0,1)^T$. Note that for all three eigenvalues, their algebraic and geometric multiplicity are both $1$.}
+$\blacktriangleright$ Short Exercise: Find the eigenvectors for the other remaining eigenvalues.\footnote{For $\lambda = 1$, the eigenvector is $(-1,-\frac{1}{3},1)^T$. For $\lambda = \frac{3}{2} - \frac{\sqrt{5}}{2}$, it is $(-\frac{1}{2}-\frac{\sqrt{5}}{2},0,1)^T$. Note that for all three eigenvalues, their algebraic and geometric multiplicity are both $1$.}
 
 \begin{exmp}
 \label{exmp:2geomul}
@@ -306,7 +307,8 @@ A = \begin{bmatrix}
 \begin{solution}
 Again, the characteristic polynomial can be found by Sarrus' Rule as below.
 \begin{align*}
-p(\lambda) = \det(A-\lambda I) &= \begin{vmatrix}
+p(\lambda) &= \det(A-\lambda I) \\
+&= \begin{vmatrix}
 1-\lambda & 1 & -1 \\
 -1 & 3-\lambda & -1 \\
 1 & -1 & 3-\lambda
@@ -323,19 +325,19 @@ Hence the eigenvalues are $\lambda = 2,3$ with an algebraic multiplicity of $2$ 
 -1 & 3-2 & -1 & 0 \\
 1 & -1 & 3-2 & 0
 \end{array}\right]
-=
+=& 
 \left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|c@{\,}}
 -1 & 1 & -1 & 0 \\
 -1 & 1 & -1 & 0 \\
 1 & -1 & 1 & 0
-\end{array}\right] 
-&\to
+\end{array}\right] \\ 
+\to&
 \left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|c@{\,}}
 1 & -1 & 1 & 0 \\
 -1 & 1 & -1 & 0 \\
 -1 & 1 & -1 & 0 
 \end{array}\right] & R_1 \leftrightarrow R_3 \\
-&\to
+\to&
 \left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|c@{\,}}
 1 & -1 & 1 & 0 \\
 0 & 0 & 0 & 0 \\
@@ -372,7 +374,7 @@ s
 1
 \end{bmatrix}
 \end{align*}
-and hence the two linearly independent eigenvectors for $\lambda = 2$ are $(1,1,0)^T$ and $(-1,0,1)^T$. In this case, the geometric multiplicity is $2$ and equal to the algebraic multiplicity. On the other hand, for $\lambda = 3$, we have
+and hence the two linearly independent eigenvectors for $\lambda = 2$ are $(1,1,0)^T$ and $(-1,0,1)^T$. In this case, the geometric multiplicity is $2$ and is equal to the algebraic multiplicity. On the other hand, for $\lambda = 3$, we have
 \begin{align*}
 \left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|c@{\,}}
 -2 & 1 & -1 & 0 \\
@@ -447,14 +449,14 @@ y
 x
 \end{bmatrix}
 \end{align*}
-which rotates the vector in an anti-clockwise sense by $\SI{90}{\degree}$. So it is impossible for a vector to remain oriented in the same direction after $A$ is applied, consistent with the absence of any real eigenvalue. However, if we relax the constraint and work with $\mathbb{C}$, then the eigenvalues are clearly $\lambda = \pm i$. For $\lambda = i$, the eigenvector can be found from
+which rotates the vector in an anti-clockwise sense by $\SI{90}{\degree}$. So it is impossible for a vector to remain oriented in the same direction after $A$ is applied, consistent with the absence of any real eigenvalue. However, if we relax the constraint and work with $\mathbb{C}$, then the eigenvalues are clearly $\lambda = \pm i$. For $\lambda = i$, the eigenvector can be found from solving
 \begin{align*}
 \left[\begin{array}{@{\,}wc{10pt}wc{10pt}|c@{\,}}
 -i & -1 & 0\\
 1 &-i & 0
 \end{array}\right]
 \end{align*}
-We can use a trick to immediately ignore the second row since the algebraic multiplicity of $\lambda = i$ and hence nullity of the system above is $1$ so there will be one redundant row, in this system which only has two rows. Now by considering the first row, we can easily find that the corresponding eigenvector is $(i,1)^T$. Similarly, the eigenvector of $\lambda = -i$ is $(-i,1)^T$. We will talk more about complex eigenvalues in Section \ref{subsection:diagcomplex} and Chapter \ref{chap:normalmat}.
+We can use a trick to immediately ignore the second row since the algebraic (and also geometric) multiplicity of $\lambda = i$ and hence nullity of the system above is $1$, so there will be one redundant row, in this system which only has two rows. Now by considering the first row, we can easily find that the corresponding eigenvector is $(i,1)^T$. Similarly, the eigenvector of $\lambda = -i$ is $(-i,1)^T$. We will talk more about complex eigenvalues in Section \ref{subsection:diagcomplex} and Chapter \ref{chap:normalmat}.
 \end{solution}
 
 Some notable properties of eigenvalues and eigenvectors are provided below.
@@ -491,7 +493,7 @@ For the first statement, note that
 &= \det((A - \lambda I)^T) & \text{(Properties \ref{proper:transp})} \\
 &= \det(A - \lambda I) & \text{(Properties \ref{proper:properdet})}
 \end{align*}
-So the characteristic polynomials of $A$ and $A^T$ coincide and the eigenvalues (if exist) will be the same. The geometric multiplicity can be shown to be equal by noting that transpose does not change the rank of a matrix, and thus $\text{rank}(A^T - \lambda I) = \text{rank}((A - \lambda I)^T) = \text{rank}(A - \lambda I)$. Subsequently, by using the Rank-nullity Theorem \ref{thm:ranknullity}, we have
+So the characteristic polynomials of $A$ and $A^T$ coincide, and the eigenvalues (if exist) will be the same. The geometric multiplicity can be shown to be equal by noting that transpose does not change the rank of a matrix, and thus $\text{rank}(A^T - \lambda I) = \text{rank}((A - \lambda I)^T) = \text{rank}(A - \lambda I)$. Subsequently, by using the Rank-nullity Theorem \ref{thm:ranknullity} twice, we have
 \begin{align*}
 \dim(\mathcal{N}(A^T-\lambda_j I)) &= n - \text{rank}(A^T - \lambda I) \\
 &= n - \text{rank}(A - \lambda I) = \dim(\mathcal{N}(A-\lambda_j I))
@@ -536,13 +538,13 @@ For any $n \times n$ square matrix $A$, denote its characteristic polynomial by
 \begin{align}
 p(\lambda) = \det(A-\lambda I) = (-1)^n \sum_{k=0}^{n} c_k \lambda^k
 \end{align}
-where $c_n = 1$, then we have
+where $c_n = 1$ is fixed, then we have
 \begin{align}
 p(A) = (-1)^n \sum_{k=0}^{n} c_k A^k = [\textbf{0}]
 \end{align}
 as an $n \times n$ zero matrix.
 \end{thm}
-One may be tempted to substitute $\lambda = A$ into $\det(A-\lambda I)$ to prove the Cayley-Hamilton Theorem. However, since $\lambda$ (and $\det(A-\lambda I)$) is a scalar but $A$ (and $[\textbf{0}]$) is a matrix, it is not a rigorous proof. Correct proofs require advanced knowledge, which is presented in Appendix \ref{section:B1}. Here we will briefly see how it works.
+One may be tempted to substitute $\lambda = A$ into $\det(A-\lambda I)$ to prove the Cayley-Hamilton Theorem. However, since $\lambda$ (and $\det(A-\lambda I)$) is a scalar but $A$ (and $[\textbf{0}]$) is a matrix, it is not a rigorous proof. A correct proof requires advanced knowledge, which is presented in Appendix \ref{section:B1}. Here, we will briefly see how it works.
 \begin{exmp}
 With the matrix
 \begin{align*}
@@ -629,7 +631,7 @@ since $A^2 - 6A + 8I$ is a zero matrix.
 
 \subsection{Mathematical Ideas of Diagonalization}
 \label{section:diagonalizeidea}
-The existence of eigenvectors allows us to carry out \index{Diagonalization}\keywordhl{diagonalization} which helps us to simplify many linear algebra problems and derivations. A matrix $P$ is said to \textit{diagonalize} another matrix $A$ if the product $P^{-1}AP$ results in a \index{Diagonal Matrix}\keywordhl{diagonal matrix} $D$, where all non-zero entries are only found along the main diagonal.
+The existence of eigenvectors allows us to carry out \index{Diagonalization}\keywordhl{diagonalization}, which helps us to simplify many linear algebra problems and derivations. A matrix $P$ is said to \textit{diagonalize} another matrix $A$ if the product $P^{-1}AP$ results in a \index{Diagonal Matrix}\keywordhl{diagonal matrix} $D$, where all non-zero entries are only found along the main diagonal.
 \begin{defn}[Diagonalization]
 A square matrix $A$ is diagonalizable, if there exists some \textit{invertible} square matrix $P$, such that
 \begin{align}
@@ -637,11 +639,11 @@ P^{-1}AP = D
 \end{align}
 where $D$ is a diagonal matrix.
 \end{defn}
-Recalling Properties \ref{proper:endomorph}, we know that the form $P^{-1}AP$ (or $P^{-1}[T]P$ for a linear transformation) represents a change of coordinates for the matrix $A$. So the problem of diagonalization is actually asking if there exists a basis (expressed as the columns of $P$) such that the matrix $A$ in question is diagonal with respect to the corresponding coordinate system, or in other words, if $A$ is similar to a diagonal matrix. We will show that, in fact, the coordinate matrix $P$ required to diagonalize $A$, is formed by combining all linearly independent eigenvectors of $A$ column by column. This is only possible if the number of distinct eigenvectors is equal to the extent of $A$. An equivalent condition is that the characteristic polynomial splits over the scalar ($\mathbb{R}$ or $\mathbb{C}$)\footnote{\label{foot:split} A (characteristic) polynomial $p(\lambda)$ of degree $n$ is said to \textit{split} over $\mathbb{C}$ [$\mathbb{R}$] if it can be expressed as the product of linear factors only, i.e.
+Recalling Properties \ref{proper:endomorph}, we know that the form $P^{-1}AP$ (or $P^{-1}[T]P$ for a linear transformation) represents a change of coordinates for the matrix $A$. So the problem of diagonalization is actually asking if there exists a basis (expressed as the columns of $P$) such that the matrix $A$ in question is diagonal with respect to the corresponding coordinate system, or in other words, if $A$ is similar to a diagonal matrix. We will show that, in fact, the coordinate matrix $P$ required to diagonalize $A$, is formed by combining all linearly independent eigenvectors of $A$ column by column. This is only possible if the number of distinct eigenvectors is equal to the extent of $A$. An equivalent condition is that the characteristic polynomial splits over the scalar ($\mathbb{R}$ or $\mathbb{C}$)\footnote{\label{foot:split} A (characteristic) polynomial $p(\lambda)$ of degree $n$ is said to \textit{split} over $\mathbb{C}$ [$\mathbb{R}$] if it can be expressed as the product of linear factors only, i.e.\
 \begin{align*}
 p(\lambda) = \prod_{j=1}^n (\lambda_j - \lambda)    
 \end{align*}
-where $\lambda_j$ are complex [real] constants. Also, there is the \textit{Fundamental Theorem of Algebra} which states that every polynomial splits over $\mathbb{C}$ so the first part of the condition is automatically satisfied for the complex case.} used in the vector space, and, for every eigenvalue, its geometric multiplicity is equal to the algebraic multiplicity.\footnote{\label{foot:algequalgeo}Note that the sum of geometric multiplicities for all eigenvalues is less than or equal to (when the characteristic polynomial splits) the degree of the characteristic polynomial by observing Definition \ref{defn:charactereqn} and Theorem \ref{thm:geolessalgebra}, which is the same as the extent of the matrix. For the amount of linearly independent eigenvectors to be equal to that, the only possibility is that the geometric multiplicity of any eigenvalue is strictly equal to the algebraic multiplicity while $p(\lambda)$ splits. (Properties \ref{proper:eigenlinind} ensures linear independence over eigenspaces of different eigenvalues.)} So, the matrix in Example \ref{exmp:dummyjordan} is non-diagonalizable. 
+where $\lambda_j$ are complex [real] constants. Also, there is the \index{Fundamental Theorem of Algebra}\textit{Fundamental Theorem of Algebra} which states that every polynomial splits over $\mathbb{C}$ so the first part of the condition is automatically satisfied for the complex case.} used in the vector space, and, for every eigenvalue, its geometric multiplicity is equal to the algebraic multiplicity.\footnote{\label{foot:algequalgeo}Note that the sum of geometric multiplicities for all eigenvalues is less than or equal to (when the characteristic polynomial splits) the degree of the characteristic polynomial by observing Definition \ref{defn:charactereqn} and Theorem \ref{thm:geolessalgebra}, which is the same as the extent of the matrix. For the amount of linearly independent eigenvectors to be equal to that, the only possibility is that the geometric multiplicity of any eigenvalue is strictly equal to the algebraic multiplicity (Theorem \ref{thm:geolessalgebra} again) while $p(\lambda)$ splits. (Properties \ref{proper:eigenlinind} ensures linear independence over eigenspaces of different eigenvalues.)} So, the matrix in Example \ref{exmp:dummyjordan} is non-diagonalizable. 
 \begin{proper}
 \label{proper:diagonalize}
 An $n \times n$ square matrix $A$ can be diagonalized by another matrix $P$ if and only if $A$ has $n$ linearly independent eigenvectors, such that they form a basis for $\mathbb{R}^n$ (see part (b) of Properties \ref{proper:linindspanbasisnewver}) when the underlying scalar of vector space is taken to be $\mathbb{R}$ [a basis for $\mathbb{C}^n$ if working over $\mathbb{C}$]. The equivalent conditions are that the characteristic polynomial of $A$ splits over $\mathbb{R}$ [$\mathbb{C}$] and the geometric multiplicities of all distinct eigenvalues are equal to the respective algebraic multiplicities. Then, the columns of $P$ will consist of those eigenvectors $\smash{\vec{v}_\lambda^{(j)}}$, $j = 1,2,\ldots,n$. The diagonal entries of $P^{-1}AP = D$, are subsequently each of the eigenvalues $\lambda_j$ (counting repeated ones) corresponding to the eigenvector $\smash{\vec{v}_\lambda^{(j)}}$ in the same column position of $P$. 
@@ -664,7 +666,7 @@ PD &= [\vec{v}_\lambda^{(1)}|\vec{v}_\lambda^{(2)}|\cdots|\vec{v}_\lambda^{(n)}]
 \end{bmatrix} \\
 &= [\lambda_1\vec{v}_\lambda^{(1)}|\lambda_2\vec{v}_\lambda^{(2)}|\cdots|\lambda_n \vec{v}_\lambda^{(n)}]
 \end{align*}
-So $AP = PD$. Notice that $P$ is invertible by (e) to (a) of Theorem \ref{thm:equiv3}, since the columns of $P$ are made up of linearly independent eigenvectors by requirement, and thus $P^{-1}AP = D$.
+So $AP = PD$. Notice that $P$ is invertible by (e) to (a) of Theorem \ref{thm:equiv3} since the columns of $P$ are made up of linearly independent eigenvectors by requirement, and thus $P^{-1}AP = D$.
 \end{proof}
 
 \subsection{Diagonalization for Real Eigenvalues}
@@ -809,9 +811,9 @@ Note that we can shuffle the ordering of the eigenvalues and eigenvectors.\footn
 0 & 2 & 0 \\
 0 & 0 & 1
 \end{bmatrix}
-\end{align*} is another valid outcome where we have interchanged the second and third eigenvector.} We say that diagonalization is \textit{unique up to a permutation}.
+\end{align*} is another valid outcome where we have interchanged the second and third eigenvector.} We therefore say that diagonalization is \textit{unique up to a permutation}.
 \end{solution}
-Short Exercise: Reverse the diagonalization to recover the original matrix.\footnote{Simply compute $PDP^{-1}$ which should be equal to $A$.}
+$\blacktriangleright$ Short Exercise: Reverse the diagonalization to recover the original matrix.\footnote{Simply compute $PDP^{-1}$ which should be equal to $A$.}
 
 \begin{exmp}
 Diagonalize the matrix 
@@ -825,7 +827,7 @@ A = \begin{bmatrix}
 in Example \ref{exmp:2geomul}.
 \end{exmp}
 \begin{solution}
-From Example \ref{exmp:2geomul}, we know that the characteristic polynomial splits over $\mathbb{R}$ and for the eigenvalues of $\lambda = 2,3$, their geometric multiplicities are equal to algebraic multiplicities ($2$ and $1$). Therefore, its diagonalization is possible by Properties \ref{proper:diagonalize}. Specifically, the eigenvectors for $\lambda = 2$ are $(1,1,0)^T, (-1,0,1)^T$ and that for $\lambda = 3$ is $(-1,-1,1)^T$. Thus we have
+From Example \ref{exmp:2geomul}, we know that the characteristic polynomial splits over $\mathbb{R}$, and for the eigenvalues of $\lambda = 2,3$, their geometric multiplicities are equal to algebraic multiplicities ($2$ and $1$). Therefore, its diagonalization is possible by Properties \ref{proper:diagonalize}. Specifically, the eigenvectors for $\lambda = 2$ are $(1,1,0)^T, (-1,0,1)^T$ and that for $\lambda = 3$ is $(-1,-1,1)^T$. Thus we have
 \begin{align*}
 P &= 
 \begin{bmatrix}
@@ -833,7 +835,7 @@ P &=
 1 & 0 & -1 \\
 0 & 1 & 1
 \end{bmatrix}
-\text{\quad and} \\
+\text{ and} \\
 D &= P^{-1}AP \\
 &= \begin{bmatrix}
 1 & -1 & -1 \\
@@ -874,18 +876,18 @@ The first and second eigenvector can be interchanged without modifying the form 
 \subsection{Properties of Diagonalization}
 \label{section:diagonalproper}
 
-Having seen the actual procedure of diagonalization, we are ready to derive its properties. First, it is instructive to view diagonalization from the perspective of a vector/matrix direct sum. The condition in Properties \ref{proper:diagonalize} requires that there are $n$ one-dimensional subspaces $\mathcal{E}_j$ generated by each of the $n$ linearly independent eigenvectors $\smash{\vec{v}_\lambda^{(j)}}$ for the linear operator $T: \mathcal{V} \to \mathcal{V}$ (can be treated as an $n \times n$ square matrix $A$) where $\mathcal{V}$ is an $n$-dimensional vector space, and thus they form a direct sum $\bigoplus_{j=1}^n \mathcal{E}_j = \mathcal{V}$ (or $\mathbb{R}^n$/$\mathbb{C}^n$) following Definition \ref{defn:directsum} and Properties \ref{proper:linindspanbasisnewver}. In Properties \ref{proper:eigenTinvariant}, we have already observed that the eigenspace $\mathcal{E}_{J_i} = \bigoplus_{\lambda_j = \lambda_{J_i}} \mathcal{E}_j$ of each distinct eigenvalue $\lambda_{J_i}$\footnote{$J_i$ refers to the set of indices those are associated to a common eigenvalue, denoted by $\lambda_{J_i}$.} is an invariant subspace under $T$ and the same can be said for the individual one-dimensional $\mathcal{E}_j$ themselves. In particular, the direction of any vector in each of the eigenspaces remains unchanged after $T$ is applied. Therefore, by Definition \ref{defn:matdirectsum}, $T$ can be written as a matrix direct sum $T = \bigoplus_{j=1}^n T_j$ where $T_j(\smash{\vec{v}_\lambda^{(j)}}): \mathcal{E}_j \to \mathcal{E}_j = T|_{\mathcal{E}_j}(\smash{\vec{v}_\lambda^{(j)}}) = T(\smash{\vec{v}_\lambda^{(j)}}) = \lambda_j\smash{\vec{v}_\lambda^{(j)}} = \lambda_j(\text{id}(\smash{\vec{v}_\lambda^{(j)}}))$. In matrix representation, it becomes $A = \bigoplus_{j=1}^n [\lambda_j]$ where each of the $[\lambda_j]$ is a singleton ($1 \times 1$) block. If we consider repeated eigenvalues and their full eigenspaces $\smash{\mathcal{E}_{J_i} = \bigoplus_{\lambda_j = \lambda_{J_i}} \mathcal{E}_j}$ as an entirety, then we have $\smash{T = \bigoplus_{\text{all distinct }\lambda_{J_i}} T_{J_i}}$ with simply $T_{J_i} = \lambda_{J_i}(\text{id}[\,])$ and the matrix form is $\smash{A = \bigoplus_{\text{all distinct }\lambda_{J_i}} \lambda_{J_i} I_{k_{J_i}}}$ where $k_{J_i}$ is the eigenvalue repetition count of $\lambda_{J_i}$ in the characteristic polynomial (here the algebraic multiplicity is equal to the geometric counterpart as required by Properties \ref{proper:diagonalize}). The essence of diagonalization is hence to find a basis for $\mathcal{V}$ as a vector direct sum such that $T: \mathcal{V} \to \mathcal{V}$ becomes a matrix direct sum that is composed by some scalar multiples of identity matrices/identity mappings with respect to this vector direct sum basis.
+Having seen the actual procedure of diagonalization, we are ready to derive its properties. First, it is instructive to view diagonalization from the perspective of a vector/matrix direct sum. The condition in Properties \ref{proper:diagonalize} requires that there are $n$ one-dimensional subspaces $\mathcal{E}_j$ generated by each of the $n$ linearly independent eigenvectors $\smash{\vec{v}_\lambda^{(j)}}$ for the linear operator $T: \mathcal{V} \to \mathcal{V}$ (can be treated as an $n \times n$ square matrix $A$) where $\mathcal{V}$ is an $n$-dimensional vector space, and thus they form a direct sum $\bigoplus_{j=1}^n \mathcal{E}_j = \mathcal{V}$ (or $\mathbb{R}^n$/$\mathbb{C}^n$) following Definition \ref{defn:directsum} and Properties \ref{proper:linindspanbasisnewver}. In Properties \ref{proper:eigenTinvariant}, we have already observed that the eigenspace $\mathcal{E}_{J_i} = \bigoplus_{\lambda_j = \lambda_{J_i}} \mathcal{E}_j$ of each distinct eigenvalue $\lambda_{J_i}$\footnote{$J_i$ refers to the set of indices those are associated to a common eigenvalue, denoted by $\lambda_{J_i}$.} is an invariant subspace under $T$ and the same can be said for the individual one-dimensional $\mathcal{E}_j$ themselves. In particular, the direction of any vector in each of the eigenspaces remains unchanged after $T$ is applied. Therefore, by Definition \ref{defn:matdirectsum}, $T$ can be written as a matrix direct sum $T = \bigoplus_{j=1}^n T_j$ where $T_j(\smash{\vec{v}_\lambda^{(j)}}): \mathcal{E}_j \to \mathcal{E}_j = T|_{\mathcal{E}_j}(\smash{\vec{v}_\lambda^{(j)}}) = T(\smash{\vec{v}_\lambda^{(j)}}) = \lambda_j\smash{\vec{v}_\lambda^{(j)}} = \lambda_j(\text{id}(\smash{\vec{v}_\lambda^{(j)}}))$. In matrix representation, it becomes $A = \bigoplus_{j=1}^n [\lambda_j]$ where each of the $[\lambda_j]$ is a singleton ($1 \times 1$) block. If we consider repeated eigenvalues and their full eigenspaces $\smash{\mathcal{E}_{J_i} = \bigoplus_{\lambda_j = \lambda_{J_i}} \mathcal{E}_j}$ as an entirety, then we have $\smash{T = \bigoplus_{\text{all distinct }\lambda_{J_i}} T_{J_i}}$ with simply $T_{J_i} = \lambda_{J_i}(\text{id}[\,]): \mathcal{E}_{J_i} \to \mathcal{E}_{J_i}$ and the matrix form is $\smash{A = \bigoplus_{\text{all distinct }\lambda_{J_i}} \lambda_{J_i} I_{k_{J_i}}}$ where $k_{J_i}$ is the eigenvalue repetition count of $\lambda_{J_i}$ in the characteristic polynomial (here the algebraic multiplicity is equal to the geometric counterpart as required by Properties \ref{proper:diagonalize}). The essence of diagonalization is hence to find a basis for $\mathcal{V}$ as a vector direct sum such that $T: \mathcal{V} \to \mathcal{V}$ becomes a matrix direct sum that is composed by some scalar multiples of identity matrices/identity mappings with respect to this vector direct sum basis.
 
-On the other hand, the original matrix $A$ and its diagonalized form $D = P^{-1}AP$ share some similarities sometimes called \index{Matrix Invariants}\keywordhl{invariants}. More generally, these invariants hold for any pair of similar matrices (introduced following Properties \ref{proper:endomorph}). 
+On the other hand, the original matrix $A$ and its diagonalized form $D = P^{-1}AP$ share some similarities sometimes called \index{Invariant (Matrix)}\keywordhl{invariants}. More generally, these invariants hold for any pair of similar matrices (introduced following Properties \ref{proper:endomorph}). 
 \begin{proper}[Invariants for Similar Matrices]
 \label{proper:similarinvariant}
 Two similar square matrices $A$ and $A'$ have the
 \begin{enumerate}
-\item same determinant, 
-\item same characteristic equation,
-\item same eigenvalues and algebraic multiplicities,
-\item same eigenspace dimension (geometric multiplicity) for any fixed eigenvalue (but the eigenvectors are probably different),
-\item same trace, a.k.a.\ the sum of diagonal entries, and
+\item same determinant;
+\item same characteristic equation;
+\item same eigenvalues and algebraic multiplicities;
+\item same eigenspace dimension (geometric multiplicity) for any fixed eigenvalue (but the eigenvectors are probably different);
+\item same trace, a.k.a.\ the sum of diagonal entries; and
 \item same rank.
 \end{enumerate}
 \end{proper}
@@ -893,9 +895,9 @@ Two similar square matrices $A$ and $A'$ have the
 We will briefly prove (1) here. Similar matrices are related by $A' = P^{-1}AP$ for any invertible matrix $P$. As a result, $\det(A') = \det(P^{-1}AP) = \det(P^{-1})\det(A)\det(P) = \frac{1}{\det(P)}\det(A)\det(P) = \det(A)$ due to Properties \ref{proper:properdet}. ($\det(P) \neq 0$ by Properties \ref{proper:invnonzerodet}.)
 \end{proof}
 Since the diagonalized form of a matrix is clearly similar to the original one, those properties hold for them as well.\par
-Short Exercise: Prove (2) and (3) of the above properties.\footnote{$\det(A'-\lambda I) = \det(P^{-1}AP-\lambda I) = \det(P^{-1}AP-\lambda P^{-1}P) = \det(P^{-1}AP-\lambda P^{-1}IP) = \det(P^{-1}(A-\lambda I)P) = \det(P^{-1})\det(A-\lambda I)\det(P) = \det(A-\lambda I)$ (Definition \ref{defn:inverse}, Properties \ref{proper:identity} and \ref{proper:properdet}). (3) follows from (2) immediately.}\par
+$\blacktriangleright$ Short Exercise: Prove (2) and (3) of the above properties.\footnote{$\det(A'-\lambda I) = \det(P^{-1}AP-\lambda I) = \det(P^{-1}AP-\lambda P^{-1}P) = \det(P^{-1}AP-\lambda P^{-1}IP) = \det(P^{-1}(A-\lambda I)P) = \det(P^{-1})\det(A-\lambda I)\det(P) = \det(A-\lambda I)$ (Definition \ref{defn:inverse}, Properties \ref{proper:identity} and \ref{proper:properdet}). (3) follows from (2) immediately.}\par
 
-With all of these, we can finally now prove Theorem \ref{thm:geolessalgebra}. Denote the geometric multiplicity of $A$ by $n_{J_i}$ for the eigenvalue $\lambda_{J_i}$. Then the $n_{J_i}$ linearly independent eigenvectors $\smash{\vec{v}_{\lambda_{J_i}}^{(1)}, \vec{v}_{\lambda_{J_i}}^{(2)}, \ldots, \vec{v}_{\lambda_{J_i}}^{(n_{J_i})}}$ accordingly lead to an $n_{J_i}$-dimensional eigenspace of $\mathcal{E}_{J_i} = \smash{\bigoplus_{\lambda_j = \lambda_{J_i}} \mathcal{E}_j}$ as just described, that is, an invariant subspace under the multiplication by $A$ to its left. We can always enlarge (the basis of) this eigenspace $\mathcal{E}_{J_i}$ to reproduce the entire $\mathbb{R}^n$ (or $\mathbb{C}^n$) as suggested by part (c) of Properties \ref{proper:linindspanbasisnewver}. If we do a change of coordinates on $A$ using this new basis, then it will become (Properties \ref{proper:endomorph} again)
+With all of these, we can finally now prove Theorem \ref{thm:geolessalgebra}. Denote the geometric multiplicity of $A$ by $n_{J_i}$ for a fixed eigenvalue $\lambda_{J_i}$. Then the $n_{J_i}$ linearly independent eigenvectors $\smash{\vec{v}_{\lambda_{J_i}}^{(1)}, \vec{v}_{\lambda_{J_i}}^{(2)}, \ldots, \vec{v}_{\lambda_{J_i}}^{(n_{J_i})}}$ accordingly will lead to an $n_{J_i}$-dimensional eigenspace of $\mathcal{E}_{J_i} = \smash{\bigoplus_{\lambda_j = \lambda_{J_i}} \mathcal{E}_j}$ as just described, that is, an invariant subspace under the multiplication by $A$ to its left. We can always enlarge (the basis of) this eigenspace $\mathcal{E}_{J_i}$ to reproduce the entire $\mathbb{R}^n$ (or $\mathbb{C}^n$) as suggested by part (c) of Properties \ref{proper:linindspanbasisnewver}. If we do a change of coordinates on $A$ using this new basis, then it will become (Properties \ref{proper:endomorph} again)
 \begin{align*}
 A' = P^{-1}AP
 \end{align*}
@@ -940,7 +942,7 @@ A\vec{v}_{\lambda_{J_i}}^{(1)}|A\vec{v}_{\lambda_{J_i}}^{(2)}|\ldots|A\vec{v}_{\
 \end{bmatrix}
 \end{align*}
 the last step is by the definition of eigenvectors (Definition \ref{defn:eigen}).} 
-where the top left represents a rescaling of the eigenvectors (now as a part of the new basis) by the eigenvalue, and the $*$ parts can be anything (notice the zero block at the bottom left, since $\mathcal{E}_{J_i}$ is an invariant subspace). Its characteristic polynomial is then 
+where the top left block represents a rescaling of the eigenvectors (now as a part of the new basis) by the eigenvalue, and the $*$ parts can be anything (notice the zero block at the bottom left, since $\mathcal{E}_{J_i}$ is an invariant subspace). Its characteristic polynomial is then 
 \begin{align*}
 \det(A'-\lambda I) =
 \begin{vmatrix}
@@ -1033,12 +1035,12 @@ A^n &= (PDP^{-1})^n \\
 \frac{1}{2}(2^n - 1) & \frac{1}{2}(2^n + 1)
 \end{bmatrix}
 \end{align*}
-The successive powers of a diagonal matrix can be simply computed over each of the diagonal entries.
+where the successive powers of a diagonal matrix can be simply computed over each of the diagonal entries.
 \end{solution}
 
 \subsection{Diagonalization for Complex Eigenvalues}
 \label{subsection:diagcomplex}
-It is not uncommon for a real square matrix $A$ to have complex eigenvalues (as well as complex eigenvectors). In such cases, to perform diagonalization, one possible approach is following exactly what we have done in Section \ref{section:realeigen} to produce $D = P^{-1}AP$ which contains the complex eigenvalues along its main diagonal (and are all zeros elsewhere) if we choose to work over $\mathbb{C}$. This can be useful sometimes, but the downside is that $D$ (as well as the $P$ matrix that is made up of the eigenvectors as its columns) is comprised of complex entries, despite $A$ being a real matrix. There is, indeed, another method that uses the property of complex numbers introduced in the last chapter, that circumvents the appearance of complex numbers in a modified diagonalized form and allows us to stay in the world of $\mathbb{R}$. But first of all, we need to introduce a basic theorem about the complex roots of an equation.
+It is not uncommon for a real square matrix $A$ to have complex eigenvalues (as well as complex eigenvectors). In such cases, to perform diagonalization, one possible approach is following exactly what we have done in Section \ref{section:realeigen} to produce $D = P^{-1}AP$ which contains the complex eigenvalues along its main diagonal (and are all zeros elsewhere) if we choose to work over $\mathbb{C}$. This can be useful sometimes, but the downside is that $D$ (as well as the $P$ matrix that is made up of the eigenvectors as its columns) is comprised of complex entries, despite $A$ being a real matrix. There is, indeed, another method that uses the property of complex numbers introduced in the last chapter, which circumvents the appearance of complex numbers in a modified diagonalized form and allows us to stay in the world of $\mathbb{R}$. But first of all, we need to introduce a basic theorem about the complex roots of an equation.
 \begin{thm}
 For a \textit{real} polynomial equation of order $n$
 \begin{align*}
@@ -1072,7 +1074,7 @@ A \overline{\vec{v}_{\lambda_0}} &= \overline{\lambda_0}\, \overline{\vec{v}_{\l
 \end{align*}
 with the use of Properties \ref{proper:complexnum}, and noting that $\overline{A} = A$ as $A$ is a real matrix.
 \end{proof}
-Now as we know that complex eigenvalues and eigenvectors always appear as a pair of  conjugates, and conjugates share the same real and imaginary parts except a sign difference for the latter, we are encouraged to use them like two different eigenvalues and eigenvectors for making up. The following properties show that it is possible to take advantage of this and derive a new diagonalization procedure with some tweaks.
+Now as we know that complex eigenvalues and eigenvectors always appear as a pair of conjugates, and conjugates share the same real and imaginary parts except a sign difference for the latter, we are encouraged to use them like two different eigenvalues and eigenvectors for making up. The following properties show that it is possible to take advantage of this and derive a new diagonalization procedure with some tweaks.
 
 \begin{proper}
 \label{proper:diagonalize2}
@@ -1117,7 +1119,10 @@ PD &=
 \begin{align*}
 A\vec{v}_{\lambda_0} &= \lambda_0\vec{v}_{\lambda_0} \\
 A(\Re{\vec{v}_{\lambda_0}} + i \Im{\vec{v}_{\lambda_0}}) &= (a+bi)(\Re{\vec{v}_{\lambda_0}} + i \Im{\vec{v}_{\lambda_0}}) \\
-A\Re{\vec{v}_{\lambda_0}} + i A\Im{\vec{v}_{\lambda_0}} &= (a\Re{\vec{v}_{\lambda_0}} - b\Im{\vec{v}_{\lambda_0}}) + i(b\Re{\vec{v}_{\lambda_0}} + a\Im{\vec{v}_{\lambda_0}})
+A\Re{\vec{v}_{\lambda_0}} + i A\Im{\vec{v}_{\lambda_0}} &= \begin{aligned}
+& (a\Re{\vec{v}_{\lambda_0}} - b\Im{\vec{v}_{\lambda_0}}) \\
+& +i(b\Re{\vec{v}_{\lambda_0}} + a\Im{\vec{v}_{\lambda_0}})    
+\end{aligned}
 \end{align*}
 where $\Re{\vec{v}_{\lambda_0}}$ and $\Im{\vec{v}_{\lambda_0}}$ themselves are real vectors and $A$ is a real matrix. By equating the real and imaginary parts, we have
 \begin{subequations}
@@ -1134,7 +1139,7 @@ AP &= A[\cdots|\Re{\vec{v}_{\lambda_0}}|\Im{\vec{v}_{\lambda_0}}|\cdots] \\
 &= [\cdots|a\Re{\vec{v}_{\lambda_0}} - b\Im{\vec{v}_{\lambda_0}} | b\Re{\lambda_0} + a\Im{\vec{v}_{\lambda_0}}|\cdots] \\
 &= PD
 \end{align*}
-The only caveat is to prove that $P$ is invertible, or equivalently $\Re{\vec{v}_{\lambda_0}}$ and $\Im{\vec{v}_{\lambda_0}}$ are linearly independent (assuming there is no problem with other columns). We can prove that by assuming they are linearly dependent, so $\Re{\vec{v}_{\lambda_0}} = k\Im{\vec{v}_{\lambda_0}}$ for some real constant $k$, and plugging this into the expressions of $A\Re{\vec{v}_{\lambda_0}}$ and $A\Im{\vec{v}_{\lambda_0}}$ to derive a contradiction.\footnote{Substitute $\Re{\vec{v}_{\lambda_0}} = k\Im{\vec{v}_{\lambda_0}}$ into Equation (\ref{eqn:realmodiag})
+The only caveat is to prove that $P$ is invertible, or equivalently $\Re{\vec{v}_{\lambda_0}}$ and $\Im{\vec{v}_{\lambda_0}}$ are linearly independent (assuming there is no problem with other columns). We can prove that by assuming they are linearly dependent, so $\Re{\vec{v}_{\lambda_0}} = k\Im{\vec{v}_{\lambda_0}}$ for some \textit{real} constant $k$, and plugging this into the expressions of $A\Re{\vec{v}_{\lambda_0}}$ and $A\Im{\vec{v}_{\lambda_0}}$ to derive a contradiction.\footnote{Substitute $\Re{\vec{v}_{\lambda_0}} = k\Im{\vec{v}_{\lambda_0}}$ into Equation (\ref{eqn:realmodiag})
 \begin{align*}
 A\Re{\vec{v}_{\lambda_0}} &= a\Re{\vec{v}_{\lambda_0}} - b\Im{\vec{v}_{\lambda_0}} \\
 Ak\Im{\vec{v}_{\lambda_0}} &= ak\Im{\vec{v}_{\lambda_0}} - b\Im{\vec{v}_{\lambda_0}} = (ak-b)\Im{\vec{v}_{\lambda_0}}
@@ -1239,7 +1244,7 @@ So the eigenvector for $\lambda = 1 - \sqrt{2}i$ is $(i, i, \sqrt{2})^T$, and th
 \end{bmatrix}
 \end{align*}
 \end{solution}
-Short Exercise: Repeat the diagonalization but keep complex entries without the modification.\footnote{
+$\blacktriangleright$ Short Exercise: Repeat the diagonalization but keep complex entries without the modification.\footnote{
 \begin{align*}
 \begin{bmatrix}
 1 & 0 & 0 \\
@@ -1267,7 +1272,7 @@ Short Exercise: Repeat the diagonalization but keep complex entries without the 
 \section{System of Ordinary Differential Equations}
 \label{section:sysode}
 
-\index{Ordinary Differential Equation (ODE)}\keywordhl{Ordinary Differential Equations (ODEs)} arise frequently in the areas of Physics and Earth Science. They involve the derivatives of a dependent variable (that represents the state of the system, e.g. temperature, velocity) with respect to one independent variable only (usually the displacement $x$ or time $t$). The simplest class of ODEs is \textit{first-order}, \textit{linear}, \textit{homogeneous} described as follows.
+\index{Ordinary Differential Equation (ODE)}\keywordhl{Ordinary Differential Equations (ODEs)} arise frequently in the areas of Physics and Earth Science. They involve the derivatives of a dependent variable (that represents the state of the system, e.g.\ temperature, velocity) with respect to one independent variable only (usually the displacement $x$ or time $t$). The simplest class of ODEs is \textit{first-order}, \textit{linear}, \textit{homogeneous} described as follows.
 \begin{defn}
 A \index{First-order Linear ODE}\keywordhl{first-order, linear ODE} is a differential equation written in the form of
 \begin{align}
@@ -1275,7 +1280,7 @@ A \index{First-order Linear ODE}\keywordhl{first-order, linear ODE} is a differe
 \end{align}
 where $x$ denotes the independent variable, $y(x)$ is the dependent variable, $P(x)$ and $Q(x)$ is some function of $x$. 
 \end{defn}
-\textit{First-order} means that the highest order of derivatives involved in the equation is the first derivative only, such that there are $y$ and $\frac{dy}{dx}$, but no $\smash{\frac{d^2y}{dx^2}}$ or $\smash{\frac{d^3y}{dx^3}}$. \textit{Linearity} means that there are no cross-product\footnote{This is not the vector cross product.} terms between the dependent variable or its derivatives themselves, e.g. $y\frac{dy}{dx}, y^2, (\frac{dy}{dx})^2$. An example will be deriving the terminal speed of a falling hydrometeor under gravity:
+\textit{First-order} means that the highest order of derivatives involved in the equation is the first derivative only, such that there are $y$ and $\frac{dy}{dx}$, but no $\smash{\frac{d^2y}{dx^2}}$ or $\smash{\frac{d^3y}{dx^3}}$. \textit{Linearity} means that there are no cross-product\footnote{This is not the vector cross product.} terms between the dependent variable or its derivatives themselves, e.g.\ $y\frac{dy}{dx}, y^2, (\frac{dy}{dx})^2$. An example will be deriving the terminal speed of a falling hydrometeor under gravity:
 \begin{align*}
 \frac{dw}{dt} - \alpha w = g
 \end{align*}
@@ -1301,7 +1306,7 @@ where $\alpha = -k$ is the decay constant.
 However, for many real-life problems, there are multiple ODEs, each of which is coupled to others in the system. This frequently happens in Earth System Science where we have to consider the interactions between different variables, for instance, mass flows and chemical reactions between the reservoirs of various substances. This naturally leads to a \index{System of ODEs}\keywordhl{system of ODEs}. Again, the simplest case would be that all of the ODEs are first-order, linear, having constant coefficients, and homogeneous.
 \begin{defn}
 \label{defn:1ordODEsys}
-A first-order, linear system of $n$ ODEs that are of constant coefficients, and homogeneous takes the form of
+A first-order, linear system of $n$ ODEs that are of constant coefficients and homogeneous, takes the form of
 \begin{align}
 \left\{\begin{alignedat}{2}
 &dy_1/dx & &= \alpha_1^{(1)} y_1 + \alpha_2^{(1)} y_2 + \alpha_3^{(1)} y_3 + \cdots + \alpha_n^{(1)} y_n \\
@@ -1385,7 +1390,7 @@ assuming $P$ is invertible. The term $P^{-1}AP$, which is a matrix similar to $A
 & dz_n/dx & &= D_{nn}z_n \\
 \end{alignedat}\right.    
 \end{align}
-which are all solvable on their own by Properties \ref{proper:ODEsol} as each of them only involves a single dependent variable. Subsequently, we have the following conclusion.
+which are all solvable on their own by Properties \ref{proper:ODEsol}, as each of them only involves a single dependent variable. Subsequently, we have the following conclusion.
 \begin{proper}
 \label{proper:diagODE}
 For a system of first-order ODEs in the form of (\ref{eqn:ODEyay}) 
@@ -1434,7 +1439,7 @@ y_2 \\
 y_3
 \end{bmatrix}
 \end{align*}
-We leave it to the readers to check that the eigenvectors for the coefficient matrix are $(-2,0,1)^T$, $(-5,1,3)^T$, $(-4,1,2)^T$ corresponding to the eigenvalues of $\lambda = 1, 2, 4$ respectively. Hence by Properties \ref{proper:diagODE}, we can make the change of variables
+We leave it to the readers to check that the eigenvectors for the coefficient matrix are $(-2,0,1)^T$, $(-5,1,3)^T$, $(-4,1,2)^T$, corresponding to the eigenvalues of $\lambda = 1, 2, 4$ respectively. Hence by Properties \ref{proper:diagODE}, we can make the change of variables
 \begin{align*}
 \begin{bmatrix}
 y_1 \\
@@ -1583,7 +1588,7 @@ e^{4x}
 \end{bmatrix}
 \end{align*}
 \end{solution}
-Short Exercise: Derive another solution if the initial condition is $y_1(x=0) = 0$, $y_2(x=0) = 2$, $y_3(x=0) = -3$ instead.\footnote{The corresponding integration constants are $c_1 = -1, c_2 = -6, c_3 = 8$. So $z_1 = -e^x$, $z_2 = -6e^{2x}$, $c_3 = 8e^{4x}$, and $y_1 = 2e^x + 30e^{2x} - 32e^{4x}$, $y_2 = -6e^{2x} + 8e^{4x}$, $y_3 = -e^x - 18e^{2x} + 16e^{4x}$.}
+$\blacktriangleright$ Short Exercise: Derive another solution if the initial condition is $y_1(x=0) = 0$, $y_2(x=0) = 2$, $y_3(x=0) = -3$ instead.\footnote{The corresponding integration constants are $c_1 = -1, c_2 = -6, c_3 = 8$. So $z_1 = -e^x$, $z_2 = -6e^{2x}$, $c_3 = 8e^{4x}$, and $y_1 = 2e^x + 30e^{2x} - 32e^{4x}$, $y_2 = -6e^{2x} + 8e^{4x}$, $y_3 = -e^x - 18e^{2x} + 16e^{4x}$.}
 
 \begin{exmp}
 \label{exmp:solveODEsystemcomplex}
@@ -1639,11 +1644,11 @@ D = P^{-1}AP &=
 \end{align*}
 The solution in Properties \ref{proper:ODEsol} is valid even when $\alpha$ is complex. Hence the solution for $\textbf{z}$ will be
 \begin{align*}
-\begin{cases}
+\left\{\begin{alignedat}{1}
 z_1 &= c_1e^x \\
 z_2 &= c_2e^{(1-\sqrt{2}i)x} = c_2e^{x}e^{-\sqrt{2}i x} = c_2e^{x}(\cos(\sqrt{2}x) - i\sin(\sqrt{2}x))\\
 z_3 &= c_3e^{(1+\sqrt{2}i)x} = c_3e^{x}e^{\sqrt{2}i x} = c_3e^{x}(\cos(\sqrt{2}x) + i\sin(\sqrt{2}x))
-\end{cases}
+\end{alignedat}\right.
 \end{align*}
 where Euler's formula (Definition \ref{defn:Euler}) is applied. Hence 
 \begin{align*}
@@ -1725,9 +1730,9 @@ P \xrightarrow{k_1} Q \xrightarrow{k_2} R
 and hence have rate laws in the form of
 \begin{align*}
 \left\{\begin{alignedat}{2}
-&\frac{d[P]}{dt} & &= -k_1[P] \\
-&\frac{d[Q]}{dt} & &= k_1[P] - k_2[Q] \\
-&\frac{d[R]}{dt} & &= k_2[Q]
+&d[P]/dt & &= -k_1[P] \\
+&d[Q]/dt & &= k_1[P] - k_2[Q] \\
+&d[R]/dt & &= k_2[Q]
 \end{alignedat}\right.
 \end{align*}
 Initially, $[P] = 1$ mol per unit volume and $[Q] = [R] = 0$. ($k_1$, $k_2$ have the unit of $\si{\per \s}$). Express the time evolution of concentrations for all the three tracers $[P]$, $[Q]$, $[R]$, and find the time $t_Q$ where $[Q]$ reaches its maximum in terms of $k_1$, $k_2$.
@@ -1744,7 +1749,7 @@ k_1 & -k_2 & 0 \\
 \end{bmatrix}
 \textbf{y}
 \end{align*}
-where $\textbf{y} = ([P], [Q], [R])^T$. We will use Properties \ref{proper:diagODE} and \ref{proper:diagonalize} to diagonalize the system. It is easy to see that the eigenvalues of the lower-triangular coefficient matrix $A$ are $0$, $-k_1$ and $-k_2$. We further assume that $k_1 \neq k_2$.\footnote{If $k_1 = k_2$, it can be found that the geometric multiplicity of $\lambda = -k_1 = -k_2$ is only $1$ while its algebraic multiplicity becomes $2$ so diagonalization is not possible.} The eigenvector for $\lambda = 0$ is clearly $(0,0,1)^T$, while that for $\lambda = -k_1$ can be derived from solving
+where $\textbf{y} = ([P], [Q], [R])^T$. We will use Properties \ref{proper:diagODE} and \ref{proper:diagonalize} to diagonalize the system. It is easy to see that the eigenvalues of the lower-triangular coefficient matrix $A$ are $0$, $-k_1$, and $-k_2$. We further assume that $k_1 \neq k_2$.\footnote{If $k_1 = k_2$, it can be found that the geometric multiplicity of $\lambda = -k_1 = -k_2$ is only $1$ while its algebraic multiplicity becomes $2$ so diagonalization is not possible.} The eigenvector for $\lambda = 0$ is clearly $(0,0,1)^T$, while that for $\lambda = -k_1$ can be derived from solving
 \begin{align*}
 \left[\begin{array}{@{\,}wc{18pt}wc{18pt}wc{18pt}|wc{10pt}@{\,}}
 0 & 0 & 0 & 0 \\
@@ -1904,7 +1909,7 @@ e^{i ft} \\
 \sin(ft) 
 \end{bmatrix}
 \end{align*}
-Consider the real and imaginary parts as two linearly independent solutions, we have \begin{align*}
+Considering the real and imaginary parts as two linearly independent solutions, we have \begin{align*}
 \vec{v} = c_1\begin{bmatrix}
 \sin(ft) \\
 \cos(ft) 
@@ -1963,7 +1968,7 @@ print(B_sympy.eigenvals())
 \end{lstlisting}
 The \verb|eigenvals| method gives \verb|{1: 2}| which means that the eigenvalue of $\lambda = 1$ has an algebraic multiplicity of $2$. To compute the eigenvector(s), we similarly call the \verb|eigenvects| method:
 \begin{lstlisting}
-print(B_sympy.eigenvects())    
+print(B_sympy.eigenvects())
 \end{lstlisting}
 which returns 
 \begin{lstlisting}
@@ -1973,7 +1978,7 @@ which returns
 the last item in the list containing a single eigenvector of $(1,0)^T$ correctly. Diagonalization can be easily performed by the \verb|diagonalize| method in \texttt{sympy}:
 \begin{lstlisting}
 A_sympy = sympy.Matrix(A)
-print(A_sympy.diagonalize())    
+print(A_sympy.diagonalize())
 \end{lstlisting}
 which gives
 \begin{lstlisting}
@@ -1989,8 +1994,11 @@ as the $P$ (with small round-off errors for the zeros) and $D$ matrices in $D = 
 \section{Exercises}
 
 \begin{Exercise}
-Argue that if the eigenvalues of a matrix $A$ all have an algebraic multiplicity of $1$, or in other words, no repeated root for the characteristic equation, then $A$ is diagonalizable. 
+Argue that if the eigenvalues of a matrix $A$ all have an algebraic multiplicity of $1$ (and $A$ splits), or in other words, no repeated root for the characteristic equation, then $A$ is diagonalizable. 
 \end{Exercise}
+\begin{Answer}
+By Theorem \ref{thm:geolessalgebra}, the geometric multiplicities of $A$ are all $1$ and will be strictly equal to the algebraic multiplicities, and so by Properties \ref{proper:diagonalize}, $A$ is diagonalizable.
+\end{Answer}
 
 \begin{Exercise}
 Find the eigenvalues of the following matrices.
@@ -2011,6 +2019,19 @@ Find the eigenvalues of the following matrices.
 \end{align*}
 as well as their transpose.
 \end{Exercise}
+\begin{Answer}
+For $A$, the characteristic polynomial is 
+\begin{align*}
+p(\lambda) = \begin{vmatrix}
+1-\lambda & 3 & 3\\
+4 & -\lambda & 4\\
+0 & 1 & 2-\lambda  
+\end{vmatrix}
+&= -\lambda^3 + 3\lambda^2 + 14\lambda - 16 \\
+&= (1-\lambda)(-16-2\lambda+\lambda^2) 
+\end{align*}
+and the eigenvalues are $\lambda = 1$, $1+\sqrt{17}$, $1-\sqrt{17}$. Meanwhile, $B$ is an upper-triangular matrix and its characteristic polynomial is $p(\lambda) = (1-\lambda)(5-\lambda)(8-\lambda)(10-\lambda)$, seen by repeated cofactor expansion along rows starting from the left, and hence its eigenvalues are just the diagonal entries $\lambda = 1,5,8,10$.
+\end{Answer}
 
 \begin{Exercise}
 Find the eigenvalues and corresponding eigenvectors for
@@ -2024,6 +2045,36 @@ A =
 \end{align*}
 Repeat the calculation for its inverse.
 \end{Exercise}
+\begin{Answer}
+The characteristic equation is given by
+\begin{align*}
+\begin{vmatrix}
+3 - \lambda & 1 & 4\\
+1 & 3 - \lambda & 0\\
+0 & 0 & 1 - \lambda
+\end{vmatrix} 
+= (1 - \lambda) [(3-\lambda)^2-1] = (1 - \lambda)(2 - \lambda)(4 - \lambda)
+\end{align*}
+so the eigenvalues are $1$, $2$ and $4$. For $\lambda = 1$, we set out to solve the system $A-I = \textbf{0}$:
+\begin{align*}
+\left[
+\begin{array}{wc{10pt}wc{10pt}wc{10pt}|wc{10pt}}
+2 & 1 & 4 & 0\\
+1 & 2 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{array}
+\right]    
+\end{align*}
+This can be done by Gaussian elimination, which yields
+\begin{align*}
+\left[\begin{array}{wc{10pt}wc{10pt}wc{10pt}|wc{10pt}}
+1 & 2 & 0 & 0\\
+0 & -1 & \frac{4}{3} & 0 \\
+0 & 0 & 0 & 0
+\end{array}\right]
+\end{align*}
+We can let $z = t$ be the free variable, giving $y = \frac{4}{3}t$ and $x = -\frac{8}{3}t$. The eigenvector for $\lambda = 1$ is then $(-\frac{8}{3}, \frac{4}{3}, 1)^T$. Similarly, the eigenvectors for $\lambda = 2,4$ are $(-1,1,0)^T$ and $(1,1,0)^T$ respectively. The calculation for its inverse should return the new eigenvalues as the reciprocals of the old ones while the eigenvectors remain the same, as suggested in the main text.
+\end{Answer}
 
 \begin{Exercise}
 Find the eigenvalues and corresponding eigenvectors for
@@ -2037,6 +2088,9 @@ A =
 \end{align*}
 and perform Gram-Schmidt orthogonalization on the eigenvectors found.
 \end{Exercise}
+\begin{Answer}
+The eigenvalues are $\lambda = -1$, $1$, $3$ and the corresponding eigenvectors are $(-2,-5,6)^T$, $(0,1,0)^T$, $(2,3,2)^T$. After Gram-Schmidt orthogonalization, they become $(-\frac{2}{\sqrt{65}}, -\frac{5}{\sqrt{65}}, \frac{6}{\sqrt{65}})^T$, $(-\frac{1}{\sqrt{26}}, \frac{4}{\sqrt{26}}, \frac{3}{\sqrt{26}})^T$, $(\frac{3}{\sqrt{10}}, 0, \frac{1}{\sqrt{10}})^T$. (The numbers will be different if the ordering is different.)
+\end{Answer}
 
 \begin{Exercise}
 Find all the eigenvalues and eigenvectors for the matrix
@@ -2049,14 +2103,40 @@ A = \begin{bmatrix}
 \end{align*}
 as well as its transposes $A^T$. Use your answer to support the fact that the transpose of a matrix always has the same eigenvalues, but may or may not lead to the same eigenvectors.
 \end{Exercise}
+\begin{Answer}
+The eigenvalues and eigenvectors for the matrix $A$ are $\lambda = 1, 2-\sqrt{3}, 2+\sqrt{3}$ and $(0,0,1)^T$, $(-1-\sqrt{3}, 1, 0)^T$, $(-1+\sqrt{3}, 1, 0)^T$. On the other hand, the eigenvalues for its transpose $A^T$ should still be the same, but the eigenvectors are now $(0,0,1)^T$, $(-1-\sqrt{3}, 2, 0)^T$, $(-1+\sqrt{3}, 2, 0)^T$, where the first eigenvector is the same but the remaining two eigenvectors are different.
+\end{Answer}
 
 \begin{Exercise}
 Show that for any $n \times n$ square matrix $A$, if its characteristic polynomial is given by
 \begin{align*}
 p(\lambda) = \det(A-\lambda I) = (-1)^n(\lambda^n + c_{n-1}\lambda^{n-1} + \cdots + c_0)
 \end{align*}
-then $\text{tr}(A) = -c_{n-1}$ and $\det(A) = c_0$ where $\text{tr}()$ is the trace. You may assume for simplicity, that the matrix $A$ is diagonalizable. However, this result actually holds for all square matrices regardless of the diagonalizability.
+then $\text{tr}(A) = -c_{n-1}$ and $\det(A) = (-1)^nc_0$ where $\text{tr}()$ is the trace. You may assume for simplicity, that the matrix $A$ is diagonalizable. However, this result actually holds for all square matrices regardless of the diagonalizability.
 \end{Exercise}
+\begin{Answer}
+Assume the matrix $A$ can be diagonalized into
+\begin{align*}
+D = P^{-1}AP =
+\begin{bmatrix}
+D_{11} & 0 & \cdots & 0 \\
+0 & D_{22} & & 0 \\
+\vdots & & \ddots & \vdots \\
+0 & 0 & \cdots & D_{nn}
+\end{bmatrix}
+\end{align*}
+then its characteristic polynomial is clearly 
+\begin{align*}
+p(\lambda) = \det(D-\lambda I) &= (D_{11}-\lambda)(D_{22}-\lambda)\cdots(D_{nn}-\lambda) \\
+&= \cdots + (-1)^{n-1}(D_{11}+D_{22}+\cdots+D_{nn})\lambda^{n-1}+(-1)^n\lambda^n \\
+&= \cdots + (-1)^{n}(-\text{tr}(D))\lambda^{n-1}+(-1)^n\lambda^n
+\end{align*}
+so $\text{tr}(D) = -c_{n-1}$ and by trace/characteristic polynomial invariance (Properties \ref{proper:similarinvariant}), we also have $\text{tr}(A) = -c_{n-1}$. The determinant part is straightforward: just set $\lambda = 0$ on both sides to get
+\begin{align*}
+\det(A-(0)I) &= (-1)^n((0)^n + c_{n-1}(0)^{n-1} + \cdots + c_0) \\
+\det(A) &= (-1)^nc_0
+\end{align*}
+\end{Answer}
 
 \begin{Exercise}
 For the matrix 
@@ -2082,6 +2162,31 @@ A^{n} = \begin{bmatrix}
 for $n \geq 3$ by Mathematical Induction (assume this holds for $n = k$, then prove for $n = k+1$).
 \end{enumerate}
 \end{Exercise}
+\begin{Answer}
+\begin{enumerate}[label=(\alph*)]
+\item The characteristic polynomial is $p(\lambda) = \lambda^3-3\lambda^2+2\lambda$. So by Cayley-Hamilton Theorem, $A^3 - 3A^2 + 2A = 0I$ and thus
+\begin{align*}
+A^3 &= 3A^2 - 2A \\
+&= 3\begin{bmatrix}
+1&-3&3\\
+1&1&-1\\ 
+1&-3&3
+\end{bmatrix}
+- 2\begin{bmatrix}
+1 & -1 & 1\\
+1 & 1 & -1\\
+1 & -1 & 1
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+1 & -7 & 7\\
+1 & 1 & -1\\
+1 & -7 & 7
+\end{bmatrix}
+\end{align*}
+\item The generating formula is $A^{n+1} = 3A^n - 2A^{n-1}$. By mathematical induction, at $A_{12}$, $A_{13}$, $A_{32}$, $A_{33}$, substituting the proposed expressions into the equation yields $3(2^{n}-1) - 2(2^{n-1}-1) = 2^{n+1}-1$ which is balanced.
+\end{enumerate}
+\end{Answer}
 
 \begin{Exercise}
 Apply diagonalization for the following matrix, and show that the characteristic polynomial remains unchanged under diagonalization, if possible.
@@ -2106,6 +2211,85 @@ Apply diagonalization for the following matrix, and show that the characteristic
 \end{bmatrix} 
 \end{align*}
 \end{Exercise}
+\begin{Answer}
+\begin{enumerate}[label=(\alph*)]
+\item Diagonalization is not possible, as the repeated eigenvalue $\lambda = 2$ (with an algebraic multiplicity of $2$) has only one eigenvector, which is $(1,1,0)^T$.
+\item The eigenvectors are $(-1,1,0)^T$ and $(-1,0,1)^T$ for $\lambda = 1$:
+\begin{align*}
+\left[
+\begin{array}{ccc|c}
+1-1 & 0 & 0 & 0\\
+2 & 3-1 & 2 & 0\\
+0 & 0 & 1-1 & 0
+\end{array}
+\right]    
+=&
+\left[
+\begin{array}{ccc|c}
+0 & 0 & 0 & 0\\
+2 & 2 & 2 & 0\\
+0 & 0 & 0 & 0
+\end{array}
+\right] \\
+\to &
+\left[
+\begin{array}{ccc|c}
+1 & 1 & 1 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0
+\end{array}
+\right]
+\end{align*}
+and $(0,1,0)^T$ for $\lambda = 3$. Hence 
+\begin{align*}
+\begin{bmatrix}
+-1 & -1 & 0\\
+1 & 0 & 1\\
+0 & 1 & 0
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+1 & 0 & 0\\
+2 & 3 & 2\\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+-1 & -1 & 0\\
+1 & 0 & 1\\
+0 & 1 & 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 3  
+\end{bmatrix}
+\end{align*}
+\item The eigenvectors are $(0,-1,4)^T$, $(4,-3,2)^T$, $(0,1,0)^T$ for $\lambda = 1,3,5$, so we have
+\begin{align*}
+\begin{bmatrix}
+0 & 4 & 0\\
+-1 & -3 & 1\\
+4 & 2 & 0
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+3 & 0 & 0\\
+1 & 5 & 1\\
+1 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+0 & 4 & 0\\
+-1 & -3 & 1\\
+4 & 2 & 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 3 & 0\\
+0 & 0 & 5  
+\end{bmatrix}
+\end{align*}
+\end{enumerate}
+\end{Answer}
 
 \begin{Exercise}
 Solve the following system of ODEs.
@@ -2118,6 +2302,70 @@ Solve the following system of ODEs.
 \end{align*}
 with the initial condition $y_1(0) = 3$, $y_2(0) = 2$, $y_3(0) = 9$.
 \end{Exercise}
+\begin{Answer}
+The system is $\textbf{y}' = A\textbf{y}$ where 
+\begin{align*}
+A =
+\begin{bmatrix}
+-1 & 1 & 3\\
+-2 & 3 & 2\\
+-2 & 1 & 4
+\end{bmatrix}
+\end{align*}
+The eigenvectors of $A$ are $(2,1,1)^T, (1,0,1)^T, (1,1,1)^T$ for the eigenvalues $\lambda = 1,2,3$. By substituting $\textbf{y} = P\textbf{z}$ where 
+\begin{align*}
+P = 
+\begin{bmatrix}
+2 & 1 & 1\\
+1 & 0 & 1\\
+1 & 1 & 1    
+\end{bmatrix}
+\end{align*}
+the system becomes $\textbf{z}'= (P^{-1}AP)\textbf{z} = D\textbf{z}$ with 
+\begin{align*}
+D = 
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 2 & 0\\
+0 & 0 & 3
+\end{bmatrix}
+\end{align*}
+The corresponding solutions are $z_1 = C_1e^{x}$, $z_2 = C_2e^{2x}$ and $z_3 = C_3e^{3x}$. Computing $\textbf{y} = P\textbf{z}$ recovers the equations
+\begin{align*}
+\left\{\begin{alignedat}{1}
+y_1 &= 2C_1e^{x} + C_2e^{2x} + C_3e^{3x}\\
+y_2 &= C_1e^{x} + C_3e^{3x}\\
+y_3 &= C_1e^{x} + C_2e^{2x} + C_3e^{3x}
+\end{alignedat} \right.
+\end{align*}
+The initial condition implies that 
+\begin{align*}
+\begin{bmatrix}
+3\\
+2\\
+9
+\end{bmatrix}   
+=
+\begin{bmatrix}
+2 & 1 & 1\\
+1 & 0 & 1\\
+1 & 1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+C_1\\
+C_2\\
+C_3
+\end{bmatrix}
+\end{align*}
+whose solutions are $C_1 = -6$, $C_2 = 7$, $C_3 = 8$. Hence the complete solution is
+\begin{align*}
+\left\{\begin{alignedat}{1}
+y_1 &= -12e^{x} + 7e^{2x} + 8e^{3x} \\
+y_2 &= -6e^{x} + 8e^{3x} \\
+y_3 &= -6e^{x} + 7e^{2x} + 8e^{3x}
+\end{alignedat} \right.
+\end{align*}
+\end{Answer}
 
 \begin{Exercise}
 Given an idealized situation where there are three chemical gases $P, Q, R$. Denote their concentrations by $[P], [Q], [R]$ respectively. If they undergo reactions in a closed pathway $P \to Q \to R \to P$ that can be regarded as first-order, so that the governing equations about their concentrations are
@@ -2130,3 +2378,27 @@ Given an idealized situation where there are three chemical gases $P, Q, R$. Den
 \end{align*}
 where $k_{mn}$ are all reaction constants. Derive the time evolution of the concentrations of the three gases. What happens when $t \to \infty$?
 \end{Exercise}
+\begin{Answer}
+The coefficient matrix for the system is
+\begin{align*}
+\begin{bmatrix}
+-k_{12} & k_{12} & 0 \\
+0 & -k_{23} & k_{23} \\
+k_{31} & 0 & -k_{31}
+\end{bmatrix}
+\end{align*}
+and the corresponding characteristic polynomial is
+\begin{align*}
+&\quad \begin{vmatrix}
+-k_{12}-\lambda & k_{12} & 0 \\
+0 & -k_{23}-\lambda & k_{23} \\
+k_{31} & 0 & -k_{31}-\lambda
+\end{vmatrix} \\
+&= (-k_{12}-\lambda)(-k_{23}-\lambda)(-k_{31}-\lambda) + k_{12}k_{23}k_{31} \\
+&=  -k_{12}k_{23}k_{31} -(k_{12}k_{23} + k_{23}k_{31} + k_{31}k_{12})\lambda \\
+&\quad - (k_{12}+k_{23}+k_{31})\lambda^2 - \lambda^3  + k_{12}k_{23}k_{31} \\
+&= -[(k_{12}k_{23} + k_{23}k_{31} + k_{31}k_{12})\lambda + (k_{12}+k_{23}+k_{31})\lambda^2 + \lambda^3] \\
+&= -\lambda[(k_{12}k_{23} + k_{23}k_{31} + k_{31}k_{12})+ (k_{12}+k_{23}+k_{31})\lambda +\lambda^2]
+\end{align*}
+Clearly the first eigenvalue is $\lambda = 0$ and the eigenvector can easily verified to be simply $(1,1,1)^T$. The remaining two eigenvalues come as a conjugate pair with a real part of $-\frac{1}{2}(k_{12}+k_{23}+k_{31}) < 0$, so the evolution induced by them will eventually diminish. What remains will be the part with an eigenvalue of $\lambda = 0$ which does not change in time, so after a long time the concentrations of the chemical tracers will tend to equalize: $[P] = [Q] = [R]$.
+\end{Answer}

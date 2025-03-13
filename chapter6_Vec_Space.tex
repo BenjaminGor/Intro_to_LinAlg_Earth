@@ -493,7 +493,7 @@ Including our earlier discussion in Section \ref{subsection:SolLinSysGauss}, The
 \item Otherwise ($p \geq q$), we can solve $A\vec{x} = \textbf{0}$ by Gaussian Elimination to see if it only has the trivial solution. If so [not], the vectors are linearly independent [dependent]. Alternatively, if $A$ is a square matrix, then we may check if its determinant is non-zero, just like what has been done in Example \ref{exmp:exmplinearindep}. Gaussian Elimination still works for any square matrix, and in the case of linear independence [dependence], $A$ will [not] be reduced to an identity matrix.
 \end{enumerate}
 In many cases, the number of vectors are indeed not equal to their dimension, so the method of using determinant to check linear independence in the last example does not apply, and we need to resort to Gaussian Elimination. In fact, Gaussian Elimination can disclose more information than just if a set of vectors is linearly (in)dependent as an entirety in both cases, but also how exactly these vectors are dependent on each other, soon to be explained. Before doing so, we note that the above observations lead to an extension of Theorem \ref{thm:equiv2}.
-\begin{thm}[Equivalence Statement, ver.\ 3]
+\begin{thm}[Equivalence Statements, ver.\ 3]
 \label{thm:equiv3}
 For an $n \times n$ real square matrix $A$, the followings are equivalent:
 \begin{enumerate}[label=(\alph*)]
