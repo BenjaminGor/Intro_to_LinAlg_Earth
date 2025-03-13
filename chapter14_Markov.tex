@@ -7,7 +7,7 @@ In Earth Science, we often look at the evolution of variables in time, like temp
 
 \subsection{Lagged Auto-correlation}
 
-First, let's talk about how to determine if a time series possesses some sort of \textit{memory} as mentioned in the introduction. Memory causes the past of a time series to influence the present, and hence will leave a mark when we try to correlate the past and present segments of the time series. This leads to the idea of \index{Lagged Auto-correlation}\keywordhl{lagged auto-correlation}, which is the correlation between a time series and itself, but one of them is lagged and shifted by a certain amount of days, let's say $k$ (the direction of the shifting does not matter as it is an auto-correlation, and we only care about the overlapping part). Then, it is more specifically known as the \textit{Lag-$k$ Auto-correlation}.
+First, let's talk about how to determine if a \index{Time Series}\keywordhl{time series} possesses some sort of \textit{memory} as mentioned in the introduction. Memory causes the past of a time series to influence the present, and hence will leave a mark when we try to correlate the past and present segments of the time series. This leads to the idea of \index{Lagged Auto-correlation}\keywordhl{lagged auto-correlation}, which is the correlation between a time series and itself, but one of them is lagged and shifted by a certain amount of days, let's say $k$ (the direction of the shifting does not matter as it is an auto-correlation, and we only care about the overlapping part). Then, it is more specifically known as the \textit{Lag-$k$ Auto-correlation}.
 
 \begin{defn}
 \label{defn:autocorr}

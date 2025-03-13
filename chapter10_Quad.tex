@@ -1,6 +1,6 @@
 \chapter{Quadratic Forms}
 
-Symmetric matrices often see their appearance in the areas of Geometry, Statistics, Physics, and more, as \textit{quadratic forms}. They can be used to describe a family of geometric shapes known as \textit{conic sections}, including ellipses and hyperbola. A more common application of quadratic forms in Earth Sciences will be obtaining a \textit{covariance matrix} between different variables, eventually leading to \textit{Principal Component Analysis (PCA)} which breaks down the variables into uncorrelated modes that explain the spread of their distribution. In Atmospheric Science, it is more commonly known as \textit{Empirical Orthogonal Functions (EOF)} and has been widely used to analyze prominent, large-scale climate patterns like \textit{El Niño–Southern Oscillation (ENSO)}. 
+Symmetric matrices often see their appearance in the areas of Geometry, Statistics, Physics, and more, as \textit{quadratic forms}. They can be used to describe a family of geometric shapes known as \textit{conic sections}, including ellipses and hyperbola. A more common application of quadratic forms in Earth Sciences will be obtaining a \textit{covariance matrix} between different variables, eventually leading to \textit{Principal Component Analysis (PCA)}, which breaks down the variables into uncorrelated modes that explain the spread of their distribution. In Atmospheric Science, it is more commonly known as \textit{Empirical Orthogonal Functions (EOF)} and has been widely used to analyze prominent, large-scale climate patterns like \textit{El Niño–Southern Oscillation (ENSO)}. 
 
 \section{Mathematical and Geometric Ideas of Quadratic Forms}
 \subsection{Definition of Quadratic Forms}
@@ -58,9 +58,9 @@ b_{11}x_1 + \frac{1}{2}(b_{12} + b_{21})x_2 + \frac{1}{2}(b_{13} + b_{31})x_3 + 
 \frac{1}{2}(b{13} + b_{31})x_1 + \frac{1}{2}(b_{23} + b_{32})x_2 + b_{33}x_3 + \cdots \\
 \vdots 
 \end{array}\right] \\
-&= x_1(b_{11}x_1 + \frac{1}{2}(b_{12} + b_{21})x_2 + \frac{1}{2}(b_{13} + b_{31})x_3 + \cdots) \;\; = b_{11}x_1^2 + b_{12}x_1x_2 + b_{13}x_1x_3 + \cdots \\
-&\quad + x_2(\frac{1}{2}(b_{12} + b_{21})x_1 + b_{22}x_2 + \frac{1}{2}(b_{23} + b_{32})x_3 + \cdots) \quad + b_{21}x_2x_1 + b_{22}x_2^2 + b_{23}x_2x_3 + \cdots \\
-&\quad + x_3(\frac{1}{2}(b_{13} + b_{31})x_1 + \frac{1}{2}(b_{23} + b_{32})x_2 + b_{33}x_3 + \cdots) \quad + b_{31}x_3x_1 + b_{32}x_3x_2 + b_{33}x_3^2 + \cdots 
+&= x_1\left(b_{11}x_1 + \frac{1}{2}(b_{12} + b_{21})x_2 + \frac{1}{2}(b_{13} + b_{31})x_3 + \cdots\right) \quad = b_{11}x_1^2 + b_{12}x_1x_2 + b_{13}x_1x_3 + \cdots \\
+&\quad + x_2\left(\frac{1}{2}(b_{12} + b_{21})x_1 + b_{22}x_2 + \frac{1}{2}(b_{23} + b_{32})x_3 + \cdots\right) \quad + b_{21}x_2x_1 + b_{22}x_2^2 + b_{23}x_2x_3 + \cdots \\
+&\quad + x_3\left(\frac{1}{2}(b_{13} + b_{31})x_1 + \frac{1}{2}(b_{23} + b_{32})x_2 + b_{33}x_3 + \cdots\right) \quad + b_{31}x_3x_1 + b_{32}x_3x_2 + b_{33}x_3^2 + \cdots 
 \end{align*}} In the same essence, we can always express any quadratic form using the symmetric part of a matrix. For instance, the quadratic form $x^2 - 2xy + 3y^2$ can be rewritten as
 \begin{align*}
 \begin{bmatrix}
@@ -75,7 +75,19 @@ x \\
 y
 \end{bmatrix}
 \end{align*}
-Short Exercise: Verify the quadratic form by expanding it.\footnote{\begin{align*}
+$\blacktriangleright$ Short Exercise: Verify the quadratic form by expanding it.\footnotemark \par
+Even if we are given $\textbf{x}^TA\textbf{x}$ where $A$ is not symmetric to begin with, we can extract the symmetric part of $A$ (see Exercise \ref{ex:symskew}), that is, $B = \frac{1}{2}(A + A^T)$. Reconstruction of the quadratic form by $\textbf{x}^TB\textbf{x}$ will still be equivalent to the original $\textbf{x}^TA\textbf{x}$:
+\begin{align*}
+\textbf{x}^TB\textbf{x} &= \frac{1}{2}\textbf{x}^T(A + A^T)\textbf{x} \\
+&= \frac{1}{2}\textbf{x}^TA\textbf{x} + \frac{1}{2}\textbf{x}^TA^T\textbf{x} \\
+&= \frac{1}{2}\textbf{x}^TA\textbf{x} + \frac{1}{2}(\textbf{x}^TA^T\textbf{x})^T & \begin{aligned}
+&\text{($\textbf{x}^TA^T\textbf{x} = (\textbf{x}^TA^T\textbf{x})^T$ since it is just} \\
+&\text{a scalar in a $1 \times 1$ singleton block)}  
+\end{aligned} \\
+&= \frac{1}{2}\textbf{x}^TA\textbf{x} + \frac{1}{2}\textbf{x}^TA\textbf{x} & \text{(Properties \ref{proper:transp})} \\
+&= \textbf{x}^TA\textbf{x}
+\end{align*}
+\footnotetext{{\begin{align*}
 \begin{bmatrix}
 x & y
 \end{bmatrix}
@@ -97,22 +109,10 @@ x - y \\
 \end{bmatrix} \\
 &= x(x-y) + y(-x+3y) \\
 &= x^2 - xy - xy + 3y^2 = x^2 - 2xy + 3y^2
-\end{align*}} \par
-Even if we are given $\textbf{x}^TA\textbf{x}$ where $A$ is not symmetric to begin with, we can extract the symmetric part of $A$ (see Exercise \ref{ex:symskew}), that is, $B = \frac{1}{2}(A + A^T)$. Reconstruction of the quadratic form by $\textbf{x}^TB\textbf{x}$ will still be equivalent to the original $\textbf{x}^TA\textbf{x}$:
-\begin{align*}
-\textbf{x}^TB\textbf{x} &= \frac{1}{2}\textbf{x}^T(A + A^T)\textbf{x} \\
-&= \frac{1}{2}\textbf{x}^TA\textbf{x} + \frac{1}{2}\textbf{x}^TA^T\textbf{x} \\
-&= \frac{1}{2}\textbf{x}^TA\textbf{x} + \frac{1}{2}(\textbf{x}^TA^T\textbf{x})^T & \begin{aligned}
-&\text{($\textbf{x}^TA^T\textbf{x} = (\textbf{x}^TA^T\textbf{x})^T$ since it is just} \\
-&\text{a scalar in a $1 \times 1$ singleton block)}  
-\end{aligned} \\
-&= \frac{1}{2}\textbf{x}^TA\textbf{x} + \frac{1}{2}\textbf{x}^TA\textbf{x} & \text{(Properties \ref{proper:transp})} \\
-&= \textbf{x}^TA\textbf{x}
-\end{align*}
-Similarly the skew-symmetric part does not contribute anything to the quadratic form\footnote{$\frac{1}{2}\textbf{x}^T(A - A^T)\textbf{x} = \frac{1}{2}\textbf{x}^TA\textbf{x} - \frac{1}{2}\textbf{x}^TA^T\textbf{x} = \frac{1}{2}\textbf{x}^TA\textbf{x} - \frac{1}{2}(\textbf{x}^TA^T\textbf{x})^T = \frac{1}{2}\textbf{x}^TA\textbf{x} - \frac{1}{2}\textbf{x}^TA\textbf{x} = 0$}, and we will characterize all quadratic forms using symmetric matrices henceforth.
+\end{align*}}}Similarly the skew-symmetric part does not contribute anything to the quadratic form\footnote{$\frac{1}{2}\textbf{x}^T(A - A^T)\textbf{x} = \frac{1}{2}\textbf{x}^TA\textbf{x} - \frac{1}{2}\textbf{x}^TA^T\textbf{x} = \frac{1}{2}\textbf{x}^TA\textbf{x} - \frac{1}{2}(\textbf{x}^TA^T\textbf{x})^T = \frac{1}{2}\textbf{x}^TA\textbf{x} - \frac{1}{2}\textbf{x}^TA\textbf{x} = 0$}, and we will characterize all quadratic forms using symmetric matrices henceforth.
 Such a symmetric matrix $B$ is also frequently considered to behave as a \index{Bilinear Form}\index{Symmetric Bilinear Form}\keywordhl{symmetric bilinear form} in a more general setting.
 \begin{defn}[(Symmetric) Bilinear Form]
-A real bilinear form $B(\vec{x}, \vec{y}): \mathcal{V} \times \mathcal{V} \to \mathbb{R}$ over a real vector space $\mathcal{V}$ takes two vectors $\vec{x}$, $\vec{y} \in \mathcal{V}$ from it and returns a real scalar. A symmetric bilinear form is the one that satisfies 
+A real bilinear form $B(\vec{x}, \vec{y}): \mathcal{V} \times \mathcal{V} \to \mathbb{R}$ over a real vector space $\mathcal{V}$ takes two vectors $\vec{x}$, $\vec{y} \in \mathcal{V}$ from it as inputs and returns a real scalar. A symmetric bilinear form is one that satisfies 
 \begin{align}
 B(\vec{x}, \vec{y}) = B(\vec{y}, \vec{x})    
 \end{align} for any pair of $\vec{x}$ and $\vec{y}$. For finite-dimensional cases, the expression becomes
@@ -131,8 +131,8 @@ An important attribute of quadratic forms is their \index{Definiteness}\index{Se
 \label{defn:quaddefinite}
 For any real quadratic form $Q(x) = \textbf{x}^T B\textbf{x}$, $Q$ (or $B$) is called
 \begin{enumerate}[label=(\alph*)]
-\item positive-definite, if for any $\vec{x} \neq \vec{0}$, $\textbf{x}^T B\textbf{x} > 0$ (positive-semidefinite if $\textbf{x}^T B\textbf{x} \geq 0$), 
-\item negative-definite, if for any $\vec{x} \neq \vec{0}$, $\textbf{x}^T B\textbf{x} < 0$ (negative-semidefinite if $\textbf{x}^T B\textbf{x} \leq 0$), 
+\item positive-definite, if for any $\vec{x} \neq \vec{0}$, $\textbf{x}^T B\textbf{x} > 0$ (positive-semidefinite if $\textbf{x}^T B\textbf{x} \geq 0$);
+\item negative-definite, if for any $\vec{x} \neq \vec{0}$, $\textbf{x}^T B\textbf{x} < 0$ (negative-semidefinite if $\textbf{x}^T B\textbf{x} \leq 0$); 
 \item indefinite if $\textbf{x}^T B\textbf{x}$ can take both positive and negative values.
 \end{enumerate}
 \end{defn}
@@ -140,8 +140,8 @@ For any real quadratic form $Q(x) = \textbf{x}^T B\textbf{x}$, $Q$ (or $B$) is c
 \label{thm:quaddefinite}
 The quadratic form $Q(x) = \textbf{x}^T B\textbf{x}$ where $B$ is real symmetric, is
 \begin{enumerate}[label=(\alph*)]
-\item positive-definite, if and only if all eigenvalues of $B$ are positive (positive-semidefinite if and only if all eigenvalues of $B$ are non-negative), 
-\item negative-definite, if and only if all eigenvalues of $B$ are negative (negative-semidefinite if and only if all eigenvalues of $B$ are non-positive), 
+\item positive-definite, if and only if all eigenvalues of $B$ are positive (positive-semidefinite if and only if all eigenvalues of $B$ are non-negative);
+\item negative-definite, if and only if all eigenvalues of $B$ are negative (negative-semidefinite if and only if all eigenvalues of $B$ are non-positive); 
 \item indefinite when there are both positive and negative eigenvalues for $B$.
 \end{enumerate}
 \end{thm}
@@ -218,7 +218,7 @@ B' = P^TBP
 \end{align}
 where $P$ is invertible and consists of column vectors in the new basis expressed relative to the old basis. Any pair of $B'$ and $B$ related in this way are referred to as \textit{congruent}.
 \end{defn}
-Fortunately, previously during orthogonal diagonalization, we have $P^{-1} = P^T$, and hence the corresponding coordinate transformation of a symmetric matrix by either treating it as a linear operator or quadratic form coincides. Hence the quadratic form $B$ can be transformed into (and congruent to) a diagonal matrix $D = P^TBP$ where the columns of $P$ are all the orthonormal eigenvectors of $B$ (Properties \ref{proper:orthobasissym})\footnote{Notice that this is not the only way to make a quadratic form diagonal (unlike a linear transformation, dictated by its eigenvectors) and there exist many other $P$ that can do it. (However, an important observation about them is Theorem \ref{thm:sylvester}, to be introduced soon.)}. Furthermore, such a diagonal matrix $D$ contains the eigenvalues of $B$ and let's say $r$ of them are positive: $\lambda_1^+, \lambda_2^+, \cdots, \lambda_r^+$, $s$ of them are negative $\lambda_1^-,  \lambda_2^-, \cdots, \lambda_s^-$, and the remaining eigenvalues are zeros. Arranging them in the order of positive-negative-zero, and via an extra real diagonal factor matrix $F$, where
+Fortunately, previously during orthogonal diagonalization, we have $P^{-1} = P^T$, and hence the corresponding coordinate transformation of a symmetric matrix to its orthonormal eigenbasis by either treating it as a linear operator or quadratic form coincides. Hence the quadratic form $B$ can be transformed into (and congruent to) a diagonal matrix $D = P^TBP$ where the columns of $P$ are all the orthonormal eigenvectors of $B$ (Properties \ref{proper:orthobasissym})\footnote{Notice that this is not the only way to make a quadratic form diagonal (unlike a linear transformation, dictated by its eigenvectors) and there exist many other $P$ that can do it. (However, an important observation about them is Theorem \ref{thm:sylvester}, to be introduced soon.)}. Furthermore, such a diagonal matrix $D$ contains the eigenvalues of $B$ and let's say $r$ of them are positive: $\lambda_1^+, \lambda_2^+, \cdots, \lambda_r^+$, $s$ of them are negative $\lambda_1^-,  \lambda_2^-, \cdots, \lambda_s^-$, and the remaining eigenvalues are zeros. Arranging them in the order of positive-negative-zero, and via an extra real diagonal factor matrix $F$, where
 \begin{align}
 F_{kk} = 
 \begin{cases}
@@ -227,7 +227,7 @@ F_{kk} =
 1 & r+s+1 \leq k \leq n
 \end{cases}
 \end{align}
-it is easy to see that $F$ is invertible and we can further transform the quadratic form into
+it is easy to see that $F$ is invertible, and we can further transform the quadratic form into
 \begin{align*}
 C &= F^TDF \\
 &= \left[\begin{smallmatrix}
@@ -277,7 +277,7 @@ I_r & & \\
   & & [\textbf{0}]
 \end{bmatrix}
 \end{align*}
-which is known as the \index{Canonical Quadratic Form}\keywordhl{canonical quadratic form} for $B$. To summarize, the matrix product $PF$ converts $B$ into such a form by $(PF)^TB(PF) = F^T (P^T BP)F = F^TDF = C$ and therefore $B$ is congruent to its canonical quadratic form. The following theorem shows that two different canonical quadratic forms cannot be congruent and hence the canonical quadratic form of any matrix is unique.
+which is known as the \index{Canonical Quadratic Form}\keywordhl{canonical quadratic form} for $B$. To summarize, the matrix product $PF$ converts $B$ into such a form by $(PF)^TB(PF) = F^T (P^T BP)F = F^TDF = C$, and therefore $B$ is congruent to its canonical quadratic form. The following theorem shows that two different canonical quadratic forms cannot be congruent, and hence the canonical quadratic form of any matrix is unique.
 \begin{thm}
 \label{thm:prepsylvester}
 Two canonical quadratic forms of the same extent $n$
@@ -294,7 +294,7 @@ I_{r'} & & \\
   & & [\textbf{0}]
 \end{bmatrix}
 \end{align*}
-are congruent if and only if $r = r'$ and $s = s'$. As a corollary, this shows the uniqueness of the canonical quadratic form for a quadratic form.
+are congruent if and only if $r = r'$ and $s = s'$. As a corollary, this shows the uniqueness of the canonical quadratic form for any quadratic form.
 \end{thm}
 \begin{proof}
 The "if" part is trivial. For the "only if" part, without loss of generality, assume $r' > r$. If the congruence relation $C' = P^TCP$ has to hold where $P$ is some matrix, then consider
@@ -375,7 +375,7 @@ Hence $0 < \textbf{x}^T C'\textbf{x} = \textbf{x}^T P^T CP\textbf{x} \leq 0$ whi
 An immediate result from this is \index{Sylvester's Law of Inertia}\keywordhl{Sylvester's Law of Inertia}.
 \begin{thm}[Sylvester's Law of Inertia]
 \label{thm:sylvester}
-All diagonalized representations of any quadratic form have the same numbers of positive, negative, and zero diagonal entries. They are collectively known as the \index{Signature}\keywordhl{signature} of the quadratic form. Furthermore, if two diagonalized quadratic forms have the same signature, they are congruent.
+All diagonalized representations of any quadratic form have the same numbers of positive, negative, and zero diagonal entries. They are collectively known as the \index{Signature}\keywordhl{signature} of the quadratic form. Furthermore, if two diagonalized quadratic forms have the same signature, they are congruent, and vice versa.
 \end{thm}
 \begin{proof}
 If two diagonalized representations of a quadratic form have different signatures, then they can be transformed into two canonical quadratic forms with those two sets of signatures using suitable factor matrices as introduced previously. However, this violates the uniqueness of canonical quadratic form in Theorem \ref{thm:prepsylvester}, and hence the two diagonalized representations of a quadratic form must have the same signature. The last statement follows as they will have the same canonical quadratic form and both are congruent to it.
@@ -421,7 +421,7 @@ so there will be one positive and negative eigenvalue for $B$. It is obvious tha
 
 \subsection{Conic Sections}
 \label{Conic}
-\keywordhl{Conic Sections} are the name given to three types of geometric curves in a two-dimensional space, \textit{ellipses/circles}, \textit{parabola} and \textit{hyperbola}. The name originates from the fact that they can be obtained by intersecting a plane with a \textit{double cone} (see Figure \ref{fig:conicsecs}). They can be described by the general equation form as below.
+\keywordhl{Conic Sections} are the name given to three types of geometric curves in a two-dimensional space, \textit{ellipses/circles}, \textit{parabola}, and \textit{hyperbola}. The name originates from the fact that they can be obtained by intersecting a plane with a \textit{double cone} (see Figure \ref{fig:conicsecs}). They can be described by the general equation form as below.
 \begin{figure}[h!]
 \centering
 % Copyleft 2015 | Ridlo W. Wibowo
@@ -561,7 +561,7 @@ or can be expressed as a quadratic form of
 where now $\textbf{x} = (x,y)^T$ only and $B_{33}$ is as defined in Properties \ref{proper:quadgentype}.
 \end{proper}
 By Properties \ref{proper:quadgentype}, they can be classified by the discriminant $\Delta = b^2 - 4ac$, which is easily seen to be equal to $-4\det(B_{33})$: The discriminant is positive [negative] when the graph is a hyperbola [ellipse] and $\det(B_{33})$ is negative [positive]. A zero discriminant actually represents a "parabola", but the removal of linear terms in the conic section equation reduces the parabola to degenerate straight lines. \par
-Short Exercise: Identify the types of curve generated by $x^2 - xy + 2y^2 = 3$ and $x^2 + xy - y^2 = 1$.\footnote{The first one is an ellipse ($\Delta = (-1)^2 - 4(1)(2) = -7 < 0$) and the second one is a hyperbola ($\Delta = (1)^2 - 4(1)(-1) = 5 > 0$).}\par
+$\blacktriangleright$ Short Exercise: Identify the types of curve generated by $x^2 - xy + 2y^2 = 3$ and $x^2 + xy - y^2 = 1$.\footnote{The first one is an ellipse ($\Delta = (-1)^2 - 4(1)(2) = -7 < 0$) and the second one is a hyperbola ($\Delta = (1)^2 - 4(1)(-1) = 5 > 0$).}\par
 Notice that sometimes an "ellipse" where $\det(B_{33}) > 0$ may not produce a real graph and is imaginary. (Take $x^2 + 2y^2 = -3$ as an example.) To address this, we can link the definiteness property of quadratic forms to arrive at an equivalent classification:
 \begin{thm}
 \label{thm:quadcentraltypealt}
@@ -616,7 +616,7 @@ B &=
 -\frac{1}{2} & 1
 \end{bmatrix}
 \end{align*}
-We first find the eigenvalues of $B$, the characteristic equation is
+We first find the eigenvalues of $B$, and the characteristic equation is
 \begin{align*}
 \begin{vmatrix}
 1-\lambda & -\frac{1}{2} \\
@@ -708,7 +708,7 @@ The degree of tilting can be found to be exactly $\pi/4 = 45^{\circ}$, by compar
 against $P$: $\cos \theta = \frac{1}{\sqrt{2}}$ and $\sin \theta = \frac{1}{\sqrt{2}}$ implies that $\tan \theta = 1$, and $\theta = \pi/4$. The possibility of eliminating the cross-product terms in quadratic forms is formally known as the \index{Principal Axes Theorem}\keywordhl{Principal Axes Theorem}.
 
 \begin{thm}[Principal Axes Theorem]
-For a quadratic form $\textbf{x}^TB\textbf{x}$, where $B$ is a real symmetric matrix, we can always make an orthogonal change of variables $\textbf{x}' = P^T\textbf{x}$ (or equivalently $\textbf{x} = P\textbf{x}'$) such that it turns into $\textbf{x}'^TD\textbf{x}' = \lambda_1 x_1'^2 + \lambda_2 x_2'^2 + \cdots$ which contains purely quadratic terms and no cross-product terms. The primed coordinates $\textbf{x}'$ then represent the \textit{principal axes}. $P$ is formed by the set of orthonormal column eigenvectors of $B$ and $D$ is a diagonal matrix with entries being the eigenvalues of $B$.
+For a quadratic form $\textbf{x}^TB\textbf{x}$, where $B$ is a real symmetric matrix, we can always make an orthogonal change of variables $\textbf{x}' = P^T\textbf{x}$ (or equivalently $\textbf{x} = P\textbf{x}'$) such that it turns into $\textbf{x}'^TD\textbf{x}' = \lambda_1 x_1'^2 + \lambda_2 x_2'^2 + \cdots$ which contains purely quadratic terms and no cross-product terms. The primed coordinates $\textbf{x}'$ then represent the \textit{principal axes}. $P$ is formed by the set of orthonormal column eigenvectors of $B$, and $D$ is a diagonal matrix with entries being the eigenvalues of $B$.
 \end{thm}
 This is simply a rephrasing of Definition \ref{defn:orthodiagonal} and Properties \ref{proper:orthobasissym}. In general, for a two-dimensional quadratic form
 \begin{align*}
@@ -768,8 +768,8 @@ Note that the second argument is conjugated just like the complex dot product gi
 \label{thm:hermdefinite}
 The Hermitian form $H(\vec{x}) = \textbf{x}^T \overline{H\textbf{x}}$ by (\ref{eqn:hermform}) where the two input complex vectors are now identical and $H$ is Hermitian, is
 \begin{enumerate}[label=(\alph*)]
-\item positive-definite, if and only if all eigenvalues of $H$ are positive (positive-semidefinite if and only if all eigenvalues of $H$ are non-negative), 
-\item negative-definite, if and only if all eigenvalues of $H$ are negative (negative-semidefinite if and only if all eigenvalues of $H$ are non-positive), 
+\item positive-definite, if and only if all eigenvalues of $H$ are positive (positive-semidefinite if and only if all eigenvalues of $H$ are non-negative;
+\item negative-definite, if and only if all eigenvalues of $H$ are negative (negative-semidefinite if and only if all eigenvalues of $H$ are non-positive); 
 \item indefinite when there are both positive and negative eigenvalues for $H$.
 \end{enumerate}
 \end{thm}
@@ -803,7 +803,7 @@ which yields two negative roots $\lambda = -1, -5$ and we are done.
 
 \subsection{Variance and Covariance}
 \label{section:variancesec}
-One important quantity in the world of Statistics is the \index{Variance}\keywordhl{variance} of a \index{Random Variable}\keywordhl{random variable} or \textit{time series}. Variance can be viewed as the spread of distribution behind the random variable. The larger the variance, the more dispersed the data points are. In Earth Sciences, we often use it to quantify the variability of certain phenomena or patterns, e.g. the variance of spacetime-filtered winds can tell us how active the corresponding wave type is.
+One important quantity in the world of Statistics is the \index{Variance}\keywordhl{variance} of a \index{Random Variable}\keywordhl{random variable} or \textit{time series}. Variance can be viewed as the spread of distribution behind the random variable. The larger the variance, the more dispersed the data points are. In Earth Sciences, we often use it to quantify the variability of certain phenomena or patterns, e.g.\ the variance of spacetime-filtered winds can tell us how active the corresponding wave type is.
 
 \subsubsection{Single Distribution}
 We start with the simplest case, the definition of variance for the distribution of a single random variable first. Since in real life, we can only do a finite amount of samplings, the variance of a random variable is always approximated and inferred from the data points if we do not know the underlying statistical distribution.
@@ -833,7 +833,7 @@ A simpler formula for computing the population variance is
 &\text{$E(XE(X)) = E(X)E(X)$.)}\end{aligned} \\
 &= E(X^2) - (E(X))^2 = E(X^2) - \mu^2 \label{eqn:varshortcut}
 \end{align}
-As said before, we always have a finite sample size. To account for this, sometimes we have to use the sample variance $s^2$, which is the same as population variance but with the $\frac{1}{m}$ factor replaced by $\frac{1}{m-1}$. Hence $s^2 = \frac{m}{m-1}\sigma^2$. As an example, given a dataset $X$, with $5$ data $\vec{x} = (1, 3, 6, 9, 11)^T$, then their mean is
+As said before, we always have a finite sample size. To account for this, we have to use the sample variance $s^2$, which is the same as population variance but with the $\frac{1}{m}$ factor replaced by $\frac{1}{m-1}$.\footnote{It is because we have used one degree of freedom in estimating the mean.} Hence $s^2 = \frac{m}{m-1}\sigma^2$. As an example, given a dataset $X$, with $5$ data $\vec{x} = (1, 3, 6, 9, 11)^T$, then their mean is
 \begin{align*}
 \mu = \frac{1}{5}(1 + 3 + 6 + 9 + 11) = 6
 \end{align*}
@@ -848,7 +848,7 @@ We can also use the aforementioned short-cut Formula (\ref{eqn:varshortcut}).
 &= 49.6 - 36 \\
 &= 13.6
 \end{align*}
-Short Exercise: Find the sample variance of $X$.\footnote{It is $s^2 = \frac{1}{5-1}((1-6)^2 + (3-6)^2 + (6-6)^2 + (9-6)^2 + (11-6)^2) = 17$.\\(Or simply compute $\frac{5}{5-1}\sigma^2$.)} \par
+$\blacktriangleright$ Short Exercise: Find the sample variance of $X$.\footnote{It is $s^2 = \frac{1}{5-1}((1-6)^2 + (3-6)^2 + (6-6)^2 + (9-6)^2 + (11-6)^2) = 17$.\\(Or simply compute $\frac{5}{5-1}\sigma^2$.)} \par
 Note that Formula (\ref{eqn:variance}) for variance in Definition \ref{defn:variance} can be written as a dot product shown below.
 \begin{proper}
 Given a distribution $X$, with $m$ data $\vec{x} = (x_1, x_2, x_3, \cdots, x_m)^T$, and a mean of $\mu$, the population variance can be written as
@@ -862,7 +862,7 @@ It is simply a matter of observing that
 \text{Var}(X) &= \frac{1}{m} ((x_1 - \mu)^2 + (x_2 - \mu)^2 + \cdots + (x_m - \mu)^2) \\ &= \frac{1}{m} (x_1 - \mu, x_2 - \mu, \ldots, x_n - \mu)^T \cdot (x_1 - \mu, x_2 - \mu, \ldots, x_m - \mu)^T    
 \end{align*}
 Notice that variance, as a sum of squares, can never be negative, and is a positive-semidefinite quantity. \par
-Short Exercise: Discuss under what situation the variance will be zero.\footnote{When all data are equal (to the mean).}
+$\blacktriangleright$ Short Exercise: Discuss under what situation the variance will be zero.\footnote{When all data are equal (to the mean).}
 
 \subsubsection{Linear Combination of Multiple Distributions}
 Sometimes we may need to consider the "overall" distribution of the sum of multiple variables. More generally, given any linear combination of multiple ($n$) distributions, like $Z = c_1X^{(1)} + c_2X^{(2)} + \cdots + c_nX^{(n)}$, we may want to know how to compute its mean and variance. The mean will be simply 
@@ -900,7 +900,7 @@ There is also a short-cut formula very similar to that for variance:
 In general, if $\text{Cov}(X,Y)$ is positive (negative), it means that when $X$ increases, $Y$ tends to increase (decrease) together. Finally, a direct comparison reveals that $\text{Cov}(X,X) = \text{Var}(X)$ for any distribution $X$. 
 
 \begin{exmp}
-Two time series of measured zonal and meridional wind speeds $U$ and $V$ at a weather station, are shown in the table below.
+Two time series of measured zonal and meridional wind speeds $U$ and $V$ at a weather station are shown in the table below.
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -967,14 +967,14 @@ We can rewrite the correlation using the vector notation for covariance, (\ref{e
 where $\vec{x}' = \vec{x} - \mu_x$ and $\vec{y}' = \vec{y} - \mu_y$ are centered by removing the mean from the original distributions. Observe that this quantity takes the same form as the one in the Cauchy-Schwarz Inequality (Theorem \ref{thm:CauchySch}), and by that, we promptly know that $\abs{\rho_{xy}} \leq 1$.   
 \end{proof}
 
-Correlation between two distributions $X$ and $Y$ indicates how their data varies together just like covariance, but normalized by their variances so that it is dimensionless and will not depend on the units used. Therefore, correlation can be considered as a standardized version of covariance that can be compared across different pairs of variables and is more interpretable. If the correlation is positive, then $X$ and $Y$ will generally increase or decrease together. On the other hand, if the correlation is negative, then when one of them increases, one of them will tend to decrease, and vice versa. The higher the magnitude of correlation, the stronger the \textit{linear} relationship. Notice the word "linear" here. If the correlation is close to zero, it simply means that there is no clear linear relationship between them, but this does not exclude the possibility of having other relationships, e.g. exponential or quadratic.\par
+Correlation between two distributions $X$ and $Y$ indicates how their data varies together just like covariance, but normalized by their variances so that it is dimensionless and will not depend on the units used. Therefore, correlation can be considered as a standardized version of covariance that can be compared across different pairs of variables and is more interpretable. If the correlation is positive, then $X$ and $Y$ will generally increase or decrease together. On the other hand, if the correlation is negative, then when one of them increases, one of them will tend to decrease, and vice versa. The higher the magnitude of correlation, the stronger the \textit{linear} relationship. Notice the word "linear" here. If the correlation is close to zero, it simply means that there is no clear linear relationship between them, but this does not exclude the possibility of having other relationships, e.g.\ exponential or quadratic.\par
 In the last example, $\text{Cov}(U,V) = \SI{-0.77}{\square\m \per \square\s}$, $\text{Var}(U) = \SI{0.75}{\square\m \per \square\s}$, $\text{Var}(V) = \SI{0.90}{\square\m \per \square\s}$, and $\rho_{uv} = \smash{\frac{-0.77}{\sqrt{(0.75)(0.90)}}} \approx -0.94$. We have used the population variance and covariance for the computation, but they can be replaced by the sample counterparts. It may be tempting to claim that a strong negative relationship exists in this case, however, the sample size here is a bit small for this result to be meaningful. \par
-Short Exercise: When will $\rho_{xy}$ take the value of $1$ (or $-1$)?\footnote{It will happen if $X$ and $Y$ have a perfect linear positive (negative) relationship so they appear as a straight line $Y = aX + b$ on the $xy$-plane, $a > 0$ ($a < 0$).}\par
+$\blacktriangleright$ Short Exercise: When will $\rho_{xy}$ take the value of $1$ (or $-1$)?\footnote{It will happen if $X$ and $Y$ have a perfect linear positive (negative) relationship so they appear as a straight line $Y = aX + b$ on the $xy$-plane, $a > 0$ ($a < 0$).}\par
 
 We are now prepared to derive the variance formula for linear combinations of multiple variables.
 \begin{proper}
 \label{proper:variancemul}
-For a distribution constructed by a linear combination of multiple random variables, in the form of $Z = c_1X^{(1)} + c_2X^{(2)} + \cdots + c_nX^{(n)}$, where the coefficients $\vec{c} = (c_1, c_2, \cdots, c_n)^T$ are all constants, the population variance $\text{Var}(Z)$ can be expressed as a quadratic form $\textbf{c}^TQ\textbf{c}$, where
+For a distribution constructed by a linear combination of multiple random variables, in the form of $Z = c_1X^{(1)} + c_2X^{(2)} + \cdots + c_nX^{(n)}$, where the coefficients $\vec{c} = (c_1, c_2, \cdots, c_n)^T$ are all constants, the variance $\text{Var}(Z)$ can be expressed as a quadratic form $\textbf{c}^TQ\textbf{c}$, where
 \begin{subequations}
 \begin{align}
 Q &=
@@ -1061,13 +1061,14 @@ c_v
 \end{bmatrix} \\
 &= \SI{1.54}{\square\m \per \square\s} \qedhere
 \end{align*} 
+The readers can cross-check by computing all the $W$ data first and finding their variance directly.
 \end{solution}
 Finally, recall that variance is always a positive-semidefinite quantity, and since it can be calculated as a quadratic form via the covariance matrix according to Properties \ref{proper:variancemul}, any covariance matrix will also be a positive-semidefinite quadratic form.
 
 \subsection{Principal Component Analysis (PCA)}
 \label{subsection:PCA}
 A common practice in Earth Science, as well as the growing field of Machine Learning, is to compress the dimensions of a large dataset having many variables/features (\textit{dimensionality reduction}). Given a high number of variables (for example, concentrations of various biochemical substances like blood cells or ions in the blood samples of some hospital patients) in measurements, we want to process them to extract and retain the most important patterns or signals. \index{Principal Component Analysis}\keywordhl{Principal Component Analysis (PCA)}, which is also known as \index{Empirical Orthogonal Functions}\keywordhl{Empirical Orthogonal Functions (EOFs)} in Atmospheric Sciences, is the most common technique for this purpose, by finding the mode(s), or more precisely, the linear combination of features, which maximizes the variance of the data along that direction. \par
-Consider the simplest case with two variables, or time series $X$ and $Y$ first. Assume they have $m$ pairs of data, from $\textbf{x}_1^T = (x_1, y_1)^T$ to $\textbf{x}_m^T = (x_{m}, y_{m})^T$. We can compute the covariance matrix
+Consider the simplest case with two variables, or time series $X$ and $Y$ first. Assume they have $m$ pairs of data, from $\textbf{x}_1 = (x_1, y_1)$ to $\textbf{x}_m = (x_{m}, y_{m})$. We can compute the covariance matrix
 \begin{align*}
 Q = \begin{bmatrix}
 \text{Cov}(X, X) & \text{Cov}(X, Y) \\
@@ -1078,14 +1079,14 @@ which is introduced in the last section. Principal Component Analysis sets out t
 \begin{figure}[ht!]
     \centering
     \includegraphics{graphics/PCA_first_demo.png}
-    \caption{\textit{The two principal axes/directions (PCs) found by Principal Component Analysis for a random set of data (green). The longer, red (shorter, blue) arrow represents the direction of the largest (smallest) variance. The data points can be seen to spread more (less) along that direction.}}
+    \caption{\textit{The two principal axes/directions (PCs) found by Principal Component Analysis for a random set of data (green). The longer, red [shorter, blue] arrow represents the direction of the largest [smallest] variance. The data points can be seen to spread more [less] along that direction.}}
 \end{figure}
-Now the problem is to find, under what situation $\textbf{e}^T Q \textbf{e}$ will assume its largest value. Here, we introduce a famous technique, called \index{Lagrange Multiplier}\keywordhl{Lagrange Multiplier}, coming from elementary Calculus. We will proceed with the case of two variables for brevity.
+Now the problem is to find, under what situation $\textbf{e}^T Q \textbf{e}$ will assume its largest value. Here, we introduce a famous technique, called \index{Lagrange Multiplier}\keywordhl{Lagrange Multiplier}, coming from elementary Multivariable Calculus. We will proceed with the case of two variables for brevity.
 \begin{thm}[Lagrange Multiplier]
 \label{thm:LagrangeMul}
-To find the extreme values attained by a function $f(u,v,\cdots)$, under the constraint $g(u,v,\cdots) = 0$, we consider the expression
+To find the extreme values attained by a function $f(u,v,\ldots)$, under the constraint $g(u,v,\ldots) = 0$, we consider the expression
 \begin{align}
-h(u,v,\cdots) = f(u,v,\cdots) - \lambda g(u,v,\cdots)
+h(u,v,\ldots) = f(u,v,\ldots) - \lambda g(u,v,\ldots)
 \end{align}
 where $\lambda$ is a constant so that the system below has a solution:
 \begin{align}
@@ -1141,7 +1142,7 @@ y'
 (Q-\lambda I)\textbf{e} &= 0
 \end{align}
 \end{subequations}
-which is an eigenvalue problem as introduced in Section \ref{section:eigensection}. Hence we conclude that $f(x',y') = \textbf{e}^T Q \textbf{e}$ can attain an extreme value when $\textbf{e}^T = (x',y')^T$ is a unit eigenvector of $Q$. Notice that since $Q$ is a symmetric matrix, the eigenvectors of $Q$ form an orthonormal basis and are orthogonal to each other by Properties \ref{proper:orthobasissym}. The corresponding magnitude of variance ${\textbf{e}^{(j)T}} Q \textbf{e}^{(j)}$ for the $j$-th eigenvector is
+which is an eigenvalue problem as introduced in Section \ref{section:eigensection}. Hence we conclude that $f(x',y') = \textbf{e}^T Q \textbf{e}$ can attain an extreme value when $\textbf{e} = (x',y')^T$ is a unit eigenvector of $Q$. Notice that since $Q$ is a symmetric matrix, the eigenvectors of $Q$ form an orthonormal basis and are orthogonal to each other by Properties \ref{proper:orthobasissym}. The corresponding magnitude of variance ${\textbf{e}^{(j)T}} Q \textbf{e}^{(j)}$ for the $j$-th eigenvector is
 \begin{align}
 \textbf{e}^{(j)T} (Q \textbf{e}^{(j)}) &= \textbf{e}^{(j)T} (\lambda_j \textbf{e}^{(j)}) \nonumber \\
 &= \lambda_j (\textbf{e}^{(j)T} \textbf{e}^{(j)}) \nonumber \\
@@ -1153,10 +1154,10 @@ where we have used the facts that $Q \textbf{e}^{(j)} = \lambda_j \textbf{e}^{(j
 \label{thm:PCA}
 For a covariance matrix $Q = \frac{1}{m-1}[X']^T[X']$ (which happens to be symmetric), the variance $\textbf{e}^T Q \textbf{e}$ achieves its maximum value $\lambda_1$ along the direction $\textbf{e}^{(1)}$, the largest eigenvalue of $Q$ and the associated unit eigenvector. Generalizing, as $Q$ has $n$ orthonormal eigenvectors $\textbf{e}^{(1)}, \textbf{e}^{(2)}, \cdots, \textbf{e}^{(n)}$, arranged by the magnitude of corresponding eigenvalues $\lambda_1 > \lambda_2 > \cdots > \lambda_n$ from largest to smallest, the largest variance will be $\lambda_1$ when the direction is along $\textbf{e}^{(1)}$, the second largest will be $\lambda_2$ for $\textbf{e}^{(2)}$ and so on, with the smallest variance being $\lambda_n$ for $\textbf{e}^{(n)}$. This set of orthonormal eigenvectors is called the \index{Principal Axes}\index{Principal Directions}\keywordhl{principal axes/directions} in Principal Component Analysis.
 \end{thm}
-As a side note, any quadratic form $\textbf{e}^TB\textbf{e}$ will attain its maximum and minimum when $\textbf{e}$ is the eigenvector that represents the largest and smallest eigenvalue, which will also be the value that $\textbf{e}^TB\textbf{e}$ takes when it happens. As before, this is under the constraint that $\textbf{e}$ is a unit vector, and this result bears the name of \textit{Constrained Extremum Theorem}.\par
-Going back to the problem of Principal Component Analysis, for each principal direction $\textbf{e}^{(j)}$ and the variance $\lambda_{j}$, we can compute the ratio of \index{Explained Variance}\keywordhl{explained variance}, which is the fraction of  $\lambda_{j}$ over the total variance, the sum of eigenvalues/variances from all eigenvectors for the covariance matrix. This quantity allows us to assess how well the principal direction contributes to the total variance. In the coordinate system constructed by the orthonormal eigenvectors of $Q$, $[\textbf{e}] = [\textbf{e}^{(1)}|\textbf{e}^{(2)}|\cdots|\textbf{e}^{(n)}]$, the new coordinates for any ($i$-th) data point are \begin{align}
+As a side note, any quadratic form $\textbf{e}^TB\textbf{e}$ will attain its maximum and minimum when $\textbf{e}$ is the eigenvector that represents the largest and smallest eigenvalue, which will also be the value that $\textbf{e}^TB\textbf{e}$ takes when it happens. As before, this is under the constraint that $\textbf{e}$ is a unit vector, and this result bears the name of \index{Constrained Extremum Theorem}\textit{Constrained Extremum Theorem}.\par
+Going back to the problem of Principal Component Analysis, for each principal direction $\textbf{e}^{(j)}$ and the variance $\lambda_{j}$, we can compute the ratio of \index{Explained Variance}\keywordhl{explained variance}, which is the fraction of $\lambda_{j}$ over the total variance, the sum of eigenvalues/variances from all eigenvectors for the covariance matrix. This quantity allows us to assess how well the principal direction contributes to the total variance. In the coordinate system constructed by the orthonormal eigenvectors of $Q$, $[\textbf{e}] = [\textbf{e}^{(1)}|\textbf{e}^{(2)}|\cdots|\textbf{e}^{(n)}]$, the new coordinates for any ($i$-th) data point are \begin{align}
 \vec{u}_i = [\textbf{e}]^T \vec{x}_i \label{eqn:PCAcoordchange} 
-\end{align} (see Section \ref{section:orthogeometricsub}). By the Spectral Theorem \ref{thm:spectral}, this $\vec{u}_i$ can be regarded to be the projection of $\vec{x_i}^T = (x_i^{(1)}, x_i^{(2)}, \ldots, x_i^{(n)})^T$, the $i$-th set of data, onto the principal directions and are called the \index{Principal Components}\keywordhl{principal components (PCs)}. \par
+\end{align} (see Section \ref{section:orthogeometricsub}). By the Spectral Theorem \ref{thm:spectral}, this $\vec{u}_i$ can be regarded to be the projection of $\vec{x_i} = (x_i^{(1)}, x_i^{(2)}, \ldots, x_i^{(n)})^T$, the $i$-th set of data, onto the principal directions and are called the \index{Principal Components}\keywordhl{principal components (PCs)}. \par
 Usually, at the start of PCA, we will detrend the data and remove the mean from each variable, such that $x'_i = x_i - \bar{x}$ and $y'_i = y_i - \bar{y}$ are used to replace $x_i$ and $y_i$. This enables us to express the covariance matrix as $Q = \frac{1}{n}[X'|Y']^T[X'|Y']$ following the end remark of Properties \ref{proper:variancemul}. 
 \begin{exmp}
 \label{exmp:tempPCA}
@@ -1166,7 +1167,7 @@ The temperature data of two cities $X$ and $Y$ are as follows.
 \hline
 (in \si{\degree C}) & $X$ & $Y$ & & $X$ & $Y$ \\
 \hline
-1st Day & $21.6$ & $22.3$ & 8th Day & $22.1$ & $22.4$ \\
+1st Day & $21.0$ & $22.3$ & 8th Day & $22.1$ & $22.4$ \\
 \hline
 2nd Day & $21.8$ & $21.6$ & 9th Day & $21.5$ & $21.7$ \\
 \hline
@@ -1178,7 +1179,7 @@ The temperature data of two cities $X$ and $Y$ are as follows.
 \hline 
 6th Day & $24.7$ & $24.1$ & 13th Day & $24.2$ & $24.7$ \\
 \hline 
-7th Day & $22.0$ & $23.9$ & 14th Day & $23.8$ & $23.1$ \\
+7th Day & $22.0$ & $23.0$ & 14th Day & $23.8$ & $23.1$ \\
 \hline
 \end{tabular}
 \end{center}
@@ -1237,7 +1238,7 @@ Y' \cdot X' & Y' \cdot Y'
 \end{bmatrix}
 \end{align*}
 The unit eigenvectors for $Q$ and thus the principal directions can be found to be $\textbf{e}^{(1)} = (0.763, 0.647)^T$ with a larger variance $\lambda_1 = \SI{2.289}{\square {(\degree C)}}$, and $\textbf{e}^{(2)} = (-0.647, 0.763)^T$ of a smaller variance $\lambda_2 = \SI{0.159}{\square {(\degree C)}}$. The first principal component accounts for $\frac{2.289}{2.289+0.159} \approx 93.5\%$ of the total variance.\par
-We can project every pair of data $\vec{x}'^T_i = (x'_i, y'_i)^T$ onto the principal directions by computing $\vec{u}_i = [\textbf{e}]^T\vec{x}'_i$, where $[\textbf{e}] = [\textbf{e}^{(1)}|\textbf{e}^{(2)}]$. The resulting time series for the principal components are 
+We can project every pair of data $\vec{x}'_i = (x'_i, y'_i)^T$ onto the principal directions by computing $\vec{u}_i = [\textbf{e}]^T\vec{x}'_i$, where $[\textbf{e}] = [\textbf{e}^{(1)}|\textbf{e}^{(2)}]$. The resulting time series for the principal components are 
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
@@ -1276,7 +1277,7 @@ u_1^{(2)}
 0.741
 \end{bmatrix}
 \end{align*}
-The original (detrended) data can be recovered by $\vec{x}'_i = [\textbf{e}]\vec{u}'_i$. If we want to extract the signal originating from the first principal direction only, we can simply remove the other column eigenvector(s) in $[\textbf{e}]$ as well as discard the other principal value(s) in $\vec{u}'_i$. The time series reconstructed by the first PC mode is hence computed by $\vec{x}'_i = \textbf{e}^{(1)}u_i^{(1)}$:
+The original (detrended) data can be recovered by $\vec{x}'_i = [\textbf{e}]\vec{u}'_i$. If we want to extract the signal originating from the first principal direction only, we can simply remove the other column eigenvector(s) in $[\textbf{e}]$ as well as discard the other principal value(s) in $\smash{\vec{u}'_i}$. The time series reconstructed by the first PC mode is hence computed by $\smash{\vec{x}'_i = \textbf{e}^{(1)}u_i^{(1)}}$:
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
@@ -1331,10 +1332,10 @@ y'_3
 \end{figure}
 
 \section{Python Programming}
-Since doing Empirical Orthogonal Functions (EOFs) as an Earth Science application is essentially a PCA which has to rely on a computer when the dataset is huge, we will get into the Python programming part first in this chapter. We will need the scikit-learn package (\texttt{sklearn}) for this, and let's use Example \ref{exmp:tempPCA} for demonstration.
+Since doing Empirical Orthogonal Functions (EOFs) as an Earth Science application is essentially a PCA, which has to rely on a computer when the dataset is huge, we will get into the Python programming part first in this chapter. We will need the scikit-learn package (\texttt{sklearn}) for this, and let's use Example \ref{exmp:tempPCA} for demonstration.
 \begin{lstlisting}
 import numpy as np
-from sklearn.decomposition import PCA    
+from sklearn.decomposition import PCA
 
 X = np.array([[21.0, 22.3],
               [21.8, 21.6],
@@ -1354,12 +1355,12 @@ X = np.array([[21.0, 22.3],
 We have to prepare the data where each column represents the time series of one variable, so the shape of \verb|X| is $(\text{Number of samples}, \text{Number of features})$. Now define a \verb|PCA| object and fit it with the data. We can choose how many PCs to use, and for the present, we will keep all of them so that \verb|n_components| $=2$.
 \begin{lstlisting}
 pca = PCA(n_components=2)
-pca.fit(X)    
+pca.fit(X)
 \end{lstlisting}
 We can retrieve the principal directions and variances by
 \begin{lstlisting}
 print(pca.components_)
-print(pca.explained_variance_)    
+print(pca.explained_variance_)
 \end{lstlisting}
 which gives
 \begin{lstlisting}
@@ -1367,7 +1368,7 @@ which gives
  [-0.64655605  0.76286648]]
 [2.28902525 0.15866706] 
 \end{lstlisting}
-Notice that the principal directions are arranged in rows so that to get the first one we write \verb|pca.components_[0,:]| that returns \verb|[0.763 0.647]|. The percentage of explained variances are simply computed by
+Notice that the principal directions are arranged in rows so that to get the first one, we write \verb|pca.components_[0,:]| that returns \verb|[0.763 0.647]|. The percentages of explained variances are simply computed by
 \begin{lstlisting}
 print(pca.explained_variance_/np.sum(pca.explained_variance_))
 \end{lstlisting}
@@ -1401,17 +1402,17 @@ These generate
 \end{lstlisting}
 equivalent to the last table in Example \ref{exmp:tempPCA} but with the original means included. The following code paragraphs produce the main part of the three plots shown in the example.
 \begin{lstlisting}
-Y = X - np.mean(X, axis=0)
+W = X - np.mean(X, axis=0)
 lambda_1 = pca.explained_variance_[0]
 lambda_2 = pca.explained_variance_[1]
 
 import matplotlib.pyplot as plt
 
-plt.scatter(Y[:,0], Y[:,1], color="g")
+plt.scatter(W[:,0], W[:,1], color="g")
 plt.xlim([-3,3])
 plt.ylim([-3,3])
-plt.xlabel("M' (deg C)")
-plt.ylabel("N' (deg C)")
+plt.xlabel("X' (deg C)")
+plt.ylabel("Y' (deg C)")
 plt.arrow(0,0,lambda_1**0.5*pca.components_[0,0],lambda_1**0.5*pca.components_[0,1], color="r", width=0.05)
 plt.arrow(0,0,lambda_2**0.5*pca.components_[1,0],lambda_2**0.5*pca.components_[1,1], color="b", width=0.05)
 plt.grid()
@@ -1429,8 +1430,8 @@ plt.grid()
 plt.gca().set_aspect("equal")
 plt.show()
 
-plt.plot(np.arange(1,14+1), Y[:,1], color="g", label="Original N'")
-plt.plot(np.arange(1,14+1), X_inv[:,1] - np.mean(X, axis=0)[1], color="r", label="N' reconstructed from PC1")
+plt.plot(np.arange(1,14+1), W[:,1], color="g", label="Original Y'")
+plt.plot(np.arange(1,14+1), X_inv[:,1] - np.mean(X, axis=0)[1], color="r", label="Y' reconstructed from PC1")
 plt.legend()
 plt.grid()
 plt.xticks(np.arange(1,14+1))
@@ -1522,26 +1523,105 @@ Identify the following conic sections and eliminate the cross-product terms by a
 \item $x^2 + 2xy + y^2 = 1$, what is the graph generated? 
 \end{enumerate}
 \end{Exercise}
+\begin{Answer}
+\begin{enumerate}[label=(\alph*)]
+\item The discriminant is $\Delta = 5^2 - 4(1)(3) = 13 > 0$ so it is a hyperbola. The required degree of rotation is found by $\cot(2\theta) = \frac{1-3}{5} = -\frac{2}{5}$. The eigenvalues of
+\begin{align*}
+\begin{bmatrix}
+1 & \frac{5}{2} \\
+\frac{5}{2} & 3
+\end{bmatrix}
+\end{align*}
+are $\lambda = \frac{4 \pm \sqrt{29}}{2}$, so the transformed equation will be \\$\frac{4 - \sqrt{29}}{2}(x')^2 + \frac{4 + \sqrt{29}}{2}(y')^2 = 1$.
+\item The discriminant is $\Delta = (-1)^2 - 4(1)(2) = -7 > 0$ so it is an ellipse. The required degree of rotation is found by $\cot(2\theta) = \frac{1-2}{-1} = 1$. The eigenvalues (where we have to divide the equation by $4$ to standardize the coefficient on R.H.S.) of
+\begin{align*}
+\begin{bmatrix}
+\frac{1}{4} & -\frac{1}{8} \\
+-\frac{1}{8} & \frac{1}{2}
+\end{bmatrix}
+\end{align*}
+are $\lambda = \frac{3\pm\sqrt{2}}{8}$, so the new equation will be $\frac{3 - \sqrt{2}}{8}(x')^2 + \frac{3 + \sqrt{2}}{8}(y')^2 = 1$.
+\item The discriminant is $\Delta = (2)^2 - 4(1)(1) = 0$ so it will be a degenerate case. In fact, the graphs are a pair of parallel straight lines $y = -x \pm 1$.
+\end{enumerate}
+\end{Answer}
 
 \begin{Exercise}
-Find a new expression for the standard hyperbola $y^2 - x^2 = 1$ if an anti-clockwise rotation of $60$ degrees is done. What about a reflection along the $x$-axis?
+Find a new expression for the standard hyperbola $y^2 - x^2 = 1$ if an anti-clockwise rotation of $60$ degrees for the coordinate frame is done. What about a reflection along the $x$-axis?
 \end{Exercise}
+\begin{Answer}
+It is to compute
+\begin{align*}
+& \begin{bmatrix}
+\cos (\SI{60}{\degree}) & \sin (\SI{60}{\degree}) \\
+-\sin (\SI{60}{\degree}) & \cos (\SI{60}{\degree})
+\end{bmatrix}
+\begin{bmatrix}
+-1 & 0 \\
+0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+\cos (\SI{60}{\degree}) & -\sin (\SI{60}{\degree}) \\
+\sin (\SI{60}{\degree}) & \cos (\SI{60}{\degree})
+\end{bmatrix} \\
+=& \begin{bmatrix}
+\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+-\frac{\sqrt{3}}{2}  & \frac{1}{2}
+\end{bmatrix}
+\begin{bmatrix}
+-1 & 0 \\
+0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2}  \\
+\frac{\sqrt{3}}{2}  & \frac{1}{2}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{1}{2}&\frac{\sqrt{3}}{2}\\ 
+\frac{\sqrt{3}}{2}&-\frac{1}{2}
+\end{bmatrix}
+\end{align*}
+so the new hyperbola equation is $\frac{1}{2}(x')^2+ \sqrt{3}x'y' -\frac{1}{2}(y')^2 = 1$.
+\end{Answer}
 
 \begin{Exercise}
 \phantomsection
 \label{ex:ellipsoid}
 Three-dimensional quadrics can also be treated in a similar fashion to two-dimensional conic sections. Find the length of three axes for an ellipsoid $x^2 + y^2 + z^2 + 0.5xy - yz + 0.5xz = 1$ by doing an orthogonal coordinate transformation. What is the requirement for a three-dimensional quadratic form to represent an ellipsoid?
 \end{Exercise}
+\begin{Answer}
+The corresponding quadratic form is
+\begin{align*}
+\begin{bmatrix}
+1 & \frac{1}{4} & \frac{1}{4} \\
+\frac{1}{4} & 1 & -\frac{1}{2}\\
+\frac{1}{4} & -\frac{1}{2} & 1
+\end{bmatrix}
+\end{align*}
+and its eigenvalues are $\lambda \approx 0.3170, 1.1803$ and $\lambda = \smash{\frac{3}{2}}$. The length of the three main axes will be the square roots of their reciprocals: $\smash{\sqrt{1/0.3170}} = 1.776$, $\smash{\sqrt{1/1.1803}} = 0.920$, and $\smash{\sqrt{\frac{2}{3}}}$. The requirement for a three-dimensional quadratic form to represent an ellipsoid is that the three eigenvalues of that quadratic form are all positive.
+\end{Answer}
 
 \begin{Exercise}
-Prove that for any matrix $A$, $B = I + (A - A^T)$ is invertible. Hint: Consider $B\vec{x} = 0$ and show that $\vec{x} = 0$ must be the zero vector, inferred from the quadratic form $\textbf{x}^TB\textbf{x}$.
+Prove that for any matrix $A$, $B = I + (A - A^T)$ is invertible. Hint: Consider $B\vec{x} = \textbf{0}$ and show that $\vec{x} = \textbf{0}$ must be the zero vector, inferred from the quadratic form $\textbf{x}^TB\textbf{x}$.
 \end{Exercise}
+\begin{Answer}
+If $B\vec{x} = \textbf{0}$, then $\textbf{x}^TB\textbf{x} = 0$, and also
+\begin{align*}
+\textbf{x}^TB\textbf{x} &= \textbf{x}^T[I + (A - A^T)]\textbf{x} \\
+&= \textbf{x}^TI\textbf{x} + \textbf{x}^T(A - A^T)\textbf{x} \\
+&= \textbf{x}^T\textbf{x} + 0 = \norm{\vec{x}}^2
+\end{align*}
+where from the second to last line we have used the fact that $A - A^T$ is skew-symmetric and do not contribute to the quadratic form. This implies that $\norm{\vec{x}}^2 = 0$ so by positivity $\vec{x} = 0$ has to be the zero vector, and so the only solution to $B\vec{x} = \textbf{0}$ is the trivial solution and by the equivalence statements $B = I + (A - A^T)$ is invertible.
+\end{Answer}
 
 \begin{Exercise}
 \phantomsection
 \label{ex:sylvesterdefinite}
 Use Sylvester's Law of Inertia to argue that a symmetric matrix $B$ is positive-definite if and only if $B = P^TP$ for some invertible matrix $P$. Hint: Consider $P^T IP$.
 \end{Exercise}
+\begin{Answer}
+A positive-definite symmetric matrix has all positive eigenvalues and thus a canonical quadratic form of an identity matrix $I$ according to Sylvester's Law of Inertia. By congruence, it must be $B = P^T IP = P^TP$ for some $P$.
+\end{Answer}
 
 \begin{Exercise}
 Find the covariance matrix for three sea level pressure time series over $10$ days at cities $X$, $Y$, $Z$ (in hPa, relative to $1000$ hPa), which take the values
@@ -1574,10 +1654,45 @@ $23.4$ & $22.4$ & $24.6$ \\
 \end{center}
 Find the variance of $W = X - 0.5Y - 0.5Z$.
 \end{Exercise}
+\begin{Answer}
+The numerical values of the covariance matrix should be
+\begin{align*}
+\begin{bmatrix}
+\text{Cov}(X,X) & \text{Cov}(X,Y) & \text{Cov}(X,Z) \\
+\text{Cov}(Y,X) & \text{Cov}(Y,Y) & \text{Cov}(Y,Z) \\
+\text{Cov}(Z,X) & \text{Cov}(Z,Y) & \text{Cov}(Z,Z)
+\end{bmatrix}
+=
+\begin{bmatrix}
+15.264 & 12.3984 & 9.6756 \\
+12.3984 & 11.664 & 7.4333 \\
+9.6756 & 7.4333 & 11.3644
+\end{bmatrix}
+\end{align*}
+and the required variance of $W$ is
+\begin{align*}
+\begin{bmatrix}
+1 & -0.5 & -0.5
+\end{bmatrix}
+\begin{bmatrix}
+15.264 & 12.3984 & 9.6756 \\
+12.3984 & 11.664 & 7.4333 \\
+9.6756 & 7.4333 & 11.3644
+\end{bmatrix}
+\begin{bmatrix}
+1 \\
+-0.5 \\
+-0.5
+\end{bmatrix} = 2.664
+\end{align*}
+\end{Answer}
 
 \begin{Exercise}
 Carry out Principal Component Analysis on the data set above. Find the Principal Directions and the ratio of explained variance for each of them. Reconstruct the data using the first principal component with the largest variance only.
 \end{Exercise}
+\begin{Answer}
+The three principal directions should be approximately $(0.665, \allowbreak 0.561, 0.493)^T$, $(0.259, 0.445, -0.857)^T$, and $(-0.700, 0.698, 0.151)^T$, accounting for $85.9\%/11.9\%/2.2\%$ of the explained variance. For checking, the reconstruction of the first data point should give $(X_1, Y_1, Z_1) = (17.9, 18.4, 21.8)$.
+\end{Answer}
 
 \begin{Exercise}
 \label{ex:MJO}

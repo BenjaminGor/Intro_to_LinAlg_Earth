@@ -5,7 +5,7 @@ After three chapters of discussion about matrices, it is time to introduce anoth
 \section{Definition and Operations of Geometric Vectors}
 
 \subsection{Basic Structure of Vectors in the Real $n$-space $\mathbb{R}^n$}
-A \index{Vector (Geometric)}\keywordhl{(geometric) vector} is a physical quantity represented by an ordered tuple of \textit{components} (numbers), e.g. $(1, 8, 7, 4)$, $(1-i, 1+3i, 2)$. It has a \textit{magnitude (length)} and \textit{direction}, resembling an arrow. Some real-life examples are: two-dimensional fluid flow velocity $(u, v)$, the relative position of an airplane to a ground radar $(x, y, z)$.
+A \index{Vector (Geometric)}\keywordhl{(geometric) vector} is a physical quantity represented by an ordered tuple of \textit{components} (numbers), e.g.\ $(1, 8, 7, 4)$, $(1-i, 1+3i, 2)$. It has a \textit{magnitude (length)} and \textit{direction}, resembling an arrow. Some real-life examples are: two-dimensional fluid flow velocity $(u, v)$, the relative position of an airplane to a ground radar $(x, y, z)$.
 \begin{defn}[$n$-dimensional Geometric Vector]
 \label{defn:geometvec}
 A $n$-dimensional geometric vector consists of $n$ ordered numbers called \index{Components}\keywordhl{components} and are denoted by either an arrow or boldface, like $\vec{v}$ or $\textbf{v}$. It is usually written out in two forms, as a \textit{column vector} or an \textit{ordered $n$-tuple}:
@@ -1067,7 +1067,7 @@ def angle_between(v1, v2):
     v2_u = unit_vector(v2)
     return np.arccos(np.clip(np.dot(v1_u, v2_u), -1.0, 1.0))
 \end{lstlisting}
-The \verb|np.clip| is to avoid numerical round-off error that causes the dot product of the two normalized input vectors to just fall outside (e.g. \verb|1.0000000000000002|) the valid range $[-1, 1]$ of $\cos^{-1}$. The naive way of (here the lists will be cast to one-dimensional arrays automatically during calculation) 
+The \verb|np.clip| is to avoid numerical round-off error that causes the dot product of the two normalized input vectors to just fall outside (e.g.\ \verb|1.0000000000000002|) the valid range $[-1, 1]$ of $\cos^{-1}$. The naive way of (here the lists will be cast to one-dimensional arrays automatically during calculation) 
 \begin{lstlisting}
 np.arccos(np.dot([1., 0, 0], [2., 0, 0]))
 \end{lstlisting}
