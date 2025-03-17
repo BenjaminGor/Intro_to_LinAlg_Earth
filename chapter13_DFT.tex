@@ -28,9 +28,9 @@ The negative sign arising from the $m\pi$ or $n\pi$ term inside is absorbed when
 &\left\{\sqrt{\frac{2}{N}}\sin(\frac{2\pi}{N}t), \sqrt{\frac{2}{N}}\sin(\frac{2\pi(2)}{N}t), \sqrt{\frac{2}{N}}\sin(\frac{2\pi(3)}{N}t), \ldots, \frac{1}{\sqrt{N}}, \right. \\ 
 &\left.\sqrt{\frac{2}{N}}\cos(\frac{2\pi}{N}t), \sqrt{\frac{2}{N}}\cos(\frac{2\pi(2)}{N}t), \sqrt{\frac{2}{N}}\cos(\frac{2\pi(3)}{N}t), \ldots \right\}     
 \end{aligned} 
-\end{align}\footnote{\label{foot:fouriernorm} The normalization factor of $\sqrt{2/N}$ can be deduced by calculating the squared norm of just the cosines themselves
+\end{align}\footnote{\label{foot:fouriernorm} The normalization factor of $\smash{\sqrt{2/N}}$ can be deduced by calculating the squared norm of just the cosines themselves
 \begin{align*}
-\int_0^N \abs{\cos(\frac{2m\pi}{N}t)}^2 dt &= \int_0^N \frac{1}{2} (1+ \cos(\frac{4m\pi}{N}t)) dt \\
+\int_0^N \abs{\cos(\frac{2m\pi}{N}t)}^2 dt &= \int_0^N \frac{1}{2} \left(1+ \cos(\frac{4m\pi}{N}t)\right) dt \\
 &= \frac{1}{2}(N) + (0) = \frac{N}{2}
 \end{align*} and the same goes for the sines.}
 are still an orthonormal basis to the new $L^2[0, N]$ space, mapped from the initial $L^2[-\pi, \pi]$\footnote{Denote the original Fourier basis functions by $\varphi_j(x) \in L^2[-\pi, \pi]$. We will only show the part of linear independence and omit the justification for span and orthogonality. By Theorem \ref{thm:linearindep}, since they form a basis for $L^2[-\pi, \pi]$ as given, $c_1\varphi_j(x) + c_2\varphi_j(x) + \cdots = 0(x) \equiv 0$ where $0(x)$ is the zero function over $x \in [-\pi,\pi]$, has the trivial solution $c_j = 0$ as its only solution. Assume the form of the linear variable change is $x = \alpha t + \beta = X(t)$. Replacing $x$ by $X(t)$ (possible since $\alpha \neq 0$) then immediately produces the equality $c_1\varphi_j(X(t)) + c_2\varphi_j(X(t)) + \cdots = 0(X(t)) \equiv 0$ which automatically inherits the desired property of possessing only the trivial solution $c_j = 0$ for the zero function $0(X(t)) = 0(t)$ as well and shows that the new basis functions are now $\hat{\varphi}_j(t) = \varphi_j(X(t))$.}. The Fourier coefficients are now computed by 
@@ -65,7 +65,7 @@ Eventually, as $p \to \infty$ and the expression tends to the full Fourier serie
 \lim_{p \to \infty}\norm{f - S_p[f]}^2 = 0
 \end{align}
 The detailed derivation is placed in Appendix \ref{section:DFTappend}. \par
-Returning to practices in Earth Science, and other fields like Engineering, we are often not given a function that has a closed form to work with. Instead, we collect data from measurements at a fixed sampling rate, and what we obtain is a \textit{discrete time series}. However, we can still apply the idea of Fourier to approximate and interpolate the finite time series with sinusoidal functions. Assume that we have $N$ data points collected for the time series $f(t)$, evenly spaced at time $t = 0, 1, 2, \cdots, N-1$. Further assume that for now, we only use a few sines and cosines for the approximation, such that the degree $p$ is much less than the number of data points $N$, specifically, $2p+1 \leq N$. The suitable Fourier approximation then will be in the form of Equation (\ref{eqn:fourierpart}) where $N$ is the period of the time series. Since we only have finite data points, we cannot carry out the integrations needed to compute (\ref{eqn:fouriersca}) and (\ref{eqn:fourierscb}). Nevertheless, we can borrow the idea in the last chapter and do the approximation in a way such that the Fourier partial sum will achieve the least-square error when summed over the sampling points. Subsequently, the system to be optimized will be
+Returning to practices in Earth Science, and other fields like Engineering, we are often not given a function that has a closed form to work with. Instead, we collect data from measurements at a fixed sampling rate, and what we obtain is a \textit{discrete time series}. However, we can still apply the idea of Fourier to approximate and interpolate the finite time series with sinusoidal functions. Assume that we have $N$ data points collected for the time series $f(t)$, evenly spaced at time $t = 0, 1, 2, \ldots, N-1$. Further assume that for now, we only use a few sines and cosines for the approximation, such that the degree $p$ is much less than the number of data points $N$, specifically, $2p+1 \leq N$. The suitable Fourier approximation then will be in the form of Equation (\ref{eqn:fourierpart}) where $N$ is the period of the time series. Since we only have finite data points, we cannot carry out the integrations needed to compute (\ref{eqn:fouriersca}) and (\ref{eqn:fourierscb}). Nevertheless, we can borrow the idea in the last chapter and do the approximation in a way such that the Fourier partial sum will achieve the least-square error when summed over the sampling points. Subsequently, the system to be optimized will be
 \begin{empheq}[left={\empheqlbrace}]{alignat=1}
 \scriptsize
 \begin{aligned}
@@ -125,7 +125,7 @@ f(2) \\
 f(N-1)
 \end{bmatrix}
 \end{align}
-are vectors with $2p+1$ and $N$ entries respectively. The least-square method then sets out to find the best-fit parameters for $\vec{\beta} = (C_0, A_1, B_1, \cdots, A_p, B_p)^T$ to this system of equations. From Theorem \ref{thm:bestfit}, we know that the best parameters are found by
+are vectors with $2p+1$ and $N$ components respectively. The least-square method then sets out to find the best-fit parameters for $\vec{\beta} = (C_0, A_1, B_1, \cdots, A_p, B_p)^T$ to this system of equations. From Theorem \ref{thm:bestfit}, we know that the best parameters are found by
 \begin{align}
 \vec{\beta}_f = (G^TG)^{-1}G^T\vec{d}
 \end{align}
@@ -162,7 +162,7 @@ We now first prove that the two column vectors of a sine-cosine pair that have t
 \sum_{t=0}^{N-1} \left(\cos^2(\frac{2\pi k}{N} t) + 2i \sin(\frac{2\pi k}{N} t)\cos(\frac{2\pi k}{N} t) - \sin^2(\frac{2\pi k}{N} t)\right)
 \end{aligned}
 \end{align}
-Notice that the L.H.S. is a geometric sequence with a common ratio $r = \exp(i 4\pi k/N)$\footnote{which will not be equal to $1$ as we have demanded that $k \leq \frac{N-1}{2}$.}, the sum of which is seen to be
+Notice that the L.H.S. is a geometric sequence with a common ratio $r = \exp(i 4\pi k/N)$\footnote{which will not be equal to $1$ as we have demanded that $p, k \leq \frac{N-1}{2}$.}, the sum of which is seen to be
 \begin{align}
 \frac{1-r^N}{1-r} &= \frac{1 - \exp(i 4\pi k)}{1 - \exp(i 4\pi k/N)} = 0
 \end{align}
@@ -352,7 +352,7 @@ So the best trigonometric fit of order $p=1$ for the time series concerned is
 f(t) \approx \frac{11}{5} + 0.229 \cos(\frac{2\pi}{5}t) - 0.235 \sin(\frac{2\pi}{5}t)
 \end{align*}
 \end{solution}
-Short Exercise: Find an improved approximation with order $p = 2$. What happens if $p = 3$? \footnote{For $p = 2$, the best-fit coefficients are
+$\blacktriangleright$ Short Exercise: Find an improved approximation with order $p = 2$. What happens if $p = 3$? \footnote{For $p = 2$, the best-fit coefficients are
 \begin{align*}
 \begin{bmatrix}
 C_0 \\
@@ -431,7 +431,7 @@ While we may want to make the approximation by the Fourier basis as good as poss
 \end{align}
 so the two cosine waves, despite having different frequencies, coincide at every data point and will be indistinguishable within the time series. The same problem arises similarly for the sine signals. The condition $k + l = N$ above offers a hint that the maximum value of $p$ should be $N/2$. This corresponds to an angular frequency of 
 \begin{align}
-\omega_{\text{Ny}} = \frac{2\pi}{N}(\frac{N}{2}) = \pi    
+\omega_{\text{Ny}} = \frac{2\pi}{N}\left(\frac{N}{2}\right) = \pi    
 \end{align}
 which is known as the \index{Nyquist Frequency}\keywordhl{Nyquist frequency}. Consequentially, we have the \index{Nyquist Sampling Theorem}\keywordhl{Nyquist Sampling Theorem} as follows.
 \begin{thm}[Nyquist Sampling Theorem]
@@ -446,12 +446,12 @@ So, it means that the highest resolvable frequency in the time series is the Nyq
 \end{align}
 for all time steps $t = 0,1,\ldots,N-1$, and the same goes for the sines. Another perspective to see the problem is that, if the "ground truth" function to be approximated by DFT indeed contains some sinusoidal component with a frequency higher than the Nyquist frequency, then its signal will "spill" into a corresponding lower frequency. Again, using cosine and the case $k + l = N$ as an illustration, if $k$ represents the lower frequency mode and $l$ represents the higher one (assumed to have a Fourier coefficient of $a_l$ in the "ground truth"), then (\ref{eqn:protoDFTa}) will yield
 \begin{align}
-A_{k \leftarrow l} &= \frac{2}{N}\sum_{t=0}^{N-1} (a_l\cos(\frac{2\pi lt}{N})) \cos(\frac{2\pi kt}{N})\nonumber \\
+A_{k \leftarrow l} &= \frac{2}{N}\sum_{t=0}^{N-1} \left(a_l\cos(\frac{2\pi lt}{N})\right) \cos(\frac{2\pi kt}{N})\nonumber \\
 &= \frac{2}{N}\sum_{t=0}^{N-1} a_l\cos(\frac{2\pi (N-k)t}{N}) \cos(\frac{2\pi kt}{N})\nonumber \\
 &= \frac{2}{N}\sum_{t=0}^{N-1} a_l\cos(2\pi t - \frac{2\pi k}{N} t) \cos(\frac{2\pi kt}{N})\nonumber \\
 &= \frac{2}{N}\sum_{t=0}^{N-1} a_l\cos(\frac{2\pi k}{N} t) \cos(\frac{2\pi kt}{N}) \nonumber \\
 &= \frac{2}{N}\sum_{t=0}^{N-1} a_l \cos^2(\frac{2\pi kt}{N}) \nonumber \\
-&= \frac{2}{N} (a_l (\frac{N}{2})) = a_l & \text{(by (\ref{eqn:sqcossineNhalf}))} 
+&= \frac{2}{N} \left(a_l \left(\frac{N}{2}\right)\right) = a_l & \text{(by (\ref{eqn:sqcossineNhalf}))} 
 \end{align}
 Hence any signal with a frequency higher than the Nyquist frequency will contribute to the respective DFT frequency and contaminate it.\footnote{On the other hand, if the true function only contains the lower frequency mode, then by the same steps we can show that the prototype DFT coefficient $A_k$ will coincide exactly with the usual Fourier coefficients $a_k$.}\par
 
@@ -511,10 +511,10 @@ The real DFT approach above has the drawback of using sine-cosine pairs for comp
 
 Continuing from the ideas built in the last subsection, we propose an interpolation scheme that uses $\exp(i (2\pi k/N) t)$, for a time series with $N$ data, evenly spaced by a time step of $\Delta t = 1$. The range of $k$ will be from 
 \begin{align*}
--\frac{N}{2}, -(\frac{N}{2}-1), \ldots, -1, \allowbreak 0, 1, \ldots, \frac{N}{2}-1  
+-\frac{N}{2}, -\left(\frac{N}{2}-1\right), \ldots, -1, \allowbreak 0, 1, \ldots, \frac{N}{2}-1  
 \end{align*}for even $N$ and
 \begin{align*}
--\frac{N-1}{2}, -(\frac{N-1}{2}-1), \dots, -1, 0, 1, \ldots, \frac{N-1}{2}    
+-\frac{N-1}{2}, -\left(\frac{N-1}{2}-1\right), \dots, -1, 0, 1, \ldots, \frac{N-1}{2} 
 \end{align*} for odd $N$. Both ranges ensure that the total number of complex exponentials used in the fitting process is exactly $N$. Each pair of complex exponentials with the wavenumber $k$ and $-k$, i.e.\ $\exp(i (2\pi k/N) t)$ and $\exp(-i (2\pi k/N) t)$ in combination, gives rise to $\cos( (2\pi k/N) t)$ and $\sin((2\pi k/N) t)$ by (\ref{eqn:sincoscomplex}), and so we can expect the correspondence between the real and complex version of Discrete Fourier Transform.\par
 Now, the matrix $G$ will take the form of
 \begin{align}
@@ -542,7 +542,7 @@ The entries of $G^*G$ in Formula (\ref{eqn:bestfit}) from Theorem \ref{thm:bestf
 \end{align*} The $\exp(i (2\pi (k-l)/N))$ term in the denominator will not equal to $1$ and the denominator will not be zero as long as $k \neq l$ and the indices are in the specified range. If $k = l$, then $\exp(i (2\pi k/N) t)\overline{\exp(i (2\pi l/N) t)} =  \exp(i (2\pi k/N) t)\exp(-i (2\pi k/N) t) = 1$, and the sum will be $N$.} Thus, the expression $G^*G$ is just $N$ times the identity $I$, and $(G^*G)^{-1} = \frac{1}{N} I$. \par
 Now we denote the new, complex best-fit parameters, or coefficients by $C_k$. Subsequently,
 \begin{align}
-\vec{\beta}_f &= (G^*G)^{-1}G^*\vec{d} = (\frac{1}{N}I)G^*\vec{d} \nonumber \\
+\vec{\beta}_f &= (G^*G)^{-1}G^*\vec{d} = \left(\frac{1}{N}I\right)G^*\vec{d} \nonumber \\
 \small
 \begin{bmatrix}
 C_0 \\
@@ -574,7 +574,7 @@ f(2) \\
 \end{bmatrix}
 \end{align}
 Again this is for even $N$, and we ought to replace the indices for coefficients and complex exponentials appropriately for odd $N$. The $\frac{1}{N}$ factor will also be ignored. We now conclude the method of \index{Complex Discrete Fourier Transform}\keywordhl{(complex) Discrete Fourier Transform} in a compact way as follows.
-\begin{defn}
+\begin{defn}[Discrete Fourier Transform (DFT)]
 \label{defn:complexDFT}
 The coefficients, or amplitudes, of the DFT in complex form are computed by
 \begin{align}
@@ -588,7 +588,7 @@ We will sometimes denote the series of $C_k$ by $F(k)$ or $\hat{f}(k)$.
 \end{defn}
 The negative sign inside the complex exponentials in the formula comes from the conjugate transpose required to produce $G^*$. The relation between $C_k$ and the parameters $A_k$, $B_k$ in the real counterpart are inferred from (\ref{eqn:sincoscomplex}) of Properties \ref{proper:sincoscomplex} and comparing the expression for the real case\footnote{\begin{align*}
 \frac{C_k + C_{-k}}{N} &= \frac{1}{N}\left(\sum_{t=0}^{N-1} f(t)\exp(-i\frac{2\pi k}{N}t) + \sum_{t=0}^{N-1} f(t)\exp(-i\frac{2\pi (-k)}{N}t)\right) \\ 
-&= \frac{1}{N}(\sum_{t=0}^{N-1} f(t)\left(\exp(-i\frac{2\pi k}{N}t) + \exp(i\frac{2\pi k}{N}t)\right)) \\
+&= \frac{1}{N}\left(\sum_{t=0}^{N-1} f(t)\left(\exp(-i\frac{2\pi k}{N}t) + \exp(i\frac{2\pi k}{N}t)\right)\right) \\
 &= \frac{2}{N} \sum_{t=0}^{N-1} f(t) \cos(\frac{2\pi k}{N}t) \qquad \text{(by (\ref{eqn:sincoscomplexa}))}
 \end{align*}
 which is just equal to $A_k$ in Equation (\ref{eqn:protoDFTa}). The derivation is similar for $B_k$.}, that is
@@ -608,7 +608,7 @@ A_k &= 2\Re(C_k)/N \\
 B_k &= -2\Im(C_k)/N
 \end{align}    
 \end{subequations}
-for any $0 \neq \abs{k} < \frac{N}{2}$. Meanwhile, $C_0$ is the same in both types of DFT and when $N$ is even, \smash{$A_{\frac{N}{2}}$ = $\frac{1}{N}C_{-\frac{N}{2}}$}. The $\frac{1}{N}$ factor is optional and depends on if any convention is used.
+for any $0 \neq \abs{k} < \frac{N}{2}$. Meanwhile, $C_0$ is the same in both types of DFT and when $N$ is even, \smash{$A_{N/2} = \frac{1}{N}C_{-N/2}$}. The $\frac{1}{N}$ factor is optional and depends on if any convention is used.
 \end{proper}
 
 \begin{exmp}
@@ -626,7 +626,7 @@ C_2 &= 4 + 1\exp(-i\frac{2\pi(2)}{5}) + 2\exp(-i\frac{2\pi(2)(2)}{5}) \\
 \end{align*}
 Either by the property just mentioned or a direct computation, $C_{-1} = \overline{C_1}$ and $C_{-2} = \overline{C_2}$ are seen to be the complex conjugates of $C_1$ and $C_2$ respectively. 
 \end{solution}
-Short Exercise: Check if Properties \ref{proper:FTrealcomplex} is true in this example.\footnote{We will only check $A_1$ and $B_1$ and leave $A_2$ and $B_2$ to the readers. $2\Re(C_1)/N = 2(0.573)/5 \approx 0.229 = A_1$, $-2\Im(C_1)/N = -2(0.588)/5 \approx -0.235 = B_1$.}
+$\blacktriangleright$ Short Exercise: Check if Properties \ref{proper:FTrealcomplex} is true in this example.\footnote{We will only check $A_1$ and $B_1$ and leave $A_2$ and $B_2$ to the readers. $2\Re(C_1)/N = 2(0.573)/5 \approx 0.229 = A_1$, $-2\Im(C_1)/N = -2(0.588)/5 \approx -0.235 = B_1$.}
 
 \subsection{Inverse DFT}
 
@@ -661,7 +661,7 @@ f(2) \\
 \end{bmatrix}
 \end{align}
 for even $N$, and can be adapted for odd $N$ with small tweaks similar to those before. It can also be written in a summation form just like the one in Definition \ref{defn:complexDFT} as follows.
-\begin{defn}
+\begin{defn}[Inverse DFT]
 \label{defn:iDFT}
 The inverse Discrete Fourier Transform is computed by
 \begin{align}
@@ -720,7 +720,7 @@ f(2) &= \frac{1}{N}\sum_{k=-3}^{2} F(k)\exp(i\frac{2\pi k}{N}(2)) \\
 &\quad + C_{-1}\exp(i\frac{2\pi (-1)}{6}(2)) + C_{0}\exp(i\frac{2\pi (0)}{6}(2)) \\
 &\quad + C_{1}\exp(i\frac{2\pi (1)}{6}(2)) + C_{2}\exp(i\frac{2\pi (2)}{6}(2))] \\
 &= \frac{1}{6}[(1)(1) + (1+i)e^{-i \frac{4\pi}{3}} + (2-i)e^{-i \frac{2\pi}{3}} + 3 + (2+i)e^{i \frac{2\pi}{3}} + (1-i)e^{i \frac{4\pi}{3}}] \\
-&\approx 0.4107 
+&\approx -0.4107 
 \end{align*}
 We leave the calculations for the remaining three data points to the readers. They are $f(3) = 0$, $f(4) \approx 0.7440$, and $f(5) = \frac{1}{2}$.
 \end{solution}
@@ -744,8 +744,8 @@ A_k \cos(\frac{2\pi k}{N}t) + B_k \sin(\frac{2\pi k}{N}t)
 \end{align}
 Plugging (\ref{eqn:FTrealcomplex2}) into (\ref{eqn:FTwave}) above gives
 \begin{align}
-&\quad \frac{2}{N} (\Re(C_k)\cos(\frac{2\pi k}{N}t) - \Im(C_k) \sin(\frac{2\pi k}{N}t)) \nonumber \\
-&= \frac{2}{N} (\hat{A}_k \cos \phi_k \cos(\frac{2\pi k}{N}t) - \hat{A}_k\sin\phi_k \sin(\frac{2\pi k}{N}t)) \nonumber  \\
+&\quad \frac{2}{N} \left(\Re(C_k)\cos(\frac{2\pi k}{N}t) - \Im(C_k) \sin(\frac{2\pi k}{N}t)\right) \nonumber \\
+&= \frac{2}{N} \left(\hat{A}_k \cos \phi_k \cos(\frac{2\pi k}{N}t) - \hat{A}_k\sin\phi_k \sin(\frac{2\pi k}{N}t)\right) \nonumber  \\
 &= \frac{2}{N} \hat{A}_k \cos(\frac{2\pi k}{N}t + \phi_k)
 \end{align}
 where we let $-\pi \leq \phi_k < \pi$ and $\hat{A}_k \geq 0$ as real-valued quantities, in a way such that 
@@ -755,7 +755,7 @@ where we let $-\pi \leq \phi_k < \pi$ and $\hat{A}_k \geq 0$ as real-valued quan
 \text{and} \quad \Im(C_k) &= \hat{A}_k \sin \phi_k   
 \end{align}   
 \end{subequations}
-and then apply the trigonometric identity $\cos(\alpha + \beta) = \cos\alpha \cos\beta - \sin\alpha \sin\beta$. $\phi_k$ and $\hat{A}_k$ will be the \textit{phase} (relative to a cosine wave) and the \textit{amplitude} of the signal (again putting the $\frac{2}{N}$ factor aside) at the $k$-th frequency respectively. The required values of $\phi_k$ and $\hat{A}_k$ are then derived according to
+and then apply the trigonometric identity $\cos(\alpha + \beta) = \cos\alpha \cos\beta - \sin\alpha \sin\beta$. $\phi_k$ and $\hat{A}_k$ will be the \index{Phase}\textit{phase} (relative to a cosine wave) and the \index{Amplitude}\textit{amplitude} of the signal (again putting the $\frac{2}{N}$ factor aside) at the $k$-th frequency respectively. The required values of $\phi_k$ and $\hat{A}_k$ are then derived according to
 \begin{subequations}
 \begin{align}
 \frac{\Im(C_k)}{\Re(C_k)} &= \frac{\sin \phi_k}{\cos \phi_k} = \tan \phi_k \\
@@ -779,7 +779,7 @@ due to Equation (\ref{eqn:zzbar}) and the fact that $C_k$ has $C_{-k}$ as its co
 Find the phase and power at each frequency bin for the complex DFT computed in Example \ref{exmp:ex11.2.2}.   
 \end{exmp}
 \begin{solution}
-The phase of the zeroth frequency (i.e. constant term) signal is trivially zero, and its power is simply \smash{$C_0^2 = (11)^2 = 121$}. For the first (base) frequency, the phase is
+The phase of the zeroth frequency (i.e.\ constant term) signal is trivially zero, and its power is simply \smash{$C_0^2 = (11)^2 = 121$}. For the first (base) frequency, the phase is
 \begin{align*}
 \phi_1 = \arctan(\frac{\Im(C_1)}{\Re(C_1)}) = \arctan(\frac{0.588}{0.573}) = \SI{0.80}{\radian}
 \end{align*}
@@ -814,7 +814,7 @@ By substituting the form of inverse DFT given as (\ref{eqn:invDFT}) in Definitio
 &= \frac{1}{N^2}\sum_{k= -\lfloor N/2 \rfloor}^{\lfloor (N-1)/2 \rfloor} F(k) \left(\sum_{t=0}^{N-1} \exp(i\frac{2\pi k}{N}t) \left( \sum_{l= -\lfloor N/2 \rfloor}^{\lfloor (N-1)/2 \rfloor} \overline{F(l)}\exp(-i\frac{2\pi l}{N}t) \right) \right) \\
 &= \frac{1}{N^2} \sum_{k= -\lfloor N/2 \rfloor}^{\lfloor (N-1)/2 \rfloor} F(k) \left( \sum_{l= -\lfloor N/2 \rfloor}^{\lfloor (N-1)/2 \rfloor}  \sum_{t=0}^{N-1} \overline{F(l)}\exp(i \frac{2\pi (k-l)}{N}t) \right) 
 \end{align*}
-Similar to (\ref{eqn:DFTdoublesum}), we have
+where we have used two different dummy indices $k$ and $l$ initially. Similar to (\ref{eqn:DFTdoublesum}), we have
 \begin{align}
 \sum_{t=0}^{N-1} \exp(i \frac{2\pi (k-l)}{N}t) = 
 \begin{cases}
@@ -824,7 +824,7 @@ N & \text{if $k = l$} \\
 \end{align}
 Thus
 \begin{align*}
-&\quad \frac{1}{N^2}  \sum_{k= -\lfloor N/2 \rfloor}^{\lfloor (N-1)/2 \rfloor} F(k) \left(  \sum_{l= -\lfloor N/2 \rfloor}^{\lfloor (N-1)/2 \rfloor}  \sum_{t=0}^{N-1} \overline{F(l)}\exp(i \frac{2\pi (k-l)}{N}t) \right) \\
+&\quad \frac{1}{N^2}  \sum_{k= -\lfloor N/2 \rfloor}^{\lfloor (N-1)/2 \rfloor} F(k) \left( \sum_{l= -\lfloor N/2 \rfloor}^{\lfloor (N-1)/2 \rfloor}  \sum_{t=0}^{N-1} \overline{F(l)}\exp(i \frac{2\pi (k-l)}{N}t) \right) \\
 &= \frac{1}{N^2}  \sum_{k= -\lfloor N/2 \rfloor}^{\lfloor (N-1)/2 \rfloor} F(k) [(0) + \cdots + (\overline{F(k)})(N) + \cdots + (0)] \\
 &= \frac{1}{N^2}  \sum_{k= -\lfloor N/2 \rfloor}^{\lfloor (N-1)/2 \rfloor} N F(k)\overline{F(k)} \\
 &= \frac{1}{N} \sum_{k= -\lfloor N/2 \rfloor}^{\lfloor (N-1)/2 \rfloor} \abs{F(k)}^2
@@ -949,7 +949,7 @@ p(t = 5) &= P(\text{Birth 5 yrs later}|\text{Married now})P(\text{Married now}) 
 \end{align*}
 where $P(A|B)$ is the conditional probability of $A$ occurring when $B$ has happened.
 \end{solution}
-Short Exercise: Find the chance of Mary getting a baby at $8$ years later by convolution.\footnote{It is $q(0)r(8) + q(1)r(7) + q(2)r(6) + q(3)r(5) + q(4)r(4) + q(5)r(3) + q(6)r(2) = (0.2)(0.08) + (0.2)(0.08) + (0.2)(0.08) + (0.1)(0.08) + (0.1)(0.15) + (0.1)(0.15) + (0.1)(0.15) = 0.101$.}\par
+$\blacktriangleright$ Short Exercise: Find the chance of Mary getting a baby at $8$ years later by convolution.\footnote{It is $q(0)r(8) + q(1)r(7) + q(2)r(6) + q(3)r(5) + q(4)r(4) + q(5)r(3) + q(6)r(2) = (0.2)(0.08) + (0.2)(0.08) + (0.2)(0.08) + (0.1)(0.08) + (0.1)(0.15) + (0.1)(0.15) + (0.1)(0.15) = 0.101$.}\par
 
 Since Fourier analysis essentially treats the functions or time series as periodic, it happens that it is more useful to define the \index{Circular Convolution}\keywordhl{circular convolution} for two time series of the same length, where we wrap either one of the input time series in a cyclic manner (see Figure \ref{fig:circconvschm}).
 \begin{defn}[Circular Convolution]
@@ -1031,7 +1031,7 @@ where we use Definition \ref{defn:complexDFT} again and the desired equality is 
 Let $f(t)$ be the time series in Example \ref{exmp:ex11.2.1}, and $g(t)$ be another time series with $g(0) = 1$, $g(1) = 4$, $g(2) = 0$, $g(3) = 2$, $g(4) = -1$. Verify the Circular Convolution Theorem for these two time series.
 \end{exmp}
 \begin{solution}
-$\hat{f}(k)$ has been computed in Example \ref{exmp:ex11.2.2} as $(11, 0.573+0.588i, \\ 3.927-0.951i, 3.927+0.951i, 0.573-0.588i)$. Meanwhile,
+$\hat{f}(k)$ has been computed in Example \ref{exmp:ex11.2.2} as $(11, 0.573+0.588i, \allowbreak 3.927-0.951i, 3.927+0.951i, 0.573-0.588i)$. Meanwhile,
 \begin{align*}
 \hat{g}(0) &= 1+4+0+2+(-1) = 6 \\
 \hat{g}(1) &= 1 + 4\exp(-i\frac{2\pi}{5}) + 0\exp(-i\frac{2\pi(2)}{5}) \\
@@ -1039,7 +1039,7 @@ $\hat{f}(k)$ has been computed in Example \ref{exmp:ex11.2.2} as $(11, 0.573+0.5
 \hat{g}(2) &= 1 + 4\exp(-i\frac{2\pi(2)}{5}) + 0\exp(-i\frac{2\pi(2)(2)}{5}) \\
 &\quad+ 2\exp(-i\frac{2\pi(2)(3)}{5}) + (-1)\exp(-i\frac{2\pi(2)(4)}{5}) = -0.809 - 4.841i
 \end{align*}
-and hence $\hat{g}(k) = (6, 0.309-3.580i, -0.809-4.841i, -0.809+4.841i,\\ 0.309+3.580i)$. The circular convolution $f(t) \circledast g(t)$ is found by
+and hence $\hat{g}(k) = (6, 0.309-3.580i, -0.809-4.841i, -0.809+4.841i, \allowbreak 0.309+3.580i)$. The circular convolution $f(t) \circledast g(t)$ is found by
 \begin{align*}
 (f \circledast g)(0) &= f(0)g(0) + f(1)g(4) + f(2)g(3) + f(3)g(2) + f(4)g(1) \\
 &= (4)(1) + (1)(-1) + (2)(2) + (3)(0) + (1)(4) = 11 \\
@@ -1169,7 +1169,7 @@ I_4F_4 & -D_{4 \to 8}F_4
 1 & \omega_8^6 & \omega_8^{12} & \omega_8^{18} & -\omega_8^3 & -\omega_8^9 & -\omega_8^{15} & -\omega_8^{21} \\
 \end{bmatrix}
 \end{align}
-Note that $\omega_N^{k + qN} = \omega_N^k$\footnote{\label{foot:DFTcyclicexp}$\omega_N^{k + qN} = \exp(-i\frac{2\pi}{N}(k+qN)) = \exp(-i(\frac{2\pi}{N}k + 2\pi q)) = \exp(-i\frac{2\pi}{N}k)$.} for any integer $q$ and $-1 = \omega_N^{N/2}$, hence the matrix can be further rewritten into
+Note that $\omega_N^{k + qN} = \omega_N^k$\footnote{\label{foot:DFTcyclicexp}$\omega_N^{k + qN} = \exp(-i\frac{2\pi}{N}(k+qN)) = \exp(-i(\frac{2\pi}{N}k + 2\pi q)) = \exp(-i\frac{2\pi}{N}k) = \omega_N^{k}$.} for any integer $q$ and $-1 = \omega_N^{N/2}$, hence the matrix can be further rewritten into
 \begin{align}
 \renewcommand\arraystretch{1.25}
 \footnotesize
@@ -1200,7 +1200,7 @@ F_4 & 0 \\\
 \textbf{f}_{\text{odd}}
 \end{bmatrix}
 \end{align*}
-will give the same DFT result as the direct formula $\hat{\textbf{f}} = F_8\textbf{f}$. We can repeat the same procedure to similarly split $F_4$ into two $F_2$ blocks and shuffle the indices again. A schematic flowchart is shown as Figure \ref{fig:FFT} below. For a bigger $N$, e.g. $N = 2^{10} = 1024$, the method proceeds in the same principle such that $F_{1024} \to F_{512} \to F_{256} \to \cdots$. The FFT time complexity is \textit{log-linear} $O(n \log n)$, where the $\log n$ factor has replaced $n$ thanks to its bisection nature. In fact, it requires $\frac{N}{2}\log_2(N)$ multiplications and $N\log_2(N)$ additions. This is much faster than $O(n^2)$ of the naive DFT when $n$ becomes very large. For instance, the naive DFT of size $N = 2^{12} = 4096$ will require $33550336$ operations but the Radix-2 FFT algorithm only needs $73728$ which is around $450$ times more efficient. For this reason, any actual computer implementation of DFT will always use FFT underneath.
+will give the same DFT result as the direct formula $\hat{\textbf{f}} = F_8\textbf{f}$. We can repeat the same procedure to similarly split $F_4$ into two $F_2$ blocks and shuffle the indices again. A schematic flowchart is shown as Figure \ref{fig:FFT} below. For a bigger $N$, e.g.\ $N = 2^{10} = 1024$, the method proceeds in the same principle such that $F_{1024} \to F_{512} \to F_{256} \to \cdots$. The FFT time complexity is \textit{log-linear} $O(n \log n)$, where the $\log n$ factor has replaced $n$ thanks to its bisection nature. In fact, it requires $\frac{N}{2}\log_2(N)$ multiplications and $N\log_2(N)$ additions. This is much faster than $O(n^2)$ of the naive DFT when $n$ becomes very large. For instance, the naive DFT of size $N = 2^{12} = 4096$ will require $33550336$ operations but the Radix-2 FFT algorithm only needs $73728$ which is around $450$ times more efficient. For this reason, any actual computer implementation of DFT will always use FFT underneath.
 
 \begin{landscape}
 \begin{figure}
@@ -1267,7 +1267,7 @@ import numpy as np
 import pandas as pd
 
 Nino34 = pd.read_csv("nino34.long.anom.csv", header=0, names=["Date", "Nino34"])
-print(Nino34)    
+print(Nino34)
 \end{lstlisting}
 Next, import the required functions from the \verb|scipy.fft| module and apply FFT on the Niño 3.4 time series over the 120-year time period of 1901-2020.
 \begin{lstlisting}
@@ -1354,6 +1354,13 @@ $f(t)$ & $2.5$ & $3.6$ & $5.9$ & $2.9$ & $6.0$ \\
 \end{center}
 Find the amplitude/power and phase of the sinusoidal wave signal corresponding to the third frequency bin, i.e.\ with an angular frequency of $\omega = \smash{\frac{2\pi(3)}{10}}$. 
 \end{Exercise}
+\begin{Answer}
+Its DFT is $(43.9, 7.350-0.095i, -1.386-6.082i, -2.600+0.059i, -3.064+8.990i, 0.5,  -3.064+8.990i, -2.600+0.059i, -1.386-6.082i, \allowbreak 7.350-0.095i)$. The required power and phase for the third frequency are 
+\begin{align*}
+\abs{C_3}^2 &= C_3C_{-3} = (-2.600+0.059i)(-2.600-0.059i) = 6.764 \\
+\phi_3 &= \arctan(\frac{\Im(C_3)}{\Re(C_3)}) = \arctan(\frac{0.059}{-2.600}) = \SI{-0.022}{\radian}
+\end{align*}
+\end{Answer}
 
 \begin{Exercise}
 Download an \href{https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download}{ERA5 Temperature dataset} over any time period of $20$ years. Select any location as you like, and extract the temperature time series there. Apply DFT to the time series and identify any dominant frequency or period with a large power. Explain the peaks with Earth Science knowledge.
@@ -1364,8 +1371,24 @@ Perform DFT on the time series for the two MJO EOF modes derived in Exercise \re
 \end{Exercise}
 
 \begin{Exercise}
-Find the circular convolution of two time series $f(t) = (1,4,2,4, \\ 3,0,-1,2)$ and $g(t) = (2,3,-2,1,-1,0,4,3)$ by definition, as well as via the Convolution Theorem to check the consistency.
+Find the circular convolution of two time series $f(t) = (1,4,2,4, \allowbreak 3,0,-1,2)$ and $g(t) = (2,3,-2,1,-1,0,4,3)$ by definition, as well as via the Convolution Theorem to check the consistency.
 \end{Exercise}
+\begin{Answer}
+The desired circular convolution is
+\begin{align*}
+f \circledast g = (27, 28, 41, 14, 13, 4, 4, 19)
+\end{align*}
+and the respective DFTs are
+\begin{align*}
+& F[f \circledast g](k) \\
+=&\, (150, 34.5-50.4i, -5+i, -6.5+23.6i, \\
+& 20, -6.5-23.6i, -5-i, 34.5+50.4i) \\
+=&\, (15, -0.59-7.24i, 3+2i, -3.41-1.24i, \\
+& {-5}, -3.41+1.24i, 3-2i, -0.59+7.24i) \\
+& \odot (10, 6.54+5.29i, -1+i, -0.54-6.71i, \\
+& {-4}, -0.54+6.71i, -1-i, 6.54-5.29i) = \hat{f}(k)\hat{g}(k)
+\end{align*}
+\end{Answer}
 
 \begin{Exercise}
 Write your own FFT function in Python and compare it with the one in the \verb|scipy.fft| library by testing them on any time series.
