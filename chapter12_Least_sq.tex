@@ -1,15 +1,15 @@
 \chapter{Least-Square Approximation}
 \label{chap:leastsq}
 
-As discussed in Chapter \ref{chap:SolLinSys}, given a linear system, if the number of equations (rows) is greater than the number of unknowns (columns), then it is overdetermined. Generally, it would be inconsistent and there will be no solution. However, we can salvage this by finding an approximated solution such that the so-called squared error is minimized. This is known as the \textit{least-square approximation}. Its most common application is \textit{linear regression} in which we predict a dependent variable using an optimized linear equation in some independent variable(s).
+As discussed in Chapter \ref{chap:SolLinSys}, given a linear system, if the number of equations (rows) is greater than the number of unknowns (columns), then it is overdetermined. Generally, it will be inconsistent and there will be no solution. However, we can salvage this by finding an approximated solution such that the so-called squared error is minimized. This is known as the \textit{least-square approximation}. Its most common application is \textit{linear regression}, in which we predict a dependent variable using an optimized linear equation in some independent variable(s).
 
 \section{Mathematical Ideas of Least-Square Approximation}
 
-For a linear system $A\vec{x} = \vec{h}$ where $\vec{h}$ does not lie in $\mathcal{C}(A)$ the column space of $A$, by Properties \ref{proper:consistentcolspace} it is inconsistent and there will be no exact solution. Nevertheless, a best-fit vector $\vec{x}_f$ can be found, where $A\vec{x}_f = \smash{\vec{h}_f}$, in the sense that $\smash{\vec{h}_f}$ will be the closest vector in the column space of $A$ to $\smash{\vec{h}}$ in distance, i.e.\ the squared error
+For a linear system $A\vec{x} = \vec{h}$ where $\vec{h}$ does not lie in $\mathcal{C}(A)$ the column space of $A$, by Properties \ref{proper:consistentcolspace} it is inconsistent and there will be no exact solution. Nevertheless, a best-fit vector $\vec{x}_f$ can be found, where $A\vec{x}_f = \smash{\vec{h}_f}$, in the sense that $\smash{\vec{h}_f}$ will be the closest vector in the column space of $A$ to $\smash{\vec{h}}$ in terms of distance, i.e.\ the squared error
 \begin{align}
 \norm{\vec{h}-\vec{h}_f}^2 = \norm{\vec{h}-A\vec{x}_f}^2    
 \end{align}
-is minimized and $\smash{\vec{h}_f} = A\vec{x}_f$ (or $\vec{x}_f$) is referred to as the \index{Least-square Approximation}\keywordhl{least-square approximation} to the system. From Properties \ref{proper:shortestorthoproj}, we know that the shortest distance will be achieved by the orthogonal projection of $\vec{h}$ onto the column space of $A$. Notice that the distance and orthogonality can now be defined with respect to a general inner product other than the usual dot product. Therefore, $\vec{h}-A\vec{x}_f$ will be in the orthogonal complement $\mathcal{C}(A)^\perp$\footnote{which may not be equal to $\mathcal{N}(A^T)$ or $\mathcal{N}(A^*)$ but rather $\mathcal{N}(A^\dag)$ if an inner product other than the standard one is used.} of the column space $\mathcal{C}(A)$ of $A$, and we have
+is minimized, and $\smash{\vec{h}_f} = A\vec{x}_f$ (or $\vec{x}_f$) is then referred to as the \index{Least-square Approximation}\keywordhl{least-square approximation} to the system. From Properties \ref{proper:shortestorthoproj}, we know that the shortest distance will be achieved by the orthogonal projection of $\vec{h}$ onto the column space of $A$. Notice that the distance and orthogonality can now be defined with respect to a general inner product other than the usual dot product. Therefore, $\vec{h}-A\vec{x}_f$ will be in the orthogonal complement $\mathcal{C}(A)^\perp$\footnote{which may not be equal to $\mathcal{N}(A^T)$ or $\mathcal{N}(A^*)$ but rather $\mathcal{N}(A^\dag)$ if an inner product other than the standard one is used.} of the column space $\mathcal{C}(A)$ of $A$, and we have
 \begin{align}
 \langle A\vec{x}, \vec{h}-A\vec{x}_f \rangle = \langle \vec{x}, A^\dag(\vec{h}-A\vec{x}_f) \rangle = 0 
 \end{align}
@@ -18,7 +18,7 @@ Since this holds for any $\vec{x}$, by the last item of Properties \ref{proper:i
 A^\dag(\vec{h}-A\vec{x}_f) &= \textbf{0} \nonumber \\
 A^\dag A\vec{x}_f &= A^\dag \vec{h}
 \end{align}
-This is called the \index{Normal Equation}\keywordhl{normal equation} due to the appearance of $A^\dag A$. So any $\vec{x}_f$\footnote{The existence of at least one of such a vector is guaranteed by the uniqueness of orthogonal projection of $\smash{\vec{h}}$ onto $\mathcal{C}(A)$.} satisfying this equation will produce the least-square error. We may be tempted to multiply both sides of the equation by the inverse $(A^\dag A)^{-1}$ to arrive at a formula for the least-square solution $\vec{x}_f = (A^\dag A)^{-1}A^\dag \smash{\vec{h}}$. However, this is only allowed when this inverse indeed exists, and we now discuss under what condition it will happen.\par
+This is called the \index{Normal Equation}\keywordhl{normal equation} due to the appearance of the $A^\dag A$ factor. So any $\vec{x}_f$\footnote{The existence of at least one of such a vector is guaranteed by the uniqueness of orthogonal projection of $\smash{\vec{h}}$ onto $\mathcal{C}(A)$.} satisfying this equation will produce the least-square error. We may be tempted to multiply both sides of the equation by the inverse $(A^\dag A)^{-1}$ to arrive at a formula for the least-square solution $\vec{x}_f = (A^\dag A)^{-1}A^\dag \smash{\vec{h}}$. However, this is only allowed when this inverse indeed exists, and we now discuss under what condition it will happen.\par
 \begin{figure}[ht!]
     \centering
     \begin{tikzpicture}[rotate=0]
@@ -53,7 +53,7 @@ If $A$ is a $m \times n$ matrix with $m \geq n$ and all its $n$ column vectors a
 \begin{align}
 \vec{x}_f &= (A^\dag A)^{-1}A^\dag \vec{h} \label{eqn:bestfit}
 \end{align}
-such that the square error $\norm{\vec{h}-\vec{h_f}}^2 = \norm{\vec{h}-A\vec{x_f}}^2$ is minimized.
+such that the squared error $\norm{\vec{h}-\vec{h_f}}^2 = \norm{\vec{h}-A\vec{x_f}}^2$ is minimized.
 \end{thm}
 Notice that if $\vec{h}$ already lies in the column space of $A$, then $A\vec{x} = \vec{h}$ will have an exact solution, and the best-fit solution will be identical to this exact solution. However, on the other extreme, if the column vectors in $A$ are not linearly independent, then the best-fit solution will not be unique. Rather, the normal equation will still be consistent, but there are infinitely many possible solutions, each having the same least-square error. Also, if the standard real inner product is used so that $A^\dag = A^T$ and we by chance have the QR decomposition of $A$, then
 \begin{align}
@@ -179,7 +179,7 @@ and the least-square error is
 &= 
 \norm{\begin{bmatrix}-\frac{2}{3}\\ 
 \frac{1}{6}\\ 
-\frac{1}{6}\end{bmatrix}}^2 = (-\frac{2}{3}, \frac{1}{6}, \frac{1}{6})^T \cdot (-\frac{2}{3}, \frac{1}{6}, \frac{1}{6})^T = \frac{1}{2}
+\frac{1}{6}\end{bmatrix}}^2 = \left(-\frac{2}{3}, \frac{1}{6}, \frac{1}{6}\right)^T \cdot \left(-\frac{2}{3}, \frac{1}{6}, \frac{1}{6}\right)^T = \frac{1}{2}
 \end{align*}
 For the inner product in Example \ref{exmp:R3innerGS}, an appropriate adjoint, adapted from Section \ref{section:adjointdef}, to be used in this situation is
 \begin{align*}
@@ -263,7 +263,7 @@ where $C$ can be picked to be any positive-definite matrix\footnote{The choice o
 with the least-square error being
 \begin{align*}
 \norm{\vec{h}-A\vec{x_f}}^2 &=
-(\vec{h}-A\vec{x_f})^T B (\vec{h}-A\vec{x_f})\\
+(\textbf{h}-A\textbf{x}_f)^T B (\textbf{h}-A\textbf{x}_f)\\
 &=
 \left(\begin{bmatrix}
 3 \\
@@ -317,7 +317,7 @@ with the least-square error being
 = \frac{36}{59}
 \end{align*}
 \end{solution}
-We close this section by confirming that the matrix $T = A(A^\dag A)^{-1}A^\dag$ as in $\vec{h}_f = A\vec{x}_f = A(A^\dag A)^{-1}A^\dag \vec{h}$ indeed represents an orthogonal projection (of $\vec{h}$ onto the column space of $A$). By Properties \ref{proper:orthoprojadjoint} we just need to check if $T^2 = T = T^\dag$. For the first equality, we have
+We close this section by confirming that the matrix $T = A(A^\dag A)^{-1}A^\dag$ as in $\vec{h}_f = A\vec{x}_f = A(A^\dag A)^{-1}A^\dag \vec{h}$ indeed represents an orthogonal projection (of $\vec{h}$ onto the column space of $A$). By Properties \ref{proper:orthoprojadjoint}, we just need to check if $T^2 = T = T^\dag$. For the first equality, we have
 \begin{align*}
 T^2 &= (A(A^\dag A)^{-1}A^\dag)(A(A^\dag A)^{-1}A^\dag) \\
 &= A(A^\dag A)^{-1}(A^\dag A)(A^\dag A)^{-1}A^\dag \\
@@ -383,7 +383,7 @@ y_2 \\
 y_m
 \end{bmatrix}
 \end{align}
-so that the sum of squared errors $\smash{\sum_{k=1}^m (y_k - y^{\text{pred}}_k)^2} = \sum_{k=1}^m (y_k - (\alpha + \beta x_k))^2$ is minimized. Such a system is conveniently denoted as $[X]\vec{\beta} = \vec{y}$, where the first and second column of $[X] = [\textbf{1}|\vec{x}]$ represent the two predictors, the constant term which is a "hidden" predictor that gives rise to the $y$-intercept, and the linear term of $x$. Now, the sum of squared errors
+so that the squared error $\smash{\sum_{k=1}^m (y_k - y^{\text{pred}}_k)^2} = \sum_{k=1}^m (y_k - (\alpha + \beta x_k))^2$ is minimized. Such a system is conveniently denoted as $[X]\vec{\beta} = \vec{y}$, where the first and second column of $[X] = [\textbf{1}|\vec{x}]$ represent the two predictors, the constant term which is a "hidden" predictor that gives rise to the $y$-intercept, and the linear term of $x$. Now, the sum of squared errors
 \begin{align}
 \sum_{k=1}^m (y_k - (\alpha + \beta x_k))^2 = \norm{\vec{y} - [X]\vec{\beta}}^2    
 \end{align}
@@ -498,7 +498,7 @@ where in this case the quantities now involve more predictor variables, $\smash{
 
 \begin{exmp}
 \label{exmp:GPAregress}
-The university carries out an experiment and tries to quantify the effects of IQ and studying time on the GPA of students. 5 students participated and the data are shown below.
+The university carried out an experiment and tried to quantify the effects of IQ and studying time on the GPA of students. 5 students participated and the data are shown below.
 \begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -653,7 +653,7 @@ The term on L.H.S. is called the \index{Sum of Squares Total (SST)}\keywordhl{SS
 &= \sum_i (y_i - \hat{y}_i)^2 + \sum_i (\hat{y}_i - \overline{y})^2 + 2\sum_i ((y_i - \hat{y}_i) (\hat{y}_i - \overline{y})) \nonumber \\
 &= \text{SSE} + \text{SSR} + 2\sum_i ((y_i - \hat{y}_i) (\hat{y}_i - \overline{y}))
 \end{align}
-The remaining step is to show that the last term equals zero. For simplicity, we work with the case of a single predictor variable so there are two parameters $\alpha$ and $\beta$ only, but it can be easily generalized to multiple predictors and $\beta_j$. Expanding the product gives
+The remaining step is to show that the last term equals zero. For simplicity, we work with the case of a single predictor variable, so there are two parameters $\alpha$ and $\beta$ only, but it can be easily generalized to multiple predictors and $\beta_j$. Expanding the product gives
 \begin{align}
 \sum_i ((y_i - \hat{y}_i) (\hat{y}_i - \overline{y})) &= \sum_i (\hat{y}_i(y_i - \hat{y}_i)) - \overline{y} \sum_i (y_i - \hat{y}_i) \nonumber \\
 &= \sum_i ((\alpha + \beta x_i)(y_i - \hat{y}_i)) - \overline{y} \sum_i (y_i - \hat{y}_i) \nonumber \\
@@ -677,7 +677,7 @@ The mean error of any linear regression is zero. Moreover, its sum of squares to
 \end{align}    
 \end{subequations}
 \end{proper}
-The ratio of SSR to SST is known as the \index{Coefficient of Determination}\keywordhl{coefficient of determination} and is denoted by $R^2$ (hence sometimes we also simply call it \index{R-squared}\keywordhl{R-squared}). It is the proportion of variance in the response variable that can be explained by the predictors and thus indicates how good the linear fit is. It ranges from $0$ to $1$. The larger the value of $R^2$, the better the linear regression at predicting the target variable. If $R^2$ is close to one, then the fit is almost perfect. However, it is cautioned that there may be the problem of \textit{overfitting}\footnote{For $n$ distinct sets of data, it is always possible to achieve a perfect fit ($R^2 = 1$) using $n-1$ predictors (plus the intercept term) in the linear regression even when they may not be really related to the predictand and this is an extreme case of overfitting.}, which means that the regression does well on the dataset it is trained on but fails horribly when extrapolated to data points outside this training set. On the other hand, if $R^2$ is low, then the linear regression is ineffective, but it simply means that there is no apparent linear trend and the possibility of other forms of relationship, like a logarithmic one, existing between the explanatory variables and response variable, cannot be ruled out.
+The ratio of SSR to SST is known as the \index{Coefficient of Determination}\keywordhl{coefficient of determination} and is denoted by $R^2$ (hence sometimes we also simply call it \index{R-squared}\keywordhl{R-squared}). It is the proportion of variance in the response variable that can be explained by the predictors and thus indicates how good the linear fit is. It ranges from $0$ to $1$. The larger the value of $R^2$, the better the linear regression at predicting the target variable. If $R^2$ is close to one, then the fit is almost perfect. However, it is cautioned that there may be the problem of \textit{overfitting}\footnote{For $n$ distinct sets of data, it is always possible to achieve a perfect fit ($R^2 = 1$) using $n-1$ predictors (plus the intercept term) in the linear regression even when they may not be really related to the predictand and this is an extreme case of overfitting.}, which means that the regression does well on the dataset it is trained on but fails horribly when extrapolated to data points outside this training set. On the other hand, if $R^2$ is low, then the linear regression is ineffective, but it simply means that there is no apparent linear trend, and the possibility of other forms of relationship, like a logarithmic one, existing between the explanatory variables and response variable, cannot be ruled out.
 
 \begin{exmp}
 \label{exmp:GPAregress2}
@@ -778,7 +778,7 @@ Y = np.array([3.56, 3.71, 3.73, 3.34, 3.88])
 \end{lstlisting}
 We need to append the constant term by using the \verb|sm.add_constant| function.
 \begin{lstlisting}
-Xc = sm.add_constant(X, prepend=False)    
+Xc = sm.add_constant(X, prepend=False)
 \end{lstlisting}
 Subsequently, create an \verb|sm.OLS| (stands for "Ordinary Least Squares") object and call the \verb|fit| method that takes the predictand/predictors in the first/second argument.
 \begin{lstlisting}
@@ -793,7 +793,7 @@ and the \verb|predict| method will return the predicted values from an input dat
 \begin{lstlisting}
 print(res.predict(Xc))    
 \end{lstlisting}
-This gives \verb|[3.495 3.672 3.764 3.400 3.888]| which is slightly different from what we have obtained in Example \ref{exmp:GPAregress} as our manual calculation of the regression coefficients inevitably contains more round-off errors.
+This gives \verb|[3.495 3.672 3.764 3.400 3.888]| which is slightly different from what we have obtained in Example \ref{exmp:GPAregress2} as our manual calculation of the regression coefficients inevitably contains more round-off errors.
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.99\textwidth]{graphics/OLS_table.png}
@@ -813,6 +813,13 @@ will be reduced to simply
 \end{align*}
 the exact solution as derived in Section \ref{subsection:SolLinSysInv}.
 \end{Exercise}
+\begin{Answer}
+If $A$ (and hence $A^\dag$) is invertible, then
+\begin{align*}
+\vec{x}_f &= (A^\dag A)^{-1}A^\dag \vec{h} \\
+&= A^{-1}(A^\dag)^{-1}A^\dag \vec{h} = A^{-1}\vec{h}  
+\end{align*}
+\end{Answer}
 
 \begin{Exercise}
 Find the least-square solution to the overdetermined linear system below.
@@ -825,6 +832,76 @@ Find the least-square solution to the overdetermined linear system below.
 \end{alignedat}\right.
 \end{align*}
 \end{Exercise}
+\begin{Answer}
+\begin{align*}
+\vec{x}_f &= (A^TA)^{-1}A^T\vec{h} \\
+&= 
+\left(\begin{bmatrix}
+1 & 2 & -3 \\
+1 & -1 & 3 \\
+2 & 1 & -1 \\
+1 & 1 & 1
+\end{bmatrix}^T
+\begin{bmatrix}
+1 & 2 & -3 \\
+1 & -1 & 3 \\
+2 & 1 & -1 \\
+1 & 1 & 1
+\end{bmatrix}\right)^{-1}
+\begin{bmatrix}
+1 & 2 & -3 \\
+1 & -1 & 3 \\
+2 & 1 & -1 \\
+1 & 1 & 1
+\end{bmatrix}^T
+\begin{bmatrix}
+4 \\
+5 \\
+1 \\
+2
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+7&4&-1\\ 
+4&7&-9\\ 
+-1&-9&20
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+1 & 1 & 2 & 1 \\
+2 & -1 & 1 & 1 \\
+-3 & 3 & -1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+4 \\
+5 \\
+1 \\
+2
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+\frac{59}{158}&-\frac{71}{158}&-\frac{29}{158}\\
+-\frac{71}{158}&\frac{139}{158}&\frac{59}{158}\\ 
+-\frac{29}{158}&\frac{59}{158}&\frac{33}{158}
+\end{bmatrix}
+\begin{bmatrix}
+1 & 1 & 2 & 1 \\
+2 & -1 & 1 & 1 \\
+-3 & 3 & -1 & 1
+\end{bmatrix}
+\begin{bmatrix}
+4 \\
+5 \\
+1 \\
+2
+\end{bmatrix} 
+=
+\begin{bmatrix}
+\frac{225}{158}\\ 
+\frac{147}{158}\\ 
+\frac{109}{158}
+\end{bmatrix}
+\end{align*}    
+\end{Answer}
 
 \begin{Exercise}
 Find a linear fit for the following data about sea level pressure and temperature measured at a weather station.
@@ -838,6 +915,16 @@ Pressure (hPa) & $1022.1$ & $1019.5$ & $1018.9$ & $1017.6$ & $1014.3$ & $1013.5$
 \end{tabular}
 \end{center}
 \end{Exercise}
+\begin{Answer}
+We have $m=6$, $\sum X=80$, $\sum (X^2)=1102$, $\sum (XY)=81368.9$, $\sum Y=6105.9$. So
+\begin{align*}
+\alpha_f &= \frac{(\sum Y) (\sum X^2) - (\sum X) (\sum XY)}{m(\sum X^2) - (\sum X)^2} \\
+&= \frac{(6105.9) (1102) - (80) (81368.9)}{6(1102) - (80)^2} \approx 1033.9 \\
+\beta_f &= \frac{m (\sum XY) - (\sum X) (\sum Y)}{m(\sum X^2) - (\sum X)^2} \\
+&= \frac{6 (81368.9) - (80) (6105.9)}{6(1102) - (80)^2} \approx -1.220
+\end{align*}
+Therefore the regression formula is $P = 1033.9 - 1.220T$. 
+\end{Answer}
 
 \begin{Exercise}
 \phantomsection
@@ -863,9 +950,56 @@ CO$_2$ level (ppm) & $354.4$ & $361.0$ & $369.7$ & $380.0$ & $390.1$ & $401.0$\\
 \end{center}
 (Data from: \href{https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_mm_mlo.csv}{NOAA (https://gml.noaa.gov/webdata/ccgg/trends/co2/\\co2\_annmean\_mlo.csv)})
 \end{Exercise}
+\begin{Answer}
+\begin{enumerate}[label=(\alph*)]
+\item We have $m=12$, $\sum X=330$, $\sum (X^2)=12650$, $\sum (XY)=121977.0$, $\sum Y=4235.2$. So
+\begin{align*}
+\alpha_f &= \frac{(\sum Y) (\sum X^2) - (\sum X) (\sum XY)}{m(\sum X^2) - (\sum X)^2} \\
+&= \frac{(4235.2) (12650) - (330) (121977.0)}{12(12650) - (330)^2} \approx 310.56 \\
+\beta_f &= \frac{m (\sum XY) - (\sum X) (\sum Y)}{m(\sum X^2) - (\sum X)^2} \\
+&= \frac{12 (121977.0) - (330) (4235.2)}{12(12650) - (330)^2} \approx 1.541
+\end{align*}
+So the linear fit is $[\text{CO}_2] = 310.56 + 1.541t$, RMSE is $\smash{\sqrt{\frac{126.0}{12}}} \approx 3.24$.
+\item For a quadratic fit $[\text{CO}_2] = a + bt + ct^2$, we compute
+\begin{align*}
+\begin{bmatrix}
+a\\
+b\\
+c  
+\end{bmatrix}
+=
+\left(
+\begin{bmatrix}
+1 & 1 & 1 & \cdots \\
+0 & 5 & 10 & \cdots \\
+0 & 5^2 & 10^2 & \cdots
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0\\
+1 & 5 & 5^2\\
+1 & 10 & 10^2\\
+\vdots & \vdots & \vdots
+\end{bmatrix}\right)^{-1}
+\begin{bmatrix}
+1 & 1 & 1 & \cdots \\
+0 & 5 & 10 & \cdots \\
+0 & 5^2 & 10^2 & \cdots
+\end{bmatrix}
+\begin{bmatrix}
+316.9\\
+320.0\\
+325.7\\
+\vdots
+\end{bmatrix}
+\end{align*}
+which yields $a = 316.1, b = 0.880, c= 0.0120$, $[\text{CO}_2] = 316.1 + 0.880t + 0.0120t^2$. RMSE is $\smash{\sqrt{\frac{5.39}{12}}} \approx 0.67$.
+\end{enumerate}
+\end{Answer}
 
 \begin{Exercise}
-Radioactive decay is modeled by $N = N_0e^{-kt}$, where $N_0$ and $k$ are the initial concentration and the decay constant respectively. While the formula is exponential, not linear, the technique of linear regression can still be applied if the data undergoes \textit{linearization}. Show that by the substitution $n = \ln N$ the equation can be transformed into a linear equation $n = \ln N = \ln N_0 - kt = n_0 - kt$. Hence find the best linear fit on $(t, n)$ by finding the parameters $(n_0, k)$ from the experimental data on the radioactive isotope Sodium-24 below and recover the decay constant and initial mass.
+\phantomsection
+\label{ex:radioactive}
+Radioactive decay is modeled by $N = N_0e^{-kt}$, where $N_0$ and $k$ are the initial concentration and the decay constant respectively. While the formula is exponential, not linear, the technique of linear regression can still be applied if the data undergoes \textit{linearization}. Show that by the substitution $n = \ln N$, the equation can be transformed into a linear equation $n = \ln N = \ln N_0 - kt = n_0 - kt$. Hence find the best linear fit on $(t, n)$ by finding the parameters $(n_0, k)$ from the experimental data on the radioactive isotope Sodium-24 below and recover the decay constant and initial mass.
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
@@ -876,6 +1010,25 @@ Mass (g) & $75.8$ & $69.1$ & $57.3$ & $33.0$ & $18.8$ & $10.8$\\
 \end{tabular}
 \end{center}
 \end{Exercise}
+\begin{Answer}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+t & $6$ & $8$ & $12$ & $24$ & $36$ & $48$\\
+\hline
+$n = \ln N$ & $4.3281$ & $4.2356$ & $4.0483$ & $3.4965$ & $2.9339$ & $2.3795$ \\
+\hline
+\end{tabular}
+\end{center}
+The parameters are $m=6$, $\sum X=134$, $\sum (X^2)=4420$, $\sum (XY)=412.1854$, $\sum Y=21.4219$, and thus
+\begin{align*}
+\alpha_f &= \frac{(\sum Y) (\sum X^2) - (\sum X) (\sum XY)}{m(\sum X^2) - (\sum X)^2} \\
+&= \frac{(21.4219) (4420) - (134) (412.1854)}{6(4420) - (134)^2} \approx 4.607 \\
+\beta_f &= \frac{m (\sum XY) - (\sum X) (\sum Y)}{m(\sum X^2) - (\sum X)^2} \\
+&= \frac{6(412.1854) - (134) (21.4219)}{6(4420) - (134)^2} \approx -0.0464
+\end{align*}
+As a result, $\ln N = 4.607 - 0.0464t$, hence $N = e^{4.607 - 0.0464t} = 100.18e^{-0.0464t}$, roughly corresponding to a half-life of $\frac{\ln2}{0.0464} \approx 14.94$ hrs.
+\end{Answer}
 
 \begin{Exercise}
 A commercial study investigates eight companies that sell the same type of products and are also similar in size. The following table summarizes their revenues, R\&D expenses, employee wages, and amounts of advertisement (the last three items are normalized scores).
@@ -904,3 +1057,6 @@ Company 8 & $135\%$ & $1.5$ & $2.2$ & $2.3$ \\
 \end{center}
 Construct a linear regression model for the revenue against the three factors that follow. What is the $R^2$ of this regression?
 \end{Exercise} 
+\begin{Answer}
+$M = 94.96 + 6.24D + 12.25W + 2.22A$, $R^2 = 0.94$.
+\end{Answer}

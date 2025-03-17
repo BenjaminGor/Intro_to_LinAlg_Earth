@@ -1705,17 +1705,17 @@ Expanding the determinant gives $16 - 4a^2 = 0$, hence $a = -2$ or $2$.
 \item If $a = -2$, the eigenvector corresponding to $\lambda_0$ is $(4,1,1)^T$, while if $a = 2$, it is $(-4,1,1)^T$. The other two eigenvectors are $(0,-1,1)^T, (-1,2,2)^T$ and $(0,-1,1)^T, (1,2,2)^T$ for $a=-2$ and $a=2$ respectively. So after normalizing the eigenvectors, the required orthogonally diagonalized forms are
 \begin{align*}
 \begin{bmatrix}
--\frac{2\sqrt{2}}{3}&\frac{1}{3\sqrt{2}}&\frac{1}{3\sqrt{2}}\\ 
+\frac{2\sqrt{2}}{3}&\frac{1}{3\sqrt{2}}&\frac{1}{3\sqrt{2}}\\ 
 0&-\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\ 
-\frac{1}{3}&\frac{2}{3}&\frac{2}{3}
+-\frac{1}{3}&\frac{2}{3}&\frac{2}{3}
 \end{bmatrix}
 \begin{bmatrix}
-1 & 2 & 2\\
-2 & 5 & 3\\
-2 & 3 & 5
+1 & -2 & -2\\
+-2 & 5 & 3\\
+-2 & 3 & 5
 \end{bmatrix}
 \begin{bmatrix}
--\frac{2\sqrt{2}}{3}&0&\frac{1}{3}\\ 
+\frac{2\sqrt{2}}{3}&0&-\frac{1}{3}\\ 
 \frac{1}{3\sqrt{2}}&-\frac{1}{\sqrt{2}}&\frac{2}{3}\\ 
 \frac{1}{3\sqrt{2}}&\frac{1}{\sqrt{2}}&\frac{2}{3}
 \end{bmatrix}
@@ -1729,9 +1729,9 @@ Expanding the determinant gives $16 - 4a^2 = 0$, hence $a = -2$ or $2$.
 and
 \begin{align*}
 \begin{bmatrix}
-\frac{2\sqrt{2}}{3}&\frac{1}{3\sqrt{2}}&\frac{1}{3\sqrt{2}}\\ 
+-\frac{2\sqrt{2}}{3}&\frac{1}{3\sqrt{2}}&\frac{1}{3\sqrt{2}}\\ 
 0&-\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\ 
--\frac{1}{3}&\frac{2}{3}&\frac{2}{3}
+\frac{1}{3}&\frac{2}{3}&\frac{2}{3}
 \end{bmatrix}
 \begin{bmatrix}
 1 & 2 & 2\\
@@ -1739,7 +1739,7 @@ and
 2 & 3 & 5
 \end{bmatrix}
 \begin{bmatrix}
-\frac{2\sqrt{2}}{3}&0&-\frac{1}{3}\\ 
+-\frac{2\sqrt{2}}{3}&0&\frac{1}{3}\\ 
 \frac{1}{3\sqrt{2}}&-\frac{1}{\sqrt{2}}&\frac{2}{3}\\ 
 \frac{1}{3\sqrt{2}}&\frac{1}{\sqrt{2}}&\frac{2}{3}
 \end{bmatrix}
@@ -1837,7 +1837,7 @@ Produce an orthonormal basis with the orthogonal complement of $\text{span}(\vec
 A &= I - \textbf{u}\textbf{u}^T \\ 
 &= (\textbf{u}\textbf{u}^T + T_{\perp}) - \textbf{u}\textbf{u}^T = T_{\perp}
 \end{align*}
-where $T_{\perp}$ is the orthogonal projector onto the $\mathcal{U}^\perp$. So the eigenvalues will be $1$ (where there will be $n-1$ of them) over the concerned orthogonal complement and a single $0$ along the $\textbf{u}$ direction.
+where $T_{\perp}$ is the orthogonal projector onto the $\mathcal{U}^\perp$. So the eigenvalues will be $1$ (where there will be $n-1$ of them) over the concerned orthogonal complement and a single $0$ along the $\vec{u}$ direction.
 \end{Answer}
 
 \begin{Exercise}
