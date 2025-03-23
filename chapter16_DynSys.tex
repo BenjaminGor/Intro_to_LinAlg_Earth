@@ -14,7 +14,7 @@ We will motivate the notions of equilibrium points and their types from the pers
 \end{alignedat}\right.
 \label{eqn:2ddynexplicit}
 \end{align}
-where $\alpha_j^{(i)}$ are constant coefficients and there are no time-dependent forcing terms. Alternatively, in matrix form
+where $\alpha_j^{(i)}$ are constant coefficients and there are no time-dependent forcing terms. Alternatively, in matrix form, it is
 \begin{align}
 \textbf{y}' = A\textbf{y} \label{eqn:17.2}
 \end{align}
@@ -27,7 +27,7 @@ A =
 \end{bmatrix}
 \label{eqn:2ddynexplicit2}
 \end{align}
-An \index{Equilibrium Point}\keywordhl{equilibrium point} of a dynamical system is where the R.H.S. vanishes (i.e.\ $\textbf{y}' = \textbf{0}$) so that the time derivatives are zeros and the variables (or physically, a \textit{particle}) become stationary. The characteristics of the trajectories/\textit{orbits} near these equilibrium points are important and can be readily inferred from their types.
+An \index{Equilibrium Point}\keywordhl{equilibrium point} of a dynamical system is where the R.H.S. vanishes (i.e.\ $\textbf{y}' = \textbf{0}$) so that the time derivatives are zeros and the variables (or physically, a \index{Particle}\textit{particle}) become stationary. The characteristics of the trajectories/\index{Orbit}\textit{orbits} near these equilibrium points are important and can be readily inferred from their types.
 \begin{defn}[Equilibrium Points of a Dynamical System]
 \label{defn:eqpts}
 An equilibrium point $\tilde{\textbf{y}}$ of a \textit{time-independent} dynamical system
@@ -39,7 +39,7 @@ where $F$ is a vector of functions that only depend on the state $\textbf{y}$, s
 F(\tilde{\textbf{y}}) = \textbf{0} \label{eqn:eqpts2}
 \end{align}
 \end{defn}
-It is not hard to see that the origin $\textbf{0}$ is automatically an equilibrium point for the linear dynamical system in (\ref{eqn:17.2}) if $A$ is invertible\footnote{If $A$ is not invertible, it means that there exists a non-trivial null space for $A$ (Properties \ref{proper:invertrank}) and by Definition \ref{defn:nullspace} this null space $\mathcal{N}(A)$ will be a subspace (straight line) where for $\tilde{\textbf{y}} \in \mathcal{N}(A)$, $\tilde{\textbf{y}}' = A\tilde{\textbf{y}} = \textbf{0}$ so there will be an "equilibrium line" instead and it becomes a degenerate case.} and we will focus on this scenario. As we have seen in Section \ref{section:sysode}, the characteristics (growth/decay/spiral centered at the origin) are largely determined by the eigenvalues of $A$ through diagonalization, assumed possible. Specifically, by Properties \ref{proper:diagODE} the solution trajectories/orbits (\index{Field Lines}\keywordhl{field lines}) for (\ref{eqn:17.2}) will be described by $z_1 = c_1e^{\lambda_1 t}$, $z_2 = c_2e^{\lambda_2 t}$ where $\lambda_1, \lambda_2$ are the respective eigenvalues of $A$ and $\textbf{z} = (z_1, z_2)^T$ denotes the transformed coordinates in the basis formed by the eigenvectors $\textbf{v}_1$, $\textbf{v}_2$. The family of trajectories in the original physical state space will then be in the form of
+It is not hard to see that the origin $\textbf{0}$ is automatically an (only) equilibrium point for the linear dynamical system in (\ref{eqn:17.2}) if $A$ is invertible\footnote{If $A$ is not invertible, it means that there exists a non-trivial null space for $A$ (Properties \ref{proper:invertrank}) and by Definition \ref{defn:nullspace} this null space $\mathcal{N}(A)$ will be a subspace (straight line) where for $\tilde{\textbf{y}} \in \mathcal{N}(A)$, $\tilde{\textbf{y}}' = A\tilde{\textbf{y}} = \textbf{0}$ so there will be an "equilibrium line" instead and it becomes a degenerate case.} and we will focus on this scenario. As we have seen in Section \ref{section:sysode}, the characteristics (growth/decay/spiral centered at the origin) are largely determined by the eigenvalues of $A$ through diagonalization, assumed possible. Specifically, by Properties \ref{proper:diagODE} the solution trajectories/orbits (\index{Field Lines}\keywordhl{field lines}) for (\ref{eqn:17.2}) will be described by $z_1 = c_1e^{\lambda_1 t}$, $z_2 = c_2e^{\lambda_2 t}$ where $\lambda_1, \lambda_2$ are the respective eigenvalues of $A$ and $\textbf{z} = (z_1, z_2)^T$ denotes the transformed coordinates in the basis formed by the eigenvectors $\textbf{v}_1$, $\textbf{v}_2$. The family of trajectories in the original physical state space will then be in the form of
 \begin{align}
 \textbf{y} = c_1\textbf{v}_1e^{\lambda_1 t} + c_2\textbf{v}_2e^{\lambda_2 t} \label{eqn:eigendyn2d}
 \end{align}
@@ -203,7 +203,7 @@ which is also invariant. Hence we can determine the different types of equilibri
     \addplot[domain=0:1.5,samples=200,blue,decorated arrows] ({-0.3*x},{-0.9*x});
     \end{axis}
     \end{tikzpicture}
-    \caption{\textit{Different types of equilibrium points and their representative phase portraits categorized according to the trace and determinant of the coefficient matrix for the family of two-dimensional dynamical systems.}}
+    \caption{\textit{Different types of equilibrium points and their representative phase portraits categorized according to the trace and determinant of the coefficient matrices for the family of two-dimensional dynamical systems.}}
     \label{fig:phasediagram}
 \end{figure}
 
@@ -211,22 +211,22 @@ which is also invariant. Hence we can determine the different types of equilibri
 \label{exmp:2d3dyn}
 Identify the type of equilibrium point at the origin for the three two-dimensional dynamical systems $\textbf{y}' = A\textbf{y}$ where the coefficient matrices $A = $ 
 \begin{enumerate}[label=(\alph*)]
-    \item $\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}}
+    \item $\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{}}
     -1 & 4 \\
     2 & 1
     \end{array}\right]$
-    \item $\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}}
+    \item $\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{}}
     3 & 2 \\
     1 & 3
     \end{array}\right]$
-    \item $\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}}
+    \item $\left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}@{}}
     -1 & -1 \\
     2 & -1
     \end{array}\right]$
 \end{enumerate}
 \end{exmp}
 \begin{solution}
-We simply do the classification according to Table \ref{tab:equilpts}. For case (a), the trace is $\tr(A) = (-1) + 1 = 0$, the determinant is $\det(A) = (-1)(1) - (4)(2) = -9 < 0$ and the discriminant is $\Delta = (0)^2 - 4(-9) = 36 > 0$, so it corresponds to a saddle point. Similarly, for case (b), we have $\tr(A) = 3 + 3 = 6 > 0$, $\det(A) = (3)(3) - (1)(1) = 8 > 0$ and $\Delta = (6)^2 - 4(8) = 4 > 0$, thus it is an unstable node. Finally, for case (c), $\tr(A) = (-1) + (-1) = -2 < 0$, $\det(A) = (-1)(-1) - (2)(-1) = 3 > 0$ and $\Delta = (-2)^2 - 4(3) = -8 < 0$ and therefore it is a stable spiral. The stream plots of these three dynamical systems are shown in Figure \ref{fig:2d3dyn}. 
+We simply do the classification according to Table \ref{tab:equilpts}. For case (a), the trace is $\tr(A) = (-1) + 1 = 0$, the determinant is $\det(A) = (-1)(1) - (4)(2) = -9 < 0$ and the discriminant is $\Delta = (0)^2 - 4(-9) = 36 > 0$, so it corresponds to a saddle point. Similarly, for case (b), we have $\tr(A) = 3 + 3 = 6 > 0$, $\det(A) = (3)(3) - (2)(1) = 7 > 0$ and $\Delta = (6)^2 - 4(7) = 8 > 0$, thus it is an unstable node. Finally, for case (c), $\tr(A) = (-1) + (-1) = -2 < 0$, $\det(A) = (-1)(-1) - (2)(-1) = 3 > 0$ and $\Delta = (-2)^2 - 4(3) = -8 < 0$ and therefore it is a stable spiral. The stream plots of these three dynamical systems are shown in Figure \ref{fig:2d3dyn}. 
 \end{solution}
 
 \begin{figure}
@@ -238,7 +238,7 @@ We simply do the classification according to Table \ref{tab:equilpts}. For case 
 
 \subsection{Generalization to Time-independent Forcings and Higher-dimensional Linear Dynamical Systems}
 
-Sometimes there will be an additional forcing term on the R.H.S. of the linear dynamical system that represents external processes. Let's further assume that it is time-independent just like the dynamical system itself before so that we have
+Sometimes there will be an additional forcing term on the R.H.S. of the linear dynamical system that represents external processes. Let's further assume that it is time-independent just like the dynamical system itself before, so that we have
 \begin{align}
 \frac{d\textbf{y}}{dt} = A\textbf{y} + \textbf{G}
 \end{align}
@@ -251,7 +251,7 @@ where a linear change of variable $\delta\textbf{y}(t) = \textbf{y}(t) - \tilde{
 \frac{d(\delta\textbf{y}(t))}{dt} = A(\delta\textbf{y}(t)) 
 \label{eqn:translateddynsys}
 \end{align}
-which is essentially the same as (\ref{eqn:17.2}) but with $\delta\textbf{y}(t)$ in place of $\textbf{y}(t)$. Therefore, both the qualitative and quantitative behaviors of the dynamical system will also be the same except that the equilibrium point is now located by $\delta \textbf{y} = 0$, i.e.\ moved to $\textbf{y} = \tilde{\textbf{y}}$ instead of the original $\textbf{y} = \textbf{0}$. This effectively translates the equilibrium point and the entire corresponding phase portrait by a displacement of $\tilde{\textbf{y}}$, and the results from the previous discussion can thus be readily applied to linear dynamical systems with a time-independent forcing. Particularly, for a two-dimensional linear dynamical system as in (\ref{eqn:2ddynexplicit}), if we add an additional time-independent term so that it now looks like
+which is essentially the same as (\ref{eqn:17.2}) but with $\delta\textbf{y}(t)$ in place of $\textbf{y}(t)$. Therefore, both the qualitative and quantitative behaviors of the dynamical system will also be the same, except that the equilibrium point is now located by $\delta \textbf{y} = 0$, i.e.\ moved to $\textbf{y} = \tilde{\textbf{y}}$ instead of the original $\textbf{y} = \textbf{0}$. This effectively translates the equilibrium point and the entire corresponding phase portrait by a displacement of $\tilde{\textbf{y}}$, and the results from the previous discussion can thus be readily applied to linear dynamical systems with a time-independent forcing. Particularly, for a two-dimensional linear dynamical system as in (\ref{eqn:2ddynexplicit}), if we add an additional time-independent term so that it now looks like
 \begin{align}
 \left\{\begin{alignedat}{1}
 \dfrac{dx}{dt} &= \alpha_1^{(1)} x + \alpha_2^{(1)} y + G_x \\
@@ -418,7 +418,7 @@ Now, the problem is whether such a \index{Linearization}\keywordhl{linearization
 For a linear dynamical system as formulated by (\ref{eqn:translateddynsys}), 
 a hyperbolic equilibrium point is an equilibrium point where all the eigenvalues of $A$ have non-zero real parts. Similarly, for a non-linear dynamical system, a hyperbolic equilibrium point is an equilibrium point where all the eigenvalues of the Jacobian matrix $A_{ij} = \smash{\partial F_i/\partial y_j|_{\tilde{\textbf{y}}}}$ in the linearization by (\ref{eqn:nonlindynjac}) have non-zero real parts, evaluated at the equilibrium point.
 \end{defn}
-By this criteria, in Table \ref{tab:equilpts}, the stable/unstable nodes, saddle points, and stable/unstable spirals are all hyperbolic equilibrium points. The only exception is the centers, in addition to other omitted degenerate cases where at least one of the eigenvalues is strictly zero. Since stable equilibrium types excluding centers are all asymptotically stable as noted at the end of the last subsection, hyperbolic equilibrium points are either asymptotically stable or unstable. Now we are ready to examine the major result about hyperbolic equilibrium points, the \index{Hartman-Grobman Theorem}\keywordhl{Hartman-Grobman (Linearization) Theorem}, which states that the qualitative behavior of orbits near a non-linear hyperbolic equilibrium point will be the same as its linearization.
+By this criteria, in Table \ref{tab:equilpts}, the stable/unstable nodes, saddle points, and stable/unstable spirals are all hyperbolic equilibrium points. The only exception is the centers, in addition to other omitted degenerate cases where at least one of the eigenvalues is strictly zero. Since stable equilibrium types excluding centers are all asymptotically stable as noted at the end of the last subsection, hyperbolic equilibrium points are either asymptotically stable or unstable. Now we are ready to examine the major result about hyperbolic equilibrium points, the \index{Linearization Theorem}\index{Hartman-Grobman Theorem}\keywordhl{Hartman-Grobman (Linearization) Theorem}, which states that the qualitative behavior of orbits near a non-linear hyperbolic equilibrium point will be the same as its linearization.
 \begin{thm}[Hartman-Grobman Theorem]
 \label{thm:HGthm}
 A hyperbolic equilibrium point $\tilde{\textbf{y}}$ of any non-linear dynamical system that has a Jacobian of $\smash{\partial F_i/\partial y_j|_{\tilde{\textbf{y}}}}$, belongs to the same type and has the same qualitative behavior in its neighborhood as the corresponding linear hyperbolic equilibrium point, with the matrix $A$ in (\ref{eqn:translateddynsys}) equal to this Jacobian $\smash{\partial F_i/\partial y_j|_{\tilde{\textbf{y}}}}$.
@@ -506,13 +506,13 @@ where the parameters $\sigma, \rho, \beta > 0$ are all positive. It is a minimal
 
 \textit{Reference Materials: \cite{kaic}}
 
-The Lorenz-63 model originates from a simplified version of the \textit{Rayleigh-Barnard Convection} problem about the convective/diffusion-driven flow. Particularly, we will restrict ourselves to a two-dimensional flow in the $x$/$z$-(zonal/meridional) directions so that the velocity vector is $\vec{u} = (u_x, 0, u_z)^T$. The governing equations for this scenario are the zonal/meridional \textit{momentum equations}, \textit{thermodynamics equation}, and the \textit{continuity equation} with \textit{Boussinesq approximation} as follows. \begin{empheq}[left={\empheqlbrace}]{alignat=2}
+The Lorenz-63 model originates from a simplified version of the \index{Rayleigh-Barnard Convection}\textit{Rayleigh-Barnard Convection} problem about the convective/diffusion-driven flow. Particularly, we will restrict ourselves to a two-dimensional flow in the $x$/$z$-(zonal/meridional) directions so that the velocity vector is $\vec{u} = (u_x, 0, u_z)^T$. The governing equations for this scenario are the zonal/meridional \textit{momentum equations}, \textit{thermodynamics equation}, and the \textit{continuity equation} with \textit{Boussinesq approximation} as follows. \begin{empheq}[left={\empheqlbrace}]{alignat=2}
 & \frac{\partial u_x}{\partial t} + u_x\frac{\partial u_x}{\partial x} + u_z \frac{\partial u_x}{\partial z} & &= \nu(\frac{\partial^2 u_x}{\partial x^2} + \frac{\partial^2 u_x}{\partial z^2}) - \frac{1}{\rho_0} \frac{\partial p}{\partial x} \label{eqn:RB1} \\
 &\frac{\partial u_z}{\partial t} + u_x\frac{\partial u_z}{\partial x} + u_z \frac{\partial u_z}{\partial z} & &= \nu(\frac{\partial^2 u_z}{\partial x^2} + \frac{\partial^2 u_z}{\partial z^2}) - \frac{1}{\rho_0} \frac{\partial p}{\partial z} + \alpha T g \label{eqn:RB2} \\
 &\frac{\partial T}{\partial t} - u_z\Gamma + u_x\frac{\partial T}{\partial x} + u_z\frac{\partial T}{\partial z} & &= \kappa (\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial z^2})  \label{eqn:RB3} \\
 & \frac{\partial u_x}{\partial x} + \frac{\partial u_z}{\partial z} & &= 0 \label{eqn:RB4}
 \end{empheq}
-The constants are: $g$, the gravitational acceleration; $\alpha$, the thermal expansion coefficient of the fluid; the lapse rate $\Gamma = -\frac{T_H - T_L}{d}$ which is the difference in the temperature prescribed at the top and bottom plates over the vertical depth of the fluid $d$; $\rho_0$, the reference fluid density; $\nu$ and $\kappa$, the kinematic viscosity and thermal diffusivity. In addition to the velocities $u_x$ and $u_z$, there are two other variables: $T$ as the departure of temperature from the reference profile and $p$ as the pressure perturbation. By the \index{Buckingham Pi Theorem}\keywordhl{Buckingham Pi Theorem}\footnote{It states that all physically consistent laws are "unit-independent" and the number of non-dimensional variables required to transform a set of equations into dimensionless form is the number of physical variables minus the number of fundamental physical dimensions. There are $13$ physical variables here, time $t$, two displacements $x$ and $z$, two velocities $u_x$ and $u_z$, temperature $T$, kinematic viscosity $\kappa$, thermal diffusivity $\nu$, pressure $p$, density $\rho_0$, thermal expansion coefficient $\alpha$ and gravity $g$ (together counted as a single variable as they appear in the equation once and only once in combination over the term $\alpha Tg$), and finally two other variables, the vertical depth $d$ and temperature difference $T_H-T_L$ (derived from lapse rate $\Gamma$). Meanwhile, there are $4$ fundamental dimensions: length, time, mass, and temperature. So there will be $13 - 4 = 9$ non-dimensional variables.}, we can convert these equations into dimensionless form using $9$ non-dimensional variables:
+The constants are: $g$, the gravitational acceleration; $\alpha$, the thermal expansion coefficient of the fluid; the lapse rate $\Gamma = -\frac{T_H - T_L}{d}$ which is the difference in the temperature prescribed at the top and bottom plates over the vertical depth of the fluid $d$; $\rho_0$, the reference fluid density; $\nu$ and $\kappa$, the kinematic viscosity and thermal diffusivity. In addition to the velocities $u_x$ and $u_z$, there are two other variables: $T$ as the departure of temperature from the reference profile and $p$ as the pressure perturbation. By the \index{Buckingham Pi Theorem}\keywordhl{Buckingham Pi Theorem}\footnote{It states that all physically consistent laws are "unit-independent" and the number of non-dimensional variables required to transform a set of equations into dimensionless form is the number of physical variables minus the number of fundamental physical dimensions. There are $13$ physical variables here, time $t$, two displacements $x$ and $z$, two velocities $u_x$ and $u_z$, temperature $T$, kinematic viscosity $\nu$, thermal diffusivity $\kappa$, pressure $p$, density $\rho_0$, thermal expansion coefficient $\alpha$ and gravity $g$ (together counted as a single variable as they appear in the equation once and only once in combination over the term $\alpha Tg$), and finally two other variables, the vertical depth $d$ and temperature difference $T_H-T_L$ (derived from lapse rate $\Gamma$). Meanwhile, there are $4$ fundamental dimensions: length, time, mass, and temperature. So there will be $13 - 4 = 9$ non-dimensional variables.}, we can convert these equations into dimensionless form using $9$ non-dimensional variables:
 \begin{subequations}
 \begin{empheq}[left={\empheqlbrace}]{alignat=2}
 &x^* & &= \frac{x}{d}\\
@@ -526,7 +526,7 @@ The constants are: $g$, the gravitational acceleration; $\alpha$, the thermal ex
 &R & &= \frac{g\alpha d^3(T_H-T_L)}{\kappa\nu}
 \end{empheq}
 \end{subequations}
-The first $7$ of them are the non-dimensional (indicated by the asterisk $^*$) physical variables of displacements, time, velocities, temperature, and pressure with the characteristic length/time/velocity/temperature/pressure scales of $d$, $d^2/\kappa$ (the \textit{dissipation timescale}), $\kappa/d$, $\kappa\nu/g\alpha d^3$, and $\rho_0\kappa^2/d^2$. The last two of them are the \textit{Prandlt number} $\sigma = \frac{\nu}{\kappa}$ as the ratio of thermal diffusivity $\nu$ to kinematic viscosity $\kappa$, and \textit{Rayleigh number} \smash{$R = \frac{g\alpha d^3(T_H-T_L)}{\kappa\nu}$}. As we will see later, these two parameters will decide the behavior of the system. By substituting all these into (\ref{eqn:RB1}), we have
+The first $7$ of them are the non-dimensional (indicated by the asterisk $^*$) physical variables of displacements, time, velocities, temperature, and pressure with the characteristic length/time/velocity/temperature/pressure scales of $d$, $d^2/\kappa$ (the \textit{dissipation timescale}), $\kappa/d$, $\kappa\nu/g\alpha d^3$, and $\rho_0\kappa^2/d^2$. The last two of them are the \textit{Prandlt number} $\sigma = \frac{\nu}{\kappa}$ as the ratio of kinematic viscosity $\nu$ to thermal diffusivity $\kappa$, and \textit{Rayleigh number} \smash{$R = \frac{g\alpha d^3(T_H-T_L)}{\kappa\nu}$}. As we will see later, these two parameters will decide the behavior of the system. By substituting all these into (\ref{eqn:RB1}), we have
 \begin{align*}
 &\quad \left(\frac{\kappa/d}{d^2/\kappa}\right)\frac{\partial u_x^*}{\partial t^*} + \left(\frac{(\kappa/d)^2}{d}\right)u_x^*\frac{\partial u_x^*}{\partial x^*} + \left(\frac{(\kappa/d)^2}{d}\right)u_z^* \frac{\partial u_x^*}{\partial z^*} \\
 &= \nu\left(\left(\frac{\kappa/d}{d^2}\right)\frac{\partial^2 u_x^*}{\partial {x^*}^2} + \left(\frac{\kappa/d}{d^2}\right)\frac{\partial^2 u_x^*}{\partial {z^*}^2}\right) - \left(\frac{\kappa^2/d^2}{d}\right)\frac{\partial p^*}{\partial x^*}    
@@ -580,14 +580,14 @@ Differentiating (\ref{eqn:RBpsia}) with respect to $z$ and (\ref{eqn:RBpsib}) wi
 &\quad \mathcolor{red}{+ (\partial_{z^*}  \partial_{x^*}  \psi^*) ((\partial_{z^*} )^2 \psi^*)} + (\partial_{x^*}  \psi^*) ((\partial_{z^*} )^3 \psi^*)] \\
 &\quad + [\partial_{t^*}  (\partial_{x^*} )^2 \psi^* \mathcolor{red}{- (\partial_{x^*} \partial_{z^*}  \psi^*)((\partial_{x^*} )^2 \psi^*)} - (\partial_{z^*}  \psi^*)((\partial_{x^*} )^3 \psi^*) \\
 &\quad \mathcolor{red}{+ ((\partial_{x^*} )^2 \psi^*) (\partial_{z^*}  \partial_{x^*}  \psi^*)} + (\partial_{x^*}  \psi^*) (\partial_{z^*}  (\partial_{x^*} )^2 \psi^*)] \\
-&= \partial_{t^*}  ((\partial_{x^*} )^2 + (\partial_{z^*} )^2) \psi^* - (\partial_{z^*} \psi^*) (\partial_{x^*}  ((\partial_{x^*})^2 + (\partial_{z^*})^2)\psi^*) \\
-&\quad + (\partial_{x^*} \psi^*) (\partial_{z^*}  ((\partial_{x^*})^2 + (\partial_{z^*})^2)\psi^*) 
+&= \partial_{t^*}  \left((\partial_{x^*} )^2 + (\partial_{z^*})^2\right) \psi^* - (\partial_{z^*} \psi^*) (\partial_{x^*}  \left((\partial_{x^*})^2 + (\partial_{z^*})^2\right)\psi^*) \\
+&\quad + (\partial_{x^*} \psi^*) (\partial_{z^*} \left((\partial_{x^*})^2 + (\partial_{z^*})^2\right)\psi^*) 
 \end{align*}
 and an R.H.S. of
 \begin{align*}
 &\quad [\sigma\left((\partial_{x^*})^2(\partial_{z^*})^2 \psi^* + (\partial_{z^*})^4 \psi^* \right) \mathcolor{red}{+ \partial_{z^*} \partial_{x^*} p^*}] \\
 &\quad + [\sigma\left((\partial_{x^*})^4 \psi^* + (\partial_{z^*})^2 (\partial_{x^*})^2 \psi^* \right) \mathcolor{red}{- \partial_{x^*} \partial_{z^*} p^*} + \sigma \partial_{x^*} T^*] \\
-&= \sigma ((\partial_{x^*})^2 + (\partial_{z^*})^2)^2 \psi^* + \sigma \partial_{x^*} T^*
+&= \sigma \left((\partial_{x^*})^2 + (\partial_{z^*})^2\right)^2 \psi^* + \sigma \partial_{x^*} T^*
 \end{align*}
 By using the \textit{Laplacian} symbol $\Delta^* = (\partial_{x^*})^2 + (\partial_{z^*})^2$ in this equation, and also substituting the stream function (\ref{eqn:lorenzstreamv}) into the other equation (\ref{eqn:RB3n}), we can sort out a set of two equations in two unknowns $\psi^*$ and $T^*$, that describes the evolution of the system state:
 \begin{empheq}[left={\empheqlbrace}]{alignat=1}
@@ -631,7 +631,7 @@ which indeed gives the zonally constant temperature forcing as desired. We repea
 \end{aligned} \\
 &= 2\pi\hat{\psi}_{k_2 = 1}\hat{T}_{k_2 = 1} \sin(\pi z^*)\cos(\pi z^*) = \pi\hat{\psi}_{k_2 = 1}\hat{T}_{k_2 = 1} \sin(2\pi z^*)
 \end{align*}
-Now we will combine all these where the needed three variables are the imaginary part of $\smash{\hat{\psi}_{k_1 = 1, k_2 = 1}}$, and the real parts of $\smash{\hat{T}_{k_1 = 1, k_2 = 1}}$ and $\smash{\hat{T}_{k_1 = 0, k_2 = 2}}$ respectively. Substituting them into (\ref{eqn:lorenzwind}), we have
+Now we will combine all of these where the needed three variables are the imaginary part of $\smash{\hat{\psi}_{k_1 = 1, k_2 = 1}}$, and the real parts of $\smash{\hat{T}_{k_1 = 1, k_2 = 1}}$ and $\smash{\hat{T}_{k_1 = 0, k_2 = 2}}$ respectively. Substituting them into (\ref{eqn:lorenzwind}), we have
 \begin{align}
 &\quad \partial_{t^*} \Delta^* (\hat{\psi}_{k_1 = 1, k_2 = 1}\sin(\pi a x^*)\sin(\pi z^*)) \nonumber \\
 &= \sigma {\Delta^*}^2 (\hat{\psi}_{k_1 = 1, k_2 = 1}\sin(\pi a x^*)\sin(\pi z^*))\nonumber \\
@@ -641,7 +641,7 @@ Now we will combine all these where the needed three variables are the imaginary
 &= \sigma (\hat{\psi}_{k_1 = 1, k_2 = 1}\sin(\pi a x^*)\sin(\pi z^*)) - \sigma (\hat{T}_{k_1 = 1, k_2 = 1}\sin(\pi a x^*)\sin(\pi z^*)) \nonumber \\
 \implies &\quad \partial_{t^*}\hat{\psi}_{k_1 = 1, k_2 = 1} = \sigma\hat{T}_{k_1 = 1, k_2 = 1} - \sigma\hat{\psi}_{k_1 = 1, k_2 = 1} 
 \end{align}
-where we have ignored any scaling constant arising from differentiation except the negative sign, and the only effect of the Laplacian $\Delta$ is hence to introduce an extra negative sign.\footnote{To illustrate, $\Delta^*((\sin(\pi a x^*)\sin(\pi z^*)) = ((\partial_{x^*})^2 + (\partial_{z^*})^2)((\sin(\pi a x^*)\sin(\pi z^*)) = -\pi^2a^2 (\sin(\pi a x^*)\sin(\pi z^*)) - (\sin(\pi a x^*)\sin(\pi z^*)) = -(\pi^2a^2 + \pi^2)(\sin(\pi a x^*)\sin(\pi z^*))$.} Replacing $\hat{\psi}_{k_1 = 1, k_2 = 1}, \hat{T}_{k_1 = 1, k_2 = 1}, \hat{T}_{k_1 = 0, k_2 = 2}$ by $X$, $Y$, $Z$ respectively then readily yields (\ref{eqn:lor63a}). In the same essence, we can derive the other two equations (\ref{eqn:lor63b}) and (\ref{eqn:lor63c}) of the Lorenz-63 Model by substitution into (\ref{eqn:lorenztemp}) with some adjustments to the parameters.\footnote{Unfortunately, the algebra is too tedious to be included in the text. Any ambitious reader can try it though.} Now the $\rho$ in (\ref{eqn:lor63b}) represents a rescaling of the Rayleigh number relative to the \textit{critical} Rayleigh number which dictates the initialization of the convection and $\beta$ in (\ref{eqn:lor63c}) comes from the aspect ratio. With (\ref{eqn:lor63f}) derived properly, we are ready to examine the nature of its dynamics.
+where we have ignored any scaling constant arising from differentiation except the negative sign, and the only effect of the Laplacian $\Delta$ is hence to introduce an extra negative sign.\footnote{To illustrate, $\Delta^*((\sin(\pi a x^*)\sin(\pi z^*)) = ((\partial_{x^*})^2 + (\partial_{z^*})^2)((\sin(\pi a x^*)\sin(\pi z^*)) = -\pi^2a^2 (\sin(\pi a x^*)\sin(\pi z^*)) - \pi^2 (\sin(\pi a x^*)\sin(\pi z^*)) = -(\pi^2a^2 + \pi^2)(\sin(\pi a x^*)\sin(\pi z^*))$.} Replacing $\hat{\psi}_{k_1 = 1, k_2 = 1}, \hat{T}_{k_1 = 1, k_2 = 1}, \hat{T}_{k_1 = 0, k_2 = 2}$ by $X$, $Y$, $Z$ respectively then readily yields (\ref{eqn:lor63a}). In the same essence, we can derive the other two equations (\ref{eqn:lor63b}) and (\ref{eqn:lor63c}) of the Lorenz-63 Model by substitution into (\ref{eqn:lorenztemp}) with some adjustments to the parameters.\footnote{Unfortunately, the algebra is too tedious to be included in the text. Any ambitious reader can try it though.} Now the $\rho$ in (\ref{eqn:lor63b}) represents a rescaling of the Rayleigh number relative to the \textit{critical} Rayleigh number which dictates the initialization of the convection and $\beta$ in (\ref{eqn:lor63c}) comes from the aspect ratio. With (\ref{eqn:lor63f}) derived properly, we are ready to examine the nature of its dynamics.
 
 \subsection{Stability Analysis of Each Equilibrium Point}
 
@@ -767,7 +767,7 @@ By equating real and imaginary parts, we have
 \end{subequations}
 Combining these two equations (dividing (a) by (b)) then yields
 \begin{align}
-\beta + \sigma + 1 &= -\frac{2 \beta\sigma(\rho_c - 1)}{\beta(\sigma + \rho_c)} \nonumber \\
+\beta + \sigma + 1 &= \frac{2 \beta\sigma(\rho_c - 1)}{\beta(\sigma + \rho_c)} \nonumber \\
 (\beta + \sigma + 1)(\sigma + \rho_c) &= 2 \sigma(\rho_c - 1) \nonumber \\
 \rho_c(\beta + \sigma + 1) + \sigma(\beta + \sigma + 1) &= 2 \sigma\rho_c - 2\sigma  \nonumber \\
 \rho_c(\beta - \sigma + 1) &= -\sigma(\beta + \sigma + 3)  \nonumber \\
@@ -813,29 +813,29 @@ Y_0 = [-10,10,30]
 \end{lstlisting}
 Finally, we simply provide the defined \verb|Lorenz63| function for \verb|solve_ivp| to integrate.
 \begin{lstlisting}
-sol = solve_ivp(Lorenz63, t_span, Y_0, t_eval=np.linspace(t_span[0], t_span[1], 10000))
+sol14 = solve_ivp(Lorenz63, t_span, Y_0, t_eval=np.linspace(t_span[0], t_span[1], 10000))
 \end{lstlisting}
 where \verb|t_eval| controls the frequency of sampling ($10000$ evenly spaced time steps here). To plot the results, we need to use the 3D projection and extract \verb|sol.y|:
 \begin{lstlisting}
-fig = plt.figure()
-ax = plt.subplot(projection='3d')
-ax.set_title("Lorenz-63, " r"$\sigma=10, \beta=8/3, \rho=14$")
-ax.set_xlabel("X")
-ax.set_ylabel("Y")
-ax.set_zlabel("Z")
-ax.scatter(*Y_0, c="g", label="Initial Position")
-ax.plot(*sol.y)
-ax.legend()
-fig.savefig("Lorenz63_14", dpi=300, bbox_inches="tight")    
+fig14 = plt.figure()
+ax14 = plt.subplot(projection='3d')
+ax14.set_title("Lorenz-63, " r"$\sigma=10, \beta=8/3, \rho=14$")
+ax14.set_xlabel("X")
+ax14.set_ylabel("Y")
+ax14.set_zlabel("Z")
+ax14.scatter(*Y_0, c="g", label="Initial Position")
+ax14.plot(*sol14.y)
+ax14.legend()
+fig14.savefig("Lorenz63_14", dpi=300, bbox_inches="tight")
 \end{lstlisting}
 To run this with different parameters, we can give \verb|args| in \verb|solve_ivp|. Now we set $\rho = 28$ to enable chaotic behavior. The asterisk \verb|*| effectively expands the arrays into the three-directional components.
 \begin{lstlisting}
 Y_0 = [5,-5,20]
-sol = solve_ivp(Lorenz63, t_span, Y_0, t_eval=np.linspace(t_span[0], t_span[1], 10000), args=(10,8/3,28))
+sol28 = solve_ivp(Lorenz63, t_span, Y_0, t_eval=np.linspace(t_span[0], t_span[1], 10000), args=(10,8/3,28))
 
 # Other plotting commands are the same and hence omitted.
-ax.scatter(*Y_0, c="g", label="Initial Position")
-ax.plot(*sol.y)
+ax28.scatter(*Y_0, c="g", label="Initial Position")
+ax28.plot(*sol28.y)
 \end{lstlisting}
 We will add some perturbations to the initial position of the particle via Gaussian noises. 15 new particles are generated in this way.
 \begin{lstlisting}
@@ -851,9 +851,9 @@ for ii in np.arange(n):
     Ys_t2[ii,:] = sol_p.y[:,-1]
     
 # Other plotting commands are the same and hence omitted.
-#ax.scatter(*Ys_perturb.T, c="g")
-ax.scatter(*Ys_t2.T, c="r", label="Positions after 2 Units of Time")
-fig.savefig("Lorenz63_28", dpi=300, bbox_inches="tight")
+#ax28.scatter(*Ys_perturb.T, c="g")
+ax28.scatter(*Ys_t2.T, c="r", label="Positions after 2 Units of Time")
+fig28.savefig("Lorenz63_28", dpi=300, bbox_inches="tight")
 \end{lstlisting}
 
 \section{Exercises}
@@ -880,6 +880,14 @@ Determine the type of equilibrium point at the origin for the two-dimensional li
 \end{enumerate}
 and find their general solution.
 \end{Exercise}
+\begin{Answer}
+\begin{enumerate}[label=(\alph*)]
+    \item Trace $= -3 < 0$, Determinant $= 2 > 0$, Discriminant $= (-3)^2 - 4(2) = 1 > 0$: Stable Node. The general solution is $\textbf{y} = c_1(1,0)^Te^{-t} + c_2(1,1)^Te^{-2t}$;
+    \item Trace $= 2 > 0$, Determinant $= 2 > 0$, Discriminant $= 2^2 - 4(2) = -4 < 0$: Unstable Spiral. The general solution is $\textbf{y} = (c_1,c_2)^Te^t\cos(t) + (-c_1-c_2,2c_1+c_2)^Te^t\sin(t)$;
+    \item Trace $= 3 > 0$, Determinant $= 2 > 0$, Discriminant $= 3^2 - 4(2) = 1 > 0$: Unstable Node. The general solution is $\textbf{y} = c_1(2,1)^Te^{2t} + c_2(1,1)^Te^{t}$;
+    \item Trace $= 3 > 0$, Determinant $= 0$, Discriminant $= 3^2 - 4(0) = 9 > 0$: Degenerate case. The generals solution is $\textbf{y} = c_1(-1,2)^Te^{3t} + c_2(1,1)^T$.
+\end{enumerate}
+\end{Answer}
 
 \begin{Exercise}
 Describe the equilibrium point for the three-dimensional linear dynamical system $\textbf{y}' = A\textbf{y} + \textbf{G}$ where
@@ -898,15 +906,50 @@ A &=
 \end{bmatrix}
 \end{align*}
 \end{Exercise}
+\begin{Answer}
+The equilibrium point is found by solving $A\tilde{\textbf{y}} = -G$ which gives $\tilde{\textbf{y}} = (\frac{3}{2}, 0, -\frac{1}{2})^T$. The eigenvalues of $A$ are $\lambda = 2, -2\pm 2i$ so it is an inward spiral on a cross-section that extends along a cut-through axis.
+\end{Answer}
 
 \begin{Exercise}
 Find all equilibrium points for the following two-dimensional non-linear dynamical system
 \begin{empheq}[left={\empheqlbrace}]{alignat=1}
-\frac{dx}{dt} &= x^2 - y^2 + xy \nonumber \\ 
+\frac{dx}{dt} &= x^2 - 2y^2 + xy \nonumber \\ 
 \frac{dy}{dt} &= x^2 + y^2 - 1 \nonumber
 \end{empheq}
 and discuss their stability.
 \end{Exercise}
+\begin{Answer}
+There are four equilibrium points: $\smash{(-\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}})^T}$, $\smash{(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})^T}$, $\smash{(-\frac{2}{\sqrt{5}}, \frac{1}{\sqrt{5}})^T}$, and $\smash{(\frac{2}{\sqrt{5}}, -\frac{1}{\sqrt{5}})^T}$. The Jacobian matrix can be found as
+\begin{align*}
+\begin{bmatrix}
+\dfrac{\partial F_1}{\partial x} & \dfrac{\partial F_1}{\partial y} \\[10pt]
+\dfrac{\partial F_2}{\partial x} & \dfrac{\partial F_2}{\partial y}
+\end{bmatrix} 
+&= 
+\begin{bmatrix}
+\dfrac{\partial (x^2 - 2y^2 + xy)}{\partial x} & \dfrac{\partial (x^2 - 2y^2 + xy)}{\partial y} \\[10pt]
+\dfrac{\partial (x^2 + y^2 - 1)}{\partial x} & \dfrac{\partial (x^2 + y^2 - 1)}{\partial y}
+\end{bmatrix} \\
+&= 
+\begin{bmatrix}
+2x + y & -4y + x \\
+2x & 2y
+\end{bmatrix}
+\end{align*}
+Take the first equilibrium point $\smash{(-\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}})^T}$ as an example, the values of the Jacobian matrix will be
+\begin{align*}
+\begin{bmatrix}
+2(-\frac{1}{\sqrt{2}}) + (-\frac{1}{\sqrt{2}}) & -4(-\frac{1}{\sqrt{2}}) + (-\frac{1}{\sqrt{2}}) \\
+2(-\frac{1}{\sqrt{2}}) & 2(-\frac{1}{\sqrt{2}})
+\end{bmatrix} 
+=
+\begin{bmatrix}
+-\frac{3}{\sqrt{2}} & \frac{3}{\sqrt{2}} \\
+-\sqrt{2} & -\sqrt{2}
+\end{bmatrix} 
+\end{align*}
+Its trace is $\smash{-\frac{5}{\sqrt{2}}} < 0$, the determinant is $6 > 0$ and the discriminant is $\smash{(-\frac{5}{\sqrt{2}})^2} - 4(6) = -\frac{23}{2} < 0$. Hence it is a stable spiral. Similarly, we can deduce that $\smash{(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})^T}$ is an unstable spiral, while $\smash{(-\frac{2}{\sqrt{5}}, \frac{1}{\sqrt{5}})^T}$ and $\smash{(\frac{2}{\sqrt{5}}, -\frac{1}{\sqrt{5}})^T}$ are saddle points.
+\end{Answer}
 
 \begin{Exercise}
 Examine the chaotic behavior of the \textit{Rössler attractor}:

@@ -11,16 +11,15 @@ Previously, we have usually been writing matrix multiplications along the lines 
 \begin{align*}
 \sum_{k=1}^r A_{ik}B_{kj} &= C_{ij} &  & \sum_{j=1}^n A_{ij}x_j = h_i
 \end{align*}
-However, the summation symbol is clumsy to be included every time, especially when it involves a chain of products like $ABCD$. The \index{Index Notation}\keywordhl{Index Notation} (also known as the \index{Einstein Convention}\keywordhl{Einstein Convention}) solves this problem by assuming that any subscript appearing exactly twice in an additive term will be summed (\textit{contracted}) implicitly over all values that the subscript can take. This also means that any such pair of repeated subscripts must
-occur only in positions with the same range of values. Consequentially, the above examples are simplified into
+However, the summation symbol is clumsy to be included every time, especially when it involves a chain of products like $ABCD$. The \index{Index Notation}\keywordhl{Index Notation} (also known as the \index{Einstein Convention}\keywordhl{Einstein Convention}) solves this problem by assuming that any subscript appearing exactly twice in an additive term will be summed (\textit{contracted}) implicitly over all values that the subscript can take. This also means that any such pair of repeated subscripts must occur only in positions with the same range of values. Consequentially, the above examples are simplified into
 \begin{align*}
 A_{ik}B_{kj} &= C_{ij} &  & A_{ij}x_j = h_i    
 \end{align*}
-To be more clear, subscripts that appear exactly twice in any additive term are called \index{Summation Indices}\keywordhl{summation indices} (or \index{Dummy Indices}\keywordhl{dummy indices}) and are summed over specific values which are often automatically inferred from the situation (for example, in three-dimensional physical problems, they will usually take the explicit values of $1,2,3$.). On the other hand, subscripts that only appear once in \textit{every} additive term of an expression or equation are known as \index{Free Indices}\keywordhl{free indices}. In the first example above, $k$ is the dummy index, while $i, j$ are free indices. (How about the second example?\footnote{$j$ is the dummy index and $i$ is the free index.}) There are some other important points about the Index Notation to be emphasized: First, it is not allowed for a subscript to appear more than twice within a single additive term (so we cannot write $A_{ik}B_{kj}C_{kl}$, although it is okay for a dummy subscript to appear twice in each of multiple additive terms, e.g. $A_{ik}B_{kj} + C_{ij}D_{kk}$); Second, any pair of dummy indices can be replaced by any other alphabets (e.g. $A_{ik}B_{kj}$ is equivalent to $A_{il}B_{lj}$) but the free indices cannot be changed arbitrarily; Finally, as just mentioned, all free indices have to appear once and only once in every additive term (on both sides if it is an equation) (so $A_i + B_{ij}C_{j} + D_{ikk}$ is acceptable but not $A_{ij} + B_{kkj}$). As long as the quantities have their subscripts written out, the order of the quantities (but not their indices) is unimportant. Below we give some examples of the Index Notation in a three-dimensional setting:
+To be more clear, subscripts that appear exactly twice in any additive term are called \index{Summation Indices}\keywordhl{summation indices} (or \index{Dummy Indices}\keywordhl{dummy indices}) and are summed over specific values which are often automatically inferred from the situation (for example, in three-dimensional physical problems, they will usually take the explicit values of $1,2,3$.). On the other hand, subscripts that only appear once in \textit{every} additive term of an expression or equation are known as \index{Free Indices}\keywordhl{free indices}. In the first example above, $k$ is the dummy index, while $i, j$ are free indices. (How about the second example?\footnote{$j$ is the dummy index and $i$ is the free index.}) There are some other important points about the Index Notation to be emphasized: First, it is not allowed for a subscript to appear more than twice within a single additive term (so we cannot write $A_{ik}B_{kj}C_{kl}$, although it is okay for a dummy subscript to appear twice in each of multiple additive terms, e.g.\ $A_{ik}B_{kj} + C_{ij}D_{kk}$); Second, any pair of dummy indices can be replaced by any other alphabets (e.g.\ $A_{ik}B_{kj}$ is equivalent to $A_{il}B_{lj}$) but the free indices cannot be changed arbitrarily; Finally, as just mentioned, all free indices have to appear once and only once in every additive term (on both sides if it is an equation) (so $A_i + B_{ij}C_{j} + D_{ikk}$ is acceptable but not $A_{ij} + B_{kkj}$). As long as the quantities have their subscripts written out, the order of the quantities (but not their indices) is unimportant. Below we give some examples of the Index Notation in a three-dimensional setting:
 \begin{enumerate}
     \item $a_ib_i = \sum_{i=1}^3 a_ib_i = a_1b_1 + a_2b_2 + a_3b_3$ (Dot Product)
     \item $A_{kk} = \sum_{k=1}^3 A_{kk} = A_{11} + A_{22} + A_{33}$ (Trace)
-    \item $A_{ik}B_{jk} = \sum_{k=1}^3 A_{ik}B_{jk} = A_{i1}B_{j1} + A_{i2}B_{j2} + A_{i3}B_{j3}$
+    \item $A_{ik}B_{jk} = \sum_{k=1}^3 A_{ik}B_{jk} = A_{i1}B_{j1} + A_{i2}B_{j2} + A_{i3}B_{j3}$ ($AB^T$)
     \item \begin{align*}
     A_{ijk}B_{jl}C_{km} &= \sum_{j=1}^3 \sum_{k=1}^3 A_{ijk}B_{jl}C_{km} \\
     &= A_{i11}B_{1l}C_{1m} + A_{i12}B_{1l}C_{2m} + A_{i13}B_{1l}C_{3m} \\
@@ -34,9 +33,9 @@ To be more clear, subscripts that appear exactly twice in any additive term are 
     &\coloneq Z_{ij}
     \end{align*}
     will be a subscripted quantity with 2 free indices $i, j$ where each additive term contains $3^3 = 27$ smaller terms.
-    \item $A_{ij}B_{ijkl}C_{kl} = \smash{\sum_{i=1}^3 \sum_{j=1}^3 \sum_{k=1}^3 \sum_{l=1}^3} A_{ij}B_{ijkl}C_{kl} \coloneq X$ will be a scalar quantity without free indices consisting of $3^4 = 81$ smaller terms.
+    \item $A_{ij}B_{ijkl}C_{kl} = \smash{\sum_{i=1}^3 \sum_{j=1}^3 \sum_{k=1}^3 \sum_{l=1}^3} A_{ij}B_{ijkl}C_{kl} \coloneq X$ will be a scalar quantity without free indices, consisting of $3^4 = 81$ smaller terms.
 \end{enumerate}
-Short Exercise: Determine whether the following equations are valid or not, and justify your answers.\footnote{Incorrect ($j$ appears three times in the single additive term on R.H.S.), Correct ($i,j$ are free indices and $k,l$ are dummy indices), Incorrect ($j$ appears twice on L.H.S. but once on R.H.S), Correct (All subscripts are dummy indices and all additive terms are scalars), Incorrect ($i,j$ cannot be free and dummy indices at the same time).}
+$\blacktriangleright$ Short Exercise: Determine whether the following equations are valid or not, and justify your answers.\footnote{Incorrect ($j$ appears three times in the single additive term on R.H.S.), Correct ($i,j$ are free indices and $k,l$ are dummy indices), Incorrect ($j$ appears twice on L.H.S. but once on R.H.S), Correct (All subscripts are dummy indices and all additive terms are scalars), Incorrect ($i,j$ cannot be free and dummy indices at the same time).}
 \begin{enumerate}
     \item $x_i = u_jv_{ijj}$;
     \item $A_{ij} = B_{ik}C_{kj} + D_{jl}x_iy_l$;
@@ -150,7 +149,7 @@ In the same spirit, we can derive the formula of cross product in Properties \re
 &= u_iv_j \epsilon_{ijk} \textbf{e}_k \label{eqn:crossind} \\
 & \text{(by (\ref{eqn:epsilonee}))} \nonumber \\
 &= (u_2v_3 - u_3v_2)\textbf{e}_1 + (u_3v_1 - u_1v_3)\textbf{e}_2 + (u_1v_2 - u_2v_1)\textbf{e}_3 \nonumber \\
-& \text{(Direct expansion using (\ref{eqn:epsilon}) in Definition \ref{defn:epsilon})} \nonumber
+& \text{(Direct evaluation using (\ref{eqn:epsilon}) in Definition \ref{defn:epsilon})} \nonumber
 \end{align}
 Comparing with the determinant form of cross product (\ref{eqn:crossdet}) in Properties \ref{proper:crossdet}, we have
 \begin{align}
@@ -197,9 +196,9 @@ We will use a brute-force approach and enumerate all the outcomes. Note that the
 \end{cases}
 \label{eqn:epsdel2}
 \end{align}
-Now consider the L.H.S. As the first indices of the two epsilons are equal and every index can only take the three values of $1,2,3$, for their product to give a non-zero value, the only two possibilities are (1) $j = m \neq i$, $k = n \neq i$, $j \neq n$; and (2) $j = n \neq i$, $k = m \neq i$, $j \neq m$ where the four free indices $j,k,m,n$ cannot take the same value as the dummy index $i$, and $j,k$ (also $m,n$) cannot be equal simultaneously. These are consistent with the first and second situations in (\ref{eqn:epsdel2}). Now we only need to justify if they really lead to the outputs of $+1$ and $-1$ respectively. In the first case, it is not hard to see that $\epsilon_{ijk}$ and $\epsilon_{imn}$ must be $+1$ or $-1$ at the same time so their product indeed gives $+1$. Similarly, in the second case, one of the epsilon symbols will be $+1$ and the other will be $-1$ ($\epsilon_{ijk} = -\epsilon_{ikj} = -\epsilon_{imn}$) so it will produce $-1$. The identity is hence established.
+Now consider the L.H.S. As the first indices of the two epsilons are equal and every index can only take the three values of $1,2,3$, for their product to give a non-zero value, the only two possibilities are (1) $j = m \neq i$, $k = n \neq i$, $j \neq n$; and (2) $j = n \neq i$, $k = m \neq i$, $j \neq m$ where the four free indices $j,k,m,n$ cannot take the same value as the dummy index $i$. Moreover, $j,k$ (also $m,n$) cannot be equal simultaneously. These are consistent with the first and second situations in (\ref{eqn:epsdel2}). Now we only need to justify if they really lead to the outputs of $+1$ and $-1$ respectively. In the first case, it is not hard to see that $\epsilon_{ijk}$ and $\epsilon_{imn}$ must be $+1$ or $-1$ at the same time so their product indeed gives $+1$. Similarly, in the second case, one of the epsilon symbols will be $+1$ and the other will be $-1$ ($\epsilon_{ijk} = -\epsilon_{ikj} = -\epsilon_{imn}$) so it will produce $-1$. The identity is hence established.
 \end{proof}
-Note that contracting one more index (e.g. $j=m$) in the identity gives
+Note that contracting one more index (e.g.\ $j=m$) in the identity gives
 \begin{align}
 \epsilon_{ijk}\epsilon_{ijn} &= \delta_{jj}\delta_{kn} - \delta_{jn}\delta_{kj} \nonumber \\
 &= 3\delta_{kn} - \delta_{kn} = 2\delta_{kn}
@@ -215,7 +214,8 @@ Prove Formula (\ref{eqn:triplecross}) for vector triple product in Properties \r
 \begin{solution}
 Applying (\ref{eqn:crossind}) twice, we have
 \begin{align*}
-\vec{u} \times (\vec{v} \times \vec{w}) &= (u_j\textbf{e}_j) \times (v_mw_n\epsilon_{mni}\textbf{e}_i) \\
+&\quad \vec{u} \times (\vec{v} \times \vec{w}) \\
+&= (u_j\textbf{e}_j) \times (v_mw_n\epsilon_{mni}\textbf{e}_i) \\
 &= (u_j\epsilon_{jik}(v_mw_n\epsilon_{mni})) \textbf{e}_k \\
 &= \epsilon_{ikj}\epsilon_{imn}u_jv_mw_n \textbf{e}_k &\text{(Rotating the epsilon symbols)} \\
 &= (\delta_{km}\delta_{jn} - \delta_{kn}\delta_{jm})(u_jv_mw_n \textbf{e}_k) & \text{((\ref{eqn:epsdel}) in Properties \ref{proper:epsdel})} \\
@@ -228,7 +228,7 @@ When there is no ambiguity, we will omit the standard unit vector symbol $\textb
 
 \subsection{Transformation and Quotient Laws for Tensors}
 
-Now we will formally introduce \index{Tensors}\keywordhl{tensors}. A scalar is a rank-$0$ tensor and a vector is a rank-$1$ tensor. The \index{Rank (of a Tensor)}\keywordhl{rank} of a tensor (not to be confused with the rank of a matrix) is the number of its subscripts. Linear transformations or bilinear forms will be rank-$2$ tensors where the associated matrices serve as their representations in certain coordinate systems. Note that this explanation is a largely simplified one and for Mathematicians the definition will be much more rigorous.\footnote{\label{foot:rstensor}Going into depth, the rank of a tensor is actually given by a $2$-tuple $(r,s)$ which means that it receives $r$ \textit{covectors} and $s$ vectors to output a scalar. A covector takes one vector to produce a scalar and hence by definition is a $(0,1)$-tensor, while vice versa a vector will take one covector to also produce a scalar and is a $(1,0)$-tensor. Linear transformations are usually treated as $(1,1)$-tensors while bilinear forms are $(0,2)$-tensors. $r$ and $s$ indicates the number of \textit{contravariant}/\textit{covariant} indices.} But for Physicists or Earth Scientists, it is adequate to know that a rank-$r$ tensor \textit{"transforms like a tensor"}, obeying the so-called \textit{Transformation Law}. To this end, we first need to revisit how a coordinate transformation is carried out. As in (\ref{eqn:PBB'}), the change of coordinates matrix is
+Now we will formally introduce \index{Tensors}\keywordhl{tensors}. A scalar is a rank-$0$ tensor and a vector is a rank-$1$ tensor. The \index{Rank (of a Tensor)}\keywordhl{rank} of a tensor (not to be confused with the rank of a matrix) is the number of its subscripts. Linear transformations or bilinear forms will be rank-$2$ tensors where the associated matrices serve as their representations in certain coordinate systems. Note that this explanation is a largely simplified one, and for Mathematicians the definition will be much more rigorous.\footnote{\label{foot:rstensor}Going into depth, the rank of a tensor is actually given by a $2$-tuple $(r,s)$ which means that it receives $r$ \textit{covectors} and $s$ vectors to output a scalar. A covector takes one vector to produce a scalar and hence by definition is a $(0,1)$-tensor, while vice versa a vector will take one covector to also produce a scalar and is a $(1,0)$-tensor. Linear transformations are usually treated as $(1,1)$-tensors while bilinear forms are $(0,2)$-tensors. $r$ and $s$ indicates the number of \textit{contravariant}/\textit{covariant} indices.} But for Physicists or Earth Scientists, it is adequate to know that a rank-$r$ tensor \textit{"transforms like a tensor"}, obeying the so-called \textit{Transformation Law}. To this end, we first need to revisit how a coordinate transformation is carried out. As in (\ref{eqn:PBB'}), the change of coordinates matrix is
 \begin{align}
 P_\beta^{\beta'} = \begin{bmatrix}
 [\vec{v}_\beta^{(1)}]_{\beta'} | [\vec{v}_\beta^{(2)}]_{\beta'} | \cdots | [\vec{v}_\beta^{(n)}]_{\beta'}
@@ -245,7 +245,6 @@ P_\beta^{\beta'} = \begin{bmatrix}
 \label{eqn:Peeij}
 \end{align}
 This is an orthogonal matrix\footnote{\label{foot:orthodelta} Extending Properties \ref{proper:orthocoords}, we have $\textbf{e}'_{j} = (\textbf{e}'_{j} \cdot \textbf{e}_{k})\textbf{e}_{k}$ which expresses any new basis vector in terms of the sum of projections onto the old orthonormal basis. By considering $\textbf{e}'_{i} \cdot \textbf{e}'_{j} = \delta_{ij}$ due to (\ref{eqn:kronee}) (valid for any orthonormal basis), we have
-\vspace{\maxdimen}
 \begin{align*}
 (\textbf{e}'_{i} \cdot \textbf{e}_{k})\textbf{e}_{k} \cdot (\textbf{e}'_{j} \cdot \textbf{e}_{l})\textbf{e}_{l} &= \delta_{ij} \\
 (\textbf{e}'_{i} \cdot \textbf{e}_{k})(\textbf{e}'_{j} \cdot \textbf{e}_{l})(\textbf{e}_{k} \cdot \textbf{e}_{l}) &= \delta_{ij} \\
@@ -396,7 +395,7 @@ where $\lambda$, $\mu$ and $\nu$ are some parameters that can take any value.
 
 \subsection{Differentiating Tensors}
 
-The power of tensors is accompanied by the possibility of doing calculus on them. We will first look at differentiation before getting into integrals, just like any introductory calculus course. Given a tensor $T_{ijk\ldots}(\textbf{x}, t)$ depending on the position $\textbf{x} = x_p$ (a vector) and time $t$ (a scalar), which is often the case for physical problems, then differentiating it with respect to $t$ simply means that
+The power of tensors is accompanied by the possibility of doing calculus on them. We will first look at differentiation before getting into integrals, just like any introductory Calculus course. Given a tensor $T_{ijk\ldots}(\textbf{x}, t)$ depending on the position $\textbf{x} = x_p$ (a vector) and time $t$ (a scalar), which is often the case for physical problems, then differentiating it with respect to $t$ simply means that
 \begin{align}
 \left(\frac{\partial T}{\partial t}\right)_{ijk\ldots} = \frac{\partial T_{ijk\ldots}}{\partial t}
 \end{align}
@@ -429,7 +428,7 @@ A special case is that the first index of the tensor being differentiated is con
 \begin{align}
 \frac{\partial v_i}{\partial x_i} = \frac{\partial v_1}{\partial x_1} + \frac{\partial v_2}{\partial x_2} + \frac{\partial v_3}{\partial x_3}
 \end{align}
-which is exactly the divergence $\nabla \cdot \vec{v}$ commonly seen in multivariable calculus. For simplicity, we will write 
+which is exactly the \index{Divergence}\textit{divergence} $\nabla \cdot \vec{v}$ commonly seen in multivariable Calculus. For simplicity, we will write 
 \begin{align}
 \nabla = \frac{\partial}{\partial x_i} = \partial_i \label{eqn:nablatens}
 \end{align}
@@ -441,11 +440,11 @@ Going one step back, for (\ref{eqn:vectortensdiff}) without the index contractio
 \begin{align}
 \nabla \vec{v} = \partial_j v_i
 \end{align}
-For the scalar case, it reduces to the usual gradient:
+For the scalar case, it reduces to the usual \index{Gradient}\textit{gradient}:
 \begin{align}
 \nabla u = \partial_i u
 \end{align}
-It is not hard to extend this for the curl which is another common operation appearing in multivariable Calculus. In the same essence, referring to (\ref{eqn:crosstens}) with the indices rotated suitably and plugging in (\ref{eqn:nablatens}), we have
+It is not hard to extend this for the \index{Curl}\textit{curl} which is another common operation appearing in multivariable Calculus. In the same essence, referring to (\ref{eqn:crosstens}) with the indices rotated suitably and plugging in (\ref{eqn:nablatens}), we have
 \begin{align}
 \nabla \times \vec{v} = \epsilon_{ijk} \partial_j v_k \label{eqn:curltens}
 \end{align}
@@ -480,7 +479,7 @@ Differentiation then gives
 &= A_{kj}x_j + (A^T)_{ki}x_i = A\textbf{x} + A^T\textbf{x}
 \end{align*}
 \end{solution}
-Short Exercise: What is the result if the expression above is differentiated with respect to $\textbf{x}$ once more?\footnote{It is simply $A+A^T$.}
+$\blacktriangleright$ Short Exercise: What is the result if the expression above is differentiated with respect to $\textbf{x}$ once more?\footnote{It is simply $A+A^T$.}
 
 \begin{exmp}
 Prove the following formula for the curl of cross product:
@@ -535,7 +534,7 @@ T_y &= \sigma_{xy}n_x + \sigma_{yy}n_y + \sigma_{zy}n_z \\
 T_z &= \sigma_{xz}n_x + \sigma_{yz}n_y + \sigma_{zz}n_z 
 \end{align}
 \end{subequations}
-where the subscripts in $\sigma_{**}$ follow the \textit{"on-in" rule}, e.g. $\sigma_{zx}$ means the stress on the $z$-plane in the $x$-direction, $\sigma_{xz}$ means the stress on the $x$-plane in the $z$-direction and $\sigma_{yy}$ means the stress on the $y$-plane in the $y$-direction. A schematic is provided in Figure \ref{fig:stresscube} where we now replace the $xyz$ indices by $1,2,3$.\footnote{The complete derivation requires us to consider the \textit{Cauchy Tetrahedron}.} (\ref{eqn:cauchy3}) can be summarized in the matrix form of
+where the subscripts in $\sigma_{**}$ follow the \textit{"on-in" rule}, e.g.\ $\sigma_{zx}$ means the stress on the $z$-plane in the $x$-direction, $\sigma_{xz}$ means the stress on the $x$-plane in the $z$-direction and $\sigma_{yy}$ means the stress on the $y$-plane in the $y$-direction. A schematic is provided in Figure \ref{fig:stresscube} where we now replace the $xyz$ indices by $1,2,3$.\footnote{The complete derivation requires us to consider the \textit{Cauchy Tetrahedron}.} (\ref{eqn:cauchy3}) can be summarized in the matrix form of
 \begin{align}
 \begin{bmatrix}
 T_1 \\
@@ -598,7 +597,7 @@ T_j = \sigma_{ij}n_i \label{eqn:Cauchyform}
     \label{fig:stresscube}
 \end{figure}
 
-Since the traction, as a force, and the direction are both vectors, by the Quotient Law (Theorem \ref{thm:quotientl}), $\sigma_{ij}$ must be a rank-$2$ tensor. It is subsequently known as the \index{Cauchy Stress Tensor}\keywordhl{Cauchy Stress Tensor}. Now, we assume any mass element within a continuum (e.g. a rock layer) has to be in \textit{static equilibrium} so it is not moving. This specifically requires that there is no net torque that will rotate the mass element (presented as a parallelepiped in Figure \ref{fig:stresspiped}). The stresses on the opposite faces of the parallelepiped must then be equal in magnitude and opposite in direction. Take the $2,3$ directions as an illustration, the shear stresses on any pair of opposite faces (e.g.\ the component $\sigma_{23}$ on the $2$-planes) in another axis (e.g.\ in the $3$-direction) will generate a couple that tends to rotate the parallelepiped. To prevent the mass element from rotating, the shear stresses on the corresponding side faces (e.g.\ the component $\sigma_{32}$ on the $3$-planes) must balance this torque out, and thus $\sigma_{23} = \sigma_{32}$. By the same logic, $\sigma_{13} = \sigma_{31}$ and $\sigma_{12} = \sigma_{21}$, or more generally
+Since the traction, as a force, and the direction are both vectors, by the Quotient Law (Theorem \ref{thm:quotientl}), $\sigma_{ij}$ must be a rank-$2$ tensor. It is subsequently known as the \index{Cauchy Stress Tensor}\keywordhl{Cauchy Stress Tensor}. Now, we assume any mass element within a continuum (e.g.\ a rock layer) has to be in \textit{static equilibrium} so it is not moving. This specifically requires that there is no net torque that will rotate the mass element (presented as a parallelepiped in Figure \ref{fig:stresspiped}). The stresses on the opposite faces of the parallelepiped must then be equal in magnitude and opposite in direction. Take the $2,3$ directions as an illustration, the shear stresses on any pair of opposite faces (e.g.\ the component $\sigma_{23}$ on the $2$-planes) in another axis (e.g.\ in the $3$-direction) will generate a couple that tends to rotate the parallelepiped. To prevent the mass element from rotating, the shear stresses on the corresponding side faces (e.g.\ the component $\sigma_{32}$ on the $3$-planes) must balance this torque out, and thus $\sigma_{23} = \sigma_{32}$. By the same logic, $\sigma_{13} = \sigma_{31}$ and $\sigma_{12} = \sigma_{21}$, or more generally
 \begin{align}
 \sigma_{ij} = \sigma_{ji}
 \end{align}
@@ -707,10 +706,10 @@ Rewriting the components using trigonometric identities simplifies them into
 \begin{subequations}
 \begin{align}
 \sigma_{x'} = \sigma'_1 &= \sigma_1\cos^2 \theta + \sigma_2\sin^2\theta \nonumber \\
-&= \sigma_1(\frac{1+\cos(2\theta)}{2}) + \sigma_2(\frac{1-\cos(2\theta)}{2}) \nonumber \\
+&= \sigma_1\left(\frac{1+\cos(2\theta)}{2}\right) + \sigma_2\left(\frac{1-\cos(2\theta)}{2}\right) \nonumber \\
 &= \frac{\sigma_1 + \sigma_2}{2} + \frac{\sigma_1 - \sigma_2}{2}\cos(2\theta) \label{eqn:mohrnormal1} \\
 \sigma_{y'} = \sigma'_2 &= \sigma_1\sin^2 \theta + \sigma_2\cos^2\theta \nonumber \\
-&= \sigma_1(\frac{1-\cos(2\theta)}{2}) + \sigma_2(\frac{1+\cos(2\theta)}{2}) \nonumber \\
+&= \sigma_1\left(\frac{1-\cos(2\theta)}{2}\right) + \sigma_2\left(\frac{1+\cos(2\theta)}{2}\right) \nonumber \\
 &= \frac{\sigma_1 + \sigma_2}{2} - \frac{\sigma_1 - \sigma_2}{2}\cos(2\theta) \label{eqn:mohrnormal2} \\
 \tau_{x'y'} = \sigma'_{12} = \sigma'_{21} &= -\sigma_1\sin \theta \cos\theta + \sigma_2\cos \theta\sin\theta \nonumber \\
 &= -\frac{\sigma_1 - \sigma_2}{2} \sin(2\theta) \label{eqn:mohrshear}
@@ -751,7 +750,7 @@ The Mohr's Circle will have a radius of $\frac{\sigma_1 - \sigma_2}{2} = \frac{1
 \end{align*}
 and similarly the shear stress will be $\tau_{x'y'} = 2.5\sin(2(\SI{25}{\degree})) = \SI{1.92}{MPa}$ from (\ref{eqn:mohrshear}).
 \end{solution}
-Short Exercise: What are the new normal/shear tractions if the surface is further rotated by \SI{37}{\degree}?\footnote{This amounts to a net rotation of $(25+37)\si{\degree}= \SI{62}{\degree}$ so we simply repeat the calculation with $\theta = \SI{62}{\degree}$. The results should be $\sigma_{x'}, \sigma_{y'} = 7.5 \pm 2.5 \cos(2(\SI{62}{\degree})) = 7.5 \pm 2.5 \cos(\SI{124}{\degree}) = 7.5 \mp 1.40 = 6.10, 8.90$ and $\tau_{x'y'} = 2.5\sin(\SI{124}{\degree}) = 2.07$. Graphically, we can just rotate the previous diameter by an extra of $2 \times \SI{37}{\degree} = \SI{74}{\degree}$ on the Mohr's Circle.}
+$\blacktriangleright$ Short Exercise: What are the new normal/shear tractions if the surface is further rotated by \SI{37}{\degree}?\footnote{This amounts to a net rotation of $(25+37)\si{\degree}= \SI{62}{\degree}$ so we simply repeat the calculation with $\theta = \SI{62}{\degree}$. The results should be $\sigma_{x'}, \sigma_{y'} = 7.5 \pm 2.5 \cos(2(\SI{62}{\degree})) = 7.5 \pm 2.5 \cos(\SI{124}{\degree}) = 7.5 \mp 1.40 = 6.10, 8.90$ and $\tau_{x'y'} = 2.5\sin(\SI{124}{\degree}) = 2.07$. Graphically, we can just rotate the previous diameter by an extra of $2 \times \SI{37}{\degree} = \SI{74}{\degree}$ on the Mohr's Circle.}
 
 The generalization of Mohr's Circle to a three-dimensional volume can be done by first assuming that the coordinate system has been properly rotated to coincide with the three principal directions. Denote the respective principal stresses by $\sigma_1, \sigma_2, \sigma_3$ where they are arranged in descending order $\sigma_1 \geq \sigma_2 \geq \sigma_3$. Then given a normal $\hat{n} = n_i$ to the plane, the net traction is given by Cauchy's Formula (\ref{eqn:cauchyT}):
 \begin{align}
@@ -810,11 +809,11 @@ n_1^2 &= \frac{\begin{vmatrix}
 Since $n_1^2 \geq 0$, $\sigma_1 - \sigma_2 \geq 0$ and $\sigma_1 - \sigma_3 \geq 0$, we have
 \begin{align}
 (\sigma_n^2 + \tau^2) - \sigma_n(\sigma_2 + \sigma_3) + \sigma_2\sigma_3 &\geq 0 \nonumber \\
-(\sigma_n-\frac{\sigma_2 + \sigma_3}{2})^2 + \tau^2 + \sigma_2\sigma_3 - (\frac{\sigma_2 + \sigma_3}{2})^2 &\geq 0 \nonumber \\
-(\sigma_n-\frac{\sigma_2 + \sigma_3}{2})^2 + \tau^2 &\geq (\frac{\sigma_2 + \sigma_3}{2})^2 - \sigma_2\sigma_3 \nonumber \\
+\left(\sigma_n-\frac{\sigma_2 + \sigma_3}{2}\right)^2 + \tau^2 + \sigma_2\sigma_3 - \left(\frac{\sigma_2 + \sigma_3}{2}\right)^2 &\geq 0 \nonumber \\
+\left(\sigma_n-\frac{\sigma_2 + \sigma_3}{2}\right)^2 + \tau^2 &\geq \left(\frac{\sigma_2 + \sigma_3}{2}\right)^2 - \sigma_2\sigma_3 \nonumber \\
 &= \frac{\sigma_2^2}{4} + \frac{\sigma_2\sigma_3}{2} +\frac{\sigma_3^2}{4} - \sigma_2\sigma_3 \nonumber \\
 &= \frac{\sigma_2^2}{4} - \frac{\sigma_2\sigma_3}{2} +\frac{\sigma_3^2}{4} \nonumber \\
-&= (\frac{\sigma_2 - \sigma_3}{2})^2
+&= \left(\frac{\sigma_2 - \sigma_3}{2}\right)^2
 \end{align}
 by completing squares. Therefore, the normal and shear traction must lie outside the Mohr's Circle centered at $(\frac{\sigma_2 + \sigma_3}{2},0)$ with a radius of $\frac{\sigma_2 - \sigma_3}{2}$, which represents a circle that lies along the horizontal (normal traction) axis and cuts it at $\sigma_n = \sigma_2$ and $\sigma_3$. Similarly, we leave it to the readers to check that
 \begin{align}
@@ -823,8 +822,8 @@ n_3^2 &= \frac{(\sigma_n^2 + \tau^2) - \sigma_n(\sigma_1 + \sigma_2) + \sigma_1\
 \end{align}
 (notice the negative sign for $n_2^2$, why?) and thus along the same lines, we have
 \begin{align}
-(\sigma_n-\frac{\sigma_1 + \sigma_3}{2})^2 + \tau^2 &\mathcolor{red}{\leq} (\frac{\sigma_1 - \sigma_3}{2})^2 \\
-(\sigma_n-\frac{\sigma_1 + \sigma_2}{2})^2 + \tau^2 &\geq (\frac{\sigma_1 - \sigma_2}{2})^2
+\left(\sigma_n-\frac{\sigma_1 + \sigma_3}{2}\right)^2 + \tau^2 &\mathcolor{red}{\leq} \left(\frac{\sigma_1 - \sigma_3}{2}\right)^2 \\
+\left(\sigma_n-\frac{\sigma_1 + \sigma_2}{2}\right)^2 + \tau^2 &\geq \left(\frac{\sigma_1 - \sigma_2}{2}\right)^2
 \end{align}
 So the normal and shear traction must also fall outside the Mohr's Circle centered at $(\frac{\sigma_1 + \sigma_2}{2},0)$ with a radius of $\frac{\sigma_1 - \sigma_2}{2}$ that cuts the horizontal axis at $\sigma_n = \sigma_1$ and $\sigma_2$, but inside the larger Mohr's Circle also centered at the horizontal axis that cuts it at $\sigma_n = \sigma_1$ and $\sigma_3$. These are demonstrated in Figure \ref{fig:mohr3d}.
 
@@ -891,7 +890,7 @@ Both of them are rank-$2$ tensors.\footnote{We only show that for the first one 
 (\frac{\partial u_i}{\partial X_j})dX_j = du_i
 \end{align*}
 Since $dX_j$ and $du_i$ are (differentials of) displacement and velocity, they are vectors and an immediate use of the Quotient Law (Theorem \ref{thm:quotientl}) shows that $\partial u_i/\partial X_j$ has to be a rank-$2$ tensor.} A comparison of these two descriptions is given in Figure \ref{fig:displace}.
-\begin{figure}
+\begin{figure}[ht!]
     \centering
     \begin{tikzpicture}
     \node[below left]{$O$}; 
@@ -977,9 +976,9 @@ where $V(t)$ represents the current volume and $\rho(\textbf{x},t)$ is the densi
 \begin{align}
 m = \int_{V_0} \rho_0(\textbf{X}) dV_0 \label{eqn:lagmass}
 \end{align}
-The principle of \index{Conservation of Mass}\keywordhl{conservation of mass} requires that mass can neither be created nor destroyed and thus the mass within a material volume will remain the same at any time. As a result, the rate of change in mass must vanish, i.e. $dm/dt = 0$. Using this on (\ref{eqn:eulermass}) then leads to
+The principle of \index{Conservation of Mass}\keywordhl{conservation of mass} requires that mass can neither be created nor destroyed and thus the mass within a material volume will remain the same at any time. As a result, the rate of change in mass must vanish, i.e.\ $dm/dt = 0$. Using this on (\ref{eqn:eulermass}) then leads to
 \begin{align}
-\frac{d}{dt}(\int_{V(t)} \rho(\textbf{x},t) dV) = 0
+\frac{d}{dt}\left(\int_{V(t)} \rho(\textbf{x},t) dV\right) = 0
 \end{align}
 The problem with this formulation is that the integration volume, in addition to the density, depends on the time and the computation will be difficult. However, we can carry out a coordinate transformation from the Eulerian to the Lagrangian frame by (\ref{eqn:dVJdV_0}) to convert the integral from a moving volume to a reference volume as
 \begin{align}
@@ -991,12 +990,12 @@ J = \epsilon_{ijk} \frac{\partial x_1}{\partial X_i}\frac{\partial x_2}{\partial
 \end{align}
 via (\ref{eqn:determinanteps3}) where $\partial x_l/\partial X_i$ is the Jacobian in the matrix/tensor form. Since the partial derivatives in the Jacobian are defined with respect to the material reference coordinates, the time derivative of the Jacobian can be done directly. Using the Product Rule, we have
 \begin{align}
-\frac{dJ}{dt} =  \epsilon_{ijk} [\frac{d}{dt}(\frac{\partial x_1}{\partial X_i})\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} +  \frac{\partial x_1}{\partial X_i}\frac{d}{dt}(\frac{\partial x_2}{\partial X_j})\frac{\partial x_3}{\partial X_k} +  \frac{\partial x_1}{\partial X_i}\frac{\partial x_2}{\partial X_j}\frac{d}{dt}(\frac{\partial x_3}{\partial X_k})]
+\frac{dJ}{dt} =  \epsilon_{ijk} \left[\frac{d}{dt}\left(\frac{\partial x_1}{\partial X_i}\right)\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} +  \frac{\partial x_1}{\partial X_i}\frac{d}{dt}\left(\frac{\partial x_2}{\partial X_j}\right)\frac{\partial x_3}{\partial X_k} + \frac{\partial x_1}{\partial X_i}\frac{\partial x_2}{\partial X_j}\frac{d}{dt}\left(\frac{\partial x_3}{\partial X_k}\right)\right]
 \label{eqn:dJdt1}
 \end{align}
 Note that in the material coordinates, by (\ref{eqn:lagpartialt}) the time derivative can be treated as a partial derivative, and by \index{Clairaut's Theorem}\keywordhl{Clairaut's Theorem} in Multivariable Calculus we can exchange the order of partial derivatives if they are smooth enough. Therefore, we have
 \begin{align}
-\frac{d}{dt}\frac{\partial x_l}{\partial X_i} = \frac{\partial}{\partial t}\frac{\partial x_l}{\partial X_i} = \frac{\partial}{\partial X_i}\frac{\partial x_l}{\partial t} = \frac{\partial}{\partial X_i}(\frac{d x_l}{dt}) = \frac{\partial v_l}{\partial X_i}
+\frac{d}{dt}\frac{\partial x_l}{\partial X_i} = \frac{\partial}{\partial t}\frac{\partial x_l}{\partial X_i} = \frac{\partial}{\partial X_i}\frac{\partial x_l}{\partial t} = \frac{\partial}{\partial X_i}\left(\frac{d x_l}{dt}\right) = \frac{\partial v_l}{\partial X_i}
 \end{align}
 Now, we invoke the Eulerian description and introduce the current coordinates, such that
 \begin{align}
@@ -1004,7 +1003,7 @@ Now, we invoke the Eulerian description and introduce the current coordinates, s
 \end{align}
 Take the first term in (\ref{eqn:dJdt1}) to illustrate, it becomes
 \begin{align}
-\epsilon_{ijk} \frac{d}{dt}(\frac{\partial x_1}{\partial X_i})\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} = \epsilon_{ijk} \frac{\partial v_1}{\partial X_i}\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} = \epsilon_{ijk} \frac{\partial v_1}{\partial x_p}\frac{\partial x_p}{\partial X_i}\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} 
+\epsilon_{ijk} \frac{d}{dt}\left(\frac{\partial x_1}{\partial X_i}\right)\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} = \epsilon_{ijk} \frac{\partial v_1}{\partial X_i}\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} = \epsilon_{ijk} \frac{\partial v_1}{\partial x_p}\frac{\partial x_p}{\partial X_i}\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} 
 \end{align}
 Notice that
 \begin{align*}
@@ -1012,11 +1011,11 @@ Notice that
 \end{align*}
 will only give the non-zero Jacobian determinant if $p=1$, since when $p=2,3$ the rows of the determinant will be identical and hence
 \begin{align}
-\epsilon_{ijk} \frac{\partial v_1}{\partial x_p}\frac{\partial x_p}{\partial X_i}\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} =  \frac{\partial v_1}{\partial x_1}(\epsilon_{ijk}\frac{\partial x_1}{\partial X_i}\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k}) = \frac{\partial v_1}{\partial x_1}J
+\epsilon_{ijk} \frac{\partial v_1}{\partial x_p}\frac{\partial x_p}{\partial X_i}\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} =  \frac{\partial v_1}{\partial x_1}\left(\epsilon_{ijk}\frac{\partial x_1}{\partial X_i}\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k}\right) = \frac{\partial v_1}{\partial x_1}J
 \end{align}
 where we have used the definition of $J$ in (\ref{eqn:Jdefn}). We can also show this by writing out the determinants in full as in (\ref{eqn:determinanteps3}):
 \begin{align*}
-&\quad\epsilon_{ijk} (\frac{\partial v_1}{\partial x_p}\frac{\partial x_p}{\partial X_i})\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} \\
+&\quad\epsilon_{ijk} \left(\frac{\partial v_1}{\partial x_p}\frac{\partial x_p}{\partial X_i}\right)\frac{\partial x_2}{\partial X_j}\frac{\partial x_3}{\partial X_k} \\
 &= \small\begin{vmatrix}
 \dfrac{\partial v_1}{\partial x_p}\dfrac{\partial x_p}{\partial X_1} & \dfrac{\partial v_1}{\partial x_p}\dfrac{\partial x_p}{\partial X_2} & \dfrac{\partial v_1}{\partial x_p}\dfrac{\partial x_p}{\partial X_3} \\[10pt]
 \dfrac{\partial x_2}{\partial X_1} & \dfrac{\partial x_2}{\partial X_2} & \dfrac{\partial x_2}{\partial X_3} \\[10pt]
@@ -1043,7 +1042,7 @@ where we have used the definition of $J$ in (\ref{eqn:Jdefn}). We can also show 
 By the same reasoning, the second and third terms in (\ref{eqn:dJdt1}) will equal to
 $(\partial v_2/\partial x_2)J$ and $(\partial v_3/\partial x_3)J$. So finally (\ref{eqn:dJdt1}) is reduced to simply
 \begin{align}
-\frac{dJ}{dt} = (\frac{\partial v_1}{\partial x_1} + \frac{\partial v_2}{\partial x_2} + \frac{\partial v_3}{\partial x_3}) J = \frac{\partial v_q}{\partial x_q} J = (\nabla \cdot \textbf{v}) J \label{eqn:dJdtdivv}
+\frac{dJ}{dt} = \left(\frac{\partial v_1}{\partial x_1} + \frac{\partial v_2}{\partial x_2} + \frac{\partial v_3}{\partial x_3}\right) J = \frac{\partial v_q}{\partial x_q} J = (\nabla \cdot \textbf{v}) J \label{eqn:dJdtdivv}
 \end{align}
 which becomes the conservation of mass in Jacobian form. Going back to (\ref{eqn:eulermassdt}), we can take the time derivative inside the integral as the reference volume is independent of time, leading to
 \begin{align}
@@ -1089,7 +1088,7 @@ And again the time derivative can be moved inside the integral to get
 \begin{align}
 &\quad \frac{d}{dt} \int_{V_0} \rho(\textbf{x}(\textbf{X},t),t)A(\textbf{x}(\textbf{X},t),t)JdV_0 \nonumber \\
 &= \int_{V_0} \frac{d}{dt}(\rho J A) dV_0 \nonumber \\
-&= \int_{V_0} \frac{d}{dt}(\rho J)A + \rho J\frac{dA}{dt} dV_0 \nonumber \\
+&= \int_{V_0} \left(\frac{d}{dt}(\rho J)A + \rho J\frac{dA}{dt}\right) dV_0 \nonumber \\
 &= \int_{V_0} \rho J\frac{dA}{dt} dV_0 & \text{($\frac{d}{dt}(\rho J) = 0$ by (\ref{eqn:drhoJdt}))}
 \end{align}
 Finally, by the familiar (\ref{eqn:dVJdV_0}) we can convert back to the current volume: 
@@ -1100,10 +1099,10 @@ so the result is established.
 \end{proof}
 There are two major variants of Reynold's Transport Theorem. First, consider $G(\textbf{x},t) = \rho A$ as a single quantity, then
 \begin{align}
-\frac{d}{dt} \int_{V(t)} G(\textbf{x},t) dV &= \int_{V(t)} [\frac{d}{dt}(\rho A) - \frac{d\rho}{dt} A] dV & \text{(Product Rule)} \nonumber \\
-&= \int_{V(t)} [\frac{dG}{dt} + \rho (\nabla \cdot \textbf{v}) A] dV & \text{(by (\ref{eqn:contineqn}))} \nonumber \\
-&= \int_{V(t)} [\frac{\partial G}{\partial t} + \textbf{v}\cdot\nabla G+ (\nabla \cdot \textbf{v})G] dV & \text{(by (\ref{eqn:localmatderiv}))} \nonumber \\
-&= \int_{V(t)} [\frac{\partial G}{\partial t} + \nabla \cdot (G\textbf{v})] dV & \text{(Footnote \ref{footnote:divsv})} \nonumber \\
+\frac{d}{dt} \int_{V(t)} G(\textbf{x},t) dV &= \int_{V(t)} \left[\frac{d}{dt}(\rho A) - \frac{d\rho}{dt} A\right] dV & \text{(Product Rule)} \nonumber \\
+&= \int_{V(t)} \left[\frac{dG}{dt} + \rho (\nabla \cdot \textbf{v}) A\right] dV & \text{(by (\ref{eqn:contineqn}))} \nonumber \\
+&= \int_{V(t)} \left[\frac{\partial G}{\partial t} + \textbf{v}\cdot\nabla G+ (\nabla \cdot \textbf{v})G\right] dV & \text{(by (\ref{eqn:localmatderiv}))} \nonumber \\
+&= \int_{V(t)} \left[\frac{\partial G}{\partial t} + \nabla \cdot (G\textbf{v})\right] dV & \text{(Footnote \ref{footnote:divsv})} \nonumber \\
 &= \int_{V(t)} \frac{\partial G}{\partial t} dV + \int_{S(t)} G\textbf{v} \cdot \hat{n}dS &\text{(by (\ref{eqn:divthm}))} \label{eqn:RTTflux}
 \end{align}
 The two terms on R.H.S. mean the local change of $G$ within the material volume and the spread of $G$ as the boundary expands respectively. They give rise to the net change of $G$ in the material volume. Second, if the volume is not material but a so-called \index{Control Volume}\keywordhl{control volume} (denoted by $CV$) that can itself deform and its boundary will change with time but is independent of the mass, i.e.\ does not follow the particles, then we can treat it as a material volume/surface that coincides with the control volume/surface at time $t$ but the velocity of the boundary is properly replaced. (\ref{eqn:RTTflux}) then becomes
@@ -1134,11 +1133,11 @@ By the Reynold's Transport Theorem (\ref{eqn:RTT}) and Cauchy's formula (\ref{eq
 written in the Index Notation. By (\ref{eqn:tensdivthm}), we can rewrite the traction term to obtain
 \begin{align}
 \int_V \rho \frac{dv_j}{dt} dV &= \int_V \frac{\partial\sigma_{ij}}{\partial x_i} dV + \int_V \rho b_j dV \nonumber \\
-\int_V (\rho \frac{dv_j}{dt} - (\frac{\partial\sigma_{ij}}{\partial x_i}+\rho b_j))dV &= 0
+\int_V \left(\rho \frac{dv_j}{dt} - \left(\frac{\partial\sigma_{ij}}{\partial x_i}+\rho b_j\right)\right)dV &= 0
 \end{align}
-Again, as this holds for any material volume, the integrand has to be identically zero, which gives us the desired \index{Equation of Motion}\keywordhl{Equation of Motion}:
+Again, as this holds for any material volume, the integrand has to be identically zero, which gives us the desired \index{Equation(s) of Motion}\keywordhl{Equation(s) of Motion}:
 \begin{align}
-\rho \frac{dv_j}{dt} - (\frac{\partial\sigma_{ij}}{\partial x_i}+\rho b_j) &= 0 \nonumber \\
+\rho \frac{dv_j}{dt} - \left(\frac{\partial\sigma_{ij}}{\partial x_i}+\rho b_j\right) &= 0 \nonumber \\
 \rho \frac{dv_j}{dt} &= \frac{\partial\sigma_{ij}}{\partial x_i}+\rho b_j \label{eqn:eqnmotion}
 \end{align}
 In the ocean or atmosphere, we often assume the fluid is \textit{inviscid} so it cannot support shear stress, although it may be necessary to include viscous forces otherwise. The stress tensor is then reduced to the \textit{hydrostatic pressure} $\sigma_{ij} = -p\delta_{ij}$ which has the same magnitude acting in all directions. Subsequently, (\ref{eqn:eqnmotion}) becomes
@@ -1146,12 +1145,12 @@ In the ocean or atmosphere, we often assume the fluid is \textit{inviscid} so it
 \rho \frac{dv_j}{dt} &= -\frac{\partial (p\delta_{ij})}{\partial x_i} + \rho b_j \nonumber \\
 \rho \frac{dv_j}{dt} &= -\frac{\partial p}{\partial x_j} + \rho b_j \implies \rho\frac{d\textbf{v}}{dt} = -\nabla p + \rho \textbf{b} \label{eqn:eqnmotion2}
 \end{align}
-which are commonly referred to as the \textit{Euler's equations} that can be explicitly expressed in full form for each component:
+which are commonly referred to as the \index{Euler's Equations}\textit{Euler's equations} that can be explicitly expressed in full form for each component:
 \begin{subequations}
 \begin{empheq}[left={\empheqlbrace}]{alignat=2}
-&\rho (\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z}) & &= -\frac{\partial p}{\partial x} + \rho g_x \\
-&\rho (\frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial v}{\partial z}) & &= -\frac{\partial p}{\partial y} + \rho g_y \\
-&\rho (\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z}) & &= -\frac{\partial p}{\partial z} + \rho g_z
+&\rho \left(\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z}\right) & &= -\frac{\partial p}{\partial x} + \rho g_x \\
+&\rho \left(\frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} + w\frac{\partial v}{\partial z}\right) & &= -\frac{\partial p}{\partial y} + \rho g_y \\
+&\rho \left(\frac{\partial w}{\partial t} + u\frac{\partial w}{\partial x} + v\frac{\partial w}{\partial y} + w\frac{\partial w}{\partial z}\right) & &= -\frac{\partial p}{\partial z} + \rho g_z
 \end{empheq} 
 \end{subequations}
 where we denote the three-dimensional flow velocities as $\textbf{v} = (u,v,w)^T$, the body force is the gravity $\textbf{b} = \textbf{g} = (g_x,g_y,g_z)^T$, and use (\ref{eqn:localmatderiv}) to expand the material time derivative. Note that we are doing the above analysis in a non-rotating inertial coordinate frame so the usual Coriolis force does not appear.\par
@@ -1162,22 +1161,22 @@ Finally, we will use Euler's equations to derive \index{Kelvin's Circulation The
 \end{align}
 Its time derivative is 
 \begin{align}
-\frac{d\Gamma_c}{dt} &= \frac{d}{dt}(\oint_{C} v_i dx_i) \nonumber \\
+\frac{d\Gamma_c}{dt} &= \frac{d}{dt}\left(\oint_{C} v_i dx_i\right) \nonumber \\
 &= \oint_{C} \frac{d}{dt}(v_i dx_i)  \nonumber \\\
 &\quad \begin{aligned}
 &\text{(Take the material derivative inside and enclose the material} \\  
 &\text{line elements to account for the moving material loop)} 
 \end{aligned} \nonumber \\
-&= \oint_{C} \frac{dv_i}{dt} dx_i + \oint_{C} v_i d(\frac{dx_i}{dt})  \nonumber \\
+&= \oint_{C} \frac{dv_i}{dt} dx_i + \oint_{C} v_i d\left(\frac{dx_i}{dt}\right)  \nonumber \\
 &\quad \begin{aligned}
 &\text{(Material line elements move with the flow} \\ 
-&\text{and thus } \frac{d}{dt}(dx_i) = d(\frac{dx_i}{dt})\text{)}\end{aligned} \nonumber \\
+&\text{and thus } \frac{d}{dt}(dx_i) = d\left(\frac{dx_i}{dt}\right)\text{)}\end{aligned} \nonumber \\
 &= \oint_{C} \frac{dv_i}{dt} dx_i + \oint_{C} v_i dv_i \nonumber \\
-&= \oint_{C} \frac{dv_i}{dt} dx_i + \oint_{C} d(\frac{\norm{\textbf{v}}^2}{2}) 
+&= \oint_{C} \frac{dv_i}{dt} dx_i + \oint_{C} d\left(\frac{\norm{\textbf{v}}^2}{2}\right) 
 \end{align}
 The second integral is zero because the value of a scalar in a closed path must be unchanged after a loop. Substitute (\ref{eqn:eqnmotion2}) into the first integral yields
 \begin{align*}
-\oint_{C} \frac{dv_i}{dt} dx_i &= \oint_{C} (-\frac{1}{\rho}\frac{\partial p}{\partial x_i} + g_i) dx_i \\
+\oint_{C} \frac{dv_i}{dt} dx_i &= \oint_{C} \left(-\frac{1}{\rho}\frac{\partial p}{\partial x_i} + g_i\right) dx_i \\
 &= - \oint_{C} \frac{1}{\rho}\frac{\partial p}{\partial x_i} dx_i + \oint_{C} g_i dx_i \\
 &= - \oint_C \frac{dp}{\rho} + (0)
 \end{align*}
@@ -1220,7 +1219,7 @@ The quantity
 \begin{align}
 \frac{\nabla \rho \times \nabla p}{\rho^2}    
 \end{align}
-is called the \textit{baroclinicity} which characterizes the tilting between the pressure and density contours. It often arises from a temperature gradient in a cross-section, which will generate circulation along the corresponding curve.
+is called the \textit{baroclinicity} which characterizes the tilting between the pressure and density contours. It often arises from a temperature gradient in a cross-section, which will generate circulation along the corresponding path.
 
 \section{Earth System Applications: Data Assimilation}
 
@@ -1259,7 +1258,7 @@ Moreover, the background and observation errors have to be \textit{uncorrelated}
 \begin{align}
 E[\varepsilon_b\varepsilon_o] &= 0 \label{eqn:bouncorr}
 \end{align}
-We set out to find an optimal linear combination of $T_b$ and $T_o$ as a new unbiased estimation, referred to as the \textit{analysis}:
+We set out to find an optimal linear combination of $T_b$ and $T_o$ as a new unbiased estimation, referred to as the \index{Analysis Field}\textit{analysis}:
 \begin{align}
 T_a = a_1T_b + a_2T_o \label{eqn:analysisT}
 \end{align}
@@ -1277,7 +1276,7 @@ a_1(E[T_t] + E[\varepsilon_b]) + a_2(E[T_t] + E[\varepsilon_o]) - E[T_t] &= 0 \n
 (a_1 + a_2 - 1)E[T_t] &= 0 &\text{(By (\ref{eqn:unbiasedbo}))} \nonumber \\
 \implies a_1 + a_2 &= 1
 \end{align}
-i.e.\ the sum of weighting has to be unity ($1$). To obtain the best analysis estimation $T_a$, we want the weighting to minimize the mean squared error of $T_a$, a.k.a.\ the analysis error variance 
+i.e.\ the sum of weights has to be unity ($1$). To obtain the best analysis estimation $T_a$, we want the weighting to minimize the mean squared error of $T_a$, a.k.a.\ the analysis error variance 
 \begin{align}
 \sigma_a^2 = E[\varepsilon_a^2] = E[(T_a - T_t)^2]
 \end{align}
@@ -1307,7 +1306,7 @@ Substituting this into (\ref{eqn:DAunimin}), we obtain
 2a_1(\sigma_b^2 + \sigma_o^2) - 2\sigma_o^2 &= 0 \nonumber \\
 a_1 &= \frac{\sigma_o^2}{\sigma_b^2 + \sigma_o^2} = \frac{\sigma_b^{-2}}{\sigma_b^{-2} + \sigma_o^{-2}}
 \end{align}
-where the second equality in the last line is from dividing by \smash{$\sigma_b^2\sigma_o^2$}. The reciprocals of the background/observation error variances \smash{$\sigma_b^{-2}, \sigma_o^{-2}$} represent their respective \textit{precisions}. The best analysis is then given by
+where the second equality in the last line is from dividing by \smash{$\sigma_b^2\sigma_o^2$}. The reciprocals of the background/observation error variances \smash{$\sigma_b^{-2}, \sigma_o^{-2}$} represent their respective \index{Precision}\textit{precisions}. The best analysis is then given by
 \begin{align}
 T_a &= a_1T_b + (1-a_1)T_o \nonumber \\
 &= \frac{\sigma_o^2}{\sigma_b^2 + \sigma_o^2}T_b + \frac{\sigma_b^2}{\sigma_b^2 + \sigma_o^2}T_o =  \frac{\sigma_b^{-2} T_b + \sigma_o^{-2} T_o}{\sigma_b^{-2} + \sigma_o^{-2}} \label{eqn:univOIan}
@@ -1399,7 +1398,7 @@ We also require the analysis $\textbf{x}_a$ to be an unbiased linear combination
 \begin{align}
 \textbf{x}_a &= \textbf{x}_b + K(\textbf{x}_o - \textbf{x}_b)  \label{eqn:OIinnov}
 \end{align}
-akin to (\ref{eqn:uniDAweight}) where $K$ is the \textit{Kalman gain} matrix that represents the optimal weight. Therefore, the analysis will be the background plus the optimal weight times the observation increment (\textit{innovation}). Subsequently,
+akin to (\ref{eqn:uniDAweight}) where $K$ is the \index{Kalman Gain}\textit{Kalman gain} matrix that represents the optimal weight. Therefore, the analysis will be the background plus the optimal weight times the observation increment (\index{Innovation}\textit{innovation}). Subsequently,
 \begin{align}
 \textbf{x}_t + \bm{\epsilon}_a &= \textbf{x}_t + \bm{\epsilon}_b + K(\textbf{x}_o - \textbf{x}_t - \bm{\epsilon}_b) \nonumber \\
 \bm{\epsilon}_a &= \bm{\epsilon}_b + K(\bm{\epsilon}_o - \bm{\epsilon}_b) \label{eqn:varakalman}
@@ -1500,7 +1499,7 @@ As before, we require the expected value of this derivative to be zero, and henc
 \begin{align}
 \frac{\partial E[\bm{\epsilon}_a^T\bm{\epsilon}_a]}{\partial K} = E[2\bm{\epsilon}_b\textbf{d}^T + 2K\textbf{d}\textbf{d}^T] &= [\textbf{0}] \nonumber \\
 E[\bm{\epsilon}_b(\bm{\epsilon}_o -  H\bm{\epsilon}_b)^T + K(\bm{\epsilon}_o -  H\bm{\epsilon}_b)(\bm{\epsilon}_o -  H\bm{\epsilon}_b)^T] &= [\textbf{0}] \nonumber \\
-E[\bm{\epsilon}_b\bm{\epsilon}_b^TH^T] + KE[\bm{\epsilon}_o\bm{\epsilon}_o^T] + KE[H\bm{\epsilon}_b\bm{\epsilon}_b^TH^T] &= [\textbf{0}] \nonumber \\ 
+-E[\bm{\epsilon}_b\bm{\epsilon}_b^TH^T] + KE[\bm{\epsilon}_o\bm{\epsilon}_o^T] + KE[H\bm{\epsilon}_b\bm{\epsilon}_b^TH^T] &= [\textbf{0}] \nonumber \\ 
  \text{(Uncorrelated errors by (\ref{eqn:OIuncorr}))} & \nonumber \\
 -BH^T + K(R+HBH^T) &= [\textbf{0}] \nonumber \\
 \implies K &= BH^T(HBH^T+R)^{-1} \label{eqn:OImatK2}
@@ -1586,7 +1585,7 @@ where $M^{[i]}$ is the corresponding forward mapping at the $i$-th time step and
 \begin{subequations}
 \begin{align}
 E[\bm{\eta}^{[i]}] &= \textbf{0} \\
-E[\bm{\epsilon}_a^{[i]}\bm{\eta}^{[i]T}] = E[\bm{\eta}_a^{[i]}\bm{\epsilon}^{[i]T}] &= [\textbf{0}] \label{eqn:modelanluncorr}\\
+E[\bm{\epsilon}_a^{[i]}\bm{\eta}^{[i]T}] = E[\bm{\eta}^{[i]}\bm{\epsilon}_a^{[i]T}] &= [\textbf{0}] \label{eqn:modelanluncorr}\\
 Q^{[i]} &= E[\bm{\eta}^{[i]}\bm{\eta}^{[i]T}]
 \end{align}   
 \end{subequations}
@@ -1658,9 +1657,9 @@ From this, we also generate a time series of synthetic observations by adding Ga
 \begin{lstlisting}
 R = np.diag([0.5]*3)
 obs_errors = np.random.multivariate_normal([0,0,0], R, x_t.shape[0])
-x_o = x_t + obs_errors    
+x_o = x_t + obs_errors 
 \end{lstlisting}
-Since the Lorenz-63 system is non-linear, for the algorithm of Kalman Filter to work properly, we have to use the \textit{Tangent Linear Model} in place of $M^{[i]}$ when computing $P_f^{[i]}$:
+Since the Lorenz-63 system is non-linear, for the algorithm of Kalman Filter to work properly, we have to use the \index{Tangent Linear Model}\textit{Tangent Linear Model} in place of $M^{[i]}$ when computing $P_f^{[i]}$:
 \begin{align}
 M^{[i]} = I + (\frac{\partial F}{\partial \textbf{x}})_a^{[i]} \Delta t
 \end{align}
@@ -1734,6 +1733,40 @@ Prove the following vector calculus identities using the Index Notation.
     \item $\nabla \cdot (\vec{u} \times \vec{v}) = \vec{v} \cdot (\nabla \times \vec{u}) - \vec{u} \cdot (\nabla \times \vec{v})$.
 \end{enumerate}
 \end{Exercise}
+\begin{Answer}
+\begin{enumerate}[label=(\alph*)]
+\item
+\begin{align*}
+\nabla \cdot (\nabla \times \vec{v}) &= \partial_i(\epsilon_{ijk} \partial_j v_k) \\
+&= \epsilon_{ijk} \partial_i\partial_j v_k \\
+&= \epsilon_{ijk} \partial_j\partial_i v_k \\
+&= -\epsilon_{jik} \partial_j\partial_i v_k \\
+&= -\epsilon_{ijk} \partial_i\partial_j v_k
+\end{align*}
+Since $\nabla \cdot (\nabla \times \vec{v}) = \epsilon_{ijk} \partial_i\partial_j v_k = -\epsilon_{ijk} \partial_i\partial_j v_k$, it must be zero. (The two partial derivatives are symmetric but the epsilon symbol is anti-symmetric.)
+\item
+\begin{align*}
+\nabla \times \nabla u &= \epsilon_{ijk} \partial_j \partial_k u    
+\end{align*}
+By the same logic as the part above, it will give the zero vector.
+\item 
+\begin{align*}
+\nabla \times (\nabla \times \vec{v}) &= \epsilon_{ijk} \partial_j(\epsilon_{klm} \partial_l v_m) \\
+&= \epsilon_{kij}\epsilon_{klm} (\partial_j\partial_l v_m) \\
+&= (\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}) (\partial_j\partial_l v_m) \\
+&= \partial_j\partial_i v_j - \partial_j\partial_j v_i \\
+&= \nabla (\nabla \cdot \vec{v}) - \nabla^2 \vec{v} 
+\end{align*}
+\item 
+\begin{align*}
+\nabla \cdot (\vec{u} \times \vec{v}) &= \partial_i(\epsilon_{ijk}u_jv_k) \\
+&= \epsilon_{ijk}\partial_i(u_jv_k) \\
+&= \epsilon_{ijk}\partial_i(u_j)v_k + \epsilon_{ijk}u_j\partial_i(v_k) \\
+&= v_k\epsilon_{kij}\partial_iu_j - u_j\epsilon_{jik}\partial_iv_k \\
+&= \vec{v} \cdot (\nabla \times \vec{u}) - \vec{u} \cdot (\nabla \times \vec{v})
+\end{align*}
+\end{enumerate}
+\end{Answer}
 
 \begin{Exercise}
 Prove that for an $n \times n$ square matrix $A$, if its characteristic polynomial is
@@ -1746,6 +1779,15 @@ then we have
 \end{align*}
 Hint: Use the Cayley-Hamilton Theorem with the subscripts for the powers of $A$ written out, then contract the equation with a Kronecker delta.
 \end{Exercise}
+\begin{Answer}
+\begin{align*}
+(-1)^n[(A^n)_{ij} + c_{n-1}(A^{n-1})_{ij} + \cdots + c_1 A_{ij} + c_0\delta_{ij}] &= [\textbf{0}]_{ij} \\ 
+(A^n)_{ij} + c_{n-1}(A^{n-1})_{ij} + \cdots + c_1 A_{ij} &= -c_0\delta_{ij} \\
+[(A^n)_{ij} + c_{n-1}(A^{n-1})_{ij} + \cdots + c_1 A_{ij}]\delta_{ij} &= -c_0\delta_{ij}\delta_{ij} \\
+(A^n)_{jj} + c_{n-1}(A^{n-1})_{jj} + \cdots + c_1 A_{jj} &= -c_0\delta_{jj} \\
+\text{tr}(A^n) + c_{n-1}\text{tr}(A^{n-1}) + \cdots + c_1 \text{tr}(A) &= -nc_0
+\end{align*}
+\end{Answer}
 
 \begin{Exercise}
 Confirm that if $\vec{u}$ and $\vec{v}$ are two vectors in the tensor sense, then the cross product
@@ -1754,10 +1796,31 @@ w_i = \epsilon_{ijk}u_jv_k
 \end{align*}
 as in (\ref{eqn:crosstens}) must also be the components of a vector via Quotient Law.
 \end{Exercise}
+\begin{Answer}
+Contracting the expression with the vector $\vec{u}$:
+\begin{align*}
+u_iw_i &= u_iu_jv_k \\
+&= \epsilon_{ijk}u_iu_jv_k = 0
+\end{align*}
+which gives the zero scalar due to the antisymmetric nature of the epsilon symbol and two symmetric $u_iu_j$ factors. Then by Quotient Law, the R.H.S. is a trivially contracted rank-$0$ tensor and $\vec{u}$ on L.H.S. is a rank-$1$ tensor, so $\vec{w}$ has to be a rank-$1$ tensor (vector) as well.
+\end{Answer}
 
 \begin{Exercise}
 Given a two-dimensional plane stress with two measurements of normal/shear tractions $(7,4)$ and $(9,-3)$ that are assumed to be accurate, find the corresponding Mohr's Circle and the angle between the two oriented surfaces on which the measurements are taken.
 \end{Exercise}
+\begin{Answer}
+The Mohr's Circle will lie on the $x$-axis and must touch the two points. Let the center of the Mohr's Circle be at $(x_m,0)^T$ and its radius be $r_m$, then
+\begin{align*}
+\left\{\begin{alignedat}{1}
+(7-x_m)^2 + 4^2 &= r_m^2 \\
+(9-x_m)^2 + (-3)^2 &= r_m^2 
+\end{alignedat}\right.    
+\end{align*}
+Solving these two simultaneous equations yield $x = \frac{25}{4}$, $r_m = \frac{\sqrt{265}}{4}$. The required angle can be found as half of the subtended arc by these two points on the Mohr's Circle:
+\begin{align*}
+\theta = \frac{1}{2} \left[\arctan(\frac{4}{7-\frac{25}{4}}) - \arctan(\frac{-3}{9-\frac{25}{4}})\right] \approx \SI{63.4}{\degree}
+\end{align*}
+\end{Answer}
 
 \begin{Exercise}
 A three-dimensional stress tensor is known to have principal stresses of $\sigma_1, \sigma_2, \sigma_3 = 3,2,-1$. Determine if the following normal/shear traction pairs are possible:
@@ -1768,6 +1831,9 @@ A three-dimensional stress tensor is known to have principal stresses of $\sigma
     \item $(2.4,-0.6)$.
 \end{enumerate}
 \end{Exercise}
+\begin{Answer}
+No, Yes, No, Yes.
+\end{Answer}
 
 \begin{Exercise}
 Derive the continuity equation for any extensive quantity, let's say specific humidity $q$:
@@ -1776,6 +1842,23 @@ Derive the continuity equation for any extensive quantity, let's say specific hu
 \end{align*}
 if there is no sink or source so that $dq/dt=0$.
 \end{Exercise}
+\begin{Answer}
+The continuity equation is
+\begin{align*}
+\frac{\partial \rho}{\partial t} + \nabla \cdot(\rho\textbf{v}) = 0 
+\end{align*}
+Multiplying this by $q$ gives $q\frac{\partial \rho}{\partial t} + q\nabla \cdot(\rho\textbf{v}) = 0$. On the other hand, $\frac{dq}{dt} = 0$ leads to
+\begin{align*}
+\frac{\partial q}{\partial t} + \textbf{v}\cdot \nabla{q} &= 0 \\
+\rho\frac{\partial q}{\partial t} + \rho\textbf{v}\cdot \nabla{q} &= 0
+\end{align*}
+Combining these two equations then gives
+\begin{align*}
+\frac{\partial \rho}{\partial t}q + \rho\frac{\partial q}{\partial t} + q\nabla \cdot(\rho\textbf{v}) + \rho\textbf{v}\cdot \nabla{q} &= 0 \\
+\frac{\partial (\rho q)}{\partial t} + \nabla \cdot(\rho q \textbf{v}) = 0
+\end{align*}
+(Refer to Footnote \ref{footnote:divsv} with $q$ replacing $\rho$ and $\rho \textbf{v}$ replacing $\textbf{v}$.)
+\end{Answer}
 
 \begin{Exercise}
 Modify the DA system in Section \ref{subsection:DAsystem} so that it only assimilates selected but not all variables (let's say, $X$ and $Z$), and also try to change the values of $R$ and $Q$.

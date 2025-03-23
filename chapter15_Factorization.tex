@@ -1,6 +1,6 @@
 \chapter{Matrix Factorization Methods}
 
-In this chapter, we are going to discuss some matrix factorization methods. We have introduced two of them previously: CR Factorization and QR Decomposition, in Chapters \ref{chap:vec_space} and \ref{chap:6x} respectively. We will first discuss two factorization methods for square matrices, \textit{Cholesky} and \textit{LU/LDU}, and subsequently move to the very crucial \textit{Singular Value Decomposition} for non-square matrices. This eventually leads to the notions of \textit{psuedoinverses} and \textit{minimal solutions}. These decomposition methods have been widely applied in many fields of Earth Sciences to extract important patterns from data. Also, as Machine Learning gains popularity, Earth Science research starts to involve more matrix factorization techniques, which have been a main instrument in Machine Learning. Apart from this, a less visible usage of matrix factorization is embedded in the implementation of linear algebra packages in programming languages (e.g. LAPACK, for Fortran). Those matrix factorization methods enable faster and more stable computations of linear algebra problems, such as finding inverses or solving linear systems. Other potential applications include image processing and more.
+In this chapter, we are going to discuss some matrix factorization methods. We have introduced two of them previously: CR Factorization and QR Decomposition, in Chapters \ref{chap:vec_space} and \ref{chap:6x} respectively. We will first discuss two factorization methods for square matrices, \textit{Cholesky} and \textit{LU/LDU}, and subsequently move to the very crucial \textit{Singular Value Decomposition} for non-square matrices. This eventually leads to the notions of \textit{psuedoinverses} and \textit{minimal solutions}. These decomposition methods have been widely applied in many fields of Earth Sciences to extract important patterns from data. Also, as Machine Learning gains popularity, Earth Science research starts to involve more matrix factorization techniques, which have been a main instrument in Machine Learning. Apart from this, a less visible usage of matrix factorization is embedded in the implementation of linear algebra packages in programming languages (e.g.\ LAPACK, for Fortran). Those matrix factorization methods enable faster and more stable computations of linear algebra problems, such as finding inverses or solving linear systems. Other potential applications include image processing and more.
 
 \section{Square Matrix Factorization}
 \subsection{Cholesky Factorization}
@@ -88,7 +88,7 @@ U_b^T U_b &= \tilde{A}_b - \vec{r}_1\vec{r}_1^T \label{eqn:UbUbChol}
 \end{align}
 \end{subequations}
 By the relations above, we can determine $u_{11}$, and hence $\vec{r}_1$, retrieving the first row and column of $U$. Subsequently, the remaining block $U_b$ is found by applying the same procedure on the $(n-1) \times (n-1)$ submatrix $U_{b=2}^T U_{b=2}$ which has been produced by the last relation (\ref{eqn:UbUbChol}), and then invoking the method recursively to reduce the resulting block until the final entry is processed.
-\begin{defn}
+\begin{defn}[Cholesky Factorization]
 The Cholesky Factorization $U^TU$ of a real symmetric, positive-definite matrix $A$, is constructed by the recursive relations
 \begin{subequations}
 \begin{align}
@@ -205,7 +205,7 @@ U =
 \end{bmatrix}
 \end{align*}
 \end{solution}
-Short Exercise: Check if $A = U^T U$.\footnote{It is simply computing
+$\blacktriangleright$ Short Exercise: Check if $A = U^T U$.\footnote{It is simply computing
 \begin{align*}
 U^TU = 
 \begin{bmatrix}
@@ -373,7 +373,7 @@ L &= E_1'^{-1}E_2'^{-1}E_3'^{-1} \\
 0 & 0 & 4 
 \end{bmatrix}
 \end{align*}
-This sequence amounts to the series of elementary row operations in the forward reduction phase. Doing them from the left to right, it is easy to arrive at
+This sequence amounts to the series of elementary row operations in the forward reduction phase. Doing them from the right to the left, it is easy to arrive at
 \begin{align*}
 L &=
 \begin{bmatrix}
@@ -555,7 +555,7 @@ E_5' =
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & -1
-\end{array}\right] \\
+\end{array}\right] 
 \end{align*} 
 So 
 \begin{align*}
@@ -685,7 +685,7 @@ A = \begin{bmatrix}
 \end{align*}
 Notice that PLU Decomposition is not unique as there are many possible ways of doing row exchanges.
 \end{solution}
-Short Exercise: What will the PLU Decomposition in the above example look like if we incorporate the part of "D" as in the LDU variant?\footnote{It will look like
+$\blacktriangleright$ Short Exercise: What will the PLU Decomposition in the above example look like if we incorporate the part of "D" as in the LDU variant?\footnote{It will look like
 \begin{align*}
 A = \begin{bmatrix}
 1 & 1 & 2 \\
@@ -840,7 +840,7 @@ First, note that $T^\dag T$ is positive-semidefinite with respect to any inner p
 \langle \vec{v}, T^\dag T (\vec{v}) \rangle &= \langle T (\vec{v}), T (\vec{v}) \rangle \\
 &= \norm{T(\vec{v})}^2 \geq 0
 \end{align*}
-which shows that $T^\dag T$ is positive-semidefinite.} $T^\dag T$ is also clearly self-adjoint and automatically Hermitian when the inner product spaces are finite-dimensional so by Properties \ref{proper:orthogonalherm} and the Spectral Theorem \ref{thm:spectralinner} there exists an orthonormal basis $\beta = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(n)}\}$ for $\mathcal{V}$, which are the eigenvectors of $T^\dag T$ with corresponding eigenvalues of $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_{\min(m,n)} \geq 0$, and if $n > m$ then $\lambda_{j} = 0$ for $j > m$.\footnote{\label{foot:zerosingular} By Properties \ref{proper:AdagArank} we know that if $n > m$ then the maximum rank of $T^\dag T$ will be capped by $m$, so the nullity of $T^\dag T$ and thus the number of zero eigenvalues will be at least $n-m$.} By Properties \ref{proper:hermrealeiginner}, these $\lambda_j$ will be real. Now we set $\vec{u}^{(j)} = \smash{\frac{1}{\sigma_j}T(\vec{v}^{(j)})}$ where the singular values $\sigma_j = \sqrt{\lambda_j}$ for $1 \leq j \leq \min(m,n)$ are then real too, and the remaining task is to show that $\{\vec{u}^{(1)}, \vec{u}^{(2)},\ldots,\vec{u}^{(\min(m,n))}\}$ is also an orthonormal subset of $\mathcal{W}$. For any pair of indices $1 \leq i,j \leq \min(m,n)$, we have
+which shows that $T^\dag T$ is positive-semidefinite.} $T^\dag T$ is also clearly self-adjoint and automatically Hermitian when the inner product spaces are finite-dimensional so by Properties \ref{proper:orthogonalherm} and the Spectral Theorem \ref{thm:spectralinner} there exists an orthonormal basis $\beta = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(n)}\}$ for $\mathcal{V}$, which are the eigenvectors of $T^\dag T$ with corresponding eigenvalues of $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_{\min(m,n)} \geq 0$, and if $n > m$ then $\lambda_{j} = 0$ for $j > m$.\footnote{\label{foot:zerosingular} By Properties \ref{proper:AdagArank} we know that if $n > m$ then the maximum rank of $T^\dag T$ will be capped by $m$, so the nullity of $T^\dag T$ and thus the number of zero eigenvalues will be at least $n-m$. (Rank-Nullity Theorem \ref{thm:ranknullitytrans})} By Properties \ref{proper:hermrealeiginner}, these $\lambda_j$ will be real. Now we set $\vec{u}^{(j)} = \smash{\frac{1}{\sigma_j}T(\vec{v}^{(j)})}$ where the singular values $\sigma_j = \sqrt{\lambda_j}$ for $1 \leq j \leq \min(m,n)$ are then real too, and the remaining task is to show that $\{\vec{u}^{(1)}, \vec{u}^{(2)},\ldots,\vec{u}^{(\min(m,n))}\}$ is also an orthonormal subset of $\mathcal{W}$. For any pair of indices $1 \leq i,j \leq \min(m,n)$, we have
 \begin{align}
 \langle \vec{u}^{(i)}, \vec{u}^{(j)} \rangle &= \langle \frac{1}{\sigma_i}T(\vec{v}^{(i)}), \frac{1}{\sigma_j}T(\vec{v}^{(j)}) \rangle \nonumber \\
 &= \frac{1}{\sigma_i \sigma_j}\langle \vec{v}^{(i)}, T^\dag T(\vec{v}^{(j)}) \rangle & \text{(Definition \ref{defn:adjoint})} \nonumber \\
@@ -1237,7 +1237,7 @@ First, we have $V^T$ which constitutes a positive (counter-clockwise) rotation o
 
 \subsection{Compact SVD}
 
-During the derivation of Theorem \ref{thm:SVDtrans}, we have shown that if $n > m$ then there will be at least $n-m$ zero eigenvalues for $T^\dag T$ (or $A^*A$) in Footnote \ref{foot:zerosingular}. Of course, they are not included in the $\Sigma$ matrix as the main diagonal only has the length of $m$ so there will be $m$ singular values only. However, we can tighten the upper bound on the number of non-zero eigenvalues and therefore that of singular values. By the same Properties \ref{proper:AdagArank} used in Footnote \ref{foot:zerosingular}, we can know that if $A$ has a rank of $k \leq \min(m,n)$, then $A^*A$ will also have a rank of $k$ and thus $k$ non-zero singular values.\footnote{The rank of $k$ means that the nullity of $A^*A$ is $n-k$ by the Rank-nullity Theorem \ref{thm:ranknullity} and thus it has $n-k$ zero eigenvalues and thus $k$ non-zero eigenvalues (we implicitly have used Properties \ref{proper:symnodefic}, can you see how?).} Hence the original SVD of a rank $k$ matrix
+During the derivation of Theorem \ref{thm:SVDtrans}, we have shown that if $n > m$ then there will be at least $n-m$ zero eigenvalues for $T^\dag T$ (or $A^*A$) in Footnote \ref{foot:zerosingular}. Of course, they are not included in the $\Sigma$ matrix as the main diagonal only has the length of $m$ so there will be $m$ singular values only. However, we can tighten the upper bound on the number of non-zero eigenvalues and therefore that of singular values. By the same Properties \ref{proper:AdagArank} used in Footnote \ref{foot:zerosingular}, we can know that if $A$ has a rank of $k \leq \min(m,n)$, then $A^*A$ will also have a rank of $k$ and thus $k$ non-zero singular values.\footnote{The rank of $k$ means that the nullity of $A^*A$ is $n-k$ by the Rank-nullity Theorem \ref{thm:ranknullity} and thus it has $n-k$ zero eigenvalues and thus $k$ non-zero eigenvalues (we implicitly have used Properties \ref{proper:symnodefic}, adapted for complex matrices, can you see how?).} Hence the original SVD of a rank $k$ matrix
 \begin{align}
 &\quad A = U\Sigma V^T \nonumber \\
 &= \begin{bmatrix}
@@ -1552,7 +1552,7 @@ A^+ &= V\Sigma^+ U^* \\
 \end{bmatrix}
 \end{align*}
 \end{solution}
-Short Exercise: Check if (\ref{eqn:pinv1}) holds for the left singular vectors.\footnote{We only check $\vec{u}^{(1)}$ here and leave $\vec{u}^{(2)}$ to the readers:
+$\blacktriangleright$ Short Exercise: Check if (\ref{eqn:pinv1}) holds for the left singular vectors.\footnote{We only check $\vec{u}^{(1)}$ here and leave $\vec{u}^{(2)}$ to the readers:
 \begin{align*}
 A^+\vec{u}^{(1)} = \begin{bmatrix}
 \frac{1}{9}&\frac{1}{9}&\frac{2}{9}\\ 
@@ -1637,7 +1637,7 @@ and by part (a) of Properties \ref{proper:minsollemma}, it implies that $\vec{x}
 \begin{align*}
 \norm{\vec{x}} = \norm{\vec{x} - \textbf{0}}^2 \geq \norm{T(\vec{x}) - \textbf{0}}^2 = \norm{\vec{x}_f - \textbf{0}}^2 = \norm{\vec{x}_f}^2     
 \end{align*}
-While for (b), if $A\vec{x} = \smash{\vec{h}}$ is inconsistent, then $A\vec{x}_f = AA^+\smash{\vec{h}}$ will be the orthogonal projection of $\smash{\vec{h}}$ onto $\mathcal{R}(A)$ by part (b) of Properties \ref{proper:minsollemma}. Therefore, using (\ref{eqn:shortestsubspacealtb}) this time in Properties \ref{proper:shortestorthoproj}, the minimum error $\norm{A\vec{x} - \smash{\vec{h}}}$ will be achieved by $\norm{T(\smash{\vec{h}}) - \smash{\vec{h}}} = \norm{AA^+\smash{\vec{h}} - \smash{\vec{h}}} = \norm{A\vec{x}_f - \smash{\vec{h}}}$ where we now take $\vec{v} = \smash{\vec{h}}$ and $\mathcal{R}(A) = \mathcal{W}$. For any best-fit $\vec{x}$ that satisfies $A\vec{x} = A\vec{x}_f = \vec{y}$, multiplying both sides by $A^+$ to the left gives
+where $T = A^+A$ now. While for (b), if $A\vec{x} = \smash{\vec{h}}$ is inconsistent, then $A\vec{x}_f = AA^+\smash{\vec{h}}$ will be the orthogonal projection of $\smash{\vec{h}}$ onto $\mathcal{R}(A)$ by part (b) of Properties \ref{proper:minsollemma}. Therefore, using (\ref{eqn:shortestsubspacealtb}) this time in Properties \ref{proper:shortestorthoproj}, the minimum error $\norm{A\vec{x} - \smash{\vec{h}}}$ will be achieved by $\norm{T(\smash{\vec{h}}) - \smash{\vec{h}}} = \norm{AA^+\smash{\vec{h}} - \smash{\vec{h}}} = \norm{A\vec{x}_f - \smash{\vec{h}}}$ where we now take $T = AA^+$, $\vec{v} = \smash{\vec{h}}$ and $\mathcal{R}(A) = \mathcal{W}$. For any best-fit $\vec{x}$ that satisfies $A\vec{x} = A\vec{x}_f = \vec{y}$, multiplying both sides by $A^+$ to the left gives
 \begin{align*}
 A^+\vec{y} = A^+A\vec{x}_f = A^+A(A^+\vec{h}) = A^+\vec{h} = \vec{x}_f 
 \end{align*}
@@ -1740,15 +1740,15 @@ A(A^+\vec{h}) =
 \end{bmatrix} 
 = \vec{h}
 \end{align*}
-The minimum error is $\norm{AA^+\vec{h} - \vec{h}} = \sqrt{(1-\frac{2}{3})^2 + (1-\frac{2}{3})^2 + (1-\frac{4}{3})^2} = \frac{1}{\sqrt{3}}$.
+The minimum error is $\norm{AA^+\vec{h} - \vec{h}} = \sqrt{\left(1-\frac{2}{3}\right)^2 + \left(1-\frac{2}{3}\right)^2 + \left(1-\frac{4}{3}\right)^2} = \frac{1}{\sqrt{3}}$.
 \end{solution}
 We note that the pseudoinverse solution coincides with the least-square solution in Theorem \ref{thm:bestfit} when the full SVD is employed:
 \begin{align*}
 \vec{x}_f &= (A^* A)^{-1}A^* \vec{h} \\
 &= (V \Sigma^* U^* U\Sigma V^*)^{-1} (V \Sigma U^*) \vec{h} \\
-&= (V \Sigma^* \Sigma V^*)^{-1} (V \Sigma U^*) \vec{h} & \text{($U$ is unitary)} \\
+&= (V \Sigma^* \Sigma V^*)^{-1} (V \Sigma U^*) \vec{h} & \text{(Definition \ref{defn:unitary}, $U$ is unitary)} \\
 &= (V^*)^{-1} \Sigma^+ (\Sigma^+)^* V^{-1} V \Sigma U^* \vec{h} \\
-&= V \Sigma^+ (\Sigma^+)^* \Sigma U^* \vec{h} & \text{($V$ is unitary)} \\
+&= V \Sigma^+ (\Sigma^+)^* \Sigma U^* \vec{h} & \text{(Definition \ref{defn:unitary}, $V$ is unitary)} \\
 &= V {\Sigma^+} U^* \vec{h} = A^+\vec{h} & 
 \begin{aligned}
 \text{($(\Sigma^+)^* \Sigma = I$ if $m \geq n$} \\ \text{and $\Sigma$ is full rank)} 
@@ -1789,12 +1789,12 @@ V =
 \hat{v}^{(1)} | \hat{v}^{(2)} | \cdots | \hat{v}^{(n)}
 \end{bmatrix}
 \end{align}
-where the column vectors $\hat{v}^{(1)}, \hat{v}^{(2)}, \ldots, \hat{v}^{(n)}$ are the orthonormal (now with respect to the inner product described by $B$) eigenvectors of the Hermitian matrix product $A^\dag A$ (Properties \ref{proper:orthogonalherm}, also called the \keywordhl{right singular vectors} in this case), and ordered by decreasing, real (Properties 
-\ref{proper:hermrealeiginner}) eigenvalues $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n \geq 0$ as well. $\Sigma$ then consists of the first $k = \min(m,n)$ \keywordhl{singular values} $\sigma_j = \smash{\sqrt{\lambda_j}}$ which are the square roots of the eigenvalues of $A^\dag A$ (also in decreasing order) for these right singular vectors $\hat{v}^{(j)}$ in the (unitary, with respect to $B$) matrix $V$ along the main diagonal, and has a value of zero elsewhere. Finally, $U$ is made up of the orthonormal (with respect to the inner product described by $C$) column vectors that satisfy
+where the column vectors $\hat{v}^{(1)}, \hat{v}^{(2)}, \ldots, \hat{v}^{(n)}$ are the orthonormal (now with respect to the inner product described by $C$) eigenvectors of the Hermitian matrix product $A^\dag A$ (Properties \ref{proper:orthogonalherm}, also called the \keywordhl{right singular vectors} in this case), and ordered by decreasing, real (Properties 
+\ref{proper:hermrealeiginner}) eigenvalues $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n \geq 0$ as well. $\Sigma$ then consists of the first $k = \min(m,n)$ \keywordhl{singular values} $\sigma_j = \smash{\sqrt{\lambda_j}}$ which are the square roots of the eigenvalues of $A^\dag A$ (also in decreasing order) for these right singular vectors $\hat{v}^{(j)}$ in the (unitary, with respect to $C$) matrix $V$ along the main diagonal, and has a value of zero elsewhere. Finally, $U$ is made up of the orthonormal (with respect to the inner product described by $B$) column vectors that satisfy
 \begin{align}
 \hat{u}^{(j)} = \frac{1}{\sigma_j} A\hat{v}^{(j)} \label{eqn:leftsingadjoint}
 \end{align}
-for any $j$ that is associated with a non-zero singular value $\sigma_j \neq 0$. These vectors $\hat{u}^{(j)}$ are also called the \keywordhl{left singular vectors} in this case. Again, when there are not enough column vectors to construct $U$ by this relation, useGram-Schmidt Orthogonalization (Definition \ref{defn:GSorthinner} adapted for the new inner product) to create orthonormal vectors that extend the basis of $\hat{u}^{(j)}$ up to $j = m$.
+for any $j$ that is associated with a non-zero singular value $\sigma_j \neq 0$. These vectors $\hat{u}^{(j)}$ are also called the \keywordhl{left singular vectors} in this case. Again, when there are not enough column vectors to construct $U$ by this relation, use Gram-Schmidt Orthogonalization (Definition \ref{defn:GSorthinner} adapted for the new inner product) to create orthonormal vectors that extend the basis of $\hat{u}^{(j)}$ up to $j = m$.
 \end{defn}
 \begin{defn}[Pseudoinverse of a Matrix for an Alternative Adjoint]
 Let $A$ be an $m \times n$ matrix with the (full) SVD of $A = U\Sigma V^*C$ with respect to some adjoint $A^\dag$ as given in (\ref{eqn:SVDadjoint}) of Theorem \ref{defn:SVDadjoint} that has $k \leq \min(m,n)$ non-zero singular values $\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_k > 0$. Then define a diagonal matrix $\Sigma^+$ where
@@ -1804,7 +1804,7 @@ Let $A$ be an $m \times n$ matrix with the (full) SVD of $A = U\Sigma V^*C$ with
 0 & \text{otherwise}
 \end{cases}
 \end{align}
-and the pseudoinverse of $A$ with respect to this adjoint will then be
+and the pseudoinverse of $A$ with respect to this adjoint will then be
 \begin{align}
 A^+ = V \Sigma^+ U^* B \label{eqn:pinvadjoint}
 \end{align}
@@ -1894,7 +1894,7 @@ The only non-zero eigenvalue and eigenvector of $A^\dag A$ can be seen to be
 10
 \end{bmatrix} & & \text {for $\lambda_1 = \frac{403}{6}$}
 \end{align*}
-and hence the corresponding singular value and the normalized right singular vector will be
+and hence the corresponding singular value and the normalized right singular vector (with respect to $C$) will be
 \begin{align*} \hat{v}^{(1)} &= 
 \begin{bmatrix}
 \frac{3}{\sqrt{186}}\\ 
@@ -1927,7 +1927,7 @@ A^+ &= V \Sigma^+ U^* B \\
 -\frac{8}{\sqrt{186}}\\ 
 \frac{10}{\sqrt{186}}
 \end{bmatrix}
-(\frac{1}{\sqrt{\frac{403}{6}}})
+\left(\frac{1}{\sqrt{\frac{403}{6}}}\right)
 \begin{bmatrix}
 \frac{1}{\sqrt{13}} & \frac{2}{\sqrt{13}}
 \end{bmatrix}
@@ -1960,7 +1960,7 @@ and then the minimal solution as in Properties \ref{proper:minimalsoln} will be
 \end{bmatrix}
 \end{align*}
 \end{solution}
-Short Exercise: Check if (1) (as well as (2)) in Properties \ref{proper:pinvequiv} holds in this example.\footnote{We will only show (1) and leave (2) to the readers. Both of them are routine calculations.
+$\blacktriangleright$ Short Exercise: Check if (1) (as well as (2)) in Properties \ref{proper:pinvequiv} holds in this example.\footnote{We will only show (1) and leave (2) to the readers. Both of them are routine calculations.
 \begin{align*}
 AA^+A &= \begin{bmatrix}
 1 & -1 & 2 \\
@@ -2202,9 +2202,9 @@ are
  [ 2.2204460e-16 -8.1649658e-01  4.0824829e-01 -4.0824829e-01]
  [-4.8232914e-02 -5.7533200e-01 -5.2709909e-01  6.2356492e-01]]    
 \end{lstlisting}
-which essentially matches the full SVD of the matrix where the extremely small values are actually zeros but are affected by numerical round-off errors. The pseudoinverse can be simply computed by
+which essentially matches the full SVD of the matrix where the extremely small values are actually zeros but affected by numerical round-off errors, and there are some sign differences. The pseudoinverse can be simply computed by
 \begin{lstlisting}
-print(linalg.pinv(A3))    
+print(linalg.pinv(A3))
 \end{lstlisting}
 that returns
 \begin{lstlisting}
@@ -2228,6 +2228,15 @@ both will produce the same answer apart from the different, but negligible round
 \label{ex:triangularprod}
 Show that the product of a sequence of lower[upper]-triangular matrices of the same extent ultimately results in a lower[upper]-triangular matrix as well.
 \end{Exercise}
+\begin{Answer}
+We only need to prove this for two square upper-triangular matrices $A$ and $B$, and apply this recursively. We have $A_{ik} = 0$ if $i > k$ and $B_{kj} = 0$ if $k > j$ and need to show that $(AB)_{ij} = 0$ if $i > j$:
+\begin{align*}
+(AB)_{ij} &= \sum_{k=1}^n A_{ik}B_{kj} \\
+&= \sum_{k=1}^{i-1} A_{ik}B_{kj} + \sum_{k=i}^n A_{ik}B_{kj} \\
+&= \sum_{k=1}^{i-1} (0)B_{kj} + \sum_{k=i}^n A_{ik}(0) = 0
+\end{align*}
+The lower-triangular case is similar.
+\end{Answer}
 
 \begin{Exercise}
 Find the (a) Cholesky Factorization, (b) LDU Decomposition for the symmetric matrix
@@ -2235,11 +2244,48 @@ Find the (a) Cholesky Factorization, (b) LDU Decomposition for the symmetric mat
 A = 
 \begin{bmatrix}
 2 & 1 & 1 \\
-1 & 3 & 2 \\
+1 & 2 & 2 \\
 1 & 2 & 5
 \end{bmatrix}
 \end{align*}
 \end{Exercise}
+\begin{Answer}
+\begin{enumerate}[label=(\alph*)]
+\item 
+\begin{align*}
+U^TU =
+\begin{bmatrix}
+\sqrt{2} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+0 & \sqrt{\frac{3}{2}} & \sqrt{\frac{3}{2}} \\
+0 & 0 & \sqrt{3}
+\end{bmatrix}^T
+\begin{bmatrix}
+\sqrt{2} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+0 & \sqrt{\frac{3}{2}} & \sqrt{\frac{3}{2}} \\
+0 & 0 & \sqrt{3}
+\end{bmatrix}
+\end{align*}
+\item 
+\begin{align*}
+LDU =  
+\begin{bmatrix}
+1&0&0\\ 
+\frac{1}{2}&1&0\\ 
+\frac{1}{2}&1&1
+\end{bmatrix}
+\begin{bmatrix}
+2 & 0 & 0 \\
+0 & \frac{3}{2} & 0 \\
+0 & 0 & 3
+\end{bmatrix}
+\begin{bmatrix}
+1&\frac{1}{2}&\frac{1}{2}\\ 
+0&1&1\\ 
+0&0&1
+\end{bmatrix}
+\end{align*}
+\end{enumerate}
+\end{Answer}
 
 \begin{Exercise}
 Find the L(D)U Decomposition for
@@ -2253,25 +2299,118 @@ A =
 \end{align*}
 and solve the linear system $A\vec{x} = \vec{h}$ where $\vec{h} =$ (a) $(1,-3,4)^T$, (b) $(2,3,1)^T$ by the LU method.
 \end{Exercise}
+\begin{Answer}
+One possible LU Decomposition of $A$ is
+\begin{align*}
+LU = \begin{bmatrix}
+1&0&0\\ 
+2&-1&0\\ 
+0&2&-3
+\end{bmatrix}
+\begin{bmatrix}
+1&2&1\\ 
+0&1&3\\ 
+0&0&1
+\end{bmatrix}
+\end{align*}
+We then solve $U\vec{x} = \vec{y}$ and $L\vec{y} = \vec{h}$. For $\vec{h} = (1,-3,4)^T$, $L\vec{y} = \vec{h}$, forward substitution gives $\vec{y} = (1,5,2)^T$. Then for $U\vec{x} = \vec{y}$, backward substitution yields the answer $\vec{x} = (1,-1,2)^T$. Similarly, the answer for (b) can be seen to be $\vec{x} = (\frac{5}{3}, 0, \frac{1}{3})^T$.
+\end{Answer}
 
 \begin{Exercise}
 Find the SVD and pseudoinverse for
 \begin{align*}
 A = \begin{bmatrix}
-1&1&2&0\\ 
-2&-2&1&1\\ 
--1&3&1&2
+1&1&1&0\\ 
+1&-1&1&1\\ 
+-1&1&0&1
 \end{bmatrix}
 \end{align*}
 How about those of $A^T$?
 \end{Exercise}
+\begin{Answer}
+We note that 
+\begin{align*}
+A^TA = 
+\begin{bmatrix}
+3&-1&2&0\\
+-1&3&0&0\\ 
+2&0&2&1\\ 
+0&0&1&2
+\end{bmatrix}
+\end{align*}
+the non-zero singular values (the square roots of eigenvalues for $A^TA$) are $\sigma_1, \sigma_2, \sigma_3 = \sqrt{5}, \sqrt{3}, \sqrt{2}$, and the respective right singular vectors (the normalized eigenvectors for $A^TA$) are
+\begin{align*}
+\begin{bmatrix}
+\frac{2\sqrt{2}}{\sqrt{15}}\\ 
+-\sqrt{\frac{2}{15}}\\ 
+\sqrt{\frac{3}{10}}\\ 
+\frac{1}{\sqrt{30}}
+\end{bmatrix},
+\begin{bmatrix}
+0\\ 
+\sqrt{\frac{2}{3}}\\ 
+\frac{1}{\sqrt{6}}\\ 
+\frac{1}{\sqrt{6}}
+\end{bmatrix},
+\begin{bmatrix}
+-\frac{1}{\sqrt{6}}\\ 
+-\frac{1}{\sqrt{6}}\\ 
+0\\ 
+\sqrt{\frac{2}{3}}
+\end{bmatrix}
+\end{align*}
+The corresponding left singular vectors are then
+\begin{align*}
+\begin{bmatrix}
+\frac{1}{\sqrt{6}}\\ 
+\sqrt{\frac{2}{3}}\\ 
+-\frac{1}{\sqrt{6}}
+\end{bmatrix},
+\begin{bmatrix}
+\frac{1}{\sqrt{2}}\\ 
+0\\ 
+\frac{1}{\sqrt{2}}
+\end{bmatrix},
+\begin{bmatrix}
+-\frac{1}{\sqrt{3}}\\ 
+\frac{1}{\sqrt{3}}\\ 
+\frac{1}{\sqrt{3}}
+\end{bmatrix}
+\end{align*}
+So its (compact) SVD is
+\begin{align*}
+U\Sigma V^* &= 
+\begin{bmatrix}
+\frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{3}}\\  
+\sqrt{\frac{2}{3}} & 0 & \frac{1}{\sqrt{3}}\\   
+-\frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}}
+\end{bmatrix}
+\begin{bmatrix}
+\sqrt{5} & 0 & 0 \\
+0 & \sqrt{3} & 0 \\
+0 & 0 & \sqrt{2}
+\end{bmatrix}
+\begin{bmatrix}
+\frac{2\sqrt{2}}{\sqrt{15}}&-\sqrt{\frac{2}{15}}&\sqrt{\frac{3}{10}}&\frac{1}{\sqrt{30}}\\ 
+0&\sqrt{\frac{2}{3}}&\frac{1}{\sqrt{6}}&\frac{1}{\sqrt{6}}\\ 
+-\frac{1}{\sqrt{6}}&-\frac{1}{\sqrt{6}}&0&\sqrt{\frac{2}{3}}
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+1&1&1&0\\ 
+1&-1&1&1\\ 
+-1&1&0&1
+\end{bmatrix}
+\end{align*}
+The SVD of $A^T$ here is simply $(U\Sigma V^T)^T = V\Sigma^TU^T$.
+\end{Answer}
 
 \begin{Exercise}
 Find the minimal solution to the linear system
 \begin{align*}
 \begin{bmatrix}
 1 & 2 & 3 \\
-2 & -1 & 4
+2 & -1 & 2
 \end{bmatrix}
 \begin{bmatrix}
 x \\
@@ -2280,18 +2419,148 @@ z
 \end{bmatrix}
 =
 \begin{bmatrix}
-5 \\
-2
+4 \\
+3
 \end{bmatrix}
 \end{align*}
-How about if the norm of the solution is computed according to the inner product defined by
+How about if the norm of the solution is computed according to the inner product defined by (numerical answer is accepted)
 \begin{align*}
 C &= 
 \begin{bmatrix}
-1 & 1 & 0 \\
+2 & 1 & 1 \\
 1 & 2 & 1 \\
-0 & 1 & 3
+1 & 1 & 2
 \end{bmatrix} \\
 \norm{\vec{x}}^2 &= \textbf{x}^TC\textbf{x}
 \end{align*}
 \end{Exercise}
+\begin{Answer}
+For the first part, the required pseudoinverse is
+\begin{align*}
+\begin{bmatrix}
+-\frac{1}{30} & \frac{11}{45} \\
+\frac{4}{15} & -\frac{13}{45} \\
+\frac{1}{6} & \frac{1}{9}
+\end{bmatrix}
+\end{align*}
+and the minimal solution is then
+\begin{align*}
+\begin{bmatrix}
+-\frac{1}{30} & \frac{11}{45} \\
+\frac{4}{15} & -\frac{13}{45} \\
+\frac{1}{6} & \frac{1}{9}
+\end{bmatrix} 
+\begin{bmatrix}
+4 \\
+3
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{3}{5}\\ 
+\frac{1}{5}\\ 
+1
+\end{bmatrix}
+\end{align*}
+For the second part, the appropriate new adjoint is
+\begin{align*}
+A^\dag &= C^{-1} A^* B \\
+&= \begin{bmatrix}
+2 & 1 & 1 \\
+1 & 2 & 1 \\
+1 & 1 & 2
+\end{bmatrix}^{-1} \begin{bmatrix}
+1 & 2 & 3 \\
+2 & -1 & 2
+\end{bmatrix}^T
+I \\
+&= 
+\begin{bmatrix}
+-\frac{1}{2}&\frac{5}{4}\\ 
+\frac{1}{2}&-\frac{7}{4}\\ 
+\frac{3}{2}&\frac{5}{4}
+\end{bmatrix}
+\end{align*}
+Then
+\begin{align*}
+A^\dag A = 
+\begin{bmatrix}
+-\frac{1}{2}&\frac{5}{4}\\ 
+\frac{1}{2}&-\frac{7}{4}\\ 
+\frac{3}{2}&\frac{5}{4}
+\end{bmatrix}
+\begin{bmatrix}
+1 & 2 & 3 \\
+2 & -1 & 2
+\end{bmatrix}
+= \begin{bmatrix}
+2&-\frac{9}{4}&1\\ 
+-3&\frac{11}{4}&-2\\ 
+4&\frac{7}{4}&7
+\end{bmatrix}
+\end{align*}
+The two non-zero singular values are $\sigma_{1,2} = \smash{\sqrt{\frac{47\pm\sqrt{193}}{8}}} \approx 2.759, 2.034$. The right singular vectors relative to $C$ will be, numerically
+\begin{align*}
+\begin{bmatrix}
+0.3026 \\
+-0.4598 \\
+0.6637
+\end{bmatrix},
+\begin{bmatrix}
+-0.5192 \\
+0.6415 \\
+0.3333
+\end{bmatrix}
+\end{align*}
+The left singular vectors will then be
+\begin{align*}
+\begin{bmatrix}
+0.498 \\
+0.867
+\end{bmatrix},
+\begin{bmatrix}
+0.867 \\
+-0.498
+\end{bmatrix}
+\end{align*}
+So the new pseudoinverse will be
+\begin{align*}
+A^+ &= V \Sigma^+ U^* B \\
+&= \begin{bmatrix}
+0.3026 & -0.5192 \\
+-0.4598 & 0.6415 \\
+0.6637 & 0.3333
+\end{bmatrix}
+\begin{bmatrix}
+\frac{1}{2.759} & 0 \\
+0 & \frac{1}{2.034}
+\end{bmatrix}
+\begin{bmatrix}
+0.498 & 0.867 \\
+0.867 & -0.498
+\end{bmatrix} I \\
+&=
+\begin{bmatrix}
+-0.167 & 0.222 \\
+0.190 & -0.302 \\
+0.262 & 0.127
+\end{bmatrix}
+\end{align*}
+and thus the new minimal solution with respect to the alternative norm definition will be
+\begin{align*}
+\begin{bmatrix}
+-0.167 & 0.222 \\
+0.190 & -0.302 \\
+0.262 & 0.127
+\end{bmatrix}   
+\begin{bmatrix}
+4 \\
+3
+\end{bmatrix}
+\approx
+\begin{bmatrix}
+0 \\
+-0.146 \\
+1.43
+\end{bmatrix}
+\end{align*}
+\end{Answer}

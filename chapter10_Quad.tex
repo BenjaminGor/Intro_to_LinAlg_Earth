@@ -820,18 +820,18 @@ For a distribution $X$, with $m$ data $x_1, x_2, x_3, \ldots, x_m$, its \index{P
 \end{subequations}
 where $\mu$ is the \index{Mean}\keywordhl{mean}, or \index{Expected Value}\keywordhl{expected value} of $X$, and is computed by
 \begin{align}
-\mu = E(X) = \frac{1}{m} (x_1 + x_2 + x_3 + \cdots + x_m)
+\mu = E[X] = \frac{1}{m} (x_1 + x_2 + x_3 + \cdots + x_m)
 \end{align}
-that is, the average of all data. Hence, variance is the average of squares of differences between the data and their mean, equivalent to $E((X-\mu)^2)$.
+that is, the average of all data. Hence, variance is the average of squares of differences between the data and their mean, equivalent to $E[(X-\mu)^2]$.
 \end{defn}
 A simpler formula for computing the population variance is
 \begin{align}
-\sigma^2 &= E((X-\mu)^2) \nonumber \\
-&= E((X-E(X))^2) \nonumber \\
-&= E(X^2-2XE(X)+(E(X))^2) \nonumber \\
-&= E(X^2) - 2E(X)E(X) + (E(X))^2 \nonumber & \begin{aligned} &\text{(Note that $E(X)$ is a constant}\\ &\text{and $E(E(X)) = E(X)$,} \\
-&\text{$E(XE(X)) = E(X)E(X)$.)}\end{aligned} \\
-&= E(X^2) - (E(X))^2 = E(X^2) - \mu^2 \label{eqn:varshortcut}
+\sigma^2 &= E[(X-\mu)^2] \nonumber \\
+&= E[(X-E[X])^2] \nonumber \\
+&= E[X^2-2XE[X]+(E[X])^2] \nonumber \\
+&= E[X^2] - 2E[X]E[X] + (E[X])^2 \nonumber & \begin{aligned} &\text{(Note that $E[X]$ is a constant}\\ &\text{and $E[E[X]] = E[X]$,} \\
+&\text{$E[XE[X]] = E[X]E[X]$.)}\end{aligned} \\
+&= E[X^2] - (E[X])^2 = E[X^2] - \mu^2 \label{eqn:varshortcut}
 \end{align}
 As said before, we always have a finite sample size. To account for this, we have to use the sample variance $s^2$, which is the same as population variance but with the $\frac{1}{m}$ factor replaced by $\frac{1}{m-1}$.\footnote{It is because we have used one degree of freedom in estimating the mean.} Hence $s^2 = \frac{m}{m-1}\sigma^2$. As an example, given a dataset $X$, with $5$ data $\vec{x} = (1, 3, 6, 9, 11)^T$, then their mean is
 \begin{align*}
@@ -843,7 +843,7 @@ and the population variance is
 \end{align*}
 We can also use the aforementioned short-cut Formula (\ref{eqn:varshortcut}).
 \begin{align*}
-\sigma^2 &= E(X^2) - \mu^2 \\
+\sigma^2 &= E[X^2] - \mu^2 \\
 &= \frac{1}{5} (1^2 + 3^2 + 6^2 + 9^2 + 11^2) - 6^2 \\
 &= 49.6 - 36 \\
 &= 13.6
@@ -867,11 +867,11 @@ $\blacktriangleright$ Short Exercise: Discuss under what situation the variance 
 \subsubsection{Linear Combination of Multiple Distributions}
 Sometimes we may need to consider the "overall" distribution of the sum of multiple variables. More generally, given any linear combination of multiple ($n$) distributions, like $Z = c_1X^{(1)} + c_2X^{(2)} + \cdots + c_nX^{(n)}$, we may want to know how to compute its mean and variance. The mean will be simply 
 \begin{align}
-\mu_Z &= E(c_1X^{(1)} + c_2X^{(2)} + \cdots + c_nX^{(n)}) \nonumber \\
-&= c_1E(X^{(1)}) + c_2E(X^{(2)}) + \cdots + c_nE(X^{(n)}) \nonumber \\
+\mu_Z &= E[c_1X^{(1)} + c_2X^{(2)} + \cdots + c_nX^{(n)}] \nonumber \\
+&= c_1E[X^{(1)}] + c_2E[X^{(2)}] + \cdots + c_nE[X^{(n)}] \nonumber \\
 &= c_1\mu_1 + c_2\mu_2 + \cdots + c_n\mu_n     
 \end{align}
-where $E$ is linear and $E(X^{(j)}) = \mu_j$ is the mean of $X^{(j)}$. The variance $\text{Var}(Z)$ is a bit more complicated. First, we need to introduce the concept of \index{Covariance}\keywordhl{covariance} between any two variables, which indicates how they change together.
+where $E$ is linear and $E[X^{(j)}] = \mu_j$ is the mean of $X^{(j)}$. The variance $\text{Var}(Z)$ is a bit more complicated. First, we need to introduce the concept of \index{Covariance}\keywordhl{covariance} between any two variables, which indicates how they change together.
 \begin{defn}
 \label{defn:covariance}
 For two distributions $X$ and $Y$ consisted of $m$ pairs of data, their \index{Population Covariance}\keywordhl{population covariance} is
@@ -892,10 +892,10 @@ where the $\frac{1}{m-1}$ factor replaces $\frac{1}{m}$ as for sample variance, 
 \end{defn}
 There is also a short-cut formula very similar to that for variance:
 \begin{align}
-\text{Cov}(X,Y) &= E((X-E(X))(Y-E(Y))) \nonumber \\
-&= E(XY - E(X)Y - XE(Y) + E(X)E(Y)) \nonumber \\
-&= E(XY) - E(X)E(Y) - E(X)E(Y) + E(X)E(Y) \nonumber \\
-&= E(XY) - E(X)E(Y) \label{eqn:covshort}
+\text{Cov}(X,Y) &= E[(X-E[X])(Y-E[Y])] \nonumber \\
+&= E[XY - E[X]Y - XE[Y] + E[X]E[Y]] \nonumber \\
+&= E[XY] - E[X]E[Y] - E[X]E[Y] + E[X]E[Y] \nonumber \\
+&= E[XY] - E[X]E[Y] \label{eqn:covshort}
 \end{align}
 In general, if $\text{Cov}(X,Y)$ is positive (negative), it means that when $X$ increases, $Y$ tends to increase (decrease) together. Finally, a direct comparison reveals that $\text{Cov}(X,X) = \text{Var}(X)$ for any distribution $X$. 
 
@@ -935,7 +935,7 @@ It is not hard to get $\mu_U = 3.0$ and $\mu_V = -1.9$. By Definition \ref{defn:
 \end{align*}
 Alternatively, the short-cut Formula (\ref{eqn:covshort}) gives
 \begin{align*}
-\text{Cov}(U,V) &= E(UV) - \mu_U \mu_V \\
+\text{Cov}(U,V) &= E[UV] - \mu_U \mu_V \\
 &= \frac{1}{7}[(4.4)(-3.5) + (3.8)(-2.6) + (3.3)(-2.7) + (2.8)(-1.4) \\
 &\quad + (2.9)(-1.2) + (1.7)(-0.8) + (2.1)(-1.1)] - (3.0)(-1.9) \\
 &= (-6.466) - (-5.7) = \SI{-0.77}{\square\m \per \square\s} \qedhere
@@ -993,7 +993,7 @@ Q &=
 \end{bmatrix} 
 \end{align}    
 \end{subequations}
-is the so-called \index{Covariance Matrix}\keywordhl{covariance matrix} so that $Q_{ij} = \text{Cov}(X^{(i)}, X^{(j)})$. If $[X'] = [X'^{(1)}|X'^{(2)}|\cdots|X'^{(n)}]$ is the matrix consisted of the centered variables $X'^{(j)} = X^{(j)} - E(X^{(j)})$ in columns, then we have $Q = \frac{1}{m-1}[X']^T[X']$ where $m$ is the number of data.
+is the so-called \index{Covariance Matrix}\keywordhl{covariance matrix} so that $Q_{ij} = \text{Cov}(X^{(i)}, X^{(j)})$. If $[X'] = [X'^{(1)}|X'^{(2)}|\cdots|X'^{(n)}]$ is the matrix consisted of the centered variables $X'^{(j)} = X^{(j)} - E[X^{(j)}]$ in columns, then we have $Q = \frac{1}{m-1}[X']^T[X']$ where $m$ is the number of data.
 \end{proper}
 \begin{proof}
 Let's say we have $m$ data for $Z$: $z_1, z_2, \ldots, z_m$, as well as each of the $X^{(j)}$: $x_1^{(j)}, x_2^{(j)}, \ldots, x_m^{(j)}$. Denote the mean of $X^{(j)}$ by $\mu_{j}$. Starting from the Expression (\ref{eqn:varianceb}) in Definition \ref{defn:variance}, we have
