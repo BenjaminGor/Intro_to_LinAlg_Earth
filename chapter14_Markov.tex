@@ -10,7 +10,7 @@ In Earth Science, we often look at the evolution of variables in time, like temp
 First, let's talk about how to determine if a \index{Time Series}\keywordhl{time series} possesses some sort of \textit{memory} as mentioned in the introduction. Memory causes the past of a time series to influence the present, and hence will leave a mark when we try to correlate the past and present segments of the time series. This leads to the idea of \index{Lagged Auto-correlation}\keywordhl{lagged auto-correlation}, which is the correlation between a time series and itself, but one of them is lagged and shifted by a certain amount of days, let's say $k$ (the direction of the shifting does not matter as it is an auto-correlation, and we only care about the overlapping part). Then, it is more specifically known as the \textit{Lag-$k$ Auto-correlation}.
 
 \begin{defn}
-\label{defn:autocorr}
+\label{defn:autocorr}[Lagged Auto-correlation]
 The lag-$k$ auto-correlation $r_k$ of a time series $\{x_i\}_{i=1}^{n}$ is defined as 
 \begin{align}
 r_k &= \frac{\sum_{i=1}^{n-k}(x_i - \overline{x_{-}})(x_{i+k} - \overline{x_{+}})}{\sqrt{(\sum_{i=1}^{n-k}(x_i - \overline{x_{-}})^2) (\sum_{j=k+1}^{n}(x_j - \overline{x_{+}})^2)}}
@@ -44,16 +44,16 @@ We first locate the first and last $7-1 = 6$ data and construct the two smaller 
 \text{Var}(\{x_-\}) &= \frac{1}{6-1}[(680 - 820)^2 + (820 - 820)^2 + (760 - 820)^2 \\
 & \quad + (790 - 820)^2 + (840 - 820)^2 + (1030 - 820)^2] \\
 &=13720 \text{ (Vehicles per Hour)}^2 \\
-\text{Var}(\{x_+\}) &= \frac{1}{6-1}[(820 - \frac{2660}{3})^2 + (760 - \frac{2660}{3})^2 + (790 - \frac{2660}{3})^2 \\
-&\quad + (840 - \frac{2660}{3})^2 + (1030 - \frac{2660}{3})^2 + (1080 - \frac{2660}{3})^2] \\
+\text{Var}(\{x_+\}) &= \frac{1}{6-1}\left[\left(820 - \frac{2660}{3}\right)^2 + \left(760 - \frac{2660}{3}\right)^2 + \left(790 - \frac{2660}{3}\right)^2\right. \\
+&\quad \left. + \left(840 - \frac{2660}{3}\right)^2 + \left(1030 - \frac{2660}{3}\right)^2 + \left(1080 - \frac{2660}{3}\right)^2\right] \\
 &= 17987 \text{ (Vehicles per Hour)}^2
 \end{align*}
 and their sample covariance is
 \begin{align*}
 &\quad \text{Cov}(\{x_{-}\},\{x_{+}\}) \\
-&= \frac{1}{6-1}[(680 - 820)(820 - \frac{2660}{3}) + (820 - 820)(760 - \frac{2660}{3}) \\
-&\quad + (760 - 820)(790 - \frac{2660}{3})  + (790 - 820)(840 - \frac{2660}{3}) \\
-&\quad + (840 - 820)(1030 - \frac{2660}{3}) + (1030 - 820)(1080 - \frac{2660}{3})] \\
+&= \frac{1}{6-1}\left[(680 - 820)\left(820 - \frac{2660}{3}\right) + (820 - 820)\left(760 - \frac{2660}{3}\right)\right. \\
+&\quad + (760 - 820)\left(790 - \frac{2660}{3}\right)  + (790 - 820)\left(840 - \frac{2660}{3}\right) \\
+&\quad \left. + (840 - 820)\left(1030 - \frac{2660}{3}\right) + (1030 - 820)\left(1080 - \frac{2660}{3}\right)\right] \\
 &= 12000 \text{ (Vehicles per Hour)}^2
 \end{align*}
 Hence by Formula (\ref{eqn:autocorrvar}) in Definition \ref{defn:autocorr} above, the lag-$1$ auto-correlation is
@@ -61,7 +61,7 @@ Hence by Formula (\ref{eqn:autocorrvar}) in Definition \ref{defn:autocorr} above
 r_1 &= \frac{12000}{\sqrt{(13720)(17987)}} = 0.7639
 \end{align*}
 It means that heavy (quiet) traffic will likely be followed by more or less heavy (quiet) traffic the next day, which is quite reasonable.\par
-Short Exercise: Compute the lag-$2$ auto-correlation for the same dataset.\footnote{The new $\{x_-\}$ and $\{x_+\}$ will be $\{680, 820, 760, 790, 840\}$ and $\{760, 790, 840, 1030, 1080\}$. We provide the relevant numbers for the readers to check. Their sample (co)variances are $\text{Var}(\{x_-\}) = 3920$, $\text{Var}(\{x_+\}) = 21150$ and $\text{Cov}(\{x_{-}\},\{x_{+}\}) = 5725$. So the lag-$2$ auto-correlation will be $r_2 = \smash{\frac{5725}{\sqrt{(3920)(21150)}}} = 0.6287$.}
+$\blacktriangleright$ Short Exercise: Compute the lag-$2$ auto-correlation for the same dataset.\footnote{The new $\{x_-\}$ and $\{x_+\}$ will be $\{680, 820, 760, 790, 840\}$ and $\{760, 790, 840, 1030, 1080\}$. We provide the relevant numbers for the readers to check. Their sample (co)variances are $\text{Var}(\{x_-\}) = 3920$, $\text{Var}(\{x_+\}) = 21150$ and $\text{Cov}(\{x_{-}\},\{x_{+}\}) = 5725$. So the lag-$2$ auto-correlation will be $r_2 = \smash{\frac{5725}{\sqrt{(3920)(21150)}}} = 0.6287$.}
 
 
 \subsection{Conditional Probabilities, Stochastic Matrices}
@@ -121,7 +121,7 @@ P =
 0.05 & 0.3 & 0.7
 \end{bmatrix}
 \end{align*}
-\begin{defn}
+\begin{defn}[Stochastic Matrix]
 \label{defn:stocmat}
 The stochastic matrix for a closed system with mutually exclusive and exhaustive events $A_1, A_2, \ldots, A_N$, is
 \begin{align}
@@ -142,7 +142,7 @@ Again, notice that the entries along any column add up to $1$. The $j$-th column
 
 \subsection{State Vector, Steady State}
 
-Processes that can be represented by such stochastic matrices proposed above are known as \index{Markov Chain}\keywordhl{Markov Chains}. It is assumed that the conditional probabilities outlined in the stochastic matrices $P$ do not change in time (\textit{stationary}). Given a probability vector (or a \index{State Vector}\keywordhl{state vector}) $\vec{x}^{[k]}$ consisting of the probabilities of having different states at a certain time step $k$, we can calculate the probability vector $\vec{x}^{[k+1]}$ at the next time step $k+1$ as $P\vec{x}^{[k]}$.
+Processes that can be represented by such stochastic matrices proposed above are known as \index{Markov Chain}\keywordhl{Markov Chains}. It is assumed that the conditional probabilities outlined in the stochastic matrices $P$ do not change in time (\index{Stationary}\textit{stationary}). Given a probability vector (or a \index{State Vector}\keywordhl{state vector}) $\vec{x}^{[k]}$ consisting of the probabilities of having different states at a certain time step $k$, we can calculate the probability vector $\vec{x}^{[k+1]}$ at the next time step $k+1$ as $P\vec{x}^{[k]}$.
 
 \begin{proper}
 Given a Markov Chain, with a stochastic matrix $P$ described by (\ref{eqn:stocP}), then the state vector $\vec{x}^{[k+1]}$ at time step $k+1$ is decided by
@@ -260,7 +260,7 @@ So on Day 2, the chances of sunny/windy/rainy are $0.35$/$0.305$/$0.345$. It is 
 \end{bmatrix}
 \end{align*}
 \end{solution}
-Short Exercise: Find the state vector on the next day if today is windy.\footnote{It is simply $P\vec{x}$ where $\vec{x} = (0,1,0)^T$ and thus
+$\blacktriangleright$ Short Exercise: Find the state vector on the next day if today is windy.\footnote{It is simply $P\vec{x}$ where $\vec{x} = (0,1,0)^T$ and thus
 \begin{align*}
 \begin{bmatrix}
 0.8 & 0.2 & 0.1\\
@@ -280,7 +280,7 @@ Short Exercise: Find the state vector on the next day if today is windy.\footnot
 \end{bmatrix}
 \end{align*} so the probabilities are simply given by the components in the second column of the stochastic matrix.}
 
-For a Markov Chain which has been ongoing for a long period of time, and the initial state becomes effectively forgotten (\textit{memoryless}), it is desirable to obtain the \index{Steady-state Vector}\keywordhl{steady-state vector} which represents the "average" probability of every state given no prior knowledge of the initial state. The steady-state vector $\vec{q}$ remains the same for any time step and the probabilities are stationary. Hence, we have 
+For a Markov Chain which has been ongoing for a long period of time, and the initial state becomes effectively forgotten (\index{Memoryless}\textit{memoryless}), it is desirable to obtain the \index{Steady-state Vector}\keywordhl{steady-state vector} which represents the "average" probability of every state given no prior knowledge of the initial state. The steady-state vector $\vec{q}$ remains the same for any time step and the probabilities are stationary. Hence, we have 
 \begin{align}
 \label{eqn:qeqPq}
 \vec{q} = P\vec{q} = \cdots = P^n\vec{q}    
@@ -361,9 +361,9 @@ P = \begin{bmatrix}
 0 & 1 & 0
 \end{bmatrix}
 \end{align*}
-It can be found that there are three eigenvalues $\lambda = 1, -\frac{1}{2} + \frac{\sqrt{3}}{2}i, -\frac{1}{2} - \frac{\sqrt{3}}{2}i$ where the two complex eigenvalues have a modulus of $1$ as well. This system can be easily seen to be unstable. Any state vector other than $(\frac{1}{3}, \frac{1}{3}, \frac{1}{3})^T$ (the eigenvector for $\lambda = 1$) will keep oscillating where the components are cycled. Therefore, the system will not converge to the steady state despite the existence of a "steady-state" vector of $(\frac{1}{3}, \frac{1}{3}, \frac{1}{3})^T$. The imaginary part of the two complex eigenvalues represents a rotation of the two complex eigenvectors and the modulus of $\abs{\lambda} = 1$ means that the magnitude of this rotation will not decay.\footnote{For the complex eigenvalues $\lambda_{\text{c}}$ and complex eigenvectors $\vec{x}_{\text{c}}$, $\norm{P\vec{x}_{\text{c}}}^2 = \norm{\lambda\vec{x}_{\text{c}}}^2 = \abs{\lambda}^2 \norm{\vec{x}_{\text{c}}}^2 = \norm{\vec{x}_{\text{c}}}^2$ as $\abs{\lambda} = 1$. However, the entries of a state vector are always real-valued and it will be a linear combination of these conjugate complex eigenvectors where the imaginary part is exactly canceled out underneath.} So there should be some restriction if the system has to converge to a unique steady state. It turns out that a sufficient condition is whether the Markov Chain is \textit{regular}. To proceed, we need to introduce some terminologies.
+It can be found that there are three eigenvalues $\lambda = 1, -\frac{1}{2} + \frac{\sqrt{3}}{2}i, -\frac{1}{2} - \frac{\sqrt{3}}{2}i$ where the two complex eigenvalues have a modulus of $1$ as well. This system can be easily seen to be unstable. Any state vector other than $(\frac{1}{3}, \frac{1}{3}, \frac{1}{3})^T$ (the eigenvector for $\lambda = 1$) will keep oscillating where the components are "cycled". Therefore, the system will not converge to the steady state despite the existence of a "steady-state" vector of $(\frac{1}{3}, \frac{1}{3}, \frac{1}{3})^T$. The imaginary part of the two complex eigenvalues represents a rotation of the two complex eigenvectors and the modulus of $\abs{\lambda} = 1$ means that the magnitude of this rotation will not decay.\footnote{For the complex eigenvalues $\lambda_{\text{c}}$ and complex eigenvectors $\vec{x}_{\text{c}}$, $\norm{P\vec{x}_{\text{c}}}^2 = \norm{\lambda\vec{x}_{\text{c}}}^2 = \abs{\lambda}^2 \norm{\vec{x}_{\text{c}}}^2 = \norm{\vec{x}_{\text{c}}}^2$ as $\abs{\lambda} = 1$. However, the entries of a state vector are always real-valued and it will be a linear combination of these conjugate complex eigenvectors where the imaginary part is exactly canceled out underneath.} So there should be some restriction if the system has to converge to a unique steady state. It turns out that a sufficient condition is whether the Markov Chain is \textit{regular}. To proceed, we need to introduce some terminologies.
 
-\begin{defn}
+\begin{defn}[Regular Markov Chain]
 \label{defn:regularstoc}
 A stochastic matrix $P$, or the corresponding Markov Chain, is said to be \index{Regular Markov Chain}\keywordhl{regular} if some power of the stochastic matrix $P^k$, where $k$ is any positive integer, has all positive entries, i.e.\ $P^k$ is a \index{Positive Stochastic Matrix}\keywordhl{positive stochastic matrix} (or simply positive).
 \end{defn}
@@ -372,7 +372,7 @@ A stochastic matrix $P$, or the corresponding Markov Chain, is said to be \index
 \label{proper:positivestoceig}
 For a positive stochastic matrix $A$, the only eigenvalue with a modulus $\abs{\lambda} = 1$ is $\lambda = 1$. Moreover, the geometric multiplicity of this eigenvalue $\lambda = 1$ belonging to the matrix $A$ is strictly $1$, i.e.\ there is only one eigenvector corresponding to $\abs{\lambda} = 1$.
 \end{proper}
-The proof is provided in Appendix \ref{section:Markovappend}. For a regular stochastic matrix $P$, $A = P^k$ is positive for some $k$ by Definition \ref{defn:regularstoc} and hence the only eigenvalue of $P^k$ that has a modulus of $1$ is $\lambda = 1$ and its geometric multiplicity is $1$ by Properties \ref{proper:positivestoceig} above. It is not hard to show that, therefore, $P$ will also have $\lambda = 1$ as the only eigenvalue that has a modulus of one, $\abs{\lambda} = 1$.\footnote{Assume the contrary that there are two different eigenvectors of $P$, $\vec{q}^{(1)}$ and $\vec{q}^{(2)}$, the eigenvalues of which have a modulus $\abs{\lambda_1} = \abs{\lambda_2} = 1$ of one. Then $\smash{P^k\vec{q}^{(1)}} = \smash{P^{k-1}(P\vec{q}^{(1)})} = \lambda_1 \smash{P^{k-1}\vec{q}^{(1)}} = \lambda_1 \smash{P^{k-2} (P\vec{q}^{(1)})} = \smash{\lambda_1^2 P^{k-2}\vec{q}^{(1)}} = \cdots = \smash{\lambda_1^k} \vec{q}^{(1)}$, and similarly we have $P^k\vec{q}^{(2)} = \smash{\lambda_2^k} \vec{q}^{(2)}$. These show that $\vec{q}^{(1)}$ and $\vec{q}^{(2)}$ will be also two eigenvectors to $A = P^k$ with an eigenvalue of $\lambda_1^k$ and $\lambda_2^k$ where both of their modulus $\smash{\abs{\lambda_j^k}} = \abs{\lambda_j}^k = 1$, $j = 1,2$, equal to one, contradicting Properties \ref{proper:positivestoceig}.} Hence by combining the two results, we have
+The proof is provided in Appendix \ref{section:Markovappend}. For a regular stochastic matrix $P$, $A = P^k$ is positive for some $k$ by Definition \ref{defn:regularstoc} and hence the only eigenvalue of $P^k$ that has a modulus of $1$ is $\lambda = 1$ and its geometric multiplicity is $1$ by Properties \ref{proper:positivestoceig} above. It is not hard to show that, therefore, $P$ will also have $\lambda = 1$ as the only eigenvalue that has a modulus of one, $\abs{\lambda} = 1$, and the geometric multiplicity is also $1$.\footnote{Assume the contrary that there are two different eigenvectors of $P$, $\vec{q}^{(1)}$ and $\vec{q}^{(2)}$, the eigenvalues of which have a modulus $\abs{\lambda_1} = \abs{\lambda_2} = 1$ of one. Then $\smash{P^k\vec{q}^{(1)}} = \smash{P^{k-1}(P\vec{q}^{(1)})} = \lambda_1 \smash{P^{k-1}\vec{q}^{(1)}} = \lambda_1 \smash{P^{k-2} (P\vec{q}^{(1)})} = \smash{\lambda_1^2 P^{k-2}\vec{q}^{(1)}} = \cdots = \smash{\lambda_1^k} \vec{q}^{(1)}$, and similarly we have $P^k\vec{q}^{(2)} = \smash{\lambda_2^k} \vec{q}^{(2)}$. These show that $\vec{q}^{(1)}$ and $\vec{q}^{(2)}$ will be also two eigenvectors to $A = P^k$ with an eigenvalue of $\lambda_1^k$ and $\lambda_2^k$ where both of their modulus $\smash{\abs{\lambda_j^k}} = \abs{\lambda_j}^k = 1$, $j = 1,2$, equal to one, contradicting Properties \ref{proper:positivestoceig}.} Hence by combining the two results, we have
 \begin{proper}
 \label{proper:regularmarkovsteady}
 A regular Markov chain always has a unique steady-state vector with an eigenvalue of $1$.  
@@ -425,8 +425,7 @@ P =
 is exactly an absorbing Markov Chain where the sink is in the first node.
 \par
 
-We can attack this problem by finding the total expected time spent in other non-absorbing nodes which is equivalent to the expected time to arrive at the sink. At the zeroth time step, or $t=0$, the time spent in the starting node and other nodes is one and zero unit time respectively. At $t=k$, the average times spent during the $k$-th time step in different nodes are exactly the probabilities of landing on these nodes after $k$ time steps.\par
-
+We can attack this problem by finding the total expected time spent in other non-absorbing nodes which is equivalent to the expected time to arrive at the sink. At the zeroth time step, or $t=0$, the time spent in the starting node and other nodes is one and zero unit time respectively. At $t=k$, the average times spent during the $k$-th time step in different nodes are exactly the probabilities of landing on these nodes after $k$ time steps. \par
 Hence, the idea is to add up the times staying in the non-absorbing nodes over every time step. Therefore, we consider the variant of the stochastic matrix in which the row and column of the absorbing state are deleted. Assume that there are three states in the absorbing Markov Chain, and its stochastic matrix is
 \begin{align*}
 P &= 
@@ -444,7 +443,7 @@ P_0 &=
 0.7 & 0 \\
 \end{bmatrix}   
 \end{align*}
-Assume we start at the first node, i.e. the probability vector representing the initial state is $(1, 0)^T$ in this case, the formula to calculate the total staying time in the non-absorbing nodes over all time steps would be
+Assume we start at the first node, i.e.\ the probability vector representing the initial state is $(1, 0)^T$ in this case, the formula to calculate the total staying time in the non-absorbing nodes over all time steps would be
 \begin{align*}
 I
 \begin{bmatrix}
@@ -476,8 +475,8 @@ t_1 \\
 t_2
 \end{bmatrix}
 \end{align*}
-where the first term on L.H.S. is the time staying in other nodes at the zeroth time step, the second term is that at the first time step, and so on. $t_1$ and $t_2$ will be the total expected time spent at nodes $1$ and $2$ throughout the process. For the case where the starting condition is probabilistic, e.g. 50\% chance in the first node
-and 50\% chance in the second node, we simply change $(1,0)^T$ to $(0.5,0.5)^T$. We can utilize the formula of \textit{geometric sum for a matrix}, and generalize it to accommodate more states.
+where the first term on L.H.S. is the time staying in other nodes at the zeroth time step, the second term is that at the first time step, and so on. $t_1$ and $t_2$ will be the total expected time spent at nodes $1$ and $2$ throughout the process. For the case where the starting condition is probabilistic, e.g.\ 50\% chance in the first node
+and 50\% chance in the second node, we simply change $(1,0)^T$ to $(0.5,0.5)^T$. We can utilize the formula of \index{Geometric Sum (Matrix)}\textit{geometric sum for a matrix}, and generalize it to accommodate more states.
 \begin{proper}
 The expected time for an initial state in a Markov Chain to be absorbed into the sink (assumed that there is only one sink) can be inferred from the relation
 \begin{subequations}
@@ -501,7 +500,7 @@ The only caveat is that the formula of geometric sum for a matrix may not hold i
 \end{align}
 indeed holds.\footnote{An equivalent condition is that the original stochastic matrix $P$ only has one eigenvalue with the value of $\lambda = 1$ that represents the sink and there are no other eigenvalues that also have a modulus of $\abs{\lambda} = 1$.}
 \begin{exmp}
-For the absorbing Markov Chain we have been discussing, where
+For the absorbing Markov Chain that we have been discussing, where
 \begin{align*}
 & P = 
 \begin{bmatrix}
@@ -551,7 +550,7 @@ It is not hard to obtain (for example, just do it like in Example \ref{exmp:2x2}
 \end{align*}
 Hence the expected time required to reach the third node starting from the first node will be just the sum of the first column in $P_0$, $4.166 + 2.917 = 7.083$.
 \end{solution}
-Short Exercise: Find the expected time required to reach the third node if it has $50\%/50\%$ chances to start at the first/second node instead.\footnote{It is simply a matter of computing
+$\blacktriangleright$ Short Exercise: Find the expected time required to reach the third node if it has $50\%/50\%$ chances to start at the first/second node instead.\footnote{It is simply a matter of computing
 \begin{align*}
 (I - P_0)^{-1}\vec{x}^{[0]} &= 
 \begin{bmatrix}
@@ -599,8 +598,8 @@ E[X_{-}^2] = E[X_{+}^2] &= q_1
 \end{align}
 since squaring a time series composed purely of $1$ and $0$ will return itself. The remaining job is to determine $E[X_{-}X_{+}]$, which is
 \begin{align}
-E[X_{-}X_{+}] &= P(x_{+}=1 \text{ and } x_{-}=1) \nonumber \\
-&= P(x_{+}=1|x_{-}=1) P(x_{-}=1) \nonumber \\
+E[X_{-}X_{+}] &= P(X_{+}=1 \text{ and } X_{-}=1) \nonumber \\
+&= P(X_{+}=1|X_{-}=1) P(X_{-}=1) \nonumber \\
 &= P_{11} q_1
 \end{align}
 as per the definition of conditional probability. So the lag-$1$ auto-correlation is
@@ -645,7 +644,7 @@ P_{11} - P_{11}P_{12} - \lambda P_{11} - \lambda + \lambda P_{12} + \lambda^2 - 
 (P_{11} - P_{12}) - \lambda (1 + (P_{11} - P_{12})) + \lambda^2 &= 0 \nonumber\\ 
 (1-\lambda)((P_{11} - P_{12})-\lambda)&= 0
 \end{align}
-So the eigenvalues are $\lambda_1 = 1$ (as expected) and $\lambda_2 = P_{11} - P_{12}$. It is not hard to find the steady-state vector $\vec{q}$ that corresponds to $\lambda = 1$, which is
+So the eigenvalues are $\lambda_1 = 1$ (as expected) and $\lambda_2 = P_{11} - P_{12}$. It is not hard to find the steady-state vector (not yet normalized) $\vec{q}$ that corresponds to $\lambda = 1$, which is
 \begin{align}
 \vec{q} = 
 \begin{bmatrix}
@@ -733,6 +732,9 @@ Its lag-$1$ auto-correlation will be $0.35 - 0.75 = 0.25 - 0.65 = -0.4$, and the
 
 Let's use the 2024 Hualien Earthquake sequence, the mainshock of which occurred on April 3rd as an illustration. First, download the .csv records from \href{https://scweb.cwa.gov.tw/en-us/earthquake/data}{https://scweb.cwa.gov.tw/en-us/earthquake/data} for April and May. We will first read the data in April and extract the largest earthquake magnitude each day.
 \begin{lstlisting}
+import numpy as np
+import pandas as pd
+
 equake_Apr = pd.read_csv("Seismic activity_April.csv", usecols=np.arange(7), parse_dates=["Orgin date"])
 equake_Apr_daily_mag_max = equake_Apr.groupby(equake_Apr["Orgin date"].dt.day)["Magnitude"].max()
 \end{lstlisting}
@@ -745,7 +747,7 @@ def classify_mag(mag):
     elif (5.0 <= mag <= 5.9):
         return(1)
     elif (mag <= 4.9):
-        return(2) 
+        return(2)
 \end{lstlisting}
 Now comes the main part. Shift the categorized time series by one day and count the incidence of transitions between different states using \verb|np.unique| and the function above, to construct the stochastic matrix.
 \begin{lstlisting}
@@ -760,6 +762,8 @@ transition_matrix = transition_matrix/np.sum(transition_matrix, axis=0)
 \end{lstlisting}
 We have normalized the columns by their respective sums. Finally, we compute the steady-state eigenvector for this Markov Chain. (Note that the eigenvalue of $1$ will be the one with the largest modulus.)
 \begin{lstlisting}
+import scipy.linalg as linalg
+
 eigvals, eigvecs = linalg.eig(transition_matrix)
 q = eigvecs[:, np.argmax(np.abs(eigvals))] / np.sum(eigvecs[:, np.argmax(np.abs(eigvals))])
 print(q)
@@ -770,13 +774,13 @@ equake_May = pd.read_csv("Seismic activity_May.csv", usecols=np.arange(7), parse
 equake_May_daily_mag_max = equake_May.groupby(equake_May["Orgin date"].dt.day)["Magnitude"].max()
 equake_May_states = (equake_May_daily_mag_max.apply(classify_mag)).values
 May_counts = np.bincount(equake_May_states)
-April_expected_counts = q*30
-print(May_counts, April_expected_counts)
+May_expected_counts_from_Markov = q*31
+print(May_counts, May_expected_counts_from_Markov)
 \end{lstlisting}
 which returns \verb|[2 5 24]| and \verb|[2.4 12.6 16.0]| correspondingly. There are differences clearly in the last two bins and we can confirm it using the \textit{Chi-square Test}:
 \begin{lstlisting}
 from scipy.stats import chisquare
-print(chisquare(f_obs=May_counts, f_exp=May_expected_counts_from_Apr))    
+print(chisquare(f_obs=May_counts, f_exp=May_expected_counts_from_Markov))  
 \end{lstlisting}
 that yields a $p$-value of \verb|0.0135| which exceeds the $5\%$ significance level. Therefore, we can conclude that the actual distribution of Earthquake events over the testing set deviates from that predicted by the Markov Chain with $95\%$ confidence. This makes both logical and physical sense. Earthquakes are dynamic processes, which means that the transition probabilities will not be stationary, violating the most fundamental assumption of a Markov Chain. Moreover, we implicitly use a first-order Markov Chain in which the current state only depends on the previous day. However, the more earlier earthquakes will also consume the accumulated stress in the tectonic plates, influencing and retarding much later earthquake events, so the Markov process should be a higher-order one. Particularly, the seismic activity should decay and its distribution will gradually shift to the dormant side.
 
@@ -790,6 +794,57 @@ For the island Gu-Nei-Ng-Dou, if it is a sunny day, then the next day has $75\%$
 \item the probability of getting at least one sunny day today and tomorrow if it was sunny yesterday.
 \end{enumerate}
 \end{Exercise}
+\begin{Answer}
+$P=
+\begin{bmatrix}
+0.75 & 0.6 & 0.3\\
+0.1 & 0.25 & 0.2\\
+0.15 & 0.15 & 0.5
+\end{bmatrix}$
+\begin{enumerate}[label=(\alph*)]
+\item 
+\begin{align*}
+\vec{q} &= P^3
+\begin{bmatrix}
+0\\
+0\\
+1
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+0.639375&0.636&0.57675\\ 
+0.13975&0.143125&0.1595\\ 
+0.220875&0.220875&0.26375
+\end{bmatrix}
+\begin{bmatrix}
+0\\
+0\\
+1
+\end{bmatrix} 
+=
+\begin{bmatrix}
+0.57675\\
+0.1595\\
+0.26375
+\end{bmatrix}  
+\end{align*}
+So the required probability is $26.375\%$.
+\item $I-P=
+\begin{bmatrix}
+0.25 & -0.6 & -0.3\\
+-0.1 & 0.75 & -0.2\\
+-0.15 & -0.15 & 0.5    
+\end{bmatrix}$,\\
+and the eigenvector (normalized to the steady-state vector) for $\lambda = 1$ can be found to be $(0.6244, 0.1448, 0.2308)^T$.
+\item
+\begin{align*}
+&\quad \text{The required probability} \\
+&= P(\text{today is sunny}) + P(\text{today is not sunny and tomorrow is sunny})\\
+&= 0.75 + (0.1 \times 0.6 + 0.15 \times 0.3) \\
+&= 0.855
+\end{align*}
+\end{enumerate}
+\end{Answer}
 
 \begin{Exercise}
 Go to \href{https://ggweather.com/enso/oni.htm}{https://ggweather.com/enso/oni.htm} for the historical yearly ENSO status and construct a Markov Chain for the El Niño/La Niña/Neutral conditions.
@@ -805,6 +860,42 @@ For the carbon cycle shown below (Figure \ref{fig:ex15.3}), calculate the rate c
     \label{fig:ex15.3}
 \end{figure}
 \end{Exercise}
+\begin{Answer}
+Node 1/2/3/4: Biosphere/Atmosphere/Ocean/Sediment. $k_{21} = 0.03$, $k_{12} = 0.1$,
+$k_{32} = 0.1$, $k_{23} = 0.0015$, $k_{43} = 0.000005$.
+\begin{enumerate}[label=(\alph*)]
+\item
+\begin{align*}
+P &= 
+\begin{bmatrix}
+0.97 & 0.1 & 0 & 0\\
+0.03 & 0.8 & 0.0015 & 0\\
+0 & 0.1 & 0.998495 & 0\\
+0 & 0 & 0.000005 & 1
+\end{bmatrix} \\
+P_0 &= 
+\begin{bmatrix}
+0.97 & 0.1 & 0\\
+0.03 & 0.8 & 0.0015\\
+0 & 0.1 & 0.998495
+\end{bmatrix} \\
+I-P_0 &=
+\begin{bmatrix}
+0.03 & -0.1 & 0\\
+-0.03 & 0.2 & -0.0015\\
+0 & -0.1 & 0.001505
+\end{bmatrix} \\
+(I-P_0)^{-1} &=
+\begin{bmatrix}
+10066.66 & 10033.33 & 10000\\
+3010 & 3010 & 3000\\
+200000 & 200000 & 200000
+\end{bmatrix} 
+\end{align*}
+The sum of the third column is $213000$ yrs.
+\item $\tau = \frac{40000+600+2000}{0.2} = 213000$ yrs.
+\end{enumerate}
+\end{Answer}
 
 \begin{Exercise}
 \label{ex:15.4}
@@ -816,6 +907,32 @@ Daniel is drunk in a bar. He wants to go to the train station so that he can go 
     \label{fig:ex15.4}
 \end{figure}
 \end{Exercise}
+\begin{Answer}
+Index 1/2/3/4/5/6/7/8: Start/A/B/C/D/E/F/End. 
+\begin{align*}
+P_0 &=
+\begin{bmatrix}
+0 & \frac{1}{2} & \frac{1}{2} & 0 & 0 & 0 & 0\\
+\frac{1}{2} & 0 & 0 & \frac{1}{3} & 0 & 0 & 0\\
+\frac{1}{2} & 0 & 0 & 0 & \frac{1}{3} & 0 & 0\\
+0 & \frac{1}{2} & 0 & 0 & \frac{1}{3} & \frac{1}{3} & 0\\
+0 & 0 & \frac{1}{2} & \frac{1}{3} & 0 & 0 & \frac{1}{3}\\
+0 & 0 & 0 & \frac{1}{3} & 0 & 0 & \frac{1}{3}\\
+0 & 0 & 0 & 0 & \frac{1}{3} & \frac{1}{3} & 0
+\end{bmatrix} \\
+I - P_0 &= 
+\begin{bmatrix}
+1&-\frac{1}{2}&-\frac{1}{2}&0&0&0&0\\ 
+-\frac{1}{2}&1&0&-\frac{1}{3}&0&0&0\\ 
+-\frac{1}{2}&0&1&0&-\frac{1}{3}&0&0\\ 
+0&-\frac{1}{2}&0&1&-\frac{1}{3}&-\frac{1}{3}&0\\ 
+0&0&-\frac{1}{2}&-\frac{1}{3}&1&0&-\frac{1}{3}\\ 
+0&0&0&-\frac{1}{3}&0&1&-\frac{1}{3}\\ 
+0&0&0&0&-\frac{1}{3}&-\frac{1}{3}&1
+\end{bmatrix} 
+\end{align*}
+The first column of the inverse $(I - P_0)^{-1}$ can be seen to be $(4,3,3,3,3,\frac{3}{2},\frac{3}{2})^T$ whose sum is $19$, which is the required number of moves.
+\end{Answer}
 
 \begin{Exercise}
 Attempt \href{https://projecteuler.net/problem=84}{Project Euler Problem 84}, preferably with programming.
