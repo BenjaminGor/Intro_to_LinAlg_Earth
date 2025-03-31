@@ -48,7 +48,7 @@ where we have only written out the rows $R_p$ and $R_q$. By applying cofactor ex
 \abs{A'} &= \sum_{k=1}^{n} [(A_{pk} + cA_{qk}) C_{pk}] \nonumber \\
 &= \sum_{k=1}^{n} A_{pk}C_{pk} + c\sum_{k=1}^{n} A_{qk}C_{pk}
 \end{align}
-We identify the first term with $\abs{A}$ that is computed using cofactor expansion on the row $R_p$ of $A$. The second term can be thought of as the determinant of a matrix $\tilde{A}$ that is formed by replacing the $p$-th row $R_p$ by the $q$-th row $R_q$ in $A$ and subsequently expanded along that row. So $\tilde{A}$ practically has two identical rows $R_p = R_q$ and by the previous result the value of $\abs{\tilde{A}}$ is zero. Therefore
+We identify the first term with $\abs{A}$ that is computed using cofactor expansion on the row $R_p$ of $A$. The second term can be thought of as the determinant of a matrix $\tilde{A}$ that is formed by replacing the $p$-th row $R_p$ by the $q$-th row $R_q$ in $A$ and subsequently expanded along that row. So $\tilde{A}$ practically has two identical rows $R_p = R_q$, and by the previous result, the value of $\abs{\tilde{A}}$ is zero. Therefore
 \begin{align}
 \abs{A'} = \abs{A} + c\abs{\tilde{A}} = \abs{A} + c(0) = \abs{A}    
 \end{align} implying that the addition/subtraction type of elementary row operations does not affect the value of the determinant.
@@ -58,7 +58,7 @@ We identify the first term with $\abs{A}$ that is computed using cofactor expans
 
 \paragraph{Properties \ref*{proper:subspace_n_span}}  
 
-$\mathcal{W}$ as a subspace of $\mathbb{R}^n$ contains at most $n$ linearly independent vectors. Assume $\mathcal{W}$ is non-empty and take any non-zero vector in $\mathcal{W}$, denote it by $\vec{v}^{(1)}$. The span of $\mathcal{\beta} = \{\vec{v}^{(1)}\}$ is itself a subspace $\mathcal{B} = \text{span}(\mathcal{\beta})$ of the subspace $\mathcal{W}$ by noting that it is a subset of $\mathcal{W}$ and using the first part of Properties \ref{proper:subspace_n_span}. If this subspace $\mathcal{B}$ of the subspace $\mathcal{W}$ is exactly $\mathcal{W}$, in the sense that no other $\vec{v} \in \mathcal{W}$ is not included by $\mathcal{B} = \text{span}(\mathcal{\beta})$, then we are done because this subspace is a span by construction. Otherwise, take another non-zero vector $\vec{v}^{(2)} \in \mathcal{W}$ which is linearly independent of $\vec{v}^{(1)}$ and add it to $\mathcal{\beta}$. Now $\mathcal{B} = \text{span}(\mathcal{\beta}) = \text{span}(\{\vec{v}^{(1)}, \vec{v}^{(2)}\})$ is enlarged by one dimension but still a subspace of $\mathcal{W}$ and we can check if it coincides with $\mathcal{W}$, otherwise, repeat the procedure with $\vec{v}^{(3)}, \vec{v}^{(4)}, \ldots$ until $\text{span}(\mathcal{S}) = \mathcal{W}$ then we can stop. Remember we can at most add up to $\vec{v}^{(n)}$ since $\mathcal{W}$ contains at most $n$ linearly independent vectors, so in the middle of somewhere we would done with $\vec{v}^{(p)}$, where $p \leq n$, and hence we know that $\mathcal{W}$ is some span (and a $p$-dimensional subspace).
+$\mathcal{W}$ as a subspace of $\mathbb{R}^n$ contains at most $n$ linearly independent vectors. Assume $\mathcal{W}$ is non-empty and take any non-zero vector in $\mathcal{W}$, denote it by $\vec{v}^{(1)}$. The span of $\mathcal{\beta} = \{\vec{v}^{(1)}\}$ is itself a subspace $\mathcal{B} = \text{span}(\mathcal{\beta})$ of the subspace $\mathcal{W}$ by noting that it is a subset of $\mathcal{W}$ and using the first part of Properties \ref{proper:subspace_n_span}. If this subspace $\mathcal{B}$ of the subspace $\mathcal{W}$ is exactly $\mathcal{W}$, in the sense that no other $\vec{v} \in \mathcal{W}$ is not included by $\mathcal{B} = \text{span}(\mathcal{\beta})$, then we are done because this subspace is a span by construction. Otherwise, take another non-zero vector $\vec{v}^{(2)} \in \mathcal{W}$ which is linearly independent of $\vec{v}^{(1)}$ and add it to $\mathcal{\beta}$. Now $\mathcal{B} = \text{span}(\mathcal{\beta}) = \text{span}(\{\vec{v}^{(1)}, \vec{v}^{(2)}\})$ is enlarged by one dimension but still a subspace of $\mathcal{W}$ and we can check if it coincides with $\mathcal{W}$, otherwise, repeat the procedure with $\vec{v}^{(3)}, \vec{v}^{(4)}, \ldots$ until $\text{span}(\mathcal{B}) = \mathcal{W}$ then we can stop. Remember we can at most add up to $\vec{v}^{(n)}$ since $\mathcal{W}$ contains at most $n$ linearly independent vectors, so in the middle of somewhere we would done with $\vec{v}^{(p)}$, where $p \leq n$, and hence we know that $\mathcal{W}$ is some span (and a $p$-dimensional subspace).
 
 \paragraph{Dependence relations}
 
@@ -156,7 +156,7 @@ This shows that the same dependence relation holds between the new column vector
 
 \paragraph{Steinitz Replacement Theorem}
 
-\begin{thm}[Steinitz Replacement Theorem]
+\begin{thm}[Steinitz Replacement Theorem]\index{Steinitz Replacement Theorem}
 \label{thm:Steinitz}
 %G = \gamma
 %S = \eta
@@ -172,14 +172,14 @@ It must be true that $n - k \geq 1$, so that some $b_j$ are present for otherwis
 \begin{align*}
 \vec{u}_1 = -\frac{a_1}{b_1}\vec{v}^{(1)} -\frac{a_2}{b_1}\vec{v}^{(2)} - \cdots - \frac{a_k}{b_1}\vec{v}^{(k)} + \frac{1}{b_1}\vec{v}^{(k+1)} - \frac{b_2}{b_1}\vec{u}^{(2)} - \cdots - \frac{b_{n-k}}{b_1}\vec{u}^{(n-k)}
 \end{align*}
-as a linear combination of $\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(k)}, \vec{v}^{(k+1)}$ and $\vec{u}^{(2)}, \ldots, \vec{u}^{(n-k)}$. Let $\mathcal{H} = \{\vec{u}^{(2)}, \ldots, \vec{u}^{(n-k)}\}$. Again by part (b) of Theorem \ref{thm:plusminus}
+as a linear combination of $\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(k)}, \vec{v}^{(k+1)}$ and $\vec{u}^{(2)}, \ldots, \vec{u}^{(n-k)}$. Let $\mathcal{\gamma}' = \{\vec{u}^{(2)}, \ldots, \vec{u}^{(n-k)}\}$. Again by part (b) of Theorem \ref{thm:plusminus}
 \begin{align*}
 &\quad \text{span}(\mathcal{\eta} \cup \{\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \vec{u}^{(n-k)}\}) \\
 &= \text{span}(\{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(k)}, \vec{v}^{(k+1)}\} \cup \{\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \vec{u}^{(n-k)}\}) \\
-&= \text{span}(\{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(k)}, \vec{v}^{(k+1)}\} \cup \{\vec{u}^{(2)}, \ldots, \vec{u}^{(n=-k)}\}) \\
+&= \text{span}(\{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(k)}, \vec{v}^{(k+1)}\} \cup \{\vec{u}^{(2)}, \ldots, \vec{u}^{(n-k)}\}) \\
 &= \text{span}(\mathcal{\eta} \cup \mathcal{\gamma'})
 \end{align*}
-But we just have $\text{span}(\mathcal{\eta} \cup \{\vec{u}_1, \vec{u}_2, \ldots, \vec{u}_{n-k}\}) = \mathcal{V}$ from above, which readily shows that $\text{span}(\mathcal{\eta} \cup \mathcal{\gamma'}) = \mathcal{V}$. As $\mathcal{\gamma'}$ is a subset of $\mathcal{\gamma}$ with $n - k-1 = n - (k+1)$ vectors, the theorem is true for $m = k+1$, and the induction is completed.
+But we just have $\text{span}(\mathcal{\eta} \cup \{\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \vec{u}^{(n-k)}\}) = \mathcal{V}$ from above, which readily shows that $\text{span}(\mathcal{\eta} \cup \mathcal{\gamma'}) = \mathcal{V}$. As $\mathcal{\gamma'}$ is a subset of $\mathcal{\gamma}$ with $n - k-1 = n - (k+1)$ vectors, the theorem is true for $m = k+1$, and the induction is completed.
 \end{proof}
 The key point of the theorem is that some vectors in a generating set of a vector space can be replaced by the same number of linearly independent vectors from that vector space, hence comes the name of the replacement theorem.
 
@@ -206,7 +206,7 @@ which violates the premise of completeness as it will become another vector that
 \end{align}
 On the other hand,
 \begin{align} 
-\norm{f - S_p(f)}^2 &= \norm{f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 \nonumber \\
+\norm{f - S_p[f]}^2 &= \norm{f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 \nonumber \\
 &= \left\langle f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}, f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \right\rangle \nonumber \\
 &= \langle f, f \rangle - \left\langle f, \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \right\rangle - \left\langle \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}, f \right\rangle \nonumber \\
 &\quad + \left\langle \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}, \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \right\rangle \nonumber \\
@@ -220,13 +220,13 @@ On the other hand,
 &= \norm{f}^2 - 2\sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 + \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 \nonumber \\
 &= \norm{f}^2 - \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2
 \end{align}
-and since $\norm{f - S_p(f)}^2 \geq 0$ is always non-negative, we have the \textit{Bessel's Inequality} as
+and since $\norm{f - S_p[f]}^2 \geq 0$ is always non-negative, we have the \textit{Bessel's Inequality} as
 \begin{align}
 \sum_{j=1}^{p} \abs{\langle f, \varphi^{(j)} \rangle}^2 \leq \norm{f}^2  \label{eqn:Bessel}
 \end{align}
 From Exercise \ref{ex:triangular2}, we can apply the Triangle Inequality to get
 \begin{align}
-&\quad \norm{(f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}) + (\sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} - S_p[f])}^2 \nonumber \\
+&\quad \norm{\left(f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}\right) + \left(\sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} - S_p[f]\right)}^2 \nonumber \\
 &= \norm{f - S_p[f]}^2 \leq \norm{f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 + \norm{\sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} - S_p[f]}^2
 \end{align}
 By Equation (\ref{eqn:fcomplete}), the first term on R.H.S. of the equality is zero. And the second term
@@ -399,12 +399,12 @@ Given a vector space $\mathcal{V}$ with a linear operator $T: \mathcal{V} \to \m
 \end{align}
 is known as the \textit{$T$-cyclic subspace of $\mathcal{V}$ generated by $\vec{v}$}. 
 \end{defn}
-It is obviously $T$-invariant (Definition \ref{defn:invariantsub}) because for any vector $\vec{w} \in \mathcal{W}$, if we write $\vec{w} = c_0\vec{v} + c_1T(\vec{v}) + c_2T^2(\vec{v}) + \cdots$ due to the span (Definition \ref{defn:span}, extended to an infinite one if needed), then $T(\vec{w}) = c_0T(\vec{v}) + c_1T^2(\vec{v}) + c_2T^3(\vec{v}) + \cdots \in \mathcal{W}$ lies in the $T$-cyclic subspace too. It is also the smallest $T$-invariant subspace that contains $\vec{v}$: For other $T$-invariant subspaces $\mathcal{W}'$ that also contain $\vec{v}$, by definition they contain $T(\vec{v}), T^2(\vec{v}), \ldots$ as well, and by Properties \ref{proper:WcontainsspanS} they have to completely contain the corresponding $T$-cyclic subspace $\mathcal{W} = \text{span}(\{\vec{v}, T(\vec{v}), T^2\vec{v}, \ldots\})$ too, i.e.\ $\mathcal{W} \subseteq \mathcal{W}'$.\par
+It is obviously $T$-invariant (Definition \ref{defn:invariantsub}) because for any vector $\vec{w} \in \mathcal{W}$, if we write $\vec{w} = c_0\vec{v} + c_1T(\vec{v}) + c_2T^2(\vec{v}) + \cdots$ as a span (Definition \ref{defn:span}, extended to an infinite one if needed), then $T(\vec{w}) = c_0T(\vec{v}) + c_1T^2(\vec{v}) + c_2T^3(\vec{v}) + \cdots \in \mathcal{W}$ lies in the $T$-cyclic subspace too. It is also the smallest $T$-invariant subspace that contains $\vec{v}$: For other $T$-invariant subspaces $\mathcal{W}'$ that also contain $\vec{v}$, by definition they contain $T(\vec{v}), T^2(\vec{v}), \ldots$ as well, and by Properties \ref{proper:WcontainsspanS} they have to completely contain the corresponding $T$-cyclic subspace $\mathcal{W} = \text{span}(\{\vec{v}, T(\vec{v}), T^2\vec{v}, \ldots\})$ too, i.e.\ $\mathcal{W} \subseteq \mathcal{W}'$.\par
 
 To proceed further, we need some more intermediate results. First,
 \begin{proper}
 \label{proper:B12}
-Let $T: \mathcal{V} \to \mathcal{V}$ be a linear operator on a \textit{finite-dimensional} vector space $\mathcal{V}$ and $\mathcal{W}$ be a $T$-invariant subspace of $\mathcal{V}$. Then, the characteristic polynomial (Definition \ref{defn:charactereqn}) of the restriction of $T$ to $\mathcal{W}$, that is, $T|_W$ (Definition \ref{defn:restrictionTW}), divides the characteristic polynomial of $T$.
+Let $T: \mathcal{V} \to \mathcal{V}$ be a linear operator on a \textit{finite-dimensional} vector space $\mathcal{V}$, and $\mathcal{W}$ be a $T$-invariant subspace of $\mathcal{V}$. Then, the characteristic polynomial (Definition \ref{defn:charactereqn}) of the restriction of $T$ to $\mathcal{W}$, that is, $T|_W$ (Definition \ref{defn:restrictionTW}), divides the characteristic polynomial of $T$.
 \end{proper}
 We refer the readers to Friedberg for the proof. It means that if the characteristic polynomial of $T|_W$ is $g(t)$ and that of $T$ is $f(t)$, then there exists some other polynomial $q(t)$ such that $f(t) = q(t)g(t)$. Next,
 \begin{proper}
@@ -517,7 +517,7 @@ A &=
 0 & 1
 \end{bmatrix}
 \end{align*}
-has only one eigenvalue $\lambda = 1$ and its geometric multiplicity ($1$) is less than the algebraic multiplicity ($2$): there is only one eigenvector $\vec{v}^{(1)} = (1,0)^T$, so that $A\vec{v}^{(1)} = \lambda\vec{v}^{(1)}$, or equivalently $(A - \lambda I)\vec{v}^{(1)} = \textbf{0}$. Now, let's iterate the procedure and consider $(A - \lambda I)\vec{v}^{(2)} = \vec{v}^{(1)}$, then we have
+has only one eigenvalue $\lambda = 1$ and its geometric multiplicity $= 1$, is less than the algebraic multiplicity $= 2$: there is only one eigenvector $\vec{v}^{(1)} = (1,0)^T$, so that $A\vec{v}^{(1)} = \lambda\vec{v}^{(1)}$, or equivalently $(A - \lambda I)\vec{v}^{(1)} = \textbf{0}$. Now, let's iterate the procedure and consider $(A - \lambda I)\vec{v}^{(2)} = \vec{v}^{(1)}$, then we have
 \begin{align*}
 \begin{bmatrix}
 1-\lambda & -1 \\
@@ -567,7 +567,7 @@ It is not hard to show that $\mathcal{K}_\lambda$ is $T$-invariant and contains 
 The generalized eigenvectors/eigenspaces corresponding to two distinct eigenvalues $\lambda \neq \mu$ are linearly independent.
 \end{proper}
 \begin{proper}
-The generalized eigenspace $\mathcal{K}_\lambda$ for the linear operator $T$, corresponding to some fixed eigenvalue $\lambda$ with an algebraic mulplticity of $m$, satisfies the following properties:
+The generalized eigenspace $\mathcal{K}_\lambda$ for the linear operator $T$, corresponding to some fixed eigenvalue $\lambda$ with an algebraic multiplicity of $m$, satisfies the following properties:
 \begin{enumerate}
     \item $\mathcal{K}_\lambda = \mathcal{N}((T-\lambda I)^m)$,
     \item $\dim(\mathcal{K}_\lambda) = m$.
@@ -577,7 +577,7 @@ As a result, if $T$ has a characteristic polynomial
 \begin{align}
 p(\lambda) = (\lambda_1-\lambda)^{m_1}(\lambda_2-\lambda)^{m_2}\cdots(\lambda_k-\lambda)^{m_k} \label{eqn:lambdammm}
 \end{align}
-then
+then the respective generalized eigenspaces of all distinct eigenvalues form a direct sum that reproduces the full vector space:
 \begin{align}
 \mathcal{V} = \mathcal{K}_{\lambda_1} \oplus \mathcal{K}_{\lambda_2} \oplus \cdots \oplus \mathcal{K}_{\lambda_k} \label{eqn:VKKK}
 \end{align} 
@@ -592,7 +592,7 @@ is called a \textit{cycle of generalized eigenvectors} of $T$ corresponding to $
 \end{defn}
 The initial vector of any cycle of generalized eigenvectors is then the only eigenvector in that cycle.\par
 
-Now we are going to deduce the form of a \index{Jordan Block}\keywordhl{Jordan block} for a cycle of generalized eigenvectors of some linear operator $T$ corresponding to an eigenvalue of $\lambda$. Consider the linear operator $T-\lambda I$ and the cycle described in (\ref{eqn:B6}). It is not hard to see that (\ref{eqn:B6}) is $(T-\lambda I)$-cyclic (as well as $T$-cyclic) and thus it forms a basis $\gamma$ by part (a) of Properties \ref{proper:B13}. Then the matrix representation of $T-\lambda I$ with respect to $\gamma$ is readily seen to be
+Now we are going to deduce the form of a \textit{Jordan block} for a cycle of generalized eigenvectors of some linear operator $T$ corresponding to an eigenvalue of $\lambda$. Consider the linear operator $T-\lambda I$ and the cycle described in (\ref{eqn:B6}). It is not hard to see that (\ref{eqn:B6}) is $(T-\lambda I)$-cyclic (as well as $T$-cyclic) and thus it forms a basis $\gamma$ by part (a) of Properties \ref{proper:B13}. Then the matrix representation of $T-\lambda I$ with respect to $\gamma$ is readily seen to be
 \begin{align}
 [T-\lambda I]_\gamma = 
 \begin{bmatrix}
@@ -615,7 +615,7 @@ and thus the matrix representation of $T$, also with respect to $\gamma$, will b
 \end{bmatrix} 
 \label{eqn:B8}
 \end{align}
-This $[T]_\gamma$ is then known as the Jordan block of size $p$ corresponding to $\lambda$, which is "almost diagonal" with $1$ above the main diagonal. Note that it has a characteristic polynomial of $g_\gamma(t) = (\lambda-t)^p$. Moreover, it is not hard to check that $([T-\lambda I]_\gamma)^p = [\textbf{0}] = [T_0]_\gamma$ is the zero transformation and $T-\lambda I$ is known as \index{Nilpotent}\keywordhl{nilpotent} (in the generalized eigenspace $\mathcal{K}_\lambda$). To proceed, we first note some intermediate observations.
+This $[T]_\gamma$ is then known as the \index{Jordan Block}\keywordhl{Jordan block} of size $p$ corresponding to $\lambda$, which is "almost diagonal" with $1$s filling above the main diagonal. Note that it has a characteristic polynomial of $g_\gamma(t) = (\lambda-t)^p$. Moreover, it is not hard to check that $([T-\lambda I]_\gamma)^p = [\textbf{0}] = [T_0]_\gamma$ is the zero transformation and $T-\lambda I$ is known as \index{Nilpotent}\keywordhl{nilpotent} (in the generalized eigenspace $\mathcal{K}_\lambda$). To proceed, we first note some intermediate observations.
 \begin{thm}
 Given $T$ as a linear operator on a vector space $\mathcal{V}$, if $\gamma_1, \gamma_2, \ldots, \gamma_q$ are cycles of generalized eigenvectors of $T$ corresponding to the same eigenvalue $\lambda$ such that the initial vectors of these $\gamma_j$ are linearly independent, then these $\gamma_j$ will be disjoint and their union $\gamma = \bigcup_{j=1}^{q} \gamma_j$ will also be linearly independent.
 \end{thm}
@@ -630,7 +630,7 @@ These two results are derived in Friedberg and we refer the readers to it for th
 0 & 1
 \end{bmatrix}    
 \end{align*}
-has a basis made up of two linearly independent, generalized eigenvectors $\gamma = \{(1,0)^T, (0,-1)^T\}$ for the generalized eigenspace $\mathcal{K}_{\lambda=1}$, and thus we can express the matrix as a Jordan block using this \index{Jordan Canonical Basis}\keywordhl{Jordan canonical basis} following (\ref{eqn:B8}) by a coordinate transformation to the $\gamma$ system (refer to Properties \ref{proper:endomorph}):
+has a basis made up of two generalized eigenvectors $\gamma = \{(1,0)^T, (0,-1)^T\}$ for the generalized eigenspace $\mathcal{K}_{\lambda=1}$, and thus we can express the matrix as a Jordan block using this \index{Jordan Canonical Basis}\keywordhl{Jordan canonical basis} following (\ref{eqn:B8}) by a coordinate transformation to the $\gamma$ system (refer to Properties \ref{proper:endomorph}):
 \begin{align*}
 J &= Q^{-1}AQ \\
 \begin{bmatrix}
@@ -650,10 +650,10 @@ J &= Q^{-1}AQ \\
 1 & 0 \\
 0 & -1
 \end{bmatrix}
-\end{align*}
+\end{align*}\par
 The final result is that we can derive the \index{Jordan Normal Form}\keywordhl{Jordan Normal Form} of a matrix/linear operator by composing Jordan blocks as a direct sum.
 \begin{thm}
-Let $T: \mathcal{V} \to \mathcal{V}$ be a linear operator on a finite-dimensional vector space $\mathcal{V}$ and the characteristic polynomial of $T$ \textit{splits} over the chosen field ($\mathbb{R}$ or $\mathbb{C}$). Then $T$ can be transformed into its Jordan Normal Form as the direct sum of smaller Jordan blocks. Using the matrix representation $A$, we have
+Let $T: \mathcal{V} \to \mathcal{V}$ be a linear operator on a finite-dimensional vector space $\mathcal{V}$ and the characteristic polynomial of $T$ \textit{splits} over the chosen field (scalar: $\mathbb{R}$ or $\mathbb{C}$). Then $T$ can be transformed into its Jordan Normal Form as the direct sum of smaller Jordan blocks. Using the matrix representation $A$, we have
 \begin{align}
 J = Q^{-1}AQ
 \end{align}
@@ -1002,12 +1002,12 @@ We only need to look at the top three rows where pivots exist in the left portio
 \end{align*}
 So the end vector of the Jordan block with length $3$ is $(-\frac{1}{2}, \frac{1}{2}, -1,0,0,0)^T$. There will be two other Jordan blocks with lengths $1$ and $2$ respectively. We will compute the cycle of generalized eigenvectors for all three Jordan blocks in the opposite direction. We begin from the largest Jordan block of length $3$, where the end vector has been found to be $(-\frac{1}{2}, \frac{1}{2}, -1,0,0,0)^T$, and then compute:
 \begin{align*}
-(A-4I)(-\frac{1}{2}, \frac{1}{2}, -1,0,0,0)^T &= (0,-1,1,0,0,0)^T \\
+(A-4I)\left(-\frac{1}{2}, \frac{1}{2}, -1,0,0,0\right)^T &= (0,-1,1,0,0,0)^T \\
 (A-4I)(0,-1,1,0,0,0)^T &= (0,-6,-2,4,2,0)^T
 \end{align*}
-For the second Jordan block of length $2$, we note that at the third stage, the inconsistent $1$ to the right appears at the second column, and hence we will choose the second candidate generalized eigenvector as the new end vector, and calculate:
+For the second Jordan block of length $2$, we note that at the third stage, the inconsistent $1$ to the right appears in the second column, and hence we will choose the second candidate generalized eigenvector $(0,-\frac{3}{2},\frac{5}{2},0,0,0)^T$ as the new end vector at the second stage, and calculate:
 \begin{align*}
-(A-4I)(0,-\frac{3}{2},\frac{5}{2},0,0,0)^T &= (-1,0,-2,0,0,1)^T    
+(A-4I)\left(0,-\frac{3}{2},\frac{5}{2},0,0,0\right)^T &= (-1,0,-2,0,0,1)^T    
 \end{align*}
 By the same logic, we choose the first eigenvector $(0,-1,-1,1,0,0)^T$ for the last singleton Jordan block. The final answer will then be
 \begin{align*}
@@ -1112,9 +1112,9 @@ D_{11}x & 0 & \cdots & 0 \\
 &=
 \footnotesize \begin{bmatrix}
 1 + D_{11}x + \frac{D_{11}^2}{2!}x^2 + \cdots & 0 & \cdots & 0 \\
-0 & 1 + D_{22}x + \frac{D_{22}^2}{2}x^2 + \cdots & & 0 \\
+0 & 1 + D_{22}x + \frac{D_{22}^2}{2!}x^2 + \cdots & & 0 \\
 \vdots & & \ddots \\
-0 & 0 & & 1 + D_{nn}x + \frac{D_{nn}^2}{2}x^2 + \cdots
+0 & 0 & & 1 + D_{nn}x + \frac{D_{nn}^2}{2!}x^2 + \cdots
 \end{bmatrix} \\
 &=
 \begin{bmatrix}
@@ -1270,7 +1270,7 @@ e^{Ax} &= I + Ax + \frac{A^2}{2!}x^2 + \cdots = \sum_{k=0}^{\infty} \frac{A^k}{k
 &= Q(I + Jx + \frac{J^2}{2!}x^2 + \cdots)Q^{-1} \nonumber \\
 &= Qe^{Jx}Q^{-1}
 \end{align}
-Now let's apply these to solve Example \ref{exmp:chemtrace} when $k_1 = k_2 = k$ and diagonalization is not possible. The system becomes
+Now let's apply these to solve Example \ref{exmp:chemtrace} when $k_1 = k_2 = k$ and diagonalization is no longer possible. The system becomes
 \begin{align*}
 \textbf{y}'
 = A\textbf{y} =

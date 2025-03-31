@@ -60,7 +60,7 @@ where $b_n = -\frac{2}{n}$. The following plot (Figure \ref{fig:fourierlint}) th
     \caption{\textit{The Fourier expansion of the linear function up to degrees $3$, $10$, and $20$.}}
     \label{fig:fourierlint}
 \end{figure}
-Eventually, as $p \to \infty$ and the expression tends to the full Fourier series, $S_p[f]$ will converge to $f$ in the $L^2$ sense\footnote{This is also called \textit{convergence in mean} and is different from \textit{pointwise convergence} that is more intuitive for most people. The rigorous treatment to this requires Measure Theory and, again, Functional Analysis and will not be pursued here.}, with respect to the inner product in Equation (\ref{eqn:integralinner}). To show this heuristically, we need the \index{Bessel's Inequality}\keywordhl{Bessel's Inequality} (and \textit{Parseval's Identity}) for partial sums regarding a complete orthonormal basis in any $L^2$ space, which includes the case of the Fourier series:
+Eventually, as $p \to \infty$ and the expression tends to the full Fourier series, $S_p[f]$ will converge to $f$ in the $L^2$ sense\footnote{This is also called \textit{convergence in mean} and is different from \textit{pointwise convergence} that is more intuitive for most people. The rigorous treatment to this requires Measure Theory and, again, Functional Analysis and will not be pursued here.}, with respect to the inner product in Equation (\ref{eqn:integralinner}). To show this heuristically, we need the \index{Bessel's Inequality}\keywordhl{Bessel's Inequality} (and \index{Parseval's Identity}\textit{Parseval's Identity}) for partial sums regarding a complete orthonormal basis in any $L^2$ space, which includes the case of the Fourier series:
 \begin{align}
 \lim_{p \to \infty}\norm{f - S_p[f]}^2 = 0
 \end{align}
@@ -352,7 +352,7 @@ So the best trigonometric fit of order $p=1$ for the time series concerned is
 f(t) \approx \frac{11}{5} + 0.229 \cos(\frac{2\pi}{5}t) - 0.235 \sin(\frac{2\pi}{5}t)
 \end{align*}
 \end{solution}
-$\blacktriangleright$ Short Exercise: Find an improved approximation with order $p = 2$. What happens if $p = 3$? \footnote{For $p = 2$, the best-fit coefficients are
+$\blacktriangleright$ Short Exercise: Find an improved approximation with order $p = 2$. What happens if $p = 3$?\footnote{For $p = 2$, the best-fit coefficients are
 \begin{align*}
 \begin{bmatrix}
 C_0 \\
@@ -455,7 +455,7 @@ A_{k \leftarrow l} &= \frac{2}{N}\sum_{t=0}^{N-1} \left(a_l\cos(\frac{2\pi lt}{N
 \end{align}
 Hence any signal with a frequency higher than the Nyquist frequency will contribute to the respective DFT frequency and contaminate it.\footnote{On the other hand, if the true function only contains the lower frequency mode, then by the same steps we can show that the prototype DFT coefficient $A_k$ will coincide exactly with the usual Fourier coefficients $a_k$.}\par
 
-Now we can formally derive the \index{Real Discrete Fourier Transform}\keywordhl{(real) Discrete Fourier Transform} for a time series which is given by (\ref{eqn:protoDFTc}), (\ref{eqn:protoDFTa}), and (\ref{eqn:protoDFTb}). In the last part, we have already worked with an odd $N$ (see Example \ref{exmp:ex11.2.1}) where the maximum resolvable degree will be $p = \frac{N}{2} - 1$. When $N$ is even, we will have frequencies from zero to $k = \frac{N}{2}$. Notice that the constant term of zero frequency contributes a single parameter, every other frequency contributes two coefficients via a pair of sine and cosine, and the maximum frequency $k_{\text{Ny}} = \frac{N}{2}$ only gives rise to one coefficient from the cosine series which takes the form of alternating $(1,-1,1,-1,\ldots,1,-1)$ (the corresponding diagonal entry in the $(G^TG)^{-1}$ term of the least-square formula will hence be $1/N$ instead of $2/N$), as the sine function of the Nyquist frequency will be always zero at the sampling points. In both cases, there can be at most $N$ sinusoidal curves for fitting $N$ data points and $G$ will be square (and hence invertible). Since the amount of parameters is the same as the number of data, it becomes a unique interpolation that passes through all the given data points. By convention, we will omit the factor of $1/N$ in the computation of DFT.
+Now we can formally derive the \index{Discrete Fourier Transform (DFT, real)}\keywordhl{(real) Discrete Fourier Transform} for a time series which is given by (\ref{eqn:protoDFTc}), (\ref{eqn:protoDFTa}), and (\ref{eqn:protoDFTb}). In the last part, we have already worked with an odd $N$ (see Example \ref{exmp:ex11.2.1}) where the maximum resolvable degree will be $p = \frac{N}{2} - 1$. When $N$ is even, we will have frequencies from zero to $k = \frac{N}{2}$. Notice that the constant term of zero frequency contributes a single parameter, every other frequency contributes two coefficients via a pair of sine and cosine, and the maximum frequency $k_{\text{Ny}} = \frac{N}{2}$ only gives rise to one coefficient from the cosine series which takes the form of alternating $(1,-1,1,-1,\ldots,1,-1)$ (the corresponding diagonal entry in the $(G^TG)^{-1}$ term of the least-square formula will hence be $1/N$ instead of $2/N$), as the sine function of the Nyquist frequency will be always zero at the sampling points. In both cases, there can be at most $N$ sinusoidal curves for fitting $N$ data points and $G$ will be square (and hence invertible). Since the amount of parameters is the same as the number of data, it becomes a unique interpolation that passes through all the given data points. By convention, we will omit the factor of $1/N$ in the computation of DFT.
 
 \begin{exmp}
 Find the Discrete Fourier Transform of the time series $(1,2,1,-1,3,0,2,-2)$.
@@ -573,7 +573,7 @@ f(2) \\
 \vdots
 \end{bmatrix}
 \end{align}
-Again this is for even $N$, and we ought to replace the indices for coefficients and complex exponentials appropriately for odd $N$. The $\frac{1}{N}$ factor will also be ignored. We now conclude the method of \index{Complex Discrete Fourier Transform}\keywordhl{(complex) Discrete Fourier Transform} in a compact way as follows.
+Again this is for even $N$, and we ought to replace the indices for coefficients and complex exponentials appropriately for odd $N$. The $\frac{1}{N}$ factor will also be ignored. We now conclude the method of \index{Discrete Fourier Transform (DFT, complex)}\keywordhl{(complex) Discrete Fourier Transform} in a compact way as follows.
 \begin{defn}[Discrete Fourier Transform (DFT)]
 \label{defn:complexDFT}
 The coefficients, or amplitudes, of the DFT in complex form are computed by
@@ -769,7 +769,7 @@ Thus
 \text{and} \quad \hat{A}_k &= \sqrt{\Re(C_k)^2 + \Im(C_k)^2}  
 \end{align}   
 \end{subequations}
-Recalling (\ref{eqn:modulus}) and (\ref{eqn:argument}), these are exactly the argument and modulus of $C_k$. Therefore, by simply looking at the complex DFT coefficient $C_k$ we can readily extract the phase and amplitude of the corresponding DFT signal. However, in the area of signal processing, we often report the \textit{power} of the signal instead of its amplitude for convenience, which is just the square of the amplitude. It can be easily obtained from
+Recalling (\ref{eqn:modulus}) and (\ref{eqn:argument}), these are exactly the argument and modulus of $C_k$. Therefore, by simply looking at the complex DFT coefficient $C_k$ we can readily extract the phase and amplitude of the corresponding DFT signal. However, in the area of signal processing, we often report the \index{Power}\textit{power} of the signal instead of its amplitude for convenience, which is just the square of the amplitude. It can be easily obtained from
 \begin{align}
 \abs{C_k}^2 = C_k\overline{C_k} = C_kC_{-k}
 \end{align}
@@ -798,7 +798,7 @@ and the power is
 &= 16.33
 \end{align*}
 \end{solution}
-The full power spectrum across all frequencies is related to the initial time series according to the \keywordhl{Parseval's Theorem}.
+The full power spectrum across all frequencies is related to the initial time series according to the \index{Parseval's Theorem}\keywordhl{Parseval's Theorem}.
 \begin{thm}[Parseval's Theorem]
 \label{thm:DFTParseval}
 The sum of powers in each DFT coefficient, divided by the length $N$, is equal to the sum of all data values in the (real) time series squared, i.e.\
@@ -971,7 +971,7 @@ h_c(t) = f(t) \circledast g(t) = \sum_{\tau=-\infty}^{\infty} f_\text{px}(\tau) 
 \end{align}
 so that it coincides with Definition \ref{defn:convolution} and we only take the values from $h_c(t)$ within $0 \leq t < N$.
 \end{defn}
-Circular convolution is also symmetric so that $\sum_{\tau=0}^{N-1} f((t-\tau) \bmod N) g(\tau)$ works fine as well. With circular convolution properly defined, we can go ahead to derive the main result, the \index{Convolution Theorem}\index{Circular Convolution Theorem}\keywordhl{(Circular) Convolution Theorem}.
+Circular convolution is also symmetric so that $\sum_{\tau=0}^{N-1} f((t-\tau) \bmod N) g(\tau)$ works fine as well. With circular convolution properly defined, we can go ahead to derive the main result, the \index{Convolution Theorem (Circular)}\keywordhl{(Circular) Convolution Theorem}.
 \begin{figure}
     \centering
     \begin{tikzpicture}
@@ -1081,7 +1081,7 @@ G^* =
 1 & \omega_N^{N-1} & \omega_N^{2(N-1)} & \omega_N^{3(N-1)} & \cdots & \omega_N^{(N-1)^2}
 \end{bmatrix}
 \end{align}
-where $\omega_N = \smash{\exp(-i\frac{2\pi}{N})}$ is the \textit{base/fundamental frequency} (and see Footnote \ref{foot:DFTcyclicexp} below). The algorithm works most effectively when $N$ is the power of $2$. For an easier explanation, we consider a smaller value of $N = 2^3 = 8$. Then we denote
+where $\omega_N = \smash{\exp(-i\frac{2\pi}{N})}$ is the \index{Fundamental Frequency}\textit{base/fundamental frequency} (and see Footnote \ref{foot:DFTcyclicexp} below). The algorithm works most effectively when $N$ is the power of $2$. For an easier explanation, we consider a smaller value of $N = 2^3 = 8$. Then we denote
 \begin{align}
 \renewcommand\arraystretch{1.25}
 G^* = F_8 = 
@@ -1355,7 +1355,7 @@ $f(t)$ & $2.5$ & $3.6$ & $5.9$ & $2.9$ & $6.0$ \\
 Find the amplitude/power and phase of the sinusoidal wave signal corresponding to the third frequency bin, i.e.\ with an angular frequency of $\omega = \smash{\frac{2\pi(3)}{10}}$. 
 \end{Exercise}
 \begin{Answer}
-Its DFT is $(43.9, 7.350-0.095i, -1.386-6.082i, -2.600+0.059i, -3.064+8.990i, 0.5,  -3.064+8.990i, -2.600+0.059i, -1.386-6.082i, \allowbreak 7.350-0.095i)$. The required power and phase for the third frequency are 
+Its DFT is $(43.9, 7.350-0.095i, -1.386-6.082i, -2.600+0.059i, -3.064+8.990i, 0.5,  -3.064-8.990i, -2.600-0.059i, -1.386+6.082i, \allowbreak 7.350+0.095i)$. The required power and phase for the third frequency are 
 \begin{align*}
 \abs{C_3}^2 &= C_3C_{-3} = (-2.600+0.059i)(-2.600-0.059i) = 6.764 \\
 \phi_3 &= \arctan(\frac{\Im(C_3)}{\Re(C_3)}) = \arctan(\frac{0.059}{-2.600}) = \SI{-0.022}{\radian}

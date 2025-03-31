@@ -1,6 +1,6 @@
 \chapter{Quadratic Forms}
 
-Symmetric matrices often see their appearance in the areas of Geometry, Statistics, Physics, and more, as \textit{quadratic forms}. They can be used to describe a family of geometric shapes known as \textit{conic sections}, including ellipses and hyperbola. A more common application of quadratic forms in Earth Sciences will be obtaining a \textit{covariance matrix} between different variables, eventually leading to \textit{Principal Component Analysis (PCA)}, which breaks down the variables into uncorrelated modes that explain the spread of their distribution. In Atmospheric Science, it is more commonly known as \textit{Empirical Orthogonal Functions (EOF)} and has been widely used to analyze prominent, large-scale climate patterns like \textit{El Niño–Southern Oscillation (ENSO)}. 
+Symmetric matrices often see their appearance in the areas of Geometry, Statistics, Physics, and more, as \textit{quadratic forms}. They can be used to describe a family of geometric shapes known as \textit{conic sections}, including ellipses and hyperbola. A more common application of quadratic forms in Earth Science will be obtaining a \textit{covariance matrix} between different variables, eventually leading to \textit{Principal Component Analysis (PCA)}, which breaks down the variables into uncorrelated modes that explain the spread of their distribution. In Atmospheric Science, it is more commonly known as \textit{Empirical Orthogonal Functions (EOF)} and has been widely used to analyze prominent, large-scale climate patterns like \textit{El Niño-Southern Oscillation (ENSO)}. 
 
 \section{Mathematical and Geometric Ideas of Quadratic Forms}
 \subsection{Definition of Quadratic Forms}
@@ -12,7 +12,7 @@ Real quadratic forms in multiple variables $\vec{x} = (x_1, x_2, x_3, \ldots, x_
 \begin{align}
 Q(\vec{x}) = \sum_{p=1}^{n}\sum_{q=1}^{n} b_{pq} x_px_q \label{eqn:quadform}
 \end{align}
-Note that $b_{pq}$ are real and it produces a real scalar.
+Note that $b_{pq}$ are real and they produce a real scalar.
 \end{defn}
 For example, in a two-variable situation, $x^2 + 3xy + y^2$ and $3x^2 - 4xy$ are quadratic forms, while $x^2 + y$ and $xy + xy^2$ are not. Notice that $x_px_q$ and $x_qx_p$ are actually the same term, and we will replace $b_{pq}$ or $b_{qp}$ by $\frac{1}{2}(b_{pq} + b_{qp})$ as a single coefficient for both of them. 
 \begin{proper}[Matrix Representation of a Quadratic Form]
@@ -421,7 +421,7 @@ so there will be one positive and negative eigenvalue for $B$. It is obvious tha
 
 \subsection{Conic Sections}
 \label{Conic}
-\keywordhl{Conic Sections} are the name given to three types of geometric curves in a two-dimensional space, \textit{ellipses/circles}, \textit{parabola}, and \textit{hyperbola}. The name originates from the fact that they can be obtained by intersecting a plane with a \textit{double cone} (see Figure \ref{fig:conicsecs}). They can be described by the general equation form as below.
+\index{Conic Section}\keywordhl{Conic Sections} are the name given to three types of geometric curves in a two-dimensional space, \textit{ellipses/circles}, \textit{parabola}, and \textit{hyperbola}. The name originates from the fact that they can be obtained by intersecting a plane with a \textit{double cone} (see Figure \ref{fig:conicsecs}). They can be described by the general equation form as below.
 \begin{figure}[h!]
 \centering
 % Copyleft 2015 | Ridlo W. Wibowo
@@ -547,7 +547,7 @@ a & \frac{b}{2} \\
 \end{align*}
 In the case of an ellipse so that $\det(B_{33}) > 0$, if $a = c$ and $b = 0$, then it is further reduced to a circle.
 \end{proper}
-However, for simplicity, we will only discuss the \index{Central Conics}\keywordhl{central conics} where the linear terms $mx$ and $ny$ do not appear. This excludes the case of a parabola, only keeping the ellipses and hyperbola. The quadratic form can then be simplified as follows.
+However, for simplicity, we will only discuss the \index{Central Conic}\keywordhl{central conics} where the linear terms $mx$ and $ny$ do not appear. This excludes the case of a parabola, only keeping the ellipses and hyperbola. The quadratic form can then be simplified as follows.
 \begin{proper}[Central Conics]
 \label{proper:quadcentraltype}
 Ellipses (plus circles) and hyperbola, centered at the origin, are called \textit{central conics} and have the form of
@@ -602,7 +602,7 @@ B &=
 \end{bmatrix}
 \end{align*}
 is just $x^2 - 4xy + 3y^2 = 1$. $B$ can be shown to have an eigenvalue of $\lambda = 2 \pm \sqrt{5}$. As $\lambda_+ = 2 + \sqrt{5} > 0$ and $\lambda_- = 2 - \sqrt{5} < 0$, $B$ is indefinite and the curves are a pair of hyperbola by Theorem \ref{thm:quadcentraltypealt}. \par
-Figure \ref{fig:hyperellip} shows that hyperbola and ellipses can be rotated from their \textit{standard position}. The effect on a quadratic equation resulting from the coordinate transformation by an orthogonal matrix is to produce cross-product terms ($xy$ in two-dimensional cases), which can be eliminated by an inverse rotation to restore the curves so that the major and minor axes are again oriented along the $x$ and $y$ axes. If the graphs start with being tilted by an angle of $\theta$, we can make a rotation by the same angle $\theta$ but in an opposite direction to recover the standard position. It is equivalent to rotating the coordinate system by an angle of $\theta$ in the same sense as the initial tilting. The readers can refer back to Section \ref{section:orthogeometricsub} and Definition \ref{defn:coordtransquad} about the rotation of a coordinate system for a quadratic form.
+Figure \ref{fig:hyperellip} shows that hyperbola and ellipses can be rotated from their \index{Standard Position}\textit{standard position}. The effect on a quadratic equation resulting from the coordinate transformation by an orthogonal matrix is to produce cross-product terms ($xy$ in two-dimensional cases), which can be eliminated by an inverse rotation to restore the curves so that the major and minor axes are again oriented along the $x$ and $y$ axes. If the graphs start with being tilted by an angle of $\theta$, we can make a rotation by the same angle $\theta$ but in an opposite direction to recover the standard position. It is equivalent to rotating the coordinate system by an angle of $\theta$ in the same sense as the initial tilting. The readers can refer back to Section \ref{section:orthogeometricsub} and Definition \ref{defn:coordtransquad} about the rotation of a coordinate system for a quadratic form.
 
 \begin{exmp}
 Rotate the quadratic equation $x^2 - xy + y^2 = 1$ so that the major axis lies along the $x$-axis.
@@ -803,7 +803,7 @@ which yields two negative roots $\lambda = -1, -5$ and we are done.
 
 \subsection{Variance and Covariance}
 \label{section:variancesec}
-One important quantity in the world of Statistics is the \index{Variance}\keywordhl{variance} of a \index{Random Variable}\keywordhl{random variable} or \textit{time series}. Variance can be viewed as the spread of distribution behind the random variable. The larger the variance, the more dispersed the data points are. In Earth Sciences, we often use it to quantify the variability of certain phenomena or patterns, e.g.\ the variance of spacetime-filtered winds can tell us how active the corresponding wave type is.
+One important quantity in the world of Statistics is the \index{Variance}\keywordhl{variance} of a \index{Random Variable}\keywordhl{random variable} or \textit{time series}. Variance can be viewed as the spread of distribution behind the random variable. The larger the variance, the more dispersed the data points are. In Earth Science, we often use it to quantify the variability of certain phenomena or patterns, e.g.\ the variance of spacetime-filtered winds can tell us how active the corresponding wave type is.
 
 \subsubsection{Single Distribution}
 We start with the simplest case, the definition of variance for the distribution of a single random variable first. Since in real life, we can only do a finite amount of samplings, the variance of a random variable is always approximated and inferred from the data points if we do not know the underlying statistical distribution.
@@ -1067,7 +1067,7 @@ Finally, recall that variance is always a positive-semidefinite quantity, and si
 
 \subsection{Principal Component Analysis (PCA)}
 \label{subsection:PCA}
-A common practice in Earth Science, as well as the growing field of Machine Learning, is to compress the dimensions of a large dataset having many variables/features (\textit{dimensionality reduction}). Given a high number of variables (for example, concentrations of various biochemical substances like blood cells or ions in the blood samples of some hospital patients) in measurements, we want to process them to extract and retain the most important patterns or signals. \index{Principal Component Analysis}\keywordhl{Principal Component Analysis (PCA)}, which is also known as \index{Empirical Orthogonal Functions}\keywordhl{Empirical Orthogonal Functions (EOFs)} in Atmospheric Sciences, is the most common technique for this purpose, by finding the mode(s), or more precisely, the linear combination of features, which maximizes the variance of the data along that direction. \par
+A common practice in Earth Science, as well as the growing field of Machine Learning, is to compress the dimensions of a large dataset having many variables/features (\index{Dimensionality Reduction}\textit{dimensionality reduction}). Given a high number of variables (for example, concentrations of various biochemical substances like blood cells or ions in the blood samples of some hospital patients) in measurements, we want to process them to extract and retain the most important patterns or signals. \index{Principal Component Analysis (PCA)}\keywordhl{Principal Component Analysis (PCA)}, which is also known as \index{Empirical Orthogonal Functions (EOFs)}\keywordhl{Empirical Orthogonal Functions (EOFs)} in Atmospheric Sciences, is the most common technique for this purpose, by finding the mode(s), or more precisely, the linear combination of features, which maximizes the variance of the data along that direction. \par
 Consider the simplest case with two variables, or time series $X$ and $Y$ first. Assume they have $m$ pairs of data, from $\textbf{x}_1 = (x_1, y_1)$ to $\textbf{x}_m = (x_{m}, y_{m})$. We can compute the covariance matrix
 \begin{align*}
 Q = \begin{bmatrix}
@@ -1152,12 +1152,12 @@ which is an eigenvalue problem as introduced in Section \ref{section:eigensectio
 where we have used the facts that $Q \textbf{e}^{(j)} = \lambda_j \textbf{e}^{(j)}$ as per Definition \ref{defn:eigen} and the length of a unit vector is $1$. This means that the variance along the direction of the eigenvector is exactly equal to the corresponding eigenvalue. Note that orthogonal diagonalization (see the discussion below Definition \ref{defn:coordtransquad}) transforms the quadratic form to a diagonal matrix consisting of the eigenvalues $\lambda_j$, with respect to the coordinate system made up of the orthonormal eigenvectors $\textbf{e}^{(j)}$. Therefore, from this perspective we can come to the same conclusion that the variance of a transformed variable along the direction indicated by each eigenvector is equal to its eigenvalue, and further, the covariance between two orthogonal directions represented by any pair of distinct eigenvectors is zero, and hence the transformed variables are made uncorrelated. 
 \begin{thm}[Principal Component Analysis]
 \label{thm:PCA}
-For a covariance matrix $Q = \frac{1}{m-1}[X']^T[X']$ (which happens to be symmetric), the variance $\textbf{e}^T Q \textbf{e}$ achieves its maximum value $\lambda_1$ along the direction $\textbf{e}^{(1)}$, the largest eigenvalue of $Q$ and the associated unit eigenvector. Generalizing, as $Q$ has $n$ orthonormal eigenvectors $\textbf{e}^{(1)}, \textbf{e}^{(2)}, \cdots, \textbf{e}^{(n)}$, arranged by the magnitude of corresponding eigenvalues $\lambda_1 > \lambda_2 > \cdots > \lambda_n$ from largest to smallest, the largest variance will be $\lambda_1$ when the direction is along $\textbf{e}^{(1)}$, the second largest will be $\lambda_2$ for $\textbf{e}^{(2)}$ and so on, with the smallest variance being $\lambda_n$ for $\textbf{e}^{(n)}$. This set of orthonormal eigenvectors is called the \index{Principal Axes}\index{Principal Directions}\keywordhl{principal axes/directions} in Principal Component Analysis.
+For a covariance matrix $Q = \frac{1}{m-1}[X']^T[X']$ (which happens to be symmetric), the variance $\textbf{e}^T Q \textbf{e}$ achieves its maximum value $\lambda_1$ along the direction $\textbf{e}^{(1)}$, the largest eigenvalue of $Q$ and the associated unit eigenvector. Generalizing, as $Q$ has $n$ orthonormal eigenvectors $\textbf{e}^{(1)}, \textbf{e}^{(2)}, \cdots, \textbf{e}^{(n)}$, arranged by the magnitude of corresponding eigenvalues $\lambda_1 > \lambda_2 > \cdots > \lambda_n$ from largest to smallest, the largest variance will be $\lambda_1$ when the direction is along $\textbf{e}^{(1)}$, the second largest will be $\lambda_2$ for $\textbf{e}^{(2)}$ and so on, with the smallest variance being $\lambda_n$ for $\textbf{e}^{(n)}$. This set of orthonormal eigenvectors is called the \index{Principal Axes/Directions}\keywordhl{principal axes/directions} in Principal Component Analysis.
 \end{thm}
 As a side note, any quadratic form $\textbf{e}^TB\textbf{e}$ will attain its maximum and minimum when $\textbf{e}$ is the eigenvector that represents the largest and smallest eigenvalue, which will also be the value that $\textbf{e}^TB\textbf{e}$ takes when it happens. As before, this is under the constraint that $\textbf{e}$ is a unit vector, and this result bears the name of \index{Constrained Extremum Theorem}\textit{Constrained Extremum Theorem}.\par
 Going back to the problem of Principal Component Analysis, for each principal direction $\textbf{e}^{(j)}$ and the variance $\lambda_{j}$, we can compute the ratio of \index{Explained Variance}\keywordhl{explained variance}, which is the fraction of $\lambda_{j}$ over the total variance, the sum of eigenvalues/variances from all eigenvectors for the covariance matrix. This quantity allows us to assess how well the principal direction contributes to the total variance. In the coordinate system constructed by the orthonormal eigenvectors of $Q$, $[\textbf{e}] = [\textbf{e}^{(1)}|\textbf{e}^{(2)}|\cdots|\textbf{e}^{(n)}]$, the new coordinates for any ($i$-th) data point are \begin{align}
 \vec{u}_i = [\textbf{e}]^T \vec{x}_i \label{eqn:PCAcoordchange} 
-\end{align} (see Section \ref{section:orthogeometricsub}). By the Spectral Theorem \ref{thm:spectral}, this $\vec{u}_i$ can be regarded to be the projection of $\vec{x_i} = (x_i^{(1)}, x_i^{(2)}, \ldots, x_i^{(n)})^T$, the $i$-th set of data, onto the principal directions and are called the \index{Principal Components}\keywordhl{principal components (PCs)}. \par
+\end{align} (see Section \ref{section:orthogeometricsub}). By the Spectral Theorem \ref{thm:spectral}, this $\vec{u}_i$ can be regarded to be the projection of $\vec{x_i} = (x_i^{(1)}, x_i^{(2)}, \ldots, x_i^{(n)})^T$, the $i$-th set of data, onto the principal directions and are called the \index{Principal Components (PCs)}\keywordhl{principal components (PCs)}. \par
 Usually, at the start of PCA, we will detrend the data and remove the mean from each variable, such that $x'_i = x_i - \bar{x}$ and $y'_i = y_i - \bar{y}$ are used to replace $x_i$ and $y_i$. This enables us to express the covariance matrix as $Q = \frac{1}{n}[X'|Y']^T[X'|Y']$ following the end remark of Properties \ref{proper:variancemul}. 
 \begin{exmp}
 \label{exmp:tempPCA}
@@ -1511,7 +1511,7 @@ You should be able to get Figure \ref{fig:ENSOEOF} as below.
 \caption{\textit{The first EOF pattern of the Pacific Sea Surface Temperature (SST) anomalies.}}
 \label{fig:ENSOEOF}
 \end{figure}
-This EOF pattern represents the \index{El Niño–Southern Oscillation (ENSO)}\keywordhl{El Niño–Southern Oscillation (ENSO)} phenomenon where the western Pacific gets cooler [warmer] and eastern Pacific becomes warmer [cooler] during the El Niño [La Niña] phase.
+This EOF pattern represents the \index{El Niño-Southern Oscillation (ENSO)}\keywordhl{El Niño-Southern Oscillation (ENSO)} phenomenon where the western Pacific gets cooler [warmer] and the eastern Pacific becomes warmer [cooler] during the El Niño [La Niña] phase.
 
 \section{Exercises}
 
@@ -1581,7 +1581,7 @@ It is to compute
 \frac{\sqrt{3}}{2}&-\frac{1}{2}
 \end{bmatrix}
 \end{align*}
-so the new hyperbola equation is $\frac{1}{2}(x')^2+ \sqrt{3}x'y' -\frac{1}{2}(y')^2 = 1$.
+so the new hyperbola equation is $\frac{1}{2}(x')^2+ \sqrt{3}x'y' -\frac{1}{2}(y')^2 = 1$. Reflection about the $x$-axis should leave the graph unchanged due to symmetry.
 \end{Answer}
 
 \begin{Exercise}
@@ -1620,7 +1620,7 @@ where from the second to last line we have used the fact that $A - A^T$ is skew-
 Use Sylvester's Law of Inertia to argue that a symmetric matrix $B$ is positive-definite if and only if $B = P^TP$ for some invertible matrix $P$. Hint: Consider $P^T IP$.
 \end{Exercise}
 \begin{Answer}
-A positive-definite symmetric matrix has all positive eigenvalues and thus a canonical quadratic form of an identity matrix $I$ according to Sylvester's Law of Inertia. By congruence, it must be $B = P^T IP = P^TP$ for some $P$.
+A positive-definite symmetric matrix has all positive eigenvalues and thus a canonical quadratic form of an identity matrix $I$ according to Sylvester's Law of Inertia. By congruence, it must be $B = P^T IP = P^TP$ for some (invertible) $P$.
 \end{Answer}
 
 \begin{Exercise}
@@ -1691,7 +1691,7 @@ and the required variance of $W$ is
 Carry out Principal Component Analysis on the data set above. Find the Principal Directions and the ratio of explained variance for each of them. Reconstruct the data using the first principal component with the largest variance only.
 \end{Exercise}
 \begin{Answer}
-The three principal directions should be approximately $(0.665, \allowbreak 0.561, 0.493)^T$, $(0.259, 0.445, -0.857)^T$, and $(-0.700, 0.698, 0.151)^T$, accounting for $85.9\%/11.9\%/2.2\%$ of the explained variance. For checking, the reconstruction of the first data point should give $(X_1, Y_1, Z_1) = (17.9, 18.4, 21.8)$.
+The three principal directions should be approximately $(0.665, \allowbreak 0.561, 0.493)^T$, $(0.259, 0.445, -0.857)^T$, and $(-0.700, 0.698, 0.151)^T$, accounting for $85.9\%/11.9\%/2.2\%$ of the explained variance. For checking, the reconstruction of the first data point should give $(X_1, Y_1, Z_1) = (17.92, 18.43, 21.78)$.
 \end{Answer}
 
 \begin{Exercise}

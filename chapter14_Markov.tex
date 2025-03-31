@@ -7,7 +7,7 @@ In Earth Science, we often look at the evolution of variables in time, like temp
 
 \subsection{Lagged Auto-correlation}
 
-First, let's talk about how to determine if a \index{Time Series}\keywordhl{time series} possesses some sort of \textit{memory} as mentioned in the introduction. Memory causes the past of a time series to influence the present, and hence will leave a mark when we try to correlate the past and present segments of the time series. This leads to the idea of \index{Lagged Auto-correlation}\keywordhl{lagged auto-correlation}, which is the correlation between a time series and itself, but one of them is lagged and shifted by a certain amount of days, let's say $k$ (the direction of the shifting does not matter as it is an auto-correlation, and we only care about the overlapping part). Then, it is more specifically known as the \textit{Lag-$k$ Auto-correlation}.
+First, let's talk about how to determine if a \index{Time Series}\keywordhl{time series} possesses some sort of \index{Memory}\textit{memory} as mentioned in the introduction. Memory causes the past of a time series to influence the present, and hence will leave a mark when we try to correlate the past and present segments of the time series. This leads to the idea of \index{Lagged (Lag-$k$) Auto-correlation}\keywordhl{lagged auto-correlation}, which is the correlation between a time series and itself, but one of them is lagged and shifted by a certain amount of days, let's say $k$ (the direction of the shifting does not matter as it is an auto-correlation, and we only care about the overlapping part). Then, it is more specifically known as the \textit{Lag-$k$ Auto-correlation}.
 
 \begin{defn}
 \label{defn:autocorr}[Lagged Auto-correlation]
@@ -76,7 +76,7 @@ P(\Omega^{[k+1]}|A_j^{[k]}) &= 1
 \end{align}
 where $\Omega = \bigcup_{i} A_i$ covers all the states and $k$ denotes a particular time step. The time increment is $1$ here but can be replaced by any other positive integer. It means that any given event $A_j$ must consequently lead to one of the possible states (including $A_j$ itself) at the next (few) time step(s).
 \end{proper}
-This is essentially a rephrasing of the \textit{Law of Total Probability} from elementary Statistics. As a result, we can express all the conditional probabilities \smash{$P(A_i^{[k+1]}|A_j^{[k]})$} for a particular previous state $A_j$ in a system using a column vector with components that sum up to $1$. Using the daily weather as an example, assume there are only three states (sunny/windy/rainy), if a sunny day has a chance of $0.8$ to be followed by another sunny day, and $0.15$/$0.05$ for another windy/rainy day. Then we can write
+This is essentially a rephrasing of the \index{Law of Total Probability}\textit{Law of Total Probability} from elementary Statistics. As a result, we can express all the conditional probabilities \smash{$P(A_i^{[k+1]}|A_j^{[k]})$} for a particular previous state $A_j$ in a system using a column vector with components that sum up to $1$. Using the daily weather as an example, assume there are only three states (sunny/windy/rainy), if a sunny day has a chance of $0.8$ to be followed by another sunny day, and $0.15$/$0.05$ for another windy/rainy day. Then we can write
 \begin{center}
 \begin{tabular}{|c|c|}
 \hline

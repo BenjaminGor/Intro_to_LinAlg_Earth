@@ -1,6 +1,6 @@
 \chapter{Matrix Factorization Methods}
 
-In this chapter, we are going to discuss some matrix factorization methods. We have introduced two of them previously: CR Factorization and QR Decomposition, in Chapters \ref{chap:vec_space} and \ref{chap:6x} respectively. We will first discuss two factorization methods for square matrices, \textit{Cholesky} and \textit{LU/LDU}, and subsequently move to the very crucial \textit{Singular Value Decomposition} for non-square matrices. This eventually leads to the notions of \textit{psuedoinverses} and \textit{minimal solutions}. These decomposition methods have been widely applied in many fields of Earth Sciences to extract important patterns from data. Also, as Machine Learning gains popularity, Earth Science research starts to involve more matrix factorization techniques, which have been a main instrument in Machine Learning. Apart from this, a less visible usage of matrix factorization is embedded in the implementation of linear algebra packages in programming languages (e.g.\ LAPACK, for Fortran). Those matrix factorization methods enable faster and more stable computations of linear algebra problems, such as finding inverses or solving linear systems. Other potential applications include image processing and more.
+In this chapter, we are going to discuss some matrix factorization methods. We have introduced two of them previously: CR Factorization and QR Decomposition, in Chapters \ref{chap:vec_space} and \ref{chap:6x} respectively. We will first discuss two factorization methods for square matrices, \textit{Cholesky} and \textit{LU/LDU}, and subsequently move to the very crucial \textit{Singular Value Decomposition} for non-square matrices. This eventually leads to the notions of \textit{psuedoinverses} and \textit{minimal solutions}. These decomposition methods have been widely applied in many fields of Earth Science to extract important patterns from data. Also, as Machine Learning gains popularity, Earth Science research starts to involve more matrix factorization techniques, which have been a main instrument in Machine Learning. Apart from this, a less visible usage of matrix factorization is embedded in the implementation of linear algebra packages in programming languages (e.g.\ LAPACK, for Fortran). Those matrix factorization methods enable faster and more stable computations of linear algebra problems, such as finding inverses or solving linear systems. Other potential applications include image processing and more.
 
 \section{Square Matrix Factorization}
 \subsection{Cholesky Factorization}
@@ -219,6 +219,16 @@ U^TU =
 0 & 0 & 1
 \end{bmatrix} =
 \begin{bmatrix}
+2 & 0 & 0 \\
+1 & 1 & 0 \\
+0 & 2 & 1
+\end{bmatrix}
+\begin{bmatrix}
+2 & 1 & 0 \\
+0 & 1 & 2 \\
+0 & 0 & 1
+\end{bmatrix} =
+\begin{bmatrix}
 4 & 2 & 0 \\
 2 & 2 & 2 \\
 0 & 2 & 5 
@@ -384,7 +394,7 @@ L &=
 \end{align*}
 \end{solution}
 
-Note that LU Factorization is not always unique. However, one can derive \index{LDU Decomposition/Factorization}\keywordhl{LDU Factorization} that is unique whenever a LU decomposition of the matrix exists. Here, $D$ is an extra diagonal matrix while all the diagonal entries $L$ and $U$ are now $1$. Using the above example, we observe that
+Note that LU Factorization is not always unique. However, one can derive \index{LDU Decomposition/Factorization}\keywordhl{LDU Factorization} that is unique whenever an LU decomposition of the matrix exists. Here, $D$ is an extra diagonal matrix while all the diagonal entries $L$ and $U$ are now $1$. Using the above example, we observe that
 \begin{align*}
 L &=
 \begin{bmatrix}
@@ -717,7 +727,7 @@ A = \begin{bmatrix}
 \end{align*}}
 
 \subsection{Solving Linear Systems with LU Decomposition}
-As mentioned at the start of this chapter, matrix factorization greatly helps when it comes to electronic calculation. For instance, LU factorization is widely applied to solving linear systems in computers, preferred over direct Gaussian Elimination or using inverses (we will discuss the reasons in the end). Basically, it is a two-step procedure. For a linear system $A\vec{x} = \vec{h}$, if we have the LU Decomposition of the matrix $A$, then it can be rewritten as 
+As mentioned at the start of this chapter, matrix factorization greatly helps when it comes to electronic calculation. For instance, LU factorization is widely applied to solving linear systems in computers, preferred over direct Gaussian Elimination or using inverses (we will discuss the reasons at the end of the chapter). Basically, it is a two-step procedure. For a linear system $A\vec{x} = \vec{h}$, if we have the LU Decomposition of the matrix $A$, then it can be rewritten as 
 \begin{align}
 LU\vec{x} = \vec{h}    
 \end{align}
@@ -1481,7 +1491,7 @@ The Singular Value Theorem \ref{thm:SVDtrans} shows that a linear transformation
 \begin{align}
 T^+(\vec{u}^{(j)}) = \frac{1}{\sigma_j} \vec{v}^{(j)} \label{eqn:pinv1}
 \end{align}
-where now $T^+$ reverts the mapping by $T$ from each of $\gamma = \{\vec{u}^{(1)}, \vec{u}^{(2)},\ldots,\vec{u}^{(k)}\}$ back to each of $\beta = \{\vec{v}^{(1)}, \vec{v}^{(2)},\ldots,\vec{v}^{(k)}\}$ where there are $k$ non-zero singular values. Notice that the subspaces generated by $\beta$ and $\gamma$ are the kernel's complement and the range, $\mathcal{N}(T)^\perp$ and $\mathcal{R}(T)$ respectively. Motivated by all of these, we may want to construct a \index{Pseudoinverse}"\keywordhl{pseudoinverse}" $T^+: \mathcal{W} \to \mathcal{V}$ out of $T$ even though the matrix representation of $T$ may not have a square shape to be invertible in the usual sense: we only need Equation (\ref{eqn:pinv1}) to hold from $\mathcal{R}(T)$ to $\mathcal{N}(T)^\perp$ and this will be good enough to capture the invertibility between just this two subspaces. Both $\mathcal{R}(T)$ and $\mathcal{N}(T)^\perp$ have the same dimension\footnote{Let $T$ has a rank of $k$ so that $\dim(\mathcal{R}(T)) = k$, then by the Rank-Nullity Theorem \ref{thm:ranknullitytrans}, $\dim(\mathcal{N}(T)) = n-k$ and $\dim(\mathcal{N}(T)^\perp) = n-(n-k) = k$.} and there will always be a invertible linear transformation $L$ between them by Properties \ref{proper:isomorphicsamerank}. We require that this $L$ coincides with $T$ as long as the input vectors are in the kernel's complement $\mathcal{N}(T)^\perp$ and hence in the backward direction $T^+$ coincides with $L^{-1}$ over the range $\mathcal{R}(T)$ as well. For other vectors in the complement of the range $\mathcal{R}(T)^\perp \subseteq \mathcal{W}$, we effectively ignore them by requiring that $T^+$ maps all of them into the zero vector. From these, we can properly define the pseudoinverse of a linear transformation as below.
+where now $T^+$ reverts the mapping by $T$ from each of $\gamma = \{\vec{u}^{(1)}, \vec{u}^{(2)},\ldots,\vec{u}^{(k)}\}$ back to each of $\beta = \{\vec{v}^{(1)}, \vec{v}^{(2)},\ldots,\vec{v}^{(k)}\}$ where there are $k$ non-zero singular values. Notice that the subspaces generated by $\beta$ and $\gamma$ are the kernel's complement and the range, $\mathcal{N}(T)^\perp$ and $\mathcal{R}(T)$ respectively. Motivated by all of these, we may want to construct a \index{Pseudoinverse}\keywordhl{"pseudoinverse"} $T^+: \mathcal{W} \to \mathcal{V}$ out of $T$ even though the matrix representation of $T$ may not have a square shape to be invertible in the usual sense: we only need Equation (\ref{eqn:pinv1}) to hold from $\mathcal{R}(T)$ to $\mathcal{N}(T)^\perp$ and this will be good enough to capture the invertibility between just this two subspaces. Both $\mathcal{R}(T)$ and $\mathcal{N}(T)^\perp$ have the same dimension\footnote{Let $T$ has a rank of $k$ so that $\dim(\mathcal{R}(T)) = k$, then by the Rank-Nullity Theorem \ref{thm:ranknullitytrans}, $\dim(\mathcal{N}(T)) = n-k$ and $\dim(\mathcal{N}(T)^\perp) = n-(n-k) = k$.} and there will always be a invertible linear transformation $L$ between them by Properties \ref{proper:isomorphicsamerank}. We require that this $L$ coincides with $T$ as long as the input vectors are in the kernel's complement $\mathcal{N}(T)^\perp$ and hence in the backward direction $T^+$ coincides with $L^{-1}$ over the range $\mathcal{R}(T)$ as well. For other vectors in the complement of the range $\mathcal{R}(T)^\perp \subseteq \mathcal{W}$, we effectively ignore them by requiring that $T^+$ maps all of them into the zero vector. From these, we can properly define the pseudoinverse of a linear transformation as below.
 \begin{defn}[Pseudoinverse of a Linear Transformation]
 \label{defn:pseudoinversetrans}
 For two inner product spaces $\mathcal{V}$ and $\mathcal{W}$ of finite dimensions $n$ and $m$ respectively, and given a linear transformation $T\colon \mathcal{V} \to \mathcal{W}$ between them, let $L\colon \mathcal{N}(T)^\perp \to \mathcal{R}(T)$ be the invertible linear transformation between the two subspaces $\mathcal{N}(T)^\perp$ and $\mathcal{R}(T)$ such that 
@@ -1759,7 +1769,7 @@ as long as $A$ and thus $\Sigma$ are full-rank. Finally, by Properties \ref{prop
 \label{proper:pinvequiv}
 An alternative set of definitions for the Moore-Penrose pseudoinverse $A^+$ of a matrix $A$ is
 \begin{enumerate}
-    \item $AA^+A = A$ ($A$ is a \textit{weak inverse});
+    \item $AA^+A = A$ ($A$ is a \index{Weak Inverse}\textit{weak inverse});
     \item $A^+AA^+ = A^+$ ($A^+$ is also a weak inverse);
     \item $(AA^+)^\dag = AA^+$ ($AA^+$ is Hermitian);
     \item $(A^+A)^\dag = A^+A$ ($A^+A$ is also Hermitian).
@@ -2402,7 +2412,7 @@ U\Sigma V^* &=
 -1&1&0&1
 \end{bmatrix}
 \end{align*}
-The SVD of $A^T$ here is simply $(U\Sigma V^T)^T = V\Sigma^TU^T$.
+The SVD of $A^T$ here is simply $(U\Sigma V^T)^T = V\Sigma^TU^T = V\Sigma U^T$.
 \end{Answer}
 
 \begin{Exercise}

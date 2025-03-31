@@ -1,12 +1,12 @@
 \chapter{Introduction to Matrices and Linear Systems}
 
-Although the Earth System is well-known to be filled with non-linear processes, we still benefit from learning how to work with linear systems, by which many Earth Science problems can be approximated. This actually works well in several scenarios. For instance, in Atmosphere Sciences, we often consider the so-called \textit{perturbation equations}, which assume that deviations from the mean state are small enough to neglect quadratic terms. The most fundamental usage of Linear Algebra in Applied Sciences is to formulate, analyze, and solve \textit{linear systems of equations}. Some examples in Earth Sciences are mapping the depth of overlying soil layers underground, as well as chemical balances in various subsystems of the Earth. \textit{Matrices} are one of the most central ingredients in Linear Algebra that can be used to describe such systems, and we are going to address the basic aspects related to them in the first chapter.
+Although the Earth System is well-known to be dominated by non-linear processes, we still benefit from learning how to work with linear systems, by which many Earth Science problems can be approximated. This actually works well in several scenarios. For instance, in Atmosphere Sciences, we often consider the so-called \textit{perturbation equations}, which assume that deviations from the mean state are small enough to neglect quadratic terms. In general, Linear Algebra enables us to compute useful statistics and make complicated dynamics appearing in Earth Science tractable, e.g.\ the simplification of the convection problem that leads to the three-variable \textit{Lorenz-63 Model} in Chapter \ref{chap:dynsys}. The most fundamental usage of Linear Algebra in Applied Sciences is to formulate, analyze, and solve \textit{linear systems of equations}. Some examples in Earth Science are mapping the depth of overlying soil layers underground, as well as chemical balances in various subsystems of the Earth. \textit{Matrices} are one of the most central ingredients in Linear Algebra that can be used to describe such linear systems, and tactful matrix operations can help us derive their solution, in addition to being the machinery used to acquire many theoretical results later on. Therefore, given their importance, we are going to address the basic aspects related to them in the first chapter.
 
 \section{Definition and Operations of Matrices}
 \label{section:matrixdefn}
 
 \subsection{Basic Structure of Matrices}
-\index{Matrix}\keywordhl{Matrices} are rectangular arrays of numbers, the entries of which can be real or complex. For now, we will work with the simpler case of real matrices first. A matrix with $m$ rows and $n$ columns is called an $m \times n$ matrix. Matrices that happen to have the same number of rows and columns, i.e.\ $m = n$, are known as \index{Square Matrix}\keywordhl{square matrices}. Below are some examples of matrices.
+\index{Matrix}\keywordhl{Matrices} are rectangular arrays of numbers, the entries of which can be real or complex. A matrix with $m$ rows and $n$ columns is called an $m \times n$ matrix. Matrices that happen to have the same number of rows and columns, i.e.\ $m = n$, are known as \index{Square Matrix}\keywordhl{square matrices}. Below are some examples of matrices.
 
 \begin{minipage}{0.5\textwidth}
 $\begin{bmatrix}
@@ -37,7 +37,7 @@ $\begin{bmatrix}
 \end{minipage}\par
 \textit{A $3 \times 3$ real, square matrix.}
 
-Given any matrix $A$, its entry at row $i$ and column $j$ will be denoted as $A_{ij}$. For example,
+For now, we will work with the simpler case of real matrices first. Given any matrix $A$, its entry at row $i$ and column $j$ will be denoted as $A_{ij}$. For example,
 \begin{align*}
 & A =
 \begin{tikzpicture}[baseline=-\the\dimexpr\fontdimen22\textfont2\relax]
@@ -54,7 +54,7 @@ column sep=2pt, nodes={text width=16pt, align=center}, ampersand replacement=\&]
 \end{tikzpicture}
 & \textcolor{red}{A_{21} = 5}
 \end{align*}
-$\blacktriangleright$ Short Exercise: Find $A_{13}$, $A_{22}$, $A_{34}$ and $A_{42}$. \footnote{$A_{13} = 7$, $A_{22} = -\frac{1}{3}$, $A_{34} = -\frac{1}{6}$, $A_{42}$ does not exist.}
+$\blacktriangleright$ Short Exercise: Find $A_{13}$, $A_{22}$, $A_{34}$ and $A_{42}$.\footnotemark
 
 \subsection{Matrix Operations}
 
@@ -101,6 +101,7 @@ A+B &=
 6 & -1
 \end{bmatrix}
 \end{align*}
+\footnotetext{$A_{13} = 7$, $A_{22} = -\frac{1}{3}$, $A_{34} = -\frac{1}{6}$, $A_{42}$ does not exist.}
 $\blacktriangleright$ Short Exercise: Find $A-B$.\footnote{$A-B = \begin{bmatrix}
 0 & 1 \\
 3 & -4.5 \\
@@ -135,7 +136,7 @@ $\blacktriangleright$ Short Exercise: Find $\frac{1}{4}A$.\footnote{$\frac{1}{4}
 -\frac{1}{4} & 1.025 & -\frac{3}{4}
 \end{bmatrix}$}
 
-\subsubsection{Matrix Multiplication/Matrix Product} Meanwhile, multiplication between two matrices, commonly referred to as \index{Matrix Product}\index{Matrix Multiplication}\keywordhl{matrix multiplication/matrix product}, is not entry-wise. It can be only carried out if the number of columns of the first matrix $A$ equals the number of rows of the second matrix $B$, let's say $r$. In other words, they need to be of the shapes $m \times r$ and $r \times n$ respectively. The resulting matrix $AB$ will then have the shape $m \times n$, which means that the number of rows/columns of the output matrix follows from the first/second input matrix. The following two examples explain this requirement.
+\subsubsection{Matrix Multiplication/Matrix Product} Meanwhile, multiplication between two matrices, commonly referred to as \index{Matrix Multiplication/Matrix Product}\keywordhl{matrix multiplication/matrix product}, is not entry-wise. It can be only carried out if the number of columns of the first matrix $A$ equals the number of rows of the second matrix $B$, let's say $r$. In other words, they need to be of the shapes $m \times r$ and $r \times n$ respectively. The resulting matrix $AB$ will then have the shape $m \times n$, which means that the number of rows/columns of the output matrix follows from the first/second input matrix. The following two examples explain this requirement.
 \begin{align*}
 & A = 
 \begin{bmatrix}
@@ -422,7 +423,7 @@ A linear equation is an equation in the form of
 \end{align}
 where $x_1, x_2, \ldots, x_n$ are the unknowns/variables, while $a_1, a_2, \ldots, a_n$ and $h$ are some constants. If $h = 0$, then it is known as a \index{Homogeneous Linear Equation}\keywordhl{homogeneous linear equation}.
 \end{defn}
-$\blacktriangleright$ Short Exercise: Determine whether the equations below are (a) linear, and if they are linear, then (b) homogeneous or not. The unknowns are $x, y, z$. \footnote{Linear/Inhomogeneous, Non-linear, Linear/Inhomogeneous, Non-linear, Linear/Homogeneous, Non-linear.}
+$\blacktriangleright$ Short Exercise: Determine whether the equations below are (a) linear, and if they are linear, then (b) homogeneous or not. The unknowns are $x, y, z$.\footnote{Linear/Inhomogeneous, Non-linear, Linear/Inhomogeneous, Non-linear, Linear/Homogeneous, Non-linear.}
 \begin{enumerate}
     \item $3x + 4.7y = 2\sqrt{2}$ 
     \item $\cos x + \ln y = 0$
@@ -472,7 +473,7 @@ It is not hard to see that for any homogeneous linear system, it always has the 
 \end{align}
 \textit{A $3 \times 3$ homogeneous linear system (homogeneous as the constants on R.H.S. are all zeros), notice that the coefficients of $y$ and $z$ in the second/third equations are zeros as well and do not appear explicitly.}\par
 
-The above formulation of a linear system closely resembles a tabular structure. Therefore, we are motivated to represent such systems with the language of matrices, which have the appearance of tabular arrays. Indeed, it is possible to rewrite an $m \times n$ linear system as $A\vec{x} = \vec{h}$, where $A$ is an $m \times n$ matrix with entries copied from the coefficients in front of the unknowns/variables in (\ref{eqn:linsys}). In this book, sometimes we will call it a \index{Coefficient Matrix}\textit{coefficient matrix}. Meanwhile, $\vec{x}$ is a \textit{column vector} (an $n \times 1$ matrix) holding the $n$ unknowns, and $\vec{h}$ is another column vector (an $m \times 1$ matrix) that contains the $m$ constants on R.H.S. of the linear system.
+The above formulation of a linear system closely resembles a tabular structure. Therefore, we are motivated to represent such systems with the language of matrices, which have the appearance of tabular arrays. Indeed, it is possible to rewrite an $m \times n$ linear system as $A\vec{x} = \smash{\vec{h}}$, where $A$ is an $m \times n$ matrix with entries copied from the coefficients in front of the unknowns/variables in (\ref{eqn:linsys}). In this book, sometimes we will call it a \index{Coefficient Matrix}\textit{coefficient matrix}. Meanwhile, $\vec{x}$ is a \textit{column vector} (an $n \times 1$ matrix) holding the $n$ unknowns, and $\smash{\vec{h}}$ is another column vector (an $m \times 1$ matrix) that contains the $m$ constants on R.H.S. of the linear system.
 \begin{proper}
 \label{proper:linsysmat}
 For a linear system defined like (\ref{eqn:linsys}) in Definition \ref{defn:linsys}, it can be rewritten as 
@@ -505,7 +506,7 @@ z
 -4
 \end{bmatrix}
 \end{align*}
-An even simpler representation is the \index{Augmented Matrix}\keywordhl{augmented matrix}, which omits the unknowns to concatenate $A$ and $\vec{h}$.
+An even simpler representation is the \index{Augmented Matrix}\keywordhl{augmented matrix}, which omits the unknowns to concatenate $A$ and $\smash{\vec{h}}$.
 \begin{equation*}
 \left[\begin{array}{@{\,}ccc|c@{\,}}
 1 & 2 & -4 & 3\\
@@ -646,7 +647,7 @@ y
 
 \begin{exmp}
 \label{exmp:multilayer1}
-The radiation transfer across the atmosphere of any planet (including the Earth) in the Solar system can be compared to a \textit{multi-layer model} with fully absorbing layers (note that it is a very simplistic approach). Assume there are $N$ such layers and the total rate of incident Solar radiation reaching the surface is $E_{\text{in}}$. Each of the layers also emits radiation to the other two layers directly above/below it. The rate of radiative emission for the $j$-th layer that has a temperature $T_j$ is
+The radiation transfer across the atmosphere of any planet (including the Earth) in the Solar system can be compared to a \index{Multi-layer Model}\textit{multi-layer model} with fully absorbing layers (note that it is a very simplistic approach). Assume there are $N$ such layers and the total rate of incident Solar radiation reaching the surface is $E_{\text{in}}$. Each of the layers also emits radiation to the other two layers directly above/below it. The rate of radiative emission for the $j$-th layer that has a temperature $T_j$ is
 \begin{align}
 E_j = \sigma T_j^4    
 \end{align}
@@ -1228,7 +1229,7 @@ Find the results if the following elementary row operations are applied to it:
 \begin{Exercise}
 \phantomsection
 \label{ex:lapse}
-The \textit{dry adiabatic lapse rate}, which is the rate of decrease in air temperature when an unsaturated air parcel rises, is about $\Gamma_{dry} = \SI{9.8}{\celsius \per \km}$. When the temperature of the air parcel falls below the \textit{dew point}, the air saturates and condensation occurs. Typically, the dew point temperature of an air parcel will decrease at a rate of roughly $\Gamma_{dew} = \SI{2}{\celsius \per \km}$. Now, an air parcel with an initial air temperature/dew point temperature of $T_{a,ini} = \SI{25.4}{\celsius}$ / $T_{dew, ini} = \SI{17.8}{\celsius}$ at the ground starts to rise. Let $z_{cd}$ and $T_{cd}$ be the height above the ground (in \si{\km}) and temperature (in \si{\celsius}) of the air parcel when condensation occurs. Construct a linear system with $z_{cd}$ and $T_{cd}$ as the two unknowns to represent this situation.
+The \index{Adiabatic Lapse Rate}\textit{dry adiabatic lapse rate}, which is the rate of decrease in air temperature when an unsaturated air parcel rises, is about $\Gamma_{dry} = \SI{9.8}{\celsius \per \km}$. When the temperature of the air parcel falls below the \textit{dew point}, the air saturates and condensation occurs. Typically, the dew point temperature of an air parcel will decrease at a rate of roughly $\Gamma_{dew} = \SI{2}{\celsius \per \km}$. Now, an air parcel with an initial air temperature/dew point temperature of $T_{a,ini} = \SI{25.4}{\celsius}$ / $T_{dew, ini} = \SI{17.8}{\celsius}$ at the ground starts to rise. Let $z_{cd}$ and $T_{cd}$ be the height above the ground (in \si{\km}) and temperature (in \si{\celsius}) of the air parcel when condensation occurs. Construct a linear system with $z_{cd}$ and $T_{cd}$ as the two unknowns to represent this situation.
 \end{Exercise}
 \begin{Answer}
 The air temperature/dew point at any height $z$ before saturation is $T_a = T_{a,ini} - (\Gamma_{dry})z$ and $T_{dew} = T_{dew, ini} - (\Gamma_{dew})z$ respectively. At the condensation level $z = z_{cd}$, the air temperature equals to the dew point temperature $T_a = T_{dew} = T_{cd}$, and hence we have
