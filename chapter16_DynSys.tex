@@ -1,4 +1,5 @@
 \chapter{Dynamical Systems}
+\label{chap:dynsys}
 
 Near the end of Chapter \ref{chap:eigen}, we have talked about systems of first-order linear ODEs which are actually the prototype of \textit{linear} dynamical systems. A \textit{dynamical system} describes the change or evolution (\textit{dynamics}) of multiple variables (\textit{state}) in time that can depend on the variables themselves as well as the time coordinate. Starting from a particular initial point (\textit{particle}) in the physical/state space, a deterministic trajectory will be traced by the particle as the dynamical system operates. We will derive several important ideas like equilibrium points and their types, starting from the easier linear dynamical systems, and then generalize to the more complicated \textit{non-linear} dynamical systems where the gap can often be bridged by the \textit{Hartman-Grobman Theorem} if the linearized equilibrium point in question is a \textit{hyperbolic equilibrium point}. Finally, we will discuss the prime example of non-linear dynamical systems in Earth Science, the \textit{Lorenz-63 Model} which demonstrates the phenomenon of \textit{chaos}.
 
@@ -83,7 +84,7 @@ p(\lambda) &= (\lambda_1 - \lambda)(\lambda_2 - \lambda) \\
 &= \det(A) - \tr(A)\lambda + \lambda^2
 \end{align*}
 which is also invariant. Hence we can determine the different types of equilibrium points (Situations 1 and 3 in Properties \ref{proper:2dequiltypes})\footnote{Situation 2 is a bit special since our assumption may be violated where the geometric multiplicity of the repeated eigenvalue is now only $1$, i.e.\ deficient, and it becomes degenerate.} solely from the trace and determinant of $A$ (see the three rightmost columns in Table \ref{tab:equilpts}). The classification and the corresponding phase portraits are visualized in Figure \ref{fig:phasediagram} as follows.
-\begin{table}
+\begin{table}[ht!]
     \centering
     \small
     \begin{tabular}{|p{40pt}|p{48pt}|p{68pt}|p{44pt}|c|c|c|}
@@ -229,7 +230,7 @@ Identify the type of equilibrium point at the origin for the three two-dimension
 We simply do the classification according to Table \ref{tab:equilpts}. For case (a), the trace is $\tr(A) = (-1) + 1 = 0$, the determinant is $\det(A) = (-1)(1) - (4)(2) = -9 < 0$ and the discriminant is $\Delta = (0)^2 - 4(-9) = 36 > 0$, so it corresponds to a saddle point. Similarly, for case (b), we have $\tr(A) = 3 + 3 = 6 > 0$, $\det(A) = (3)(3) - (2)(1) = 7 > 0$ and $\Delta = (6)^2 - 4(7) = 8 > 0$, thus it is an unstable node. Finally, for case (c), $\tr(A) = (-1) + (-1) = -2 < 0$, $\det(A) = (-1)(-1) - (2)(-1) = 3 > 0$ and $\Delta = (-2)^2 - 4(3) = -8 < 0$ and therefore it is a stable spiral. The stream plots of these three dynamical systems are shown in Figure \ref{fig:2d3dyn}. 
 \end{solution}
 
-\begin{figure}
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=\textwidth]{graphics/3exmps2ddynamic.png}
     \caption{\textit{The stream plots for the three two-dimensional dynamical systems in Example \ref{exmp:2d3dyn}.}}
@@ -589,7 +590,7 @@ and an R.H.S. of
 &\quad + [\sigma\left((\partial_{x^*})^4 \psi^* + (\partial_{z^*})^2 (\partial_{x^*})^2 \psi^* \right) \mathcolor{red}{- \partial_{x^*} \partial_{z^*} p^*} + \sigma \partial_{x^*} T^*] \\
 &= \sigma \left((\partial_{x^*})^2 + (\partial_{z^*})^2\right)^2 \psi^* + \sigma \partial_{x^*} T^*
 \end{align*}
-By using the \textit{Laplacian} symbol $\Delta^* = (\partial_{x^*})^2 + (\partial_{z^*})^2$ in this equation, and also substituting the stream function (\ref{eqn:lorenzstreamv}) into the other equation (\ref{eqn:RB3n}), we can sort out a set of two equations in two unknowns $\psi^*$ and $T^*$, that describes the evolution of the system state:
+By using the \index{Laplacian}\textit{Laplacian} symbol $\Delta^* = (\partial_{x^*})^2 + (\partial_{z^*})^2$ in this equation, and also substituting the stream function (\ref{eqn:lorenzstreamv}) into the other equation (\ref{eqn:RB3n}), we can sort out a set of two equations in two unknowns $\psi^*$ and $T^*$, that describes the evolution of the system state:
 \begin{empheq}[left={\empheqlbrace}]{alignat=1}
 \partial_{t^*} \Delta^* \psi^* - (\partial_{z^*} \psi^*) (\partial_{x^*}\Delta^* \psi^*) + (\partial_{x^*} \psi^*) (\partial_{z^*}\Delta^* \psi^*) &= \sigma {\Delta^*}^2\psi^* + \mathrlap{\sigma \partial_{x^*} T^*} \label{eqn:lorenzwind} \\
 \partial_{t^*}T^* - (\partial_{z^*} \psi^*)(\partial_{x^*} T^*) + (\partial_{x^*} \psi^*)(\partial_{z^*} T^*) &= \Delta^* T^* - R \partial_{x^*} \psi^* \label{eqn:lorenztemp}
@@ -660,7 +661,7 @@ Therefore the other two equilibrium points are
 \begin{align}
 \tilde{\textbf{X}}_{\pm} = (\pm\sqrt{\beta (\rho - 1)}, \pm\sqrt{\beta (\rho - 1)}, \rho-1)^T \label{eqn:paireqptslorenz}
 \end{align}
-which only emerge when $\rho > 1$ due to the square roots in the $X$ and $Y$ components. Therefore, we can divide the system into two major cases: $0 < \rho < 1$ and $\rho > 1$.\footnote{$\rho = 1$, as well as $\rho = \rho_c$ as we will see later, belongs to the special case of a \textit{bifurcation point} where transition happens and their treatment is out of the scope of this book.} When $0 < \rho < 1$, the origin is the only equilibrium point. According to (\ref{eqn:nonlindynjac})), the linearized system will have a Jacobian of
+which only emerge when $\rho > 1$ due to the square roots in the $X$ and $Y$ components. Therefore, we can divide the system into two major cases: $0 < \rho < 1$ and $\rho > 1$.\footnote{$\rho = 1$, as well as $\rho = \rho_c$ that we will see later, belongs to the special case of a \textit{bifurcation point} where transition happens and their treatment is out of the scope of this book.} When $0 < \rho < 1$, the origin is the only equilibrium point. According to (\ref{eqn:nonlindynjac})), the linearized system will have a Jacobian of
 \begin{align}
 \frac{\partial F_i}{\partial X_j} =
 \begin{bmatrix}
@@ -715,17 +716,17 @@ and therefore the two other roots $\lambda_{\pm} = \frac{1}{2}(-(1+\sigma) \pm \
 which is exactly the same as (\ref{eqn:lor63f}).} We will take the positive equilibrium point $\tilde{\textbf{X}}_{+} = (\sqrt{\beta (\rho - 1)}, \sqrt{\beta (\rho - 1)}, \rho-1)^T$. The Jacobian of linearization at this equilibrium point is found by substituting it into (\ref{eqn:lorenzjac}), which gives
 \begin{align}
 \left.\frac{\partial F_i}{\partial X_j}\right|_{\tilde{\textbf{X}}_{+}} &=
-\left[\begin{array}{@{\,}wc{50pt}wc{50pt}wc{50pt}@{\,}}
+\left[\begin{array}{@{\,}wc{50pt}wc{50pt}wc{55pt}@{\,}}
 -\sigma & \sigma & 0 \\
 \rho-(\rho - 1) & -1 & -\sqrt{\beta (\rho - 1)} \\
 \sqrt{\beta (\rho - 1)} & \sqrt{\beta (\rho - 1)} & -\beta
 \end{array}\right] \nonumber \\
 &=
-\begin{bmatrix}
+\left[\begin{array}{@{\,}wc{50pt}wc{50pt}wc{55pt}@{\,}}
 -\sigma & \sigma & 0 \\
 1 & -1 & -\sqrt{\beta (\rho - 1)} \\
 \sqrt{\beta (\rho - 1)} & \sqrt{\beta (\rho - 1)} & -\beta
-\end{bmatrix}
+\end{array}\right]
 \end{align}
 and its characteristic polynomial is
 \begin{align}
@@ -775,7 +776,7 @@ Combining these two equations (dividing (a) by (b)) then yields
 \end{align}
 However, this does not tell us which side, $\rho < \rho_c$ or $\rho > \rho_c$, corresponds to a positive/negative real part of the complex roots. We will simply state the conclusion for that.\footnote{Again, the algebra to explicitly show this is too horrifying to be written down.} If $\rho < \rho_c$, the complex roots will have a negative real part. So by the Hartman-Grobman Theorem \ref{thm:HGthm}, the equilibrium points $\tilde{\textbf{X}}_{\pm}$ will be stable, behaving as a one-dimensional manifold of a stable node and a two-dimensional manifold of a stable spiral combined together. Any particle will spiral inwards and be absorbed into either of the two equilibrium points. However, when $\rho > \rho_c$, the complex roots will now have a positive real part and by the same argument the equilibrium points $\tilde{\textbf{X}}_{\pm}$ will be unstable locally, akin to a one-dimensional manifold of a stable node fused with a two-dimensional manifold of an unstable spiral. The effect is to cause the particle to gradually spiral outwards about one of the equilibrium points, and when it moves far enough away from it, it will be attracted and gravitate towards the another equilibrium point. However, as the particle get closer to it, the same scenario will occur again where it will now gradually spiral outwards about the new equilibrium point. This alternating pattern will keep going on and on, where the particle will revolve about and be flung between these two equilibrium points. Hence, as $\rho > \rho_c$, the Lorenz-63 Model is known as a \index{Strange Attractor}\keywordhl{strange attractor} and \index{Chaos}\keywordhl{chaos} arises: the system is very sensitive to any small perturbation in the initial position of a particle and it can lead to great deviation in future trajectories (the \index{Butterfly Effect}\keywordhl{Butterfly Effect}). Physically, the Rayleigh number is sufficiently high to produce chaos. Usually, we set $\sigma = 10$ and $\beta = \frac{8}{3}$. The critical value of $\rho_c$ will then be
 \begin{align}
-\rho_c = \frac{(10)(\frac{8}{3} + 10 + 3)}{10 - \frac{8}{3} - 1} \approx 24.74
+\rho_c = \frac{(10)\left(\frac{8}{3} + 10 + 3\right)}{10 - \frac{8}{3} - 1} \approx 24.74
 \end{align}
 according to (\ref{eqn:lorezncrit}). The following two figures (Figures \ref{fig:lor63r14} and \ref{fig:lor63r28}) then show the evolution of the system with $\rho = 14$ and $\rho = 28$\footnote{$\rho = 28$ is a very common configuration picked to demonstrate the chaotic behavior.}, when $\rho$ is under and above the critical $\rho_c$.
 \begin{figure}[p]
@@ -907,7 +908,7 @@ A &=
 \end{align*}
 \end{Exercise}
 \begin{Answer}
-The equilibrium point is found by solving $A\tilde{\textbf{y}} = -G$ which gives $\tilde{\textbf{y}} = (\frac{3}{2}, 0, -\frac{1}{2})^T$. The eigenvalues of $A$ are $\lambda = 2, -2\pm 2i$ so it is an inward spiral on a cross-section that extends along a cut-through axis.
+The equilibrium point is found by solving $A\tilde{\textbf{y}} = -G$ which gives $\tilde{\textbf{y}} = (\frac{3}{2}, 0, -\frac{1}{2})^T$. The eigenvalues of $A$ are $\lambda = 2, -2\pm 2i$ so it is an inward spiral on a cross-section that extends outwards along a cut-through axis.
 \end{Answer}
 
 \begin{Exercise}

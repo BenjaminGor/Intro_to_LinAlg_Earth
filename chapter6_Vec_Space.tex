@@ -1,7 +1,7 @@
 \chapter{Vector Spaces and Coordinate Bases}
 \label{chap:vec_space}
 
-The previous chapters have provided a basic understanding of matrices and vectors separately. What bridge these two quantities together are the concepts of \textit{vector (sub)spaces}, \textit{linear combination}, \textit{span}, and \textit{linear independence}. With all of these, we can revisit the process of Gaussian Elimination from the view of \textit{Column-row Factorization}. Then, we will learn how to find \textit{coordinate bases} for vector spaces to represent vectors in different coordinate systems. Finally, we are going to investigate the so-called \textit{four fundamental subspaces} induced by a matrix and see how they are interconnected via the \textit{Rank-Nullity Theorem}.
+The previous chapters have provided a basic understanding of matrices and vectors separately. What bridge these two quantities together are the concepts of \textit{vector (sub)spaces}, \textit{linear combination}, \textit{span}, and \textit{linear independence}. With all of these, we can revisit the process of Gaussian Elimination from the view of \textit{Column-row Factorization}. Then, we will learn how to find \textit{coordinate bases} for vector spaces to represent vectors in different coordinate systems. Finally, we are going to investigate the so-called \textit{four fundamental subspaces} induced by a matrix and see how they are interconnected via the \textit{Rank-Nullity Theorem}. \textcolor{red}{\textbf{Warning:} The following three chapters (6-8) will delve into the more theoretical parts of Linear Algebra and involve a lot of heavy, abstract concepts that are difficult for most people. So be prepared for this challenge: it is very normal to feel a bit frustrated. If you are Mathematics-averse, you may want to just skim through them, go directly to Chapter 9, and focus only on manipulating matrices in the remaining parts. However, if you are courageous enough to put the effort into fully understanding these three chapters, you will find the arguments used in the subsequent more application-emphasized chapters much more natural, and obtain a more insightful and valuable understanding of the interwoven principles.}
 
 \section{Making of the Real $n$-space $\mathbb{R}^n$}
 
@@ -10,9 +10,9 @@ The previous chapters have provided a basic understanding of matrices and vector
 We have briefly mentioned under Definition \ref{defn:real_nspace} that the real $n$-space $\mathbb{R}^n$ is mathematically a vector space, but without stating the actual requirements. In fact, to be qualified as a \index{Vector Space}\keywordhl{vector space}, a set has to satisfy the ten axioms below. We will limit ourselves to \index{Real Vector Space}\keywordhl{real vector spaces} for now.
 \begin{defn}[Axioms of a (Real) Vector Space]
 \label{defn:realvecspaceaxiom}
-A \textit{real} vector space is a non-empty set $\mathcal{V}$ with the zero vector \textbf{0}, such that for all elements (\index{Vector}\textit{vectors}) $\vec{u}, \vec{v}, \vec{w} \in \mathcal{V}$ in the set, and \textit{real} numbers (as the \index{Scalar}\textit{scalars}) $a, b \in \mathbb{R}$ (for a complex vector space replace $\mathbb{R}$ by $\mathbb{C}$ here), we have
+A \textit{real} vector space is a non-empty set $\mathcal{V}$ with the zero vector $\textbf{0}$, such that for all elements (\index{Vector}\textit{vectors}) $\vec{u}, \vec{v}, \vec{w} \in \mathcal{V}$ in the set, and \textit{real} numbers (as the \index{Scalar}\textit{scalars}) $a, b \in \mathbb{R}$ (for a complex vector space replace $\mathbb{R}$ by $\mathbb{C}$ here), we have
 \begin{enumerate}
-\item $\vec{u} + \vec{v} \in \mathcal{V}$ (Closure under Vector Addition: Addition between two vectors is defined and the resulting vector is still in the vector space.)
+\item $\vec{u} + \vec{v} \in \mathcal{V}$ (\index{Closure (under an Operation)}\textit{Closure} under Vector Addition: Addition between two vectors is defined and the resulting vector is still in the vector space.)
 \item $\vec{u} + \vec{v} = \vec{v} + \vec{u}$ (Commutative Property of Addition)
 \item $(\vec{u} + \vec{v}) + \vec{w} = \vec{u} + (\vec{v} + \vec{w})$ (Associative Property of Addition)
 \item $\vec{u} + \textbf{0} = \textbf{0} + \vec{u} = \vec{u}$ (Zero Vector as the Additive Identity)
@@ -84,7 +84,7 @@ Generalizing the above discussion, we can easily infer that for $\mathbb{R}^2$, 
     is not a subspace. (but \textit{affine})};
     \draw[blue, line width = 0.9] plot[smooth, domain=-2.4:2.4] (\x, -1.2 * \x) node[right, align=left]{An infinitely long straight line \\passing through the origin \\as a one-dimensional subspace};
     \node[red] at (-0.3, -2.6) {A circle is not a subspace.};
-    \node[align=left, anchor=north west]{\large $O$: \\ The origin is\\ the zero subspace};
+    \node[align=left, anchor=north west]{\large $O$: \\ The origin is\\ the zero subspace.};
     \end{tikzpicture}
     \caption{\textit{Some examples (blue) and non-examples (red) of subspaces in $\mathbb{R}^2$.}}
     \label{fig:R2subspace}
@@ -114,8 +114,8 @@ A linear combination of vectors $\vec{v}^{(1)}, \vec{v}^{(2)}, \vec{v}^{(3)}, \l
 \end{align}
 where the coefficients $c_j$ are some scalars (real [complex] numbers for a real [complex] vector space) and the number of vectors $q$ is assumed to be \textit{finite}.
 \end{defn}
-As a small example, if there are two vectors $\vec{u} = (1,2)^T$ and $\vec{v} = (3,4)^T \in \mathbb{R}^2$, then $\vec{h} = (5,6)^T \in \mathbb{R}^2$ can be written as a linear combination of $\vec{u}$ and $\vec{v}$ because $\vec{h} = (5,6)^T = -(1,2)^T + 2(3,4)^T = -\vec{u} + 2\vec{v}$.\par
-$\blacktriangleright$ Short Exercise: If $\vec{h} = (1,4)^T$ instead, express it as a linear combination of $\vec{u}$ and $\vec{v}$.\footnote{$(1,4)^T = 4(1,2)^T - (3,4)^T$.}\par
+As a small example, if there are two vectors $\vec{u} = (1,2)^T$ and $\vec{v} = (3,4)^T \in \mathbb{R}^2$, then $\smash{\vec{h}} = (5,6)^T \in \mathbb{R}^2$ can be written as a linear combination of $\vec{u}$ and $\vec{v}$ because $\smash{\vec{h}} = (5,6)^T = -(1,2)^T + 2(3,4)^T = -\vec{u} + 2\vec{v}$.\par
+$\blacktriangleright$ Short Exercise: If $\smash{\vec{h}} = (1,4)^T$ instead, express it as a linear combination of $\vec{u}$ and $\vec{v}$.\footnote{$(1,4)^T = 4(1,2)^T - (3,4)^T$.}\par
 
 Attentive readers may realize that the short exercise above can be thought of as a task to find out the solution (if any) for the system
 \begin{align*}
@@ -132,7 +132,7 @@ c_2
 4
 \end{bmatrix}
 \end{align*}
-Extending this, to decide whether a vector $\vec{h} \in \mathbb{R}^n$ can be written as the linear combination of other vectors $\vec{v}^{(j)} \in \mathbb{R}^n$, $j = 1, 2, \ldots, q$, is equivalent to determining whether the linear system $A\vec{x} = \vec{h}$ has a solution, where $A$ is produced by writing out $\vec{v}^{(j)}$ as a matrix column by column:
+Extending this, to decide whether a vector $\smash{\vec{h}} \in \mathbb{R}^n$ can be written as the linear combination of other vectors $\vec{v}^{(j)} \in \mathbb{R}^n$, $j = 1, 2, \ldots, q$, is equivalent to determining whether the linear system $A\vec{x} = \smash{\vec{h}}$ has a solution, where $A$ is produced by writing out $\vec{v}^{(j)}$ as a matrix column by column:
 \begin{align*}
 A = \left[\begin{array}{@{}c|c|c|c@{}}
 | & | & & | \\
@@ -362,9 +362,9 @@ has no solution. We can apply the method of Gaussian Elimination as demonstrated
 0 & 0 & 1
 \end{array}\right] & R_3 + R_1 - R_2 \to R_3
 \end{align*}
-The last row is inconsistent and hence there is no solution to the linear system, and $\vec{h}$ cannot be expressed by a linear combination of $\vec{v}^{(1)}$ and $\vec{v}^{(2)}$.
+The last row is inconsistent and hence there is no solution to the linear system, and $\smash{\vec{h}}$ cannot be expressed by a linear combination of $\vec{v}^{(1)}$ and $\vec{v}^{(2)}$.
 \end{solution}
-With the idea of linear combination, we can define the \keywordhl{span} generated by a \textit{finite} set of vectors.
+With the idea of linear combination, we can define the \index{Span}\keywordhl{span} generated by a \textit{finite} set of vectors.
 \begin{defn}[Span]
 \label{defn:span}
 The span of $q$ vectors in a set $\mathcal{\beta} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \vec{v}^{(3)}, \ldots, \allowbreak \vec{v}^{(q)}\}$ where all of them are from the same vector space $\mathcal{V}$, i.e.\ $\vec{v}^{(j)} \in \mathcal{V}$ for $j = 1, 2, \ldots, q$, is another set that contains all their possible linear combinations as given by (\ref{eqn:linearcomb}) in Definition \ref{defn:linearcomb}, and is denoted by
@@ -444,7 +444,7 @@ Any subspace of $\mathcal{V}$ that contains a subset $\mathcal{B}'$ of some vect
 \subsection{Linear Independence, CR Factorization}
 \label{section:linearind}
 
-Another key concept in this chapter is \textit{linear independence}, which has profound implications in Linear Algebra. Given a set of vectors, if every one of them cannot be expressed as a linear combination of other members, or speaking loosely, each of them is not "dependent" on other vectors, then such a set of vectors is said to be \index{Linearly Independent}\keywordhl{linearly independent}. Otherwise, if at least one of them can be expressed as some linear combination of other vectors, then the set is known as \index{Linearly Dependent}\keywordhl{linearly dependent}.\par
+Another key concept in this chapter is \index{Linear Independence}\textit{linear independence}, which has profound implications in Linear Algebra. Given a set of vectors, if every one of them cannot be expressed as a linear combination of other members, or speaking loosely, each of them is not "dependent" on other vectors, then such a set of vectors is said to be \index{Linearly Independent}\keywordhl{linearly independent}. Otherwise, if at least one of them can be expressed as some linear combination of other vectors, then the set is known as \index{Linearly Dependent}\keywordhl{linearly dependent}.\par
 To check the linear independence of $q$ vectors, one may indeed directly show that for every vector $\vec{v}^{(j)}$ in the set, $j = 1,2,3,\ldots,q$, it cannot be written as the linear combination of other vectors $\vec{v}^{(k)}$ in the set, $k \neq j$. A slightly easier way is to look at the linear combination of just the first $j-1$ vectors (from $\vec{v}^{(1)}$ up to $\vec{v}^{(j-1)}$) for $\vec{v}^{(j)}$. However, it is very tedious if the amount of vectors is large. Fortunately, we have a theorem that significantly simplifies our work.
 \begin{thm}
 \label{thm:linearindep}
@@ -500,7 +500,7 @@ For an $n \times n$ real square matrix $A$, the followings are equivalent:
 \item $A$ is invertible, i.e.\ $A^{-1}$ exists;
 \item $\det(A) \neq 0$;
 \item The reduced row echelon form of $A$ is the identity $I$;
-\item The linear system $A\vec{x} = \vec{h}$ has a unique solution for any $\vec{h}$, particularly $A\vec{x} = \textbf{0}$ has only the trivial solution $\vec{x} = \textbf{0}$;
+\item The linear system $A\vec{x} = \smash{\vec{h}}$ has a unique solution for any $\smash{\vec{h}}$, particularly $A\vec{x} = \textbf{0}$ has only the trivial solution $\vec{x} = \textbf{0}$;
 \item The $n$ column vectors $\vec{v}^{(1)}, \vec{v}^{(2)}, \vec{v}^{(3)}, \ldots, \vec{v}^{(n)}$ of $\mathbb{R}^n$ as in $A = [\vec{v}^{(1)}|\vec{v}^{(2)}|\vec{v}^{(3)}|\cdots|\vec{v}^{(n)}]$ are linearly independent.
 \end{enumerate}
 \end{thm}
@@ -558,7 +558,7 @@ R_3 + 2R_2 \to R_3 \\
 R_1 - R_2 \to R_1
 \end{align*}
 The new columns in the above RREF matrix $A_{\text{rref}} = [\vec{v}^{(1)'}|\vec{v}^{(2)'}|\vec{v}^{(3)'}|\vec{v}^{(4)'}|\vec{v}^{(5)'}]$ follow the exact same dependence relation: $\vec{v}^{(2)'} = 2\vec{v}^{(1)'}$, $\vec{v}^{(4)'} = \vec{v}^{(1)'} + \vec{v}^{(3)'}$ and $\vec{v}^{(5)'} = -\vec{v}^{(1)'} + \vec{v}^{(3)'}$. $\vec{v}^{(1)'}$ and $\vec{v}^{(3)'}$ are clearly still linearly independent of each other too. This demonstrates that dependence relations (and by extension linearly independent vectors) are preserved under elementary row operations during Gaussian Elimination. (The detailed argument is put in Appendix \ref{section:vecspaceappend}) We now introduce a helper theorem so that we may proceed.
-\begin{thm}[Plus/Minus Theorem]
+\begin{thm}[Plus/Minus Theorem]\index{Plus/Minus Theorem}
 \label{thm:plusminus}
 Let $\mathcal{\beta} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \vec{v}^{(3)}, \ldots, \vec{v}^{(q)}\}$ be a set of vectors in the vector space $\mathcal{V}$, i.e.\ $\vec{v}^{(j)} \in \mathcal{V}$, $1 \leq j \leq q$, we have the following two results:
 \begin{enumerate}[label=(\alph*)]
@@ -580,11 +580,8 @@ showing that $\vec{v}^{(q+1)}$ is a linear combination of $\vec{v}^{(j)} \in \ma
 &= b_1\vec{v}^{(1)} + b_2\vec{v}^{(2)} + \cdots + b_{k-1}\vec{v}^{(k-1)} + b_{k+1}\vec{v}^{(k+1)} + \cdots + b_q\vec{v}^{(q)} + b_k\vec{v}^{(k)} \\
 &= b_1\vec{v}^{(1)} + b_2\vec{v}^{(2)} + \cdots + b_{k-1}\vec{v}^{(k-1)} + b_{k+1}\vec{v}^{(k+1)} + \cdots + b_q\vec{v}^{(q)} \\
 &\quad + b_k(a_1\vec{v}^{(1)} + a_2\vec{v}^{(2)} + \cdots + a_{k-1}\vec{v}^{(k-1)} + a_{k+1}\vec{v}^{(k+1)} + \cdots + a_q\vec{v}^{(q)}) \\    
-&=
-\begin{aligned}
-&(b_1 + b_ka_1) \vec{v}^{(1)} + (b_2 + b_ka_2) \vec{v}^{(2)} + (b_{k-1} + b_ka_{k-1})\vec{v}^{(k-1)} \\
-& + (b_{k+1} + b_ka_{k+1}) \vec{v}^{(k+1)} + \cdots + (b_q + b_ka_q)\vec{v}^{(q)}
-\end{aligned} \\
+&= (b_1 + b_ka_1) \vec{v}^{(1)} + (b_2 + b_ka_2) \vec{v}^{(2)} + (b_{k-1} + b_ka_{k-1})\vec{v}^{(k-1)} \\
+&\quad + (b_{k+1} + b_ka_{k+1}) \vec{v}^{(k+1)} + \cdots + (b_q + b_ka_q)\vec{v}^{(q)} \\
 &\in \text{span}(\mathcal{\beta} - \{\vec{v}^{(k)}\}) = \text{span}(\mathcal{\beta} - \{\vec{w}\})
 \end{align*}
 Therefore for all $\vec{v} \in \text{span}(\mathcal{\beta})$, $\vec{v} \in \text{span}(\mathcal{\beta} - \{\vec{w}\})$ and hence $\text{span}(\mathcal{\beta}) \subseteq \text{span}(\mathcal{\beta} - \{\vec{w}\})$. It is trivial to show $\text{span}(\mathcal{\beta} - \{\vec{w}\}) \subseteq \text{span}(\mathcal{\beta})$, and thus $\text{span}(\mathcal{\beta}) = \text{span}(\mathcal{\beta} - \{\vec{w}\}) = \mathcal{B}$. This part of the theorem is very relevant to the span of sets $\mathcal{\beta}_3$ and $\mathcal{\beta}_4$ in the previous Example \ref{exmp:S3S4}.
@@ -600,6 +597,7 @@ Again, we will simply provide the proof in a footnote for reference.\footnote{We
 &= g_1\vec{v}^{(1)} + g_2\vec{v}^{(2)} + g_3\vec{v}^{(3)} + \cdots + g_q\vec{v}^{(q)}
 \end{align*}
 where $d_j$, $g_j$ are two sets of coefficients that are not exactly the same. Subtracting one expression by another leads to
+\vspace{\maxdimen}
 \begin{align*}
 \begin{aligned}
 &\quad (d_1\vec{v}^{(1)} + d_2\vec{v}^{(2)} + d_3\vec{v}^{(3)} + \cdots + d_q\vec{v}^{(q)}) \\
@@ -1078,7 +1076,7 @@ The final RREF reveals that $\vec{u}$ and $\vec{v}$ are two linearly independent
 
 \subsection{Coordinate Bases for $\mathbb{R}^n$}
 \label{section:6.1.5}
-Back in Definition \ref{defn:standardunitvec}, we have introduced the $n$ standard unit vectors $\hat{e}^{(1)}, \hat{e}^{(2)}, \ldots, \hat{e}^{(n)}$ for the real $n$-space $\mathbb{R}^n$. Obviously, the standard unit vectors are linearly independent and their span is exactly $\mathbb{R}^n$. We often refer to the coefficients $x_j$ in front of $\hat{e}^{(j)}$ of a vector $\vec{x} = (x_1, x_2, \ldots, x_n)^T = x_1\hat{e}^{(1)} + x_2\hat{e}^{(2)} + \cdots + x_n\hat{e}^{(n)}$ in $\mathbb{R}^n$ as the \index{Coordinates}\textit{Cartesian} coordinates of $\vec{x}$. The coordinates $x_j$ are unique, guaranteed by Properties \ref{proper:lincombofspan}.\par
+Back in Definition \ref{defn:standardunitvec}, we have introduced the $n$ standard unit vectors $\hat{e}^{(1)}, \hat{e}^{(2)}, \ldots, \hat{e}^{(n)}$ for the real $n$-space $\mathbb{R}^n$. Obviously, the standard unit vectors are linearly independent and their span is exactly $\mathbb{R}^n$. We often refer to the coefficients $x_j$ in front of $\hat{e}^{(j)}$ of a vector $\vec{x} = (x_1, x_2, \ldots, x_n)^T = x_1\hat{e}^{(1)} + x_2\hat{e}^{(2)} + \cdots + x_n\hat{e}^{(n)}$ in $\mathbb{R}^n$ as the \index{Coordinates}\textit{Cartesian coordinates} of $\vec{x}$. The coordinates $x_j$ are unique, guaranteed by Properties \ref{proper:lincombofspan}.\par
 However, sometimes we may want to express an $\mathbb{R}^n$ vector in another \index{Coordinate Basis (System)}\keywordhl{coordinate basis (system)} with axes different from the standard unit vectors, that is, other than the \index{Standard Basis}\keywordhl{standard basis} $\mathcal{S} = \{\hat{e}^{(1)}, \hat{e}^{(2)}, \ldots, \hat{e}^{(n)}\}$. Motivated by the properties of the Cartesian coordinate system above, in which the standard unit vectors are linearly independent and span $\mathbb{R}^n$ such that every vector in $\mathbb{R}^n$ can be expressed as a unique linear combination of them, we require all other coordinate bases for $\mathbb{R}^n$ to carry the same properties. The coefficients of this linear combination will then become the coordinates of that vector with respect to this basis.
 \begin{defn}[Coordinate Basis for $\mathbb{R}^n$]
 \label{defn:coordRn}
@@ -1097,7 +1095,7 @@ The following theorem shows that we actually only need to check either one of th
 A set of $n$ vectors of $\mathbb{R}^n$ is linearly independent if and only if they span $\mathbb{R}^n$.
 \end{thm}
 \begin{proof}
-Linear Independence $\rightarrow$ Spanning $\mathbb{R}^n$: Assume $\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(n)}$ are linear independent with $A = [\vec{v}^{(1)}|\vec{v}^{(2)}|\cdots|\vec{v}^{(n)}]$ being an $n \times n$ square matrix. The application of part (e) $\rightarrow$ (d) of Theorem \ref{thm:equiv3} immediately shows that there is always a (unique) solution to $A\vec{x} = \vec{h}$ for any $\vec{h}$ of $\mathbb{R}^n$. Recall that $A\vec{x}$ represents the span of $\{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(n)}\}$ (Definition \ref{defn:span}) so it implies that these vectors can generate the entire $\mathbb{R}^n$.\par
+Linear Independence $\rightarrow$ Spanning $\mathbb{R}^n$: Assume $\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(n)}$ are linear independent with $A = [\vec{v}^{(1)}|\vec{v}^{(2)}|\cdots|\vec{v}^{(n)}]$ being an $n \times n$ square matrix. The application of part (e) $\rightarrow$ (d) of Theorem \ref{thm:equiv3} immediately shows that there is always a (unique) solution to $A\vec{x} = \smash{\vec{h}}$ for any $\smash{\vec{h}}$ of $\mathbb{R}^n$. Recall that $A\vec{x}$ represents the span of $\{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(n)}\}$ (Definition \ref{defn:span}) so it implies that these vectors can generate the entire $\mathbb{R}^n$.\par
 Spanning $\mathbb{R}^n$ $\rightarrow$ Linear Independence: Assume the opposite of the implication that $\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \vec{v}^{(n)}$ are linearly dependent, then by (c) and (e) of Theorem \ref{thm:equiv3} the reduced row echelon form of $A = [\vec{v}^{(1)}|\vec{v}^{(2)}|\cdots|\vec{v}^{(n)}]$ is not the identity matrix and contains at least one row of full zeros. Following a logic similar to Footnote \ref{foot:inconsth}, these vectors cannot span $\mathbb{R}^n$ and the contrapositive is proved. 
 \end{proof}
 
@@ -1422,7 +1420,7 @@ only has $c_j = 0$ as the trivial solution, $1 \leq j \leq p+q$. Rearranging, we
 &\quad c_1\vec{u}^{(1)} + c_2\vec{u}^{(2)} + \cdots + c_p\vec{u}^{(p)} \in \mathcal{W}_1 \\
 &= -c_{p+1}\vec{v}^{(1)} - \cdots - c_{p+q}\vec{v}^{(q)} \in \mathcal{W}_2
 \end{align*}
-But since $c_j = 0$ is the only solution to this, it shows that there is only the zero vector in both $\mathcal{W}_1$ and $\mathcal{W}_2$ at the same time. The converse essentially follows the same argument in reverse. We say that $\mathcal{W}_1$ and $\mathcal{W}_2$ are a \index{Complement}\keywordhl{(subspace) complement}\footnote{A subspace complement is not the same as the set-theoretic complement.} to each other in $\mathcal{W}_1 \oplus \mathcal{W}_2$, as any non-zero vector from the direct sum $\mathcal{W}_1 \oplus \mathcal{W}_2$ that has purely zero components in one of the two smaller subspaces, let's say $\mathcal{W}_1$, will always completely reside in the other subspace, $\mathcal{W}_2$.
+But since $c_j = 0$ is the only solution to this, it shows that there is only the zero vector in both $\mathcal{W}_1$ and $\mathcal{W}_2$ at the same time. The converse essentially follows the same argument in reverse. We say that $\mathcal{W}_1$ and $\mathcal{W}_2$ are a \index{Complement (Subspace)}\keywordhl{(subspace) complement}\footnote{A subspace complement is not the same as the set-theoretic complement.} to each other in $\mathcal{W}_1 \oplus \mathcal{W}_2$, as any non-zero vector from the direct sum $\mathcal{W}_1 \oplus \mathcal{W}_2$ that has purely zero components in one of the two smaller subspaces, let's say $\mathcal{W}_1$, will always completely reside in the other subspace, $\mathcal{W}_2$.
 \begin{proper}[Subspace Complement]
 \label{proper:complement}
 If a vector space can be written as a direct sum of two smaller subspaces, i.e.\ $\mathcal{V} = \mathcal{W}_1 \oplus \mathcal{W}_2$, then $\mathcal{W}_1 = \mathcal{W}_2^C$ and $\mathcal{W}_2 = \mathcal{W}_1^C$ are said to be the (subspace) complement (denoted by the superscript $^C$) to each other in $\mathcal{V}$.
@@ -1841,13 +1839,13 @@ which reveals that the first two columns (representing the first two row vectors
 Finally, in view of Definitions \ref{defn:span} and \ref{defn:colrowspace}, the analysis of solving linear systems in Section \ref{section:SolveLinSys} can be summarized as follows.
 \begin{proper}
 \label{proper:consistentcolspace}
-A linear system $A\vec{x} = \vec{h}$ is consistent if and only if $\vec{h}$ is in the column space of $A$.
+A linear system $A\vec{x} = \vec{h}$ is consistent if and only if $\smash{\vec{h}}$ is in the column space of $A$.
 \end{proper}
 
 \subsection{Null Space, Rank-Nullity Theorem}
 \label{section:null}
 
-As we have briefly mentioned at the end of the last chapter, the solution of a linear system $A\vec{x} = \vec{h}$, where $A$ is an $m \times n$ matrix and $\vec{x} \in \mathbb{R}^n$, can be viewed as some sort of solution space. In Section \ref{subsection:SolLinSysGauss} we know that it is made up of the particular and complementary solution, where the latter corresponds to the family of $\vec{x} = \vec{x}_0$ ($= \vec{x}_c$ using the notation in that section) that satisfies the homogeneous part $A\vec{x} = \textbf{0}$. The set $\vec{x}_0 \in \mathbb{R}^n$ can be shown to form a subspace of $\mathbb{R}^n$, and this subspace is then called the \index{Null Space}\keywordhl{null space} of $A$. To verify, we check the two conditions in Theorem \ref{thm:subspacecriteria}. Let $\smash{\vec{x}_0^{(1)}}$ and $\smash{\vec{x}_0^{(2)}}$ be two vectors in the null space $\vec{x}_0$. Then we have: 1. $A\smash{(\vec{x}_0^{(1)} + \vec{x}_0^{(2)})} = A\smash{\vec{x}_0^{(1)}} + A\smash{\vec{x}_0^{(2)}} = \textbf{0} + \textbf{0} = \textbf{0}$, so $\smash{\vec{x}_0^{(1)}} + \smash{\vec{x}_0^{(2)}} \in \vec{x}_0$, and 2. $A(a\smash{\vec{x}_0^{(1)}}) = a(A\smash{\vec{x}_0^{(1)}}) = a\textbf{0} = \textbf{0}$, hence $a\smash{\vec{x}_0^{(1)}} \in \vec{x}_0$.
+As we have briefly mentioned at the end of the last chapter, the solution of a linear system $A\vec{x} = \smash{\vec{h}}$, where $A$ is an $m \times n$ matrix and $\vec{x} \in \mathbb{R}^n$, can be viewed as some sort of solution space. In Section \ref{subsection:SolLinSysGauss} we know that it is made up of the particular and complementary solution, where the latter corresponds to the family of $\vec{x} = \vec{x}_0$ ($= \vec{x}_c$ using the notation in that section) that satisfies the homogeneous part $A\vec{x} = \textbf{0}$. The set $\vec{x}_0 \in \mathbb{R}^n$ can be shown to form a subspace of $\mathbb{R}^n$, and this subspace is then called the \index{Null Space}\keywordhl{null space} of $A$. To verify, we check the two conditions in Theorem \ref{thm:subspacecriteria}. Let $\smash{\vec{x}_0^{(1)}}$ and $\smash{\vec{x}_0^{(2)}}$ be two vectors in the null space $\vec{x}_0$. Then we have: 1. $A\smash{(\vec{x}_0^{(1)} + \vec{x}_0^{(2)})} = A\smash{\vec{x}_0^{(1)}} + A\smash{\vec{x}_0^{(2)}} = \textbf{0} + \textbf{0} = \textbf{0}$, so $\smash{\vec{x}_0^{(1)}} + \smash{\vec{x}_0^{(2)}} \in \vec{x}_0$, and 2. $A(a\smash{\vec{x}_0^{(1)}}) = a(A\smash{\vec{x}_0^{(1)}}) = a\textbf{0} = \textbf{0}$, hence $a\smash{\vec{x}_0^{(1)}} \in \vec{x}_0$.
 \begin{defn}[Null Space]
 \label{defn:nullspace}
 For an $m \times n$ real matrix $A$, its null space $\mathcal{N}(A)$ is the subspace consisting of all solution vectors $\vec{x} = \vec{x}_0 \in \mathbb{R}^n$ to the matrix equation $A\vec{x} = \textbf{0}$. The dimension of null space is called \index{Nullity}\keywordhl{nullity}.
@@ -2015,7 +2013,7 @@ For a real $m \times n$ matrix $A$, we have
 where $\mathcal{C}(A^T)^\perp = \mathcal{N}(A)$, $\mathcal{N}(A)^\perp = \mathcal{C}(A^T)$, and $\mathcal{C}(A)^\perp = \mathcal{N}(A^T)$, $\mathcal{N}(A^T)^\perp = \mathcal{C}(A)$, with $^\perp$ denoting an orthogonal complement.
 \end{proper}
 
-We conclude the relationships between the column, row, null, and left null space, a.k.a the \index{The Four Fundamental Subspaces}\keywordhl{Four fundamental subspaces} induced by a matrix, with a diagram (Figure \ref{fig:foursubspaces}). \par
+We conclude the relationships between the column, row, null, and left null space, a.k.a \index{The Four Fundamental Subspaces}\keywordhl{the Four fundamental subspaces} induced by a matrix, with a diagram (Figure \ref{fig:foursubspaces}). \par
 \begin{figure}
     \centering
     \begin{tikzpicture}[>={Stealth[length=5pt]}]
@@ -2049,7 +2047,7 @@ We conclude the relationships between the column, row, null, and left null space
     \draw[dashed, ->] (-0.4,1.5) -- (7,2.5) node[sloped, midway, above]{$A\vec{x}_r = \vec{h}$};
     \node[above] at (7,2.6) {$\vec{h}$};
     \end{tikzpicture}
-    \caption{\textit{The relationships between the four fundamental subspaces for an $m \times n$ real matrix $A$ of rank $r$: the row space $\mathcal{C}(A^T)$, null space $\mathcal{N}(A)$, column space $\mathcal{C}(A)$, left null space $\mathcal{N}(A^T)$. Any vector $\vec{x} \in \mathbb{R}^n$ can be partitioned into $\vec{x} = \vec{x}_r + \vec{x}_n$ uniquely, where $\vec{x}_r \in \mathcal{C}(A^T) \subseteq \mathbb{R}^n$ and $\vec{x}_n \in \mathcal{N}(A) \subseteq \mathbb{R}^n$ are in the row/null space of $A$ respectively. The matrix $A$ maps $\vec{x}_n$ to the zero vector in $\mathbb{R}^m$ and $\vec{x}_r$ to some vector $\vec{h} \in \mathcal{C}(A) \subseteq \mathbb{R}^m$ in the column space of $A$. The total effect on $\vec{x}$ multiplied by $A$, is the sum of the two responses: $A\vec{x} = A(\vec{x}_r + \vec{x}_n) = A\vec{x}_r + A\vec{x}_n = \vec{h} + \textbf{0} = \vec{h}$.}}
+    \caption{\textit{The relationships between the four fundamental subspaces for an $m \times n$ real matrix $A$ of rank $r$: the row space $\mathcal{C}(A^T)$, null space $\mathcal{N}(A)$, column space $\mathcal{C}(A)$, left null space $\mathcal{N}(A^T)$. Any vector $\vec{x} \in \mathbb{R}^n$ can be partitioned into $\vec{x} = \vec{x}_r + \vec{x}_n$ uniquely, where $\vec{x}_r \in \mathcal{C}(A^T) \subseteq \mathbb{R}^n$ and $\vec{x}_n \in \mathcal{N}(A) \subseteq \mathbb{R}^n$ are in the row/null space of $A$ respectively. The matrix $A$ maps $\vec{x}_n$ to the zero vector in $\mathbb{R}^m$ and $\vec{x}_r$ to some vector $\smash{\vec{h}} \in \mathcal{C}(A) \subseteq \mathbb{R}^m$ in the column space of $A$. The total effect on $\vec{x}$ multiplied by $A$, is the sum of the two responses: $A\vec{x} = A(\vec{x}_r + \vec{x}_n) = A\vec{x}_r + A\vec{x}_n = \smash{\vec{h}} + \textbf{0} = \smash{\vec{h}}$.}}
     \label{fig:foursubspaces}
 \end{figure}
 
@@ -2211,7 +2209,7 @@ Determine if the following sets of vectors are linearly independent.
 3 & 9 & 5
 \end{vmatrix} = 35 \neq 0
 \end{align*}
-so they are linearly independent.
+so they are linearly independent by the equivalent statements.
 \item Meanwhile
 \begin{align*}
 \begin{vmatrix}
@@ -2220,7 +2218,7 @@ so they are linearly independent.
 3 & 9 & 3
 \end{vmatrix} = 0
 \end{align*}
-so they are linearly dependent.
+so they are linearly dependent by the same logic.
 \end{enumerate}
 \end{Answer}
 
@@ -2458,7 +2456,7 @@ So the given $\mathcal{\beta} = \{\vec{w}^{(j)}\}$, $j=1,2,3$ forms a basis and 
 Prove that for any two subspaces $\mathcal{W}_1, \mathcal{W}_2 \subseteq \mathcal{V}$. Their intersection $\mathcal{W}_1 \cap \mathcal{W}_2$ is also a subspace of $\mathcal{V}$. How about their union?
 \end{Exercise}
 \begin{Answer}
-Denote $\mathcal{W}_\cap = \mathcal{W}_1 \cap \mathcal{W}_2$. For $\vec{w}_\cap^{(1)}, \vec{w}_\cap^{(2)} \in \mathcal{W}_1, \mathcal{W}_2$ both, we have $\vec{w}_\cap^{(1)}, \vec{w}_\cap^{(2)} \in \mathcal{W}_\cap$, and thus $a\vec{w}_\cap^{(1)} + b\vec{w}_\cap^{(2)} \in \mathcal{W}_1, \mathcal{W}_2$, and $a\vec{w}_\cap^{(1)} + b\vec{w}_\cap^{(2)} \in \mathcal{W}_\cap$ so the intersection is indeed a subspace. However, unions in general are not subspaces: take the union of $x$/$y$-axes as two subspaces in $\mathbb{R}^2$ as a counter-example, then $(a,0)^T \in \mathcal{W}_1$, $(0,b)^T \in \mathcal{W}_2$ but $(a,0)T + (0,b)^T = (a,b)^T \notin \mathcal{W}_1 \cup \mathcal{W}_2$ as long as $a, b \neq 0$.
+Denote $\mathcal{W}_\cap = \mathcal{W}_1 \cap \mathcal{W}_2$. For $\vec{w}_\cap^{(1)}, \vec{w}_\cap^{(2)} \in \mathcal{W}_1, \mathcal{W}_2$ both, we have $\vec{w}_\cap^{(1)}, \vec{w}_\cap^{(2)} \in \mathcal{W}_\cap$, and thus $a\vec{w}_\cap^{(1)} + b\vec{w}_\cap^{(2)} \in \mathcal{W}_1, \mathcal{W}_2$ by the definition of subspaces, and $a\vec{w}_\cap^{(1)} + b\vec{w}_\cap^{(2)} \in \mathcal{W}_\cap$ so the intersection is indeed a subspace. However, unions in general are not subspaces: take the union of $x$/$y$-axes as two subspaces in $\mathbb{R}^2$ as a counter-example, then $(a,0)^T \in \mathcal{W}_1$, $(0,b)^T \in \mathcal{W}_2$ but $(a,0)T + (0,b)^T = (a,b)^T \notin \mathcal{W}_1 \cup \mathcal{W}_2$ as long as $a, b \neq 0$.
 \end{Answer}
 
 \begin{Exercise}
@@ -2500,7 +2498,7 @@ and thus the column space $\mathcal{C}(A)$ has a basis of $\{(1,0,1,1)^T, (0,1,2
 0&0&0&0
 \end{bmatrix}
 \end{align*}
-so the row space $\mathcal{C}(A^T)$ has a basis of $\{(1,0,1,1)^T, (0,1,-1,1)^T, (1,2,-1,0)^T\}$ (the first/second/fourth row vectors of $A$), and the left null space $\mathcal{N}(A^T)$ can be seen to possess a basis of $\{(-2,2,-1,3)\}^T$. Here we simply check Theorem \ref{thm:ranknullity} and Properties \ref{proper:funsubsortho} for row/null space and leave the remaining to the readers:
+so the row space $\mathcal{C}(A^T)$ has a basis of $\{(1,0,1,1)^T, (0,1,-1,1)^T, (1,2,-1,0)^T\}$ (the first three row vectors of $A$), and the left null space $\mathcal{N}(A^T)$ can be seen to possess a basis of $\{(-2,2,-1,3)\}^T$. Here we simply check Theorem \ref{thm:ranknullity} and Properties \ref{proper:funsubsortho} for row/null space and leave the remaining to the readers:
 \begin{align*}
 \dim(\mathcal{C}(A^T)) + \dim(\mathcal{N}(A)) = 3 + 1 = 4
 \end{align*}

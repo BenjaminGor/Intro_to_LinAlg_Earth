@@ -334,7 +334,7 @@ T^\dag &= (A(A^\dag A)^{-1}A^\dag)^\dag \\
 \section{Linear Regression}
 \subsection{Linear Regression for One Predictor Variable}
 
-\index{Linear Regression}\keywordhl{Linear regression} is a very important tool in Statistics that helps identify any linear trend in data and is based on least-square approximation. The simplest type of linear regression is fitting a straight line $y = \alpha + \beta x$, where $\alpha$ and $\beta$ are its intercept and slope, to $m$ pairs of observation, $(x_1, y_1), (x_2, y_2), \cdots, (x_m, y_m)$ such that the sum of squared errors $\sum_{k=1}^m (y_k - (\alpha + \beta x_k))^2$ is minimized. In this context, $x$ and $y$ are known as the \textit{explanatory} and \textit{response variable} respectively.\par
+\index{Linear Regression}\keywordhl{Linear regression} is a very important tool in Statistics that helps identify any linear trend in data and is based on least-square approximation. The simplest type of linear regression is fitting a straight line $y = \alpha + \beta x$, where $\alpha$ and $\beta$ are its intercept and slope, to $m$ pairs of observation, $(x_1, y_1), (x_2, y_2), \cdots, (x_m, y_m)$ such that the sum of squared errors $\sum_{k=1}^m (y_k - (\alpha + \beta x_k))^2$ is minimized. In this context, $x$ and $y$ are known as the \index{Explanatory Variable}\textit{explanatory} and \index{Response Variable}\textit{response variable} respectively.\par
 
 \begin{figure}[ht!]
 \centering
@@ -677,11 +677,11 @@ The mean error of any linear regression is zero. Moreover, its sum of squares to
 \end{align}    
 \end{subequations}
 \end{proper}
-The ratio of SSR to SST is known as the \index{Coefficient of Determination}\keywordhl{coefficient of determination} and is denoted by $R^2$ (hence sometimes we also simply call it \index{R-squared}\keywordhl{R-squared}). It is the proportion of variance in the response variable that can be explained by the predictors and thus indicates how good the linear fit is. It ranges from $0$ to $1$. The larger the value of $R^2$, the better the linear regression at predicting the target variable. If $R^2$ is close to one, then the fit is almost perfect. However, it is cautioned that there may be the problem of \textit{overfitting}\footnote{For $n$ distinct sets of data, it is always possible to achieve a perfect fit ($R^2 = 1$) using $n-1$ predictors (plus the intercept term) in the linear regression even when they may not be really related to the predictand and this is an extreme case of overfitting.}, which means that the regression does well on the dataset it is trained on but fails horribly when extrapolated to data points outside this training set. On the other hand, if $R^2$ is low, then the linear regression is ineffective, but it simply means that there is no apparent linear trend, and the possibility of other forms of relationship, like a logarithmic one, existing between the explanatory variables and response variable, cannot be ruled out.
+The ratio of SSR to SST is known as the \index{Coefficient of Determination}\keywordhl{coefficient of determination} and is denoted by $R^2$ (hence sometimes we also simply call it \index{$R$-squared}\keywordhl{$R$-squared}). It is the proportion of variance in the response variable that can be explained by the predictors and thus indicates how good the linear fit is. It ranges from $0$ to $1$. The larger the value of $R^2$, the better the linear regression at predicting the target variable. If $R^2$ is close to one, then the fit is almost perfect. However, it is cautioned that there may be the problem of \textit{overfitting}\footnote{For $n$ distinct sets of data, it is always possible to achieve a perfect fit ($R^2 = 1$) using $n-1$ predictors (plus the intercept term) in the linear regression even when they may not be really related to the predictand and this is an extreme case of overfitting.}, which means that the regression does well on the dataset it is trained on but fails horribly when extrapolated to data points outside this training set. On the other hand, if $R^2$ is low, then the linear regression is ineffective, but it simply means that there is no apparent linear trend, and the possibility of other forms of relationship, like a logarithmic one, existing between the explanatory variables and response variable, cannot be ruled out.
 
 \begin{exmp}
 \label{exmp:GPAregress2}
-Find the R-squared for the linear regression in Example \ref{exmp:GPAregress}.
+Find the $R$-squared for the linear regression in Example \ref{exmp:GPAregress}.
 \end{exmp}
 \begin{solution}
 We compute the SST and SSR as follows.
@@ -785,7 +785,7 @@ Subsequently, create an \verb|sm.OLS| (stands for "Ordinary Least Squares") obje
 mod = sm.OLS(Y, Xc)
 res = mod.fit()
 \end{lstlisting}
-The \verb|summary| method will output a table that provides relevant parameters about the linear regression like the R-squared and p-values.
+The \verb|summary| method will output a table that provides relevant parameters about the linear regression like the $R$-squared and p-values.
 \begin{lstlisting}
 print(res.summary())
 \end{lstlisting}
@@ -929,7 +929,7 @@ Therefore the regression formula is $P = 1033.9 - 1.220T$.
 \begin{Exercise}
 \phantomsection
 \label{ex:carbontrend}
-Find a linear fit and a quadratic fit for the following atmospheric data regarding global carbon dioxide level. Also, calculate the root-mean-square error for each fit.
+Find a linear fit and a quadratic fit for the following atmospheric data regarding the global carbon dioxide level. Also, calculate the root-mean-square error for each fit.
 \begin{figure}[h!]
 \centering
 \fbox{\includegraphics[scale = 0.32]{carbon.png}}
@@ -955,11 +955,11 @@ CO$_2$ level (ppm) & $354.4$ & $361.0$ & $369.7$ & $380.0$ & $390.1$ & $401.0$\\
 \item We have $m=12$, $\sum X=330$, $\sum (X^2)=12650$, $\sum (XY)=121977.0$, $\sum Y=4235.2$. So
 \begin{align*}
 \alpha_f &= \frac{(\sum Y) (\sum X^2) - (\sum X) (\sum XY)}{m(\sum X^2) - (\sum X)^2} \\
-&= \frac{(4235.2) (12650) - (330) (121977.0)}{12(12650) - (330)^2} \approx 310.56 \\
+&= \frac{(4235.2) (12650) - (330) (121977.0)}{12(12650) - (330)^2} \approx 310.6 \\
 \beta_f &= \frac{m (\sum XY) - (\sum X) (\sum Y)}{m(\sum X^2) - (\sum X)^2} \\
 &= \frac{12 (121977.0) - (330) (4235.2)}{12(12650) - (330)^2} \approx 1.541
 \end{align*}
-So the linear fit is $[\text{CO}_2] = 310.56 + 1.541t$, RMSE is $\smash{\sqrt{\frac{126.0}{12}}} \approx 3.24$.
+So the linear fit is $[\text{CO}_2] = 310.6 + 1.541t$, RMSE is $\smash{\sqrt{\frac{126.5}{12}}} \approx 3.25$.
 \item For a quadratic fit $[\text{CO}_2] = a + bt + ct^2$, we compute
 \begin{align*}
 \begin{bmatrix}
@@ -992,7 +992,7 @@ c
 \vdots
 \end{bmatrix}
 \end{align*}
-which yields $a = 316.1, b = 0.880, c= 0.0120$, $[\text{CO}_2] = 316.1 + 0.880t + 0.0120t^2$. RMSE is $\smash{\sqrt{\frac{5.39}{12}}} \approx 0.67$.
+which yields $a = 316.1, b = 0.880, c= 0.0120$, $[\text{CO}_2] = 316.1 + 0.880t + 0.0121t^2$. RMSE is $\smash{\sqrt{\frac{5.2}{12}}} \approx 0.66$.
 \end{enumerate}
 \end{Answer}
 

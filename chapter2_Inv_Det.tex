@@ -6,7 +6,7 @@ In this chapter, we are going to discuss two important concepts about matrices: 
 \section{Identity Matrices and Transpose}
 
 \subsection{Identity Matrices}
-One important class of matrices is the \index{Identity Matrix}\keywordhl{identity matrices}. They are $n \times n$ square matrices, where $n$ can be any positive integer, with entries along the \textit{main diagonal} (where the row index equals column index) being $1$ and other off-diagonal entries being $0$. Usually, they are denoted by $I_n$, or simply by $I$.
+One important class of matrices is the \index{Identity Matrix}\keywordhl{identity matrices}. They are $n \times n$ square matrices, where $n$ can be any positive integer, with entries along the \index{Main Diagonal}\textit{main diagonal} (where the row index equals column index) being $1$ and other off-diagonal entries being $0$. Usually, they are denoted by $I_n$, or simply by $I$.
 {\begin{align*}
 I_2 &= 
 \begin{bmatrix}
@@ -409,7 +409,7 @@ X &=
 0 & 0 & 1 
 \end{bmatrix}
 \end{align*}
-We have studied elementary row operations in the last chapter, which now can be used to transform matrices into their reduced row echelon form. The procedure is comprised of two major parts, the \textit{forward phase}, converting the matrix to row echelon form first, and the \textit{backward phase}, eventually converting it to reduced row echelon form. The first phase is also named \index{Gaussian Elimination}\keywordhl{Gaussian Elimination}, and together they are called \index{Gauss-Jordan Elimination}\keywordhl{Gauss-Jordan Elimination}\footnote{Often we just write Gaussian Elimination in place of Gauss-Jordan Elimination.}. We demonstrate the entire procedure using an example.
+We have studied elementary row operations in the last chapter, which now can be used to transform matrices into their reduced row echelon form. The procedure is comprised of two major parts, the \index{Forward Phase (of Gaussian Elimination)}\textit{forward phase}, converting the matrix to row echelon form first, and the \index{Backward Phase (of Gaussian Elimination)}\textit{backward phase}, eventually converting it to reduced row echelon form. The first phase is also named \index{Gaussian Elimination}\keywordhl{Gaussian Elimination}, and together they are called \index{Gauss-Jordan Elimination}\keywordhl{Gauss-Jordan Elimination}\footnote{Often we just write Gaussian Elimination in place of Gauss-Jordan Elimination.}. We demonstrate the entire procedure using an example.
 \begin{exmp}
 Carry out Gauss-Jordan Elimination on the following matrix to make it become reduced row echelon form.
 \begin{align*}
@@ -422,7 +422,7 @@ A =
 \end{align*}
 \end{exmp}
 \begin{solution}
-At each step of the forward phase, the strategy is to look at the leftmost column that has at least one non-zero entry (any column consisting of full zeros is ignored). Along that column, we either find an existing leading $1$, or create a leading $1$ via multiplying some row having a starting entry $a$ that is as large as possible in magnitude, by the constant $1/a$. (The leading entry selected by this algorithm is commonly called the \index{Pivot}\keywordhl{pivot}, and the process is called \index{Pivoting}\keywordhl{pivoting}.) The row holding the leading $1$ is subsequently put at the top, by an interchanging of rows if needed. In this example, such rows will be highlighted in red.
+At each step of the forward phase, the strategy is to look at the leftmost column that has at least one non-zero entry (any column consisting of full zeros is ignored). Along that column, we either find an existing leading $1$, or create a leading $1$ via multiplying some row having a starting entry $a$ that is as large as possible in magnitude, by the constant $1/a$. (The leading entry selected by this algorithm is commonly called the \keywordhl{pivot}, and the process is called \index{Pivot/Pivoting}\keywordhl{pivoting}.) The row holding the leading $1$ is subsequently put at the top, by an interchanging of rows if needed. In this example, such rows will be highlighted in red.
 \begin{align*}
 \left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 2 & 1 & 4 & 6 \\
@@ -437,7 +437,7 @@ At each step of the forward phase, the strategy is to look at the leftmost colum
 \end{array}\right]
 & \frac{1}{2}R_1 \to R_1
 \end{align*}
-We have picked the first row $R_1$ for the leading $1$ through multiplying it by a factor of $\frac{1}{2}$ here, but a leading $1$ can be obtained from the other two rows as well. Subsequently, we make all the entries below the leading $1$ along that \textit{pivotal column} become zero, by adding the top row (which now holds the leading $1$), times $-a_i$ (where $a_i$ is the corresponding leading entry in the $i$-th row) to the other rows. The zeros produced in this way will be highlighted in blue.
+We have picked the first row $R_1$ for the leading $1$ through multiplying it by a factor of $\frac{1}{2}$ here, but a leading $1$ can be obtained from the other two rows as well. Subsequently, we make all the entries below the leading $1$ along that \index{Pivotal Column}\textit{pivotal column} become zero, by adding the top row (which now holds the leading $1$), times $-a_i$ (where $a_i$ is the corresponding leading entry in the $i$-th row) to the other rows. The zeros produced in this way will be highlighted in blue.
 \begin{align*}
 \left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 \mathcolor{red}{1} & \mathcolor{red}{\frac{1}{2}} & \mathcolor{red}{2} & \mathcolor{red}{3} \\
@@ -700,7 +700,7 @@ A^{-1} =
 \end{bmatrix}    
 \end{align*}
 \end{solution}
-$\blacktriangleright$ Short Exercise: Verify the inverse of $A^{-1}$ above is just $A$ by the same method. \footnote{You should be able to retrieve the matrix $A$ back. The first column of $A^{-1}$ already contains a leading 1, and the entries below it are zeros. A possible next step is to multiply $R_2$ by $-1$ and then subtract $R_3$ by $R_2$.}\par
+$\blacktriangleright$ Short Exercise: Verify the inverse of $A^{-1}$ above is just $A$ by the same method.\footnote{You should be able to retrieve the matrix $A$ back. The first column of $A^{-1}$ already contains a leading 1, and the entries below it are zeros. A possible next step is to multiply $R_2$ by $-1$ and then subtract $R_3$ by $R_2$.}\par
 The underlying reason why the above procedure can produce the inverse matrix is the equivalence between elementary row operations and multiplication by appropriate \index{Elementary Matrix}\keywordhl{elementary matrices}.
 \begin{defn}[Elementary Matrices]
 \label{defn:elementarymat}
@@ -739,7 +739,7 @@ Since it is quite abstract, it is useful to have some actual examples.
 1 & 0 & 0
 \end{bmatrix} & \text{Swapping $R_1$ and $R_3$: } R_1 \leftrightarrow R_3 
 \end{align*}
-The third type of elementary matrices listed above is known as \textit{permutation matrices}. Any elementary row operation can be apparently undone by an inverse elementary row operation (addition vs subtraction, multiplication vs division ($c \neq 0$), swapping twice). Accordingly, any elementary matrix has another corresponding elementary matrix as its inverse, and the readers are invited to think about their forms in the exercise below. \par
+The third type of elementary matrices listed above is known as \index{Permutation Matrix}\textit{permutation matrices}. Any elementary row operation can be apparently undone by an inverse elementary row operation (addition vs subtraction, multiplication vs division ($c \neq 0$), swapping twice). Accordingly, any elementary matrix has another corresponding elementary matrix as its inverse, and the readers are invited to think about their forms in the exercise below. \par
 $\blacktriangleright$ Short Exercise: Write down the inverses of the three example elementary matrices above.\footnote{$
 \begin{bmatrix}
 1 & 0 & 0 \\
@@ -784,7 +784,7 @@ then the action of subtracting $R_2$ from $R_3$, $R_3 - R_2 \to R_3$. can be exp
 -3 & -5 & 1
 \end{bmatrix} 
 \end{align*}
-$\blacktriangleright$ Short Exercise: Find out the $3 \times 3$ elementary matrix for subtracting $2$ times the third row from the first row. What happens when we apply this elementary matrix to the left of the matrix above? \footnote{$
+$\blacktriangleright$ Short Exercise: Find out the $3 \times 3$ elementary matrix for subtracting $2$ times the third row from the first row. What happens when we apply this elementary matrix to the left of the matrix above?\footnote{$
 \begin{bmatrix}
 1 & 0 & -2 \\
 0 & 1 & 0 \\
@@ -1262,12 +1262,7 @@ So we can see in this case, $\det(AB) = \det(A)\det(B)$ indeed. We put the forma
 \end{align*}
 So the equality is true in both cases.}
 
-$\blacktriangleright$ Short Exercise: Prove (4) of Properties \ref{proper:properdet}.\footnote{Consider $A^{-1}A=I$, and take determinant on both sides. By (3), we have
-\begin{align*}
-\det(A^{-1}A) &= \det(I) \\
-\det(A^{-1})\det(A) &= 1 & \text{(The identity always has a determinant of $1$)} \\
-\det(A^{-1}) &= \frac{1}{\det(A)}
-\end{align*}}
+$\blacktriangleright$ Short Exercise: Prove (4) of Properties \ref{proper:properdet}.\footnotemark
 
 \subsection{Finding Inverses by Adjugate}
 An alternative method to compute the inverse of a matrix is by using its \index{Adjugate}\keywordhl{adjugate}, which is the transpose of its cofactor matrix associated with it.
@@ -1285,6 +1280,12 @@ The inverse of a matrix $A$ can be computed from its adjugate by
 A^{-1} = \frac{1}{\det(A)}\text{adj}(A)
 \end{align}
 \end{proper}
+\footnotetext{Consider $A^{-1}A=I$, and take determinant on both sides. By (3), we have
+\begin{align*}
+\det(A^{-1}A) &= \det(I) \\
+\det(A^{-1})\det(A) &= 1 & \text{(The identity always has a determinant of $1$)} \\
+\det(A^{-1}) &= \frac{1}{\det(A)}
+\end{align*}}
 From this formula, it is obvious that singular matrices, having a determinant of zero, do not have an inverse.
 \begin{exmp}
 \label{exmp:2x2}
@@ -1424,7 +1425,7 @@ For a square matrix $A$, the followings are equivalent:
 \item The reduced row echelon form of $A$ is the identity $I$.
 \end{enumerate}
 \end{thm}
-which is just a rephrasing of Properties \ref{proper:invnonzerodet} and Theorem \ref{thm:Gausselimprincip}. Particularly, invertibility is equivalent to a non-zero determinant. We will see the expansion of these equivalence statements in later chapters.
+which is just a rephrasing of Properties \ref{proper:invnonzerodet} and Theorem \ref{thm:Gausselimprincip}. Particularly, invertibility is equivalent to a non-zero determinant. We will see the expansion of these \index{Equivalence Statements}\keywordhl{equivalence statements} in later chapters.
 
 \section{Python Programming}
 \label{section:ch2python}

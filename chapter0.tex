@@ -3,7 +3,7 @@
     {\Huge\raggedright Introduction to Linear Algebra \par}
     {\Large\raggedright \textit{with Earth Science Applications} \hfill\textcolor{Mahogany}{\rule{3mm}{3mm}} \par}
     \vspace{3mm}\hrule\par
-    {\Large\raggedleft Beta Version \hfill C.L. Loi \par}
+    {\Large\raggedleft First Edition \hfill C.L. Loi \par}
     \vfill
     {\Large\raggedleft A student from\\
     CUHK-EESC/NTU-AS \par}
@@ -13,10 +13,14 @@
 \begin{center}
 Introduction to Linear Algebra with Earth Science Applications
 
-Copyright ©, C.L. Loi, 2024
+Copyright ©, C.L. Loi, 2025
 
 All rights reserved. Any reproduction of this work, in part or in whole, is prohibited without the written permission of the author.
 \end{center}
+\vfill
+First Edition, e-book, Self-published (May 2025)
+%First Edition, Hardcover, Self-published (May 2025) \\
+%ISBN: 978-626-01-3990-2
 \end{titlepage}
 
 \KOMAoptions{twoside=semi}
@@ -88,6 +92,136 @@ I wholeheartedly hope that as you read this book, apart from learning the knowle
 
 {\raggedleft Sincerely,\\
 Benjamin \par}
+
+\chapter*{Dedications}
+
+\begin{tikzpicture}[every node/.style={inner sep=0pt}]
+\node[minimum width = \textwidth, minimum height = 6cm, align = left](vecbox){\large
+Thank you for bringing me to life and nurturing me.
+};
+\node[anchor=north west](CNW) at (vecbox.north west)
+{\pgfornament[width=1cm]{39}};
+\node[anchor=north west, xshift=0.5cm, yshift=-0.5cm] at (CNW) {\Large Dear Mom and Dad:};
+\node[anchor=north east](CNE) at (vecbox.north east)
+{\pgfornament[width=1cm,symmetry=v]{39}};
+\node[anchor=south west](CSW) at (vecbox.south west)
+{\pgfornament[width=1cm,symmetry=h]{39}};
+\node[anchor=south east](CSE) at (vecbox.south east)
+{\pgfornament[width=1cm,symmetry=c]{39}};
+\pgfornamenthline{CNW}{CNE}{north}{88}
+\pgfornamenthline{CSW}{CSE}{south}{88}
+\pgfornamentvline{CNW}{CSW}{west}{88}
+\pgfornamentvline{CNE}{CSE}{east}{88}
+\end{tikzpicture}
+
+\begin{tikzpicture}[every node/.style={inner sep=0pt}]
+\node[minimum width = \textwidth, minimum height = 6cm, align = left,](vecbox){\large
+Thank you for bestowing an infinite \\ \large amount of patience on me.
+};
+\node[anchor=north west](CNW) at (vecbox.north west)
+{\pgfornament[width=1cm]{39}};
+\node[anchor=north west, xshift=0.5cm, yshift=-0.5cm] at (CNW) {\Large To Prof. Chun-Chieh Wu:};
+\node[anchor=north east](CNE) at (vecbox.north east)
+{\pgfornament[width=1cm,symmetry=v]{39}};
+\node[anchor=south west](CSW) at (vecbox.south west)
+{\pgfornament[width=1cm,symmetry=h]{39}};
+\node[anchor=south east](CSE) at (vecbox.south east)
+{\pgfornament[width=1cm,symmetry=c]{39}};
+\pgfornamenthline{CNW}{CNE}{north}{88}
+\pgfornamenthline{CSW}{CSE}{south}{88}
+\pgfornamentvline{CNW}{CSW}{west}{88}
+\pgfornamentvline{CNE}{CSE}{east}{88}
+\end{tikzpicture}
+
+\newpage
+
+\vspace*{10pt}
+
+\begin{tikzpicture}[every node/.style={inner sep=0pt}]
+\node[minimum width = \textwidth, minimum height = 6cm, align = left](vecbox){\large
+You are the messenger of God and \\ \large I appreciate your wisdom.
+};
+\node[anchor=north west](CNW) at (vecbox.north west)
+{\pgfornament[width=1cm]{39}};
+\node[anchor=north west, xshift=0.5cm, yshift=-0.5cm] at (CNW) {\Large To Tonybill Chan:};
+\node[anchor=north east](CNE) at (vecbox.north east)
+{\pgfornament[width=1cm,symmetry=v]{39}};
+\node[anchor=south west](CSW) at (vecbox.south west)
+{\pgfornament[width=1cm,symmetry=h]{39}};
+\node[anchor=south east](CSE) at (vecbox.south east)
+{\pgfornament[width=1cm,symmetry=c]{39}};
+\pgfornamenthline{CNW}{CNE}{north}{88}
+\pgfornamenthline{CSW}{CSE}{south}{88}
+\pgfornamentvline{CNW}{CSW}{west}{88}
+\pgfornamentvline{CNE}{CSE}{east}{88}
+\end{tikzpicture}
+
+\begin{tikzpicture}[every node/.style={inner sep=0pt}]
+\node[minimum width = \textwidth, minimum height = 6cm, align = left](vecbox){\large
+Thank you for the companionship as always.
+};
+\node[anchor=north west](CNW) at (vecbox.north west)
+{\pgfornament[width=1cm]{39}};
+\node[anchor=north west, xshift=0.5cm, yshift=-0.5cm] at (CNW) {\large To King Lau, Paul Yeung, and Felix Chiang:};
+\node[anchor=north east](CNE) at (vecbox.north east)
+{\pgfornament[width=1cm,symmetry=v]{39}};
+\node[anchor=south west](CSW) at (vecbox.south west)
+{\pgfornament[width=1cm,symmetry=h]{39}};
+\node[anchor=south east](CSE) at (vecbox.south east)
+{\pgfornament[width=1cm,symmetry=c]{39}};
+\pgfornamenthline{CNW}{CNE}{north}{88}
+\pgfornamenthline{CSW}{CSE}{south}{88}
+\pgfornamentvline{CNW}{CSW}{west}{88}
+\pgfornamentvline{CNE}{CSE}{east}{88}
+\end{tikzpicture}
+
+\vspace*{\fill}
+
+\newpage
+
+\vspace*{10pt}
+
+\begin{tikzpicture}[every node/.style={inner sep=0pt}]
+\node[minimum width = \textwidth, minimum height = 6cm, align = left](vecbox){\large
+Thank you for supporting me whenever things happen. \\
+\large I hope that you will be happy about my growth.
+};
+\node[anchor=north west](CNW) at (vecbox.north west)
+{\pgfornament[width=1cm]{39}};
+\node[anchor=north west, xshift=0.5cm, yshift=-0.5cm] at (CNW) {\Large To my Counselor M.H.:};
+\node[anchor=north east](CNE) at (vecbox.north east)
+{\pgfornament[width=1cm,symmetry=v]{39}};
+\node[anchor=south west](CSW) at (vecbox.south west)
+{\pgfornament[width=1cm,symmetry=h]{39}};
+\node[anchor=south east](CSE) at (vecbox.south east)
+{\pgfornament[width=1cm,symmetry=c]{39}};
+\pgfornamenthline{CNW}{CNE}{north}{88}
+\pgfornamenthline{CSW}{CSE}{south}{88}
+\pgfornamentvline{CNW}{CSW}{west}{88}
+\pgfornamentvline{CNE}{CSE}{east}{88}
+\end{tikzpicture}
+
+\begin{tikzpicture}[every node/.style={inner sep=0pt}]
+\node[minimum width = \textwidth, minimum height = 6cm, align = left](vecbox){\large
+You are the best mentor in the world. \\
+\large I hope that I can proudly stand alongside you \\ \large in the coming future.
+};
+\node[anchor=north west](CNW) at (vecbox.north west)
+{\pgfornament[width=1cm]{39}};
+\node[anchor=north west, xshift=0.5cm, yshift=-0.5cm] at (CNW) {\Large To Prof. Kai-Chih Tseng:};
+\node[anchor=north east](CNE) at (vecbox.north east)
+{\pgfornament[width=1cm,symmetry=v]{39}};
+\node[anchor=south west](CSW) at (vecbox.south west)
+{\pgfornament[width=1cm,symmetry=h]{39}};
+\node[anchor=south east](CSE) at (vecbox.south east)
+{\pgfornament[width=1cm,symmetry=c]{39}};
+\pgfornamenthline{CNW}{CNE}{north}{88}
+\pgfornamenthline{CSW}{CSE}{south}{88}
+\pgfornamentvline{CNW}{CSW}{west}{88}
+\pgfornamentvline{CNE}{CSE}{east}{88}
+\end{tikzpicture}
+
+\vspace*{\fill}
 
 %\setcounter{tocdepth}{1}
 \tableofcontents

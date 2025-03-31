@@ -129,7 +129,7 @@ We have been staying in the realm of finite-dimensional vector/inner product spa
 \langle f,g \rangle = \int_a^b f(x) \overline{g(x)} dx \label{eqn:integralinner}
 \end{align}
 where $a < b$ are some real constants. Checking the validity of this inner product formulation is not hard.\footnote{We will only justify (4) in Definition \ref{defn:innerprod} and leave the remaining axioms to the readers. It is obvious that if $f(x) = 0$ is the zero function then $\langle f,f \rangle = \int_a^b (0)^2 dx = 0$. Assume that $f(x)$ is not everywhere zero, then by continuity from elementary calculus, we know that $f(c) \neq 0$ and hence $\abs{f(c)}^2 > 0$ at some point $a \leq c \leq b$ and there exists $\delta > 0$ such that $\abs{f(x)}^2 > \frac{\abs{f(c)}^2}{2}$ where $c-\delta \leq x \leq c+\delta$, therefore $\langle f,f \rangle \geq \frac{\abs{f(c)}^2}{2} (2\delta) = \abs{f(c)}^2 \delta > 0$.} 
-Unfortunately, the above example fails to be a \index{Hilbert Space}\keywordhl{Hilbert space} which we often desire. The detailed explanation of how Hilbert spaces work belongs to the area of Functional Analysis and is very much out of the scope of this book\footnote{To put it shortly, a Hilbert space is a \textit{complete} inner product space where all \textit{Cauchy sequences} are convergent. The meaning of complete here is different from that in Properties \ref{proper:hilbertorthosys}.}, and we will take the liberty to assume that an infinite-dimensional inner product space we work on is a \index{Separable Hilbert Space}\keywordhl{separable} Hilbert space from time to time. For instance, the $L^2[a,b]$ space for all square-integrable functions\footnote{A square-integrable function $f$ means that $\int \abs{f}^2 dx < \infty$ is finite, and the $L^2[a,b]$ space is actually the "completed" (in the sense of the footnote above) version of $\mathcal{C}^0[a,b]$.} equipped with the same inner product in Equation (\ref{eqn:integralinner}) is such a Hilbert space. The reason why we care so much about Hilbert spaces, particularly those that are separable, is because they always admit a countable orthonormal basis that is \textit{complete}.
+Unfortunately, the above example fails to be a \index{Hilbert Space}\keywordhl{Hilbert space} which we often desire. The detailed explanation of how Hilbert spaces work belongs to the area of Functional Analysis and is very much out of the scope of this book\footnote{To put it shortly, a Hilbert space is a \textit{complete} inner product space where all \textit{Cauchy sequences} are convergent. The meaning of complete here is different from that in Properties \ref{proper:hilbertorthosys}.}, and we will take the liberty to assume that an infinite-dimensional inner product space we work on is a \index{Separable (Hilbert Space)}\keywordhl{separable} Hilbert space from time to time. For instance, the $L^2[a,b]$ space for all square-integrable functions\footnote{A square-integrable function $f$ means that $\int \abs{f}^2 dx < \infty$ is finite, and the $L^2[a,b]$ space is actually the "completed" (in the sense of the footnote above) version of $\mathcal{C}^0[a,b]$.} equipped with the same inner product in Equation (\ref{eqn:integralinner}) is such a Hilbert space. The reason why we care so much about Hilbert spaces, particularly those that are separable, is because they always admit a countable orthonormal basis that is \index{Complete}\textit{complete}.
 \begin{proper}
 \label{proper:hilbertorthosys}
 An infinite-dimensional separable Hilbert space $\mathcal{H}$ always have a countably infinite orthonormal basis $\{\varphi_j\}_{j=1}^{\infty}$ where $\varphi_j$ denotes the $j$-th basis vector/function and $j$ is an integer enumerated from $1$ to infinity. It is complete in the sense that there exists no more other non-zero vector $\tilde{\varphi}$ that can be included in the basis such that $\langle \tilde{\varphi}, \varphi_j \rangle = 0$ for all $j$ without making the set linearly dependent.
@@ -164,7 +164,7 @@ $\blacktriangleright$ Short Exercise: Show that the same\footnote{Actually, they
 \subsection{Definition of Adjoints}
 \label{section:adjointdef}
 
-With the usual [complex] dot product as the inner product for $\mathbb{R}^n$ [$\mathbb{C}^n$], we have $\langle A\vec{u}, \vec{v} \rangle = \langle \vec{u}, A^T\vec{v} \rangle$ [$\langle \vec{u}, A^*\vec{v} \rangle$] by Properties \ref{proper:dotproper} [\ref{proper:complexdotherm}]. Here the square matrix $A$ in the first argument can be moved to the second argument by applying a [conjugate] transpose on it. In this context, $A^T$ [$A^*$] is known as the \keywordhl{adjoint} of $A$ with respect to the dot product. Since any square matrix essentially represents a linear operator behind the scenes (see Section \ref{section:lineartrans}), we can extend this idea for a general vector space $\mathcal{V}$ that has an inner product, where $\vec{u}, \vec{v} \in \mathcal{V}$ and the linear operator is $T: \mathcal{V} \to \mathcal{V}$ now. Subsequently, the adjoint of $T$ will then be another linear operator $T^\dag$ defined by the relationship $\langle T(\vec{u}), \vec{v} \rangle = \langle \vec{u}, T^\dag(\vec{v}) \rangle$. Again, if the standard inner product is employed, then we know that if the matrix representation of $T$ in the basis $\beta$ is $[T]_\beta$, then
+With the usual [complex] dot product as the inner product for $\mathbb{R}^n$ [$\mathbb{C}^n$], we have $\langle A\vec{u}, \vec{v} \rangle = \langle \vec{u}, A^T\vec{v} \rangle$ [$\langle \vec{u}, A^*\vec{v} \rangle$] by Properties \ref{proper:dotproper} [\ref{proper:complexdotherm}]. Here the square matrix $A$ in the first argument can be moved to the second argument by applying a [conjugate] transpose on it. In this context, $A^T$ [$A^*$] is known as the \index{Adjoint}\keywordhl{adjoint} of $A$ with respect to the dot product. Since any square matrix essentially represents a linear operator behind the scenes (see Section \ref{section:lineartrans}), we can extend this idea for a general vector space $\mathcal{V}$ that has an inner product, where $\vec{u}, \vec{v} \in \mathcal{V}$ and the linear operator is $T: \mathcal{V} \to \mathcal{V}$ now. Subsequently, the adjoint of $T$ will then be another linear operator $T^\dag$ defined by the relationship $\langle T(\vec{u}), \vec{v} \rangle = \langle \vec{u}, T^\dag(\vec{v}) \rangle$. Again, if the standard inner product is employed, then we know that if the matrix representation of $T$ in the basis $\beta$ is $[T]_\beta$, then
 \begin{align}
 \langle T(\vec{u}), \vec{v} \rangle &\equiv \langle [T]_\beta[\vec{u}]_\beta, [\vec{v}]_\beta \rangle \nonumber \\
 &= ([T]_\beta[\vec{u}]_\beta)^T\overline{[\vec{v}]_\beta} \nonumber \\
@@ -191,7 +191,7 @@ It is easy to check the linearity and uniqueness of an adjoint.\footnote{Lineari
 and thus we identify the matrix representation of the adjoint as 
 \begin{align}
 T^\dag \equiv H^{-1} [T]_\beta^* H \label{eqn:adjointformatrix}
-\end{align} relative to such an inner product. For an infinite-dimensional inner product space, the inner product used is usually in the form of an integral like the one in Equation (\ref{eqn:integralinner}), additionally with a weighting function, and a linear operator $T$ can be more general, including differentiation and multiplication by some function, or a mix of them. As a result, the adjoint is often found via the technique of \textit{integration by parts}, producing boundary terms as a by-product. Conventionally, we will use $\mathcal{L}$ in place of $T$ to denote the operator when the vectors are functions.
+\end{align} relative to such an inner product. For an infinite-dimensional inner product space, the inner product used is usually in the form of an integral like the one in Equation (\ref{eqn:integralinner}), additionally with a weighting function, and a linear operator $T$ can be more general, including differentiation and multiplication by some function, or a mix of them. As a result, the adjoint is often found via the technique of \index{Integration by Parts}\textit{integration by parts}, producing \index{Boundary Terms}\textit{boundary terms} as a by-product. Conventionally, we will use $\mathcal{L}$ in place of $T$ to denote the operator when the vectors are functions.
 \begin{proper}
 \label{proper:adjointinnerint}
 For a general integral inner product:
@@ -754,11 +754,11 @@ will vanish only if $f(x)$ and $g(x)$ and their derivatives $f'(x)$ and $g'(x)$ 
 
 \subsection{Sturm-Liouville Equations}
 
-The theory of Hermitian operators is most widely applied in the context of \index{Sturm-Liouville Equation}\keywordhl{Sturm-Liouville Equations} that are frequently encountered when solving \index{Partial Differential Equation (PDE)}\keywordhl{Partial Differential Equations (PDEs)} with the technique of \index{Separation of Variables}\textit{separation of variables}. A Sturm-Liouville equation takes the general form of
+The theory of Hermitian operators is most widely applied in the context of \index{Sturm-Liouville Equation/Operator}\keywordhl{Sturm-Liouville Equations} that are frequently encountered when solving \index{Partial Differential Equation (PDE)}\keywordhl{Partial Differential Equations (PDEs)} with the technique of \index{Separation of Variables}\textit{separation of variables}. A Sturm-Liouville equation takes the general form of
 \begin{align}
 \frac{d}{dx} \left(p(x) \frac{dy}{dx}\right) + q(x) y + \lambda w(x)y = 0
 \end{align}
-where $p(x)$, $q(x)$ are real functions of $x$ and $w(x)$ is a real positive-definite weighting function in $x$. It can be written in terms of the \index{Sturm-Liouville Operator}\keywordhl{Sturm-Liouville operator}
+where $p(x)$, $q(x)$ are real functions of $x$ and $w(x)$ is a real positive-definite weighting function in $x$. It can be written in terms of the \keywordhl{Sturm-Liouville operator}
 \begin{align}
 \mathcal{L}[f] = -\left[\frac{d}{dx} \left(p(x) \frac{d}{dx}\right) + q(x)\right][f]    
 \end{align}
@@ -914,7 +914,7 @@ for the Gaussian integral. By mathematical induction and integration by parts, w
 &= \frac{(1)(3)(5)\cdots(2m-1)(2m+1)\sqrt{\pi}}{2^{(m+1)}} \\
 &\quad \text{(via the induction hypothesis)}
 \end{align*}
-so the formula is established.}
+so the formula is established.} 
 Now we apply Gram-Schmidt Orthogonalization on the standard polynomials $\{\vec{u}^{(1)}, \vec{u}^{(2)}, \vec{u}^{(3)}, \vec{u}^{(4)}, \ldots\} = \{1, x, x^2, x^3, \ldots\}$ according to Definition \ref{defn:GSorthinner}. The zeroth degree Hermite polynomial is trivially $\vec{v}^{(1)} = H_0(x) = 1$ and $\norm{\vec{v}^{(1)}}^2 = \sqrt{\pi}$. Next, for $n=1$, we have
 \begin{align*}
 \vec{v}^{(2)} &= \vec{u}^{(2)} - \frac{\langle \vec{u}^{(2)}, \vec{v}^{(1)}\rangle}{\norm{\vec{v}^{(1)}}^2} \vec{v}^{(1)} \\
@@ -1124,7 +1124,7 @@ which matches our answer in the example.
 \section{Exercises}
 
 \begin{Exercise}
-Show that the set of all $n \times n$ (complex) matrices $\mathcal{V} = \mathcal{M}_{n \times n}(\mathbb{C})$ is a vector space and the definition $\langle A, B\rangle = \text{tr}(AB^*)$ satisfies the requirements of an inner product for this vector space. This form of inner product is better known as the \textit{Frobenius inner product}.
+Show that the set of all $n \times n$ (complex) matrices $\mathcal{V} = \mathcal{M}_{n \times n}(\mathbb{C})$ is a vector space and the definition $\langle A, B\rangle = \text{tr}(AB^*)$ satisfies the requirements of an inner product for this vector space. This form of inner product is better known as the \index{Frobenius Inner Product}\textit{Frobenius inner product}.
 \end{Exercise}
 \begin{Answer}
 We will only argue for (1), (4), (5), and (6) in Definition \ref{defn:realvecspaceaxiom}. Given $A, B \in \mathcal{M}_{n \times n}(\mathbb{C})$ are square complex matrices of extent $n$, for (1), we know that the usual matrix addition $A + B$ just gives another matrix (of $\mathcal{M}_{n \times n}(\mathbb{C})$), so it is closed under vector addition. In (4) and (5), the zero vector is simply the zero matrix $[\textbf{0}]$ and the additive inverse of any $A \in \mathcal{M}_{n \times n}(\mathbb{C})$ is just $-A$. Finally for (6), given $c \in \mathbb{C}$, it is obvious that $cA \in \mathcal{M}_{n \times n}(\mathbb{C})$ as well, so it is closed under scalar multiplication. Meanwhile for the Frobenius inner product, we will justify all axioms in Definition \ref{defn:innerprod}. Note that
@@ -1323,7 +1323,7 @@ For the first part, we check the eigenvalues of $B$ which are $\lambda \approx 0
 
 \begin{Exercise}
 \label{ex:triangular2}
-Prove the \index{Triangle Inequality}\textit{Triangle Inequality}
+Prove the \index{Triangle Inequality (for a General Inner Product)}\textit{Triangle Inequality}
 \begin{align}
 \norm{\vec{u} + \vec{v}} \leq \norm{\vec{u}} + \norm{\vec{v}}
 \end{align}
@@ -1346,7 +1346,7 @@ It is simply to note that $x^3$ is odd but $\cos(2x)$ is even, so the inner prod
 \begin{align*}
 \int_{-\pi}^{\pi} x^3 \cos(2x) dx = 0
 \end{align*}
-is zero as the integration limits are symmetric.
+is zero as the integrand is overall odd and the integration limits are symmetric.
 \end{Answer}
 
 \begin{Exercise}
@@ -1422,19 +1422,24 @@ Find the Fourier series of (a) $x^2$, (b) $x^3$, and (c) $4+\sin(3x)+2\cos(8x)$ 
 \item Note that $x^2$ is even, so only the cosine components remain. Then we simply compute $a_m$ as in (\ref{eqn:fouriera}) with integration by parts:
 \begin{align*}
 a_m &= \frac{1}{\pi} \int_{-\pi}^{\pi} x^2\cos(mx) dx \\
-&= [\frac{1}{m\pi}x^2\sin(mx)]_{-\pi}^{\pi} - \frac{2}{m\pi} \int_{-\pi}^{\pi} x \sin(mx) dx \\
-&= (0) - \frac{2}{m\pi} [-\frac{1}{m} x \cos(mx)]_{-\pi}^{\pi} + \frac{2}{m^2\pi} \int_{-\pi}^{\pi} (-\cos(mx)) dx \\
+&= \left[\frac{1}{m\pi}x^2\sin(mx)\right]_{-\pi}^{\pi} - \frac{2}{m\pi} \int_{-\pi}^{\pi} x \sin(mx) dx \\
+&= (0) - \frac{2}{m\pi} \left[-\frac{1}{m} x \cos(mx)\right]_{-\pi}^{\pi} + \frac{2}{m^2\pi} \int_{-\pi}^{\pi} (-\cos(mx)) dx \\
 &= \frac{2}{m^2\pi} [\pi (-1)^m - (-\pi) (-1)^m] - (0) = \frac{4(-1)^m}{m^2}
+\end{align*}
+Meanwhile, the constant term is just
+\begin{align*}
+\frac{1}{2\pi} \int_{-\pi}^{\pi} x^2 dx &= \frac{1}{2\pi}\left[\frac{x^3}{3}\right]_{-\pi}^{\pi} \\\
+&= \frac{1}{2\pi}\left[\frac{\pi^3}{3} - \frac{(-\pi)^3}{3}\right] = \frac{\pi^2}{3}
 \end{align*}
 Therefore, the required Fourier series is
 \begin{align*}
-x^2 = \sum_{m=1}^{\infty} \frac{4(-1)^m}{m^2} \cos(mx)
+x^2 = \frac{\pi^2}{3}+\sum_{m=1}^{\infty} \frac{4(-1)^m}{m^2} \cos(mx)
 \end{align*}
 \item Similarly, $x^3$ is odd and we only need to calculate $b_n$ as in (\ref{eqn:fourierb}):
 \begin{align*}
 b_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} x^3\sin(nx) dx \\
-&= [-\frac{1}{n\pi}x^3\cos(nx)]_{-\pi}^{\pi} + \frac{3}{n\pi}\int_{-\pi}^{\pi} x^2\cos(nx) dx \\
-&= -\frac{1}{n\pi}[\pi^3 (-1)^n - (-\pi)^3 (-1)^n] + \frac{3}{n^2\pi}[x^2 \sin(nx)]_{-\pi}^{\pi} \\
+&= \left[-\frac{1}{n\pi}x^3\cos(nx)\right]_{-\pi}^{\pi} + \frac{3}{n\pi}\int_{-\pi}^{\pi} x^2\cos(nx) dx \\
+&= -\frac{1}{n\pi}\left[\pi^3 (-1)^n - (-\pi)^3 (-1)^n\right] + \frac{3}{n^2\pi}[x^2 \sin(nx)]_{-\pi}^{\pi} \\
 &\quad - \frac{6}{n^2\pi}\int_{-\pi}^{\pi} x \sin (nx) dx \\
 &= -\frac{2\pi^2(-1)^n}{n} + (0) + \frac{6}{n^3\pi} [x \cos (nx)]_{-\pi}^{\pi} - \frac{6}{n^3\pi} \int_{-\pi}^{\pi} \cos(nx) dx \\
 &= -\frac{2\pi^2(-1)^n}{n} + \frac{6}{n^3\pi}[\pi (-1)^n - (-\pi) (-1)^n] - (0) \\
@@ -1484,7 +1489,7 @@ So the recurrence relation is
 (n+2)(n+1) a_{n+2} - (n(n+1)-\lambda) a_n &= 0 \\
 a_{n+2} &= \frac{n(n+1)-\lambda}{(n+2)(n+1)}
 \end{align*}
-which implies that there are two polynomials solutions for the odd/even indices respectively when $\lambda = n(n+1)$. We only explicitly show the reasoning to construct the fifth Legendre polynomial: let $\lambda = (4)(5)$ that corresponds to $n=4$, then
+which implies that there are two polynomials solutions for the odd/even indices respectively when $\lambda = n(n+1)$. We only explicitly show the reasoning to construct the fifth Legendre polynomial: let $\lambda = 4 \cdot 5$ that corresponds to $n=4$, then
 \begin{align*}
 a_{2} &= \frac{0(0+1)-(4)(5)}{(0+2)(0+1)}a_0 = -10a_0 \\
 a_{4} &= \frac{2(2+1)-(4)(5)}{(2+2)(2+1)}a_0 = -\frac{7}{6}a_2 = \frac{70}{6}a_0

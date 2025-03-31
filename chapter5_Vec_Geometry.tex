@@ -692,7 +692,7 @@ The $\hat{\imath}$ component along the $x$-direction is
 which is equal to the $\hat{\imath}$ component on the R.H.S. and similar results can be shown for the $\hat{\jmath}$, $\hat{k}$ components, and the equality establishes.
 \end{proof}
 
-\begin{proper}[Jacobi Identity]
+\begin{proper}[Jacobi Identity]\index{Jacobi Identity}
 \begin{align}
 \vec{u} \times (\vec{v} \times \vec{w}) + \vec{v} \times (\vec{w} \times \vec{u}) + \vec{w} \times (\vec{u} \times \vec{v}) = \textbf{0}    
 \end{align}
@@ -711,7 +711,7 @@ By Properties \ref{proper:triplecross}, we have
 \end{align*}
 \end{proof}
 
-\begin{proper}[Lagrange's Identity]
+\begin{proper}[Lagrange's Identity]\index{Lagrange's Identity}
 \begin{align}
 \norm{\vec{u} \times \vec{v}}^2 = \norm{\vec{u}}^2 \norm{\vec{v}}^2 - (\vec{u} \cdot \vec{v})^2
 \end{align}
@@ -821,7 +821,7 @@ The \textit{haversine} of an angle $\theta$ is $\text{hav}(\theta) = \sin^2 (\fr
 (1 - 2\ \text{hav}(c)) &= (1 - 2\ \text{hav}(\varphi_2 - \varphi_1)) - 2 \cos \varphi_1 \cos \varphi_2\ \text{hav}(\lambda_2 - \lambda_1) \nonumber \\
 \text{hav}(c) &= \text{hav}(\varphi_2 - \varphi_1) + \cos \varphi_1 \cos \varphi_2\ \text{hav}(\lambda_2 - \lambda_1)
 \end{align}
-where we have used the trigonometric identity $\cos(\theta-\phi) = \cos \theta \cos \phi + \sin \theta \sin \phi$ in the middle. The \textit{Haversine Formula} is now established and we can use it to calculate the angle $c$ subtended by the arc between two locations, and hence their distance by $d = Rc$ where $R$ is the radius (of the Earth, \SI{6370}{\km}). For New York (\SI{40.73}{\degree N}, \SI{73.94}{\degree W}) and Warsaw (\SI{52.24}{\degree N}, \SI{21.02}{\degree E}), $\lambda_1 = \SI{-73.94}{\degree}$, $\lambda_2 = \SI{21.02}{\degree}$, $\varphi_1 = \SI{40.73}{\degree}$, $\varphi_2 = \SI{52.24}{\degree}$, and
+where we have used the trigonometric identity $\cos(\theta-\phi) = \cos \theta \cos \phi + \sin \theta \sin \phi$ in the middle. The \index{Haversine (Formula)}\textit{Haversine Formula} is now established and we can use it to calculate the angle $c$ subtended by the arc between two locations, and hence their distance by $d = Rc$ where $R$ is the radius (of the Earth, \SI{6370}{\km}). For New York (\SI{40.73}{\degree N}, \SI{73.94}{\degree W}) and Warsaw (\SI{52.24}{\degree N}, \SI{21.02}{\degree E}), $\lambda_1 = \SI{-73.94}{\degree}$, $\lambda_2 = \SI{21.02}{\degree}$, $\varphi_1 = \SI{40.73}{\degree}$, $\varphi_2 = \SI{52.24}{\degree}$, and
 \begin{align*}
 \text{hav}(c) &= \text{hav}(\SI{52.24}{\degree} - \SI{40.73}{\degree}) \\
 &\quad+ \cos (\SI{40.73}{\degree}) \cos (\SI{52.24}{\degree})\ \text{hav}(\SI{21.02}{\degree} - (\SI{-73.94}{\degree})) \\
@@ -834,7 +834,7 @@ and therefore the required great-arc distance is $d = Rc = (\SI{6370}{\km})(\SI{
 \end{solution}
 
 \begin{exmp}
-The Earth's magnetic field can be approximated by a magnetic dipole so that the magnetic field lines on the Earth's surface are oriented from the geomagnetic North Pole to the geomagnetic South Pole (like longitudinal lines but for the geomagnetic dipole). In 2020, the geomagnetic North Pole is at \SI{80.7}{\degree N}, \SI{72.7}{\degree W}. Find the magnetic declination (angle from the geographic North to geomagnetic North) at Tokyo (\SI{35.65}{\degree N}, \SI{139.84}{\degree E}) according to this \textit{geomagnetic dipole model}.
+The Earth's magnetic field can be approximated by a magnetic dipole so that the magnetic field lines on the Earth's surface are oriented from the geomagnetic North Pole to the geomagnetic South Pole (like longitudinal lines but for the geomagnetic dipole). In 2020, the geomagnetic North Pole is at \SI{80.7}{\degree N}, \SI{72.7}{\degree W}. Find the magnetic declination (angle from the geographic North to geomagnetic North) at Tokyo (\SI{35.65}{\degree N}, \SI{139.84}{\degree E}) according to this \index{Geomagnetic Dipole Model}\textit{geomagnetic dipole model}.
 \end{exmp}
 \begin{solution}
 To find the magnetic declination, we need to calculate the three arcs of the spherical triangle with its three corners at the geographic/geomagnetic North Pole and Tokyo. The arc distance between geographic/geomagnetic North Pole $d$ is simply $\SI{90}{\degree} - \SI{80.7}{\degree} = \SI{9.3}{\degree}$. Similarly, the arc from the geographic North Pole to Tokyo is $a = \SI{90}{\degree} - \SI{35.65}{\degree} = \SI{54.35}{\degree}$. We can use the Haversine Formula derived in the last example to obtain the arc from the geomagnetic North Pole to Tokyo, which yields

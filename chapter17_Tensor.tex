@@ -11,7 +11,7 @@ Previously, we have usually been writing matrix multiplications along the lines 
 \begin{align*}
 \sum_{k=1}^r A_{ik}B_{kj} &= C_{ij} &  & \sum_{j=1}^n A_{ij}x_j = h_i
 \end{align*}
-However, the summation symbol is clumsy to be included every time, especially when it involves a chain of products like $ABCD$. The \index{Index Notation}\keywordhl{Index Notation} (also known as the \index{Einstein Convention}\keywordhl{Einstein Convention}) solves this problem by assuming that any subscript appearing exactly twice in an additive term will be summed (\textit{contracted}) implicitly over all values that the subscript can take. This also means that any such pair of repeated subscripts must occur only in positions with the same range of values. Consequentially, the above examples are simplified into
+However, the summation symbol is clumsy to be included every time, especially when it involves a chain of products like $ABCD$. The \index{Index Notation}\keywordhl{Index Notation} (also known as the \index{Einstein Convention}\keywordhl{Einstein Convention}) solves this problem by assuming that any subscript appearing exactly twice in an additive term will be summed (\index{Contraction}\textit{contracted}) implicitly over all values that the subscript can take. This also means that any such pair of repeated subscripts must occur only in positions with the same range of values. Consequentially, the above examples are simplified into
 \begin{align*}
 A_{ik}B_{kj} &= C_{ij} &  & A_{ij}x_j = h_i    
 \end{align*}
@@ -180,7 +180,7 @@ w_1 & w_2 & w_3
 \end{aligned} \label{eqn:determinanteps1} 
 \end{align}
 These two symbols are closely related by the \index{Epsilon-delta Identity}\keywordhl{Epsilon-delta Identity}.
-\begin{proper}[$\epsilon$--$\delta$ Identity] 
+\begin{proper}[$\epsilon$-$\delta$ Identity] 
 \label{proper:epsdel} Contracting over the pair of first subscripts between two epsilon symbols gives 
 \begin{align}
 \epsilon_{ijk}\epsilon_{imn} = \delta_{jm}\delta_{kn} - \delta_{jn}\delta_{km} \label{eqn:epsdel}
@@ -234,7 +234,7 @@ P_\beta^{\beta'} = \begin{bmatrix}
 [\vec{v}_\beta^{(1)}]_{\beta'} | [\vec{v}_\beta^{(2)}]_{\beta'} | \cdots | [\vec{v}_\beta^{(n)}]_{\beta'}
 \end{bmatrix}
 \end{align}
-In most of Earth Science usages, the coordinate systems used will be orthonormal and we will assume this is so for the rest of the chapter. This makes the tensors \textit{Cartesian}. By Properties \ref{proper:orthocoords}, the coordinates of any vector in the new orthonormal coordinate system relative to the old orthonormal coordinate system can be found by direct projection and vice versa. Therefore, if we denote the old and new orthonormal basis by $\beta = \{\textbf{e}_1, \textbf{e}_2, \textbf{e}_3\}$ and $\beta'= \{\textbf{e}'_1, \textbf{e}'_2, \textbf{e}'_3\}$, the change of coordinates matrix will become
+In most of Earth Science usages, the coordinate systems used will be orthonormal and we will assume this is so for the rest of the chapter. This makes the tensors \index{Cartesian Tensor}\textit{Cartesian}. By Properties \ref{proper:orthocoords}, the coordinates of any vector in the new orthonormal coordinate system relative to the old orthonormal coordinate system can be found by direct projection and vice versa. Therefore, if we denote the old and new orthonormal basis by $\beta = \{\textbf{e}_1, \textbf{e}_2, \textbf{e}_3\}$ and $\beta'= \{\textbf{e}'_1, \textbf{e}'_2, \textbf{e}'_3\}$, the change of coordinates matrix will become
 \begin{align}
 P_\beta^{\beta'} = \begin{bmatrix}
 \textbf{e}_1 \cdot \textbf{e}'_1 & \textbf{e}_2 \cdot \textbf{e}'_1 & \textbf{e}_3 \cdot \textbf{e}'_1 \\
@@ -263,7 +263,7 @@ a_{ij} = \textbf{e}_i \cdot \textbf{e}'_j \label{eqn:aij}
 \begin{align}
 F'_{kl} = a_{ik} a_{jl} F_{ij} \label{eqn:rank2aF}
 \end{align}
-This is consistent with both Properties \ref{proper:endomorph} and Definition \ref{defn:coordtransquad} at the same time, because the change of coordinates matrix is orthogonal and so $[a^{-1}]_{ki} = [a^T]_{ki} = a_{ik}$ by Properties \ref{proper:orthoinvT}. In general, the \keywordhl{Transformation Law} says
+This is consistent with both Properties \ref{proper:endomorph} and Definition \ref{defn:coordtransquad} at the same time, because the change of coordinates matrix is orthogonal and so $[a^{-1}]_{ki} = [a^T]_{ki} = a_{ik}$ by Properties \ref{proper:orthoinvT}. In general, the \index{Transformation Law}\keywordhl{Transformation Law} says
 \begin{proper}
 \label{proper:translaw}
 A rank-$r$ \textit{Cartesian} tensor $T$ is a quantity that transforms according to the rule\footnotemark
@@ -337,7 +337,7 @@ It is not hard to show that the product of two tensors is a tensor.\footnote{For
 \begin{align*}
 C'_{mn\ldots sr\ldots} = A'_{mn\ldots}B'_{sr\ldots} &= a_{im}a_{jn}\cdots a_{ps}a_{qr}\cdots A_{ij\ldots} B_{pq\ldots} \\
 &= a_{im}a_{jn}\cdots a_{ps}a_{qr}\cdots C_{ij\ldots pq\ldots}
-\end{align*} will also transform as indicated by Properties \ref{proper:translaw}.} Therefore, kinetic energy (per unit mass) in Newtonian Mechanics $\frac{1}{2}(\vec{v} \cdot \vec{v}) = \frac{1}{2}v_iv_i$ is a rank-$0$ tensor (scalar) if we gladly accept the intuitive premise that the velocity $\vec{v} = v_i$ is a rank-$1$ tensor (vector). In addition, there is another way to quickly verify if a quantity is a tensor by the \keywordhl{Quotient Law} which works the other way around.
+\end{align*} will also transform as indicated by Properties \ref{proper:translaw}.} Therefore, kinetic energy (per unit mass) in Newtonian Mechanics $\frac{1}{2}(\vec{v} \cdot \vec{v}) = \frac{1}{2}v_iv_i$ is a rank-$0$ tensor (scalar) if we gladly accept the intuitive premise that the velocity $\vec{v} = v_i$ is a rank-$1$ tensor (vector). In addition, there is another way to quickly verify if a quantity is a tensor by the \index{Quotient Law}\keywordhl{Quotient Law} which works the other way around.
 \begin{thm}[Quotient Law]
 \label{thm:quotientl}
 If $A_{ij\ldots n}$ is a $n$-subscripted quantity, $B_{pq\ldots m}$ is known to be a rank-$m$ tensor, and the product
@@ -399,7 +399,7 @@ The power of tensors is accompanied by the possibility of doing calculus on them
 \begin{align}
 \left(\frac{\partial T}{\partial t}\right)_{ijk\ldots} = \frac{\partial T_{ijk\ldots}}{\partial t}
 \end{align}
-every component of the tensor is differentiated with respect to $t$, one by one. Meanwhile, to differentiate the tensor by the position vector $\textbf{x}$ (a \index{Coordinate derivative}\keywordhl{coordinate derivative}) will lead to
+every component of the tensor is differentiated with respect to $t$, one by one. Meanwhile, to differentiate the tensor by the position vector $\textbf{x}$ (a \index{Coordinate Derivative}\keywordhl{coordinate derivative}) will lead to
 \begin{align}
 \left(\frac{\partial T}{\partial \textbf{x}}\right)_{ijk\ldots p} = \frac{\partial T_{ijk\ldots}}{\partial x_p}
 \end{align}
@@ -520,6 +520,8 @@ Consequentially, the usual \index{Divergence Theorem}\keywordhl{Divergence Theor
 
 \section{Earth System Applications: Continuum Mechanics}
 
+\textit{Reference Materials: \cite{TFWong}}
+
 \subsection{Stress Tensor and Mohr's Circle}
 
 Due to the scope limit, we will only briefly go through the stress tensor's derivation. For a \textit{mass element} that is infinitesimally small, the traction force on a (possibly oblique) surface with a normal orientation of $\hat{n} = n_i$ can be reasonably expected to have contributions from three stress components along each direction. For instance, in the $x$-direction, using the $xyz$ coordinates in the indices for now, the traction will be
@@ -565,7 +567,7 @@ n_3
 \end{bmatrix}
 \label{eqn:cauchyT}
 \end{align}
-or more compactly by Index Notation, the \index{Cauchy's formula}\keywordhl{Cauchy's formula} becomes
+or more compactly by Index Notation, the \index{Cauchy's Formula}\keywordhl{Cauchy's Formula} becomes
 \begin{align}
 T_j = \sigma_{ij}n_i \label{eqn:Cauchyform}
 \end{align}
@@ -597,7 +599,7 @@ T_j = \sigma_{ij}n_i \label{eqn:Cauchyform}
     \label{fig:stresscube}
 \end{figure}
 
-Since the traction, as a force, and the direction are both vectors, by the Quotient Law (Theorem \ref{thm:quotientl}), $\sigma_{ij}$ must be a rank-$2$ tensor. It is subsequently known as the \index{Cauchy Stress Tensor}\keywordhl{Cauchy Stress Tensor}. Now, we assume any mass element within a continuum (e.g.\ a rock layer) has to be in \textit{static equilibrium} so it is not moving. This specifically requires that there is no net torque that will rotate the mass element (presented as a parallelepiped in Figure \ref{fig:stresspiped}). The stresses on the opposite faces of the parallelepiped must then be equal in magnitude and opposite in direction. Take the $2,3$ directions as an illustration, the shear stresses on any pair of opposite faces (e.g.\ the component $\sigma_{23}$ on the $2$-planes) in another axis (e.g.\ in the $3$-direction) will generate a couple that tends to rotate the parallelepiped. To prevent the mass element from rotating, the shear stresses on the corresponding side faces (e.g.\ the component $\sigma_{32}$ on the $3$-planes) must balance this torque out, and thus $\sigma_{23} = \sigma_{32}$. By the same logic, $\sigma_{13} = \sigma_{31}$ and $\sigma_{12} = \sigma_{21}$, or more generally
+Since the traction, as a force, and the direction are both vectors, by the Quotient Law (Theorem \ref{thm:quotientl}), $\sigma_{ij}$ must be a rank-$2$ tensor. It is subsequently known as the \index{Cauchy Stress Tensor}\keywordhl{Cauchy Stress Tensor}. Now, we assume any mass element within a continuum (e.g.\ a rock layer) has to be in \index{Static Equilibrium}\textit{static equilibrium} so it is not moving. This specifically requires that there is no net torque that will rotate the mass element (presented as a parallelepiped in Figure \ref{fig:stresspiped}). The stresses on the opposite faces of the parallelepiped must then be equal in magnitude and opposite in direction. Take the $2,3$ directions as an illustration, the shear stresses on any pair of opposite faces (e.g.\ the component $\sigma_{23}$ on the $2$-planes) in another axis (e.g.\ in the $3$-direction) will generate a couple that tends to rotate the parallelepiped. To prevent the mass element from rotating, the shear stresses on the corresponding side faces (e.g.\ the component $\sigma_{32}$ on the $3$-planes) must balance this torque out, and thus $\sigma_{23} = \sigma_{32}$. By the same logic, $\sigma_{13} = \sigma_{31}$ and $\sigma_{12} = \sigma_{21}$, or more generally
 \begin{align}
 \sigma_{ij} = \sigma_{ji}
 \end{align}
@@ -605,7 +607,7 @@ which means that the stress tensor is a symmetric one (this also means that the 
 \begin{align}
 \sigma'_{ij} = a_{ki}a_{lj}\sigma_{kl}
 \end{align}
-when viewed from the matrix perspective, it easily reminds us about orthogonal diagonalization (\ref{eqn:orthodiagonalPAP}) in Definition \ref{defn:orthodiagonal} since $a_{**}$ represents an orthogonal matrix and Theorem \ref{thm:symdiag} is applicable to the symmetric stress tensor. Therefore, we can always compute the orthonormal eigenvectors for any matrix representation of the stress tensor. After a change of coordinates via orthogonal diagonalization, these orthonormal eigenvectors will then become the \index{Principal Axes}\index{Principal Directions}\keywordhl{principal axes/directions} (akin to Theorem \ref{thm:PCA}) used in the new coordinate frame. The corresponding eigenvalues are naturally called the \index{Principal Stresses}\keywordhl{principal stresses} (denoted by $\sigma_{*}$ with one subscript only) and there will be no shearing components in the transformed representation of the stress tensor. Hence, the traction along any principal direction will be aligned with the normal to the surface and is equal to the respective principal stress. The geological convection is that compression/tension is taken to be positive/negative. For the ease of demonstration, we will consider plane stress with only $2$ directions first.
+when viewed from the matrix perspective, it easily reminds us about orthogonal diagonalization (\ref{eqn:orthodiagonalPAP}) in Definition \ref{defn:orthodiagonal} since $a_{**}$ represents an orthogonal matrix and Theorem \ref{thm:symdiag} is applicable to the symmetric stress tensor. Therefore, we can always compute the orthonormal eigenvectors for any matrix representation of the stress tensor. After a change of coordinates via orthogonal diagonalization, these orthonormal eigenvectors will then become the \index{Principal Axes/Directions (Stress Tensor)}\keywordhl{principal axes/directions} (akin to Theorem \ref{thm:PCA}) used in the new coordinate frame. The corresponding eigenvalues are naturally called the \index{Principal Stresses}\keywordhl{principal stresses} (denoted by $\sigma_{*}$ with one subscript only) and there will be no shearing components in the transformed representation of the stress tensor. Hence, the traction along any principal direction will be aligned with the normal to the surface and is equal to the respective principal stress. The geological convection is that compression/tension is taken to be positive/negative. For the ease of demonstration, we will consider plane stress with only $2$ directions first.
 
 \begin{figure}
     \centering
@@ -916,7 +918,7 @@ Since $dX_j$ and $du_i$ are (differentials of) displacement and velocity, they a
     \caption{\textit{The conversion between the Eulerian/Lagrangian views for coordinates and displacements.}}
     \label{fig:displace}
 \end{figure}
-Notice that the quantity $\partial x_i/\partial X_j$ (also the closely related $\partial X_i/\partial x_j$) appeared in the displacement gradient. This is called the \index{Deformation Jacobian}\keywordhl{Jacobian} of the deformation. To see this, by the multivariable Chain Rule, the transformation between the Eulerian and Lagrangian displacements is explicitly
+Notice that the quantity $\partial x_i/\partial X_j$ (also the closely related $\partial X_i/\partial x_j$) appeared in the displacement gradient. This is called the \index{Jacobian (Deformation)}\keywordhl{Jacobian} of the deformation. To see this, by the multivariable Chain Rule, the transformation between the Eulerian and Lagrangian displacements is explicitly
 \begin{subequations}
 \begin{empheq}[left={\empheqlbrace}]{alignat=1}
 d\textbf{x}_1 &= \frac{\partial x_1}{\partial X_1}dX_1\textbf{e}_1 + \frac{\partial x_1}{\partial X_2}dX_2\textbf{e}_2 + \frac{\partial x_1}{\partial X_3}dX_3\textbf{e}_3 \\
@@ -1140,7 +1142,7 @@ Again, as this holds for any material volume, the integrand has to be identicall
 \rho \frac{dv_j}{dt} - \left(\frac{\partial\sigma_{ij}}{\partial x_i}+\rho b_j\right) &= 0 \nonumber \\
 \rho \frac{dv_j}{dt} &= \frac{\partial\sigma_{ij}}{\partial x_i}+\rho b_j \label{eqn:eqnmotion}
 \end{align}
-In the ocean or atmosphere, we often assume the fluid is \textit{inviscid} so it cannot support shear stress, although it may be necessary to include viscous forces otherwise. The stress tensor is then reduced to the \textit{hydrostatic pressure} $\sigma_{ij} = -p\delta_{ij}$ which has the same magnitude acting in all directions. Subsequently, (\ref{eqn:eqnmotion}) becomes
+In the ocean or atmosphere, we often assume the fluid is \index{Inviscid}\textit{inviscid} so it cannot support shear stress, although it may be necessary to include viscous forces otherwise. The stress tensor is then reduced to the \index{Hydrostatic Pressure}\textit{hydrostatic pressure} $\sigma_{ij} = -p\delta_{ij}$ which has the same magnitude acting in all directions. Subsequently, (\ref{eqn:eqnmotion}) becomes
 \begin{align}
 \rho \frac{dv_j}{dt} &= -\frac{\partial (p\delta_{ij})}{\partial x_i} + \rho b_j \nonumber \\
 \rho \frac{dv_j}{dt} &= -\frac{\partial p}{\partial x_j} + \rho b_j \implies \rho\frac{d\textbf{v}}{dt} = -\nabla p + \rho \textbf{b} \label{eqn:eqnmotion2}
@@ -1155,7 +1157,7 @@ which are commonly referred to as the \index{Euler's Equations}\textit{Euler's e
 \end{subequations}
 where we denote the three-dimensional flow velocities as $\textbf{v} = (u,v,w)^T$, the body force is the gravity $\textbf{b} = \textbf{g} = (g_x,g_y,g_z)^T$, and use (\ref{eqn:localmatderiv}) to expand the material time derivative. Note that we are doing the above analysis in a non-rotating inertial coordinate frame so the usual Coriolis force does not appear.\par
 
-Finally, we will use Euler's equations to derive \index{Kelvin's Circulation Theorem}\keywordhl{Kelvin's Circulation Theorem}. \textit{Circulation} along a closed material path is the line integral of velocity along it:
+Finally, we will use Euler's equations to derive \index{Kelvin's Circulation Theorem}\keywordhl{Kelvin's Circulation Theorem}. \index{Circulation}\textit{Circulation} along a closed material path is the line integral of velocity along it:
 \begin{align}
 \Gamma_c = \oint_{C(t)} v_i dx_i
 \end{align}
@@ -1219,9 +1221,11 @@ The quantity
 \begin{align}
 \frac{\nabla \rho \times \nabla p}{\rho^2}    
 \end{align}
-is called the \textit{baroclinicity} which characterizes the tilting between the pressure and density contours. It often arises from a temperature gradient in a cross-section, which will generate circulation along the corresponding path.
+is called the \index{Baroclinicity}\textit{baroclinicity} which characterizes the tilting between the pressure and density contours. It often arises from a temperature gradient in a cross-section, which will generate circulation along the corresponding path.
 
 \section{Earth System Applications: Data Assimilation}
+
+\textit{Reference Materials: \cite{GYLian}}
 
 \subsection{Basic Ideas behind Data Assimilation}
 
@@ -1362,7 +1366,7 @@ with a corresponding error vector of
 \varepsilon_L
 \end{bmatrix}
 \end{align}
-which is assumed to be unbiased too, such that the expected values of the errors $E(\bm{\epsilon}) = \textbf{0}$ is always a zero vector. The \textit{error covariance matrix} is then defined as
+which is assumed to be unbiased too, such that the expected values of the errors $E(\bm{\epsilon}) = \textbf{0}$ is always a zero vector. The \index{Error Covariance Matrix}\textit{error covariance matrix} is then defined as
 \begin{align}
 P &= E[(\bm{\epsilon} - E(\bm{\epsilon}))(\bm{\epsilon} - E(\bm{\epsilon}))^T] = E[\bm{\epsilon}\bm{\epsilon}^T] \nonumber \\
 &= \begin{bmatrix}
@@ -1515,7 +1519,8 @@ A &= E[\bm{\epsilon}_a\bm{\epsilon}_a^T] \nonumber \\
 &\quad + E[K\bm{\epsilon}_o\bm{\epsilon}_o^TK^T] + E[KH\bm{\epsilon}_b\bm{\epsilon}_b^TH^TK^T] \nonumber \\
 &= B - KHB - BH^TK^T + KRK^T + KHBH^TK^T \nonumber \\
 &= B - KHB - BH^TK^T + K(HBH^T+R)K^T \nonumber \\
-&= B - KHB - BH^TK^T + BH^T(HBH^T+R)^{-1}(HBH^T+R)K^T &\text{(by (\ref{eqn:OImatK2}))} \nonumber \\
+&= B - KHB - BH^TK^T + BH^T(HBH^T+R)^{-1}(HBH^T+R)K^T \nonumber \\
+&\quad \text{(by (\ref{eqn:OImatK2}))} \nonumber \\
 &= B - KHB - BH^TK^T + BH^TK^T \nonumber \\
 &= B - KHB = (I-KH)B \label{eqn:OIcovA}
 \end{align}
@@ -1740,21 +1745,21 @@ Prove the following vector calculus identities using the Index Notation.
 \nabla \cdot (\nabla \times \vec{v}) &= \partial_i(\epsilon_{ijk} \partial_j v_k) \\
 &= \epsilon_{ijk} \partial_i\partial_j v_k \\
 &= \epsilon_{ijk} \partial_j\partial_i v_k \\
-&= -\epsilon_{jik} \partial_j\partial_i v_k \\
-&= -\epsilon_{ijk} \partial_i\partial_j v_k
+&= -\epsilon_{jik} \partial_j\partial_i v_k & \text{(Flipping the order of the epsilon symbol)} \\
+&= -\epsilon_{ijk} \partial_i\partial_j v_k & \text{(Swapping the roles of $i$ and $j$)}
 \end{align*}
 Since $\nabla \cdot (\nabla \times \vec{v}) = \epsilon_{ijk} \partial_i\partial_j v_k = -\epsilon_{ijk} \partial_i\partial_j v_k$, it must be zero. (The two partial derivatives are symmetric but the epsilon symbol is anti-symmetric.)
 \item
 \begin{align*}
 \nabla \times \nabla u &= \epsilon_{ijk} \partial_j \partial_k u    
 \end{align*}
-By the same logic as the part above, it will give the zero vector.
+By the same logic as the part above, it has to give the zero vector.
 \item 
 \begin{align*}
 \nabla \times (\nabla \times \vec{v}) &= \epsilon_{ijk} \partial_j(\epsilon_{klm} \partial_l v_m) \\
 &= \epsilon_{kij}\epsilon_{klm} (\partial_j\partial_l v_m) \\
 &= (\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}) (\partial_j\partial_l v_m) \\
-&= \partial_j\partial_i v_j - \partial_j\partial_j v_i \\
+&= \partial_j\partial_i v_j - \partial_j\partial_j v_i = \partial_i\partial_j v_j - \partial_j\partial_j v_i\\
 &= \nabla (\nabla \cdot \vec{v}) - \nabla^2 \vec{v} 
 \end{align*}
 \item 
@@ -1799,7 +1804,7 @@ as in (\ref{eqn:crosstens}) must also be the components of a vector via Quotient
 \begin{Answer}
 Contracting the expression with the vector $\vec{u}$:
 \begin{align*}
-u_iw_i &= u_iu_jv_k \\
+u_iw_i &= u_i\epsilon_{ijk}u_jv_k \\
 &= \epsilon_{ijk}u_iu_jv_k = 0
 \end{align*}
 which gives the zero scalar due to the antisymmetric nature of the epsilon symbol and two symmetric $u_iu_j$ factors. Then by Quotient Law, the R.H.S. is a trivially contracted rank-$0$ tensor and $\vec{u}$ on L.H.S. is a rank-$1$ tensor, so $\vec{w}$ has to be a rank-$1$ tensor (vector) as well.

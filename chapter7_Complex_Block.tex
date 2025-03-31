@@ -164,7 +164,7 @@ For two complex numbers $z_1$ and $z_2$, we have
 \item $\abs{z_1/z_2} = \abs{z_1}/\abs{z_2}$.
 \end{enumerate}
 \end{proper}
-Another very useful result is the \index{De Moivre's Formula}\keywordhl{De Moivre's Formula} that builds up on the Euler's formula, expressing $e^{i \theta}$ raised to an integer power $n$.
+Another very useful result is the \index{De Moivre's Formula}\keywordhl{De Moivre's Formula} that builds up on Euler's formula, expressing $e^{i \theta}$ raised to an integer power $n$.
 \begin{thm}[De Moivre's Formula]
 Given $n$ as an integer, then
 \begin{subequations}
@@ -177,10 +177,10 @@ Given $n$ as an integer, then
 
 \section{Complex Vectors and Complex Matrices}
 
-Our discussion about vectors and matrices in previous chapters is limited to those with real entries. However, we can extend the ideas to include complex entries. A complex vector is simply a vector that have complex numbers as components. An $n$-dimensional complex vector can be somehow viewed as a real vector that is $2n$-dimensional, as each complex entry can be expressed in two parts, real and imaginary. This equivalence will be further clarified at the end of this section. A complex matrix is similarly a matrix with complex entries, or from another perspective, formed by complex column vectors.
+Our discussion about vectors and matrices in previous chapters is limited to those with real entries. However, we can extend the ideas to include complex entries. A complex vector is simply a vector that has complex numbers as components. An $n$-dimensional complex vector can be somehow viewed as a real vector that is $2n$-dimensional, as each complex entry can be expressed in two parts, real and imaginary. This equivalence will be further clarified at the end of this section. A complex matrix is similarly a matrix with complex entries, or from another perspective, formed by complex column vectors.
 
 \subsection{Operations and Properties of Complex Vectors}
-Addition and subtraction for complex vectors are the same as the real counterpart, carried out component-wise. Multiplication by a scalar is also similar, applied to all components. However, the form of complex dot product is slightly different from the real dot product, as defined below.
+Addition and subtraction for complex vectors are the same as the real counterpart, carried out component-wise. Multiplication by a scalar is also similar, applied to all components. However, the form of \index{Complex Dot Product}\keywordhl{complex dot product} is slightly different from the real dot product, as defined below.
 \begin{defn}[Complex Dot Product]
 \label{defn:complexdotproduct}
 The dot product of two complex vectors $\vec{u}$ and $\vec{v}$ is computed as the sum of products between each pair of components, but additionally with the conjugate operation applied on the second complex vector beforehand.
@@ -504,7 +504,7 @@ which should be compared to (\ref{eqn:dotgeo}).
 
 \section{Manipulating Block Matrices}
 
-Moving to our second topic, a \keywordhl{block matrix} is a matrix written in smaller \textit{submatrices} as if they are ordinary entries. For example, a $2 \times 2$ block matrix has the form of
+Moving to our second topic, a \index{Block Matrix}\keywordhl{block matrix} is a matrix written in smaller \index{Submatrices}\textit{submatrices} as if they are ordinary entries. For example, a $2 \times 2$ block matrix has the form of
 \begin{align*}
 M =
 \begin{bmatrix}
@@ -947,7 +947,7 @@ I_p & A^{-1}B \\
 [\textbf{0}]_{q\times p} & D - CA^{-1}B 
 \end{bmatrix}
 \end{align*}
-The bottom right block, $D - CA^{-1}B$, is known as the \index{Schur complement}\keywordhl{Schur complement} of block $A$ in $M$, denoted as $M/A$ and has the same shape $q \times q$ as $D$. The above block multiplication then constitutes a \textit{block Gaussian Elimination} over the matrix $M$ to make it \textit{block upper-triangular}. It is not hard to see that
+The bottom right block, $D - CA^{-1}B$, is known as the \index{Schur Complement}\keywordhl{Schur complement} of block $A$ in $M$, denoted as $M/A$ and has the same shape $q \times q$ as $D$. The above block multiplication then constitutes a \textit{block Gaussian Elimination} over the matrix $M$ to make it \textit{block upper-triangular}. It is not hard to see that
 \begin{align*}
 \begin{bmatrix}
 I_p & A^{-1}B \\
@@ -1659,14 +1659,14 @@ P_{\beta'}^\beta &=
 0 & 0 & 1 & 0 \\
 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & 1
-\end{bmatrix}_{\beta'}^\beta
+\end{bmatrix}
 &
 Q_{\eta'}^\eta &= 
 \begin{bmatrix}
 1 & 0 & 1 \\
 1 & -1 & 0 \\
 0 & 1 & -1
-\end{bmatrix}_{\eta'}^\eta
+\end{bmatrix}
 \end{align*}
 and the new matrix representation of $T$ is
 \begin{align*}
@@ -1675,40 +1675,40 @@ and the new matrix representation of $T$ is
 1 & 0 & 1 \\
 1 & -1 & 0 \\
 0 & 1 & -1
-\end{bmatrix}_{\eta'}^\eta\right)^{-1}
+\end{bmatrix}\right)^{-1}
 \begin{bmatrix}
 1 & 0 & 2 & -2 \\
 0 & 0 & 1 & 0 \\
 1 & -2 & 1 & 0
-\end{bmatrix}_\beta^\eta
+\end{bmatrix}
 \begin{bmatrix}
 1 & 0 & 1 & 1 \\
 0 & 0 & 1 & 0 \\
 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & 1
-\end{bmatrix}_{\beta'}^\beta \\
+\end{bmatrix} \\
 &= \begin{bmatrix}
 \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\
 \frac{1}{2} & -\frac{1}{2} & \frac{1}{2} \\
 \frac{1}{2} & -\frac{1}{2} & -\frac{1}{2}
-\end{bmatrix}_{\eta}^{\eta'}
+\end{bmatrix}
 \begin{bmatrix}
 1 & 0 & 2 & -2 \\
 0 & 0 & 1 & 0 \\
 1 & -2 & 1 & 0
-\end{bmatrix}_\beta^\eta
+\end{bmatrix}
 \begin{bmatrix}
 1 & 0 & 1 & 1 \\
 0 & 0 & 1 & 0 \\
 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & 1
-\end{bmatrix}_{\beta'}^\beta \\
+\end{bmatrix}\\
 &=
 \begin{bmatrix}
 1 & 2 & 0 & 0 \\
 1 & 1 & 0 & 0 \\
 0 & 0 & 1 & -1
-\end{bmatrix}_{\beta'}^{\eta'}
+\end{bmatrix}
 \end{align*}
 where it can be seen that
 \begin{align*}

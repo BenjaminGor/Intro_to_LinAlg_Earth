@@ -8,7 +8,7 @@ After three chapters of discussion about matrices, it is time to introduce anoth
 A \index{Vector (Geometric)}\keywordhl{(geometric) vector} is a physical quantity represented by an ordered tuple of \textit{components} (numbers), e.g.\ $(1, 8, 7, 4)$, $(1-i, 1+3i, 2)$. It has a \textit{magnitude (length)} and \textit{direction}, resembling an arrow. Some real-life examples are: two-dimensional fluid flow velocity $(u, v)$, the relative position of an airplane to a ground radar $(x, y, z)$.
 \begin{defn}[$n$-dimensional Geometric Vector]
 \label{defn:geometvec}
-A $n$-dimensional geometric vector consists of $n$ ordered numbers called \index{Components}\keywordhl{components} and are denoted by either an arrow or boldface, like $\vec{v}$ or $\textbf{v}$. It is usually written out in two forms, as a \textit{column vector} or an \textit{ordered $n$-tuple}:
+A $n$-dimensional geometric vector consists of $n$ ordered numbers called \index{Components}\keywordhl{components} and are denoted by either an arrow or boldface, like $\vec{v}$ or $\textbf{v}$. It is usually written out in two forms, as a \textit{column vector} or an \index{Ordered Tuple}\textit{ordered $n$-tuple}:
 \begin{align}
 \vec{v} &=
 \begin{bmatrix}
@@ -102,7 +102,7 @@ where we have written $\vec{v}$ in two forms, as an $n$-tuple and a sum of the t
 \subsection{Fundamental Vector Operations}
 \label{section:vectoraddmul}
 \subsubsection{Addition and Subtraction}
-Same as their matrix counterpart, addition and subtraction between vectors are component-wise, and hence only valid for vectors of the same dimension. For $\vec{w} = \vec{u} \pm \vec{v}$, we have $w_i = u_i \pm v_i$. If
+Same as their matrix counterpart, addition and subtraction between vectors are \textit{component-wise}, and hence only valid for vectors of the same dimension. For $\vec{w} = \vec{u} \pm \vec{v}$, we have $w_i = u_i \pm v_i$. If
 \begin{align*}
 &\vec{u} =
 \begin{bmatrix}
@@ -319,7 +319,7 @@ Now we are going to introduce two special types of vector operations: \textit{do
 
 \subsection{Dot Product}
 \label{section:dotprod}
-\index{Dot Product (Real)}\keywordhl{(Real) Dot product} (or \index{Scalar Product}\keywordhl{scalar product}) is defined for two (real) vectors that have the same number of dimensions. It is the sum of products of the paired components between the two vectors. In other words, it can be regarded to be the matrix product between a row vector ($1 \times n$ matrix) and a column vector ($n \times 1$ matrix). 
+\index{Dot Product}\index{Real Dot Product}\keywordhl{(Real) Dot product} (or \index{Scalar Product}\keywordhl{scalar product}) is defined for two (real) vectors that have the same number of dimensions. It is the sum of products of the paired components between the two vectors. In other words, it can be regarded to be the matrix product between a row vector ($1 \times n$ matrix) and a column vector ($n \times 1$ matrix). 
 \begin{defn}[Dot Product (Real)]
 \label{defn:dotreal}
 The \textit{real} dot product between two $n$-dimensional \textit{real} vectors $\vec{u}$ and $\vec{v}$ in $\mathbb{R}^n$ are denoted as either $\vec{u} \cdot \vec{v}$, or by matrix notation $\textbf{u}^T\textbf{v}$. They are defined as
@@ -574,7 +574,7 @@ By Formula (\ref{eqn:dotgeo}), if the absolute value of the dot product $\abs{\v
 \label{proper:dotorth}
 If the dot product between two real vectors $\vec{u}$ and $\vec{v}$ is zero ($\vec{u} \cdot \vec{v} = \vec{v} \cdot \vec{u} = 0$), then by (\ref{eqn:dotgeo}) in Properties \ref{proper:dotgeo}, $\cos\theta = 0$ and the angle $\theta$ between $\vec{u}$ and $\vec{v}$ is $\frac{\pi}{2}$. In this case, $\vec{u}$ and $\vec{v}$ are said to be perpendicular, or \textit{orthogonal} to each other.
 \end{proper}
-From this, the concept of "\index{Orthogonal}\keywordhl{orthogonal}" becomes an extension of "perpendicular" in higher dimensions. It is easy to see that the standard unit vectors of $\mathbb{R}^n$ are orthogonal. Note that \textit{the zero vector is regarded to be orthogonal to any vector}, so even if $\vec{u}$ or $\vec{v}$ is a zero vector, this property still holds. \par
+From this, the concept of \index{Orthogonal}\keywordhl{"orthogonal"} becomes an extension of "perpendicular" in higher dimensions. It is easy to see that the standard unit vectors of $\mathbb{R}^n$ are orthogonal. Note that \textit{the zero vector is regarded to be orthogonal to any vector}, so even if $\vec{u}$ or $\vec{v}$ is a zero vector, this property still holds. \par
 Some may notice that as $-1 \leq \cos\theta \leq 1$, if $\abs{\vec{u} \cdot \vec{v}} > \norm{\vec{u}}\norm{\vec{v}}$, then $\theta$ in (\ref{eqn:dotgeo}) will be ill-defined. However, the \index{Cauchy-Schwarz Inequality}\keywordhl{Cauchy-Schwarz Inequality} ensures this will not happen.
 \begin{thm}[Cauchy-Schwarz Inequality]
 \label{thm:CauchySch}
@@ -955,7 +955,7 @@ F_{\text{cor},y} &= -2\Omega u \sin\varphi \\
 F_{\text{cor},z} &= 2\Omega u \cos\varphi
 \end{align}    
 \end{subequations}
-The \textit{Coriolis Parameter} $f$ is usually used to denote the factor $2\Omega\sin\varphi$.
+The \index{Coriolis Parameter}\textit{Coriolis Parameter} $f$ is usually used to denote the factor $2\Omega\sin\varphi$.
 \end{exmp}
 \begin{figure}[h!]
 \centering
@@ -1276,7 +1276,7 @@ Mangkhut & 2018/09/16, 22:00 & \textcolor{red}{\SI{25}{\km \per \hour}} & \SI{28
 \begin{Exercise}
 \phantomsection
 \label{ex:triangular}
-Prove the \textit{Triangle Inequality}.
+Prove the \index{Triangle Inequality}\textit{Triangle Inequality}.
 \begin{align}
 \norm{\vec{u} + \vec{v}} \leq \norm{\vec{u}} + \norm{\vec{v}}
 \end{align}
@@ -1293,7 +1293,7 @@ Prove the \textit{Triangle Inequality}.
 \begin{Exercise}
 \phantomsection
 \label{ex:parallellaw}
-Prove the \textit{Parallelogram Law}. (See Figure \ref{fig:parallellaw})
+Prove the \index{Parallelogram Law}\textit{Parallelogram Law}. (See Figure \ref{fig:parallellaw})
 \begin{align}
 2\norm{\vec{u}}^2 + 2\norm{\vec{v}}^2 = \norm{\vec{u}+\vec{v}}^2 + \norm{\vec{u}-\vec{v}}^2
 \end{align}
@@ -1331,7 +1331,8 @@ In Example \ref{exmp:Coriolis}, we have
 and hence the rate of work done is
 \begin{align*}
 &\quad \overrightarrow{F_\text{cor}} \cdot \vec{v} \\
-&= [(2\Omega(v\sin\varphi - w\cos\varphi))\hat{\imath} + (-2\Omega u\sin\varphi)\hat{\jmath} + (2\Omega u\cos\varphi)\hat{k}] \cdot (u\hat{\imath} + v\hat{\jmath} + w\hat{k}) \\
+&= [(2\Omega(v\sin\varphi - w\cos\varphi))\hat{\imath} + (-2\Omega u\sin\varphi)\hat{\jmath} + (2\Omega u\cos\varphi)\hat{k}] \\
+&\quad \cdot (u\hat{\imath} + v\hat{\jmath} + w\hat{k}) \\
 &= (2\Omega(v\sin\varphi - w\cos\varphi))u + (-2\Omega u\sin\varphi)v + (2\Omega u\cos\varphi)w \\
 &= 2\Omega uv\sin\varphi - 2\Omega uw\sin\varphi - 2\Omega uv\sin\varphi + 2\Omega uw\sin\varphi = 0
 \end{align*}
