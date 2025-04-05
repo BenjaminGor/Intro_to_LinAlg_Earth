@@ -19,8 +19,8 @@ An inner product on a vector space $\mathcal{V}$ over $\mathbb{R}$ [$\mathbb{C}$
 \end{enumerate}
 The second and third condition can be combined into \textit{linearity} (in the first argument): given another scalar $b \in \mathbb{R}$ [$\mathbb{C}$], we have $\langle a\vec{u}+b\vec{v}, \vec{w} \rangle = a\langle \vec{u}, \vec{w} \rangle + b\langle \vec{v}, \vec{w} \rangle$. A real [complex] vector space equipped with an inner product is then known as a real [complex] inner product space. 
 \end{defn}
-$\blacktriangleright$ Short Exercise: Show that $\langle a\vec{u}, b\vec{v} \rangle = a\overline{b}\langle \vec{u}, \vec{v} \rangle$ for any complex inner product space.\footnote{$\langle a\vec{u}, b\vec{v} \rangle = a\langle \vec{u}, b\vec{v} \rangle = a\overline{\langle b\vec{v}, \vec{u} \rangle} = a\overline{b\langle \vec{v}, \vec{u} \rangle} = a(\overline{b}) \overline{\langle \vec{v}, \vec{u} \rangle} = a\overline{b}\langle \vec{u}, \vec{v} \rangle$ by the first and third axiom.}\par
-For now, we will limit ourselves to finite-dimensional vector/inner product spaces until Section \ref{section:infinner}. It is not hard to verify that the above axioms hold for the usual dot product, so $\mathbb{R}^n$ [as well as $\mathbb{C}^n$] is automatically an inner product space when the [complex] dot product is equipped. In this case, they are known as the \index{Standard Inner Product}\keywordhl{standard inner product} and \index{Euclidean $n$-space}\keywordhl{Euclidean $n$-space}. However, $\mathbb{R}^n$ will be a different inner product space when another inner product is used. It can be shown that all alternative inner products that can be applied to $\mathbb{R}^n$ are precisely positive-definite symmetric bilinear forms as the extension of positive-definite quadratic forms introduced in the last chapter. Given any positive-definite symmetric bilinear form $B$, it can be verified that $\langle \vec{u}, \vec{v} \rangle = \textbf{u}^TB\textbf{v}$ will satisfy the real inner product axioms.\footnote{For (1): $\langle \vec{u}, \vec{v} \rangle = \textbf{u}^TB\textbf{v} = (\textbf{u}^TB\textbf{v})^T$ since it is only a scalar, and then $(\textbf{u}^TB\textbf{v})^T = \textbf{v}^TB^T\textbf{u} = \textbf{v}^TB\textbf{u} = \langle \vec{v}, \vec{u} \rangle$ due to Properties \ref{proper:transp} and because $B$ is symmetric. (2) and (3) are obvious. For (4), as $B$ is required to be positive-definite, $\langle \vec{v}, \vec{v} \rangle = \textbf{v}^TB\textbf{v} > 0$ by Definition \ref{defn:quaddefinite} as long as $\vec{v} \neq \textbf{0}$ and it is apparent that $\langle \vec{v}, \vec{v} \rangle = \textbf{0}^TB\textbf{0} = 0$ when $\vec{v} = \textbf{0}$.} Below are some other properties of inner products extended from the axioms that can be compared to Properties \ref{proper:dotproper} and \ref{proper:complexdot}.
+$\blacktriangleright$ Short Exercise: Show that $\langle a\vec{u}, b\vec{v} \rangle = a\overline{b}\langle \vec{u}, \vec{v} \rangle$ for any complex inner product space.\footnotemark\par
+For now, we will limit ourselves to finite-dimensional vector/inner product spaces until Section \ref{section:infinner}. It is not hard to verify that the above axioms hold for the usual dot product, so $\mathbb{R}^n$ [as well as $\mathbb{C}^n$] is automatically an inner product space when the [complex] dot product is equipped. In this case, they are known as the \index{Standard Inner Product}\keywordhl{standard inner product} and \index{Euclidean $n$-space}\keywordhl{Euclidean $n$-space}.\footnotetext{$\langle a\vec{u}, b\vec{v} \rangle = a\langle \vec{u}, b\vec{v} \rangle = a\overline{\langle b\vec{v}, \vec{u} \rangle} = a\overline{b\langle \vec{v}, \vec{u} \rangle} = a(\overline{b}) \overline{\langle \vec{v}, \vec{u} \rangle} = a\overline{b}\langle \vec{u}, \vec{v} \rangle$ by the first and third axiom.} However, $\mathbb{R}^n$ will be a different inner product space when another inner product is used. It can be shown that all alternative inner products that can be applied to $\mathbb{R}^n$ are precisely positive-definite symmetric bilinear forms as the extension of positive-definite quadratic forms introduced in the last chapter. Given any positive-definite symmetric bilinear form $B$, it can be verified that $\langle \vec{u}, \vec{v} \rangle = \textbf{u}^TB\textbf{v}$ will satisfy the real inner product axioms.\footnote{For (1): $\langle \vec{u}, \vec{v} \rangle = \textbf{u}^TB\textbf{v} = (\textbf{u}^TB\textbf{v})^T$ since it is only a scalar, and then $(\textbf{u}^TB\textbf{v})^T = \textbf{v}^TB^T\textbf{u} = \textbf{v}^TB\textbf{u} = \langle \vec{v}, \vec{u} \rangle$ due to Properties \ref{proper:transp} and because $B$ is symmetric. (2) and (3) are obvious. For (4), as $B$ is required to be positive-definite, $\langle \vec{v}, \vec{v} \rangle = \textbf{v}^TB\textbf{v} > 0$ by Definition \ref{defn:quaddefinite} as long as $\vec{v} \neq \textbf{0}$ and it is apparent that $\langle \vec{v}, \vec{v} \rangle = \textbf{0}^TB\textbf{0} = 0$ when $\vec{v} = \textbf{0}$.} Below are some other properties of inner products extended from the axioms that can be compared to Properties \ref{proper:dotproper} and \ref{proper:complexdot}.
 \begin{proper}
 \label{proper:innerprod2}
 For vectors $\vec{u}, \vec{v}, \vec{w} \in \mathcal{V}$ and scalar $b \in \mathbb{R}$ [$\mathbb{C}$] in a real [complex] inner product space, we have
@@ -156,7 +156,7 @@ by computing the three quantities in the above inequality:
 \end{align*}
 similarly $\norm{x^2} = \frac{1}{\sqrt{5}}$. Hence $\abs{\langle x , x^2\rangle} = \frac{1}{4} = \frac{1}{\sqrt{16}} < \frac{1}{\sqrt{15}} = (\frac{1}{\sqrt{3}})(\frac{1}{\sqrt{5}}) = \norm{x}\norm{\smash{x^2}}$ and the inequality holds in this case.
 \end{solution}
-$\blacktriangleright$ Short Exercise: Show that the same\footnote{Actually, they are not the same functions as before since their domain changes from $[0,1]$ to $[-1,1]$, but we use the word for the sake of convenience.} two functions $\varphi_1 = x$ and $\varphi_2 = x^2$ become orthogonal to each other in $\mathcal{C}^0[-1,1]$ where the inner product still takes the same form of Equation (\ref{eqn:integralinner}) but integrated from $-1$ to $1$ instead.\footnote{$\int_{-1}^1 x \overline{(x^2)} = \int_{-1}^1 x^3 = 0$ as $x^3$ is an odd function and the integration limits are symmetric.}
+$\blacktriangleright$ Short Exercise: Show that the same\footnote{Actually, they are not the same functions as before since their domain changes from $[0,1]$ to $[-1,1]$, but we use the word for the sake of convenience.} two functions $\varphi_1 = x$ and $\varphi_2 = x^2$ become orthogonal to each other in $\mathcal{C}^0[-1,1]$ where the inner product still takes the same form of Equation (\ref{eqn:integralinner}) but integrated from $-1$ to $1$ instead.\footnotemark
 
 \section{Adjoints and Hermitian/Unitary Operators}
 \label{section:adjointherm}
@@ -172,7 +172,7 @@ With the usual [complex] dot product as the inner product for $\mathbb{R}^n$ [$\
 &= [\vec{u}]_\beta^T (\overline{[T]_\beta^*[\vec{v}]_\beta}) \nonumber \\
 &= \langle [\vec{u}]_\beta, ([T]_\beta)^*[\vec{v}]_\beta \rangle \stackrel{\text{def}}{\equiv} \langle \vec{u}, T^\dag(\vec{v}) \rangle
 \end{align}
-by Properties \ref{proper:complexdotherm}, so that we identify the adjoint operator $T^\dag$ with the conjugate transpose matrix representation of $([T]_\beta)^*$ as expected. 
+by Properties \ref{proper:complexdotherm}, so that we identify the adjoint operator $T^\dag$ with the conjugate transpose matrix representation of $([T]_\beta)^*$ as expected.\footnotetext{$\int_{-1}^1 x \overline{(x^2)} = \int_{-1}^1 x^3 = 0$ as $x^3$ is an odd function and the integration limits are symmetric.}
 \begin{defn}[Adjoint]
 \label{defn:adjoint}
 The adjoint of a linear operator $T: \mathcal{V} \to \mathcal{V}$ with respect to some inner product $\langle \cdot, \cdot \rangle$ is another linear operator denoted by $T^\dag$ such that the relation
@@ -341,12 +341,7 @@ we thus see $\mathcal{L}^\dag = \smash{\frac{d^2}{dx^2}} = \mathcal{L}$. Again f
 &= [\frac{m_1}{2}(\cos((m_1-m_2)x) + \cos((m_1+m_2)x))]_{-\pi}^\pi \\
 &\quad - [-\frac{m_2}{2}(\cos((m_1-m_2)x) - \cos((m_1+m_2)x))]_{-\pi}^\pi 
 \end{align*}
-using trigonometric identities. From this, we see that if the two boundary terms have to be zero, $m_1 - m_2$ and $m_1 + m_2$ must both be odd or even at the same time, which implies that $m_1$ and $m_2$ have to be integers. And since $\sin(-m_1 x) = -\sin(m_1 x)$ and $\cos(-m_2 x) = \cos(m_2 x)$, we only need to take the integers that are positive.}, with the eigenvalues being $-m^2$. Hence the countably infinite, orthogonal\footnote{Again, without the loss of generality, we let $f = \sin(m_1 x)$ and $g = \cos(m_2 x)$ where $m_1$ and $m_2$ are now positive integers. Then the orthogonality is verified by computing
-\begin{align*}
-\int_{-\pi}^{\pi} \sin(m_1 x)\cos(m_2 x) dx &= \int_{-\pi}^{\pi} \frac{1}{2} (\sin((m_1 - m_2)x) + \sin((m_1 + m_2)x)) dx \\
-&= [\frac{1}{2} (-\frac{\cos((m_1 - m_2)x)}{m_1 - m_2} - \frac{\cos((m_1 + m_2)x)}{m_1 + m_2})]_{-\pi}^{\pi} 
-\end{align*}
-which yields $0$ when the end-points $-\pi, \pi$ are substituted into the expression.} (Properties \ref{proper:hilbertorthosys}, not yet normalized) basis of eigenfunctions for $\mathcal{L}$ are $\{\sin(x), \sin(2x), \sin(3x), \ldots, 1, \cos(x), \cos(2x), \cos(3x), \ldots\}$. This basis, consisting of sines and cosines with discrete, equally spaced frequencies, is famously known as the \index{Fourier Basis}\keywordhl{Fourier basis}.
+using trigonometric identities. From this, we see that if the two boundary terms have to be zero, $m_1 - m_2$ and $m_1 + m_2$ must both be odd or even at the same time, which implies that $m_1$ and $m_2$ have to be integers. And since $\sin(-m_1 x) = -\sin(m_1 x)$ and $\cos(-m_2 x) = \cos(m_2 x)$, we only need to take the integers that are positive.}, with the eigenvalues being $-m^2$. Hence the countably infinite, orthogonal\footnotemark (Properties \ref{proper:hilbertorthosys}, not yet normalized) basis of eigenfunctions for $\mathcal{L}$ are $\{\sin(x), \sin(2x), \sin(3x), \ldots, 1, \cos(x), \cos(2x), \cos(3x), \ldots\}$. This basis, consisting of sines and cosines with discrete, equally spaced frequencies, is famously known as the \index{Fourier Basis}\keywordhl{Fourier basis}.
 \end{solution}
 
 \subsection{Unitary Operators}
@@ -360,7 +355,12 @@ With this definition, the distance-preserving property can be readily derived.
 \begin{proper}
 Transformation by a unitary operator $T = T^\dag$ on a vector (or function) is length-preserving.
 \end{proper}
-which should be compared to Properties \ref{proper:ortholengthpreserve}.
+which should be compared to Properties \ref{proper:ortholengthpreserve}.\footnotetext{Again, without the loss of generality, we let $f = \sin(m_1 x)$ and $g = \cos(m_2 x)$ where $m_1$ and $m_2$ are now positive integers. Then the orthogonality is verified by computing
+\begin{align*}
+\int_{-\pi}^{\pi} \sin(m_1 x)\cos(m_2 x) dx &= \int_{-\pi}^{\pi} \frac{1}{2} (\sin((m_1 - m_2)x) + \sin((m_1 + m_2)x)) dx \\
+&= [\frac{1}{2} (-\frac{\cos((m_1 - m_2)x)}{m_1 - m_2} - \frac{\cos((m_1 + m_2)x)}{m_1 + m_2})]_{-\pi}^{\pi} 
+\end{align*}
+which yields $0$ when the end-points $-\pi, \pi$ are substituted into the expression.}
 \begin{proof}
 Denote the original vector as $\vec{v}$ and the newly transformed vector be $T(\vec{v})$, then its length, given as the norm in Properties \ref{proper:norminner},
 \begin{align*}
@@ -682,12 +682,7 @@ T(\vec{v}) &= T(c_1\varphi^{(1)} + c_2\varphi^{(2)} + \cdots) = T\left(\lim_{n \
 \end{align*}
 \footnotetext{Notice that in such an infinite series, linearity is actually not sufficient, see the caution just below the derivation.}Be wary that in (e), the linear operator $T$ applied on $\vec{v}$ is required to be Hermitian (truly self-adjoint), not only formally self-adjoint.\footnote{Curious readers may like to search about what a compact operator is.} This means that there will be problems if boundary terms appear when an integral-like inner product is used. This issue is going to be raised in the next example and short exercise.\par
 
-Recall that in Example \ref{exmp:Fourierbasis} we have derived the Fourier basis $\{\sin(x), \sin(2x), \\ \sin(3x), \ldots, 1, \cos(x), \cos(2x), \cos(3x), \ldots\}$ for the $L^2[-\pi, \pi]$ Hilbert space with the inner product of Equation (\ref{eqn:integralinner}). To normalize it, note that each eigenfunction has a norm of $\frac{1}{\sqrt{\pi}}$\footnote{We will only show this for the cosines but the calculation is the same for the sines. For any integer $m$,
-\begin{align*}
-\norm{\cos(mx)}^2 &= \int_{-\pi}^{\pi} \cos(mx)\overline{\cos(mx)} dx \\
-&= \int_{-\pi}^{\pi} \cos^2(mx) dx \\
-&= \int_{-\pi}^{\pi} \frac{1}{2}(1 + \cos(2mx)) dx \\
-&= [\frac{1}{2}x + \frac{1}{4m}\sin(2mx)]_{-\pi}^{\pi} = \frac{1}{2}(2\pi) + (0) = \frac{1}{\pi} \end{align*}} ($\frac{1}{\sqrt{2\pi}}$ for $1$) and hence the orthonormal Fourier basis is 
+Recall that in Example \ref{exmp:Fourierbasis} we have derived the Fourier basis $\{\sin(x), \sin(2x), \\ \sin(3x), \ldots, 1, \cos(x), \cos(2x), \cos(3x), \ldots\}$ for the $L^2[-\pi, \pi]$ Hilbert space with the inner product of Equation (\ref{eqn:integralinner}). To normalize it, note that each eigenfunction has a norm of $\frac{1}{\sqrt{\pi}}$\footnotemark ($\frac{1}{\sqrt{2\pi}}$ for $1$) and hence the orthonormal Fourier basis is 
 \begin{align}
 \begin{aligned}
 &\left\{\frac{1}{\sqrt{\pi}}\sin(x), \frac{1}{\sqrt{\pi}}\sin(2x), \frac{1}{\sqrt{\pi}}\sin(3x), \ldots,\right. \\
@@ -702,7 +697,12 @@ f &= \frac{a_0}{2} + a_1\cos(x) + a_2\cos(2x) + a_3\cos(3x) + \cdots \nonumber \
 &= \frac{a_0}{2} + \sum_{m=1}^{\infty} a_m \cos(mx) + \sum_{n=1}^{\infty} b_n \sin(nx) 
 \end{align}
 \end{subequations}
-an infinite sum of these sinusoidal eigenfunctions (omitted the $\frac{1}{\sqrt{\pi}}$ normalization factor). To compute the \index{Fourier Coefficients}\keywordhl{Fourier coefficients} $a_m$ and $b_n$, we use (d) of the Spectral Theorem where the $T_j$ are in the form of Equation (\ref{eqn:orthoprojinner}), leading to
+an infinite sum of these sinusoidal eigenfunctions (omitted the $\frac{1}{\sqrt{\pi}}$ normalization factor). To compute the \index{Fourier Coefficients}\keywordhl{Fourier coefficients} $a_m$ and $b_n$, we use (d) of the Spectral Theorem where the $T_j$ are in the form of Equation (\ref{eqn:orthoprojinner}), leading to\footnotetext{We will only show this for the cosines but the calculation is the same for the sines. For any integer $m$,
+\begin{align*}
+\norm{\cos(mx)}^2 &= \int_{-\pi}^{\pi} \cos(mx)\overline{\cos(mx)} dx \\
+&= \int_{-\pi}^{\pi} \cos^2(mx) dx \\
+&= \int_{-\pi}^{\pi} \frac{1}{2}(1 + \cos(2mx)) dx \\
+&= [\frac{1}{2}x + \frac{1}{4m}\sin(2mx)]_{-\pi}^{\pi} = \frac{1}{2}(2\pi) + (0) = \frac{1}{\pi} \end{align*}}
 \begin{align*}
 f &= \sum_{j} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \\ 
 &= \left\langle f, \frac{1}{\sqrt{2\pi}} \right\rangle \left(\frac{1}{\sqrt{2\pi}}\right)\\
@@ -743,11 +743,7 @@ as $\cos(n\pi) = \cos(-n\pi) = (-1)^n$. Therefore, the Fourier series of $x$ is
 \begin{align*}
 x = -2 \sum_{n=1}^{\infty} \frac{(-1)^n}{n} \sin(nx)
 \end{align*}
-$\blacktriangleright$ Short Exercise: It seems that if we apply part (e) of the Spectral Theorem \ref{thm:spectralinner}, where the self-adjoint operator $T = \frac{d^2}{dx^2}$ induces the Fourier basis as in Example \ref{exmp:Fourierbasis}, on the Fourier series of $x$ above, the L.H.S. will readily become zero but the R.H.S. will still contain non-trivial sine terms under the twice differentiation so they are obviously unequal. Why does this paradox occur?\footnote{\label{foot:fourier}It is because the Hermiticity of $T$, required by (e) of the Spectral Theorem, is not satisfied for the function $x$. The boundary terms derived in Example \ref{exmp:Fourierbasis}
-\begin{align*}
-[f(x) \frac{d}{dx}\overline{([g(x)])}]_{-\pi}^\pi - [\frac{d}{dx}(f(x)) \overline{g(x)}]_{-\pi}^\pi    
-\end{align*}
-will vanish only if $f(x)$ and $g(x)$ and their derivatives $f'(x)$ and $g'(x)$ are periodic, i.e.\ equal at the two end-points $-\pi, \pi$. Clearly, $x$ is not a periodic function so it does not satisfy the boundary conditions and this part of the Spectral Theorem is not applicable. For reference, in general, a Fourier series can be differentiated terms by terms if the function $f(x)$ is continuous, takes the same value at the two end-points $f(-\pi) = f(\pi)$ and its derivative $f'(x)$ is piecewise continuous. A Fourier series essentially extends the given function by repeating it with a period of $2\pi$, so actually such a periodic extension of the function $x$ will be discontinuous at the boundaries between the repeated graphs.}
+$\blacktriangleright$ Short Exercise: It seems that if we apply part (e) of the Spectral Theorem \ref{thm:spectralinner}, where the self-adjoint operator $T = \frac{d^2}{dx^2}$ induces the Fourier basis as in Example \ref{exmp:Fourierbasis}, on the Fourier series of $x$ above, the L.H.S. will readily become zero but the R.H.S. will still contain non-trivial sine terms under the twice differentiation so they are obviously unequal. Why does this paradox occur?\footnotemark
 \end{solution}
 
 \section{Special Polynomials}
@@ -766,7 +762,11 @@ as
 \begin{align}
 \mathcal{L}[y] = \lambda w(x)y
 \end{align}
-which apparently poses an eigenvalue-eigenfunction problem with a weighting $w(x)$ where $\lambda$ is the eigenvalue. The Sturm-Liouville operator is self-adjoint with respect to the inner product (\ref{eqn:integralinner}) and can become Hermitian under suitable boundary conditions as shown below:
+which apparently poses an eigenvalue-eigenfunction problem with a weighting $w(x)$ where $\lambda$ is the eigenvalue. The Sturm-Liouville operator is self-adjoint with respect to the inner product (\ref{eqn:integralinner}) and can become Hermitian under suitable boundary conditions as shown below:\footnotetext{\label{foot:fourier}It is because the Hermiticity of $T$, required by (e) of the Spectral Theorem, is not satisfied for the function $x$. The boundary terms derived in Example \ref{exmp:Fourierbasis}
+\begin{align*}
+[f(x) \frac{d}{dx}\overline{([g(x)])}]_{-\pi}^\pi - [\frac{d}{dx}(f(x)) \overline{g(x)}]_{-\pi}^\pi    
+\end{align*}
+will vanish only if $f(x)$ and $g(x)$ and their derivatives $f'(x)$ and $g'(x)$ are periodic, i.e.\ equal at the two end-points $-\pi, \pi$. Clearly, $x$ is not a periodic function so it does not satisfy the boundary conditions and this part of the Spectral Theorem is not applicable. For reference, in general, a Fourier series can be differentiated terms by terms if the function $f(x)$ is continuous, takes the same value at the two end-points $f(-\pi) = f(\pi)$ and its derivative $f'(x)$ is piecewise continuous. A Fourier series essentially extends the given function by repeating it with a period of $2\pi$, so actually such a periodic extension of the function $x$ will be discontinuous at the boundaries between the repeated graphs.}
 \begin{align*}
 \langle \mathcal{L}[f], g \rangle &= \int_a^b \mathcal{L}[f(x)] \overline{g(x)} dx \\
 &= \int_a^b -\left(\left(\frac{d}{dx} (p(x) \frac{df(x)}{dx}\right) + q(x)f(x)\right)  \overline{g(x)} dx \\
@@ -799,16 +799,7 @@ so that it becomes
 &\quad [F(x)P(x)y']' + F(x)Q(x)y + \lambda F(x)w(x)y \nonumber \\
 &= [p(x)y']' + q(x)y + \lambda F(x)w(x)y = 0
 \end{align}
-\footnote{$F(x)$ is derived such that $F(x)P(x)y'' + F(x)R(x)y' = [F(x)P(x)y']'$:
-\begin{align*}
-[F(x)P(x)y']' = F(x)P(x)y'' + F(x)R(x)y' &= F(x)P(x)y'' + F(x)P'(x)y' + F'(x)P(x)y' \\
-F(x)R(x)y' &=  F(x)P'(x)y' + F'(x)P(x)y' \\
-F(x)(R(x) - P'(x)) &= F'(x)P(x) \\
-\frac{dF(x)}{F(x)} &= \frac{R(x) - P'(x)}{P(x)} \\
-\ln F(x) &= \int \frac{R(x) - P'(x)}{P(x)} dx \\
-\Rightarrow F(x) &= \exp(\int \frac{R(x) - P'(x)}{P(x)} dx)
-\end{align*}}
-where $p(x) = F(x)P(x)$, $q(x) = F(x)Q(x)$, and the new weighting is $F(x)w(x)$ which is still positive-definite as $F(x)$ is an exponential function.
+\footnotemark{} where $p(x) = F(x)P(x)$, $q(x) = F(x)Q(x)$, and the new weighting is $F(x)w(x)$ which is still positive-definite as $F(x)$ is an exponential function.
 
 \begin{exmp}
 \label{exmp:hermiteeqn}
@@ -829,7 +820,15 @@ and hence by multiplying it to the Hermite's Equation
 e^{-x^2}y'' - 2xe^{-x^2}y' + 2\nu e^{-x^2} y &= 0 \nonumber \\
 (e^{-x^2}y')' + 2\nu e^{-x^2} y &= 0
 \end{align}
-yields the Sturm-Liouville form with $p(x) = e^{-x^2}$, $q(x) = 0$, $\lambda = 2\nu$, $w(x) = e^{-x^2}$. We can find the eigenfunctions by the method of \index{Series Solution}\textit{series solution}. Assume a series solution of 
+yields the Sturm-Liouville form with $p(x) = e^{-x^2}$, $q(x) = 0$, $\lambda = 2\nu$, $w(x) = e^{-x^2}$. We can find the eigenfunctions by the method of \index{Series Solution}\textit{series solution}. Assume a series solution of\footnotetext{$F(x)$ is derived such that $F(x)P(x)y'' + F(x)R(x)y' = [F(x)P(x)y']'$:
+\begin{align*}
+[F(x)P(x)y']' = F(x)P(x)y'' + F(x)R(x)y' &= F(x)P(x)y'' + F(x)P'(x)y' + F'(x)P(x)y' \\
+F(x)R(x)y' &=  F(x)P'(x)y' + F'(x)P(x)y' \\
+F(x)(R(x) - P'(x)) &= F'(x)P(x) \\
+\frac{dF(x)}{F(x)} &= \frac{R(x) - P'(x)}{P(x)} \\
+\ln F(x) &= \int \frac{R(x) - P'(x)}{P(x)} dx \\
+\Rightarrow F(x) &= \exp(\int \frac{R(x) - P'(x)}{P(x)} dx)
+\end{align*}} 
 \begin{align}
 y = a_0 + a_1x + a_2x^2 + \cdots = \sum_{n=0}^{\infty} a_n x^n    
 \end{align}
@@ -876,18 +875,18 @@ H_2(x) &= 4x^2 - 2 \\
 H_3(x) &= 8x^3 - 12x
 \end{aligned}
 \end{align}    
-$\blacktriangleright$ Short Exercise: Find the Hermite polynomial of degree $4$, $H_4(x)$, corresponding to $\nu = n = 4$.\footnote{Using the recurrence relation, we have
+$\blacktriangleright$ Short Exercise: Find the Hermite polynomial of degree $4$, $H_4(x)$, corresponding to $\nu = n = 4$.\footnotemark
+\end{solution}
+
+\subsection{Generating Special Polynomials by Gram-Schmidt Orthogonalization}
+
+Since a Sturm-Liouville operator is Hermitian given appropriate boundary conditions and Hermiticity leads to a complete orthonormal basis that is countable if the underlying Hilbert space is separable, which we assume to be that so, we can derive the corresponding orthogonal \index{Special Polynomials}\keywordhl{special polynomials} to the Sturm-Liouville equation, e.g.\ Hermite polynomials in the previous part, by applying the Gram-Schmidt process on the standard polynomial basis $\{1, x, x^2, x^3, \ldots\}$ to any degree with respect to the inner product in Equation (\ref{eqn:integralinner2}). The details of the calculation are shown below.\footnotetext{Using the recurrence relation, we have
 \begin{align*}
 a_2 &= \frac{2(0-4)}{(2)(1)}a_0 = -4a_0 \\
 a_4 &= \frac{2(2-4)}{(4)(3)}a_2 = -\frac{1}{3}a_2 = \frac{4}{3}a_0 \\
 a_6 &= \frac{2(4-4)}{(6)(5)}a_4 = 0
 \end{align*}
 hence $y = a_0 - 4a_0x^2 + \frac{4}{3}a_0x^4$ and after scaling it becomes $H_4(x) = 16x^4 - 48x^2 + 12$.}
-\end{solution}
-
-\subsection{Generating Special Polynomials by Gram-Schmidt Orthogonalization}
-
-Since a Sturm-Liouville operator is Hermitian given appropriate boundary conditions and Hermiticity leads to a complete orthonormal basis that is countable if the underlying Hilbert space is separable, which we assume to be that so, we can derive the corresponding orthogonal \index{Special Polynomials}\keywordhl{special polynomials} to the Sturm-Liouville equation, e.g.\ Hermite polynomials in the previous part, by applying the Gram-Schmidt process on the standard polynomial basis $\{1, x, x^2, x^3, \ldots\}$ to any degree with respect to the inner product in Equation (\ref{eqn:integralinner2}). The details of the calculation are shown below.
 \begin{exmp}
 Compute the first four Hermite polynomials as introduced in Example \ref{exmp:hermiteeqn} by Gram-Schmidt Orthogonalization.
 \end{exmp}

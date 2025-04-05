@@ -1,7 +1,7 @@
 \chapter{Complex Vectors/Matrices and Block Matrices}
 \label{chap:complex}
 
-In this chapter, we will take a detour to talk about two auxiliary topics. The first one is the generalization of vectors and matrices to having complex numbers as entries. Eventually, we will mention about \textit{complex vector spaces}, and compare them to real vector spaces that we just learnt in the previous chapters. The second one is about the \textit{block form} of a matrix (or simply referred to as a \textit{block matrix}) that is composed of smaller \textit{submatrices} as the building blocks. Writing a matrix in block form enables efficient manipulation for many situations that we will encounter in the remaining parts of this book.
+In this chapter, we will take a detour to talk about two auxiliary topics. The first one is the generalization of vectors and matrices to having complex numbers as entries. Eventually, we will mention about \textit{complex vector spaces}, and compare them to real vector spaces that we just learnt in the previous chapters. Working with complex numbers and \textit{Euler's Formula} will make many calculations faster, such as solving systems of Ordinary Differential Equations in Chapters \ref{chap:eigen}, and the Discrete Fourier Transform in Chapter \ref{chap:DFT}. The second one is about the \textit{block form} of a matrix (or simply referred to as a \textit{block matrix}) that is composed of smaller \textit{submatrices} as the building blocks. Writing a matrix in block form enables efficient manipulation for many situations that we will encounter in the remaining parts of this book.
 
 \section{Definition and Operations of Complex Numbers}
 \label{section:complexno}
@@ -53,7 +53,7 @@ Evaluate $(1+2i)(3-4i)$.
 \begin{solution}
 \begin{align*}
 (1+2i)(3-4i) &= ((1)(3) - (2)(-4)) + ((1)(-4) + (2)(3))i \\
-&= 11 + 2i \qedhere
+&= 11 + 2i 
 \end{align*}
 \end{solution}
 
@@ -231,10 +231,10 @@ Show that the conjugate-symmetric property in Properties \ref{proper:complexdot}
 Hence $\vec{u} \cdot \vec{v} = \overline{\vec{v} \cdot \vec{u}}$.
 \end{solution}
 
-$\blacktriangleright$ Short Exercise: Find the norm $\norm{\vec{u}}$ and $\norm{\vec{v}}$ respectively.\footnote{$\norm{\vec{u}} = \sqrt{(1+2i)(1-2i) + (3+i)(3-i)} = \sqrt{(1^2 + 2^2) + (3^2 + 1^2)} = \sqrt{15}$. Similarly, $\norm{\vec{v}} = \sqrt{46}$.}
+$\blacktriangleright$ Short Exercise: Find the norm $\norm{\vec{u}}$ and $\norm{\vec{v}}$ respectively.\footnotemark
 
 \subsection{Operations and Properties of Complex Matrices}
-Matrix multiplication between two complex matrices is carried out in the same way as we have been always doing, according to Definition \ref{defn:matprod}. However, due to the difference in the definition of dot product for real and complex vectors, we can no longer claim like in the discussion below Definition \ref{defn:dotreal} that the entries resulting from a complex matrix product are complex vector dot products between the corresponding rows and columns. To make the statement work again, a minor modification is needed, as we will see soon. 
+Matrix multiplication between two complex matrices is carried out in the same way as we have been always doing, according to Definition \ref{defn:matprod}. However, due to the difference in the definition of dot product for real and complex vectors, we can no longer claim like in the discussion below Definition \ref{defn:dotreal} that the entries resulting from a complex matrix product are complex vector dot products between the corresponding rows and columns. To make the statement work again, a minor modification is needed, as we will see soon.\footnotetext{$\norm{\vec{u}} = \sqrt{(1+2i)(1-2i) + (3+i)(3-i)} = \sqrt{(1^2 + 2^2) + (3^2 + 1^2)} = \sqrt{15}$. Similarly, $\norm{\vec{v}} = \sqrt{46}$.}
 
 \subsubsection{Conjugate Transpose}
 Transpose can be similarly defined for complex matrices. However, there exists a more useful operation that combines transpose and conjugate.
@@ -459,7 +459,7 @@ A^{-1} &= \frac{1}{\det(A)} \text{adj}(A) = \frac{1}{\det(A)} C^T \\
 \end{align*}
 \end{solution}
 
-$\blacktriangleright$ Short Exercise: Find $A^{-1}$ via Gaussian Elimination.\footnote{Notice that we will now need to multiply rows with complex constants instead when doing elementary row operations. You should be able to get the same answer. Possible first few steps are multiplying the first row by $\frac{1+i}{2}$ to create a leading $1$ and subtracting $1+i$ and $2$ times the new first row from the second and third row respectively.}
+$\blacktriangleright$ Short Exercise: Find $A^{-1}$ via Gaussian Elimination.\footnotemark
 
 Below are some useful properties of determinants and inverses for complex matrices that can be compared to Properties \ref{proper:properdet} and \ref{proper:inverse}.
 \begin{proper}
@@ -484,7 +484,7 @@ Additionally, if $A$ is non-singular, then
 
 \subsection{The Complex $n$-space $\mathbb{C}^n$}
 
-Similar to the real $n$-space $\mathbb{R}^n$ brought up in Definition \ref{defn:real_nspace}, the set of all complex vectors, now with $n$ complex components, forms the \index{Complex $n$-space}\keywordhl{complex $n$-space} $\mathbb{C}^n$ as follows.
+Similar to the real $n$-space $\mathbb{R}^n$ brought up in Definition \ref{defn:real_nspace}, the set of all complex vectors, now with $n$ complex components, forms the \index{Complex $n$-space}\keywordhl{complex $n$-space} $\mathbb{C}^n$ as follows.\footnotetext{Notice that we will now need to multiply rows with complex constants instead when doing elementary row operations. You should be able to get the same answer. Possible first few steps are multiplying the first row by $\frac{1+i}{2}$ to create a leading $1$ and subtracting $1+i$ and $2$ times the new first row from the second and third row respectively.}
 \begin{defn}[The Complex $n$-space $\mathbb{C}^n$]
 \label{defn:complex_nspace}
 The complex $n$-space $\mathbb{C}^n$ is defined as the set of all possible $n$-tuples in the form of $\vec{v} = (v_1, v_2, v_3, \ldots, v_n)^T$, where $v_i$ can be any \textit{complex} numbers, for $i = 1,2,3,\ldots,n$. They are known as $n$-dimensional complex vectors.
@@ -1487,7 +1487,12 @@ The matrix representation of the restriction of $T$ to $\mathcal{W}$ with respec
 \end{bmatrix}
 \end{align*}
 \end{solution}
-$\blacktriangleright$ Short Exercise: Directly apply Properties \ref{proper:restrictmat} to redo the example above.\footnote{$[T(\vec{w}_1)]_\eta = [T(\vec{u}_1+\vec{u}_2)]_\eta = [T]_\beta^\eta(1,1,0)_\beta^T =
+$\blacktriangleright$ Short Exercise: Directly apply Properties \ref{proper:restrictmat} to redo the example above.\footnotemark\par
+With the concept of restriction, we can now introduce the matrix analog of a direct sum. For a linear transformation $T: \mathcal{U} \to \mathcal{V}$, if the vector spaces (finite-dimensional) involved are direct sums such that $\mathcal{U} = \mathcal{W} \oplus \mathcal{W}_C$ and $\mathcal{V} = \mathcal{Y} \oplus \mathcal{Y}^C$, and the ranges
+\begin{align*}
+\mathcal{R}(T|_W) \subseteq \mathcal{Y} & & \mathcal{R}(T|_{W^C}) \subseteq \mathcal{Y}^C
+\end{align*}
+of the two restrictions are such that vectors in $\mathcal{W}$ and $\mathcal{W}^C$ are mapped by $T$ to vectors in $\mathcal{Y}$ and $\mathcal{Y}^C$ separately, then $T = T|_W \oplus T|_{W^C}$ is a \index{Matrix Direct Sum}\keywordhl{matrix direct sum} in the sense that the linear transformation $T$ maps each of the complement subspaces in a direct sum of $\mathcal{U}$ into the corresponding complement subspaces in a direct sum of $\mathcal{V}$. If we write the input vector $\vec{u} = \vec{w} + \vec{w}^C$ as a direct sum where $\vec{w} \in \mathcal{W}$ and $\vec{w}^C \in \mathcal{W}^C$, then the output vector will also be a direct sum $\vec{v} = \vec{y} + \vec{y}^C$ where $\vec{y} = T|_W(\vec{w}) = T(\vec{w})$ and $\vec{y}^C = T|_{W^C}(\vec{w}^C) = T(\vec{w}^C)$, which are obtained by first computing $T(\vec{w})$ and $T(\vec{w}^C)$ individually, and then directly concatenating them together.\footnotetext{$[T(\vec{w}_1)]_\eta = [T(\vec{u}_1+\vec{u}_2)]_\eta = [T]_\beta^\eta(1,1,0)_\beta^T =
 \begin{bmatrix}
 1 & 1 & 2 \\
 2 & 0 & 1 \\
@@ -1503,12 +1508,7 @@ $\blacktriangleright$ Short Exercise: Directly apply Properties \ref{proper:rest
 2 \\
 0
 \end{bmatrix}_\eta
-$ and this will be the first column of $\smash{[T|_W]_{\beta_W}^\eta}$. The second column is derived similarly by evaluating $[T(\vec{w}_2)]_\eta$.}\par
-With the concept of restriction, we can now introduce the matrix analog of a direct sum. For a linear transformation $T: \mathcal{U} \to \mathcal{V}$, if the vector spaces (finite-dimensional) involved are direct sums such that $\mathcal{U} = \mathcal{W} \oplus \mathcal{W}_C$ and $\mathcal{V} = \mathcal{Y} \oplus \mathcal{Y}^C$, and the ranges
-\begin{align*}
-\mathcal{R}(T|_W) \subseteq \mathcal{Y} & & \mathcal{R}(T|_{W^C}) \subseteq \mathcal{Y}^C
-\end{align*}
-of the two restrictions are such that vectors in $\mathcal{W}$ and $\mathcal{W}^C$ are mapped by $T$ to vectors in $\mathcal{Y}$ and $\mathcal{Y}^C$ separately, then $T = T|_W \oplus T|_{W^C}$ is a \index{Matrix Direct Sum}\keywordhl{matrix direct sum} in the sense that the linear transformation $T$ maps each of the complement subspaces in a direct sum of $\mathcal{U}$ into the corresponding complement subspaces in a direct sum of $\mathcal{V}$. If we write the input vector $\vec{u} = \vec{w} + \vec{w}^C$ as a direct sum where $\vec{w} \in \mathcal{W}$ and $\vec{w}^C \in \mathcal{W}^C$, then the output vector will also be a direct sum $\vec{v} = \vec{y} + \vec{y}^C$ where $\vec{y} = T|_W(\vec{w}) = T(\vec{w})$ and $\vec{y}^C = T|_{W^C}(\vec{w}^C) = T(\vec{w}^C)$, which are obtained by first computing $T(\vec{w})$ and $T(\vec{w}^C)$ individually, and then directly concatenating them together.
+$ and this will be the first column of $\smash{[T|_W]_{\beta_W}^\eta}$. The second column is derived similarly by evaluating $[T(\vec{w}_2)]_\eta$.}
 \begin{defn}[Matrix Direct Sum]
 \label{defn:matdirectsum}
 The direct sum of two matrices acting as linear transformations $T_1: \mathcal{U}_1 \to \mathcal{V}_1$ and $T_2: \mathcal{U}_2 \to \mathcal{V}_2$ is $T = T_1 \oplus T_2$ such that for any vector direct sum $\vec{u} = \vec{u}_1 + \vec{u}_2$ in $\mathcal{U} = \mathcal{U}_1 \oplus \mathcal{U}_2$, applying $T$ on $\vec{u}$ will yield an output of a vector direct sum $T(\vec{u}) = \vec{v} = \vec{v}_1 + \vec{v}_2$ in $\mathcal{V}_1 \oplus \mathcal{V}_2$ as well, where $\vec{v}_1 = T_1(\vec{u}_1) = T|_{U_1}(\vec{u}_1) \in \mathcal{V}_1$ and $\vec{v}_2 = T_2(\vec{u}_2) = T|_{U_2}(\vec{u}_2) \in \mathcal{V}_2$. The matrix direct sum is then the matrix representation of $T = T_1 \oplus T_2$ with respect to the direct sum basis for $\mathcal{U}_1 \oplus \mathcal{U}_2$ and $\mathcal{V}_1 \oplus \mathcal{V}_2$.

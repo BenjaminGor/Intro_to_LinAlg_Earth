@@ -1,6 +1,6 @@
 \chapter{Vector Geometry}
 
-Vectors provide valuable assistance when it comes to describing geometric objects. In this chapter, we are going to exploit the knowledge learnt in the previous chapters to solve geometry problems and inspect more deeply the intimate relationships between vectors, \textit{dot/cross products}, and geometry.
+Vectors provide valuable assistance when it comes to describing geometric objects. In this chapter, we are going to exploit the knowledge learnt in the previous chapters to solve geometry problems and inspect more deeply the intimate relationships between vectors, equations, shapes, \textit{dot/cross products}, and geometry. Some physical applications are to compute areas, volumes, and (great-arc) distances. 
 
 \section{Lines and Planes}
 \textit{(Straight) lines} and \textit{planes} are geometric shapes of importance in two/three-dimensional real spaces ($\mathbb{R}^2$ and $\mathbb{R}^3$), and due to their simplicity, they will be frequently seen. They can be expressed either in terms of (a) an equation, or (b) vectors. We will start with the easier case of a line. Since a straight line is a one-dimensional object, the vector form of such a line can be expressed by a fixed vector that points to its initial position, plus another vector oriented along the line's direction, times an arbitrary parameter that controls its extension or contraction, so that it traces out the line when the parameter changed continuously.
@@ -23,7 +23,7 @@ Vectors provide valuable assistance when it comes to describing geometric object
     \caption{\textit{The graph of $\color{blue}x - 2y = -2$ can take the vector form of $\smash{\color{Green}\overrightarrow{OP}} = {\color{orange}\vec{r}} + {\color{Green}t} {\color{red}\vec{u}} = {\color{orange}(-1,\frac{1}{2})^T} + {\color{Green}t}{\color{red}(2,1)^T}$. The orange/red arrow represents the initial position/direction, and the locus of the green arrow is controlled by $\color{Green}t$ like a slider. The cases for $\color{Green}t = 0.75, 1, 1.25, 1.5, 1.75, 2$ are shown.}}
     \label{fig:vectraceline}
 \end{figure}\par
-$\blacktriangleright$ Short Exercise: Choose any value of $t$ for the example in Figure \ref{fig:vectraceline} and substitute that value into the expression of $\smash{\overrightarrow{OP}}$ to see if the $x$ and $y$ components satisfy the starting equation. Also, try to increase/decrease the value of $t$ to observe how the vector traces out the desired straight line.\footnote{Let's say $t = -0.25$, $\overrightarrow{OP}=(-1,0.5)^T + (-0.25)(2,1)^T = (-1.5, 0.25)^T$, $x - 2y = (-1.5) - 2(0.25) = -2$.}
+$\blacktriangleright$ Short Exercise: Choose any value of $t$ for the example in Figure \ref{fig:vectraceline} and substitute that value into the expression of $\smash{\overrightarrow{OP}}$ to see if the $x$ and $y$ components satisfy the starting equation. Also, try to increase/decrease the value of $t$ to observe how the vector traces out the desired straight line.\footnotemark
 
 \subsection{Translating Equation Form to Vector Form}
 The general equation form of a line on an $xy$ plane is $ax + by = h$, resembling a linear system of one equation with two unknowns. From Section \ref{subsection:SolLinSysGauss}, it can be observed that it has infinitely many solutions and possesses a free variable. Let $y = t$, then by rearranging the equation, we have $x = (h - bt)/a$ where $t$ is any scalar. Denote the origin as $O$ and any point on the line as $P$, then 
@@ -95,8 +95,12 @@ is equivalent to
 2
 \end{bmatrix}     
 \end{align*}
-for the line equation $2x - y = -1$.\par
-$\blacktriangleright$ Short Exercise: Check the equivalence of the two vector forms above by choosing a value for $t_1$ and finding the corresponding $t_2$ so that the vector points to the same position.\footnote{For example, if $t_1 = 1$, we have $(1, 3)^T + (1)(2, 4)^T = (3,7)^T$ as a point on the line, and for the other vector form $(-1,-1)^T + t_2(1, 2)^T = (3,7)^T$ to coincide we will have $t_2 = 4$. In this case, it can be shown that the general relation between the two forms is determined by $t_2 = 2t_1 + 2$, as
+for the line equation $2x - y = -1$.\footnotetext{Let's say $t = -0.25$, $\overrightarrow{OP}=(-1,0.5)^T + (-0.25)(2,1)^T = (-1.5, 0.25)^T$, $x - 2y = (-1.5) - 2(0.25) = -2$.}\par
+$\blacktriangleright$ Short Exercise: Check the equivalence of the two vector forms above by choosing a value for $t_1$ and finding the corresponding $t_2$ so that the vector points to the same position.\footnotemark\par
+$\blacktriangleright$ Short Exercise: What is the vector form of the equation $ax + by = h$ for the degenerate case $a=0$?\footnotemark
+
+\subsection{Recovering Equation Form from Vector Form} On the other hand, inferring a line equation from the vector form is not straightforward at first sight. Since the vector form of a line always contains an arbitrary parameter, which is absent in the equation form, the motivation is to remove the parameter through some manipulation. Remember that from Properties \ref{proper:dotorth}, the dot product between orthogonal (perpendicular) vectors returns zero. This means that by carrying out a dot product with the \index{Normal Vector}\keywordhl{normal vector} of the line, which is orthogonal to the direction vector, on both sides of the vector form, we will eliminate the parameter and recover the line equation. For example, given that
+\footnotetext[\numexpr\value{footnote}-1]{For example, if $t_1 = 1$, we have $(1, 3)^T + (1)(2, 4)^T = (3,7)^T$ as a point on the line, and for the other vector form $(-1,-1)^T + t_2(1, 2)^T = (3,7)^T$ to coincide we will have $t_2 = 4$. In this case, it can be shown that the general relation between the two forms is determined by $t_2 = 2t_1 + 2$, as
 \begin{align*}
 \begin{bmatrix}
 1\\
@@ -134,46 +138,7 @@ $\blacktriangleright$ Short Exercise: Check the equivalence of the two vector fo
 1 \\
 2
 \end{bmatrix}
-\end{align*}}\par
-$\blacktriangleright$ Short Exercise: What is the vector form of the equation $ax + by = h$ for the degenerate case $a=0$?\footnote{The equation is reduced to $y = \frac{h}{b}$ and we select $x = t$ as the free variable instead.\\ 
-$\begin{bmatrix}
-x \\
-y
-\end{bmatrix}
-=
-\begin{bmatrix}
-t \\
-\frac{h}{b}
-\end{bmatrix}
-=
-\begin{bmatrix}
-0 \\
-\frac{h}{b}
-\end{bmatrix}
-+
-t
-\begin{bmatrix}
-1 \\
-0
-\end{bmatrix}$}
-
-\subsection{Recovering Equation Form from Vector Form} On the other hand, inferring a line equation from the vector form is not straightforward at first sight. Since the vector form of a line always contains an arbitrary parameter, which is absent in the equation form, the motivation is to remove the parameter through some manipulation. Remember that from Properties \ref{proper:dotorth}, the dot product between orthogonal (perpendicular) vectors returns zero. This means that by carrying out a dot product with the \index{Normal Vector}\keywordhl{normal vector} of the line, which is orthogonal to the direction vector, on both sides of the vector form, we will eliminate the parameter and recover the line equation. For example, given that
-\begin{align*}
-\begin{bmatrix}
-x\\
-y
-\end{bmatrix}
-=
-\begin{bmatrix}
-1\\
-3
-\end{bmatrix}
-+ t
-\begin{bmatrix}
-1 \\
-4
-\end{bmatrix} 
-\end{align*}
+\end{align*}}
 We know that $(4, -1)^T$ is a normal vector orthogonal to the direction vector (see the next short exercise). So, by taking dot product with $(4, -1)^T$ on both sides, we have
 \begin{align*}
 \begin{bmatrix}
@@ -223,8 +188,44 @@ y
 4x - y &= ((1)(4) + (3)(-1)) + ((1)(4)+(4)(-1))t = 1 + (0)t = 1 \\
 \Rightarrow 4x - y &= 1
 \end{align*}
-Notice that the coefficients of the equation are the same as the components of the normal vector. \par
-$\blacktriangleright$ Short Exercise: Verify that $(a, b)^T$ is always normal/orthogonal to $(b, -a)^T$, and vice versa.\footnote{$(a, b)^T \cdot (b, -a)^T = (a)(b) + (b)(-a) = 0$}
+Notice that the coefficients of the equation are the same as the components of the normal vector.\footnotetext{The equation is reduced to $y = \frac{h}{b}$ and we select $x = t$ as the free variable instead.\\ 
+$\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+=
+\begin{bmatrix}
+t \\
+\frac{h}{b}
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\
+\frac{h}{b}
+\end{bmatrix}
++
+t
+\begin{bmatrix}
+1 \\
+0
+\end{bmatrix}$}
+\begin{align*}
+\begin{bmatrix}
+x\\
+y
+\end{bmatrix}
+=
+\begin{bmatrix}
+1\\
+3
+\end{bmatrix}
++ t
+\begin{bmatrix}
+1 \\
+4
+\end{bmatrix} 
+\end{align*} \par
+$\blacktriangleright$ Short Exercise: Verify that $(a, b)^T$ is always normal/orthogonal to $(b, -a)^T$, and vice versa.\footnotemark
 
 \subsection{Generalizing to Higher Dimensions}
 \label{section:vecgeohighdim}
@@ -252,6 +253,7 @@ Recall from Section \ref{section:crossprod} that the cross product of any two no
 \label{exmp:vecgeohighdim}
 Transform the plane equation $2x+3y+z = 4$ to vector form and convert the acquired vector form back to the starting equation to verify consistency.
 \end{exmp}
+\footnotetext{$(a, b)^T \cdot (b, -a)^T = (a)(b) + (b)(-a) = 0$}
 \begin{solution}
 For the first part, we can let $y=s$, $z=t$, then from the plane equation we have $x = \frac{1}{2}(4-3s-t)$ and hence
 \begin{align*}
@@ -424,12 +426,12 @@ and the vector projection is
 \begin{align*}
 \overrightarrow{\text{proj}}_u v &= (\text{proj}_u v) \frac{\vec{u}}{\norm{\vec{u}}} \\
 &= (-\frac{\sqrt{26}}{13}) \left(\frac{4\hat{\imath} + \hat{\jmath} - 3\hat{k}}{\sqrt{26}}\right) \\
-&= -\frac{1}{13} (4\hat{\imath} + \hat{\jmath} - 3\hat{k}) = (-\frac{4}{13}, -\frac{1}{13}, \frac{3}{13})^T
+&= -\frac{1}{13} (4\hat{\imath} + \hat{\jmath} - 3\hat{k}) = \left(-\frac{4}{13}, -\frac{1}{13}, \frac{3}{13}\right)^T
 \end{align*}   
 \end{solution}
 
 \subsection{Distance} The distance of a point to a line/plane (in $\mathbb{R}^2$/$\mathbb{R}^3$ respectively) can be found by projecting any vector starting somewhere from the line/plane to the point, onto the normal vector of that line/plane, as illustrated in Figure \ref{fig:distancelp} below.
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \begin{tikzpicture}
     \draw (0,0) -- (5,-1);
@@ -689,7 +691,7 @@ The $\hat{\imath}$ component along the $x$-direction is
 &= (u_1w_1 + u_2w_2 + u_3w_3)v_1 - (u_1v_1 + u_2v_2 + u_3v_3)w_1 \\
 &= (\vec{u} \cdot \vec{w})v_1 - (\vec{u} \cdot \vec{v})w_1
 \end{align*}
-which is equal to the $\hat{\imath}$ component on the R.H.S. and similar results can be shown for the $\hat{\jmath}$, $\hat{k}$ components, and the equality establishes.
+which is equal to the $\hat{\imath}$ component on the R.H.S. and similar results can be shown for the $\hat{\jmath}$, $\hat{k}$ components, and the equality establishes. The geometric meaning of the R.H.S. is a projection onto (the plane constructed by) $\vec{v}$ and $\vec{w}$ but with the $\vec{v}$ and $\vec{w}$ components rotated.
 \end{proof}
 
 \begin{proper}[Jacobi Identity]\index{Jacobi Identity}
@@ -709,6 +711,7 @@ By Properties \ref{proper:triplecross}, we have
 &\quad + [(\vec{w} \cdot \vec{v})\vec{u} - (\vec{v} \cdot \vec{w})\vec{u}] \\
 &= 0\vec{v} + 0\vec{w} + 0\vec{u} = \textbf{0}
 \end{align*}
+The geometric meaning is that, since the vector triple product is basically a signed, rotated projection onto the two other edges of a parallelepiped as seen above, the permutation of the three vector triple products means that we will traverse along the six outer edges of a half-open parallelepiped and return to the initial vertex.
 \end{proof}
 
 \begin{proper}[Lagrange's Identity]\index{Lagrange's Identity}
@@ -724,6 +727,7 @@ Manipulating the geometric formulae of dot/cross product, we have
 &= \norm{\vec{u}}^2 \norm{\vec{v}}^2 - \norm{\vec{u}}^2 \norm{\vec{v}}^2 \cos^2 \theta \\
 &= \norm{\vec{u}}^2 \norm{\vec{v}}^2 - (\vec{u} \cdot \vec{v})^2 &\text{(Properties \ref{proper:dotgeo})}
 \end{align*}
+By rearranging the identity as $\norm{\vec{u} \times \vec{v}}^2 + (\vec{u} \cdot \vec{v})^2 = \norm{\vec{u}}^2 \norm{\vec{v}}^2$, we can identify its geometric meaning with the Pythagoras' theorem: the squared length $(\norm{\vec{u}}\norm{\vec{v}})^2$, representing the hypotenuse of a right triangle, is the sum of the squared lengths of the opposite $\norm{\vec{u} \times \vec{v}}^2$ and adjacent edge $(\vec{u} \cdot \vec{v})^2$.
 \end{proof}
 
 The last identity is the \index{Cosine Law for Spherical Trigonometry}\keywordhl{Cosine Law for Spherical Trigonometry}.
@@ -734,7 +738,7 @@ The last identity is the \index{Cosine Law for Spherical Trigonometry}\keywordhl
 \end{align}
 where $a$, $b$, $c$ are the (subtended angle of) three arcs (in radians) of a spherical triangle on a unit sphere and $C$ is the angle between the two arcs $a$ and $b$, as shown in Figure \ref{fig:cosinesphere}.
 \end{proper}
-\begin{figure}
+\begin{figure}[ht!]
 \centering\tdplotsetmaincoords{35}{125}
 % https://tex.stackexchange.com/questions/380316/gray-shaded-sphere-with-tikz-3dplot
 % https://latexdraw.com/draw-a-sphere-in-latex-using-tikz/#t-1610955504379
@@ -800,6 +804,13 @@ Now consider the dot product $\hat{v} \cdot \hat{w}$. The geometric meaning of d
 \end{align*}
 Therefore, equaling the two expressions of $\hat{v} \cdot \hat{w}$ gives the desired formula of $\cos c = \cos a \cos b + \sin a \sin b \cos C$.
 \end{proof}
+It can be seen as the generalization of the usual Cosine Law on a spherical surface. By first-order Taylor expansion, we have
+\begin{align*}
+1-\frac{1}{2}c^2 + \cdots &= (1-\frac{1}{2}a^2 + \cdots)(1-\frac{1}{2}b^2 + \cdots) + ab \cos C \\
+1-\frac{1}{2}c^2 &= 1 - \frac{1}{2}a^2 - \frac{1}{2} b^2 + ab \cos C \\
+c^2 &= a^2 + b^2 - 2ab \cos C
+\end{align*}
+so it reduces to the original Cosine Law.
 
 \section{Earth Science Applications}
 \begin{exmp}
@@ -830,7 +841,7 @@ where we have used the trigonometric identity $\cos(\theta-\phi) = \cos \theta \
 \sin^2 \left(\frac{c}{2}\right) &\approx 0.26214 \\
 c &\approx \SI{61.6}{\degree} = \SI{1.075}{\radian}
 \end{align*}
-and therefore the required great-arc distance is $d = Rc = (\SI{6370}{\km})(\SI{1.075}{\radian}) \approx \SI{6848}{\km}$. The value computed by the Haversine Formula will be slightly off from the true value since the Earth is not a perfect sphere but rather an oblate one.
+and therefore the required great-arc distance is $d = Rc = (\SI{6370}{\km})(\SI{1.075}{\radian}) \approx \SI{6848}{\km}$. The value computed by the Haversine Formula will be slightly off from the true value since the Earth is not a perfect sphere but rather an oblate (minimally) one.
 \end{solution}
 
 \begin{exmp}

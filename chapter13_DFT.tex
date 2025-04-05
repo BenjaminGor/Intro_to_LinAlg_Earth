@@ -309,7 +309,7 @@ B_k &= \frac{2}{N}\left(f(1)\sin(\frac{2\pi k}{N}) + \cdots + f(N-1)\sin(\frac{2
 &= \frac{2}{N}\sum_{t=0}^{N-1} f(t)\sin(\frac{2\pi kt}{N}) \label{eqn:protoDFTb}
 \end{align}
 \end{subequations}
-That makes sense, at least they seem to be. But in the short exercise that follows the example below, you will immediately notice that there is a big caveat to this prototype.
+That makes sense, at least they seem to be. But in the worked short exercise that follows the example below, you will immediately notice that there is a big caveat to this prototype.
 \begin{exmp}
 \label{exmp:ex11.2.1}
 Fit the following time series with the Fourier trigonometric basis up to order $p=1$, where $f(0) = 4, f(1) = 1, f(2) = 2, f(3) = 3, f(4) = 1$.
@@ -352,8 +352,13 @@ So the best trigonometric fit of order $p=1$ for the time series concerned is
 f(t) \approx \frac{11}{5} + 0.229 \cos(\frac{2\pi}{5}t) - 0.235 \sin(\frac{2\pi}{5}t)
 \end{align*}
 \end{solution}
-$\blacktriangleright$ Short Exercise: Find an improved approximation with order $p = 2$. What happens if $p = 3$?\footnote{For $p = 2$, the best-fit coefficients are
+\begin{exmp}
+As a follow-up short exercise for the last example, find an improved approximation with order $p = 2$. What happens if $p = 3$?    
+\end{exmp}
+\begin{solution}
+For $p = 2$, the best-fit coefficients are
 \begin{align*}
+\footnotesize
 \begin{bmatrix}
 C_0 \\
 A_1 \\
@@ -363,6 +368,7 @@ B_2
 \end{bmatrix}
 &= 
 \frac{1}{5}
+\footnotesize
 \begin{bmatrix}
 1 & 1 & 1 & 1 & 1 \\
 2 & 2\cos(\frac{2\pi}{5}) & 2\cos(\frac{2\pi(2)}{5}) & 2\cos(\frac{2\pi(3)}{5}) & 2\cos(\frac{2\pi(4)}{5}) \\
@@ -370,6 +376,7 @@ B_2
 2 & 2\cos(\frac{2\pi(2)}{5}) & 2\cos(\frac{2\pi(2)(2)}{5}) & 2\cos(\frac{2\pi(2)(3)}{5}) & 2\cos(\frac{2\pi(2)(4)}{5}) \\
 0 & 2\sin(\frac{2\pi(2)}{5}) & 2\sin(\frac{2\pi(2)(2)}{5}) & 2\sin(\frac{2\pi(2)(3)}{5}) & 2\sin(\frac{2\pi(2)(4)}{5})
 \end{bmatrix}
+\footnotesize
 \begin{bmatrix}
 f(0)\\
 f(1)\\
@@ -380,12 +387,17 @@ f(4)
 \end{align*}
 It is not hard to see that $C_0, A_1, B_1$ will be the same and
 \begin{align*}
-A_2 &= \frac{2}{5} \left(4 + 1\cos(\frac{2\pi(2)}{5}) + 2\cos(\frac{2\pi(2)(2)}{5}) + 3\cos(\frac{2\pi(2)(3)}{5}) + 1\cos(\frac{2\pi(2)(4)}{5})\right) \\
-&\approx 1.571 \\
-B_2 &= \frac{2}{5} \left(0 + 1\sin(\frac{2\pi(2)}{5}) + 2\sin(\frac{2\pi(2)(2)}{5}) + 3\sin(\frac{2\pi(2)(3)}{5}) + 1\sin(\frac{2\pi(2)(4)}{5})\right) \\
-&\approx 0.380
+A_2 &= \frac{2}{5} \left(4 + 1\cos(\frac{2\pi(2)}{5}) + 2\cos(\frac{2\pi(2)(2)}{5}) \right. \\
+&\quad \left.{} + 3\cos(\frac{2\pi(2)(3)}{5}) + 1\cos(\frac{2\pi(2)(4)}{5})\right) \approx 1.571 \\
+B_2 &= \frac{2}{5} \left(0 + 1\sin(\frac{2\pi(2)}{5}) + 2\sin(\frac{2\pi(2)(2)}{5}) \right. \\
+&\quad \left.{} + 3\sin(\frac{2\pi(2)(3)}{5}) + 1\sin(\frac{2\pi(2)(4)}{5})\right) \approx 0.380
 \end{align*}
-Hence the new approximation will be $f(t) \approx \frac{11}{5} + \smash{0.229 \cos(\frac{2\pi}{5}t)} - \smash{0.235 \sin(\frac{2\pi}{5}t)} + \smash{1.571 \cos(\frac{2\pi(2)}{5}t)} + \smash{0.380 \sin(\frac{2\pi(2)}{5}t)}$. When $p$ is increased to $3$, the matrix $G$ involved in the best-fit formula becomes
+Hence the new approximation will be 
+\begin{align*}
+f(t) &\approx \frac{11}{5} + 0.229 \cos(\frac{2\pi}{5}t) - 0.235 \sin(\frac{2\pi}{5}t) \\
+&\quad + 1.571 \cos(\frac{2\pi(2)}{5}t) + 0.380 \sin(\frac{2\pi(2)}{5}t)    
+\end{align*}
+When $p$ is increased to $3$, the matrix $G$ involved in the best-fit formula becomes
 \begin{align*}
 \scriptsize
 G = 
@@ -397,7 +409,6 @@ G =
 1 & \cos(\frac{2\pi(4)}{5}) & \sin(\frac{2\pi(4)}{5}) & \cos(\frac{2\pi(2)(4)}{5}) & \sin(\frac{2\pi(2)(4)}{5}) & \cos(\frac{2\pi(3)(4)}{5}) & \sin(\frac{2\pi(3)(4)}{5})
 \end{bmatrix}    
 \end{align*}
-\vspace{\maxdimen}
 and a routine computation will show that
 \begin{align*}
 G^T G = 
@@ -413,13 +424,13 @@ G^T G =
 \end{align*}
 is not invertible (the fourth/sixth rows are equal and the fifth/last rows are the negative of each other), so that the formula $\vec{\beta}_f = (G^TG)^{-1}G^T\vec{d}$ will fail. If we forcefully use the expressions in (\ref{eqn:protoDFTa}) and (\ref{eqn:protoDFTb}) to compute $A_3$ and $B_3$ we will get
 \begin{align*}
-A_3 &= \frac{2}{5} \left(4 + 1\cos(\frac{2\pi(3)}{5}) + 2\cos(\frac{2\pi(3)(2)}{5}) + 3\cos(\frac{2\pi(3)(3)}{5}) + 1\cos(\frac{2\pi(3)(4)}{5})\right) \\
-&= A_2 \\
-B_3 &= \frac{2}{5} \left(0 + 1\sin(\frac{2\pi(3)}{5}) + 2\sin(\frac{2\pi(3)(2)}{5}) + 3\sin(\frac{2\pi(3)(3)}{5}) + 1\sin(\frac{2\pi(3)(4)}{5})\right) \\
-&= -B_2    
+A_3 &= \frac{2}{5} \left(4 + 1\cos(\frac{2\pi(3)}{5}) + 2\cos(\frac{2\pi(3)(2)}{5}) \right. \\
+&\quad \left.{} + 3\cos(\frac{2\pi(3)(3)}{5}) + 1\cos(\frac{2\pi(3)(4)}{5})\right) = A_2 \\
+B_3 &= \frac{2}{5} \left(0 + 1\sin(\frac{2\pi(3)}{5}) + 2\sin(\frac{2\pi(3)(2)}{5}) \right. \\
+&\quad \left.{} + 3\sin(\frac{2\pi(3)(3)}{5}) + 1\sin(\frac{2\pi(3)(4)}{5})\right) = -B_2    
 \end{align*}
 So $A_2$ [$B_2$] and $A_3$ [$B_3$] carry the same information and one of them will be redundant.
-}
+\end{solution}
 
 \subsection{Nyquist Frequency and Real DFT}
 
@@ -533,13 +544,7 @@ for even $N$, where each column represents frequencies corresponding to
 k = 0, 1, \ldots, \frac{N}{2}-1, -\frac{N}{2}, \ldots, -1    
 \end{align*}
 This is a common convention where we start from $k = 0$, and it increases to the largest positive $k = \frac{N}{2}-1$, then we flip the sign and resume from the most negative $k = -\frac{N}{2}$, finally go all the way back to $k = -1$. For odd $N$, the matrix $G$ is essentially the same, except the $k$ is replaced by the appropriate range of integers, and in particular, the flipping is from $k = \frac{N-1}{2}$ to $k = -\frac{N-1}{2}$. \par
-The entries of $G^*G$ in Formula (\ref{eqn:bestfit}) from Theorem \ref{thm:bestfit} are then the complex dot products between the sequences of complex exponentials appearing as the column vectors of $G$. The orthogonality relation between different column vectors of $G$ is very easy to find. The procedure is similar to what we have done when proving the orthogonality for the real case, but even less tedious. The key point is to write the complex dot product over any pair of two columns as a geometric sequence, that when the values of $k$ are different, will be evaluated to zero. The readers are invited to verify this result, in addition to the fact that the complex dot product between any such a column vector and itself is $N$.\footnote{When $k \neq l$, we have \begin{align*}
-\sum_{t=0}^{N-1} \exp(i (2\pi k/N) t)\overline{\exp(i (2\pi l/N) t)} &= \sum_{t=0}^{N-1} \exp(i (2\pi k/N) t)\exp(-i (2\pi l/N) t) \\
-&= \sum_{t=0}^{N-1} \exp(i (2\pi (k-l)/N) t) \\
-&= \frac{1-\exp(i (2\pi (k-l)/N))^N}{1-\exp(i (2\pi (k-l)/N))} \\
-&= \frac{1-\exp(i (2\pi (k-l)))}{1-\exp(i (2\pi (k-l)/N))} \\
-&= \frac{1-1}{1-\exp(i (2\pi (k-l)/N))} = 0
-\end{align*} The $\exp(i (2\pi (k-l)/N))$ term in the denominator will not equal to $1$ and the denominator will not be zero as long as $k \neq l$ and the indices are in the specified range. If $k = l$, then $\exp(i (2\pi k/N) t)\overline{\exp(i (2\pi l/N) t)} =  \exp(i (2\pi k/N) t)\exp(-i (2\pi k/N) t) = 1$, and the sum will be $N$.} Thus, the expression $G^*G$ is just $N$ times the identity $I$, and $(G^*G)^{-1} = \frac{1}{N} I$. \par
+The entries of $G^*G$ in Formula (\ref{eqn:bestfit}) from Theorem \ref{thm:bestfit} are then the complex dot products between the sequences of complex exponentials appearing as the column vectors of $G$. The orthogonality relation between different column vectors of $G$ is very easy to find. The procedure is similar to what we have done when proving the orthogonality for the real case, but even less tedious. The key point is to write the complex dot product over any pair of two columns as a geometric sequence, that when the values of $k$ are different, will be evaluated to zero. The readers are invited to verify this result, in addition to the fact that the complex dot product between any such a column vector and itself is $N$.\footnotemark{} Thus, the expression $G^*G$ is just $N$ times the identity $I$, and $(G^*G)^{-1} = \frac{1}{N} I$. \par
 Now we denote the new, complex best-fit parameters, or coefficients by $C_k$. Subsequently,
 \begin{align}
 \vec{\beta}_f &= (G^*G)^{-1}G^*\vec{d} = \left(\frac{1}{N}I\right)G^*\vec{d} \nonumber \\
@@ -573,7 +578,14 @@ f(2) \\
 \vdots
 \end{bmatrix}
 \end{align}
-Again this is for even $N$, and we ought to replace the indices for coefficients and complex exponentials appropriately for odd $N$. The $\frac{1}{N}$ factor will also be ignored. We now conclude the method of \index{Discrete Fourier Transform (DFT, complex)}\keywordhl{(complex) Discrete Fourier Transform} in a compact way as follows.
+Again this is for even $N$, and we ought to replace the indices for coefficients and complex exponentials appropriately for odd $N$. The $\frac{1}{N}$ factor will also be ignored. We now conclude the method of \index{Discrete Fourier Transform (DFT, complex)}\keywordhl{(complex) Discrete Fourier Transform} in a compact way as follows.\footnotetext{When $k \neq l$, we have \begin{align*}
+\sum_{t=0}^{N-1} \exp(i (2\pi k/N) t)\overline{\exp(i (2\pi l/N) t)} &= \sum_{t=0}^{N-1} \exp(i (2\pi k/N) t)\exp(-i (2\pi l/N) t) \\
+&= \sum_{t=0}^{N-1} \exp(i (2\pi (k-l)/N) t) \\
+&= \frac{1-\exp(i (2\pi (k-l)/N))^N}{1-\exp(i (2\pi (k-l)/N))} \\
+&= \frac{1-\exp(i (2\pi (k-l)))}{1-\exp(i (2\pi (k-l)/N))} \\
+&= \frac{1-1}{1-\exp(i (2\pi (k-l)/N))} = 0
+\end{align*}
+The $\exp(i (2\pi (k-l)/N))$ term in the denominator will not equal to $1$ and the denominator will not be zero as long as $k \neq l$ and the indices are in the specified range. If $k = l$, then $\exp(i (2\pi k/N) t)\overline{\exp(i (2\pi l/N) t)} =  \exp(i (2\pi k/N) t)\exp(-i (2\pi k/N) t) = 1$, and the sum will be $N$.}
 \begin{defn}[Discrete Fourier Transform (DFT)]
 \label{defn:complexDFT}
 The coefficients, or amplitudes, of the DFT in complex form are computed by
@@ -626,7 +638,7 @@ C_2 &= 4 + 1\exp(-i\frac{2\pi(2)}{5}) + 2\exp(-i\frac{2\pi(2)(2)}{5}) \\
 \end{align*}
 Either by the property just mentioned or a direct computation, $C_{-1} = \overline{C_1}$ and $C_{-2} = \overline{C_2}$ are seen to be the complex conjugates of $C_1$ and $C_2$ respectively. 
 \end{solution}
-$\blacktriangleright$ Short Exercise: Check if Properties \ref{proper:FTrealcomplex} is true in this example.\footnote{We will only check $A_1$ and $B_1$ and leave $A_2$ and $B_2$ to the readers. $2\Re(C_1)/N = 2(0.573)/5 \approx 0.229 = A_1$, $-2\Im(C_1)/N = -2(0.588)/5 \approx -0.235 = B_1$.}
+$\blacktriangleright$ Short Exercise: Check if Properties \ref{proper:FTrealcomplex} is true in this example.\footnotemark
 
 \subsection{Inverse DFT}
 
@@ -660,7 +672,7 @@ f(2) \\
 \hat{f}_{-1}
 \end{bmatrix}
 \end{align}
-for even $N$, and can be adapted for odd $N$ with small tweaks similar to those before. It can also be written in a summation form just like the one in Definition \ref{defn:complexDFT} as follows.
+for even $N$, and can be adapted for odd $N$ with small tweaks similar to those before. It can also be written in a summation form just like the one in Definition \ref{defn:complexDFT} as follows.\footnotetext{We will only check $A_1$ and $B_1$ and leave $A_2$ and $B_2$ to the readers. $2\Re(C_1)/N = 2(0.573)/5 \approx 0.229 = A_1$, $-2\Im(C_1)/N = -2(0.588)/5 \approx -0.235 = B_1$.}
 \begin{defn}[Inverse DFT]
 \label{defn:iDFT}
 The inverse Discrete Fourier Transform is computed by
@@ -972,7 +984,7 @@ h_c(t) = f(t) \circledast g(t) = \sum_{\tau=-\infty}^{\infty} f_\text{px}(\tau) 
 so that it coincides with Definition \ref{defn:convolution} and we only take the values from $h_c(t)$ within $0 \leq t < N$.
 \end{defn}
 Circular convolution is also symmetric so that $\sum_{\tau=0}^{N-1} f((t-\tau) \bmod N) g(\tau)$ works fine as well. With circular convolution properly defined, we can go ahead to derive the main result, the \index{Convolution Theorem (Circular)}\keywordhl{(Circular) Convolution Theorem}.
-\begin{figure}
+\begin{figure}[t!]
     \centering
     \begin{tikzpicture}
     \draw[blue, thick] plot[domain=-2:2,samples=50] (\x, {2-0.5*(\x)^2});
@@ -1081,7 +1093,7 @@ G^* =
 1 & \omega_N^{N-1} & \omega_N^{2(N-1)} & \omega_N^{3(N-1)} & \cdots & \omega_N^{(N-1)^2}
 \end{bmatrix}
 \end{align}
-where $\omega_N = \smash{\exp(-i\frac{2\pi}{N})}$ is the \index{Fundamental Frequency}\textit{base/fundamental frequency} (and see Footnote \ref{foot:DFTcyclicexp} below). The algorithm works most effectively when $N$ is the power of $2$. For an easier explanation, we consider a smaller value of $N = 2^3 = 8$. Then we denote
+where $\omega_N = \smash{\exp(-i\frac{2\pi}{N})}$ is the \index{Fundamental Frequency}\textit{base/fundamental frequency} (see the coming Footnote \ref{foot:DFTcyclicexp}). The algorithm works most effectively when $N$ is the power of $2$. For an easier explanation, we consider a smaller value of $N = 2^3 = 8$. Then we denote
 \begin{align}
 \renewcommand\arraystretch{1.25}
 G^* = F_8 = 
@@ -1363,7 +1375,7 @@ Its DFT is $(43.9, 7.350-0.095i, -1.386-6.082i, -2.600+0.059i, -3.064+8.990i, 0.
 \end{Answer}
 
 \begin{Exercise}
-Download an \href{https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download}{ERA5 Temperature dataset} over any time period of $20$ years. Select any location as you like, and extract the temperature time series there. Apply DFT to the time series and identify any dominant frequency or period with a large power. Explain the peaks with Earth Science knowledge.
+Download an \href{https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download}{ERA5 Temperature Dataset} over any time period of $20$ years. Select any location as you like, and extract the temperature time series there. Apply DFT to the time series and identify any dominant frequency or period with a large power. Explain the peaks with Earth Science knowledge.
 \end{Exercise}
 
 \begin{Exercise}
