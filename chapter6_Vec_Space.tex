@@ -68,7 +68,7 @@ Consider the following subsets of $\mathbb{R}^2$ and decide if they are subspace
 \end{enumerate}
 \end{solution}
 Generalizing the above discussion, we can easily infer that for $\mathbb{R}^2$, only the origin (the zero subspace), an infinitely long straight line that passes through the origin, or $\mathbb{R}^2$ itself can be its subspaces (see the schematic in Figure \ref{fig:R2subspace}). We often use the phrase \index{Proper Subspace}\keywordhl{proper subspaces} to exclude the accommodating vector space itself ($\mathbb{R}^2$ in this case). For any $\mathbb{R}^n$, the \index{Zero Subspace}\keywordhl{zero subspace} $\{\textbf{0}\}$ and \index{Improper Subspace}\keywordhl{improper subspace} $\mathbb{R}^n$ are always two subspaces of it. 
-\begin{figure}
+\begin{figure}[h!]
     \centering
     \begin{tikzpicture}
     \filldraw[draw=none, fill=blue, opacity=0.1]
@@ -89,7 +89,7 @@ Generalizing the above discussion, we can easily infer that for $\mathbb{R}^2$, 
     \caption{\textit{Some examples (blue) and non-examples (red) of subspaces in $\mathbb{R}^2$.}}
     \label{fig:R2subspace}
 \end{figure}\par
-$\blacktriangleright$ Short Exercise: Determine if the following subsets of $\mathbb{R}^3$ are subspaces of $\mathbb{R}^3$.\footnote{Yes, No, Yes, No, Yes, No, Yes, No, No. In fact, all possible subspaces of $\mathbb{R}^3$ are $\{\textbf{0}\}$, any infinitely long line/extending plane through the origin and $\mathbb{R}^3$ itself.}
+$\blacktriangleright$ Short Exercise: Determine if the following subsets of $\mathbb{R}^3$ are subspaces of $\mathbb{R}^3$.\footnotemark
 \begin{enumerate}[label=(\alph*)]
 \item The origin $\textbf{0} = (0,0,0)^T$,
 \item The point $(1,2,3)^T$,
@@ -114,8 +114,8 @@ A linear combination of vectors $\vec{v}^{(1)}, \vec{v}^{(2)}, \vec{v}^{(3)}, \l
 \end{align}
 where the coefficients $c_j$ are some scalars (real [complex] numbers for a real [complex] vector space) and the number of vectors $q$ is assumed to be \textit{finite}.
 \end{defn}
-As a small example, if there are two vectors $\vec{u} = (1,2)^T$ and $\vec{v} = (3,4)^T \in \mathbb{R}^2$, then $\smash{\vec{h}} = (5,6)^T \in \mathbb{R}^2$ can be written as a linear combination of $\vec{u}$ and $\vec{v}$ because $\smash{\vec{h}} = (5,6)^T = -(1,2)^T + 2(3,4)^T = -\vec{u} + 2\vec{v}$.\par
-$\blacktriangleright$ Short Exercise: If $\smash{\vec{h}} = (1,4)^T$ instead, express it as a linear combination of $\vec{u}$ and $\vec{v}$.\footnote{$(1,4)^T = 4(1,2)^T - (3,4)^T$.}\par
+As a small example, if there are two vectors $\vec{u} = (1,2)^T$ and $\vec{v} = (3,4)^T \in \mathbb{R}^2$, then $\smash{\vec{h}} = (5,6)^T \in \mathbb{R}^2$ can be written as a linear combination of $\vec{u}$ and $\vec{v}$ because $\smash{\vec{h}} = (5,6)^T = -(1,2)^T + 2(3,4)^T = -\vec{u} + 2\vec{v}$.\footnotetext{Yes, No, Yes, No, Yes, No, Yes, No, No. In fact, all possible subspaces of $\mathbb{R}^3$ are $\{\textbf{0}\}$, any infinitely long line/extending plane through the origin and $\mathbb{R}^3$ itself.}\par
+$\blacktriangleright$ Short Exercise: If $\smash{\vec{h}} = (1,4)^T$ instead, express it as a linear combination of $\vec{u}$ and $\vec{v}$.\footnotemark\par
 
 Attentive readers may realize that the short exercise above can be thought of as a task to find out the solution (if any) for the system
 \begin{align*}
@@ -190,7 +190,7 @@ A&
 1
 \end{bmatrix}
 \end{align*}
-and it goes similarly for any other column. Below is a small example to demonstrate the equivalence between matrix-vector products and linear combinations.
+and it goes similarly for any other column. Below is a small example to demonstrate the equivalence between matrix-vector products and linear combinations.\footnotetext{$(1,4)^T = 4(1,2)^T - (3,4)^T$.}
 \begin{align*}
 \begin{tikzpicture}[baseline=-\the\dimexpr\fontdimen22\textfont2\relax]
 \matrix(mymatrix)[matrix of math nodes, left delimiter={[}, 
@@ -471,7 +471,7 @@ a_1\vec{v}^{(1)} + \cdots + a_{k-1}\vec{v}^{(k-1)} + a_k\vec{v}^{(k)} + a_{k+1}\
 \end{align*}
 where we have divided the equation by the non-zero $a_k$ to avoid dividing by zero and rearranged it to show that $\vec{v}^{(k)}$ can be written in some linear combination of other vectors $\vec{v}^{(j)}$, $j \neq k$ as shown above, and thus vectors in $\mathcal{\beta}$ are linearly dependent. 
 \end{proof}
-As a corollary, any set containing the zero vector $\textbf{0}$ must be linearly dependent. (Why?)\footnote{For any such a set $\mathcal{\beta}_0 = \{\vec{u}_1, \vec{u}_2, \ldots, \textbf{0}\}$, the linear system $c_1\vec{u}_1 + c_2\vec{u}_2 + \cdots + c_0\textbf{0} = \textbf{0}$ has a family of infinitely many solution with $c_j = 0$ for $j \neq 0$ and any value of $c_0$, which by Theorem \ref{thm:linearindep} they are linearly dependent.}
+As a corollary, any set containing the zero vector $\textbf{0}$ must be linearly dependent. (Why?)\footnotemark
 \begin{exmp}
 \label{exmp:exmplinearindep}
 Determine if $\vec{u} = (1,2,1)^T$, $\vec{v} = (3,4,2)^T$, $\vec{w} = (6,8,1)^T$ are linearly independent.
@@ -486,13 +486,13 @@ By Theorem \ref{thm:linearindep}, this is equivalent to deciding if $A\vec{x} = 
 \end{vmatrix} = 6 \neq 0
 \end{align*}
 We conclude that $A\vec{x} = \textbf{0}$ only has the trivial solution $\vec{x} = \textbf{0}$ and these three vectors are linearly independent. \par
-$\blacktriangleright$ Short Exercise: Redo the above example with $\vec{u} = (1,1,3)^T$, $\vec{v} = (1,3,2)^T$, $\vec{w} = (2,8,3)^T$.\footnote{The determinant of $A = [\vec{u}|\vec{v}|\vec{w}]$ in the case is $\abs{A} = 0$, and hence by the remark for Theorem \ref{thm:sqlinsysunique} the linear system $A\vec{x} = \textbf{0}$ has infinitely many solutions, and these three vectors are linearly dependent by Theorem \ref{thm:linearindep}.}\par
+$\blacktriangleright$ Short Exercise: Redo the above example with $\vec{u} = (1,1,3)^T$, $\vec{v} = (1,3,2)^T$, $\vec{w} = (2,8,3)^T$.\footnotetext{For any such a set $\mathcal{\beta}_0 = \{\vec{u}_1, \vec{u}_2, \ldots, \textbf{0}\}$, the linear system $c_1\vec{u}_1 + c_2\vec{u}_2 + \cdots + c_0\textbf{0} = \textbf{0}$ has a family of infinitely many solution with $c_j = 0$ for $j \neq 0$ and any value of $c_0$, which by Theorem \ref{thm:linearindep} they are linearly dependent.}\footnotemark\par
 Including our earlier discussion in Section \ref{subsection:SolLinSysGauss}, Theorem \ref{thm:linearindep} gives some interesting results.
 \begin{enumerate}
 \item If there are $q$ vectors of $\mathbb{R}^p$ in a set and $p < q$, i.e.\ the number of vectors is more than their dimension, then $A = [\vec{v}^{(1)}|\vec{v}^{(2)}|\vec{v}^{(3)}|\cdots|\vec{v}^{(q)}]$ is a $p \times q$ matrix which has more columns ($q$) than rows ($p$). In this case, $A\vec{x} = \textbf{0}$ must have at least one free variable and thus infinitely many solutions, hence the vectors must be linearly dependent.
 \item Otherwise ($p \geq q$), we can solve $A\vec{x} = \textbf{0}$ by Gaussian Elimination to see if it only has the trivial solution. If so [not], the vectors are linearly independent [dependent]. Alternatively, if $A$ is a square matrix, then we may check if its determinant is non-zero, just like what has been done in Example \ref{exmp:exmplinearindep}. Gaussian Elimination still works for any square matrix, and in the case of linear independence [dependence], $A$ will [not] be reduced to an identity matrix.
 \end{enumerate}
-In many cases, the number of vectors are indeed not equal to their dimension, so the method of using determinant to check linear independence in the last example does not apply, and we need to resort to Gaussian Elimination. In fact, Gaussian Elimination can disclose more information than just if a set of vectors is linearly (in)dependent as an entirety in both cases, but also how exactly these vectors are dependent on each other, soon to be explained. Before doing so, we note that the above observations lead to an extension of Theorem \ref{thm:equiv2}.
+In many cases, the number of vectors is indeed not equal to their dimension (e.g\ different random perturbations (as vectors) of multiple variables (dimension) in an ensemble experiment), so the method of using determinant to check linear independence in the last example does not apply, and we need to resort to Gaussian Elimination. In fact, Gaussian Elimination can disclose more information than just if a set of vectors is linearly (in)dependent as an entirety in both cases, but also how exactly these vectors are dependent on each other, soon to be explained. Before doing so, we note that the above observations lead to an extension of Theorem \ref{thm:equiv2}.\footnotetext{The determinant of $A = [\vec{u}|\vec{v}|\vec{w}]$ in the case is $\abs{A} = 0$, and hence by the remark for Theorem \ref{thm:sqlinsysunique} the linear system $A\vec{x} = \textbf{0}$ has infinitely many solutions, and these three vectors are linearly dependent by Theorem \ref{thm:linearindep}.}
 \begin{thm}[Equivalence Statements, ver.\ 3]
 \label{thm:equiv3}
 For an $n \times n$ real square matrix $A$, the followings are equivalent:
@@ -1864,7 +1864,7 @@ For a real $m \times n$ matrix $A$, we have
 \end{subequations}
 where $\dim(\mathcal{C}(A)) = \dim(\mathcal{C}(A^T)) = \text{rank}(A)$ by Properties \ref{proper:samecolrowrank}.
 \end{thm}
-An invertible square matrix has a reduced row echelon form of an identity matrix according to Theorem \ref{thm:equiv3}, and since an identity matrix has \textit{full rank}\footnote{An $m \times n$ matrix $A$ is said to have full rank if $\text{rank}(A) = \text{min}(m,n)$.}, by Definition \ref{defn:rank} and the Rank-nullity Theorem \ref{thm:ranknullity} above, we have
+An invertible square matrix has a reduced row echelon form of an identity matrix according to Theorem \ref{thm:equiv3}, and since an identity matrix has \index{Full-rank}\textit{full rank}\footnote{An $m \times n$ matrix $A$ is said to be full-rank if $\text{rank}(A) = \text{min}(m,n)$.}, by Definition \ref{defn:rank} and the Rank-nullity Theorem \ref{thm:ranknullity} above, we have
 \begin{proper}
 \label{proper:invertrank}
 A $n \times n$ square matrix is invertible if and only if its rank and nullity are $n$ and $0$. 
@@ -1997,7 +1997,7 @@ and thus a basis for the null space is $\{(5,-3,1,0)^T, (-3,2,0,1)^T\}$ where th
 \end{align*}
 Furthermore, the dimension of null space, or the nullity, is $\dim{\mathcal{N}(A)} = 2$. Previously we have also found that $\dim{\mathcal{C}(A)} = \text{rank}(A) = 2$. So $\text{rank}(A) + \text{nullity}(A) = 2+2 = 4$, and Theorem \ref{thm:ranknullity} is true.
 \end{solution}
-$\blacktriangleright$ Short Exercise: Show that\footnote{Replace $A$ by $A^T$ in Theorem \ref{thm:ranknullity} to get $\dim(\mathcal{C}(A^T)) + \dim(\mathcal{N}(A^T)) = m$.}
+$\blacktriangleright$ Short Exercise: Show that\footnotemark
 \begin{align*}
 \dim(\mathcal{C}(A^T)) + \dim(\mathcal{N}(A^T)) = \dim(\mathcal{C}(A)) + \dim(\mathcal{N}(A^T)) = m   
 \end{align*} $\mathcal{N}(A^T)$ is also known as the \index{Left Null Space}\keywordhl{left null space} of $A$.
@@ -2078,7 +2078,7 @@ b_{11}A_1 + b_{21}A_2 + \cdots + b_{r1}A_r|\cdots|b_{1n}A_1 + b_{2n}A_2 + \cdots
 \end{align*}
 (where $A_j$ is the $j$-th column of $A$) which shows that the columns of $AB$ are linear combinations of columns in $A$ and hence are in the column space of $A$. By Properties \ref{proper:WcontainsspanS}, the column space of $A$ then contains the column space of $AB$. Applying Properties \ref{proper:dimWleqV} we have $\text{rank}(AB) = \dim(\mathcal{C}(AB)) \leq \dim(\mathcal{C}(A)) = \text{rank}(A)$. The same argument on the row space of $AB$ and $B$ similarly shows that $\text{rank}(AB) \leq \text{rank}(B)$ and the desired inequality follows.
 \end{proof}
-$\blacktriangleright$ Short Exercise: Show that $\text{rank}(AB) = \text{rank}(A)$ if $B$ is an invertible square matrix.\footnote{$\text{rank}(A) = \text{rank}(ABB^{-1}) \leq \text{rank}(AB) \leq \text{rank}(A)$ by applying Properties \ref{proper:rankABsmaller} twice. So $\text{rank}(AB)$ is "sandwiched" by and must be equal to $\text{rank}(A)$.}
+$\blacktriangleright$ Short Exercise: Show that $\text{rank}(AB) = \text{rank}(A)$ if $B$ is an invertible square matrix.\footnotetext{Replace $A$ by $A^T$ in Theorem \ref{thm:ranknullity} to get $\dim(\mathcal{C}(A^T)) + \dim(\mathcal{N}(A^T)) = m$.}\footnotemark
 
 \section{Python Programming}
 To check linear independence and find a basis for columns in a matrix (or in general, any basis from a spanning set), we can use the \verb|columnspace| method in \verb|sympy|. Let's test it with the matrix in Example \ref{exmp:colrowspace}.
@@ -2101,7 +2101,7 @@ Matrix([
 [2.0],
 [  0]])]   
 \end{lstlisting}
-as expected. The rank can be found in two ways.
+as expected. The rank can be found in two ways.\footnotetext{$\text{rank}(A) = \text{rank}(ABB^{-1}) \leq \text{rank}(AB) \leq \text{rank}(A)$ by applying Properties \ref{proper:rankABsmaller} twice. So $\text{rank}(AB)$ is "sandwiched" by and must be equal to $\text{rank}(A)$.}
 \begin{lstlisting}
 print(myMatrix.rank()) # or len(myMatrix.columnspace())
 \end{lstlisting}

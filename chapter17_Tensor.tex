@@ -35,7 +35,7 @@ To be more clear, subscripts that appear exactly twice in any additive term are 
     will be a subscripted quantity with 2 free indices $i, j$ where each additive term contains $3^3 = 27$ smaller terms.
     \item $A_{ij}B_{ijkl}C_{kl} = \smash{\sum_{i=1}^3 \sum_{j=1}^3 \sum_{k=1}^3 \sum_{l=1}^3} A_{ij}B_{ijkl}C_{kl} \coloneq X$ will be a scalar quantity without free indices, consisting of $3^4 = 81$ smaller terms.
 \end{enumerate}
-$\blacktriangleright$ Short Exercise: Determine whether the following equations are valid or not, and justify your answers.\footnote{Incorrect ($j$ appears three times in the single additive term on R.H.S.), Correct ($i,j$ are free indices and $k,l$ are dummy indices), Incorrect ($j$ appears twice on L.H.S. but once on R.H.S), Correct (All subscripts are dummy indices and all additive terms are scalars), Incorrect ($i,j$ cannot be free and dummy indices at the same time).}
+$\blacktriangleright$ Short Exercise: Determine whether the following equations are valid or not, and justify your answers.\footnotemark
 \begin{enumerate}
     \item $x_i = u_jv_{ijj}$;
     \item $A_{ij} = B_{ik}C_{kj} + D_{jl}x_iy_l$;
@@ -72,7 +72,7 @@ since only when $j = k$, the delta symbol will be equal to $1$ and otherwise $0$
 \textbf{e}_1 \cdot \textbf{e}_2 = \textbf{e}_1 \cdot \textbf{e}_3 = \textbf{e}_2 \cdot \textbf{e}_3 &= 0
 \end{align}
 \end{subequations}
-or more succinctly,
+or more succinctly,\footnotetext{Incorrect ($j$ appears three times in the single additive term on R.H.S.), Correct ($i,j$ are free indices and $k,l$ are dummy indices), Incorrect ($j$ appears twice on L.H.S. but once on R.H.S), Correct (All subscripts are dummy indices and all additive terms are scalars), Incorrect ($i,j$ cannot be free and dummy indices at the same time).}
 \begin{align}
 \textbf{e}_i \cdot \textbf{e}_j = \begin{cases}
 1 & \text{if $i=j$} \\
@@ -323,21 +323,9 @@ for the first component, but the Transformation Law demands that
 v_1' = T'_1 = (x_1^2)' &= a_{11}T_1 + a_{21}T_2 \\
 &= (\cos \theta) x_1^2 + (\sin \theta) x_1x_2
 \end{align*}
-They are clearly incompatible. Nevertheless, it is quite easy to see that the intuitive displacement vector $\vec{x} = (x_1,x_2)^T$, as well as $(x_2,-x_1)^T$, will be a rank-$1$ tensor (we leave the verification to the readers\footnote{For the second case $T = (x_2, -x_1)$, the usual coordinate transformation is the essentially same as in part (a) of the example but with an extra negative sign for the second component, whereas the Transformation Law works as
-\begin{align*}
-v_1' = T'_1 &= a_{11}T_1 + a_{21}T_2 \\
-&= (\cos \theta) x_2 + (\sin \theta) (-x_1) \\
-&= (\cos \theta) x_2 + (-\sin \theta) x_1 = x_2' \\
-v_2' = T'_2 &= a_{12}T_1 + a_{22}T_2 \\
-&= (-\sin\theta) x_2 + (\cos\theta) (-x_1) \\
-&= -[(\cos \theta) x_2 + (\sin\theta) x_1] = -x_1'
-\end{align*} so they are consistent.}).
+They are clearly incompatible. Nevertheless, it is quite easy to see that the intuitive displacement vector $\vec{x} = (x_1,x_2)^T$, as well as $(x_2,-x_1)^T$, will be a rank-$1$ tensor (we leave the verification to the readers)\footnotemark.
 \end{solution}
-It is not hard to show that the product of two tensors is a tensor.\footnote{For example, if $C_{ij\ldots pq\ldots} = A_{ij\ldots}B_{pq\ldots}$ where $A$ and $B$ are tensors, then each of the smaller tensors will transform accordingly on its own: $A'_{mn\ldots} = a_{im}a_{jn}\cdots A_{ij\ldots}$, $B'_{sr\ldots} = a_{ps}a_{qr}\cdots B_{pq\ldots}$, and thus
-\begin{align*}
-C'_{mn\ldots sr\ldots} = A'_{mn\ldots}B'_{sr\ldots} &= a_{im}a_{jn}\cdots a_{ps}a_{qr}\cdots A_{ij\ldots} B_{pq\ldots} \\
-&= a_{im}a_{jn}\cdots a_{ps}a_{qr}\cdots C_{ij\ldots pq\ldots}
-\end{align*} will also transform as indicated by Properties \ref{proper:translaw}.} Therefore, kinetic energy (per unit mass) in Newtonian Mechanics $\frac{1}{2}(\vec{v} \cdot \vec{v}) = \frac{1}{2}v_iv_i$ is a rank-$0$ tensor (scalar) if we gladly accept the intuitive premise that the velocity $\vec{v} = v_i$ is a rank-$1$ tensor (vector). In addition, there is another way to quickly verify if a quantity is a tensor by the \index{Quotient Law}\keywordhl{Quotient Law} which works the other way around.
+It is not hard to show that the product of two tensors is a tensor.\footnotemark{} Therefore, kinetic energy (per unit mass) in Newtonian Mechanics $\frac{1}{2}(\vec{v} \cdot \vec{v}) = \frac{1}{2}v_iv_i$ is a rank-$0$ tensor (scalar) if we gladly accept the intuitive premise that the velocity $\vec{v} = v_i$ is a rank-$1$ tensor (vector). In addition, there is another way to quickly verify if a quantity is a tensor by the \index{Quotient Law}\keywordhl{Quotient Law} which works the other way around.
 \begin{thm}[Quotient Law]
 \label{thm:quotientl}
 If $A_{ij\ldots n}$ is a $n$-subscripted quantity, $B_{pq\ldots m}$ is known to be a rank-$m$ tensor, and the product
@@ -346,11 +334,25 @@ C_{ij\ldots npq \ldots m} = A_{ij\ldots k\ldots n} B_{pq\ldots k\ldots m}
 \end{align*}
 is also a tensor of rank $n+m-2k$ where $k \geq 1$ is the amount of index contraction, then $A_{ij\ldots n}$ will be a rank-$n$ tensor.
 \end{thm}
+\footnotetext[\numexpr\value{footnote}-1]{For the second case $T = (x_2, -x_1)$, the usual coordinate transformation is the essentially same as in part (a) of the example but with an extra negative sign for the second component, whereas the Transformation Law works as
+\begin{align*}
+v_1' = T'_1 &= a_{11}T_1 + a_{21}T_2 \\
+&= (\cos \theta) x_2 + (\sin \theta) (-x_1) \\
+&= (\cos \theta) x_2 + (-\sin \theta) x_1 = x_2' \\
+v_2' = T'_2 &= a_{12}T_1 + a_{22}T_2 \\
+&= (-\sin\theta) x_2 + (\cos\theta) (-x_1) \\
+&= -[(\cos \theta) x_2 + (\sin\theta) x_1] = -x_1'
+\end{align*} so they are consistent.}
 With this, we can easily show that some other commonly seen physical quantities are tensors. It will be of use later. 
 
 \subsection{Isotropic Tensors}
 
 Here we will revisit the Kronecker delta and epsilon symbols. In fact, they qualify as a rank-$2$ and rank-$3$ tensor respectively. Moreover, they are further \index{Isotropic}\keywordhl{isotropic} tensors in the sense that they have the same representation (i.e.\ no directionality) in any coordinate system under the Transformation Law. From another perspective, it has to be isotropic since their components are all constants ($0$, $1$, or $-1$) and the usual coordinate transformation should have no effect on them. Now we will explicitly show the isotropic attribute for the Kronecker delta first. The Transformation Law (Properties \ref{proper:translaw}) requires that
+\footnotetext{For example, if $C_{ij\ldots pq\ldots} = A_{ij\ldots}B_{pq\ldots}$ where $A$ and $B$ are tensors, then each of the smaller tensors will transform accordingly on its own: $A'_{mn\ldots} = a_{im}a_{jn}\cdots A_{ij\ldots}$, $B'_{sr\ldots} = a_{ps}a_{qr}\cdots B_{pq\ldots}$, and thus
+\begin{align*}
+C'_{mn\ldots sr\ldots} = A'_{mn\ldots}B'_{sr\ldots} &= a_{im}a_{jn}\cdots a_{ps}a_{qr}\cdots A_{ij\ldots} B_{pq\ldots} \\
+&= a_{im}a_{jn}\cdots a_{ps}a_{qr}\cdots C_{ij\ldots pq\ldots}
+\end{align*} will also transform as indicated by Properties \ref{proper:translaw}.} 
 \begin{align}
 \delta'_{ij} = \delta_{ij}
 \end{align}
@@ -572,7 +574,7 @@ or more compactly by Index Notation, the \index{Cauchy's Formula}\keywordhl{Cauc
 T_j = \sigma_{ij}n_i \label{eqn:Cauchyform}
 \end{align}
 
-\begin{figure}
+\begin{figure}[t!]
     \centering
     \begin{tikzpicture}[x={(-0.55cm, -0.55cm)}, y={(0.8cm, 0cm)}, z={(0cm, 0.8cm)}]
     \node[below right]{$O$}; 
@@ -609,7 +611,7 @@ which means that the stress tensor is a symmetric one (this also means that the 
 \end{align}
 when viewed from the matrix perspective, it easily reminds us about orthogonal diagonalization (\ref{eqn:orthodiagonalPAP}) in Definition \ref{defn:orthodiagonal} since $a_{**}$ represents an orthogonal matrix and Theorem \ref{thm:symdiag} is applicable to the symmetric stress tensor. Therefore, we can always compute the orthonormal eigenvectors for any matrix representation of the stress tensor. After a change of coordinates via orthogonal diagonalization, these orthonormal eigenvectors will then become the \index{Principal Axes/Directions (Stress Tensor)}\keywordhl{principal axes/directions} (akin to Theorem \ref{thm:PCA}) used in the new coordinate frame. The corresponding eigenvalues are naturally called the \index{Principal Stresses}\keywordhl{principal stresses} (denoted by $\sigma_{*}$ with one subscript only) and there will be no shearing components in the transformed representation of the stress tensor. Hence, the traction along any principal direction will be aligned with the normal to the surface and is equal to the respective principal stress. The geological convection is that compression/tension is taken to be positive/negative. For the ease of demonstration, we will consider plane stress with only $2$ directions first.
 
-\begin{figure}
+\begin{figure}[t!]
     \centering
     \begin{tikzpicture}[x={(-0.55cm, -0.55cm)}, y={(0.8cm, 0cm)}, z={(0cm, 0.8cm)}]
     \node[below right]{$O$}; 
@@ -721,7 +723,7 @@ where $\sigma_{x'}$ and $\sigma_{y'}$ are the normal tractions along the rotated
 (\sigma_{x'} - \frac{\sigma_1 + \sigma_2}{2})^2 + \tau_{x'y'}^2 = (\frac{\sigma_1 - \sigma_2}{2})^2\cos^2(2\theta) + (\frac{\sigma_1 - \sigma_2}{2})^2 \sin^2(2\theta) = (\frac{\sigma_1 - \sigma_2}{2})^2$}
 Hence the information about normal/shear stresses on a surface of any orientation can be condensed into a circle centered at the horizontal axis that also cuts the horizontal axis at $\sigma = \sigma_1$ and $\sigma_2$ graphically. This is known as the \index{Mohr's Circle}\keywordhl{Mohr's Circle} and is illustrated in Figure \ref{fig:mohr1}. Bear in mind that when the geological convention is used, (\ref{eqn:mohrshear}) will have no negative sign, and an anti-clockwise [clockwise] rotation of the surface by a positive [negative] degree of $\theta$ will appear as an anti-clockwise [clockwise] rotation of the diameter within the Mohr's Circle by a positive [negative] degree $2\theta$ (double of the actual surface tilt). The largest shear traction will be obtained at a tilt of \SI{45}{\degree}.
  
-\begin{figure}
+\begin{figure}[t!]
 \centering
     \begin{tikzpicture}
     \node[below left]{$O$}; 
@@ -752,7 +754,7 @@ The Mohr's Circle will have a radius of $\frac{\sigma_1 - \sigma_2}{2} = \frac{1
 \end{align*}
 and similarly the shear stress will be $\tau_{x'y'} = 2.5\sin(2(\SI{25}{\degree})) = \SI{1.92}{MPa}$ from (\ref{eqn:mohrshear}).
 \end{solution}
-$\blacktriangleright$ Short Exercise: What are the new normal/shear tractions if the surface is further rotated by \SI{37}{\degree}?\footnote{This amounts to a net rotation of $(25+37)\si{\degree}= \SI{62}{\degree}$ so we simply repeat the calculation with $\theta = \SI{62}{\degree}$. The results should be $\sigma_{x'}, \sigma_{y'} = 7.5 \pm 2.5 \cos(2(\SI{62}{\degree})) = 7.5 \pm 2.5 \cos(\SI{124}{\degree}) = 7.5 \mp 1.40 = 6.10, 8.90$ and $\tau_{x'y'} = 2.5\sin(\SI{124}{\degree}) = 2.07$. Graphically, we can just rotate the previous diameter by an extra of $2 \times \SI{37}{\degree} = \SI{74}{\degree}$ on the Mohr's Circle.}
+$\blacktriangleright$ Short Exercise: What are the new normal/shear tractions if the surface is further rotated by \SI{37}{\degree}?\footnotemark
 
 The generalization of Mohr's Circle to a three-dimensional volume can be done by first assuming that the coordinate system has been properly rotated to coincide with the three principal directions. Denote the respective principal stresses by $\sigma_1, \sigma_2, \sigma_3$ where they are arranged in descending order $\sigma_1 \geq \sigma_2 \geq \sigma_3$. Then given a normal $\hat{n} = n_i$ to the plane, the net traction is given by Cauchy's Formula (\ref{eqn:cauchyT}):
 \begin{align}
@@ -808,7 +810,7 @@ n_1^2 &= \frac{\begin{vmatrix}
 &= \frac{(\sigma_n^2 + \tau^2)(\sigma_2 - \sigma_3) - \sigma_n(\sigma_2 + \sigma_3)(\sigma_2 - \sigma_3) + \sigma_2\sigma_3(\sigma_2 - \sigma_3)}{(\sigma_1 - \sigma_2)(\sigma_2 - \sigma_3)(\sigma_1-\sigma_3)} \nonumber \\
 &= \frac{(\sigma_n^2 + \tau^2) - \sigma_n(\sigma_2 + \sigma_3) + \sigma_2\sigma_3}{(\sigma_1 - \sigma_2)(\sigma_1-\sigma_3)}
 \end{align}
-Since $n_1^2 \geq 0$, $\sigma_1 - \sigma_2 \geq 0$ and $\sigma_1 - \sigma_3 \geq 0$, we have
+Since $n_1^2 \geq 0$, $\sigma_1 - \sigma_2 \geq 0$ and $\sigma_1 - \sigma_3 \geq 0$, we have\footnotetext{This amounts to a net rotation of $(25+37)\si{\degree}= \SI{62}{\degree}$ so we simply repeat the calculation with $\theta = \SI{62}{\degree}$. The results should be $\sigma_{x'}, \sigma_{y'} = 7.5 \pm 2.5 \cos(2(\SI{62}{\degree})) = 7.5 \pm 2.5 \cos(\SI{124}{\degree}) = 7.5 \mp 1.40 = 6.10, 8.90$ and $\tau_{x'y'} = 2.5\sin(\SI{124}{\degree}) = 2.07$. Graphically, we can just rotate the previous diameter by an extra of $2 \times \SI{37}{\degree} = \SI{74}{\degree}$ on the Mohr's Circle.}
 \begin{align}
 (\sigma_n^2 + \tau^2) - \sigma_n(\sigma_2 + \sigma_3) + \sigma_2\sigma_3 &\geq 0 \nonumber \\
 \left(\sigma_n-\frac{\sigma_2 + \sigma_3}{2}\right)^2 + \tau^2 + \sigma_2\sigma_3 - \left(\frac{\sigma_2 + \sigma_3}{2}\right)^2 &\geq 0 \nonumber \\
@@ -829,7 +831,7 @@ n_3^2 &= \frac{(\sigma_n^2 + \tau^2) - \sigma_n(\sigma_1 + \sigma_2) + \sigma_1\
 \end{align}
 So the normal and shear traction must also fall outside the Mohr's Circle centered at $(\frac{\sigma_1 + \sigma_2}{2},0)$ with a radius of $\frac{\sigma_1 - \sigma_2}{2}$ that cuts the horizontal axis at $\sigma_n = \sigma_1$ and $\sigma_2$, but inside the larger Mohr's Circle also centered at the horizontal axis that cuts it at $\sigma_n = \sigma_1$ and $\sigma_3$. These are demonstrated in Figure \ref{fig:mohr3d}.
 
-\begin{figure}
+\begin{figure}[t!]
     \centering
     \begin{tikzpicture}
     \node[below left]{$O$}; 

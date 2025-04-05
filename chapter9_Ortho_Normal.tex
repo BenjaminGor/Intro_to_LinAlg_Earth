@@ -35,7 +35,7 @@ $\blacktriangleright$ Short Exercise: Verify that
 0 & \frac{1}{\sqrt{3}} & \frac{\sqrt{2}}{\sqrt{3}}
 \end{bmatrix}
 \end{align*}
-is an orthogonal matrix.\footnote{There are $3$ $\mathbb{R}^3$ column vectors in the matrix, where $\vec{v}^{(1)} \cdot \vec{v}^{(2)} = \smash{(\frac{1}{\sqrt{2}})(\frac{1}{\sqrt{3}})} + \smash{(\frac{1}{\sqrt{2}})(-\frac{1}{\sqrt{3}})} + \smash{(0)(\frac{1}{\sqrt{3}})} = 0$, $\vec{v}^{(1)} \cdot \vec{v}^{(3)} = \smash{(\frac{1}{\sqrt{2}})(-\frac{1}{\sqrt{6}})} + \smash{(\frac{1}{\sqrt{2}})(\frac{1}{\sqrt{6}})} + (0)(\frac{\sqrt{2}}{\sqrt{3}}) = 0$. We leave it to the readers to check $\vec{v}^{(2)} \cdot \vec{v}^{(3)} = 0$ as well. Also, $\norm{\vec{v}^{(1)}} = \smash{\sqrt{(\frac{1}{\sqrt{2}})^2 + (\frac{1}{\sqrt{2}})^2 + (0)^2}} = 1$ and $\norm{\vec{v}^{(2)}} = \smash{\sqrt{(\frac{1}{\sqrt{3}})^2 + (-\frac{1}{\sqrt{3}})^2 + (\frac{1}{\sqrt{3}})^2}} = 1$. Again we let the readers to check $\norm{\vec{v}^{(3)}} = 1$ too.}\par
+is an orthogonal matrix.\footnotemark\par
 Due to its definition, an orthogonal matrix $P$ has the property $P^TP = I$, since the resulting entries of this matrix product $P^TP$ are basically dot products of the column vectors of $P$ (see the explanation below Definition \ref{defn:dotreal}), where explicitly
 \begin{align*}
 P^TP &= 
@@ -87,7 +87,7 @@ $P$ is an orthogonal matrix if and only if
 PP^T = P^TP = I \label{eqn:orthomatPPT}
 \end{align} so that its inverse is simply its transpose $P^{-1} = P^T$.
 \end{proper}
-The equivalence between $P^TP=I$ and $PP^T = I$ for an orthogonal matrix extends Definition \ref{defn:orthomatrix}, where the latter equality indicates that the rows of $P$ also have to form an orthonormal basis. So, a parallel definition of orthogonal matrices is
+The equivalence between $P^TP=I$ and $PP^T = I$ for an orthogonal matrix extends Definition \ref{defn:orthomatrix}, where the latter equality indicates that the rows of $P$ also have to form an orthonormal basis. So, a parallel definition of orthogonal matrices is\footnotetext{There are $3$ $\mathbb{R}^3$ column vectors in the matrix, where $\vec{v}^{(1)} \cdot \vec{v}^{(2)} = \smash{(\frac{1}{\sqrt{2}})(\frac{1}{\sqrt{3}})} + \smash{(\frac{1}{\sqrt{2}})(-\frac{1}{\sqrt{3}})} + \smash{(0)(\frac{1}{\sqrt{3}})} = 0$, $\vec{v}^{(1)} \cdot \vec{v}^{(3)} = \smash{(\frac{1}{\sqrt{2}})(-\frac{1}{\sqrt{6}})} + \smash{(\frac{1}{\sqrt{2}})(\frac{1}{\sqrt{6}})} + (0)(\frac{\sqrt{2}}{\sqrt{3}}) = 0$. We leave it to the readers to check $\vec{v}^{(2)} \cdot \vec{v}^{(3)} = 0$ as well. Also, $\norm{\vec{v}^{(1)}} = \smash{\sqrt{(\frac{1}{\sqrt{2}})^2 + (\frac{1}{\sqrt{2}})^2 + (0)^2}} = 1$ and $\norm{\vec{v}^{(2)}} = \smash{\sqrt{(\frac{1}{\sqrt{3}})^2 + (-\frac{1}{\sqrt{3}})^2 + (\frac{1}{\sqrt{3}})^2}} = 1$. Again we let the readers to check $\norm{\vec{v}^{(3)}} = 1$ too.}
 \begin{defn}
 An $n \times n$ square matrix
 \begin{align*}
@@ -116,7 +116,25 @@ is an orthogonal matrix, also if all the rows $\vec{w}^{(i)} \in \mathbb{R}^n$ s
 so that the row vectors $\vec{w}^{(i)}$, $i=1,2,\ldots,n$, constitute an orthonormal basis too.
 \end{defn}
 
-$\blacktriangleright$ Short Exercise: Confirm Properties \ref{proper:orthoinvT} for the matrix in the last short exercise.\footnote{It is a direct computation that shows
+$\blacktriangleright$ Short Exercise: Confirm Properties \ref{proper:orthoinvT} for the matrix in the last short exercise.\footnotemark
+
+\subsection{Geometric Implications of Orthogonal Matrices}
+\label{section:orthogeometricsub}
+All invertible matrices represent some sort of coordinate transformation as highlighted in Section \ref{section:coordchange}. Orthogonal matrices further belong to a special class of them. Before going into details, we need to start with some simple observations.
+\begin{proper}
+\label{proper:orthopm1det}
+An orthogonal matrix $P$ has a determinant of either $1$ or $-1$.
+\end{proper}
+\begin{proof}
+Using the relationship (\ref{eqn:orthomatPPT}) from Properties \ref{proper:orthoinvT} and taking determinants on both sides of it, we have
+\begin{align*}
+\det(P^TP) &= \det(I) \\
+\det(P^T)\det(P) = (\det(P))^2 &= 1\\
+\det(P) &= \pm 1
+\end{align*}
+where Properties \ref{proper:properdet} is used.    
+\end{proof} 
+The non-zero determinant reaffirms that the $n$ $\mathbb{R}^n$ row/column vectors in an orthogonal matrix $P$ are linearly independent ((b) to (e) of Theorem \ref{thm:equiv3}).\footnotetext{It is a direct computation that shows
 \begin{align*}
 \left[\begin{array}{@{}wc{14pt}wc{14pt}wc{14pt}@{\,}}
 \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{6}} \\
@@ -146,24 +164,6 @@ $\blacktriangleright$ Short Exercise: Confirm Properties \ref{proper:orthoinvT} 
 \end{bmatrix}
 \end{align*}
 and $PP^T = I$ similarly.}
-
-\subsection{Geometric Implications of Orthogonal Matrices}
-\label{section:orthogeometricsub}
-All invertible matrices represent some sort of coordinate transformation as highlighted in Section \ref{section:coordchange}. Orthogonal matrices further belong to a special class of them. Before going into details, we need to start with some simple observations.
-\begin{proper}
-\label{proper:orthopm1det}
-An orthogonal matrix $P$ has a determinant of either $1$ or $-1$.
-\end{proper}
-\begin{proof}
-Using the relationship (\ref{eqn:orthomatPPT}) from Properties \ref{proper:orthoinvT} and taking determinants on both sides of it, we have
-\begin{align*}
-\det(P^TP) &= \det(I) \\
-\det(P^T)\det(P) = (\det(P))^2 &= 1\\
-\det(P) &= \pm 1
-\end{align*}
-where Properties \ref{proper:properdet} is used.    
-\end{proof} 
-The non-zero determinant reaffirms that the $n$ $\mathbb{R}^n$ row/column vectors in an orthogonal matrix $P$ are linearly independent ((b) to (e) of Theorem \ref{thm:equiv3}). 
 \begin{proper}
 \label{proper:ortholengthpreserve}
 Coordinate transformation by an orthogonal matrix $P$ on a vector is length-preserving.
@@ -288,7 +288,29 @@ P_f &= P_1P_2 \\
 \end{bmatrix}
 \end{align*}
 \end{solution}
-$\blacktriangleright$ Short Exercise: What happens if we reverse the order of rotation/reflection?\footnote{The transition matrix becomes
+$\blacktriangleright$ Short Exercise: What happens if we reverse the order of rotation/reflection?\footnotemark
+
+\begin{exmp}
+\label{ex:rotateyz}
+For a vector $\vec{v}_0$ in the three-dimensional standard basis $S$, if the coordinate system undergoes a positive rotation about the straight line $x = 0, y = z$ by a degree of $\theta$, find its representation $\vec{v}_n$ in the new system $\beta$.
+\end{exmp}
+\begin{solution}
+The common way to construct a transition matrix is to find the new axes in terms of the old coordinates. However, in this case, it is harder because the axis about which the rotation occurs is not along any of the main axes. Here, we can do another rotation 
+\begin{align*}
+P_1 = 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & \cos(\SI{45}{\degree}) & \sin(\SI{45}{\degree}) \\
+0 & -\sin(\SI{45}{\degree}) & \cos(\SI{45}{\degree})
+\end{bmatrix}
+=
+\left[\begin{array}{@{\,}wc{12pt}wc{12pt}wc{12pt}@{\,}}
+1 & 0 & 0 \\
+0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+0 & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+\end{array}\right]
+\end{align*}
+about the $x$-axis first with a degree of $\SI{45}{\degree}$ clockwise so that the intermediate $z'$ axis is oriented along the concerned straight line, while the $y'$ axis points in the $x = 0, y = -z$ direction relative to the original coordinate frame. Then we can apply the required rotation in the intermediate coordinate system about that $z'$ axis, which has a simple transition matrix representation of\footnotetext{The transition matrix becomes
 \begin{align*}
 \left[\begin{array}{@{\,}wc{8pt}wc{8pt}wc{8pt}@{\,}}
 1 & 0 & 0 \\
@@ -315,28 +337,6 @@ $\blacktriangleright$ Short Exercise: What happens if we reverse the order of ro
 \end{align*}
 In general, finite rotations/reflections are not commutative and the order matters.
 }
-
-\begin{exmp}
-\label{ex:rotateyz}
-For a vector $\vec{v}_0$ in the three-dimensional standard basis $S$, if the coordinate system undergoes a positive rotation about the straight line $x = 0, y = z$ by a degree of $\theta$, find its representation $\vec{v}_n$ in the new system $\beta$.
-\end{exmp}
-\begin{solution}
-The common way to construct a transition matrix is to find the new axes in terms of the old coordinates. However, in this case, it is harder because the axis about which the rotation occurs is not along any of the main axes. Here, we can do another rotation 
-\begin{align*}
-P_1 = 
-\begin{bmatrix}
-1 & 0 & 0 \\
-0 & \cos(\SI{45}{\degree}) & \sin(\SI{45}{\degree}) \\
-0 & -\sin(\SI{45}{\degree}) & \cos(\SI{45}{\degree})
-\end{bmatrix}
-=
-\left[\begin{array}{@{\,}wc{12pt}wc{12pt}wc{12pt}@{\,}}
-1 & 0 & 0 \\
-0 & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
-0 & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
-\end{array}\right]
-\end{align*}
-about the $x$-axis first with a degree of $\SI{45}{\degree}$ clockwise so that the intermediate $z'$ axis is oriented along the concerned straight line, while the $y'$ axis points in the $x = 0, y = -z$ direction relative to the original coordinate frame. Then we can apply the required rotation in the intermediate coordinate system about that $z'$ axis, which has a simple transition matrix representation of
 \begin{align*}
 P_2 =
 \begin{bmatrix}
@@ -428,7 +428,21 @@ z_0
 \end{bmatrix}
 \end{align*}
 \end{solution}
-$\blacktriangleright$ Short Exercise: For the example above, if $(x_0, y_0, z_0)^T = (0,1,1)^T$ and $\theta = \frac{\pi}{6}$, find $\vec{v}_n = (x_n, y_n, z_n)^T$.\footnote{It is
+$\blacktriangleright$ Short Exercise: For the example above, if $(x_0, y_0, z_0)^T = (0,1,1)^T$ and $\theta = \frac{\pi}{6}$, find $\vec{v}_n = (x_n, y_n, z_n)^T$.\footnotemark
+
+\section{Orthogonal Diagonalization}
+\label{section:orthogonaldiagreal}
+
+\index{Orthogonal Diagonalization}\keywordhl{Orthogonal diagonalization} is a special case of diagonalization, in which the transformation matrix $P$ used to diagonalize the target matrix $A$ is an orthogonal matrix. Since from Section \ref{section:diagonalizeidea} we know that diagonalization boils down to asking if there exists a basis, represented by the columns of $P$, such that $D = P^{-1}AP$ is diagonal, orthogonal diagonalization is equivalent to demanding further that such a basis, comprised of the eigenvectors of $A$, is orthonormal, i.e.\ $P$ is an orthogonal matrix. We will discuss the case where $A$ is a real matrix first.
+\begin{defn}[Orthogonal Diagonalization]
+\label{defn:orthodiagonal}
+Orthogonal diagonalization on a real $n \times n$ square matrix $A$ is to find an orthogonal matrix $P$ that consists of columns being the $n$ orthonormal $\mathbb{R}^n$ eigenvectors of $A$ (Definition \ref{defn:orthomatrix}) such that
+\begin{align}
+P^{-1}AP = P^TAP = D \label{eqn:orthodiagonalPAP} 
+\end{align}
+is a real diagonal matrix (Properties \ref{proper:diagonalize} and \ref{proper:orthoinvT}).
+\end{defn}
+Note that the requirements of eigenvectors being $\mathbb{R}^n$ and hence orthogonality defined by the real dot product implicitly constrain us to work over $\mathbb{R}$ and only real eigenvalues are allowed. Not all real square matrices can be orthogonally diagonalized because orthogonal diagonalization is a stronger version of ordinary diagonalization, and the requirement is unsurprisingly stricter. However, it turns out that there is a really simple criterion: whether the matrix is symmetric.\footnotetext{It is
 \begin{align*}
 \begin{bmatrix}
 \cos{\frac{\pi}{6}} & \frac{\sin{\frac{\pi}{6}}}{\sqrt{2}} & -\frac{\sin{\frac{\pi}{6}}}{\sqrt{2}} \\
@@ -454,20 +468,6 @@ $\blacktriangleright$ Short Exercise: For the example above, if $(x_0, y_0, z_0)
 \end{bmatrix}
 \end{align*}
 In fact, all vectors in the form of $s(0,1,1)^T$ where $s$ is any number will keep the same coordinates after transformation, no matter what the value $\theta$ takes, because the vector is oriented exactly along the rotational axis in question.}
-
-\section{Orthogonal Diagonalization}
-\label{section:orthogonaldiagreal}
-
-\index{Orthogonal Diagonalization}\keywordhl{Orthogonal diagonalization} is a special case of diagonalization, in which the transformation matrix $P$ used to diagonalize the target matrix $A$ is an orthogonal matrix. Since from Section \ref{section:diagonalizeidea} we know that diagonalization boils down to asking if there exists a basis, represented by the columns of $P$, such that $D = P^{-1}AP$ is diagonal, orthogonal diagonalization is equivalent to demanding further that such a basis, comprised of the eigenvectors of $A$, is orthonormal, i.e.\ $P$ is an orthogonal matrix. We will discuss the case where $A$ is a real matrix first.
-\begin{defn}[Orthogonal Diagonalization]
-\label{defn:orthodiagonal}
-Orthogonal diagonalization on a real $n \times n$ square matrix $A$ is to find an orthogonal matrix $P$ that consists of columns being the $n$ orthonormal $\mathbb{R}^n$ eigenvectors of $A$ (Definition \ref{defn:orthomatrix}) such that
-\begin{align}
-P^{-1}AP = P^TAP = D \label{eqn:orthodiagonalPAP} 
-\end{align}
-is a real diagonal matrix (Properties \ref{proper:diagonalize} and \ref{proper:orthoinvT}).
-\end{defn}
-Note that the requirements of eigenvectors being $\mathbb{R}^n$ and hence orthogonality defined by the real dot product implicitly constrain us to work over $\mathbb{R}$ and only real eigenvalues are allowed. Not all real square matrices can be orthogonally diagonalized because orthogonal diagonalization is a stronger version of ordinary diagonalization, and the requirement is unsurprisingly stricter. However, it turns out that there is a really simple criterion: whether the matrix is symmetric.
 \begin{thm}
 \label{thm:symdiag}
 A real square matrix $A$ can be orthogonally diagonalized if and only if $A$ is symmetric.
@@ -608,7 +608,15 @@ P^TAP &=
 \end{bmatrix} = D
 \end{align*}
 \end{solution}
-$\blacktriangleright$ Short Exercise: Confirm that $P$ is orthogonal.\footnote{It is simply checking
+$\blacktriangleright$ Short Exercise: Confirm that $P$ is orthogonal.\footnotemark
+
+\subsubsection{Remark} From Properties \ref{proper:endomorph}, we know that orthogonal diagonalization $D = P^{-1}AP = P^TAP$ is simply a special case of coordinate transformation for a square matrix, where $P$ is now orthogonal and only pure rotations/reflections are involved (Theorem \ref{thm:orthodet}).
+
+\section{Orthogonal Projections and Spectral Theorem}
+
+\subsection{Projections onto a Subspace}
+
+\footnotetext{It is simply checking
 \begin{align*}
 \begin{bmatrix}
 1 & 0 & 0 \\
@@ -626,15 +634,7 @@ $\blacktriangleright$ Short Exercise: Confirm that $P$ is orthogonal.\footnote{I
 0 & 0 & 1
 \end{bmatrix}
 \end{align*}
-}
-
-\subsubsection{Remark} From Properties \ref{proper:endomorph}, we know that orthogonal diagonalization $D = P^{-1}AP = P^TAP$ is simply a special case of coordinate transformation for a square matrix, where $P$ is now orthogonal and only pure rotations/reflections are involved (Theorem \ref{thm:orthodet}).
-
-\section{Orthogonal Projections and Spectral Theorem}
-
-\subsection{Projections onto a Subspace}
-
-Another important concept that also involves orthogonality is \textit{orthogonal projections}. Back in Section \ref{section:proj} we have defined the projection of a vector $\vec{v}$ onto another vector $\vec{u}$, which is implicitly an orthogonal projection since the orthogonal component of $\vec{v}$ normal to $\vec{u}$ is removed while the parallel component of $\vec{v}$ along $\vec{u}$ is retained, i.e.\ $\vec{v} = \overrightarrow{\text{proj}}_u v + (\vec{v} - \overrightarrow{\text{proj}}_u v)$ and $\vec{u} \cdot (\vec{v} - \overrightarrow{\text{proj}}_u v) = 0$. Here we can treat $\vec{u}$ as the one-dimensional subspace generated by itself, and the projection of any vector $\vec{v}$ onto $\vec{u}$ is an operation to project the vector onto this subspace of $\text{span}(\{\vec{u}\})$. However, before digging deep into orthogonal projections, we have to first generalize the notion of projections involving multi-dimensional subspaces. Given two subspaces $\mathcal{W}_1$ and $\mathcal{W}_2$ of a vector space $\mathcal{V}$ which forms a direct sum $\mathcal{W}_1 \oplus \mathcal{W}_2 = \mathcal{V}$, the \index{Projection (onto a Subspace)}\textit{projection of a vector onto $\mathcal{W}_1$ along $\mathcal{W}_2$} is a linear operator $T: \mathcal{V} \to \mathcal{V}$ such that for any $\vec{v} = \vec{w}_1 + \vec{w}_2$\footnote{This decomposition of $\vec{v}$ into $\vec{w}_1$ and $\vec{w}_2$ is unique as $\mathcal{W}_1 \oplus \mathcal{W}_2$ is required to be a direct sum. (see Section \ref{section:directsum})} where $\vec{w}_1 \in \mathcal{W}_1$ and $\vec{w}_2 \in \mathcal{W}_2$, $T(\vec{v}) = \vec{w}_1$, so that only the $\mathcal{W}_1$ component is kept (projected onto) while the $\mathcal{W}_2$ component is discarded. Clearly, $\mathcal{R}(T) = \mathcal{W}_1$ and $\mathcal{N}(T) = \mathcal{W}_2$ is the range and kernel of $T$, and $\mathcal{R}(T) \oplus \mathcal{N}(T) = \mathcal{V}$. Here we give another equivalent definition of a projection.
+}Another important concept that also involves orthogonality is \textit{orthogonal projections}. Back in Section \ref{section:proj} we have defined the projection of a vector $\vec{v}$ onto another vector $\vec{u}$, which is implicitly an orthogonal projection since the orthogonal component of $\vec{v}$ normal to $\vec{u}$ is removed while the parallel component of $\vec{v}$ along $\vec{u}$ is retained, i.e.\ $\vec{v} = \overrightarrow{\text{proj}}_u v + (\vec{v} - \overrightarrow{\text{proj}}_u v)$ and $\vec{u} \cdot (\vec{v} - \overrightarrow{\text{proj}}_u v) = 0$. Here we can treat $\vec{u}$ as the one-dimensional subspace generated by itself, and the projection of any vector $\vec{v}$ onto $\vec{u}$ is an operation to project the vector onto this subspace of $\text{span}(\{\vec{u}\})$. However, before digging deep into orthogonal projections, we have to first generalize the notion of projections involving multi-dimensional subspaces. Given two subspaces $\mathcal{W}_1$ and $\mathcal{W}_2$ of a vector space $\mathcal{V}$ which forms a direct sum $\mathcal{W}_1 \oplus \mathcal{W}_2 = \mathcal{V}$, the \index{Projection (onto a Subspace)}\textit{projection of a vector onto $\mathcal{W}_1$ along $\mathcal{W}_2$} is a linear operator $T: \mathcal{V} \to \mathcal{V}$ such that for any $\vec{v} = \vec{w}_1 + \vec{w}_2$\footnote{This decomposition of $\vec{v}$ into $\vec{w}_1$ and $\vec{w}_2$ is unique as $\mathcal{W}_1 \oplus \mathcal{W}_2$ is required to be a direct sum. (see Section \ref{section:directsum})} where $\vec{w}_1 \in \mathcal{W}_1$ and $\vec{w}_2 \in \mathcal{W}_2$, $T(\vec{v}) = \vec{w}_1$, so that only the $\mathcal{W}_1$ component is kept (projected onto) while the $\mathcal{W}_2$ component is discarded. Clearly, $\mathcal{R}(T) = \mathcal{W}_1$ and $\mathcal{N}(T) = \mathcal{W}_2$ is the range and kernel of $T$, and $\mathcal{R}(T) \oplus \mathcal{N}(T) = \mathcal{V}$. Here we give another equivalent definition of a projection.
 \begin{proper}[Projection]
 \label{proper:matrixproj}
 A linear operator $T: \mathcal{V} \to \mathcal{V}$ is a projection if and only if $T^2 = T$.
@@ -954,7 +954,21 @@ and thus the desired relation follows, again by Properties \ref{proper:sametrans
 \end{enumerate}
 \end{proof}
 The set of eigenvalues $\{\lambda_{J_i}\}$, $i = 1,2,\ldots,k$, is known as the \index{Spectrum}\keywordhl{spectrum} of $T$, hence comes the name of the theorem. The expression in (d) is called the \index{Resolution of the Identity}\keywordhl{resolution of the identity} induced by $T$, and that in (e) is referred to as the \index{Spectral Decomposition}\keywordhl{spectral decomposition} of $T$. The implications of these two parts of the Spectral Theorem are as follows: The resolution of the identity in (d) means that any vector $\vec{v}$ can be decomposed into components in the orthogonal coordinate system derived from the orthonormal eigenvectors of a symmetric $T$, where the corresponding coordinates are given by simply projecting it onto each of these eigenspaces; The spectral decomposition in (e) means that any symmetric linear operator $T$, when applied on a vector $\vec{v}$, can be treated as equivalent to first decomposing $\vec{v}$ into components in the orthogonal coordinate system as suggested by (d), and then rescaling each of these components according to the spectrum (eigenvalues), which represents the "intensity" of $T$ in the respective eigenspace. Since only projections and rescalings are involved, it implies that the symmetric $T$ constitutes no rotation. Finally, notice that an orthogonal projection is a special case of (e) where the spectrum consists of $1$ (range) and $0$ (kernel) only.\par
-$\blacktriangleright$ Short Exercise: Verify statements (d) and (e) in the Spectral Theorem for the symmetric matrix in Example \ref{exmp:orthodiag}.\footnote{We will just show (d) here and leave (e) to the readers. By Equation (\ref{eqn:projrank1sum}), R.H.S. of (d) reads
+$\blacktriangleright$ Short Exercise: Verify statements (d) and (e) in the Spectral Theorem for the symmetric matrix in Example \ref{exmp:orthodiag}.\footnotemark
+
+\section{Normal Matrices and Unitary Diagonalization}
+
+\subsection{Unitary and Normal Matrices} 
+We now generalize the ideas of orthogonal matrices/diagonalization to complex vector space. The complex counterpart of orthogonal matrices is known as \index{Unitary Matrix}\keywordhl{unitary matrices}.
+\begin{defn}[Unitary Matrix]
+\label{defn:unitary}
+A complex matrix $A$ is said to be unitary if
+\begin{align}
+A^*A = AA^* = I
+\end{align}
+where the superscript $^*$ denotes conjugate transpose (Definition \ref{defn:conjutrans}).
+\end{defn}
+Along the same line, the complex equivalent of orthogonal diagonalization is \index{Unitary Diagonalization}\keywordhl{unitary diagonalization}.\footnotetext{We will just show (d) here and leave (e) to the readers. By Equation (\ref{eqn:projrank1sum}), R.H.S. of (d) reads
 \begin{align*}
 T_{J_1} + T_{J_2} &= (\textbf{v}_{J_1}^{(1)T}\textbf{v}_{J_1}^{(1)T} + \textbf{v}_{J_1}^{(2)T}\textbf{v}_{J_1}^{(2)T}) + \textbf{v}_{J_2}^{(1)T}\textbf{v}_{J_2}^{(1)T} \\
 &= \begin{bmatrix}
@@ -1008,20 +1022,6 @@ T_{J_1} + T_{J_2} &= (\textbf{v}_{J_1}^{(1)T}\textbf{v}_{J_1}^{(1)T} + \textbf{v
 \end{align*}
 where the set indices $J_1$ and $J_2$ indicate the eigenvectors for the eigenvalues of $\lambda = 1$ and $3$ respectively.
 }
-
-\section{Normal Matrices and Unitary Diagonalization}
-
-\subsection{Unitary and Normal Matrices} 
-We now generalize the ideas of orthogonal matrices/diagonalization to complex vector space. The complex counterpart of orthogonal matrices is known as \index{Unitary Matrix}\keywordhl{unitary matrices}.
-\begin{defn}[Unitary Matrix]
-\label{defn:unitary}
-A complex matrix $A$ is said to be unitary if
-\begin{align}
-A^*A = AA^* = I
-\end{align}
-where the superscript $^*$ denotes conjugate transpose (Definition \ref{defn:conjutrans}).
-\end{defn}
-Along the same line, the complex equivalent of orthogonal diagonalization is \index{Unitary Diagonalization}\keywordhl{unitary diagonalization}.
 \begin{defn}[Unitary Diagonalization]
 \label{defn:unitarydiag}
 A complex square matrix $A$ is said to be unitarily diagonalizable if there is a unitary matrix $U$ such that $U^* AU = D$ yields a complex diagonal matrix whose diagonal entries are the eigenvalues of $A$.
@@ -1044,7 +1044,7 @@ As in Properties \ref{proper:diagonalize}, the unitary matrix $U$ that diagonali
 \label{thm:schurtrig}
 For any square complex [real] matrix $A$, there exists a unitary [orthogonal] matrix $U$ [$P$] such that $S = U^*AU$ [$P^TAP$] is upper-triangular, where the eigenvalues of $A$, counting algebraic multiplicities, are located along the main diagonal of $S$, if the characteristic polynomial of $A$ splits over $\mathbb{C}$ [$\mathbb{R}$].
 \end{thm}
-Notice the requirement at the end of the theorem (see Footnote \ref{foot:split} of Chapter \ref{chap:eigen}) and recall that every polynomial splits over $\mathbb{C}$. So in other words, every square matrix is \textit{unitariliy similar} to an upper-triangular matrix. (But not always orthogonally similar to a real diagonal matrix as the characteristic polynomial may not split over $\mathbb{R}$\footnote{Its splitting over $\mathbb{R}$ is equivalent to all eigenvalues being real.}.)
+Notice the requirement at the end of the theorem (see Footnote \ref{foot:split} of Chapter \ref{chap:eigen}) and recall that every polynomial splits over $\mathbb{C}$. So in other words, every square matrix is \textit{unitariliy similar} to an upper-triangular matrix. (But not always orthogonally similar to a real diagonal matrix as the characteristic polynomial may not split over $\mathbb{R}$.\footnote{Its splitting over $\mathbb{R}$ is equivalent to all of the roots being real.})
 \begin{proof}
 We will use mathematical induction on the size of $A$ to show the theorem for the complex case. If $A$ is $1 \times 1$ then the result is automatic. Then assume $A$ is $n \times n$ and the theorem is true for all $r \times r$ matrices where $r < n$, particularly for $r = n-1$. As the characteristic polynomial splits, there is always an available (complex) root to the polynomial as one of the eigenvalues of $A$, let's say $\lambda_1$, and a corresponding eigenvector $\vec{v}_\lambda^{(1)}$. Use the Gram-Schmidt process (with respect to the complex dot product now) to generate another set of $n-1$ vectors $\vec{w}^{(2)}, \ldots, \vec{w}^{(n)}$ to complete an orthonormal basis for $\mathbb{C}^n$. The matrix formed by arranging these orthonormal basis vectors (normalized into unit length) in columns,
 \begin{align*}

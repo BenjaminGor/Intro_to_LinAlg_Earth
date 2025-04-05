@@ -9,8 +9,8 @@ In Earth Science, we often look at the evolution of variables in time, like temp
 
 First, let's talk about how to determine if a \index{Time Series}\keywordhl{time series} possesses some sort of \index{Memory}\textit{memory} as mentioned in the introduction. Memory causes the past of a time series to influence the present, and hence will leave a mark when we try to correlate the past and present segments of the time series. This leads to the idea of \index{Lagged (Lag-$k$) Auto-correlation}\keywordhl{lagged auto-correlation}, which is the correlation between a time series and itself, but one of them is lagged and shifted by a certain amount of days, let's say $k$ (the direction of the shifting does not matter as it is an auto-correlation, and we only care about the overlapping part). Then, it is more specifically known as the \textit{Lag-$k$ Auto-correlation}.
 
-\begin{defn}
-\label{defn:autocorr}[Lagged Auto-correlation]
+\begin{defn}[Lagged Auto-correlation]
+\label{defn:autocorr}
 The lag-$k$ auto-correlation $r_k$ of a time series $\{x_i\}_{i=1}^{n}$ is defined as 
 \begin{align}
 r_k &= \frac{\sum_{i=1}^{n-k}(x_i - \overline{x_{-}})(x_{i+k} - \overline{x_{+}})}{\sqrt{(\sum_{i=1}^{n-k}(x_i - \overline{x_{-}})^2) (\sum_{j=k+1}^{n}(x_j - \overline{x_{+}})^2)}}
@@ -25,7 +25,7 @@ r_k &= \frac{\text{Cov}(\{x_{-}\},\{x_{+}\})}{\sqrt{\text{Var}(\{x_{-}\}) \text{
 \end{subequations}
 where the definitions of variance and covariance are based on Definitions \ref{defn:variance} and \ref{defn:covariance}.
 \end{defn}
-If the lag-$k$ auto-correlation of a time series is close to $1$ or $-1$, it means that the state at a certain time will likely lead to a similar/opposite state $k$ time steps later. There may be situations when the generated time series is regarded to be infinitely long, and in such cases, we simply apply the shifting and compute the lagged summation over the entire time axis.
+If the lag-$k$ auto-correlation of a time series is close to $1$ or $-1$, it means that the state at a certain time will likely lead to a similar/opposite state $k$ time steps later. This may be used to infer causality but the implication is not always definite. There may be situations when the generated time series is regarded to be infinitely long, and in such cases, we simply apply the shifting and compute the lagged summation over the entire time axis.
 
 \begin{exmp}
 For the traffic flow data over some seven days of a highway below, find its lag-$1$ auto-correlation.
@@ -61,8 +61,7 @@ Hence by Formula (\ref{eqn:autocorrvar}) in Definition \ref{defn:autocorr} above
 r_1 &= \frac{12000}{\sqrt{(13720)(17987)}} = 0.7639
 \end{align*}
 It means that heavy (quiet) traffic will likely be followed by more or less heavy (quiet) traffic the next day, which is quite reasonable.\par
-$\blacktriangleright$ Short Exercise: Compute the lag-$2$ auto-correlation for the same dataset.\footnote{The new $\{x_-\}$ and $\{x_+\}$ will be $\{680, 820, 760, 790, 840\}$ and $\{760, 790, 840, 1030, 1080\}$. We provide the relevant numbers for the readers to check. Their sample (co)variances are $\text{Var}(\{x_-\}) = 3920$, $\text{Var}(\{x_+\}) = 21150$ and $\text{Cov}(\{x_{-}\},\{x_{+}\}) = 5725$. So the lag-$2$ auto-correlation will be $r_2 = \smash{\frac{5725}{\sqrt{(3920)(21150)}}} = 0.6287$.}
-
+$\blacktriangleright$ Short Exercise: Compute the lag-$2$ auto-correlation for the same dataset.\footnotemark
 
 \subsection{Conditional Probabilities, Stochastic Matrices}
 To understand the idea of Markov Chains, we also need to know what \textit{conditional probabilities} are. The \index{Conditional Probability}\keywordhl{conditional probability} $P(A|B)$ is the probability of event $A$ occurring, given event $B$ has occurred. For an evolving system that has a finite number of states $A_i$, $i = 1,2,\ldots,n$, and can only possess one state at a time, e.g.\ a binary on-and-off, the conditional probability \smash{$P(A_i^{[k+1]}|A_j^{[k]})$} represents the probability of state $A_i$ occurring at time step $k+1$ if the state is $A_j$ at time step $k$. A simple Atmospheric Sciences example is the daily weather report, which in a simplistic sense, can take the state of either sunny, rainy, or windy. Usually, if it is rainy today, then there is a relatively high chance it is rainy tomorrow, i.e.\ \smash{$P(\text{rainy}^{[k+1]}|\text{rainy}^{[k]})$} is high. \par
@@ -76,6 +75,7 @@ P(\Omega^{[k+1]}|A_j^{[k]}) &= 1
 \end{align}
 where $\Omega = \bigcup_{i} A_i$ covers all the states and $k$ denotes a particular time step. The time increment is $1$ here but can be replaced by any other positive integer. It means that any given event $A_j$ must consequently lead to one of the possible states (including $A_j$ itself) at the next (few) time step(s).
 \end{proper}
+\footnotetext{The new $\{x_-\}$ and $\{x_+\}$ will be $\{680, 820, 760, 790, 840\}$ and $\{760, 790, 840, 1030, 1080\}$. We provide the relevant numbers for the readers to check. Their sample (co)variances are $\text{Var}(\{x_-\}) = 3920$, $\text{Var}(\{x_+\}) = 21150$ and $\text{Cov}(\{x_{-}\},\{x_{+}\}) = 5725$. So the lag-$2$ auto-correlation will be $r_2 = \smash{\frac{5725}{\sqrt{(3920)(21150)}}} = 0.6287$.}
 This is essentially a rephrasing of the \index{Law of Total Probability}\textit{Law of Total Probability} from elementary Statistics. As a result, we can express all the conditional probabilities \smash{$P(A_i^{[k+1]}|A_j^{[k]})$} for a particular previous state $A_j$ in a system using a column vector with components that sum up to $1$. Using the daily weather as an example, assume there are only three states (sunny/windy/rainy), if a sunny day has a chance of $0.8$ to be followed by another sunny day, and $0.15$/$0.05$ for another windy/rainy day. Then we can write
 \begin{center}
 \begin{tabular}{|c|c|}
@@ -260,7 +260,18 @@ So on Day 2, the chances of sunny/windy/rainy are $0.35$/$0.305$/$0.345$. It is 
 \end{bmatrix}
 \end{align*}
 \end{solution}
-$\blacktriangleright$ Short Exercise: Find the state vector on the next day if today is windy.\footnote{It is simply $P\vec{x}$ where $\vec{x} = (0,1,0)^T$ and thus
+$\blacktriangleright$ Short Exercise: Find the state vector on the next day if today is windy.\footnotemark
+
+For a Markov Chain which has been ongoing for a long period of time, and the initial state becomes effectively forgotten (\index{Memoryless}\textit{memoryless}), it is desirable to obtain the \index{Steady-state Vector}\keywordhl{steady-state vector} which represents the "average" probability of every state given no prior knowledge of the initial state. The steady-state vector $\vec{q}$ remains the same for any time step and the probabilities are stationary. Hence, we have 
+\begin{align}
+\label{eqn:qeqPq}
+\vec{q} = P\vec{q} = \cdots = P^n\vec{q}    
+\end{align}
+Rearrangement of the relation $\vec{q} = P\vec{q}$ gives 
+\begin{align}
+(I-P)\vec{q} = \textbf{0}    
+\end{align}
+which can be recognized as an eigenvalue-eigenvector problem (see Section \ref{section:eigensection}): The steady-state vector $\vec{q}$ corresponds to the eigenvector of $P$ with an eigenvalue of $\lambda = 1$. This eigenvector $\vec{q}$ is then found by following the usual procedure to solve the linear system $(I-P)\vec{q} = \textbf{0}$. Some may suspect if this steady-state vector always exists. To address this question, we will first show that one of the eigenvalues in any Markov Chain must be $1$.\footnotetext{It is simply $P\vec{x}$ where $\vec{x} = (0,1,0)^T$ and thus
 \begin{align*}
 \begin{bmatrix}
 0.8 & 0.2 & 0.1\\
@@ -279,17 +290,6 @@ $\blacktriangleright$ Short Exercise: Find the state vector on the next day if t
 0.3
 \end{bmatrix}
 \end{align*} so the probabilities are simply given by the components in the second column of the stochastic matrix.}
-
-For a Markov Chain which has been ongoing for a long period of time, and the initial state becomes effectively forgotten (\index{Memoryless}\textit{memoryless}), it is desirable to obtain the \index{Steady-state Vector}\keywordhl{steady-state vector} which represents the "average" probability of every state given no prior knowledge of the initial state. The steady-state vector $\vec{q}$ remains the same for any time step and the probabilities are stationary. Hence, we have 
-\begin{align}
-\label{eqn:qeqPq}
-\vec{q} = P\vec{q} = \cdots = P^n\vec{q}    
-\end{align}
-Rearrangement of the relation $\vec{q} = P\vec{q}$ gives 
-\begin{align}
-(I-P)\vec{q} = \textbf{0}    
-\end{align}
-which can be recognized as an eigenvalue-eigenvector problem (see Section \ref{section:eigensection}): The steady-state vector $\vec{q}$ corresponds to the eigenvector of $P$ with an eigenvalue of $\lambda = 1$. This eigenvector $\vec{q}$ is then found by following the usual procedure to solve the linear system $(I-P)\vec{q} = \textbf{0}$. Some may suspect if this steady-state vector always exists. To address this question, we will first show that one of the eigenvalues in any Markov Chain must be $1$.
 \begin{proper}
 \label{proper:markoveigen1}
 The stochastic matrix $P$ of a Markov chain always has an eigenvalue of $\lambda = 1$. The steady state of a Markov Chain is then simply the eigenvector of $P$ that corresponds to the eigenvalue of $\lambda = 1$ as in $(P - \lambda I)\vec{q} = \textbf{0}$, and normalized by the sum of entries so that they add up to $1$.
@@ -372,12 +372,12 @@ A stochastic matrix $P$, or the corresponding Markov Chain, is said to be \index
 \label{proper:positivestoceig}
 For a positive stochastic matrix $A$, the only eigenvalue with a modulus $\abs{\lambda} = 1$ is $\lambda = 1$. Moreover, the geometric multiplicity of this eigenvalue $\lambda = 1$ belonging to the matrix $A$ is strictly $1$, i.e.\ there is only one eigenvector corresponding to $\abs{\lambda} = 1$.
 \end{proper}
-The proof is provided in Appendix \ref{section:Markovappend}. For a regular stochastic matrix $P$, $A = P^k$ is positive for some $k$ by Definition \ref{defn:regularstoc} and hence the only eigenvalue of $P^k$ that has a modulus of $1$ is $\lambda = 1$ and its geometric multiplicity is $1$ by Properties \ref{proper:positivestoceig} above. It is not hard to show that, therefore, $P$ will also have $\lambda = 1$ as the only eigenvalue that has a modulus of one, $\abs{\lambda} = 1$, and the geometric multiplicity is also $1$.\footnote{Assume the contrary that there are two different eigenvectors of $P$, $\vec{q}^{(1)}$ and $\vec{q}^{(2)}$, the eigenvalues of which have a modulus $\abs{\lambda_1} = \abs{\lambda_2} = 1$ of one. Then $\smash{P^k\vec{q}^{(1)}} = \smash{P^{k-1}(P\vec{q}^{(1)})} = \lambda_1 \smash{P^{k-1}\vec{q}^{(1)}} = \lambda_1 \smash{P^{k-2} (P\vec{q}^{(1)})} = \smash{\lambda_1^2 P^{k-2}\vec{q}^{(1)}} = \cdots = \smash{\lambda_1^k} \vec{q}^{(1)}$, and similarly we have $P^k\vec{q}^{(2)} = \smash{\lambda_2^k} \vec{q}^{(2)}$. These show that $\vec{q}^{(1)}$ and $\vec{q}^{(2)}$ will be also two eigenvectors to $A = P^k$ with an eigenvalue of $\lambda_1^k$ and $\lambda_2^k$ where both of their modulus $\smash{\abs{\lambda_j^k}} = \abs{\lambda_j}^k = 1$, $j = 1,2$, equal to one, contradicting Properties \ref{proper:positivestoceig}.} Hence by combining the two results, we have
+The proof is provided in Appendix \ref{section:Markovappend}. For a regular stochastic matrix $P$, $A = P^k$ is positive for some $k$ by Definition \ref{defn:regularstoc} and hence the only eigenvalue of $P^k$ that has a modulus of $1$ is $\lambda = 1$ and its geometric multiplicity is $1$ by Properties \ref{proper:positivestoceig} above. It is not hard to show that, therefore, $P$ will also have $\lambda = 1$ as the only eigenvalue that has a modulus of one, $\abs{\lambda} = 1$, and the geometric multiplicity is also $1$.\footnotemark{} Hence by combining the two results, we have
 \begin{proper}
 \label{proper:regularmarkovsteady}
 A regular Markov chain always has a unique steady-state vector with an eigenvalue of $1$.  
 \end{proper}
-The stochastic matrix in Example \ref{exmp:dailyweathersteady} is obviously regular, hence we have been able to derive the steady state for it. However, note that Properties \ref{proper:regularmarkovsteady} provides a sufficient condition only, and a non-regular Markov chain may still converge to a unique steady state. Take
+The stochastic matrix in Example \ref{exmp:dailyweathersteady} is obviously regular, hence we have been able to derive the steady state for it. However, note that Properties \ref{proper:regularmarkovsteady} provides a sufficient condition only, and a non-regular Markov chain may still converge to a unique steady state. Take\footnotetext{Assume the contrary that there are two different eigenvectors of $P$, $\vec{q}^{(1)}$ and $\vec{q}^{(2)}$, the eigenvalues of which have a modulus $\abs{\lambda_1} = \abs{\lambda_2} = 1$ of one. Then $\smash{P^k\vec{q}^{(1)}} = \smash{P^{k-1}(P\vec{q}^{(1)})} = \lambda_1 \smash{P^{k-1}\vec{q}^{(1)}} = \lambda_1 \smash{P^{k-2} (P\vec{q}^{(1)})} = \smash{\lambda_1^2 P^{k-2}\vec{q}^{(1)}} = \cdots = \smash{\lambda_1^k} \vec{q}^{(1)}$, and similarly we have $P^k\vec{q}^{(2)} = \smash{\lambda_2^k} \vec{q}^{(2)}$. These show that $\vec{q}^{(1)}$ and $\vec{q}^{(2)}$ will be also two eigenvectors to $A = P^k$ with an eigenvalue of $\lambda_1^k$ and $\lambda_2^k$ where both of their modulus $\smash{\abs{\lambda_j^k}} = \abs{\lambda_j}^k = 1$, $j = 1,2$, equal to one, contradicting Properties \ref{proper:positivestoceig}.}
 \begin{align*}
 P = 
 \begin{bmatrix}
@@ -385,7 +385,7 @@ P =
 0 & 0.5
 \end{bmatrix}
 \end{align*}
-as an example. It is not hard to see that the bottom-left entry in $P^k$ where $k$ is any positive integer, will always be $0$.\footnote{In general for any two $2 \times 2$ matrices both in the form of
+as an example. It is not hard to see that the bottom-left entry in $P^k$ where $k$ is any positive integer, will always be $0$.\footnote{In general, for any two $2 \times 2$ matrices both in the form of
 \begin{align*}
 \begin{bmatrix}
 * & * \\
@@ -550,23 +550,7 @@ It is not hard to obtain (for example, just do it like in Example \ref{exmp:2x2}
 \end{align*}
 Hence the expected time required to reach the third node starting from the first node will be just the sum of the first column in $P_0$, $4.166 + 2.917 = 7.083$.
 \end{solution}
-$\blacktriangleright$ Short Exercise: Find the expected time required to reach the third node if it has $50\%/50\%$ chances to start at the first/second node instead.\footnote{It is simply a matter of computing
-\begin{align*}
-(I - P_0)^{-1}\vec{x}^{[0]} &= 
-\begin{bmatrix}
-4.166 & 3.333 \\
-2.917 & 3.333
-\end{bmatrix}
-\begin{bmatrix}
-0.5 \\
-0.5
-\end{bmatrix}=
-\begin{bmatrix}
-3.75 \\
-3.125
-\end{bmatrix}
-\end{align*}
-where $\vec{x}^{[0]}$ is now $(0.5, 0.5)^T$ and the required time is then $3.75 + 3.125 = 6.875$.}
+$\blacktriangleright$ Short Exercise: Find the expected time required to reach the third node if it has $50\%/50\%$ chances to start at the first/second node instead.\footnotemark
 
 \subsection{Lagged Auto-correlation Predicted by Markov Chains}
 
@@ -596,7 +580,23 @@ where $\vec{q}$ is the steady-state vector, with $q_1$ being the average probabi
 \begin{align}
 E[X_{-}^2] = E[X_{+}^2] &= q_1 
 \end{align}
-since squaring a time series composed purely of $1$ and $0$ will return itself. The remaining job is to determine $E[X_{-}X_{+}]$, which is
+since squaring a time series composed purely of $1$ and $0$ will return itself. The remaining job is to determine $E[X_{-}X_{+}]$, which is\footnotetext{It is simply a matter of computing
+\begin{align*}
+(I - P_0)^{-1}\vec{x}^{[0]} &= 
+\begin{bmatrix}
+4.166 & 3.333 \\
+2.917 & 3.333
+\end{bmatrix}
+\begin{bmatrix}
+0.5 \\
+0.5
+\end{bmatrix}=
+\begin{bmatrix}
+3.75 \\
+3.125
+\end{bmatrix}
+\end{align*}
+where $\vec{x}^{[0]}$ is now $(0.5, 0.5)^T$ and the required time is then $3.75 + 3.125 = 6.875$.}
 \begin{align}
 E[X_{-}X_{+}] &= P(X_{+}=1 \text{ and } X_{-}=1) \nonumber \\
 &= P(X_{+}=1|X_{-}=1) P(X_{-}=1) \nonumber \\

@@ -1,7 +1,7 @@
 \chapter{Solutions for Linear Systems}
 \label{chap:SolLinSys}
 
-The last chapter has introduced the necessary machinery for solving linear systems of equations, and now we are going to see how to apply those methods under suitable circumstances. Remember, in the first chapter, we formulated some problems about linear systems of equations appearing in Earth Science, and they will be solved accordingly.
+The last chapter has introduced the necessary machinery for solving linear systems of equations, and now we are going to see how to apply those methods (Gaussian Elimination and Inverse) under suitable circumstances. Remember, in the first chapter, we formulated some problems about linear systems of equations appearing in Earth Science, such as seismic tomography and radiative transfer in the atmosphere, and they will be solved accordingly.
 
 \section{Number of Solutions for Linear Systems}
 \label{section:NoSolLinSys}
@@ -25,7 +25,7 @@ a_2x + b_2y &= h_2
 \end{alignedat}\right.
 \end{align}
 It goes similarly for any linear system of three unknowns in which equations represent planes instead, and the intersection of two non-parallel planes will be a line. We show three possible scenarios in Figure \ref{fig:3dlinsysdemo}. The readers can try to imagine and draw out other possibilities.
-\begin{figure}[h!]
+\begin{figure}[hb!]
 \centering
 \begin{subfigure}{0.7\textwidth}
 \centering
@@ -45,7 +45,7 @@ ymin=-5,ymax=5,ticks=none]
 \caption{\textit{One solution: Two non-parallel lines (red/blue) intersecting at one point (green).}}
 \end{subfigure}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \ContinuedFloat
 \centering
 \begin{subfigure}{0.7\textwidth}
@@ -84,10 +84,10 @@ ymin=-5,ymax=5,ticks=none]
 \caption{\textit{Three possible situations for (\ref{eqn:2dlinsysdemo}).}}
 \label{fig:2dlinsysdemo}
 \end{figure}
-\begin{figure}
+\begin{figure}[ht!]
     \centering
-    \hspace*{\fill} 
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.32\textwidth}
+    \centering
     \begin{tikzpicture}[x={(-0.9cm, 0.2cm)}, y={(0.6cm, 0.7cm)}, z={(0cm, 1cm)}]
     \filldraw[draw=Red, fill=Red!40, opacity=0.5]
     (-1,-1,0) -- (-1,1,0) -- (1,1,0) -- (1,-1,0) -- cycle;
@@ -101,8 +101,8 @@ ymin=-5,ymax=5,ticks=none]
     \node at (0,0,0) [circle,fill,inner sep=1.5pt,Green]{};
     \end{tikzpicture} \\
     \end{minipage}
-    \hfill
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.32\textwidth}
+    \centering
     \begin{tikzpicture}[x={(-0.8cm, 0.3cm)}, y={(0.7cm, 0.3cm)}, z={(-0.2cm, 0.8cm)}]
     \filldraw[draw=Red, fill=Red!40, opacity=0.5]
     (-1,-1,0) -- (-1,1,0) -- (1,1,0) -- (1,-1,0) -- cycle;
@@ -111,8 +111,8 @@ ymin=-5,ymax=5,ticks=none]
     \draw[Green] (0,1,0) -- (0,-1,0);
     \end{tikzpicture} \\
     \end{minipage}
-    \hfill
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.32\textwidth}
+    \centering
     \begin{tikzpicture}[x={(-0.85cm, 0.25cm)}, y={(0.65cm, 0.45cm)}, z={(0cm, 1cm)}]
     \filldraw[draw=Red, fill=Red!40, opacity=0.5]
     (-1,-1,0) -- (-1,1,0) -- (1,1,0) -- (1,-1,0) -- cycle;
@@ -126,19 +126,18 @@ ymin=-5,ymax=5,ticks=none]
     \draw[dashed] (-0.333,-1,0) -- (0,-1,0) -- (0,-1,0.2) -- cycle;
     \end{tikzpicture}
     \end{minipage}
-    \hspace*{\fill}
     \caption{\textit{One solution (left): Three planes (red/yellow/blue) intersecting at one point (green). Infinitely many solutions (middle): Two planes intersecting along a straight line. No solution (right): Three planes intersecting pairwise along three non-intersecting parallel lines.}}
     \label{fig:3dlinsysdemo}
 \end{figure}
 
-In fact, this theorem about the existence of solutions is true for any number of variables and equations.\footnote{Some readers may think if there can be finitely many solutions only. Unfortunately, it is impossible. Assume there are two distinct solutions $\vec{x}^{(1)}$, $\vec{x}^{(2)}$ to the system $A\vec{x} = \smash{\vec{h}}$, then it is easy to show by construction all $\vec{x}_t = t\vec{x}^{(1)} + (1-t)\vec{x}^{(2)}$ for any $t$ will be valid solutions which are infinitely many.} If there is any solution, then the system is called \index{Consistent}\keywordhl{consistent}. Otherwise, if no solution exists, then it is known as \index{Inconsistent}\keywordhl{inconsistent}. \par
+In fact, this theorem about the existence of solutions is true for any number of variables and equations.\footnotemark{} If there is any solution, then the system is called \index{Consistent}\keywordhl{consistent}. Otherwise, if no solution exists, then it is known as \index{Inconsistent}\keywordhl{inconsistent}.\par
 
 Clearly, the next task is to find out which case the linear system belongs to. The following theorem reveals the relationship between the number of solutions for a \textit{square} linear system and the determinant of its coefficient matrix.
 \begin{thm}
 \label{thm:sqlinsysunique}
 For a square linear system $A\vec{x} = \vec{h}$, if the coefficient matrix $A$ is invertible, i.e.\ $\det(A) \neq 0$, then there is always only one unique solution. However, if $A$ is singular, $\det(A) = 0$, then it has either no solution, or infinitely many solutions.
 \end{thm}
-As a consequence, if the homogeneous linear system $A\vec{x} = \textbf{0}$ has a singular coefficient matrix with $\det(A) = 0$, since it always has a trivial solution of $\vec{x} = \textbf{0}$, the above theorem implies that the homogeneous system must have infinitely many solutions (because it cannot have no solution). We defer the arguments for showing Theorem \ref{thm:sqlinsysunique}, as well as the discussion about non-square systems, until we actually start solving linear systems in the next subsection. \par
+\footnotetext{Some readers may think if there can be finitely many solutions only. Unfortunately, it is impossible. Assume there are two distinct solutions $\vec{x}^{(1)}$, $\vec{x}^{(2)}$ to the system $A\vec{x} = \smash{\vec{h}}$, then it is easy to show by construction all $\vec{x}_t = t\vec{x}^{(1)} + (1-t)\vec{x}^{(2)}$ for any $t$ will be valid solutions which are infinitely many.}As a consequence, if the homogeneous linear system $A\vec{x} = \textbf{0}$ has a singular coefficient matrix with $\det(A) = 0$, since it always has a trivial solution of $\vec{x} = \textbf{0}$, the above theorem implies that the homogeneous system must have infinitely many solutions (because it cannot have no solution). We defer the arguments for showing Theorem \ref{thm:sqlinsysunique}, as well as the discussion about non-square systems, until we actually start solving linear systems in the next subsection. \par
 $\blacktriangleright$ Short Exercise: By inspection, determine the number of solutions for the following linear systems.\footnotemark
 \begin{align*}
 &
@@ -176,7 +175,6 @@ z
 0
 \end{bmatrix}
 \end{align*}
-\footnotetext{The coefficient matrices of these two homogeneous linear systems have a determinant of $-1$ and $0$, and hence by Theorem \ref{thm:sqlinsysunique}, the first system has a unique solution and the second one has infinitely many solutions.}
 
 \section{Solving Linear Systems}
 \label{section:SolveLinSys}
@@ -194,7 +192,7 @@ Like in Section \ref{subsection:invGauss}, applying Gaussian Elimination on the 
 (E_n\cdots E_2E_1)A\vec{x} &= (E_n\cdots E_2E_1)\vec{h} \nonumber \\
 (E_n\cdots E_2E_1A)\vec{x} = A_{\text{rref}}\vec{x} &= (E_n\cdots E_2E_1)\vec{h} 
 \end{align}
-hence $\vec{x}$ will be the solution to $A_{\text{rref}}\vec{x} = \tilde{h}$ too at the same time, where $\smash{\tilde{h}} = E_n\cdots E_2E_1\smash{\vec{h}}$. Therefore, the solutions of $A\vec{x} = \smash{\vec{h}}$ and $A_{\text{rref}}\vec{x} = \smash{\tilde{h}}$ coincide, which can be inferred more directly from the latter reduced system. In addition, the coefficient matrix $A$ can be non-square, but we will look at the easier case of a square coefficient matrix first.
+hence $\vec{x}$ will be the solution to $A_{\text{rref}}\vec{x} = \tilde{h}$ too at the same time, where $\smash{\tilde{h}} = E_n\cdots E_2E_1\smash{\vec{h}}$. Therefore, the solutions of $A\vec{x} = \smash{\vec{h}}$ and $A_{\text{rref}}\vec{x} = \smash{\tilde{h}}$ coincide, which can be inferred more directly from the latter reduced system. In addition, the coefficient matrix $A$ can be non-square, but we will look at the easier case of a square coefficient matrix first.\footnotetext{The coefficient matrices of these two homogeneous linear systems have a determinant of $-1$ and $0$, and hence by Theorem \ref{thm:sqlinsysunique}, the first system has a unique solution and the second one has infinitely many solutions.}
 
 \subsubsection{Square Systems}
 \begin{exmp}
@@ -429,7 +427,9 @@ t
 \end{align*}
 is known as the \index{Complementary Solution}\keywordhl{complementary solution}, the family of all vectors $\vec{x} = \vec{x}_c$ that satisfy the homogeneous part $A\vec{x} = \textbf{0}$. Combined, they form the \index{General Solution}\keywordhl{general solution} $\vec{x}_g = \vec{x}_p + \vec{x}_c$ as the complete set of solutions to the linear system. 
 \end{solution}
-$\blacktriangleright$ Short Exercise: Try plugging in any number $t$ to the general solution and verify the consistency.\footnote{\label{footnote:3.3}Let's say $t=1$ and $\tilde{x} = 
+$\blacktriangleright$ Short Exercise: Try plugging in any number $t$ to the general solution and verify the consistency.\footnotemark\par
+The complementary solution encompasses all possible solutions to the homogeneous part $A\vec{x} = \textbf{0}$ of the linear system $A\vec{x} = \smash{\vec{h}}$. For broader situations, it can contain more than one pair of free parameters and column vectors (or none, if the homogeneous part only permits the trivial solution of all zeros), and the complementary solution becomes a \textit{linear combination} of multiple \textit{linearly independent} column vectors which satisfy $A\vec{x} = \textbf{0}$ on their own. (We will clarify these concepts in Chapter \ref{chap:vec_space}.)\par
+The amount of free variables is decided by the number of columns in the coefficient matrix (unknowns), minus the number of pivots (constraints) in its reduced row echelon form. This quantity is called \textit{nullity} and in the last example, it equals $1$. In the case of multiple free variables, we assign the corresponding number of free parameters to non-pivotal unknowns and apply the same procedure as in the example above to acquire the full complementary solution. Any column vector that constitutes the complementary solution (followed by a free parameter) can be scaled by any non-zero factor as we desire.\footnotetext{\label{footnote:3.3}Let's say $t=1$ and $\tilde{x} = 
 \begin{bmatrix}
 1 \\
 0 \\
@@ -462,7 +462,7 @@ $\blacktriangleright$ Short Exercise: Try plugging in any number $t$ to the gene
 1 \\
 2 \\
 0
-\end{bmatrix}$.\vspace{3pt} $\tilde{x}$ can become a new particular solution by noting that the original solution form can be rewritten as
+\end{bmatrix}$. $\tilde{x}$ can become a new particular solution by noting that the original solution form can be rewritten as
 \begin{align*}
 \vec{x} =
 \begin{bmatrix}
@@ -515,10 +515,16 @@ t'
 1
 \end{bmatrix}
 \end{align*}
-where we "extract" $\tilde{x}$ from shifting the free parameter via $t' = t-1$, and it represents the same general solution as the original expression.}
-\par
-The complementary solution encompasses all possible solutions to the homogeneous part $A\vec{x} = \textbf{0}$ of the linear system $A\vec{x} = \smash{\vec{h}}$. For broader situations, it can contain more than one pair of free parameters and column vectors (or none, if the homogeneous part only permits the trivial solution of all zeros), and the complementary solution becomes a \textit{linear combination} of multiple \textit{linearly independent} column vectors which satisfy $A\vec{x} = \textbf{0}$ on their own. (We will clarify these concepts in Chapter \ref{chap:vec_space}.)\par
-The amount of free variables is decided by the number of columns in the coefficient matrix (unknowns), minus the number of pivots (constraints) in its reduced row echelon form. This quantity is called \textit{nullity} and in the last example, it equals $1$. In the case of multiple free variables, we assign the corresponding number of free parameters to non-pivotal unknowns and apply the same procedure as in the example above to acquire the full complementary solution. Any column vector that constitutes the complementary solution (followed by a free parameter) can be scaled by any non-zero factor as we desire.\footnote{Using the last example as a demonstration, 
+where we "extract" $\tilde{x}$ from shifting the free parameter via $t' = t-1$, and it represents the same general solution as the original expression.}\footnotemark\par
+Meanwhile, the particular solution can be set to any valid solution to the linear system (the choice does not affect the structure of its complementary part, see Footnote \ref{footnote:3.3} to the last short exercise). If the linear system is itself homogeneous, then the zero vector $\textbf{0}$ can always be chosen as a particular solution that does not appear explicitly.\par
+We have seen in the previous two examples that if the reduced row echelon form of the square coefficient matrix has some row(s) of full zeros, then it either leads to no solution (if inconsistent) or infinitely many solutions (if consistent). Since such a matrix at the same time has a determinant of zero (by Properties \ref{proper:zerodet}) and is singular, this establishes the second part of Theorem \ref{thm:sqlinsysunique}. \par
+For non-square coefficient matrices, two cases occur.
+\begin{enumerate}
+\item There are more equations (rows) than unknowns (columns). The system is \index{Overdetermined}\keywordhl{overdetermined}. The RREF of the coefficient matrix must have at least one row of full zeros. If any one of them is inconsistent, then contradiction will arise just like in Example \ref{exmp:nosol} and there will be no solution. However, if all zero rows are consistent (i.e.\ $0=0$), then there can still be a unique solution or infinitely many of them.
+\item There are fewer equations (rows) than unknowns (columns). The system is said to be \index{Underdetermined}\keywordhl{underdetermined}. There must be unknown(s) that is/are non-pivot(s) in the reduced row echelon form of the coefficient matrix. Hence, free variables and infinitely many solutions ensue if there is no inconsistent row (if there is at least one row of $0 = k$ where $k$ is a non-zero constant, then there is no solution). The calculation is similar to that in Example \ref{exmp:mulsol}.
+\end{enumerate}
+Note that in Earth Science, more often than not, the numbers of equations and unknowns are not exactly equal, hence the concerned system will usually be either overdetermined or underdetermined, e.g.\ there are more/less data samples (radiosonde soundings) than the variables (temperature, humidity) in a measurement campaign. To this end, let's now look at some worked examples of solving non-square linear systems.
+\footnotetext{Using the last example as a demonstration, 
 \begin{align*}
 \begin{bmatrix}
 1 \\
@@ -563,15 +569,8 @@ The amount of free variables is decided by the number of columns in the coeffici
 2 \\
 -2 \\
 2
-\end{bmatrix}$ that is double in length, both satisfy the homogeneous part $A\vec{x} = 0$.} \par
-Meanwhile, the particular solution can be set to any valid solution to the linear system (the choice does not affect the structure of its complementary part, see Footnote \ref{footnote:3.3} to the last short exercise). If the linear system is itself homogeneous, then the zero vector $\textbf{0}$ can always be chosen as a particular solution that does not appear explicitly.\par
-We have seen in the previous two examples that if the reduced row echelon form of the square coefficient matrix has some row(s) of full zeros, then it either leads to no solution (if inconsistent) or infinitely many solutions (if consistent). Since such a matrix at the same time has a determinant of zero (by Properties \ref{proper:zerodet}) and is singular, this establishes the second part of Theorem \ref{thm:sqlinsysunique}. \par
-For non-square coefficient matrices, two cases occur.
-\begin{enumerate}
-\item There are more equations (rows) than unknowns (columns). The system is \index{Overdetermined}\keywordhl{overdetermined}. The RREF of the coefficient matrix must have at least one row of full zeros. If any one of them is inconsistent, then contradiction will arise just like in Example \ref{exmp:nosol} and there will be no solution. However, if all zero rows are consistent (i.e.\ $0=0$), then there can still be a unique solution or infinitely many of them.
-\item There are fewer equations (rows) than unknowns (columns). The system is said to be \index{Underdetermined}\keywordhl{underdetermined}. There must be unknown(s) that is/are non-pivot(s) in the reduced row echelon form of the coefficient matrix. Hence, free variables and infinitely many solutions ensue if there is no inconsistent row (if there is at least one row of $0 = k$ where $k$ is a non-zero constant, then there is no solution). The calculation is similar to that in Example \ref{exmp:mulsol}.
-\end{enumerate}
-Let's see some examples of solving non-square linear systems.
+\end{bmatrix}$ that is double in length, both satisfy the homogeneous part $A\vec{x} = 0$.}
+
 \subsubsection{Overdetermined Systems}
 \begin{exmp}
 Find the solution to the following overdetermined system, if any.
@@ -1959,12 +1958,12 @@ and the solution is $I_1 = -\frac{3}{19}$, $I_2 = \frac{17}{19}$, $I_3 = -\frac{
 \begin{Exercise}
 \phantomsection
 \label{ex:shallowwater}
-The \index{Shallow Water Equations}\textit{shallow water equations} (see Figure \ref{fig:shallowwater}) describe the evolution of the gravity wave under some approximations such as \index{Hydrostatic Balance}\textit{hydrostatic balance} and a sufficiently shallow fluid depth, and have the form of
+The \index{Shallow Water Equations}\textit{shallow water equations} (see Figure \ref{fig:shallowwater}) describe the evolution of the gravity wave under some approximations such as \textit{hydrostatic balance} and a sufficiently shallow fluid depth, and have the form of
 \begin{align}
-\left\{\begin{alignedat}{1}
-\frac{\partial \eta}{\partial t} + H(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y}) &= 0 \\
-\frac{\partial u}{\partial t} &= -g\frac{\partial \eta}{\partial x} \\
-\frac{\partial v}{\partial t} &= -g\frac{\partial \eta}{\partial y} 
+\left\{\begin{alignedat}{2}
+&\frac{\partial \eta}{\partial t} + H(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y})& &= 0 \\
+&\frac{\partial u}{\partial t}& &= -g\frac{\partial \eta}{\partial x} \\
+&\frac{\partial v}{\partial t}& &= -g\frac{\partial \eta}{\partial y} 
 \end{alignedat}\right.
 \end{align}
 when the Coriolis effect is ignored. By assuming a traveling wave solution
@@ -1988,7 +1987,7 @@ By requiring that $\tilde{U}$, $\tilde{V}$, $\tilde{\eta}$ have a non-trivial so
 \end{align*}
 where $c = \sqrt{gH}$ is the wave speed, and $\kappa = \sqrt{k^2 + l^2}$ is the total wavenumber.
 \end{Exercise}
-\begin{figure}
+\begin{figure}[ht!]
 \centering
 \begin{tikzpicture}
     \draw [thick,color=black,domain=0:3*pi,samples=500] plot (\x, {5+0.5*sin(deg(4*\x))});

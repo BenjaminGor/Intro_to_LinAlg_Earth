@@ -1,6 +1,6 @@
 \chapter{Introduction to Vectors}
 
-After three chapters of discussion about matrices, it is time to introduce another closely related type of object in linear algebra: \textit{vectors}. While vectors and \textit{vector spaces} have strictly mathematical definitions that make them abstract, we will take a more physical point of view with the special case of (finite-dimensional) geometric vectors first.
+After three chapters of discussion about matrices, it is time to introduce another closely related type of object in linear algebra: \textit{vectors}. While vectors and \textit{vector spaces} have strictly mathematical definitions that make them abstract, we will take a more physical point of view with the special case of (finite-dimensional) geometric vectors first. Many physical quantities that we commonly come across, like displacements, velocities, and acceleration, in addition to various kinds of interacting forces (gravity, electric, magnetic, etc.), can be represented using vectors. To facilitate, we will learn about how to carry out relevant vector operations for future calculations.
 
 \section{Definition and Operations of Geometric Vectors}
 
@@ -23,7 +23,7 @@ v_n
 \end{align}
 \end{defn}
 An $n$-dimensional vector can be treated as an $n \times 1$ (\index{Column Vector}\keywordhl{column vector}) as suggested above, or a $1 \times n$ matrix (\index{Row Vector}\keywordhl{row vector}) depending on the situation. The form of a column vector is taken more often than the row vector one, so the column form is assumed throughout the book if it is not further specified. That is why the superscript $^T$ is added for the $n$-tuple form in the definition above to reflect that it is in fact a column vector despite being written horizontally. \par
-\begin{figure}
+\begin{figure}[ht!]
     \centering
     \begin{tikzpicture}
     \draw[->] (-2.5,0)--(2.5,0) node[right]{$x$};
@@ -35,7 +35,7 @@ An $n$-dimensional vector can be treated as an $n \times 1$ (\index{Column Vecto
     \end{tikzpicture}
     \caption{\textit{A 2D vector drawn in an x-y plane.}}
 \end{figure}
-\begin{table}
+\begin{table}[ht!]
     \centering
     \includegraphics[scale = 0.5]{higos.jpg}
     \caption{\textit{Forecast for Typhoon Higos (taken from \href{http://www.hkww.org/weather/tcarchive.html}{Hong Kong Weather Watch}). Its horizontal movement is a two-dimensional vector, even though the speed and direction are given instead of the velocities in $x$ and $y$-direction (they can be converted to each other).}}
@@ -247,7 +247,7 @@ Looking back at vector subtraction, it can be viewed as an addition with a facto
 \end{bmatrix}
 \end{align*}
 
-\subsubsection{Length and Unit Vector} \index{Length}\index{Magnitude}\keywordhl{Length (magnitude)}, or more formally \index{Euclidean Norm}\keywordhl{Euclidean norm}, of a vector $\vec{v}$ is based on a generalized version of \index{Pythagoras' Theorem}\keywordhl{Pythagoras' Theorem}, and is computed as the square root of the sum of squares of components.
+\subsubsection{Length and Unit Vector} \index{Length}\index{Magnitude}\keywordhl{Length (magnitude)}, or more formally \index{Euclidean Norm}\index{$l^2$-norm}\keywordhl{Euclidean/$l^2$-norm}\footnote{$l^2$-norm is often seen in Machine Learning as the cost function to be minimized. However, it is not the only norm that can be used: another example will be the $l^1$-norm (mean absolute error).}, of a vector $\vec{v}$ is based on a generalized version of \index{Pythagoras' Theorem}\keywordhl{Pythagoras' Theorem}, and is computed as the square root of the sum of squares of components.
 \begin{defn}[Vector Length]
 \label{defn:vectorlength}
 Length, or magnitude of a $n$-dimensional \textit{real} vector $\vec{v}$, denoted by $\norm{\vec{v}}$, is given by
@@ -300,8 +300,7 @@ For instance, the length of a two-dimensional vector follows the usual Pythagora
 \end{subfigure}
 \caption{\textit{Demonstration diagrams of deriving vector lengths.}}
 \label{fig:veclength}
-\end{figure}\\
-We can create a \index{Unit Vector}\keywordhl{unit vector} that has a length of $1$ from any vector $\vec{v}$ and orients in the same direction as $\vec{v}$. It is simply created by dividing (\textit{normalizing}) $\vec{v}$ by its distance $\norm{\vec{v}}$.
+\end{figure}We can create a \index{Unit Vector}\keywordhl{unit vector} that has a length of $1$ from any vector $\vec{v}$ and orients in the same direction as $\vec{v}$. It is simply created by dividing (\textit{normalizing}) $\vec{v}$ by its distance $\norm{\vec{v}}$.
 \begin{defn}[Unit Vector]
 \label{defn:unitvec}
 The unit vector (\index{Direction}\keywordhl{direction}) corresponding to a non-zero vector $\vec{v}$ is denoted as $\hat{v}$ and is given by
@@ -311,7 +310,7 @@ The unit vector (\index{Direction}\keywordhl{direction}) corresponding to a non-
 where the length $\norm{\vec{v}}$ is defined as (\ref{eqn:veclength}) in Definition \ref{defn:vectorlength}. 
 \end{defn}
 Note that even though vectors can carry physical units, unit vectors are all physically \textit{dimensionless} when formulated in this way. \par
-$\blacktriangleright$ Short Exercise: Find the unit vector for $\vec{w} = (8, -1, 4)^T$ in the previous example of Figure \ref{fig:veclength} (b), and verify that it has a length of $1$.\footnote{$\norm{\vec{w}} = 9$, $\hat{w} = \frac{\vec{w}}{\norm{\vec{w}}} = \frac{1}{9}(8,-1,4)^T = (\frac{8}{9}, -\frac{1}{9}, \frac{4}{9})^T$, $\norm{\hat{w}} = \sqrt{(\frac{8}{9})^2 + (-\frac{1}{9})^2 + (\frac{4}{9})^2} = 1$.}
+$\blacktriangleright$ Short Exercise: Find the unit vector for $\vec{w} = (8, -1, 4)^T$ in the previous example of Figure \ref{fig:veclength} (b), and verify that it has a length of $1$.\footnotemark
 
 \section{Special Vector Operations}
 \label{section:vectorops}
@@ -332,7 +331,7 @@ The \textit{real} dot product between two $n$-dimensional \textit{real} vectors 
 \end{subequations}
 which is a real scalar quantity.
 \end{defn}
-Conversely, it can be said that the entries of a matrix product are vector dot products between the corresponding rows and columns. It is emphasized that we are restricting ourselves to real entries since complex vectors introduce a bit of extra complications. Then, for two \textit{real} matrices expressed in the form of combined row/column vectors that are $\mathbb{R}^n$,
+Conversely, it can be said that the entries of a matrix product are vector dot products between the corresponding rows and columns. It is emphasized that we are restricting ourselves to real entries since complex vectors introduce a bit of extra complications. Then, for two \textit{real} matrices expressed in the form of combined row/column vectors that are $\mathbb{R}^n$,\footnotetext{$\norm{\vec{w}} = 9$, $\hat{w} = \frac{\vec{w}}{\norm{\vec{w}}} = \frac{1}{9}(8,-1,4)^T = (\frac{8}{9}, -\frac{1}{9}, \frac{4}{9})^T$, $\norm{\hat{w}} = \smash{\sqrt{(\frac{8}{9})^2 + (-\frac{1}{9})^2 + (\frac{4}{9})^2}} = 1$.}
 \begin{align*}
 A &= \left[\begin{array}{@{}c@{}}
 \text{---} \vec{u}^{(1)T} \text{---} \\
@@ -536,7 +535,7 @@ where $\theta$ is the angle between $\vec{u}$ and $\vec{v}$. Furthermore, if $\h
 \end{align}
 \end{proper}
 This means that the dot product between two vectors $\vec{u}$ and $\vec{v}$ is geometrically the signed product between $\vec{u}$ and the parallel component (projection) of $\vec{v}$ onto $\vec{u}$ (or vice versa), which is illustrated in Figure \ref{fig:dotproj} below. While an angle has a clear physical meaning only in a two/three-dimensional space, such a relation generalizes the idea of an angle to higher dimensions.
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \begin{tikzpicture}[scale=1.3]
     \coordinate (0) at (0,0);
@@ -600,7 +599,7 @@ Since this quantity is always greater than or equal to zero, i.e.\ the quadratic
 |\vec{u} \cdot \vec{v}| &\leq \norm{\vec{u}}\norm{\vec{v}}
 \end{align*}
 \end{proof}
-$\blacktriangleright$ Short Exercise: Think about under what circumstances the Cauchy-Schwarz Inequality will turn into an equality (i.e.\ $\abs{\vec{u} \cdot \vec{v}} = \norm{\vec{u}}\norm{\vec{v}}$).\footnote{When $\vec{u}$ and $\vec{v}$ are parallel, i.e.\ $\vec{u} = k\vec{v}$ for some scalar $k$, or $\vec{v} = \textbf{0}$.}
+$\blacktriangleright$ Short Exercise: Think about under what circumstances the Cauchy-Schwarz Inequality will turn into an equality (i.e.\ $\abs{\vec{u} \cdot \vec{v}} = \norm{\vec{u}}\norm{\vec{v}}$).\footnotemark
 
 \begin{exmp}
 Prove the \index{Cosine Law}\keywordhl{Cosine Law} by considering the triangle below
@@ -628,7 +627,7 @@ c^2 = \norm{(\vec{u}-\vec{v})}^2 &= (\vec{u}-\vec{v}) \cdot (\vec{u}-\vec{v}) & 
 
 \subsection{Cross Product}
 \label{section:crossprod}
-Another important type of vector product is the \index{Cross Product}\keywordhl{cross product} (or sometimes just \index{Vector Product}\keywordhl{vector product}), which produces a three-dimensional real vector from two other three-dimensional real vectors. \textit{The output vector will be orthogonal to the two input vectors}, and the direction is determined by the \index{Right-hand Rule}\keywordhl{right-hand rule}. Motivated by these requirements, we have the following basic definitions of cross product between the three standard unit vectors in $\mathbb{R}^3$. (See Figure \ref{fig:crossschm})
+Another important type of vector product is the \index{Cross Product}\keywordhl{cross product} (or sometimes just \index{Vector Product}\keywordhl{vector product}), which produces a three-dimensional real vector from two other three-dimensional real vectors. \textit{The output vector will be orthogonal to the two input vectors}, and the direction is determined by the \index{Right-hand Rule}\keywordhl{right-hand rule}. Motivated by these requirements, we have the following basic definitions of cross product between the three standard unit vectors in $\mathbb{R}^3$. (See Figure \ref{fig:crossschm})\footnotetext{When $\vec{u}$ and $\vec{v}$ are parallel, i.e.\ $\vec{u} = k\vec{v}$ for some scalar $k$, or $\vec{v} = \textbf{0}$.}
 \begin{defn}
 \label{defn:crossijk}
 The computation of cross products (denoted by $\times$) involving any two of the standard unit vectors $\hat{\imath}$, $\hat{\jmath}$, $\hat{k}$ in $\mathbb{R}^3$ obeys the following rules.
@@ -859,8 +858,8 @@ Find $\vec{u} \times \vec{v}$.
 &= 2\hat{\imath} + 5\hat{\jmath} - \hat{k} = (2,5,-1)^T
 \end{align*} 
 \end{solution}
-$\blacktriangleright$ Short Exercise: Check if $\vec{u} \times \vec{v}$ is orthogonal to $\vec{u}$ and $\vec{v}$ in the above example by finding the corresponding dot products.\footnote{$\vec{u} \cdot (\vec{u} \times \vec{v}) = (1,0,2)^T\cdot(2,5,-1)^T = (1)(2) + (0)(5) + (2)(-1) = 0$, $\vec{v} \cdot (\vec{u} \times \vec{v}) = (3,-1,1)^T\cdot(2,5,-1)^T = (3)(2) + (-1)(5) + (1)(-1) = 0$. The zero dot products in both cases show that they are orthogonal via Properties \ref{proper:dotorth}.}\par
-$\blacktriangleright$ Short Exercise: Following the short exercise above, show that in general, $\vec{u} \cdot (\vec{u} \times \vec{v}) = \vec{v} \cdot (\vec{u} \times \vec{v}) = 0$, i.e.\ the cross product is orthogonal to the two input vectors.\footnote{From the derivation of Properties \ref{proper:crossdet}, $\vec{u} \times \vec{v} = (u_2v_3 - u_3v_2)\hat{\imath} + (u_3v_1 - u_1v_3)\hat{\jmath} + (u_1v_2 - u_2v_1)\hat{k}$, and $\vec{u} \cdot (\vec{u} \times \vec{v}) = u_1(u_2v_3 - u_3v_2) + u_2(u_3v_1 - u_1v_3) + u_3(u_1v_2 - u_2v_1) = 0$ where all terms cancel out, and it is similar for $\vec{v}$.}
+$\blacktriangleright$ Short Exercise: Check if $\vec{u} \times \vec{v}$ is orthogonal to $\vec{u}$ and $\vec{v}$ in the above example by finding the corresponding dot products.\footnotemark\par
+$\blacktriangleright$ Short Exercise: Following the short exercise above, show that in general, $\vec{u} \cdot (\vec{u} \times \vec{v}) = \vec{v} \cdot (\vec{u} \times \vec{v}) = 0$, i.e.\ the cross product is orthogonal to the two input vectors.\footnotemark
 
 \subsubsection{Geometric Meaning of Cross Product} Similar to vector dot product, vector cross product has a geometric interpretation.
 \begin{proper}
@@ -870,15 +869,7 @@ Given two vectors $\vec{u}$ and $\vec{v}$ which are both of $\mathbb{R}^3$, the 
 \norm{\vec{u} \times \vec{v}} = \norm{\vec{u}}\norm{\vec{v}}\sin\theta \label{eqn:crossgeo}
 \end{align}
 \end{proper}
-From this, we immediately know that if $\vec{u}$ and $\vec{v} = k\vec{u}$, where $k$ is some constant, are two parallel vectors, their cross product will be a zero vector as $\theta = 0$ (or $\pi$) and $\sin \theta = 0$. This is equivalent to the statement of $\vec{u} \times \vec{u} = \textbf{0}$.\footnote{By Properties \ref{proper:crossdet},
-\begin{align*}
-\vec{u} \times \vec{u} = 
-\begin{vmatrix}
-\hat{\imath} & \hat{\jmath} & \hat{k} \\
-u_1 & u_2 & u_3 \\
-u_1 & u_2 & u_3
-\end{vmatrix} 
-\end{align*} and the determinant vanishes by Properties \ref{proper:zerodet} due to the identical second/third row.} (notice that it is not $0$ but $\textbf{0}$ since it always outputs a vector!) (You can also arrive at this conclusion with Properties \ref{proper:crossproper}.\footnote{The anti-symmetric property requires $\vec{u}\times\vec{u} = -\vec{u}\times\vec{u}$ and hence $2(\vec{u}\times\vec{u}) = \textbf{0}$.})
+From this, we immediately know that if $\vec{u}$ and $\vec{v} = k\vec{u}$, where $k$ is some constant, are two parallel vectors, their cross product will be a zero vector as $\theta = 0$ (or $\pi$) and $\sin \theta = 0$. This is equivalent to the statement of $\vec{u} \times \vec{u} = \textbf{0}$.\footnotemark{} (notice that it is not $0$ but $\textbf{0}$ since it always outputs a vector!) (You can also arrive at this conclusion with Properties \ref{proper:crossproper}.)\footnotemark
 
 \begin{exmp}
 If $\vec{u} = (1,2,3)^T$, and $\vec{v} = (-1,1,2)^T$, find $(\vec{u} + 2\vec{v}) \times (\vec{u} - \vec{v})$.
@@ -924,7 +915,15 @@ where the fact that $\vec{u} \times \vec{u} = \textbf{0}$, $\vec{v} \times \vec{
 The readers can try the alternative of computing $\vec{u}+2\vec{v}$ and $\vec{u} - \vec{v}$ first and then their cross product.
 \end{solution}
 
-Finally, cancellation of dot product or cross product at both sides of an equation is generally not correct, and here is a table summarizing the inputs and outputs of dot/cross product for clarification.
+Finally, cancellation of dot product or cross product at both sides of an equation is generally not correct, and here is a table summarizing the inputs and outputs of dot/cross product for clarification.\footnotetext[\numexpr\value{footnote}-3]{$\vec{u} \cdot (\vec{u} \times \vec{v}) = (1,0,2)^T\cdot(2,5,-1)^T = (1)(2) + (0)(5) + (2)(-1) = 0$, $\vec{v} \cdot (\vec{u} \times \vec{v}) = (3,-1,1)^T\cdot(2,5,-1)^T = (3)(2) + (-1)(5) + (1)(-1) = 0$. The zero dot products in both cases show that they are orthogonal via Properties \ref{proper:dotorth}.}\footnotetext[\numexpr\value{footnote}-2]{From the derivation of Properties \ref{proper:crossdet}, $\vec{u} \times \vec{v} = (u_2v_3 - u_3v_2)\hat{\imath} + (u_3v_1 - u_1v_3)\hat{\jmath} + (u_1v_2 - u_2v_1)\hat{k}$, and $\vec{u} \cdot (\vec{u} \times \vec{v}) = u_1(u_2v_3 - u_3v_2) + u_2(u_3v_1 - u_1v_3) + u_3(u_1v_2 - u_2v_1) = 0$ where all terms cancel out, and it is similar for $\vec{v}$.}\footnotetext[\numexpr\value{footnote}-1]{By Properties \ref{proper:crossdet},
+\begin{align*}
+\vec{u} \times \vec{u} = 
+\begin{vmatrix}
+\hat{\imath} & \hat{\jmath} & \hat{k} \\
+u_1 & u_2 & u_3 \\
+u_1 & u_2 & u_3
+\end{vmatrix} 
+\end{align*} and the determinant vanishes by Properties \ref{proper:zerodet} due to the identical second/third row.}\footnotetext{The anti-symmetric property requires $\vec{u}\times\vec{u} = -\vec{u}\times\vec{u}$ and hence $2(\vec{u}\times\vec{u}) = \textbf{0}$.}
 \begin{table}
 \centering
 \begin{tabular}{|p{32mm}|p{60mm}|p{26mm}|}
