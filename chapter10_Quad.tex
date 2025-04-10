@@ -1,4 +1,5 @@
 \chapter{Quadratic Forms}
+\label{chap:quad}
 
 Symmetric matrices often see their appearance in the areas of Geometry, Statistics, Physics, and more, as \textit{quadratic forms}. They can be used to describe a family of geometric shapes known as \textit{conic sections}, including ellipses and hyperbola. A more common application of quadratic forms in Earth Science will be obtaining a \textit{covariance matrix} between different variables, eventually leading to \textit{Principal Component Analysis (PCA)}, which breaks down the variables into uncorrelated modes that explain the spread of their distribution. In Atmospheric Science, it is more commonly known as \textit{Empirical Orthogonal Functions (EOF)} and has been widely used to analyze prominent, large-scale climate patterns like \textit{El Niño-Southern Oscillation (ENSO)}. 
 
@@ -12,7 +13,7 @@ Real quadratic forms in multiple variables $\vec{x} = (x_1, x_2, x_3, \ldots, x_
 \begin{align}
 Q(\vec{x}) = \sum_{p=1}^{n}\sum_{q=1}^{n} b_{pq} x_px_q \label{eqn:quadform}
 \end{align}
-Note that $b_{pq}$ are real and they produce a real scalar.
+Note that $b_{pq}$ is real and they produce a real scalar.
 \end{defn}
 For example, in a two-variable situation, $x^2 + 3xy + y^2$ and $3x^2 - 4xy$ are quadratic forms, while $x^2 + y$ and $xy + xy^2$ are not. Notice that $x_px_q$ and $x_qx_p$ are actually the same term, and we will replace $b_{pq}$ or $b_{qp}$ by $\frac{1}{2}(b_{pq} + b_{qp})$ as a single coefficient for both of them. 
 \begin{proper}[Matrix Representation of a Quadratic Form]
@@ -412,7 +413,7 @@ whose solution is
 \lambda &= \frac{-(-2) \pm \sqrt{(-2)^2 - 4(1)(-9)}}{2} \\
 &= 1 \pm \sqrt{10}
 \end{align*}
-so there will be one positive and negative eigenvalue for $B$. It is obvious that the eigenvalues for $B'$ are $\lambda = 1, -2$ so one of them is positive and another is negative as well. Therefore, they are congruent.\footnote{One possible choice of $P$ as in $B' = P^TBP$ is $P = 
+so there will be one positive and one negative eigenvalue for $B$. It is obvious that the eigenvalues for $B'$ are $\lambda = 1, -2$ so one of them is positive and another is negative as well. Therefore, they are congruent.\footnote{One possible choice of $P$ as in $B' = P^TBP$ is $P = 
 \begin{bmatrix}
 \frac{1}{\sqrt{2}}&-1\\ 
 0&\frac{2}{3}
@@ -590,7 +591,7 @@ The above works because if the central conic is a hyperbola and $\det(B_{33})$ i
 \draw[red,rotate=-30] plot[domain=-3:3] ({\x},{0});
 \draw[blue,rotate=60] plot[domain=-3:3] ({\x},{0});
 \end{tikzpicture}
-\caption{\textit{Left: A hyperbola ($x^2 + 2\sqrt{3}xy - y^2 = 1$), Right: An ellipse ($\frac{7}{4}x^2 + \frac{3}{2}\sqrt{3}xy + \frac{13}{4}y^2 = 1$). Both of them are rotated from their standard position so that their major axis (red) and minor axis (blue) are not aligned with the $x$/$y$ axes and make an angle of 30 degrees.}}
+\caption{\textit{Left: A hyperbola ($x^2 + 2\sqrt{3}xy - y^2 = 1$), Right: An ellipse ($\frac{7}{4}x^2 + \frac{3}{2}\sqrt{3}xy + \frac{13}{4}y^2 = 1$). Both of them (green) are rotated from their standard position so that their major axis (red) and minor axis (blue) are not aligned with the $x$/$y$ axes and make an angle of 30 degrees.}}
 \label{fig:hyperellip}
 \end{figure}
 For example, the quadratic equation represented by the quadratic form $\textbf{x}^TB\textbf{x} = 1$, where
@@ -845,8 +846,7 @@ We can also use the aforementioned short-cut Formula (\ref{eqn:varshortcut}).
 \begin{align*}
 \sigma^2 &= E[X^2] - \mu^2 \\
 &= \frac{1}{5} (1^2 + 3^2 + 6^2 + 9^2 + 11^2) - 6^2 \\
-&= 49.6 - 36 \\
-&= 13.6
+&= 49.6 - 36 = 13.6
 \end{align*}
 $\blacktriangleright$ Short Exercise: Find the sample variance of $X$.\footnotemark\par
 Note that Formula (\ref{eqn:variance}) for variance in Definition \ref{defn:variance} can be written as a dot product shown below.

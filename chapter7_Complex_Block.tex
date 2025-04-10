@@ -1,7 +1,7 @@
 \chapter{Complex Vectors/Matrices and Block Matrices}
 \label{chap:complex}
 
-In this chapter, we will take a detour to talk about two auxiliary topics. The first one is the generalization of vectors and matrices to having complex numbers as entries. Eventually, we will mention about \textit{complex vector spaces}, and compare them to real vector spaces that we just learnt in the previous chapters. Working with complex numbers and \textit{Euler's Formula} will make many calculations faster, such as solving systems of Ordinary Differential Equations in Chapters \ref{chap:eigen}, and the Discrete Fourier Transform in Chapter \ref{chap:DFT}. The second one is about the \textit{block form} of a matrix (or simply referred to as a \textit{block matrix}) that is composed of smaller \textit{submatrices} as the building blocks. Writing a matrix in block form enables efficient manipulation for many situations that we will encounter in the remaining parts of this book.
+In this chapter, we will take a detour to talk about two auxiliary topics. The first one is the generalization of vectors and matrices to having complex numbers as entries. Eventually, we will mention about \textit{complex vector spaces}, and compare them to real vector spaces that we just learnt in the previous chapters. Working with complex numbers and \textit{Euler's Formula} will make many calculations relevant to Earth Science applications faster, such as solving systems of ordinary differential equations in Chapter \ref{chap:eigen}, the Discrete Fourier Transform in Chapter \ref{chap:DFT}, and complex potentials for two-dimensional flows. The second one is about the \textit{block form} of a matrix (or simply referred to as a \textit{block matrix}) that is composed of smaller \textit{submatrices} as the building blocks. Writing a matrix in block form enables efficient manipulation for many situations that we will encounter in the remaining parts of this book, for example, the basic strategy of algorithms for Fast Fourier Transform which is also outlined in Chapter \ref{chap:DFT}.
 
 \section{Definition and Operations of Complex Numbers}
 \label{section:complexno}
@@ -242,7 +242,7 @@ Transpose can be similarly defined for complex matrices. However, there exists a
 \label{defn:conjutrans}
 The \index{Conjugate Transpose}\keywordhl{conjugate transpose} of a matrix $A$, denoted as $A^* = \overline{A^T}$, has its entries as $A^*_{pq} = \overline{A}_{qp}$, where $\overline{A}$ is the conjugate of the matrix $A$ produced by changing every entry in $A$ to its complex conjugate. Sometimes $A^*$ is called the \textit{adjoint} or \index{Hermitian Transpose}\keywordhl{Hermitian transpose} of $A$, and alternatively denoted as $A^H$. 
 \end{defn}
-It means that conjugate transpose is done by conjugating all entries of the matrix and flipping them about its main diagonal. A \index{Hermitian Matrix}\keywordhl{Hermitian matrix} is a complex matrix whose conjugate transpose equals to itself.
+It means that conjugate transpose is done by conjugating all entries of the matrix and flipping them about its main diagonal. A \index{Hermitian Matrix}\keywordhl{Hermitian matrix} is a complex matrix whose conjugate transpose equals to itself. Implicitly, it is required to be a square matrix just like in the symmetric case.
 \begin{defn}
 \label{defn:Hermitian}
 A complex square matrix $A$ is called Hermitian if $A^* = A$.

@@ -1,7 +1,7 @@
 \chapter{Eigenvalues and Eigenvectors}
 \label{chap:eigen}
 
-In this section, we will discuss a very important topic in Linear Algebra, the \textit{eigenvalue-eigenvector} problem. By finding the eigenvectors of a square matrix that span subspaces that are \textit{invariant} under the corresponding linear operator, it is sometimes possible to obtain a coordinate basis such that the matrix can be \textit{diagonalized}, i.e.\ become a diagonal matrix under that particular change of coordinates. One of the practical usages of \textit{diagonalization} is to solve systems of linear ordinary differential equations (ODEs) which are also commonly seen in many areas of Earth Science, e.g.\ chains of chemical reactions in the atmosphere. Moreover, many Earth Science applications suggested in the later chapters also depend heavily on the concepts of eigenvalues and eigenvectors.
+In this section, we will discuss a very important topic in Linear Algebra, the \textit{eigenvalue-eigenvector} problem. By finding the eigenvectors of a square matrix that span subspaces that are \textit{invariant} under the corresponding linear operator, it is sometimes possible to obtain a coordinate basis such that the matrix can be \textit{diagonalized}, i.e.\ become a diagonal matrix under that particular change of coordinates. One of the practical usages of \textit{diagonalization} is to solve systems of linear \textit{ordinary differential equations (ODEs)} which are also commonly seen in many areas of Earth Science, such as chains of chemical reactions in the atmosphere. Moreover, many Earth Science applications suggested in the later chapters (e.g.\ Principal Component Analysis in Chapter \ref{chap:quad}, can be applied on seismic patterns) also depend heavily on the concepts of eigenvalues and eigenvectors.
 
 \section{Eigenvalues and Eigenvectors of a Square Matrix}
 \label{section:eigensection}
@@ -318,7 +318,7 @@ p(\lambda) &= \det(A-\lambda I) \\
 &= -\lambda^3 + 7\lambda^2 - 16\lambda + 12 \\
 &= (2-\lambda)^2(3-\lambda)
 \end{align*}
-Hence the eigenvalues are $\lambda = 2,3$ with an algebraic multiplicity of $2$ and $1$ respectively. For $\lambda = 2$, its eigenvectors are retrieved via solving
+Hence the eigenvalues are $\lambda = 2,3$ with an algebraic multiplicity of $2$ and $1$ respectively. For $\lambda = 2$, its eigenvectors are retrieved via solving\footnotetext{For $\lambda = 1$, the eigenvector is $(-1,-\frac{1}{3},1)^T$. For $\lambda = \frac{3}{2} - \frac{\sqrt{5}}{2}$, it is $(-\frac{1}{2}-\frac{\sqrt{5}}{2},0,1)^T$. Note that for all three eigenvalues, their algebraic and geometric multiplicity are both $1$.}
 \begin{align*}
 \left[\begin{array}{@{\,}wc{17pt}wc{17pt}wc{17pt}|c@{\,}}
 1-2 & 1 & -1 & 0 \\
@@ -347,7 +347,7 @@ R_2 + R_1 &\to R_2 \\
 R_3 + R_1 &\to R_3 \\
 \end{aligned}
 \end{align*}
-We have only one leading $1$ and two non-pivotal columns, so we can assign two free variables. For that, let $y = s$, $z = t$, then $x = s - t$. The general solution is then\footnotetext{For $\lambda = 1$, the eigenvector is $(-1,-\frac{1}{3},1)^T$. For $\lambda = \frac{3}{2} - \frac{\sqrt{5}}{2}$, it is $(-\frac{1}{2}-\frac{\sqrt{5}}{2},0,1)^T$. Note that for all three eigenvalues, their algebraic and geometric multiplicity are both $1$.}
+We have only one leading $1$ and two non-pivotal columns, so we can assign two free variables. For that, let $y = s$, $z = t$, then $x = s - t$. The general solution is then
 \begin{align*}
 \begin{bmatrix}
 x \\
@@ -639,15 +639,16 @@ P^{-1}AP = D
 \end{align}
 where $D$ is a diagonal matrix.
 \end{defn}
-Recalling Properties \ref{proper:endomorph}, we know that the form $P^{-1}AP$ (or $P^{-1}[T]P$ for a linear transformation) represents a change of coordinates for the matrix $A$. So the problem of diagonalization is actually asking if there exists a basis (expressed as the columns of $P$) such that the matrix $A$ in question is diagonal with respect to the corresponding coordinate system, or in other words, if $A$ is similar to a diagonal matrix. We will show that, in fact, the coordinate matrix $P$ required to diagonalize $A$, is formed by combining all linearly independent eigenvectors of $A$ column by column. This is only possible if the number of distinct eigenvectors is equal to the extent of $A$. An equivalent condition is that the characteristic polynomial splits over the scalar ($\mathbb{R}$ or $\mathbb{C}$)\footnote{\label{foot:split} A (characteristic) polynomial $p(\lambda)$ of degree $n$ is said to \index{Split}\textit{split} over $\mathbb{C}$ [$\mathbb{R}$] if it can be expressed as the product of linear factors only, i.e.\
-\begin{align*}
-p(\lambda) = \prod_{j=1}^n (\lambda_j - \lambda)    
-\end{align*}
-where $\lambda_j$ are complex [real] constants. Also, there is the \index{Fundamental Theorem of Algebra}\textit{Fundamental Theorem of Algebra} which states that every polynomial splits over $\mathbb{C}$ so the first part of the condition is automatically satisfied for the complex case.} used in the vector space, and, for every eigenvalue, its geometric multiplicity is equal to the algebraic multiplicity.\footnote{\label{foot:algequalgeo}Note that the sum of geometric multiplicities for all eigenvalues is less than or equal to (when the characteristic polynomial splits) the degree of the characteristic polynomial by observing Definition \ref{defn:charactereqn} and Theorem \ref{thm:geolessalgebra}, which is the same as the extent of the matrix. For the amount of linearly independent eigenvectors to be equal to that, the only possibility is that the geometric multiplicity of any eigenvalue is strictly equal to the algebraic multiplicity (Theorem \ref{thm:geolessalgebra} again) while $p(\lambda)$ splits. (Properties \ref{proper:eigenlinind} ensures linear independence over eigenspaces of different eigenvalues.)} So, the matrix in Example \ref{exmp:dummyjordan} is non-diagonalizable. 
+Recalling Properties \ref{proper:endomorph}, we know that the form $P^{-1}AP$ (or $P^{-1}[T]P$ for a linear transformation) represents a change of coordinates for the matrix $A$. So the problem of diagonalization is actually asking if there exists a basis (expressed as the columns of $P$) such that the matrix $A$ in question is diagonal with respect to the corresponding coordinate system, or in other words, if $A$ is similar to a diagonal matrix. We will show that, in fact, the coordinate matrix $P$ required to diagonalize $A$, is formed by combining all linearly independent eigenvectors of $A$ column by column. This is only possible if the number of distinct eigenvectors is equal to the extent of $A$. An equivalent condition is that the characteristic polynomial splits over the scalar ($\mathbb{R}$ or $\mathbb{C}$)\footnotemark{} used in the vector space, and, for every eigenvalue, its geometric multiplicity is equal to the algebraic multiplicity.\footnotemark{} So, the matrix in Example \ref{exmp:dummyjordan} is non-diagonalizable. 
 \begin{proper}
 \label{proper:diagonalize}
 An $n \times n$ square matrix $A$ can be diagonalized by another matrix $P$ if and only if $A$ has $n$ linearly independent eigenvectors, such that they form a basis for $\mathbb{R}^n$ (see part (b) of Properties \ref{proper:linindspanbasisnewver}) when the underlying scalar of vector space is taken to be $\mathbb{R}$ [a basis for $\mathbb{C}^n$ if working over $\mathbb{C}$]. The equivalent conditions are that the characteristic polynomial of $A$ splits over $\mathbb{R}$ [$\mathbb{C}$] and the geometric multiplicities of all distinct eigenvalues are equal to the respective algebraic multiplicities. Then, the columns of $P$ will consist of those eigenvectors $\smash{\vec{v}_\lambda^{(j)}}$, $j = 1,2,\ldots,n$. The diagonal entries of $P^{-1}AP = D$, are subsequently each of the eigenvalues $\lambda_j$ (counting repeated ones) corresponding to the eigenvector $\smash{\vec{v}_\lambda^{(j)}}$ in the same column position of $P$. 
 \end{proper}
+\footnotetext[\numexpr\value{footnote}-1]{\label{foot:split} A (characteristic) polynomial $p(\lambda)$ of degree $n$ is said to \index{Split}\textit{split} over $\mathbb{C}$ [$\mathbb{R}$] if it can be expressed as the product of linear factors only, i.e.\
+\begin{align*}
+p(\lambda) = \prod_{j=1}^n (\lambda_j - \lambda)    
+\end{align*}
+where $\lambda_j$ are complex [real] constants. Also, there is the \index{Fundamental Theorem of Algebra}\textit{Fundamental Theorem of Algebra} which states that every polynomial splits over $\mathbb{C}$ so the first part of the condition is automatically satisfied for the complex case.}\footnotetext{\label{foot:algequalgeo}Note that the sum of geometric multiplicities for all eigenvalues is less than or equal to (when the characteristic polynomial splits) the degree of the characteristic polynomial by observing Definition \ref{defn:charactereqn} and Theorem \ref{thm:geolessalgebra}, which is the same as the extent of the matrix. For the amount of linearly independent eigenvectors to be equal to that, the only possibility is that the geometric multiplicity of any eigenvalue is strictly equal to the algebraic multiplicity (Theorem \ref{thm:geolessalgebra} again) while $p(\lambda)$ splits. (Properties \ref{proper:eigenlinind} ensures linear independence over eigenspaces of different eigenvalues.)}
 \begin{proof}
 We will explicitly construct the desired form. Consider two matrix products $AP$ and $PD$, where $P = [\smash{\vec{v}_\lambda^{(1)}}|\smash{\vec{v}_\lambda^{(2)}}|\cdots|\smash{\vec{v}_\lambda^{(n)}}]$ contains the $n$ linearly independent eigenvectors as its columns. Then
 \begin{align*}

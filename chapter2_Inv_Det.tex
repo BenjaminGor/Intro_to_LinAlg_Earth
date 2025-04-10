@@ -1,7 +1,7 @@
 \chapter{Inverses and Determinants}
 \label{chapter:invdet}
 
-In this chapter, we are going to discuss two important concepts about matrices: their \textit{inverses} and \textit{determinants}. They will appear from time to time in the remaining parts of this book. Inverses mainly arise when we have to "undo" the effect of multiplying a matrix, or solve linear systems of equations by inverting the coefficient matrix. In Earth Science, inverses, as the name suggests, appear frequently in the so-called \textit{inversion problems} that require us to deduce unknown information from given known data in a backward manner. Meanwhile, determinants have the geometric meaning of being the magnification/shrinking factor in a transformation that we shall see in later chapters. To derive them, we first need to introduce some prerequisite ideas, including the \textit{identity matrix}, \textit{transpose}, and the methods of \textit{Gaussian Elimination} and \textit{cofactor expansion}.
+In this chapter, we are going to discuss two important concepts about matrices: their \textit{inverses} and \textit{determinants}. They will appear from time to time in the remaining parts of this book. Inverses mainly arise when we have to "undo" the effect of multiplying a matrix, or solve linear systems of equations by inverting the coefficient matrix. In Earth Science, inverses, as the name suggests, appear frequently in the so-called \textit{inversion problems} that require us to deduce unknown information (e.g.\ the distribution of airborne hydrometeors) from given known data (e.g.\ radar reflectivity) in a backward manner. Meanwhile, determinants have the geometric meaning of being the magnification/shrinking factor in a transformation that we shall see in later chapters. To derive them, we first need to introduce some prerequisite ideas, including the \textit{identity matrix}, \textit{transpose}, and the methods of \textit{Gaussian Elimination} and \textit{cofactor expansion}.
 
 \section{Identity Matrices and Transpose}
 
@@ -181,7 +181,7 @@ A^T = -A
 \label{section:inv}
 \subsection{Definition and Properties of Inverses}
 \label{subsection:invsub}
-\index{Inverse}\keywordhl{Inverse} of a square matrix, denoted by appending the superscript $^{-1}$, is another square matrix such that the matrix product between these two matrices (in either order) yields an identity matrix.
+\index{Inverse}\keywordhl{Inverse} of a square matrix, denoted by appending the superscript $^{-1}$, is another square matrix such that the matrix product of these two matrices (in either order) yields an identity matrix.
 \begin{defn}[Inverse]
 \label{defn:inverse}
 An $n \times n$ square matrix $B$ is said to be the inverse of another $n \times n$ square matrix $A$ if 
@@ -1490,7 +1490,7 @@ myMatrix3 = np.array([[3.,  1.,  3., 2.],
                       [2.,  0.,  1., 0.]])
 print(linalg.det(myMatrix3))
 \end{lstlisting}
-produces an extremely small value of \verb|1.11022302e-16| (this number may be different in your machine). In fact, the matrix
+produces an extremely small value of \verb|1.11022302e-16| (this number may be different on your machine). In fact, the matrix
 \begin{align*}
 \begin{bmatrix}
 3 & 1 & 3 & 2 \\

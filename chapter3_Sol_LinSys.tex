@@ -1,7 +1,7 @@
 \chapter{Solutions for Linear Systems}
 \label{chap:SolLinSys}
 
-The last chapter has introduced the necessary machinery for solving linear systems of equations, and now we are going to see how to apply those methods (Gaussian Elimination and Inverse) under suitable circumstances. Remember, in the first chapter, we formulated some problems about linear systems of equations appearing in Earth Science, such as seismic tomography and radiative transfer in the atmosphere, and they will be solved accordingly.
+The last chapter introduced the necessary machinery for solving linear systems of equations, and now we are going to see how to apply those methods (Gaussian Elimination and Inverse) under suitable circumstances. We will first study how to solve linear systems mathematically, and then move to the application parts at the end. Remember, in the first chapter, we formulated some problems about linear systems of equations appearing in Earth Science, such as seismic tomography and radiative transfer in the atmosphere, and they will be addressed accordingly.
 
 \section{Number of Solutions for Linear Systems}
 \label{section:NoSolLinSys}
@@ -126,7 +126,7 @@ ymin=-5,ymax=5,ticks=none]
     \draw[dashed] (-0.333,-1,0) -- (0,-1,0) -- (0,-1,0.2) -- cycle;
     \end{tikzpicture}
     \end{minipage}
-    \caption{\textit{One solution (left): Three planes (red/yellow/blue) intersecting at one point (green). Infinitely many solutions (middle): Two planes intersecting along a straight line. No solution (right): Three planes intersecting pairwise along three non-intersecting parallel lines.}}
+    \caption{\textit{One solution (left): Three planes (red/yellow/blue) intersecting at one point (green). Infinitely many solutions (middle): Two planes intersecting along a straight line. No solution (right): Three planes intersecting pairwise along three parallel lines that do not intersect.}}
     \label{fig:3dlinsysdemo}
 \end{figure}
 
@@ -192,7 +192,7 @@ Like in Section \ref{subsection:invGauss}, applying Gaussian Elimination on the 
 (E_n\cdots E_2E_1)A\vec{x} &= (E_n\cdots E_2E_1)\vec{h} \nonumber \\
 (E_n\cdots E_2E_1A)\vec{x} = A_{\text{rref}}\vec{x} &= (E_n\cdots E_2E_1)\vec{h} 
 \end{align}
-hence $\vec{x}$ will be the solution to $A_{\text{rref}}\vec{x} = \tilde{h}$ too at the same time, where $\smash{\tilde{h}} = E_n\cdots E_2E_1\smash{\vec{h}}$. Therefore, the solutions of $A\vec{x} = \smash{\vec{h}}$ and $A_{\text{rref}}\vec{x} = \smash{\tilde{h}}$ coincide, which can be inferred more directly from the latter reduced system. In addition, the coefficient matrix $A$ can be non-square, but we will look at the easier case of a square coefficient matrix first.\footnotetext{The coefficient matrices of these two homogeneous linear systems have a determinant of $-1$ and $0$, and hence by Theorem \ref{thm:sqlinsysunique}, the first system has a unique solution and the second one has infinitely many solutions.}
+hence $\vec{x}$ will be the solution to $A_{\text{rref}}\vec{x} = \tilde{h}$ too at the same time, where $\smash{\tilde{h}} = E_n\cdots E_2E_1\smash{\vec{h}}$. Therefore, the solutions of $A\vec{x} = \smash{\vec{h}}$ and $A_{\text{rref}}\vec{x} = \smash{\tilde{h}}$ coincide, which can be inferred more directly from the latter reduced system. In addition, the coefficient matrix $A$ can be non-square, but we will look at the easier case of a square coefficient matrix first.\footnotetext{The coefficient matrices of these two homogeneous linear systems have determinants of $-1$ and $0$ respectively, and hence by Theorem \ref{thm:sqlinsysunique}, the first system has a unique solution and the second one has infinitely many solutions.}
 
 \subsubsection{Square Systems}
 \begin{exmp}
@@ -1487,7 +1487,7 @@ which gives
 {(-3.0*tau0 - 2.0*tau1 - 1.0, 1.0*tau0 + 1.0*tau1 + 1.0, tau0, tau1)}    
 \end{lstlisting}
 where \verb|tau0| and \verb|tau1| are equivalent to $s$ and $t$ in the original example.\par
-Moreover, there are two questions that may come to curious readers when reading the programming sections of these two chapters. First, which of \verb|scipy| and \verb|sympy| should we choose over the other? Second, why we don't compute the inverse of $A$ and solve the system by something along the line of \verb|x = linalg.inv(A) @ h|? For the first question, we note that \verb|scipy| is numerical while \verb|sympy| is symbolic, which means that if we are dealing with real data we may find \verb|scipy| adequate and more efficient, while if we are focusing on the theoretical part of Mathematics we can obtain a more analytical solution with \verb|sympy|. For the second question, we refer the readers to \href{https://stackoverflow.com/questions/31256252/why-does-numpy-linalg-solve-offer-more-precise-matrix-inversions-than-numpy-li}{this excellent Stack Overflow post} (31256252).
+Moreover, there are two questions that may come to curious readers when reading the programming sections of these two chapters. First, which of \verb|scipy| and \verb|sympy| should we choose over the other? Second, why don't we compute the inverse of $A$ and solve the system by something along the line of \verb|x = linalg.inv(A) @ h|? For the first question, we note that \verb|scipy| is numerical while \verb|sympy| is symbolic, which means that if we are dealing with real data we may find \verb|scipy| adequate and more efficient, while if we are focusing on the theoretical part of Mathematics we can obtain a more analytical solution with \verb|sympy|. For the second question, we refer the readers to \href{https://stackoverflow.com/questions/31256252/why-does-numpy-linalg-solve-offer-more-precise-matrix-inversions-than-numpy-li}{this excellent Stack Overflow post} (31256252).
 \section{Exercises}
 
 \begin{Exercise}
