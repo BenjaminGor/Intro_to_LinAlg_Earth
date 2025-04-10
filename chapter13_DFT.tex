@@ -1,6 +1,6 @@
 \chapter{Discrete Fourier Transform (DFT)}
 \label{chap:DFT}
-We now discuss a powerful mathematical tool that can be approached from a least-square approximation point of view. In the last chapter, we have seen how to fit a polynomial curve to some given data. It is then natural to further ask, whether there are other suitable types of functions that can be used for data fitting as well. Recall in Chapter \ref{chap:innerchap}, we have derived the Fourier series into which any reasonable function can be expanded using sines and cosines. Coincidentally, in the area of Earth Science, many phenomena can be described by the notion of \textit{waves}, which are often assumed to be \textit{sinusoidal} during their derivation, e.g.\ atmospheric gravity waves, and seismic waves. However, in real life, our data sampling will be discrete. Therefore, we may want to know if we can do something similar and interpolate a discrete time series by fitting sines and cosines to it, and this is the central idea of what is known as the \textit{Discrete Fourier Transform (DFT)}.
+We now discuss a powerful mathematical tool that can be approached from a least-square approximation point of view. In the last chapter, we saw how to fit a polynomial curve to some given data. It is then natural to further ask, whether there are other suitable types of functions that can be used for data fitting as well. Recall that in Chapter \ref{chap:innerchap}, we have derived the Fourier series into which any reasonable function can be expanded using sines and cosines. Coincidentally, in the area of Earth Science, many phenomena can be described by the notion of \textit{waves}, which are often assumed to be \textit{sinusoidal} during their derivation, e.g.\ atmospheric gravity waves, and seismic waves. However, in real life, our data sampling will be discrete. Therefore, we may want to know if we can do something similar and interpolate a discrete time series by fitting sines and cosines to it, and this is the central idea of what is known as the \textit{Discrete Fourier Transform (DFT)}. An example usage is to filter out the dominant frequency in different climate modes (e.g. ENSO and PDO-Pacific Decadal Oscillation).
 
 \section{Mathematical Ideas of DFT}
 \label{section:DFT}
@@ -845,7 +845,7 @@ is equal to the R.H.S.
 \end{proof}
 
 \begin{exmp}
-Verify the Parseval's Theorem for Examples \ref{exmp:ex11.2.1} and \ref{exmp:ex11.2.2}.
+Verify Parseval's Theorem for Examples \ref{exmp:ex11.2.1} and \ref{exmp:ex11.2.2}.
 \end{exmp}
 \begin{solution}
 The L.H.S. of Equation (\ref{eqn:Parseval}) in Theorem \ref{thm:DFTParseval} applied to the time series of Example \ref{exmp:ex11.2.1}, is simply

@@ -1,6 +1,6 @@
 \chapter{Introduction to Matrices and Linear Systems}
 
-Although the Earth System is well-known to be dominated by non-linear processes, we still benefit from learning how to work with linear systems, by which many Earth Science problems can be approximated. This actually works well in several scenarios. For instance, in Atmosphere Sciences, we often consider the so-called \textit{perturbation equations}, which assume that deviations from the mean state are small enough to neglect quadratic terms. In general, Linear Algebra enables us to compute useful statistics and make complicated dynamics appearing in Earth Science tractable, e.g.\ the simplification of the convection problem that leads to the three-variable \textit{Lorenz-63 Model} in Chapter \ref{chap:dynsys}. The most fundamental usage of Linear Algebra in Applied Sciences is to formulate, analyze, and solve \textit{linear systems of equations}. Some examples in Earth Science are mapping the depth of overlying soil layers underground, as well as chemical balances in various subsystems of the Earth. \textit{Matrices} are one of the most central ingredients in Linear Algebra that can be used to describe such linear systems, and tactful matrix operations can help us derive their solution, in addition to being the machinery used to acquire many theoretical results later on. Therefore, given their importance, we are going to address the basic aspects related to them in the first chapter.
+Although the Earth System is well-known to be dominated by non-linear processes, we still benefit from learning how to work with linear systems, as they can approximate many Earth Science problems. This actually works well in several scenarios. For instance, in Atmosphere Sciences, we often consider the so-called \textit{perturbation equations}, which assume that deviations from the mean state are small enough to neglect quadratic terms. In general, Linear Algebra enables us to compute useful statistics and make complicated dynamics appearing in Earth Science tractable, e.g.\ the simplification of the convection problem that leads to the three-variable \textit{Lorenz-63 Model} in Chapter \ref{chap:dynsys}. The most fundamental usage of Linear Algebra in Applied Sciences is to formulate, analyze, and solve \textit{linear systems of equations}. Some examples in Earth Science are mapping the depth of overlying soil layers underground, as well as chemical balances in various subsystems of the Earth. \textit{Matrices} are one of the most central ingredients in Linear Algebra that can be used to describe such linear systems, and tactful matrix operations can help us derive their solution, in addition to being the machinery used to acquire many theoretical results later on. Therefore, given their importance, we are going to address the basic aspects related to them in the first chapter.
 
 \section{Definition and Operations of Matrices}
 \label{section:matrixdefn}
@@ -515,7 +515,7 @@ An even simpler representation is the \index{Augmented Matrix}\keywordhl{augment
 $\blacktriangleright$ Short Exercise: Write down the augmented matrix for the linear system in Equation (\ref{eqn:linsys2}).\footnotemark
 
 \section{Elementary Row Operations}
-When we construct a matrix, it is natural to think about how to manipulate its structure. \index{Elementary Row Operations}\keywordhl{Elementary row operations} provide such possibility in three ways, outlined in the following definition.
+When we construct a matrix, it is natural to think about how to manipulate its structure. \index{Elementary Row Operations}\keywordhl{Elementary row operations} provide such possibility in three ways, as outlined in the following:
 \begin{defn}[Elementary Row Operations]
 \label{defn:elerowop}
 Denote the $p$-th row of a matrix by $R_{p}$. The three types of elementary row operations are
@@ -646,7 +646,7 @@ y
 
 \begin{exmp}
 \label{exmp:multilayer1}
-The radiation transfer across the atmosphere of any planet (including the Earth) in the Solar system can be compared to a \index{Multi-layer Model}\textit{multi-layer model} with fully absorbing layers (note that it is a very simplistic approach). Assume there are $N$ such layers and the total rate of incident Solar radiation reaching the surface is $E_{\text{in}}$. Each of the layers also emits radiation to the other two layers directly above/below it. The rate of radiative emission for the $j$-th layer that has a temperature $T_j$ is
+The radiation transfer across the atmosphere of any planet (including the Earth) in the Solar system can be compared to a \index{Multi-layer Model}\textit{multi-layer model} with fully absorbing layers (note that it is a very simplistic approach). Assume there are $N$ such layers and the total rate of incident Solar radiation reaching the surface is $E_{\text{in}}$. Each of the layers also emits radiation to the other two layers directly above/below it. The rate of radiative emission for the $j$-th layer at temperature $T_j$ is
 \begin{align}
 E_j = \sigma T_j^4    
 \end{align}

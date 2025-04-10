@@ -48,7 +48,7 @@ where we have only written out the rows $R_p$ and $R_q$. By applying cofactor ex
 \abs{A'} &= \sum_{k=1}^{n} [(A_{pk} + cA_{qk}) C_{pk}] \nonumber \\
 &= \sum_{k=1}^{n} A_{pk}C_{pk} + c\sum_{k=1}^{n} A_{qk}C_{pk}
 \end{align}
-We identify the first term with $\abs{A}$ that is computed using cofactor expansion on the row $R_p$ of $A$. The second term can be thought of as the determinant of a matrix $\tilde{A}$ that is formed by replacing the $p$-th row $R_p$ by the $q$-th row $R_q$ in $A$ and subsequently expanded along that row. So $\tilde{A}$ practically has two identical rows $R_p = R_q$, and by the previous result, the value of $\abs{\tilde{A}}$ is zero. Therefore
+We identify the first term with $\abs{A}$ that is computed using cofactor expansion on the row $R_p$ of $A$. The second term can be thought of as the determinant of a matrix $\tilde{A}$ that is formed by replacing the $p$-th row $R_p$ by the $q$-th row $R_q$ in $A$ and subsequently expanding along that row. So $\tilde{A}$ practically has two identical rows $R_p = R_q$, and by the previous result, the value of $\abs{\tilde{A}}$ is zero. Therefore
 \begin{align}
 \abs{A'} = \abs{A} + c\abs{\tilde{A}} = \abs{A} + c(0) = \abs{A}    
 \end{align} implying that the addition/subtraction type of elementary row operations does not affect the value of the determinant.
@@ -191,7 +191,11 @@ By part (d) of Theorem \ref{thm:spectralinner}, we can expand a function $f$ as
 \begin{align}
 f = \lim_{p \to \infty} \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} 
 \end{align}
-where $\varphi^{(j)}$ are the orthonormal basis vectors/functions and the partial sum $S_p[f]$ will be just $\sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}$. Particularly, the completeness of the orthonormal basis in Properties \ref{proper:hilbertorthosys} means that (see the footnote below)\footnote{Otherwise, if $\norm{\smash{f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}}^2 > 0$, then consider $\tilde{\varphi} = f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}$ which is now a non-zero vector. It will be orthogonal to any of the original basis vectors $\varphi^{(j')}$ as 
+where $\varphi^{(j)}$ are the orthonormal basis vectors/functions and the partial sum $S_p[f]$ will be just $\sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}$. Particularly, the completeness of the orthonormal basis in Properties \ref{proper:hilbertorthosys} means that (see the footnote below)\footnotemark
+\begin{align}
+\norm{f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 = 0 \label{eqn:fcomplete}
+\end{align}
+On the other hand,\footnotetext{Otherwise, if $\smash{\norm{\smash{f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}}^2 > 0}$, then consider $\smash{\tilde{\varphi} = f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}$ which is now a non-zero vector. It will be orthogonal to any of the original basis vectors $\smash{\varphi^{(j')}}$ as 
 \begin{align*}
 \langle \tilde{\varphi}, \varphi^{(j')} \rangle &= \langle f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} , \varphi^{(j')} \rangle \\
 &= \langle f, \varphi^{(j')} \rangle - \langle \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} , \varphi^{(j')} \rangle \\
@@ -201,10 +205,6 @@ where $\varphi^{(j)}$ are the orthonormal basis vectors/functions and the partia
 &=\langle f, \varphi^{(j')} \rangle - \langle f, \varphi^{(j')} \rangle = 0
 \end{align*}
 which violates the premise of completeness as it will become another vector that is linearly independent of all the other basis vectors and can be added to the basis.}
-\begin{align}
-\norm{f - \sum_{j=1}^{\infty} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 = 0 \label{eqn:fcomplete}
-\end{align}
-On the other hand,
 \begin{align} 
 \norm{f - S_p[f]}^2 &= \norm{f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}}^2 \nonumber \\
 &= \left\langle f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)}, f - \sum_{j=1}^{p} \langle f, \varphi^{(j)} \rangle \varphi^{(j)} \right\rangle \nonumber \\

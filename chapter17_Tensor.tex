@@ -1,7 +1,7 @@
 \chapter{Index Notation and Introduction to Tensors}
 \label{chapter:Tensor}
 
-This is the final chapter of this book. (Congratulations!) It will be revealed that matrices (or to be accurate, linear transformations), along with vectors, actually can be generalized to a broader class of objects known as \textit{tensors}. In the simplest sense, tensors are quantities with subscripts. To facilitate the manipulation of these subscripts, we will introduce the handy \textit{Index Notation}, as well as the \textit{Kronecker delta/epsilon symbols}. The next step is to develop \textit{matrix/tensor calculus} where several important differentiation rules and integral theorems will be given. Tensors can have physical meanings, allowing us to apply them in many scenarios. One of their usages in Earth Science is to serve as the language in \textit{Continuum Mechanics}. On the other hand, the related matrix calculus is much needed in \textit{Data Assimilation}, which is a technique in Atmospheric Sciences to rectify the output of a forecast from a weather model with available observations.
+This is the final chapter of this book. (Congratulations!) It will be revealed that matrices (or to be accurate, linear transformations), along with vectors, actually can be generalized to a broader class of objects known as \textit{tensors}. In the simplest sense, tensors are quantities with subscripts. To facilitate the manipulation of these subscripts, we will introduce the handy \textit{Index Notation}, as well as the \textit{Kronecker delta/epsilon symbols}. The next step is to develop \textit{matrix/tensor calculus} where several important differentiation rules and integral theorems will be given. Tensors can have physical meanings, allowing us to apply them in many scenarios. One of their usages in Earth Science is to serve as the language (stress/strain tensors) in \textit{Continuum Mechanics}. On the other hand, the related matrix calculus is much needed in \textit{Data Assimilation}, which is a technique in Atmospheric Sciences to rectify the output of a forecast from a weather model with available observations.
 
 \section{Index Notation and Tensors}
 
@@ -481,7 +481,7 @@ Differentiation then gives
 &= A_{kj}x_j + (A^T)_{ki}x_i = A\textbf{x} + A^T\textbf{x}
 \end{align*}
 \end{solution}
-$\blacktriangleright$ Short Exercise: What is the result if the expression above is differentiated with respect to $\textbf{x}$ once more?\footnote{It is simply $A+A^T$.}
+$\blacktriangleright$ Short Exercise: What is the result if the expression above is differentiated with respect to $\textbf{x}$ once more?\footnotemark
 
 \begin{exmp}
 Prove the following formula for the curl of cross product:
@@ -511,7 +511,7 @@ For a Cartesian tensor $T_{ij\ldots k}$ of an arbitrary rank and over a convex r
 \end{align}
 where $\hat{n} = n_l$ is the unit outward normal vector.
 \end{thm}
-Consequentially, the usual \index{Divergence Theorem}\keywordhl{Divergence Theorem} and \index{Stokes' Theorem}\keywordhl{Stokes' Theorem} can be readily seen to be a special case of the Tensor Divergence Theorem:
+Consequentially, the usual \index{Divergence Theorem}\keywordhl{Divergence Theorem} and \index{Stokes' Theorem}\keywordhl{Stokes' Theorem} can be readily seen to be a special case of the Tensor Divergence Theorem:\footnotetext{It is simply $A+A^T$.}
 \begin{align}
 \int_S \vec{v}\cdot \hat{n} dS = \int_S v_ln_l dS &= \int_V \frac{\partial v_l}{\partial x_l} dV \nonumber &\text{(by (\ref{eqn:tensdivthm}))} \\ 
 &= \int_V (\nabla \cdot \vec{v}) dV &\text{(by (\ref{eqn:divv}))} \label{eqn:divthm} \\
@@ -867,7 +867,7 @@ We note that the largest shear traction is acquired when the surface is inclined
 
 \subsection{Eulerian and Lagrangian Views, Spatial and Material Derivatives}
 
-In Continuum Mechanics, the continuum may deform and move along the flow. Due to this, we have two descriptions of the continuum: \textit{Eulerian} and \textit{Lagrangian} descriptions. Given a property $P$ of the continuum, in the \index{Eulerian Description}\index{Spatial Description}\keywordhl{Eulerian (spatial) description}, we retrieve the value of $P$ by referring to the local coordinates $\textbf{x} = x_i$ at the current time $t$, so that $P = P(x_i, t)$. This is more commonly used in many situations because of convenience. However, sometimes we also need the \index{Lagrangian Description}\index{Material Description}\keywordhl{Lagrangian (material) description} that essentially follows a mass particle. We need to "label" the particle with reference coordinates $\textbf{X} = X_i$ (in capital letters) which are the local coordinates recorded at some reference time $t_0$, such that $X_i = x_i(t_0)$. In this case, the value of $P$ is evaluated by going back to the fixed reference coordinates, and hence we have $P = P(X_i, t)$ instead. It is possible to convert between these two descriptions by
+In Continuum Mechanics, the continuum (a continuous solid/fluid medium) may deform and move along the flow. Due to this, we have two descriptions of the continuum: \textit{Eulerian} and \textit{Lagrangian} descriptions. Given a property $P$ of the continuum, in the \index{Eulerian Description}\index{Spatial Description}\keywordhl{Eulerian (spatial) description}, we retrieve the value of $P$ by referring to the local coordinates $\textbf{x} = x_i$ at the current time $t$, so that $P = P(x_i, t)$. This is more commonly used in many situations because of convenience. However, sometimes we also need the \index{Lagrangian Description}\index{Material Description}\keywordhl{Lagrangian (material) description} that essentially follows a mass particle. We need to "label" the particle with reference coordinates $\textbf{X} = X_i$ (in capital letters) which are the local coordinates recorded at some reference time $t_0$, such that $X_i = x_i(t_0)$. In this case, the value of $P$ is evaluated by going back to the fixed reference coordinates, and hence we have $P = P(X_i, t)$ instead. It is possible to convert between these two descriptions by
 \begin{subequations}
 \begin{align}
 x_i = x_i(X_i, t) \label{eqn:lagtoeuler}

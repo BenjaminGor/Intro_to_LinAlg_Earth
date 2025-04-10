@@ -477,7 +477,7 @@ B =
 0&1&2
 \end{bmatrix}
 \end{align*}
-apply the Gram-Schmidt Orthogonalization over the standard basis for $\mathbb{R}^3$, $\hat{e}^{(1)} = (1,0,0)^T, \hat{e}^{(2)} = (0,1,0)^T, \hat{e}^{(3)} = (0,0,1)^T$, to transform it into an orthonormal basis with respect to this inner product.
+apply Gram-Schmidt Orthogonalization over the standard basis for $\mathbb{R}^3$, $\hat{e}^{(1)} = (1,0,0)^T, \hat{e}^{(2)} = (0,1,0)^T, \hat{e}^{(3)} = (0,0,1)^T$, to transform it into an orthonormal basis with respect to this inner product.
 \end{exmp}
 \begin{solution}
 We leave it to the readers to check that the eigenvalues of $B$ are $\lambda = 2-\sqrt{2},2,2+\sqrt{2}$ all positive so that $B$ is positive-definite by Theorem \ref{thm:quaddefinite} and the inner product makes sense. We calculate each of the expressions appearing in Definition \ref{defn:GSorthinner}:
@@ -899,7 +899,13 @@ since $e^{-x^2}$ is even and $x^{2m+1}$ is odd, and
 \begin{align*}
 \int_{-\infty}^{\infty} x^{2m}e^{-x^2} dx = \frac{(1)(3)(5)\cdots(2m-1)\sqrt{\pi}}{2^m}
 \end{align*}
-(see the footnote below)\footnote{It is a well-known result from multivariable calculus that
+(see the footnote next page)\footnotemark{} Now we apply Gram-Schmidt Orthogonalization on the standard polynomials $\{\vec{u}^{(1)}, \vec{u}^{(2)}, \vec{u}^{(3)}, \vec{u}^{(4)}, \ldots\} = \{1, x, x^2, x^3, \ldots\}$ according to Definition \ref{defn:GSorthinner}. The zeroth degree Hermite polynomial is trivially $\vec{v}^{(1)} = H_0(x) = 1$ and $\norm{\vec{v}^{(1)}}^2 = \sqrt{\pi}$. Next, for $n=1$, we have
+\begin{align*}
+\vec{v}^{(2)} &= \vec{u}^{(2)} - \frac{\langle \vec{u}^{(2)}, \vec{v}^{(1)}\rangle}{\norm{\vec{v}^{(1)}}^2} \vec{v}^{(1)} \\
+&= x - \frac{\int_{-\infty}^{\infty} e^{-x^2}(x)(1) dx}{\norm{\vec{v}^{(1)}}^2} \vec{v}^{(1)} \\
+&= x - \frac{\int_{-\infty}^{\infty} xe^{-x^2} dx}{\sqrt{\pi}} (1) = x - (0)(1) = x
+\end{align*}
+So the Hermite polynomial of degree $1$ is just $\vec{v}^{(2)} \leftarrow H_1(x) = 2x$ (scaled by convention, similar for the following). Now\footnotetext{It is a well-known result from multivariable calculus that
 \begin{align*}
 \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
 \end{align*}
@@ -914,13 +920,6 @@ for the Gaussian integral. By mathematical induction and integration by parts, w
 &\quad \text{(via the induction hypothesis)}
 \end{align*}
 so the formula is established.} 
-Now we apply Gram-Schmidt Orthogonalization on the standard polynomials $\{\vec{u}^{(1)}, \vec{u}^{(2)}, \vec{u}^{(3)}, \vec{u}^{(4)}, \ldots\} = \{1, x, x^2, x^3, \ldots\}$ according to Definition \ref{defn:GSorthinner}. The zeroth degree Hermite polynomial is trivially $\vec{v}^{(1)} = H_0(x) = 1$ and $\norm{\vec{v}^{(1)}}^2 = \sqrt{\pi}$. Next, for $n=1$, we have
-\begin{align*}
-\vec{v}^{(2)} &= \vec{u}^{(2)} - \frac{\langle \vec{u}^{(2)}, \vec{v}^{(1)}\rangle}{\norm{\vec{v}^{(1)}}^2} \vec{v}^{(1)} \\
-&= x - \frac{\int_{-\infty}^{\infty} e^{-x^2}(x)(1) dx}{\norm{\vec{v}^{(1)}}^2} \vec{v}^{(1)} \\
-&= x - \frac{\int_{-\infty}^{\infty} xe^{-x^2} dx}{\sqrt{\pi}} (1) = x - (0)(1) = x
-\end{align*}
-So the Hermite polynomial of degree $1$ is just $\vec{v}^{(2)} \leftarrow H_1(x) = 2x$ (scaled by convention, similar for the following). Now
 \begin{align*}
 \norm{\vec{v}^{(2)}}^2 &= \int_{-\infty}^{\infty} (2x)^2 e^{-x^2} dx \\
 &= 4\int_{-\infty}^{\infty} x^2 e^{-x^2} dx \\

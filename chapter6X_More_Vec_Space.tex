@@ -1,7 +1,7 @@
 \chapter{More on Coordinate Bases, Linear Transformations}
 \label{chap:6x}
 
-In this chapter, we will go deeper into what a matrix actually represents in the big picture. Matrices, by nature, are the rules of \textit{linear transformations} (or \textit{linear mappings}) between two vector spaces. We are going to study several special types of linear transformations, and this ultimately reveals the relationship between any $n$-dimensional real vector space and the real $n$-space $\mathbb{R}^n$, as an \textit{isomorphism}. We will then move to discuss how a change of coordinates works for vectors and matrices, as well as the \textit{Gram-Schmidt} process to make an \textit{orthonormal} basis. This is needed in Earth Science as we often have to switch between different coordinate systems and particularly want to work with the nicer ones that facilitate computation.
+In this chapter, we will go deeper into what a matrix actually represents in the big picture. Matrices, by nature, are the rules of \textit{linear transformations} (or \textit{linear mappings}) between two vector spaces. We are going to study several special types of linear transformations, and this ultimately reveals the relationship between any $n$-dimensional real vector space and the real $n$-space $\mathbb{R}^n$, as an \textit{isomorphism}. We will then move to discuss how a change of coordinates works for vectors and matrices, as well as the \textit{Gram-Schmidt} process to make an \textit{orthonormal} basis. This is needed in Earth Science as we often have to switch between different coordinate systems/bases (e.g. wind shear/motion-relative coordinates for tropical cyclones) and particularly want to work with the nicer ones that facilitate computation.
 
 \section{Ideas of Linear Transformations}
 \label{section:lineartrans}
@@ -16,7 +16,7 @@ A linear transformation (also called a linear map) from a vector space $\mathcal
     \item $T(\vec{u}^{(1)} + \vec{u}^{(2)}) = T(\vec{u}^{(1)}) + T(\vec{u}^{(2)})$ (Additivity), and
     \item $T(a\vec{u}^{(j)}) = aT(\vec{u}^{(j)})$ (Homogeneity).
 \end{enumerate}
-These two properties combined are known as \index{Linearity}\textit{linearity}. An equivalent condition is then $T(a\vec{u}^{(1)} + b\vec{u}^{(2)}) = aT(\vec{u}^{(1)}) + bT(\vec{u}^{(2)})$, where $b$ is any scalar as well.
+These two properties combined are known as \index{Linearity}\keywordhl{linearity}. An equivalent condition is then $T(a\vec{u}^{(1)} + b\vec{u}^{(2)}) = aT(\vec{u}^{(1)}) + bT(\vec{u}^{(2)})$, where $b$ is any scalar as well.
 \end{defn}
 Notice that if $\mathcal{U}$/$\mathcal{V}$ coincides with the real $n$/$m$-space $\mathbb{R}^n$/$\mathbb{R}^m$, and we express any vector $\vec{u} \equiv [\vec{u}]_\beta$\footnote{We use "$\equiv$" to associate any vector to its representation in some fixed coordinate system.} in $\mathcal{U}$ by $n$ coordinates using some basis $\mathcal{\beta}$ (similarly for $\vec{v} \equiv [\vec{v}]_{\eta} \in \mathcal{V}$ that has $m$ coordinates in some basis $\mathcal{\eta}$), then $\smash{[T]_\beta^{\eta}} = A$, where $A$ is any $m \times n$ matrix, will satisfy the requirements of and is a linear transformation from $\mathcal{U}$ to $\mathcal{V}$ according to the rule $T(\vec{u}) \equiv \smash{[T]_\beta^{\eta}}[\vec{u}]_\beta = A[\vec{u}]_\beta$. (Short Exercise: show this satisfies the conditions outlined in Definition \ref{defn:lintrans} above!\footnotemark) This implies that all matrices can be considered as some sort of linear mappings (for now, between $\mathbb{R}^n$ and $\mathbb{R}^m$). In fact, the converse, which states that any linear transformation (between finite-dimensional vector spaces) can be represented by a matrix, is also true as well, and will be discussed in the following parts of this section. \par
 Provided that $\mathcal{U}$/$\mathcal{V}$ is $n$/$m$(finite)-dimensional, let's now explicitly fix a basis $\mathcal{\beta} = \{\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \vec{u}^{(n)}\}$ for $\mathcal{U}$ (again, similarly we have $\mathcal{\eta} = \{\vec{v}^{(1)}, \vec{v}^{(2)}, \ldots, \allowbreak \vec{v}^{(m)}\}$ for $\mathcal{V}$). For each $\vec{u}^{(j)}$, $j = 1,2,\ldots,n$, denote $\vec{w}^{(j)} = T(\vec{u}^{(j)})$ as the resulting vectors in $\mathcal{V}$ after applying the transformation $T$ over the basis vectors for $\mathcal{U}$. Notice that $[\vec{u}^{(j)}]_\beta = (e^{(j)})_\beta$ where the $j$-th basis vector of $\mathcal{\beta}$ is explicitly represented in the coordinate form with the $j$-th entry being $1$ and others being $0$ (where the usual hat symbol on $e$ is not present) relative to the $\mathcal{\beta}$ system. Due to Definition \ref{defn:coordRn} and Properties \ref{proper:lincombofspan}, $T(\vec{u}^{(j)}) = \vec{w}^{(j)} \in \mathcal{V}$ can be expressed as a \textit{unique} linear combination as $\vec{w}^{(j)} = \smash{a_1^{(j)}}\vec{v}^{(1)} + \smash{a_2^{(j)}}\vec{v}^{(2)} + \cdots + \smash{a_m^{(j)}}\vec{v}^{(m)} = \sum_{i=1}^{m} \smash{a_i^{(j)}}\vec{v}^{(i)}$ of the basis vectors $\vec{v}^{(i)}$ from $\mathcal{\eta}$, i.e.\ \footnotetext{$T(\vec{u}^{(1)}+\vec{u}^{(2)}) \equiv A([\vec{u}^{(1)}]_\beta + [\vec{u}^{(2)}]_\beta) = A[\vec{u}^{(1)}]_\beta + A[\vec{u}^{(2)}]_\beta \equiv T(\vec{u}^{(1)})+T(\vec{u}^{(2)})$ and $T(a\vec{u}^{(1)}) \equiv A(a[\vec{u}^{(1)}]_\beta) = a(A[\vec{u}^{(1)}]_\beta) \equiv aT(\vec{u}^{(1)})$}
@@ -205,7 +205,7 @@ Up until now, we have been playing around with the simple real $n$-space only, b
 
 \begin{exmp}
 \label{exmp:lineartransderivative}
-Consider $\mathcal{U} = \mathcal{P}^2$, and $\mathcal{V} = \mathcal{P}^1$, and let the bases for $\mathcal{U}$ and $\mathcal{V}$ be $\mathcal{\beta} = \{1, x, x^2\}$ and $\mathcal{\eta} = \{1, x\}$. (They are known as the standard bases for $\mathcal{P}^2$ and $\mathcal{P}^1$ respectively. In general, the standard basis for $\mathcal{P}^n$ is $\{1, x, x^2, \cdots, x^{n-1}, x^n\}$ and thus $(n+1)$-dimensional. Readers are advised to justify why they constitute a basis for the polynomial spaces.) Let $T: \mathcal{U} \to \mathcal{V}$ be $T[p(x)] = p'(x)$ the differentiation operator and find its matrix representation with respect to $\mathcal{\beta}$ and $\mathcal{\eta}$.
+Consider $\mathcal{U} = \mathcal{P}^2$, and $\mathcal{V} = \mathcal{P}^1$, and let the bases for $\mathcal{U}$ and $\mathcal{V}$ be $\mathcal{\beta} = \{1, x, x^2\}$ and $\mathcal{\eta} = \{1, x\}$. (They are known as the standard bases for $\mathcal{P}^2$ and $\mathcal{P}^1$ respectively. In general, the standard basis for $\mathcal{P}^n$ is $\{1, x, x^2, \cdots, x^{n-1}, x^n\}$ and thus $(n+1)$-dimensional. Readers are advised to justify why they constitute a basis for the polynomial spaces: see Properties \ref{proper:linindspanbasisnewver}.) Let $T: \mathcal{U} \to \mathcal{V}$ be $T[p(x)] = p'(x)$ the differentiation operator and find its matrix representation with respect to $\mathcal{\beta}$ and $\mathcal{\eta}$.
 \end{exmp}
 \begin{solution}
 We essentially do the same thing as in Example \ref{exmp:lineartransmatrixrep}, but it is applied over polynomials now. From elementary Calculus, we have
@@ -803,7 +803,7 @@ Hence the coordinates of $\vec{v}$ in the $\mathcal{\beta}$ system according to 
 1
 \end{bmatrix}_\beta
 \end{align*}
-The geometry of this problem is shown in Figure \ref{fig:coordtransgeo} on the next page where each grid line separation represents one unit length of the axis vectors.
+The geometry of this problem is shown in Figure \ref{fig:coordtransgeo} where each grid line separation represents one unit length of the axis vectors.
 \begin{figure}[ht!]
 \centering
 \begin{tikzpicture}[scale = 0.75]
@@ -1252,7 +1252,7 @@ By the same essence, we have the third vector as
 \end{align*}
 \end{solution}
 $\blacktriangleright$ Short Exercise: Verify that $\hat{v}^{(1)}, \hat{v}^{(2)}, \hat{v}^{(3)}$ are pairwise orthogonal.\footnotemark\par
-A major application of the Gram-Schmidt Orthogonalization is the \index{QR Decomposition}\keywordhl{QR Decomposition}, which factors a matrix into two matrices, one as the orthogonal basis vectors acquired from the Gram-Schmidt process arranged in columns and another one as an upper-triangular matrix (non-zero entries only found along or above the main diagonal) where the entries take the form of $\vec{u}^{(j)} \cdot \hat{v}^{(i)}$ as shown below. This is very useful in the processing of large matrices and least-square error fitting.\footnotetext{We will only check $\hat{v}^{(1)}$ and $\hat{v}^{(3)}$ are orthogonal to each other and leave the remaining two pairs to the readers. $\hat{v}^{(1)} \cdot \hat{v}^{(3)} = \smash{(\frac{1}{3}, \frac{2}{3}, \frac{2}{3})}^T \cdot \smash{(\frac{2}{\sqrt{17}}, \frac{2}{\sqrt{17}}, -\frac{3}{\sqrt{17}})}^T = \smash{(\frac{1}{3})(\frac{2}{\sqrt{17}})} + \smash{(\frac{2}{3})(\frac{2}{\sqrt{17}})} + \smash{(\frac{2}{3})(-\frac{3}{\sqrt{17}})} = 0$.}
+A major application of the Gram-Schmidt Orthogonalization is the \index{QR Decomposition}\keywordhl{QR Decomposition}, which factors a matrix into two matrices, one as the orthogonal basis vectors acquired from the Gram-Schmidt process arranged in columns and another one as an upper-triangular matrix (non-zero entries only found along or above the main diagonal) where the entries take the form of $\vec{u}^{(j)} \cdot \hat{v}^{(i)}$ as shown below. This is very useful in the processing of large matrices and least-square error fitting.
 \begin{proper}
 \label{proper:QRdecompose}
 For a matrix $A = [\vec{u}^{(1)}|\vec{u}^{(2)}|\vec{u}^{(3)}|\cdots|\vec{u}^{(n)}]$, and the matrix $Q = [\hat{v}^{(1)}|\hat{v}^{(2)}|\hat{v}^{(3)}|\cdots|\hat{v}^{(n)}]$, where the $\hat{v}^{(j)} \in \mathbb{R}^m$ are orthonormal vectors that come from carrying out Gram-Schmidt orthogonalization on the basis vectors $\vec{u}^{(j)} \in \mathbb{R}^m$, $m \geq n$, and $j = 1,2,\ldots,n$, according to the Definition \ref{defn:GSorth_norm}, we have $A = QR$, where
@@ -1274,6 +1274,7 @@ R &=
 \end{align}
 is an upper-triangular $n \times n$ invertible matrix.
 \end{proper}
+\footnotetext{We will only check $\hat{v}^{(1)}$ and $\hat{v}^{(3)}$ are orthogonal to each other and leave the remaining two pairs to the readers. $\hat{v}^{(1)} \cdot \hat{v}^{(3)} = \smash{(\frac{1}{3}, \frac{2}{3}, \frac{2}{3})}^T \cdot \smash{(\frac{2}{\sqrt{17}}, \frac{2}{\sqrt{17}}, -\frac{3}{\sqrt{17}})}^T = \smash{(\frac{1}{3})(\frac{2}{\sqrt{17}})} + \smash{(\frac{2}{3})(\frac{2}{\sqrt{17}})} + \smash{(\frac{2}{3})(-\frac{3}{\sqrt{17}})} = 0$.}
 \begin{proof}
 We will show that every column of $A$ and $QR$ coincides. The $j$-th column of $A$ is simply the $j$-th vector in the starting basis, $\vec{u}^{(j)}$. Meanwhile, the $j$-th column of $QR$ is $Q$ times the $j$-th column of $R$, which is
 \begin{align*}
@@ -1296,7 +1297,7 @@ By (\ref{eqn:GSorth_norm}) from Definition \ref{defn:GSorth_norm}, we have
 \begin{align*}
 \hat{v}^{(j)} &= \frac{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}{\norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}}
 \end{align*}
-\footnote{\label{foot:GSnonzero} Some may ask if $\norm{\smash{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}}$ can be $0$ (or $\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}$ be the zero vector) and $\hat{v}^{(j)}$ is not well-defined. However, this will contradict the linear independence of the basis vectors $\vec{u}^{(k)}$, as each of $\hat{v}^{(k)}$ is a linear combination of $\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \vec{u}^{(k)}$, deduced inductively from $k = 1$ to $k = j-1$ by looking at Definition \ref{defn:GSorth_norm}. Hence $\vec{u}^{(j)} - \smash{\sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}} = \textbf{0}$ implies a non-trivial solution to $\smash{c_1 \vec{u}^{(1)}} + \cdots + \smash{c_{j-1}\vec{u}^{(j-1)}} + \smash{c_j\vec{u}^{(j)}} = \textbf{0}$ where particularly $c_j = 1 \neq 0$.} which after rearrangement, becomes
+\footnotemark{} which after rearrangement, becomes
 \begin{align*}
 \vec{u}^{(j)} = \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)} + {\norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}}\hat{v}^{(j)}
 \end{align*}
@@ -1313,7 +1314,7 @@ as $\hat{v}^{(k)} \cdot \hat{v}^{(j)} = 0$ for $k \neq j$ due to the orthogonali
 \begin{align*}
 \vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)} = \norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}} \hat{v}^{(j)}
 \end{align*}
-Therefore,
+Therefore,\footnotetext{\label{foot:GSnonzero} Some may ask if $\norm{\smash{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}}}$ can be $0$ (or $\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}$ be the zero vector) and $\hat{v}^{(j)}$ is not well-defined. However, this will contradict the linear independence of the basis vectors $\vec{u}^{(k)}$, as each of $\hat{v}^{(k)}$ is a linear combination of $\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \vec{u}^{(k)}$, deduced inductively from $k = 1$ to $k = j-1$ by looking at Definition \ref{defn:GSorth_norm}. Hence $\vec{u}^{(j)} - \smash{\sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}} = \textbf{0}$ implies a non-trivial solution to $\smash{c_1 \vec{u}^{(1)}} + \cdots + \smash{c_{j-1}\vec{u}^{(j-1)}} + \smash{c_j\vec{u}^{(j)}} = \textbf{0}$ where particularly $c_j = 1 \neq 0$.}
 \begin{align*}
 \left[\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}\right] \cdot \hat{v}^{(j)} &= \left(\norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}} \hat{v}^{(j)}\right) \cdot \hat{v}^{(j)} \\
 &= \norm{\vec{u}^{(j)} - \sum_{k=1}^{j-1}(\vec{u}^{(j)} \cdot \hat{v}^{(k)})\hat{v}^{(k)}} (\hat{v}^{(j)} \cdot\hat{v}^{(j)}) \\
