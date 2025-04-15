@@ -7,7 +7,7 @@
 
 \linespread{1.08}
 
-\usepackage[svgnames, dvipsnames]{xcolor}
+\usepackage[svgnames, dvipsnames, cmyk]{xcolor}
 \usepackage[many]{tcolorbox}
 \usepackage[object=vectorian]{pgfornament}
 
@@ -22,7 +22,7 @@
 \newtheorem{thm}[defn]{Theorem}
 \newtheorem{proper}[defn]{Properties}
 \tcbset{common/.style={
-  colback=blue!8,
+  colback=blue!10,
   boxrule=1pt,
   boxsep=1pt,
   left=3pt,right=3pt,top=6pt,bottom=6pt,
@@ -37,7 +37,7 @@
 \tcolorboxenvironment{proper}{common}
 \newtheorem{exmp}{Example}[section]
 \tcolorboxenvironment{exmp}{
-  colback=green!8,
+  colback=green!10,
   boxrule=1pt,
   boxsep=1pt,
   left=3pt,right=3pt,top=6pt,bottom=6pt,
@@ -98,7 +98,7 @@
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
-    allcolors = blue!70!green,
+    allcolors = blue!80,
     pdfauthor = Benjamin Loi,
     pdftitle = Intro. to Linear Algebra for Earth Sci. Students,
     pdfsubject = Draft Version,
