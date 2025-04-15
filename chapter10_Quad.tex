@@ -1079,7 +1079,7 @@ Q = \begin{bmatrix}
 which is introduced in the last section. Principal Component Analysis sets out to find a unit vector $\textbf{e}$ so that the variance of data projected onto the direction indicated by $\textbf{e}$, which is $\textbf{e}^T Q \textbf{e}$ following from Properties \ref{proper:variancemul}, is maximized. \par
 \begin{figure}[ht!]
     \centering
-    \includegraphics{graphics/PCA_first_demo.png}
+    \includegraphics{graphics/PCA_first_demo.jpg}
     \caption{\textit{The two principal axes/directions (PCs) found by Principal Component Analysis for a random set of data (green). The longer, red [shorter, blue] arrow represents the direction of the largest [smallest] variance. The data points can be seen to spread more [less] along that direction.}}
 \end{figure}
 Now the problem is to find, under what situation $\textbf{e}^T Q \textbf{e}$ will assume its largest value. Here, we introduce a famous technique, called \index{Lagrange Multiplier}\keywordhl{Lagrange Multiplier}, coming from elementary Multivariable Calculus. We will proceed with the case of two variables for brevity.
@@ -1322,13 +1322,13 @@ y'_3
 \end{solution}
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.65]{graphics/PCA_exmp_1.png}\\
-\includegraphics[scale = 0.65]{graphics/PCA_exmp_2.png}
+\includegraphics[scale = 0.65]{graphics/PCA_exmp_1.jpg}\\
+\includegraphics[scale = 0.65]{graphics/PCA_exmp_2.jpg}
 \caption{\textit{The data (green) before and after rotation to the principal axes, with the one with a larger/smaller variance shown as a red/blue arrow, for Example \ref{exmp:tempPCA}.}}
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.8]{graphics/PCA_exmp_3.png}
+\includegraphics[scale = 0.8]{graphics/PCA_exmp_3.jpg}
 \caption{\textit{Comparison between the original time series and the one reconstructed using only the first PC for $Y'$ in Example \ref{exmp:tempPCA}.}}
 \end{figure}
 
@@ -1508,7 +1508,7 @@ plt.savefig("SST_EOF", dpi=300, bbox_inches="tight")
 You should be able to get Figure \ref{fig:ENSOEOF} as below.
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.75]{graphics/SST_EOF.png}
+\includegraphics[scale=0.75]{graphics/SST_EOF.jpg}
 \caption{\textit{The first EOF pattern of the Pacific Sea Surface Temperature (SST) anomalies.}}
 \label{fig:ENSOEOF}
 \end{figure}

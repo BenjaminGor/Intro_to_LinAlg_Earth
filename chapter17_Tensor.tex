@@ -966,7 +966,7 @@ where $d\textbf{x}/dt = dx_k/dt = v_k = \textbf{v}$ are the velocities of the pa
 Going in the reverse direction, it implies that the evolution of some property measured at a fixed point in space (spatial) is the actual change imparted to the particle (material) subtracted by the apparent advective effect due to its motion. The relationship between these three terms is demonstrated in Figure \ref{fig:advection} in a one-dimensional setting.
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=0.8]{graphics/advect.png}
+    \includegraphics[scale=0.8]{graphics/advect.jpg}
     \caption{\textit{The relationship between the spatial (blue) and material derivative (red) alongside the advective term (green), where we use temperature $T$ as the variable and only look at a single direction $x$ (and velocity $u$) for demonstration.}}
     \label{fig:advection}
 \end{figure}
@@ -1341,7 +1341,7 @@ T_a &= T_b + W(T_o - T_b) \label{eqn:uniDAweight} \\
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=0.75]{graphics/DA1.png}
+    \includegraphics[scale=0.75]{graphics/DA1.jpg}
     \caption{\textit{The probability density distribution of the background/observation/analysis temperatures in the section example where the errors are assumed to have a Gaussian shape.}}
     \label{fig:DA1}
 \end{figure}
@@ -1623,7 +1623,7 @@ The forecast step then consists of (\ref{eqn:xaMxf}) and (\ref{eqn:MPMQ}). There
 \begin{landscape}
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{graphics/Kalman1.png}
+    \includegraphics[width=0.9\linewidth]{graphics/Kalman1.jpg}
     \caption{\textit{The flowchart for the standard Kalman Filter scheme.}}
     \label{fig:Kalmansteps}
 \end{figure}
@@ -1631,7 +1631,7 @@ The forecast step then consists of (\ref{eqn:xaMxf}) and (\ref{eqn:MPMQ}). There
 \begin{landscape}
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{graphics/Kalman2.png}
+    \includegraphics[width=0.9\linewidth]{graphics/Kalman2.jpg}
     \caption{\textit{The flowchart for the alternative Kalman Filter scheme using equivalent expressions for the analysis error covariance and Kalman gain.}}
     \label{fig:Kalmansteps2}
 \end{figure}
@@ -1723,7 +1723,7 @@ plt.savefig("Kalman Filter", dpi=300, bbox_inches="tight")
 \end{lstlisting}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\linewidth]{graphics/Kalman3.png}
+    \includegraphics[width=0.75\linewidth]{graphics/Kalman3.jpg}
     \caption{\textit{The evolution of the root-mean-squared error in the Lorenz-63 Model with a Kalman Filter DA system.}}
     \label{fig:kalman3}
 \end{figure}

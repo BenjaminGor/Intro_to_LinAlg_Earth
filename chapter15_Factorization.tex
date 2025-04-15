@@ -914,7 +914,7 @@ where the unit column vectors $\hat{v}^{(1)}, \hat{v}^{(2)}, \ldots, \hat{v}^{(n
 \end{align}
 for any $j$ that is associated to a non-zero singular value $\sigma_j \neq 0$. These vectors $\hat{u}^{(j)}$ are called \index{Left Singular Vectors}\keywordhl{left singular vectors}. When there are not enough column vectors to construct $U$ by this relation, we can use Gram-Schmidt Orthogonalization (or other feasible methods) to create orthonormal vectors that extend the basis of $\hat{u}^{(j)}$ up to $j = m$.
 \end{thm}
-This is just Theorem \ref{thm:SVDtrans} applied on Properties \ref{proper:chcoordsmat} in another form, where now we update the basis subscripts/superscripts to match the notation appropriately and have $[T]^{\gamma}_{\beta} = \Sigma$, $Q_{\gamma}^{S} = U$, $[T]_{S} = A$ and $P_{\beta}^{S} = V$ (see the flowchart of Figure \ref{fig:transcoordSVD} below) where $S$ denotes the standard bases for both $\mathbb{R}^n$/$\mathbb{C}^n$ and $\mathbb{R}^m$/$\mathbb{C}^m$ (but can be replaced by any other arbitrary basis when needed), so
+This is just Theorem \ref{thm:SVDtrans} applied on Properties \ref{proper:chcoordsmat} in another form, where now we update the basis subscripts/superscripts to match the notation appropriately and have $[T]^{\gamma}_{\beta} = \Sigma$, $Q_{\gamma}^{S} = U$, $[T]_{S} = A$ and $P_{\beta}^{S} = V$ (see the flowchart of Figure \ref{fig:transcoordSVD} above) where $S$ denotes the standard bases for both $\mathbb{R}^n$/$\mathbb{C}^n$ and $\mathbb{R}^m$/$\mathbb{C}^m$ (but can be replaced by any other arbitrary basis when needed), so
 \begin{align*}
 A = [T]_S &= Q_{\gamma}^{S}[T]^{\gamma}_{\beta}(P_{\beta}^{S})^{-1} \\
 &= U\Sigma V^{-1} = U\Sigma V^* & \text{(($U$ and) $V$ is unitary)}
@@ -939,7 +939,7 @@ We emphasize that we allow complex eigenvectors and eigenvalues but we still use
     \draw[purple, ->, line width=2] (1,0) -- (5,0) node[midway, above]{$\Sigma = [T]_\beta^\gamma$};
     \draw[Goldenrod, ->, line width=2] (1,-4) -- (5,-4) node[midway, below]{$A = [T]_S$};
     \end{tikzpicture}
-    \caption{Same as Figure \ref{fig:transcoordsmatrix} but adapted to the context of SVD.}
+    \caption{\textit{Same as Figure \ref{fig:transcoordsmatrix} but adapted to the context of SVD.}}
     \label{fig:transcoordSVD}
 \end{figure}
 
