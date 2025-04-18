@@ -7,7 +7,8 @@
 
 \linespread{1.08}
 
-\usepackage[svgnames, dvipsnames, cmyk]{xcolor}
+\usepackage[svgnames, dvipsnames]{xcolor}
+%\usepackage[svgnames, dvipsnames, cmyk]{xcolor}
 \usepackage[many]{tcolorbox}
 \usepackage[object=vectorian]{pgfornament}
 
@@ -98,10 +99,10 @@
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
-    allcolors = blue!80,
+    allcolors = blue!90!Green,
     pdfauthor = Benjamin Loi,
     pdftitle = Intro. to Linear Algebra for Earth Sci. Students,
-    pdfsubject = Draft Version,
+    pdfsubject = First Edition,
     pdfkeywords = {Mathematics, Earth Science}
 }
 
@@ -113,9 +114,11 @@
 \usepackage{subcaption}
 \usepackage{caption}
 
-\usetikzlibrary{calc, matrix, angles,quotes, arrows.meta, decorations.markings, decorations.pathmorphing}
+\usetikzlibrary{calc, matrix, angles, quotes, arrows.meta, decorations.markings, decorations.pathmorphing}
 \usepackage{tikz-3dplot}
 \tikzset{>=latex}
+
+\PassOptionsToPackage{usenames,dvipsnames}{xcolor}
 
 \makeatletter
 \let\c@table\c@figure

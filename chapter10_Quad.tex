@@ -113,10 +113,18 @@ x - y \\
 \end{align*}}}Similarly the skew-symmetric part does not contribute anything to the quadratic form\footnote{$\frac{1}{2}\textbf{x}^T(A - A^T)\textbf{x} = \frac{1}{2}\textbf{x}^TA\textbf{x} - \frac{1}{2}\textbf{x}^TA^T\textbf{x} = \frac{1}{2}\textbf{x}^TA\textbf{x} - \frac{1}{2}(\textbf{x}^TA^T\textbf{x})^T = \frac{1}{2}\textbf{x}^TA\textbf{x} - \frac{1}{2}\textbf{x}^TA\textbf{x} = 0$}, and we will characterize all quadratic forms using symmetric matrices henceforth.
 Such a symmetric matrix $B$ is also frequently considered to behave as a \index{Bilinear Form}\index{Symmetric Bilinear Form}\keywordhl{symmetric bilinear form} in a more general setting.
 \begin{defn}[(Symmetric) Bilinear Form]
-A real bilinear form $B(\vec{x}, \vec{y}): \mathcal{V} \times \mathcal{V} \to \mathbb{R}$ over a real vector space $\mathcal{V}$ takes two vectors $\vec{x}$, $\vec{y} \in \mathcal{V}$ from it as inputs and returns a real scalar. A symmetric bilinear form is one that satisfies 
+A real bilinear form $B(\vec{x}, \vec{y}): \mathcal{V} \times \mathcal{V} \to \mathbb{R}$ over a real vector space $\mathcal{V}$ takes two vectors $\vec{x}$, $\vec{y} \in \mathcal{V}$ from it as inputs and returns a real scalar, where \textit{bilinearity} means it is linear in both components:
+\begin{subequations}
+\begin{align}
+B(a\vec{x}^{(1)}+b\vec{x}^{(2)},\vec{y}) &= B(a\vec{x}^{(1)},\vec{y}) + B(b\vec{x}^{(2)},\vec{y}) = aB(\vec{x}^{(1)},\vec{y}) + bB(\vec{x}^{(2)},\vec{y}) \\
+B(x,a\vec{y}^{(1)}+b\vec{y}^{(2)}) &= B(x,a\vec{y}^{(1)}) + B(x,b\vec{y}^{(2)}) = aB(x,\vec{y}^{(1)}) + bB(x,\vec{y}^{(2)}) 
+\end{align}
+\end{subequations}
+A symmetric bilinear form is one that satisfies 
 \begin{align}
 B(\vec{x}, \vec{y}) = B(\vec{y}, \vec{x})    
-\end{align} for any pair of $\vec{x}$ and $\vec{y}$. For finite-dimensional cases, the expression becomes
+\end{align}
+for any pair of $\vec{x}$ and $\vec{y}$. For finite-dimensional cases, the expression becomes
 \begin{align}
 B(\vec{x}, \vec{y}) = \textbf{x}^T B \textbf{y}    
 \end{align}
@@ -466,7 +474,8 @@ so there will be one positive and one negative eigenvalue for $B$. It is obvious
 \draw[] (4.5,-3.8) coordinate (A) -- (4.5,2.8) coordinate (B);
 \draw[dashed] (A) -- (3.2,-2.63) coordinate (C);
 \draw[] (B) -- (3.2,3.97) coordinate (D);
-\draw[dashed] (C) -- (D);
+\draw[dashed] (C) -- (3.2, 3.6);
+\draw[] (3.2, 3.6) -- (D);
 \draw[purple, thick] (4.3,-3.4) coordinate (E) .. controls (4,-0.9) and (3.8,-0.6) .. (3.3,-2.5) coordinate (F);
 \draw[dotted, purple, thick] (E) -- (F); 
 \draw[purple, thick] (4.3,2.6) coordinate (G) .. controls (4,1) and (3.8,0.7) .. (3.3,3.5) coordinate (H);
@@ -1079,7 +1088,7 @@ Q = \begin{bmatrix}
 which is introduced in the last section. Principal Component Analysis sets out to find a unit vector $\textbf{e}$ so that the variance of data projected onto the direction indicated by $\textbf{e}$, which is $\textbf{e}^T Q \textbf{e}$ following from Properties \ref{proper:variancemul}, is maximized. \par
 \begin{figure}[ht!]
     \centering
-    \includegraphics{graphics/PCA_first_demo.jpg}
+    \includegraphics{graphics/PCA_first_demo.png}
     \caption{\textit{The two principal axes/directions (PCs) found by Principal Component Analysis for a random set of data (green). The longer, red [shorter, blue] arrow represents the direction of the largest [smallest] variance. The data points can be seen to spread more [less] along that direction.}}
 \end{figure}
 Now the problem is to find, under what situation $\textbf{e}^T Q \textbf{e}$ will assume its largest value. Here, we introduce a famous technique, called \index{Lagrange Multiplier}\keywordhl{Lagrange Multiplier}, coming from elementary Multivariable Calculus. We will proceed with the case of two variables for brevity.
@@ -1322,13 +1331,13 @@ y'_3
 \end{solution}
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.65]{graphics/PCA_exmp_1.jpg}\\
-\includegraphics[scale = 0.65]{graphics/PCA_exmp_2.jpg}
+\includegraphics[scale = 0.65]{graphics/PCA_exmp_1.png}\\
+\includegraphics[scale = 0.65]{graphics/PCA_exmp_2.png}
 \caption{\textit{The data (green) before and after rotation to the principal axes, with the one with a larger/smaller variance shown as a red/blue arrow, for Example \ref{exmp:tempPCA}.}}
 \end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[scale = 0.8]{graphics/PCA_exmp_3.jpg}
+\includegraphics[scale = 0.8]{graphics/PCA_exmp_3.png}
 \caption{\textit{Comparison between the original time series and the one reconstructed using only the first PC for $Y'$ in Example \ref{exmp:tempPCA}.}}
 \end{figure}
 
@@ -1508,7 +1517,7 @@ plt.savefig("SST_EOF", dpi=300, bbox_inches="tight")
 You should be able to get Figure \ref{fig:ENSOEOF} as below.
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.75]{graphics/SST_EOF.jpg}
+\includegraphics[scale=0.75]{graphics/SST_EOF.png}
 \caption{\textit{The first EOF pattern of the Pacific Sea Surface Temperature (SST) anomalies.}}
 \label{fig:ENSOEOF}
 \end{figure}

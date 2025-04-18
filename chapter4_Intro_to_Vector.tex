@@ -1054,7 +1054,7 @@ raises the error of
 ValueError: incompatible dimensions for cross product
 (dimension must be 2 or 3)    
 \end{lstlisting}
-Finally, we note that following \href{https://stackoverflow.com/questions/2827393/angles-between-two-n-dimensional-vectors-in-python}{this Stack Overflow post} (2827393), we can compute the unit vector of any given vector and angle between two vectors (based from Formula (\ref{eqn:unitvecsangle}) in Properties \ref{proper:dotgeo}, $\theta = \cos^{-1}(\hat{u} \cdot \hat{v})$).
+\footnote{When the two input vectors are of $\mathbb{R}^2$, we treat them like $\mathbb{R}^3$ by letting their $\hat{k}$ component be $0$.} Finally, we note that following \href{https://stackoverflow.com/questions/2827393/angles-between-two-n-dimensional-vectors-in-python}{this Stack Overflow post} (2827393), we can compute the unit vector of any given vector and angle between two vectors (based from Formula (\ref{eqn:unitvecsangle}) in Properties \ref{proper:dotgeo}, $\theta = \cos^{-1}(\hat{u} \cdot \hat{v})$).
 \begin{lstlisting}
 def unit_vector(vector):
     """ Returns the unit vector of the vector.  """
