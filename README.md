@@ -4,7 +4,7 @@ Hello, I am Benjamin Loi from CUHK-EESC and NTU-AS. This is the repository for t
 
 <b>The book pdf is located at [here](https://github.com/BenjaminGor/Intro_to_LinAlg_Earth/releases/tag/v0.1). (Beta Version)</b>
 
-This project is still alive and being constantly updated as of Mar 2025.
+This project has been completed in May 2025.
 
 ![image](https://github.com/BenjaminGor/Intro_to_LinAlg_Earth/blob/main/Book%20Cover.png)
 
@@ -25,16 +25,16 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 6. Vector Spaces and Coordinate Bases
 7. More on Coordinate Bases, Linear Transformations
 8. Complex Vectors/Matrices and Block Matrices
-9. Eigenvalues and Eigenvectors, Diagonalization
+9. Eigenvalues and Eigenvectors
 10. Orthogonal and Normal Matrices
-11. Quadratic Form
-12. Inner Product Space
+11. Quadratic Forms
+12. Inner Product Spaces
 13. Least-Square Approximation
-14. Discrete Fourier Transform
+14. Discrete Fourier Transform (DFT)
 15. Markov Chains
 16. Matrix Factorization Methods
 17. Dynamical Systems
-18. Index Notation and Introduction to Tensor
+18. Index Notation and Introduction to Tensors
 
 Appendix
-- Jordan Normal Form (2025-04-01)
+- Cyclic Subspaces and Jordan Normal Forms
