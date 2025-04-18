@@ -15,7 +15,7 @@ We will motivate the notions of equilibrium points and their types from the pers
 \end{alignedat}\right.
 \label{eqn:2ddynexplicit}
 \end{align}
-where $\alpha_j^{(i)}$ are constant coefficients and there are no time-dependent forcing terms. Alternatively, in matrix form, it is
+where $\alpha_j^{(i)}$ are constant coefficients and there are no time-dependent forcing terms (the system is then called \index{Autonomous Dynamical System}\textit{autonomous}). Alternatively, in matrix form, it is
 \begin{align}
 \textbf{y}' = A\textbf{y} \label{eqn:17.2}
 \end{align}
@@ -31,7 +31,7 @@ A =
 An \index{Equilibrium Point}\keywordhl{equilibrium point} of a dynamical system is where the R.H.S. vanishes (i.e.\ $\textbf{y}' = \textbf{0}$) so that the time derivatives are zeros and the variables (or physically, a \index{Particle}\textit{particle}) become stationary. The characteristics of the trajectories/\index{Orbit}\textit{orbits} near these equilibrium points are important and can be readily inferred from their types.
 \begin{defn}[Equilibrium Points of a Dynamical System]
 \label{defn:eqpts}
-An equilibrium point $\tilde{\textbf{y}}$ of a \textit{time-independent} dynamical system
+An equilibrium point $\tilde{\textbf{y}}$ of an \textit{autonomous} dynamical system
 \begin{align}
 \frac{d\textbf{y}}{dt} = F(\textbf{y}) \label{eqn:eqpts1}
 \end{align}
@@ -232,7 +232,7 @@ We simply do the classification according to Table \ref{tab:equilpts}. For case 
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=\textwidth]{graphics/3exmps2ddynamic.jpg}
+    \includegraphics[width=\textwidth]{graphics/3exmps2ddynamic.png}
     \caption{\textit{The stream plots for the three two-dimensional dynamical systems in Example \ref{exmp:2d3dyn}.}}
     \label{fig:2d3dyn}
 \end{figure}
@@ -364,7 +364,7 @@ Another generalization to be made is for higher-dimensional dynamical systems. T
 % https://math.stackexchange.com/questions/4453028/why-an-lti-system-with-some-zero-eigenvalues-still-stable
 Before moving from linear dynamical systems to non-linear dynamical systems, we will take a detour to visit the concepts of stability and attractiveness. Heuristically, stability means that if the particle starts close enough to the equilibrium point, then it will always remain close to the equilibrium point. Meanwhile, attractiveness means that if it starts close enough to the equilibrium point likewise, then it will eventually be absorbed to that equilibrium point. We give the formal definitions for both of them below.
 \begin{defn}
-For a time-independent dynamical system as given by (\ref{eqn:eqpts1}) in Definition \ref{defn:eqpts}, an equilibrium point $\tilde{\textbf{y}}$ that satisfies (\ref{eqn:eqpts2}) is
+For an autonomous dynamical system as given by (\ref{eqn:eqpts1}) in Definition \ref{defn:eqpts}, an equilibrium point $\tilde{\textbf{y}}$ that satisfies (\ref{eqn:eqpts2}) is
 \begin{enumerate}[label=(\alph*)]
     \item \index{Stable}\keywordhl{stable}, if for all $\epsilon > 0$, there exists an $\eta(\epsilon) > 0$\footnotemark{} such that $\norm{\textbf{y}(\textbf{y}_0, 0) - \tilde{\textbf{y}}} \leq \eta$ implies that $\norm{\textbf{y}(\textbf{y}_0, t) - \tilde{\textbf{y}}} \leq \epsilon$ for all $t \geq 0$;
     \item \index{Attractive}\keywordhl{attractive}, if there exists an $\eta > 0$ such that $\norm{\textbf{y}(\textbf{y}_0, 0) - \tilde{\textbf{y}}} \leq \eta$ implies that $\norm{\textbf{y}(\textbf{y}_0, t) - \tilde{\textbf{y}}} \to 0$ as $t \to \infty$.
@@ -382,7 +382,7 @@ where $\textbf{y}(\textbf{y}_0, t)$ denotes the position of the particle at time
 The pattern of its field lines is shown in Figure \ref{fig:magneticdipolefield}. 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.6]{graphics/dipolefield.jpg}
+    \includegraphics[scale=0.6]{graphics/dipolefield.png}
     \caption{\textit{Field lines for the non-linear dynamical system (\ref{eqn:magneticdipolefield}).}}
     \label{fig:magneticdipolefield}
 \end{figure}
@@ -485,7 +485,7 @@ which clearly has a repeated negative eigenvalue of $-1$ with a multiplicity of 
 \end{solution}
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=0.7]{graphics/saddlenode.jpg}
+    \includegraphics[scale=0.7]{graphics/saddlenode.png}
     \caption{\textit{The stream plot for the dynamical system in Example \ref{exmp:nonlindynsaddlenode}.}}
     \label{fig:nonlinearphase}
 \end{figure}
@@ -774,20 +774,20 @@ Combining these two equations (dividing (a) by (b)) then yields
 \rho_c(\beta - \sigma + 1) &= -\sigma(\beta + \sigma + 3)  \nonumber \\
 \rho_c &= \frac{\sigma(\beta + \sigma + 3)}{\sigma - \beta - 1} \label{eqn:lorezncrit}
 \end{align}
-However, this does not tell us which side, $\rho < \rho_c$ or $\rho > \rho_c$, corresponds to a positive/negative real part of the complex roots. We will simply state the conclusion for that.\footnote{Again, the algebra to explicitly show this is too horrifying to be written down.} If $\rho < \rho_c$, the complex roots will have a negative real part. So by the Hartman-Grobman Theorem \ref{thm:HGthm}, the equilibrium points $\tilde{\textbf{X}}_{\pm}$ will be stable, behaving as a one-dimensional manifold of a stable node and a two-dimensional manifold of a stable spiral combined together. Any particle will spiral inwards and be absorbed into either of the two equilibrium points. However, when $\rho > \rho_c$, the complex roots will now have a positive real part and by the same argument the equilibrium points $\tilde{\textbf{X}}_{\pm}$ will be unstable locally, akin to a one-dimensional manifold of a stable node fused with a two-dimensional manifold of an unstable spiral. The effect is to cause the particle to gradually spiral outwards about one of the equilibrium points, and when it moves far enough away from it, it will be attracted and gravitate towards the another equilibrium point. However, as the particle get closer to it, the same scenario will occur again where it will now gradually spiral outwards about the new equilibrium point. This alternating pattern will keep going on and on, where the particle will revolve about and be flung between these two equilibrium points. Hence, as $\rho > \rho_c$, the Lorenz-63 Model is known as a \index{Strange Attractor}\keywordhl{strange attractor} and \index{Chaos}\keywordhl{chaos} arises: the system is very sensitive to any small perturbation in the initial position of a particle and it can lead to great deviation in future trajectories (the \index{Butterfly Effect}\keywordhl{Butterfly Effect}). Physically, the Rayleigh number is sufficiently high to produce chaos. Usually, we set $\sigma = 10$ and $\beta = \frac{8}{3}$. The critical value of $\rho_c$ will then be
+However, this does not tell us which side, $\rho < \rho_c$ or $\rho > \rho_c$, corresponds to a positive/negative real part of the complex roots. We will simply state the conclusion for that.\footnote{Again, the algebra to explicitly show this is too horrifying to be written down.} If $\rho < \rho_c$, the complex roots will have a negative real part. So by the Hartman-Grobman Theorem \ref{thm:HGthm}, the equilibrium points $\tilde{\textbf{X}}_{\pm}$ will be stable, behaving as a one-dimensional manifold of a stable node and a two-dimensional manifold of a stable spiral combined together. Any particle will spiral inwards and be absorbed into either of the two equilibrium points. However, when $\rho > \rho_c$, the complex roots will now have a positive real part and by the same argument the equilibrium points $\tilde{\textbf{X}}_{\pm}$ will be unstable locally, akin to a one-dimensional manifold of a stable node fused with a two-dimensional manifold of an unstable spiral. The effect is to cause the particle to gradually spiral outwards about one of the equilibrium points, and when it moves far enough away from it, it will be attracted and gravitate towards the another equilibrium point. However, as the particle get closer to it, the same scenario will occur again where it will now gradually spiral outwards about the new equilibrium point. This alternating pattern will keep going on and on, where the particle will revolve about and be flung between these two equilibrium points. Hence, as $\rho > \rho_c$, the Lorenz-63 Model is known as a \index{Strange Attractor}\keywordhl{strange attractor} and \index{Chaos}\keywordhl{chaos} arises: the system is very sensitive to any small perturbation in the initial position of a particle and it can lead to great deviation in future trajectories (the \index{Butterfly Effect}\keywordhl{Butterfly Effect}). Physically, the Rayleigh number is sufficiently high to produce chaos. However, note that trajectories of a strange attractor stay eventually bounded. Usually, we set $\sigma = 10$ and $\beta = \frac{8}{3}$. The critical value of $\rho_c$ will then be
 \begin{align}
 \rho_c = \frac{(10)\left(\frac{8}{3} + 10 + 3\right)}{10 - \frac{8}{3} - 1} \approx 24.74
 \end{align}
 according to (\ref{eqn:lorezncrit}). The following two figures (Figures \ref{fig:lor63r14} and \ref{fig:lor63r28}) then show the evolution of the system with $\rho = 14$ and $\rho = 28$\footnote{$\rho = 28$ is a very common configuration picked to demonstrate the chaotic behavior.}, when $\rho$ is under and above the critical $\rho_c$.
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=0.8]{graphics/Lorenz63_14.jpg}
+    \includegraphics[scale=0.8]{graphics/Lorenz63_14.png}
     \caption{\textit{The evolution of the Lorenz-63 Model when $\sigma=10, \beta=8/3, \rho=14$ where the initial position is $\textbf{X} = (-10,10,30)^T$.}}
     \label{fig:lor63r14}
 \end{figure}
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=0.8]{graphics/Lorenz63_28.jpg}
+    \includegraphics[scale=0.8]{graphics/Lorenz63_28.png}
     \caption{\textit{The evolution of the Lorenz-63 Model when $\sigma=10, \beta=8/3, \rho=28$ where the initial position is $\textbf{X} = (5,-5,20)^T$. An extra of 15 particles (overlapping green dots) are generated nearby and their positions after integration over 2 units of time are shown as red dots.}}
     \label{fig:lor63r28}
 \end{figure}

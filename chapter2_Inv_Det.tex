@@ -134,7 +134,7 @@ For two matrices $A$ and $B$, we have
 \item $(cA)^T = cA^T$, where $c$ is any constant;
 \item $(A^T)^T = A$, i.e.\ transposing twice returns the original matrix (which is obvious);
 \item $(A \pm B)^T = A^T \pm B^T$, if $A$ and $B$ have the same shape;
-\item $(AB)^T = B^TA^T$, if $A$ and $B$ are conformable (notice the reversed order);
+\item $(AB)^T = B^TA^T$, if $A$ and $B$ are conformable (shapes are compatible for matrix multiplication, notice the reversed order);
 \item $A_{kk} = A^T_{kk}$ for any $k$ that $A_{kk}$ is defined, i.e.\ the main diagonal is unaffected by transpose.
 \end{enumerate}
 \end{proper}
@@ -1430,11 +1430,11 @@ which is just a rephrasing of Properties \ref{proper:invnonzerodet} and Theorem 
 
 \section{Python Programming}
 \label{section:ch2python}
-To create an identity matrix of size $n$, we use \verb|np.identity(n)|. For example,
+To create an identity matrix of size $n$, we use \verb|np.identity(n)| (or \verb|np.eye(n)|). For example,
 \begin{lstlisting}
 import numpy as np
 
-I4 = np.identity(4)
+I4 = np.identity(4) # or np.eye(4) 
 print(I4)
 \end{lstlisting}
 returns

@@ -1,6 +1,6 @@
 \chapter{Discrete Fourier Transform (DFT)}
 \label{chap:DFT}
-We now discuss a powerful mathematical tool that can be approached from a least-square approximation point of view. In the last chapter, we saw how to fit a polynomial curve to some given data. It is then natural to further ask, whether there are other suitable types of functions that can be used for data fitting as well. Recall that in Chapter \ref{chap:innerchap}, we have derived the Fourier series into which any reasonable function can be expanded using sines and cosines. Coincidentally, in the area of Earth Science, many phenomena can be described by the notion of \textit{waves}, which are often assumed to be \textit{sinusoidal} during their derivation, e.g.\ atmospheric gravity waves, and seismic waves. However, in real life, our data sampling will be discrete. Therefore, we may want to know if we can do something similar and interpolate a discrete time series by fitting sines and cosines to it, and this is the central idea of what is known as the \textit{Discrete Fourier Transform (DFT)}. An example usage is to filter out the dominant frequency in different climate modes (e.g. ENSO and PDO-Pacific Decadal Oscillation).
+We now discuss a powerful mathematical tool that can be approached from a least-square approximation point of view. In the last chapter, we saw how to fit a polynomial curve to some given data. It is then natural to further ask, whether there are other suitable types of functions that can be used for data fitting as well. Recall that in Chapter \ref{chap:innerchap}, we have derived the Fourier series into which any reasonable function can be expanded using sines and cosines. Coincidentally, in the area of Earth Science, many phenomena can be described by the notion of \textit{waves}, which are often assumed to be \textit{sinusoidal} during their derivation, e.g.\ atmospheric gravity waves, and seismic waves. However, in real life, our data sampling will be discrete. Therefore, we may want to know if we can do something similar and interpolate a discrete time series by fitting sines and cosines to it, and this is the central idea of what is known as the \textit{Discrete Fourier Transform (DFT)}. An example usage is to filter out the dominant frequencies in different climate modes (e.g. ENSO and PDO-Pacific Decadal Oscillation).
 
 \section{Mathematical Ideas of DFT}
 \label{section:DFT}
@@ -56,7 +56,7 @@ f(t) &= \sum_{n=1}^{\infty} b_n \sin(\frac{2n\pi}{N}t) \\
 where $b_n = -\frac{2}{n}$. The following plot (Figure \ref{fig:fourierlint}) then shows the original function and the partial sums of its Fourier expansion up to degrees $3,10,20$ respectively. From this, we can see that as the degree $p$ goes up, $S_p[f](t)$ becomes a better approximation to the straight line $y = \frac{2\pi}{N}t - \pi$.\footnote{Notice that at the two end-points, the values of Fourier series of $f(t) = \frac{2\pi}{N}t - \pi$ stay at $0$. It is because the Fourier series behaves as the periodic extension of the original function (see Footnote \ref{foot:fourier} of Chapter \ref{chap:innerchap}) and will converge to the average value of the left and right limits $(f_-(t) + f_+(t))/2$ at point of discontinuity. Therefore, as every end-point is essentially a discontinuity where one of the side limits is $\pi$ while the other is $-\pi$, it converges to $((-\pi) + \pi)/2 = 0$.}
 \begin{figure}[t!]
     \centering
-    \includegraphics[scale=0.7]{graphics/fourierxapprox.jpg}
+    \includegraphics[scale=0.7]{graphics/fourierxapprox.png}
     \caption{\textit{The Fourier expansion of the linear function up to degrees $3$, $10$, and $20$.}}
     \label{fig:fourierlint}
 \end{figure}
@@ -1316,7 +1316,7 @@ plt.savefig("NinoFFT", dpi=300, bbox_inches="tight")
 \end{lstlisting}
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=0.75]{graphics/NinoFFT.jpg}
+    \includegraphics[scale=0.75]{graphics/NinoFFT.png}
     \caption{\textit{Power Spectrum of the 120-year Niño 3.4 SST.}}
     \label{fig:Nino1}
 \end{figure}
@@ -1343,7 +1343,7 @@ plt.savefig("NinoENSOFilter", dpi=300, bbox_inches="tight")
 However, note that this "zeroing-out" filtering method is not a very good idea to be implemented in practice and we do it here only for a heuristic purpose. For more information, search about the \textit{"Gibbs Phenomenon"} and also read the comprehensive discussion in   \href{https://stackoverflow.com/questions/31256252/why-does-numpy-linalg-solve-offer-more-precise-matrix-inversions-than-numpy-li}{this DSP StackExchange post} (6220).
 \begin{figure}[ht!]
     \centering
-    \includegraphics[scale=0.75]{graphics/NinoENSOFilter.jpg}
+    \includegraphics[scale=0.75]{graphics/NinoENSOFilter.png}
     \caption{\textit{Raw and ENSO-filtered Niño 3.4 signals from 1981 to 2020 data.}}
     \label{fig:nino2}
 \end{figure}

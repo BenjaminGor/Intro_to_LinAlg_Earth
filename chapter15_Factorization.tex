@@ -2202,7 +2202,7 @@ as another valid outcome of (P)LDU Decomposition different from the one derived 
 A3 = np.array([[1, 1, 0, 1],
                [1,-1, 1, 0],
                [2, 0, 1, 1]])
-U, Sigma, V_H = linalg.svd(A3)
+U, Sigma, V_H = linalg.svd(A3) # can set the optional parameter full_matrices = False to obtain the compact SVD and increase speed
 print(U, Sigma, V_H)
 \end{lstlisting}
 are
