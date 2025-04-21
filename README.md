@@ -1,8 +1,10 @@
 <h1>Introduction to Linear Algebra with Earth Science Applications</h1>
 
-Hello, I am Benjamin Loi from CUHK-EESC and NTU-AS. This is the repository for the tex files for my book <em>Introduction to Linear Algebra with Earth Science Applications</em>.
+Hello, I am Benjamin Loi from CUHK-EESC and NTU-AS. This is the repository for the tex/python files for my book <em>Introduction to Linear Algebra with Earth Science Applications</em>.
 
-<b>The book pdf is located at [here](https://github.com/BenjaminGor/Intro_to_LinAlg_Earth/releases/tag/v0.1). (Beta Version)</b>
+<b>The book pdf is located at [here](https://github.com/BenjaminGor/Intro_to_LinAlg_Earth/releases/tag/v1.0) (First Edition).</b>
+
+Meanwhile, the Jupyter notebooks are placed in [this folder](https://github.com/BenjaminGor/Intro_to_LinAlg_Earth/tree/main/Python%20scripts).
 
 This project has been completed in May 2025.
 
@@ -11,11 +13,9 @@ This project has been completed in May 2025.
 <h2>Contributing to the Project</h2>
 
 Feel free to open an issue regarding any problem or suggestion about the book! Any idea will be greatly appreciated.
-When the book is completed, I will upload it to ArXiv formally for open access. This repository will stay anyways.
+When the book is completed, I will upload it to ArXiv formally for open access. This repository will stay open anyway.
 
-<h2>Table of Content (Draft)</h2>
-
-(inside brackets are the expected finish and upload dates)
+<h2>Table of Content</h2>
 
 1. Introduction to Matrices and Linear Systems
 2. Inverses and Determinants
@@ -38,3 +38,7 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 
 Appendix
 - Cyclic Subspaces and Jordan Normal Forms
+
+<h2>Cite this Work</h2>
+
+Loi, C. L. Introduction to Linear Algebra with Earth Science Applications. 2025. ISBN: 9786260139902.
