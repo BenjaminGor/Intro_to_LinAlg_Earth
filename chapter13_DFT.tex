@@ -1,6 +1,6 @@
 \chapter{Discrete Fourier Transform (DFT)}
 \label{chap:DFT}
-We now discuss a powerful mathematical tool that can be approached from a least-square approximation point of view. In the last chapter, we saw how to fit a polynomial curve to some given data. It is then natural to further ask, whether there are other suitable types of functions that can be used for data fitting as well. Recall that in Chapter \ref{chap:innerchap}, we have derived the Fourier series into which any reasonable function can be expanded using sines and cosines. Coincidentally, in the area of Earth Science, many phenomena can be described by the notion of \textit{waves}, which are often assumed to be \textit{sinusoidal} during their derivation, e.g.\ atmospheric gravity waves, and seismic waves. However, in real life, our data sampling will be discrete. Therefore, we may want to know if we can do something similar and interpolate a discrete time series by fitting sines and cosines to it, and this is the central idea of what is known as the \textit{Discrete Fourier Transform (DFT)}. An example usage is to filter out the dominant frequencies in different climate modes (e.g. ENSO and PDO-Pacific Decadal Oscillation).
+We now discuss a powerful mathematical tool that can be approached from a least-square approximation point of view. In the last chapter, we saw how to fit a polynomial curve to some given data. It is then natural to further ask, whether there are other suitable types of functions that can be used for data fitting as well. Recall that in Chapter \ref{chap:innerchap}, we have derived the Fourier series into which any reasonable function can be expanded using sines and cosines. Coincidentally, in the area of Earth Science, many phenomena can be described by the notion of \textit{waves}, which are often assumed to be \textit{sinusoidal} during their derivation, e.g.\ atmospheric gravity waves, and seismic waves. However, in real life, our data sampling will be discrete. Therefore, we may want to know if we can do something similar and interpolate a discrete time series by fitting sines and cosines to it, and this is the central idea of what is known as the \textit{Discrete Fourier Transform (DFT)}. An example usage is to filter out the dominant frequencies in different climate modes (e.g.\ ENSO and PDO-Pacific Decadal Oscillation).
 
 \section{Mathematical Ideas of DFT}
 \label{section:DFT}
@@ -48,7 +48,7 @@ S_p[f](t) &= \frac{a_0}{2} + \sum_{m=1}^{p} a_m \cos(\frac{2m\pi}{N}t) + \sum_{n
 &\quad + b_1 \sin(\frac{2\pi}{N}t) + b_2 \sin(\frac{2\pi(2)}{N}t) + \cdots + b_p \sin(\frac{2\pi p}{N}t) 
 \end{align}
 \end{subequations}
-will then be the best approximation of the function $f(t)$ using sines and cosines up to order $p$ with distance defined with respect to the inner product in Equation (\ref{eqn:integralinner}), a.k.a.\ the best-fit trigonometric (Fourier) polynomial of degree $p$. This is known as the \index{Best Approximation Theorem}\keywordhl{Best Approximation Theorem} which directly follows from Properties \ref{proper:shortestorthoproj} and the related discussion about orthogonal projections onto the Fourier basis in Section \ref{subsection:spectralthmherm}: Such a Fourier partial sum $S_p[f](t)$ is essentially the orthogonal projection of $f(t)$ onto the subspace spanned by the corresponding orthonormal trigonometric basis up to order $p$. Hence, the higher the degree of the partial sum of the Fourier expansion, the more closer the approximation to the given function. We will use Example \ref{exmp:fourierx} as an illustration: Note that the appropriate Fourier series of $x = f(t) = \frac{2\pi}{N}t - \pi$ is now
+will then be the best approximation of the function $f(t)$ using sines and cosines up to order $p$ with distance defined with respect to the inner product in Equation (\ref{eqn:integralinner}), a.k.a.\ the best-fit trigonometric (Fourier) polynomial of degree $p$. This is known as the \index{Best Approximation Theorem}\keywordhl{Best Approximation Theorem} which directly follows from Properties \ref{proper:shortestorthoproj} and the related discussion about orthogonal projections onto the Fourier basis in Section \ref{subsection:spectralthmherm}: Such a Fourier partial sum $S_p[f](t)$ is essentially the orthogonal projection of $f(t)$ onto the subspace spanned by the corresponding orthonormal trigonometric basis up to order $p$. Hence, the higher the degree of the partial sum of the Fourier expansion, the closer the approximation to the given function. We will use Example \ref{exmp:fourierx} as an illustration: Note that the appropriate Fourier series of $x = f(t) = \frac{2\pi}{N}t - \pi$ is now
 \begin{align*}
 f(t) &= \sum_{n=1}^{\infty} b_n \sin(\frac{2n\pi}{N}t) \\
 &= -2 \sum_{n=1}^{\infty} \frac{1}{n} \sin(\frac{2n\pi}{N}t)
@@ -444,7 +444,7 @@ so the two cosine waves, despite having different frequencies, coincide at every
 \begin{align}
 \omega_{\text{Ny}} = \frac{2\pi}{N}\left(\frac{N}{2}\right) = \pi    
 \end{align}
-which is known as the \index{Nyquist Frequency}\keywordhl{Nyquist frequency}. Consequentially, we have the \index{Nyquist Sampling Theorem}\keywordhl{Nyquist Sampling Theorem} as follows.
+which is known as the \index{Nyquist Frequency}\keywordhl{Nyquist frequency}. Consequently, we have the \index{Nyquist Sampling Theorem}\keywordhl{Nyquist Sampling Theorem} as follows.
 \begin{thm}[Nyquist Sampling Theorem]
 \label{thm:Nyquist}
 For an evenly spaced time series that has a time step of $\Delta t = 1$, any sinusoidal wave with an angular frequency exceeding the Nyquist frequency $\omega > \omega_{\text{Ny}} = \pi$ cannot be properly detected. 
@@ -518,7 +518,7 @@ A direct computation then gives
 
 \subsection{Complex DFT}
 
-The real DFT approach above has the drawback of using sine-cosine pairs for computation. In Section \ref{section:complexno}, we have learned the power of complex exponentials to simultaneously represent sines and cosines through Euler's formula, which has also been exploited to derive the relations between the various sinusoidal functions when we are developing the DFT prototype. Therefore, there is an incentive to explore the possibility of using complex exponentials to define Discrete Fourier Transform. This has the benefits of simplicity and also convenience when programming.
+The real DFT approach above has the drawback of using sine-cosine pairs for computation. In Section \ref{section:complexno}, we have learned the power of complex exponentials to simultaneously represent sines and cosines through Euler's formula, which has also been exploited to derive the relations between the various sinusoidal functions when we are developing the DFT prototype. Therefore, there is an incentive to explore the possibility of using complex exponentials to define the Discrete Fourier Transform. This has the benefits of simplicity and also convenience when programming.
 
 Continuing from the ideas built in the last subsection, we propose an interpolation scheme that uses $\exp(i (2\pi k/N) t)$, for a time series with $N$ data, evenly spaced by a time step of $\Delta t = 1$. The range of $k$ will be from 
 \begin{align*}
@@ -1212,7 +1212,7 @@ F_4 & 0 \\\
 \textbf{f}_{\text{odd}}
 \end{bmatrix}
 \end{align*}
-will give the same DFT result as the direct formula $\hat{\textbf{f}} = F_8\textbf{f}$. We can repeat the same procedure to similarly split $F_4$ into two $F_2$ blocks and shuffle the indices again. A schematic flowchart is shown as Figure \ref{fig:FFT} below. For a bigger $N$, e.g.\ $N = 2^{10} = 1024$, the method proceeds in the same principle such that $F_{1024} \to F_{512} \to F_{256} \to \cdots$. The FFT time complexity is \textit{log-linear} $O(n \log n)$, where the $\log n$ factor has replaced $n$ thanks to its bisection nature. In fact, it requires $\frac{N}{2}\log_2(N)$ multiplications and $N\log_2(N)$ additions. This is much faster than $O(n^2)$ of the naive DFT when $n$ becomes very large. For instance, the naive DFT of size $N = 2^{12} = 4096$ will require $33550336$ operations but the Radix-2 FFT algorithm only needs $73728$ which is around $450$ times more efficient. For this reason, any actual computer implementation of DFT will always use FFT underneath.
+will give the same DFT result as the direct formula $\hat{\textbf{f}} = F_8\textbf{f}$. We can repeat the same procedure to similarly split $F_4$ into two $F_2$ blocks and shuffle the indices again. A schematic flowchart is shown as Figure \ref{fig:FFT} on the next page. For a bigger $N$, e.g.\ $N = 2^{10} = 1024$, the method proceeds in the same principle such that $F_{1024} \to F_{512} \to F_{256} \to \cdots$. The FFT time complexity is \textit{log-linear} $O(n \log n)$, where the $\log n$ factor has replaced $n$ thanks to its bisection nature. In fact, it requires $\frac{N}{2}\log_2(N)$ multiplications and $N\log_2(N)$ additions. This is much faster than $O(n^2)$ of the naive DFT when $n$ becomes very large. For instance, the naive DFT of size $N = 2^{12} = 4096$ will require $33550336$ operations but the Radix-2 FFT algorithm only needs $73728$ which is around $450$ times more efficient. For this reason, any actual computer implementation of DFT will always use FFT underneath.
 
 \begin{landscape}
 \begin{figure}
@@ -1403,5 +1403,5 @@ and the respective DFTs are
 \end{Answer}
 
 \begin{Exercise}
-Write your own FFT function in Python and compare it with the one in the \verb|scipy.fft| library by testing them on any time series.
+Write your own FFT function in Python and compare it with the one in the \verb|scipy.fft| library by testing it on any time series.
 \end{Exercise}

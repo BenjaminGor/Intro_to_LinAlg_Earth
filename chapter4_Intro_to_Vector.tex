@@ -8,7 +8,7 @@ After three chapters of discussion about matrices, it is time to introduce anoth
 A \index{Vector (Geometric)}\keywordhl{(geometric) vector} is a physical quantity represented by an ordered tuple of \textit{components} (numbers), e.g.\ $(1, 8, 7, 4)$, $(1-i, 1+3i, 2)$. It has a \textit{magnitude (length)} and \textit{direction}, resembling an arrow. Some real-life examples are: two-dimensional fluid flow velocity $(u, v)$, the relative position of an airplane to a ground radar $(x, y, z)$.
 \begin{defn}[$n$-dimensional Geometric Vector]
 \label{defn:geometvec}
-An $n$-dimensional geometric vector consists of $n$ ordered numbers called \index{Components}\keywordhl{components} and are denoted by either an arrow or boldface, like $\vec{v}$ or $\textbf{v}$. It is usually written out in two forms, as a \textit{column vector} or an \index{Ordered Tuple}\textit{ordered $n$-tuple}:
+An $n$-dimensional geometric vector consists of $n$ ordered numbers called \index{Components}\keywordhl{components} and is denoted by either an arrow or boldface, like $\vec{v}$ or $\textbf{v}$. It is usually written out in two forms, as a \textit{column vector} or an \index{Ordered Tuple}\textit{ordered $n$-tuple}:
 \begin{align}
 \vec{v} &=
 \begin{bmatrix}
@@ -22,7 +22,7 @@ v_n
 (v_1, v_2, v_3, \ldots, v_n)^T
 \end{align}
 \end{defn}
-An $n$-dimensional vector can be treated as an $n \times 1$ (\index{Column Vector}\keywordhl{column vector}) as suggested above, or a $1 \times n$ matrix (\index{Row Vector}\keywordhl{row vector}) depending on the situation. The form of a column vector is taken more often than the row vector one, so the column form is assumed throughout the book if it is not further specified. That is why the superscript $^T$ is added for the $n$-tuple form in the definition above to reflect that it is in fact a column vector despite being written horizontally. \par
+An $n$-dimensional vector can be treated as an $n \times 1$ (\index{Column Vector}\keywordhl{column vector}) as suggested above, or a $1 \times n$ matrix (\index{Row Vector}\keywordhl{row vector}) depending on the situation. The form of a column vector is taken more often than the row vector, so the column form is assumed throughout the book if it is not further specified. That is why the superscript $^T$ is added for the $n$-tuple form in the definition above to reflect that it is in fact, a column vector despite being written horizontally. \par
 \begin{figure}[ht!]
     \centering
     \begin{tikzpicture}
@@ -259,7 +259,7 @@ Length, or magnitude of a $n$-dimensional \textit{real} vector $\vec{v}$, denote
 \end{align}    
 \end{subequations}
 \end{defn}
-For instance, the length of a two-dimensional vector follows the usual Pythagoras' Theorem as in Figure \ref{fig:veclength} (a) below. While for Figure \ref{fig:veclength} (b), it is
+For instance, the length of a two-dimensional vector follows the usual Pythagoras' Theorem as in Figure \ref{fig:veclength} (a) on the next page. While for Figure \ref{fig:veclength} (b), it is
 \begin{align*}
 \vec{w} &= 
 \begin{bmatrix}
@@ -380,7 +380,7 @@ AB =
 We can use the dot product to express the length of a real vector.
 \begin{proper}
 \label{proper:lengthdot}
-The length of a real vector, as defined by (\ref{eqn:veclength}) in Definition \ref{defn:vectorlength}, can be written using its dot product between itself as
+The length of a real vector, as defined by (\ref{eqn:veclength}) in Definition \ref{defn:vectorlength}, can be written using its dot product with itself as
 \begin{align}
 \norm{\vec{v}} &= \sqrt{\vec{v} \cdot \vec{v}} & &\text{or} &
 \norm{\vec{v}}^2 &= \vec{v} \cdot \vec{v}
@@ -942,7 +942,7 @@ Cross Product, or Vector Product ($\times$) & Two three-dimensional real vectors
 \section{Earth Science Applications}
 \begin{exmp}
 \label{exmp:Coriolis}
-The \index{Coriolis Effect/Force}\textit{Coriolis Effect} is a phenomenon describing the deflection of motion due to rotation of the Earth. It introduces an apparent force known as the \textit{Coriolis Force}, which is given by 
+The \index{Coriolis Effect/Force}\textit{Coriolis Effect} is a phenomenon describing the deflection of motion due to the rotation of the Earth. It introduces an apparent force known as the \textit{Coriolis Force}, which is given by 
 \begin{align}
 \overrightarrow{F_\text{cor}} = -2\vec{\Omega} \times \vec{v}    
 \end{align} 

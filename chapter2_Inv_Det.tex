@@ -210,7 +210,7 @@ which implies that multiplying $A$ by $A^{-1}A$ returns $A$ itself, so it should
 %\end{align*}
 %where we write $P = A^{-1}A$. The above implies that multiplying $A$ by $P$ returns $A$ itself. We are tempted to claim that $P = I$ by observing Properties \ref{proper:identity}. However, it is not trivial to show that $P$ cannot be any matrix other than $I$, and to do so we have to wait until later chapters. Nevertheless, it is indeed true as long as $A$ is invertible. Therefore, $P = A^{-1}A = I$. The opposite direction is proved similarly.    
 %\end{proof}
-In the last chapter, we only define addition, subtraction, and multiplication for matrices, omitting division like an elephant in the room. The inverse serves as a remedy for this by acting as the reciprocal in the world of matrices. This allows us to "divide" on both sides of a matrix equation, provided that the relevant inverses exist. Remember, in the last chapter, we mentioned that cancellation on both sides may not work for some equations like $AB = AC$. But if the inverse $A^{-1}$ exists, then by multiplying it to the left on both sides of the equation, we can effectively "divide by $A$" to get
+In the last chapter, we only defined addition, subtraction, and multiplication for matrices, omitting division like an elephant in the room. The inverse serves as a remedy for this by acting as the reciprocal in the world of matrices. This allows us to "divide" on both sides of a matrix equation, provided that the relevant inverses exist. Remember, in the last chapter, we mentioned that cancellation on both sides may not work for some equations like $AB = AC$. But if the inverse $A^{-1}$ exists, then by multiplying it to the left on both sides of the equation, we can effectively "divide by $A$" to get
 \begin{align*}
 AB &= AC \\
 A^{-1}AB &= A^{-1}AC \\
@@ -410,7 +410,7 @@ X &=
 0 & 0 & 1 
 \end{bmatrix}
 \end{align*}
-We have studied elementary row operations in the last chapter, which now can be used to transform matrices into their reduced row echelon form. The procedure is comprised of two major parts, the \index{Forward Phase (of Gaussian Elimination)}\textit{forward phase}, converting the matrix to row echelon form first, and the \index{Backward Phase (of Gaussian Elimination)}\textit{backward phase}, eventually converting it to reduced row echelon form. The first phase is also named \index{Gaussian Elimination}\keywordhl{Gaussian Elimination}, and together they are called \index{Gauss-Jordan Elimination}\keywordhl{Gauss-Jordan Elimination}\footnotemark. We demonstrate the entire procedure using an example.
+We have studied elementary row operations in the last chapter, which can now be used to transform matrices into their reduced row echelon form. The procedure is comprised of two major parts, the \index{Forward Phase (of Gaussian Elimination)}\textit{forward phase}, converting the matrix to row echelon form first, and the \index{Backward Phase (of Gaussian Elimination)}\textit{backward phase}, eventually converting it to reduced row echelon form. The first phase is also named \index{Gaussian Elimination}\keywordhl{Gaussian Elimination}, and together they are called \index{Gauss-Jordan Elimination}\keywordhl{Gauss-Jordan Elimination}\footnotemark. We demonstrate the entire procedure using an example.
 \begin{exmp}
 Carry out Gauss-Jordan Elimination on the following matrix to make it become reduced row echelon form.
 \begin{align*}
@@ -423,7 +423,7 @@ A =
 \end{align*}
 \end{exmp}
 \begin{solution}
-At each step of the forward phase, the strategy is to look at the leftmost column that has at least one non-zero entry (any column consisting of full zeros is ignored). Along that column, we either find an existing leading $1$, or create a leading $1$ via multiplying some row having a starting entry $a$ that is as large as possible in magnitude, by the constant $1/a$. (The leading entry selected by this algorithm is commonly called the \keywordhl{pivot}, and the process is called \index{Pivot/Pivoting}\keywordhl{pivoting}.) The row holding the leading $1$ is subsequently put at the top, by an interchanging of rows if needed. In this example, such rows will be highlighted in red.
+At each step of the forward phase, the strategy is to look at the leftmost column that has at least one non-zero entry (any column consisting of full zeros is ignored). Along that column, we either find an existing leading $1$, or create a leading $1$ via multiplying some row having a starting entry $a$ that is as large as possible in magnitude, by the constant $1/a$. (The leading entry selected by this algorithm is commonly called the \keywordhl{pivot}, and the process is called \index{Pivot/Pivoting}\keywordhl{pivoting}.) The row holding the leading $1$ is subsequently put at the top, by an interchange of rows if needed. In this example, such rows will be highlighted in red.
 \begin{align*}
 \left[\begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}wc{10pt}@{\,}}
 2 & 1 & 4 & 6 \\
@@ -1499,7 +1499,7 @@ produces an extremely small value of \verb|1.11022302e-16| (this number may be d
 2 & 0 & 1 & 0    
 \end{bmatrix}
 \end{align*}
-has a determinant of exactly zero. It is an artifact of numerical error when using floating point numbers. If we keep going ahead and compute its inverse by \verb|print(linalg.inv(myMatrix3))|, we may obtain an absurd output like
+has a determinant of exactly zero. It is an artifact of numerical error when using floating-point numbers. If we keep going ahead and compute its inverse by \verb|print(linalg.inv(myMatrix3))|, we may obtain an absurd output like
 \begin{lstlisting}
 [[ 1.200959e+15 -2.401919e+15  3.602879e+15 -3.602879e+15]
  [ 6.004799e+15 -1.200959e+16  1.801439e+16 -1.801439e+16]

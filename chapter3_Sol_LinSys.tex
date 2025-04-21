@@ -180,7 +180,7 @@ z
 \label{section:SolveLinSys}
 Now it is time to get down to solving linear systems (preferably written in matrix form), and we have two methods to choose from:
 \begin{enumerate}
-\item By Gaussian Elimination, for linear system in any shape, or
+\item By Gaussian Elimination, for linear systems in any shape, or
 \item By Inverse, which is apparently only applicable for square, invertible coefficient matrices.
 \end{enumerate}
 
@@ -1487,7 +1487,7 @@ which gives
 {(-3.0*tau0 - 2.0*tau1 - 1.0, 1.0*tau0 + 1.0*tau1 + 1.0, tau0, tau1)}    
 \end{lstlisting}
 where \verb|tau0| and \verb|tau1| are equivalent to $s$ and $t$ in the original example.\par
-Moreover, there are two questions that may come to curious readers when reading the programming sections of these two chapters. First, which of \verb|scipy| and \verb|sympy| should we choose over the other? Second, why don't we compute the inverse of $A$ and solve the system by something along the line of \verb|x = linalg.inv(A) @ h|? For the first question, we note that \verb|scipy| is numerical while \verb|sympy| is symbolic, which means that if we are dealing with real data we may find \verb|scipy| adequate and more efficient, while if we are focusing on the theoretical part of Mathematics we can obtain a more analytical solution with \verb|sympy|. For the second question, we refer the readers to \href{https://stackoverflow.com/questions/31256252/why-does-numpy-linalg-solve-offer-more-precise-matrix-inversions-than-numpy-li}{this excellent Stack Overflow post} (31256252).
+Moreover, there are two questions that may come to curious readers when reading the programming sections of these two chapters. First, which of \verb|scipy| and \verb|sympy| should we choose over the other? Second, why don't we compute the inverse of $A$ and solve the system by something along the lines of \verb|x = linalg.inv(A) @ h|? For the first question, we note that \verb|scipy| is numerical while \verb|sympy| is symbolic, which means that if we are dealing with real data we may find \verb|scipy| adequate and more efficient, while if we are focusing on the theoretical part of Mathematics we can obtain a more analytical solution with \verb|sympy|. For the second question, we refer the readers to \href{https://stackoverflow.com/questions/31256252/why-does-numpy-linalg-solve-offer-more-precise-matrix-inversions-than-numpy-li}{this excellent Stack Overflow post} (31256252).
 \section{Exercises}
 
 \begin{Exercise}

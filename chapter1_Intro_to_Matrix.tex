@@ -132,7 +132,7 @@ A &=
 4 & 13
 \end{bmatrix}$\\}$\blacktriangleright$ Short Exercise: Find $\frac{1}{4}A$.\footnotemark
 
-\subsubsection{Matrix Multiplication/Matrix Product} Meanwhile, multiplication between two matrices, commonly referred to as \index{Matrix Multiplication/Matrix Product}\keywordhl{matrix multiplication/matrix product}, is not entry-wise. It can be only carried out if the number of columns of the first matrix $A$ equals the number of rows of the second matrix $B$, let's say $r$. In other words, they need to be of the shapes $m \times r$ and $r \times n$ respectively. The resulting matrix $AB$ will then have the shape $m \times n$, which means that the number of rows/columns of the output matrix follows from the first/second input matrix. The following two examples explain this requirement.
+\subsubsection{Matrix Multiplication/Matrix Product} Meanwhile, multiplication between two matrices, commonly referred to as \index{Matrix Multiplication/Matrix Product}\keywordhl{matrix multiplication/matrix product}, is not entry-wise. It can only be carried out if the number of columns of the first matrix $A$ equals the number of rows of the second matrix $B$, let's say $r$. In other words, they need to be of the shapes $m \times r$ and $r \times n$ respectively. The resulting matrix $AB$ will then have the shape $m \times n$, which means that the number of rows/columns of the output matrix follows from the first/second input matrix. The following two examples explain this requirement.
 \begin{align*}
 & A = 
 \begin{bmatrix}
@@ -167,7 +167,7 @@ Since the shapes of $A$ and $B$ are $2 \times 3$ and $3 \times 1$, so that the n
 
 \begin{defn}[Matrix Product/Matrix Multiplication]
 \label{defn:matprod}
-Given an $m \times r$ matrix $A$ and another $r \times n$ matrix $B$, we denote the matrix product between $A$ and $B$ as $AB$, which will have the shape of $m \times n$. To calculate any entry in $AB$ at row $i$ and column $j$, we select the $i$-th row from the first matrix $A$ and $j$-th column from the second matrix $B$. Subsequently, take the products between the $r$ pairs of numbers from that row and column, and their sum will then be the required value, i.e.\
+Given an $m \times r$ matrix $A$ and another $r \times n$ matrix $B$, we denote the matrix product between $A$ and $B$ as $AB$, which will have the shape of $m \times n$. To calculate any entry in $AB$ at row $i$ and column $j$, we select the $i$-th row from the first matrix $A$ and the $j$-th column from the second matrix $B$. Subsequently, take the products between the $r$ pairs of numbers from that row and column, and their sum will then be the required value, i.e.\
 \begin{subequations}
 \begin{align}
 (AB)_{ij} &= A_{i1}B_{1j} + A_{i2}B_{2j} + A_{i3}B_{3j} + ... + A_{ir}B_{rj} \\
@@ -392,7 +392,7 @@ For any matrix equation, one can do addition, subtraction, and multiplication on
 \begin{align}
 AB-C = DE+F \label{eqn:matrixmatdemo}
 \end{align}
-if we want to multiply the equation by some matrix $G$, then two possibilities are
+If we want to multiply the equation by some matrix $G$, then two possibilities are
 \begin{align*}
 G(AB-C) &= G(DE+F) \\
 (AB-C)G &= (DE+F)G
@@ -515,7 +515,7 @@ An even simpler representation is the \index{Augmented Matrix}\keywordhl{augment
 $\blacktriangleright$ Short Exercise: Write down the augmented matrix for the linear system in Equation (\ref{eqn:linsys2}).\footnotemark
 
 \section{Elementary Row Operations}
-When we construct a matrix, it is natural to think about how to manipulate its structure. \index{Elementary Row Operations}\keywordhl{Elementary row operations} provide such possibility in three ways, as outlined in the following:
+When we construct a matrix, it is natural to think about how to manipulate its structure. \index{Elementary Row Operations}\keywordhl{Elementary row operations} provide such a possibility in three ways, as outlined in the following:
 \begin{defn}[Elementary Row Operations]
 \label{defn:elerowop}
 Denote the $p$-th row of a matrix by $R_{p}$. The three types of elementary row operations are
@@ -805,7 +805,7 @@ s
 
 \begin{exmp}
 \label{exmp:weatherstats}
-There are four weather stations in proximity. Each of them measures the local air temperature $T_i$, where $i = 0,1,2,3$. Assume that the spatial pattern of temperature over the region approximately follows a linear gradient such that both $\partial T/\partial x$ and $\partial T/\partial y$ can be treated as constants. Assign the location of the first station to be the origin $(0,0)$, and the relative locations of the second/third/fourth station are $(10,20)$, $(25,15)$, $(-10,5)$ (in \si{\km}). The measured air temperatures of the four stations at some time are $\SI{27.1}{\degree C}, \SI{27.3}{\degree C}, \SI{27.4}{\degree C}, \SI{26.9}{\degree C}$. Set up a linear system for finding $\partial T/\partial x$ and $\partial T/\partial y$.
+There are four weather stations in proximity. Each of them measures the local air temperature $T_i$, where $i = 0,1,2,3$. Assume that the spatial pattern of temperature over the region approximately follows a linear gradient such that both $\partial T/\partial x$ and $\partial T/\partial y$ can be treated as constants. Assign the location of the first station to be the origin $(0,0)$, and the relative locations of the second/third/fourth stations are $(10,20)$, $(25,15)$, $(-10,5)$ (in \si{\km}). The measured air temperatures of the four stations at some time are $\SI{27.1}{\degree C}, \SI{27.3}{\degree C}, \SI{27.4}{\degree C}, \SI{26.9}{\degree C}$. Set up a linear system for finding $\partial T/\partial x$ and $\partial T/\partial y$.
 \end{exmp}
 \begin{solution}
 Since the temperature gradients $\partial T/\partial x$ and $\partial T/\partial y$ are assumed to be constants, we have, by Taylor expansion in both $x$ and $y$,
@@ -925,7 +925,7 @@ proceed to subtract $2$ times the first row from the second row, and produce
 [[ 7  9]
  [ 6 15]]
 \end{lstlisting}
-Row interchange is a bit more tricky.
+Row interchange is a bit trickier.
 \begin{lstlisting}
 myMatrix6 = np.copy(myMatrix4)
 myMatrix6[[0, 1],:] = myMatrix6[[1, 0],:]

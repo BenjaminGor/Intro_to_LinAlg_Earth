@@ -18,7 +18,7 @@ Since this holds for any $\vec{x}$, by the last item of Properties \ref{proper:i
 A^\dag(\vec{h}-A\vec{x}_f) &= \textbf{0} \nonumber \\
 A^\dag A\vec{x}_f &= A^\dag \vec{h}
 \end{align}
-This is called the \index{Normal Equation}\keywordhl{normal equation} due to the appearance of the $A^\dag A$ factor. So any $\vec{x}_f$\footnote{The existence of at least one of such a vector is guaranteed by the uniqueness of orthogonal projection of $\smash{\vec{h}}$ onto $\mathcal{C}(A)$.} satisfying this equation will produce the least-square error. We may be tempted to multiply both sides of the equation by the inverse $(A^\dag A)^{-1}$ to arrive at a formula for the least-square solution $\vec{x}_f = (A^\dag A)^{-1}A^\dag \smash{\vec{h}}$. However, this is only allowed when this inverse indeed exists, and we now discuss under what condition it will happen.\par
+This is called the \index{Normal Equation}\keywordhl{normal equation} due to the appearance of the $A^\dag A$ factor. So any $\vec{x}_f$\footnote{The existence of at least one of such a vector is guaranteed by the uniqueness of orthogonal projection of $\smash{\vec{h}}$ onto $\mathcal{C}(A)$.} satisfying this equation will produce the least-square error. We may be tempted to multiply both sides of the equation by the inverse $(A^\dag A)^{-1}$ to arrive at a formula for the least-square solution $\vec{x}_f = (A^\dag A)^{-1}A^\dag \smash{\vec{h}}$. However, this is only allowed when this inverse indeed exists, and we now discuss under what condition(s) it will happen.\par
 \begin{figure}[ht!]
     \centering
     \begin{tikzpicture}[rotate=0]
@@ -625,7 +625,7 @@ The predictor variables are the constant term, the linear term $x$, as well as t
 \end{align*}
 The quadratic fit is thus $y = -0.009 + 2.201x - 0.089x^2$.
 \end{solution}
-Notice that in the above example, although we use the quadratic term $x^2$ as a predictor, the regression is still \textit{linear} in the sense that the regression model is a \textit{linear} combination of these predictors. Usually, fitting a degree $n$ polynomials in a single variable $x$ to $m$ points, $n < m$, will involve a matrix in the form like the one above:
+Notice that in the above example, although we use the quadratic term $x^2$ as a predictor, the regression is still \textit{linear} in the sense that the regression model is a \textit{linear} combination of these predictors. Usually, fitting a degree $n$ polynomial in a single variable $x$ to $m$ points, $n < m$, will involve a matrix in the form like the one above:
 \begin{align}
 [X]
 &= 
@@ -780,7 +780,7 @@ We need to append the constant term by using the \verb|sm.add_constant| function
 \begin{lstlisting}
 Xc = sm.add_constant(X, prepend=False)
 \end{lstlisting}
-Subsequently, create an \verb|sm.OLS| (stands for "Ordinary Least Squares") object and call the \verb|fit| method that takes the predictand/predictors in the first/second argument.
+Subsequently, create a \verb|sm.OLS| (stands for "Ordinary Least Squares") object and call the \verb|fit| method that takes the predictand/predictors in the first/second argument.
 \begin{lstlisting}
 mod = sm.OLS(Y, Xc)
 res = mod.fit()

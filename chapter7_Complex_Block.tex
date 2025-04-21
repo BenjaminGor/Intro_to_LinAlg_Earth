@@ -180,7 +180,7 @@ Given $n$ as an integer, then
 Our discussion about vectors and matrices in previous chapters is limited to those with real entries. However, we can extend the ideas to include complex entries. A complex vector is simply a vector that has complex numbers as components. An $n$-dimensional complex vector can be somehow viewed as a real vector that is $2n$-dimensional, as each complex entry can be expressed in two parts, real and imaginary. This equivalence will be further clarified at the end of this section. A complex matrix is similarly a matrix with complex entries, or from another perspective, formed by complex column vectors.
 
 \subsection{Operations and Properties of Complex Vectors}
-Addition and subtraction for complex vectors are the same as the real counterpart, carried out component-wise. Multiplication by a scalar is also similar, applied to all components. However, the form of \index{Complex Dot Product}\keywordhl{complex dot product} is slightly different from the real dot product, as defined below.
+Addition and subtraction for complex vectors are the same as the real counterparts, carried out component-wise. Multiplication by a scalar is also similar, applied to all components. However, the form of \index{Complex Dot Product}\keywordhl{complex dot product} is slightly different from the real dot product, as defined below.
 \begin{defn}[Complex Dot Product]
 \label{defn:complexdotproduct}
 The dot product of two complex vectors $\vec{u}$ and $\vec{v}$ is computed as the sum of products between each pair of components, but additionally with the conjugate operation applied on the second complex vector beforehand.
@@ -242,7 +242,7 @@ Transpose can be similarly defined for complex matrices. However, there exists a
 \label{defn:conjutrans}
 The \index{Conjugate Transpose}\keywordhl{conjugate transpose} of a matrix $A$, denoted as $A^* = \overline{A^T}$, has its entries as $A^*_{pq} = \overline{A}_{qp}$, where $\overline{A}$ is the conjugate of the matrix $A$ produced by changing every entry in $A$ to its complex conjugate. Sometimes $A^*$ is called the \textit{adjoint} or \index{Hermitian Transpose}\keywordhl{Hermitian transpose} of $A$, and alternatively denoted as $A^H$. 
 \end{defn}
-It means that conjugate transpose is done by conjugating all entries of the matrix and flipping them about its main diagonal. A \index{Hermitian Matrix}\keywordhl{Hermitian matrix} is a complex matrix whose conjugate transpose equals to itself. Implicitly, it is required to be a square matrix just like in the symmetric case.
+It means that conjugate transpose is done by conjugating all entries of the matrix and flipping them about its main diagonal. A \index{Hermitian Matrix}\keywordhl{Hermitian matrix} is a complex matrix whose conjugate transpose equals itself. Implicitly, it is required to be a square matrix just like in the symmetric case.
 \begin{defn}
 \label{defn:Hermitian}
 A complex square matrix $A$ is called Hermitian if $A^* = A$.
@@ -668,7 +668,7 @@ N =
 Use block matrix multiplication to compute $MN$.
 \end{exmp}
 \begin{solution}
-Note that the cuts along the column/row direction in $M$ and $N$ are both located in-between the $2$nd-$3$rd index. Consequentially, we can use Formula (\ref{eqn:22blockmul}) above:
+Note that the cuts along the column/row direction in $M$ and $N$ are both located in-between the $2$nd-$3$rd indices. Consequentially, we can use Formula (\ref{eqn:22blockmul}) above:
 \begin{align*}
 MN = 
 \begin{bmatrix}
@@ -1140,7 +1140,7 @@ I_p & [\textbf{0}]_{p \times q} \\
 [\textbf{0}]_{q\times p} & D - CA^{-1}B 
 \end{bmatrix})
 \end{align*}
-In the same vein of Properties \ref{proper:blockmatinv}, we then have
+In the same vein as Properties \ref{proper:blockmatinv}, we then have
 \begin{align*}
 (\det(A))^{-1}\det(M)(1) &= \det(D-CA^{-1}B) \\
 \det(M) &= \det(A)\det(D-CA^{-1}B) = \det(A)\det(M/A)
@@ -1310,7 +1310,7 @@ To see this, let $\mathcal{\beta}_W = \{\vec{u}^{(1)}, \vec{u}^{(2)}, \ldots, \v
 \begin{align*}
 (w_1, w_2, \ldots, w_r, 0, \ldots, 0)^T
 \end{align*}
-in the $\mathcal{\beta}'$ basis where components beyond the $r$-th index are all zeros. From the perspective of direct sum, it is the same as $\vec{w} \oplus \textbf{0}_{n-r} = (w_1, w_2, \ldots, w_r)_{\beta_W}^T \oplus (0, \ldots, 0)_{\gamma}^T$, i.e. the components of $\vec{w}$ for $\mathcal{W}^C$ are all zeros. By Definition \ref{defn:matrixrepoflintrans}, writing out the matrix representation of $[T]_{\beta'}^\eta$ where $\eta$ is an arbitrary basis for the $m$-dimensional $\mathcal{V}$ results in
+in the $\mathcal{\beta}'$ basis where components beyond the $r$-th index are all zeros. From the perspective of direct sum, it is the same as $\vec{w} \oplus \textbf{0}_{n-r} = (w_1, w_2, \ldots, w_r)_{\beta_W}^T \oplus (0, \ldots, 0)_{\gamma}^T$, i.e.\ the components of $\vec{w}$ for $\mathcal{W}^C$ are all zeros. By Definition \ref{defn:matrixrepoflintrans}, writing out the matrix representation of $[T]_{\beta'}^\eta$ where $\eta$ is an arbitrary basis for the $m$-dimensional $\mathcal{V}$ results in
 \begin{align*}
 [T]_{\beta'}^\eta = \begin{bmatrix}
 a_1^{(1)} & a_1^{(2)} & \cdots & a_1^{(r)} & a_1^{(r+1)} & \cdots & a_1^{(n)} \\
@@ -1626,7 +1626,7 @@ A \oplus B =
 0 & 0 & 0 & 4 & 0
 \end{array}\right]
 \end{align*}
-in which $A$ and $B$ are matrices representing linear transformations of $T_1: \mathcal{U}_1 \to \mathcal{V}_1$ and $T_2: \mathcal{U}_2 \to \mathcal{V}_2$, where $\mathcal{U}_1$, $\mathcal{U}_2$, $\mathcal{V}_1$, $\mathcal{V}_2$ have dimensions of $3,2,2,3$. Subsequently, $A \oplus B$ is a matrix corresponding to a mapping $T_1 \oplus T_2$ from $\mathcal{U} = \mathcal{U}_1 \oplus \mathcal{U}_2$ to $\mathcal{V} = \mathcal{V}_1 \oplus \mathcal{V}_2$. Finally, the matrix direct sum of more than two matrices $A_1, A_2, A_3, \ldots, A_{n-1}, A_n$ are defined recursively just like a vector direct sum as
+in which $A$ and $B$ are matrices representing linear transformations of $T_1: \mathcal{U}_1 \to \mathcal{V}_1$ and $T_2: \mathcal{U}_2 \to \mathcal{V}_2$, where $\mathcal{U}_1$, $\mathcal{U}_2$, $\mathcal{V}_1$, $\mathcal{V}_2$ have dimensions of $3,2,2,3$. Subsequently, $A \oplus B$ is a matrix corresponding to a mapping $T_1 \oplus T_2$ from $\mathcal{U} = \mathcal{U}_1 \oplus \mathcal{U}_2$ to $\mathcal{V} = \mathcal{V}_1 \oplus \mathcal{V}_2$. Finally, the matrix direct sum of more than two matrices $A_1, A_2, A_3, \ldots, A_{n-1}, A_n$ is defined recursively just like a vector direct sum as
 \begin{align*}
 &\quad A_1 \oplus A_2 \oplus A_3 \oplus \cdots \oplus A_{n-1} \oplus A_n \\
 &= (\cdots ((A_1 \oplus A_2) \oplus A_3) \oplus \cdots \oplus A_{n-1}) \oplus A_n
@@ -1870,7 +1870,7 @@ as well as their modulus and argument.
 \begin{enumerate}[label=(\alph*)]
 \item $5+i$, $\sqrt{26}$, $0.1974$;
 \item $\frac{7}{17}+\frac{6}{17}i$, $\sqrt{\frac{5}{17}}$, $0.7086$;
-\item $\frac{22}{13}-\frac{20}{13}i$, $\frac{2\sqrt{17}}{\sqrt{13}}$, $-0.7378$. (All arguments are in radian.)
+\item $\frac{22}{13}-\frac{20}{13}i$, $\frac{2\sqrt{17}}{\sqrt{13}}$, $-0.7378$. (All arguments are in radians.)
 \end{enumerate}
 \end{Answer}
 

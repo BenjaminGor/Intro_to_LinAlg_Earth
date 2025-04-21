@@ -206,7 +206,7 @@ U =
 \end{align*}
 \end{solution}
 $\blacktriangleright$ Short Exercise: Check if $A = U^T U$.\footnotemark\par
-As a side note, Cholesky Decomposition actually has a very interesting and useful side-effect of determining if a given symmetric matrix is positive-definite. If at any step, $\alpha_{mm}$ is not positive and Formula (\ref{eqn:cholesky1}) fails, then it means that the matrix cannot be positive-definite.\footnotemark
+As a side note, Cholesky Decomposition actually has a very interesting and useful side-effect of determining if a given symmetric matrix is positive-definite. If at any step, $\alpha_{mm}$ is not positive and Formula (\ref{eqn:cholesky1}) fails, then it means that the matrix cannot be positive-definite.\footnotemark{} This is, in fact, the most numerically efficient and stable method to do so.
 
 \subsection{LU/LDU Factorization}
 
@@ -383,7 +383,7 @@ L &= E_1'^{-1}E_2'^{-1}E_3'^{-1} \\
 0 & 0 & 4 
 \end{bmatrix}
 \end{align*}
-This sequence amounts to the series of elementary row operations in the forward reduction phase. Doing them from the right to the left, it is easy to arrive at
+This sequence amounts to a series of elementary row operations in the forward reduction phase. Doing them from the right to the left, it is easy to arrive at
 \begin{align*}
 L &=
 \begin{bmatrix}
@@ -2146,7 +2146,7 @@ and thus the minimal solution will be
 0.2403
 \end{bmatrix}
 \end{align*}
-We can convert the molar concentration of each ion species to mass concentration via multiplying them by their respective molar mass. For example,
+We can convert the molar concentration of each ion species to mass concentration via multiplying it by its respective molar mass. For example,
 \begin{align*}
 [\text{Na}^+] &= (\SI{23.0}{\g \per \mol})(\SI{0.1430}{\mol \per \kg}) = \SI{3.29}{\g \per \kg}
 \end{align*}
@@ -2232,7 +2232,7 @@ h = np.array([1, 1, 1])
 print(linalg.pinv(A3) @ h)
 print(linalg.lstsq(A3, h))    
 \end{lstlisting}
-both will produce the same answer apart from the different, but negligible round-off errors in the second entry which should have been zero.
+Both will produce the same answer apart from the different, but negligible round-off errors in the second entry which should have been zero.
 
 \section{Exercises}
 

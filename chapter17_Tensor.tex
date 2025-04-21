@@ -11,7 +11,7 @@ Previously, we have usually been writing matrix multiplications along the lines 
 \begin{align*}
 \sum_{k=1}^r A_{ik}B_{kj} &= C_{ij} &  & \sum_{j=1}^n A_{ij}x_j = h_i
 \end{align*}
-However, the summation symbol is clumsy to be included every time, especially when it involves a chain of products like $ABCD$. The \index{Index Notation}\keywordhl{Index Notation} (also known as the \index{Einstein Convention}\keywordhl{Einstein Convention}) solves this problem by assuming that any subscript appearing exactly twice in an additive term will be summed (\index{Contraction}\textit{contracted}) implicitly over all values that the subscript can take. This also means that any such pair of repeated subscripts must occur only in positions with the same range of values. Consequentially, the above examples are simplified into
+However, the summation symbol is clumsy to be included every time, especially when it involves a chain of products like $ABCD$. The \index{Index Notation}\keywordhl{Index Notation} (also known as the \index{Einstein Convention}\keywordhl{Einstein Convention}) solves this problem by assuming that any subscript appearing exactly twice in an additive term will be summed (\index{Contraction}\textit{contracted}) implicitly over all values that the subscript can take. This also means that any such pair of repeated subscripts must occur only in positions with the same range of values. Consequently, the above examples are simplified into
 \begin{align*}
 A_{ik}B_{kj} &= C_{ij} &  & A_{ij}x_j = h_i    
 \end{align*}
@@ -387,7 +387,7 @@ Using the epsilon symbol to combine all six cases then yields (\ref{eqn:determin
 \epsilon'_{ijk} &= a_{il}a_{jm}a_{kn}\epsilon_{lmn} \\
 &= \abs{a}\epsilon_{ijk} & \text{(by (\ref{eqn:determinanteps2}))}
 \end{align*}
-and it equals to $\epsilon_{ijk}$ as we assume that the coordinate transformation is orthogonal and by Properties \ref{proper:orthopm1det} the determinant will take the value $\abs{a} = 1$ or $-1$. We further place the restriction that it is a \textit{proper} rotation (compared to the \textit{improper} rotation, that is, reflection) so that $\abs{a} = 1$, and hence the desired result follows. Finally, we note that in converse, the Kronecker delta and epsilon tensors are the only possible isotropic tensors of rank $2$ and $3$, up to a multiplicative constant. The steps of the proof are provided in the Appendix \ref{section:tensorappend}. Although we will not use rank-$4$ tensors in this book, we also note in passing that the general form of an isotropic rank-$4$ tensor is
+and it equals to $\epsilon_{ijk}$ as we assume that the coordinate transformation is orthogonal and by Properties \ref{proper:orthopm1det} the determinant will take the value $\abs{a} = 1$ or $-1$. We further place the restriction that it is a \textit{proper} rotation (compared to the \textit{improper} rotation, that is, reflection) so that $\abs{a} = 1$, and hence the desired result follows. Finally, we note that conversely, the Kronecker delta and epsilon tensors are the only possible isotropic tensors of rank $2$ and $3$, up to a multiplicative constant. The steps of the proof are provided in the Appendix \ref{section:tensorappend}. Although we will not use rank-$4$ tensors in this book, we also note in passing that the general form of an isotropic rank-$4$ tensor is
 \begin{align}
 T_{ijkl}= \lambda \delta_{ij}\delta_{kl} + \mu(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}) + \nu(\delta_{ik}\delta_{jl}-\delta_{il}\delta_{jk})
 \end{align}
@@ -511,7 +511,7 @@ For a Cartesian tensor $T_{ij\ldots k}$ of an arbitrary rank and over a convex r
 \end{align}
 where $\hat{n} = n_l$ is the unit outward normal vector.
 \end{thm}
-Consequentially, the usual \index{Divergence Theorem}\keywordhl{Divergence Theorem} and \index{Stokes' Theorem}\keywordhl{Stokes' Theorem} can be readily seen to be a special case of the Tensor Divergence Theorem:\footnotetext{It is simply $A+A^T$.}
+Consequently, the usual \index{Divergence Theorem}\keywordhl{Divergence Theorem} and \index{Stokes' Theorem}\keywordhl{Stokes' Theorem} can be readily seen to be a special case of the Tensor Divergence Theorem:\footnotetext{It is simply $A+A^T$.}
 \begin{align}
 \int_S \vec{v}\cdot \hat{n} dS = \int_S v_ln_l dS &= \int_V \frac{\partial v_l}{\partial x_l} dV \nonumber &\text{(by (\ref{eqn:tensdivthm}))} \\ 
 &= \int_V (\nabla \cdot \vec{v}) dV &\text{(by (\ref{eqn:divv}))} \label{eqn:divthm} \\
@@ -948,7 +948,7 @@ dV &= \epsilon_{lmn} dx_ldx_mdx_n \nonumber \\
 &= \epsilon_{ijk} J dX_idX_jdX_k & \text{(by (\ref{eqn:determinanteps2}) and (\ref{eqn:Jacdet}))} \nonumber \\
 &= J dV_0 \label{eqn:dVJdV_0}
 \end{align}
-Consequentially, $J$ is the ratio of the current to the reference volume. Due to the conservation of matter, the deformed volume cannot vanish if the initial reference volume is finite and vice versa. This implies that the determinant of the Jacobian (or simply called Jacobian from now on) cannot vanish, i.e.\ $J = \det(\partial x_i/\partial X_j) \neq 0$. This ensures that the conversion between the Eulerian and Lagrangian descriptions is one-to-one.\par
+This shows that $J$ is the ratio of the current to the reference volume. Due to the conservation of matter, the deformed volume cannot vanish if the initial reference volume is finite and vice versa. This implies that the determinant of the Jacobian (or simply called Jacobian from now on) cannot vanish, i.e.\ $J = \det(\partial x_i/\partial X_j) \neq 0$. This ensures that the conversion between the Eulerian and Lagrangian descriptions is one-to-one.\par
 
 Now, we are going to examine the time derivative of a tensor quantity $P = P_{ij\ldots}$ from both the Eulerian and Lagrangian views. Using the Lagrangian description, it can be expressed as $P = P(\textbf{X}, t)$ where $\textbf{X}$ represents the reference coordinates. The \index{Material Derivative}\keywordhl{material derivative} $dP/dt$ is the rate of change in $P$ following a particle with respect to time $t$. Since the reference coordinates of the tracked particle are essentially labels that do not change with time, the material derivative of $P(\textbf{X}, t)$ in the Lagrangian framework is simply
 \begin{align}
@@ -1119,12 +1119,12 @@ where $\textbf{v}_b$ is the velocity of the control surface. Meanwhile, for the 
 \frac{d}{dt} \int_{MV(t)} G(\textbf{x},t) dV = \int_{MV(t)} \frac{\partial G}{\partial t} dV + \int_{S(t)} G\textbf{v}_m \cdot \hat{n}dS
 \end{align}  
 \end{subequations}
-As we demand the material volume to match with the control volume at time $t$, subtracting the first equation from the second one will eliminate the local term, and gives
+As we demand the material volume to match with the control volume at time $t$, subtracting the first equation from the second one will eliminate the local term, and give
 \begin{align}
 \frac{d}{dt} \int_{MV(t)} G(\textbf{x},t) dV &= \frac{d}{dt} \int_{CV(t)} G(\textbf{x},t) dV +  \int_{S(t)} G(\textbf{v}_m - \textbf{v}_b) \cdot \hat{n}dS \nonumber \\
 &= \frac{d}{dt} \int_{CV(t)} G(\textbf{x},t) dV + \int_{S(t)} G\textbf{v}_r \cdot \hat{n}dS 
 \end{align}
-with $\textbf{v}_r = \textbf{v}_m - \textbf{v}_b$ being the relative velocity of the material to control boundary.\par
+with $\textbf{v}_r = \textbf{v}_m - \textbf{v}_b$ being the relative velocity of the material to the control boundary.\par
 
 Now we will use Reynold's Transport Theorem \ref{thm:RTT} to derive the \textit{equation of motion}. Let $A = \textbf{v}$ be the velocity field so that $\rho \textbf{v}$ now represents the momentum per unit mass. The change in the total momentum of a material volume is caused by two major effects: the external traction $\textbf{T}$ on the material boundary and the \textit{body force} (exerted at a distance, per unit mass) $\textbf{b}$ over the entire volume:
 \begin{align}
@@ -1329,7 +1329,7 @@ or alternatively,
 \frac{1}{\sigma_a^2} = \frac{1}{\sigma_b^2} + \frac{1}{\sigma_o^2}
 \end{align}
 which means that the precision of the analysis is the sum of the precisions of
-the background and observation. An illustration is given in Figure \ref{fig:DA1} below. By rearranging the expressions in (\ref{eqn:univOIan}) and (\ref{eqn:DAunisigmaa2}), the data assimilation prototype is described by
+the background and observation. An illustration is given in Figure \ref{fig:DA1} next page. By rearranging the expressions in (\ref{eqn:univOIan}) and (\ref{eqn:DAunisigmaa2}), the data assimilation prototype is described by
 \begin{subequations}
 \label{eqn:univOIschm}
 \begin{align}
@@ -1348,7 +1348,7 @@ T_a &= T_b + W(T_o - T_b) \label{eqn:uniDAweight} \\
 
 \subsection{Optimal Interpolation}
 
-In the last subsection, we only use a single variable as the illustrating example. Obviously, in actual weather models, there will be multiple variables (let's say $N$) like temperature, pressure, density, and three-dimensional winds, to be simulated in a large number of grid points ($M$). Hence there will be a total of $L = MN$ variables in the model output and we will place all of them into a \textit{state vector} of length $L = MN$:
+In the last subsection, we only used a single variable as the illustrating example. Obviously, in actual weather models, there will be multiple variables (let's say $N$) like temperature, pressure, density, and three-dimensional winds, to be simulated in a large number of grid points ($M$). Hence there will be a total of $L = MN$ variables in the model output and we will place all of them into a \textit{state vector} of length $L = MN$:
 \begin{align}
 \textbf{x} = 
 \begin{bmatrix}
@@ -1562,7 +1562,7 @@ A = B - KHB &= B - (B^{-1} + H^TR^{-1}H)^{-1}H^TR^{-1}HB \nonumber \\
 
 \subsection{Kalman Filter}
 
-Notice that the technique of Optimal Interpolation introduced in the last subsection does not depend on time and can be used at any time step in an isolated fashion. However, in physical models, we need to integrate forwards in time for the forecast. We may ask if there is an improved version of Optimal Interpolation such that it will take the evolution of the model state into account. Particularly, the background error is previously assumed to be static but should actually change in time, e.g.\ different climatologies in different seasons. \index{Kalman Filter}\keywordhl{Kalman Filter} solves this by further cycling the background error covariance using the model. It is essentially Optimal Interpolation but with the error covariances evolved forward in time as well. No matter how the background error is initially determined, it will become more and more optimal after several cycles as long as the model and observations are good. Kalman Filter consists of two steps: the \textit{analysis step} which is identical to Optimal Interpolation, and the \textit{forecast step} where we carry out time integration for the state vector and the error covariance matrix in the model.\par
+Notice that the technique of Optimal Interpolation introduced in the last subsection does not depend on time and can be used at any time step in an isolated fashion. However, in physical models, we need to integrate forward in time for the forecast. We may ask if there is an improved version of Optimal Interpolation such that it will take the evolution of the model state into account. Particularly, the background error is previously assumed to be static but should actually change in time, e.g.\ different climatologies in different seasons. \index{Kalman Filter}\keywordhl{Kalman Filter} solves this by further cycling the background error covariance using the model. It is essentially Optimal Interpolation but with the error covariances evolved forward in time as well. No matter how the background error is initially determined, it will become more and more optimal after several cycles as long as the model and observations are good. Kalman Filter consists of two steps: the \textit{analysis step} which is identical to Optimal Interpolation, and the \textit{forecast step} where we carry out time integration for the state vector and the error covariance matrix in the model.\par
 
 In Kalman filter, a short-term model forecast is used as the background and the subscript $b$ is now replaced by $f$, and similar to (\ref{eqn:OIxbaoe}) plus (\ref{eqn:OIinnover}), we have
 \begin{subequations}
