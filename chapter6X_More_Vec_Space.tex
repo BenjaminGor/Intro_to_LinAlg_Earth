@@ -1,7 +1,7 @@
 \chapter{More on Coordinate Bases, Linear Transformations}
 \label{chap:6x}
 
-In this chapter, we will go deeper into what a matrix actually represents in the big picture. Matrices, by nature, are the rules of \textit{linear transformations} (or \textit{linear mappings}) between two vector spaces. We are going to study several special types of linear transformations, and this ultimately reveals the relationship between any $n$-dimensional real vector space and the real $n$-space $\mathbb{R}^n$, as an \textit{isomorphism}. We will then move to discuss how a change of coordinates works for vectors and matrices, as well as the \textit{Gram-Schmidt} process to make an \textit{orthonormal} basis. This is needed in Earth Science as we often have to switch between different coordinate systems/bases (e.g. wind shear/motion-relative coordinates for tropical cyclones) and particularly want to work with the nicer ones that facilitate computation.
+In this chapter, we will go deeper into what a matrix actually represents in the big picture. Matrices, by nature, are the rules of \textit{linear transformations} (or \textit{linear mappings}) between two vector spaces. We are going to study several special types of linear transformations, and this ultimately reveals the relationship between any $n$-dimensional real vector space and the real $n$-space $\mathbb{R}^n$, as an \textit{isomorphism}. We will then move to discuss how a change of coordinates works for vectors and matrices, as well as the \textit{Gram-Schmidt} process to make an \textit{orthonormal} basis. This is needed in Earth Science as we often have to switch between different coordinate systems/bases (e.g.\ wind shear/motion-relative coordinates for tropical cyclones) and particularly want to work with the nicer ones that facilitate computation.
 
 \section{Ideas of Linear Transformations}
 \label{section:lineartrans}
@@ -297,7 +297,7 @@ Most of the readers should find it boring in the above example as we are just st
 
 \subsection{One-to-one and Onto, Kernel and Range}
 
-Continuing our discussion above, to identify a vector (one and only one) from one vector space with a fixed vector in another vector space through a linear mapping, we require it to be \index{One-to-one}\index{Injective}\keywordhl{one-to-one (injective)}. On the other hand, another important property of a linear transformation is that whether it is \index{Onto}\index{Surjective}\keywordhl{onto (surjective)}, which means that every vector (\index{Image}\textit{image}) in the latter vector space (\index{Codomain}\textit{codomain}) is being mapped onto by (or speaking loosely, "comes from") some vector(s) (\index{Preimage}\textit{preimage}) in the former vector space (\index{Domain}\textit{domain}). The formal definitions of these two properties are given as below.
+Continuing our discussion above, to identify a vector (one and only one) from one vector space with a fixed vector in another vector space through a linear mapping, we require it to be \index{One-to-one}\index{Injective}\keywordhl{one-to-one (injective)}. On the other hand, another important property of a linear transformation is that whether it is \index{Onto}\index{Surjective}\keywordhl{onto (surjective)}, which means that every vector (\index{Image}\textit{image}) in the latter vector space (\index{Codomain}\textit{codomain}) is being mapped onto by (or speaking loosely, "comes from") some vector(s) (\index{Preimage}\textit{preimage}) in the former vector space (\index{Domain}\textit{domain}). The formal definitions of these two properties are given below.
 
 \begin{defn}[Injective Transformation]
 \label{defn:injective}
@@ -377,7 +377,7 @@ determine whether it is (a) one-to-one, as well as (b) onto, or not.
     1
     \end{bmatrix}_\eta
     \end{align*}
-    which is just the first column of $\smash{[T]_\beta^\eta}$. Similarly, $[T(\vec{u}^{(2)})]_\eta = (-1,1,0,1)_\eta^T$, $[T(\vec{u}^{(3)})]_\eta = (0,1,-1,0)_\eta^T$ are then the second/third column of $[T]_\beta^\eta$. From this, we see that in general, the coordinates in $\mathcal{\eta}$ after transformation $[T(\vec{u}^{(j)})]_\eta$ is just the $j$-th column of $[T]_\beta^\eta$. (Actually, this has been observed when we are deriving the matrix representation of linear transformations at the beginning of this chapter.) So the problem is reduced to deciding whether the column vectors constituting $[T]_\beta^\eta$ are linearly independent or not. By Theorem \ref{thm:linearindep}, we can accomplish this by showing if the solution $[T]_\beta^\eta[\vec{u}]_\beta = \textbf{0}$ consists of the trivial solution only, and we have
+    which is just the first column of $\smash{[T]_\beta^\eta}$. Similarly, $[T(\vec{u}^{(2)})]_\eta = (-1,1,0,1)_\eta^T$, $[T(\vec{u}^{(3)})]_\eta = (0,1,-1,0)_\eta^T$ are then the second/third column of $[T]_\beta^\eta$. From this, we see that in general, the coordinates in $\mathcal{\eta}$ after transformation $[T(\vec{u}^{(j)})]_\eta$ are just the $j$-th column of $[T]_\beta^\eta$. (Actually, this has been observed when we were deriving the matrix representation of linear transformations at the beginning of this chapter.) So the problem is reduced to deciding whether the column vectors constituting $[T]_\beta^\eta$ are linearly independent or not. By Theorem \ref{thm:linearindep}, we can accomplish this by showing if the solution $[T]_\beta^\eta[\vec{u}]_\beta = \textbf{0}$ consists of the trivial solution only, and we have
     \begin{align*}
     \left[
     \begin{array}{@{\,}wc{10pt}wc{10pt}wc{10pt}|wc{10pt}@{\,}}
@@ -442,7 +442,7 @@ whereas its range is
 \mathcal{R}(T) = \{\vec{v} \in \mathcal{V} | T(\vec{u}) = \vec{v} \text{ for some } \vec{u} \in \mathcal{U}\}    
 \end{align}
 \end{defn}
-Also, notice that the kernel and range are a subspace of $\mathcal{U}$ and $\mathcal{V}$ respectively.\footnote{For $\vec{u}^{(1)}, \vec{u}^{(2)} \in \text{Ker}(T) \subseteq \mathcal{U}$, $T(a\vec{u}^{(1)} + b\vec{u}^{(2)}) = aT(\vec{u}^{(1)}) + bT(\vec{u}^{(2)}) = a\textbf{0}_V + b\textbf{0}_V = \textbf{0}_V$ for any scalar $a$ and $b$ so $a\vec{u}^{(1)} + b\vec{u}^{(2)} \in \text{Ker}(T)$ and by Theorem \ref{thm:subspacecriteria} it is a subspace of $\mathcal{U}$. We leave showing that the range is a subspace of $\mathcal{V}$ as an exercise to the readers.} Hence it is reasonable to speak of their dimension or basis and we will discuss this matter later. For now, let's look at how to determine the kernel and range of a linear transformation first. For instance, in Example \ref{exmp:lineartransderivative}, the kernel is $\text{span}(\{1\})$ since (only) the derivative of any constant vanishes, and the range is $\text{span}(\{1, x\}) = \mathcal{V} = \mathcal{P}^1$ because we have already shown that every $\mathcal{P}^1$ polynomial in this case has some corresponding preimage in $\mathcal{U} = \mathcal{P}^2$. Here, the dimension of kernel/range is $1$ and $2$.
+Also, notice that the kernel and range are a subspaces of $\mathcal{U}$ and $\mathcal{V}$ respectively.\footnote{For $\vec{u}^{(1)}, \vec{u}^{(2)} \in \text{Ker}(T) \subseteq \mathcal{U}$, $T(a\vec{u}^{(1)} + b\vec{u}^{(2)}) = aT(\vec{u}^{(1)}) + bT(\vec{u}^{(2)}) = a\textbf{0}_V + b\textbf{0}_V = \textbf{0}_V$ for any scalar $a$ and $b$ so $a\vec{u}^{(1)} + b\vec{u}^{(2)} \in \text{Ker}(T)$ and by Theorem \ref{thm:subspacecriteria} it is a subspace of $\mathcal{U}$. We leave showing that the range is a subspace of $\mathcal{V}$ as an exercise to the readers.} Hence it is reasonable to speak of their dimension or basis and we will discuss this matter later. For now, let's look at how to determine the kernel and range of a linear transformation first. For instance, in Example \ref{exmp:lineartransderivative}, the kernel is $\text{span}(\{1\})$ since (only) the derivative of any constant vanishes, and the range is $\text{span}(\{1, x\}) = \mathcal{V} = \mathcal{P}^1$ because we have already shown that every $\mathcal{P}^1$ polynomial in this case has some corresponding preimage in $\mathcal{U} = \mathcal{P}^2$. Here, the dimension of kernel/range is $1$ and $2$.
 
 \begin{exmp}
 Given another linear transformation $T: \mathcal{U} \to \mathcal{V}$ where $\mathcal{U}$ and $\mathcal{V}$ are now both having a dimension of $3$, if its matrix representation corresponding to some bases $\mathcal{\beta}$ and $\mathcal{\eta}$ is
@@ -1328,7 +1328,7 @@ as $\hat{v}^{(j)} \cdot \hat{v}^{(j)} = \norm{\hat{v}^{(j)}}^2 = 1$. The require
 Construct a QR decomposition for the case in Example \ref{exmp:GS_ex}.
 \end{exmp}
 \begin{solution}
-The matrix $Q$ is simply consisted of the orthonormal basis vectors:
+The matrix $Q$ simply consists of the orthonormal basis vectors:
 \begin{align*}
 Q &= 
 \begin{bmatrix}

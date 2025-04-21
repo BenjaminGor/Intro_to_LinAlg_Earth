@@ -6,14 +6,14 @@ Symmetric matrices often see their appearance in the areas of Geometry, Statisti
 \section{Mathematical and Geometric Ideas of Quadratic Forms}
 \subsection{Definition of Quadratic Forms}
 
-The word \textit{quadratic} is commonly associated with \textit{quadratic equations} in the form of $y = ax^2 + bx + c$. \index{Quadratic Form}\keywordhl{Quadratic forms} are the generalization of quadratic equations when there are multiple variables $x_1, x_2, x_3, \ldots$: The possible quadratic forms will be made up of the usual quadratic terms $x_1^2, x_2^2, x_3^2, \ldots$, as well as the \textit{cross-product terms} (again, not to be confused with the vector cross product in Section \ref{section:crossprod}) $x_px_q$, $p \neq q$. The usual quadratic terms then can be seen as just another kind of cross-product terms when $p = q$. We will limit our discussion to real, finite-dimensional vector spaces first.
+The word \textit{quadratic} is commonly associated with \textit{quadratic equations} in the form of $y = ax^2 + bx + c$. \index{Quadratic Form}\keywordhl{Quadratic forms} are the generalization of quadratic equations when there are multiple variables $x_1, x_2, x_3, \ldots$: The possible quadratic forms will be made up of the usual quadratic terms $x_1^2, x_2^2, x_3^2, \ldots$, as well as the \textit{cross-product terms} (again, not to be confused with the vector cross product in Section \ref{section:crossprod}) $x_px_q$, $p \neq q$. The usual quadratic terms can then be seen as just another kind of cross-product terms when $p = q$. We will limit our discussion to real, finite-dimensional vector spaces first.
 \begin{defn}[Quadratic Form]
 \label{defn:quadform}
 Real quadratic forms in multiple variables $\vec{x} = (x_1, x_2, x_3, \ldots, x_n)^T$ has a structure of
 \begin{align}
 Q(\vec{x}) = \sum_{p=1}^{n}\sum_{q=1}^{n} b_{pq} x_px_q \label{eqn:quadform}
 \end{align}
-Note that $b_{pq}$ is real and they produce a real scalar.
+Note that $b_{pq}$ are real and they produce a real scalar.
 \end{defn}
 For example, in a two-variable situation, $x^2 + 3xy + y^2$ and $3x^2 - 4xy$ are quadratic forms, while $x^2 + y$ and $xy + xy^2$ are not. Notice that $x_px_q$ and $x_qx_p$ are actually the same term, and we will replace $b_{pq}$ or $b_{qp}$ by $\frac{1}{2}(b_{pq} + b_{qp})$ as a single coefficient for both of them. 
 \begin{proper}[Matrix Representation of a Quadratic Form]
@@ -339,7 +339,7 @@ c_{r'}
 * 
 \end{bmatrix}
 \end{align*}
-The part below the $r$-th row does not matter since the constraints are for the first $r$ rows and so it is effective a $r \times r'$ underdetermined homogeneous linear system. By the discussion in Section \ref{subsection:SolLinSysGauss}, we know that there will be non-trivial solutions for the $c_j$, $1 \leq j \leq r'$.} Subsequently, consider $\textbf{x} = \sum_{j=1}^{r'} c_j \textbf{e}^{(j)}$, and
+The part below the $r$-th row does not matter since the constraints are for the first $r$ rows and so it is effectively an $r \times r'$ underdetermined homogeneous linear system. By the discussion in Section \ref{subsection:SolLinSysGauss}, we know that there will be non-trivial solutions for the $c_j$, $1 \leq j \leq r'$.} Subsequently, consider $\textbf{x} = \sum_{j=1}^{r'} c_j \textbf{e}^{(j)}$, and
 \begin{align*}
 \textbf{x}^T C'\textbf{x} &= 
 \begin{bmatrix}
@@ -762,7 +762,7 @@ Since physically we are living in a three-dimensional world, it is normal to ask
 \subsection{Hermitian Forms}
 \label{section:hermform}
 
-The concept of quadratic forms/symmetric bilinear forms can be readily promoted to complex vector spaces. Since Hermiticity is the complex equivalent of symmetricity, it is not surprising that we have the \index{Hermitian Form}\keywordhl{Hermitian forms} as the complex counterpart of symmetric bilinear forms.
+The concept of quadratic forms/symmetric bilinear forms can be readily promoted to complex vector spaces. Since Hermiticity is the complex equivalent of symmetry, it is not surprising that we have the \index{Hermitian Form}\keywordhl{Hermitian forms} as the complex counterpart of symmetric bilinear forms.
 \begin{defn}[Hermitian Form]
 A (complex) Hermitian form $H(\vec{x}, \vec{y}): \mathcal{V} \times \mathcal{V} \to \mathbb{C}$ takes two vectors $\vec{x}$, $\vec{y} \in \mathcal{V}$ from a complex vector space and returns a complex scalar, that satisfies 
 \begin{align}
@@ -813,10 +813,10 @@ which yields two negative roots $\lambda = -1, -5$ and we are done.
 
 \subsection{Variance and Covariance}
 \label{section:variancesec}
-One important quantity in the world of Statistics is the \index{Variance}\keywordhl{variance} of a \index{Random Variable}\keywordhl{random variable} or \textit{time series}. Variance can be viewed as the spread of distribution behind the random variable. The larger the variance, the more dispersed the data points are. In Earth Science, we often use it to quantify the variability of certain phenomena or patterns, e.g.\ the variance of spacetime-filtered winds can tell us how active the corresponding wave type is.
+One important quantity in the world of Statistics is the \index{Variance}\keywordhl{variance} of a \index{Random Variable}\keywordhl{random variable} or \textit{time series}. Variance can be viewed as the spread of distribution of the random variable. The larger the variance, the more dispersed the data points are. In Earth Science, we often use it to quantify the variability of certain phenomena or patterns, e.g.\ the variance of spacetime-filtered winds can tell us how active the corresponding wave type is.
 
 \subsubsection{Single Distribution}
-We start with the simplest case, the definition of variance for the distribution of a single random variable first. Since in real life, we can only do a finite amount of samplings, the variance of a random variable is always approximated and inferred from the data points if we do not know the underlying statistical distribution.
+We start with the simplest case, the definition of variance for the distribution of a single random variable first. Since in real life, we can only do a finite amount of sampling, the variance of a random variable is always approximated and inferred from the data points if we do not know the underlying statistical distribution.
 \begin{defn}
 \label{defn:variance}
 For a distribution $X$, with $m$ data $x_1, x_2, x_3, \ldots, x_m$, its \index{Population Variance}\keywordhl{population variance} is
@@ -1621,7 +1621,7 @@ If $B\vec{x} = \textbf{0}$, then $\textbf{x}^TB\textbf{x} = 0$, and also
 &= \textbf{x}^TI\textbf{x} + \textbf{x}^T(A - A^T)\textbf{x} \\
 &= \textbf{x}^T\textbf{x} + 0 = \norm{\vec{x}}^2
 \end{align*}
-where from the second to last line we have used the fact that $A - A^T$ is skew-symmetric and do not contribute to the quadratic form. This implies that $\norm{\vec{x}}^2 = 0$ so by positivity $\vec{x} = 0$ has to be the zero vector, and so the only solution to $B\vec{x} = \textbf{0}$ is the trivial solution and by the equivalence statements $B = I + (A - A^T)$ is invertible.
+where from the second to last line we have used the fact that $A - A^T$ is skew-symmetric and does not contribute to the quadratic form. This implies that $\norm{\vec{x}}^2 = 0$ so by positivity $\vec{x} = 0$ has to be the zero vector, and so the only solution to $B\vec{x} = \textbf{0}$ is the trivial solution and by the equivalence statements $B = I + (A - A^T)$ is invertible.
 \end{Answer}
 
 \begin{Exercise}
@@ -1698,7 +1698,7 @@ and the required variance of $W$ is
 \end{Answer}
 
 \begin{Exercise}
-Carry out Principal Component Analysis on the data set above. Find the Principal Directions and the ratio of explained variance for each of them. Reconstruct the data using the first principal component with the largest variance only.
+Carry out Principal Component Analysis on the dataset above. Find the Principal Directions and the ratio of explained variance for each of them. Reconstruct the data using the first principal component with the largest variance only.
 \end{Exercise}
 \begin{Answer}
 The three principal directions should be approximately $(0.665, \allowbreak 0.561, 0.493)^T$, $(0.259, 0.445, -0.857)^T$, and $(-0.700, 0.698, 0.151)^T$, accounting for $85.9\%/11.9\%/2.2\%$ of the explained variance. For checking, the reconstruction of the first data point should give $(X_1, Y_1, Z_1) = (17.92, 18.43, 21.78)$.
@@ -1706,6 +1706,6 @@ The three principal directions should be approximately $(0.665, \allowbreak 0.56
 
 \begin{Exercise}
 \label{ex:MJO}
-Download the ERA5 datasets for \SI{200}{hPa} and \SI{850}{hPa} zonal winds, as well as total column water over some $10$ to $20$ years from \SI{15}{\degree N} to \SI{15}{\degree S} and \SI{60}{\degree E} to \SI{160}{\degree E}. Standardize the three variables via dividing them by their standard deviations respectively, concatenate them, and follow the procedure outlined in Section \ref{section:EOF} to do the so-called \textit{combined EOFs}. Recover the physical patterns through multiplying the entries of EOF modes back by the standard deviations of corresponding variables. You should be able to observe the appearance of \textit{Madden-Julian Oscillation (MJO)} from the first two EOFs. 
+Download the ERA5 datasets for \SI{200}{hPa} and \SI{850}{hPa} zonal winds, as well as total column water over some $10$ to $20$ years from \SI{15}{\degree N} to \SI{15}{\degree S} and \SI{60}{\degree E} to \SI{160}{\degree E}. Standardize the three variables via dividing them by their standard deviations respectively, concatenate them, and follow the procedure outlined in Section \ref{section:EOF} to do the so-called \textit{combined EOFs}. Recover the physical patterns through multiplying the entries of the EOF modes back by the standard deviations of the corresponding variables. You should be able to observe the appearance of \textit{Madden-Julian Oscillation (MJO)} from the first two EOFs. 
 \end{Exercise}
 
