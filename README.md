@@ -39,6 +39,10 @@ When the book is completed, I will upload it to ArXiv formally for open access. 
 Appendix
 - Cyclic Subspaces and Jordan Normal Forms
 
+<h2>Printed Version</h2>
+
+[Click here](https://www.amazon.com/dp/626013990X) (Amazon) to purchase a hardcover version to support my effort!
+
 <h2>Cite this Work</h2>
 
 Loi, C. L. Introduction to Linear Algebra with Earth Science Applications. 2025. ISBN: 9786260139902.
