@@ -14,6 +14,7 @@ This project has been completed in May 2025.
 
 Feel free to open an issue regarding any problem or suggestion about the book! Any idea will be greatly appreciated.
 When the book is completed, I will upload it to ArXiv formally for open access. This repository will stay open anyway.
+Update: There will be a minor patch to integrate all the comments in the near future. 
 
 <h2>Table of Content</h2>
 
