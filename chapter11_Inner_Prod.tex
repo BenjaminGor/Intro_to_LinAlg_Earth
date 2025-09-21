@@ -172,7 +172,7 @@ With the usual [complex] dot product as the inner product for $\mathbb{R}^n$ [$\
 &= [\vec{u}]_\beta^T (\overline{[T]_\beta^*[\vec{v}]_\beta}) \nonumber \\
 &= \langle [\vec{u}]_\beta, ([T]_\beta)^*[\vec{v}]_\beta \rangle \stackrel{\text{def}}{\equiv} \langle \vec{u}, T^\dag(\vec{v}) \rangle
 \end{align}
-by Properties \ref{proper:complexdotherm}, so that we identify the adjoint operator $T^\dag$ with the conjugate transpose matrix representation of $([T]_\beta)^*$ as expected.\footnotetext{$\int_{-1}^1 x \overline{(x^2)} = \int_{-1}^1 x^3 = 0$ as $x^3$ is an odd function and the integration limits are symmetric.}
+by Properties \ref{proper:complexdotherm}, so that we identify the adjoint operator $T^\dag$ with the conjugate transpose matrix representation of $([T]_\beta)^*$ as expected.\footnotetext{$\int_{-1}^1 x \overline{(x^2)} dx= \int_{-1}^1 x^3 dx= 0$ as $x^3$ is an odd function and the integration limits are symmetric.}
 \begin{defn}[Adjoint]
 \label{defn:adjoint}
 The adjoint of a linear operator $T: \mathcal{V} \to \mathcal{V}$ with respect to some inner product $\langle \cdot, \cdot \rangle$ is another linear operator denoted by $T^\dag$ such that the relation
@@ -341,7 +341,7 @@ we thus see $\mathcal{L}^\dag = \smash{\frac{d^2}{dx^2}} = \mathcal{L}$. Again f
 &= [\frac{m_1}{2}(\cos((m_1-m_2)x) + \cos((m_1+m_2)x))]_{-\pi}^\pi \\
 &\quad - [-\frac{m_2}{2}(\cos((m_1-m_2)x) - \cos((m_1+m_2)x))]_{-\pi}^\pi 
 \end{align*}
-using trigonometric identities. From this, we see that if the two boundary terms have to be zero, $m_1 - m_2$ and $m_1 + m_2$ must both be odd or even at the same time, which implies that $m_1$ and $m_2$ have to be integers. And since $\sin(-m_1 x) = -\sin(m_1 x)$ and $\cos(-m_2 x) = \cos(m_2 x)$, we only need to take the integers that are positive.}, with the eigenvalues being $-m^2$. Hence the countably infinite, orthogonal\footnotemark (Properties \ref{proper:hilbertorthosys}, not yet normalized) basis of eigenfunctions for $\mathcal{L}$ are $\{\sin(x), \sin(2x), \sin(3x), \ldots, 1, \cos(x), \cos(2x), \cos(3x), \ldots\}$. This basis, consisting of sines and cosines with discrete, equally spaced frequencies, is famously known as the \index{Fourier Basis}\keywordhl{Fourier basis}.
+using trigonometric identities. From this, we see that if the two boundary terms have to be zero, $m_1 - m_2$ and $m_1 + m_2$ must both be odd or even at the same time, which implies that $m_1$ and $m_2$ have to be integers. And since $\sin(-m_1 x) = -\sin(m_1 x)$ and $\cos(-m_2 x) = \cos(m_2 x)$, we only need to take the integers that are positive.}, with the eigenvalues being $-m^2$. Hence the countably infinite, orthogonal\footnotemark{} (Properties \ref{proper:hilbertorthosys}, not yet normalized) basis of eigenfunctions for $\mathcal{L}$ are $\{\sin(x), \sin(2x), \sin(3x), \ldots, 1, \cos(x), \cos(2x), \cos(3x), \ldots\}$. This basis, consisting of sines and cosines with discrete, equally spaced frequencies, is famously known as the \index{Fourier Basis}\keywordhl{Fourier basis}.
 \end{solution}
 
 \subsection{Unitary Operators}
