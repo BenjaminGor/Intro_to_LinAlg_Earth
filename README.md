@@ -2,7 +2,7 @@
 
 Hello, I am Benjamin Loi from CUHK-EESC and NTU-AS. This is the repository for the tex/python files for my book <em>Introduction to Linear Algebra with Earth Science Applications</em>.
 
-<b>The book pdf is located at [here](https://github.com/BenjaminGor/Intro_to_LinAlg_Earth/releases/tag/v1.0) (First Edition).</b>
+<b>The book pdf is located at [here](https://github.com/BenjaminGor/Intro_to_LinAlg_Earth/blob/main/Linear_Algebra_Notes_New.pdf) (First Edition).</b>
 
 Meanwhile, the Jupyter notebooks are placed in [this folder](https://github.com/BenjaminGor/Intro_to_LinAlg_Earth/tree/main/Python%20scripts).
 
