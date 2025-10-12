@@ -42,9 +42,9 @@ Appendix
 
 <h2>Printed Version</h2>
 
-Below are several possible channels to purchase a hardcover version to support my effort!
+Below are several possible channels to purchase a hardcover version to support my effort if you like the book!
 - [Barnes and Noble](https://www.barnesandnoble.com/w/introduction-to-linear-algebra-with-earth-science-applications-c-l-loi/1147326224)
-- [Amazon](https://www.amazon.com/gp/product/626013990X/) (US only)
+- [Amazon](https://www.amazon.com/gp/product/626013990X/) (In some regions, there may be difficulty with shipping the book. If so, use the Barnes and Noble channel above.)
 - [天瓏](https://www.tenlong.com.tw/products/9786260139902) (Taiwan only)
 
 <h2>Cite this Work</h2>
