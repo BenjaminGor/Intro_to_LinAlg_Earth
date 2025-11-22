@@ -16,7 +16,7 @@ Feel free to open an issue regarding any problem or suggestion about the book! A
 When the book is completed, I will upload it to ArXiv formally for open access. This repository will stay open anyway.
 Update: There will be a minor patch to integrate all the comments in the near future. 
 
-<h2>Table of Content</h2>
+<h2>Table of Contents</h2>
 
 1. Introduction to Matrices and Linear Systems
 2. Inverses and Determinants
